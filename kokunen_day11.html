@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day11｜厚生年金法 全単元総復習 フラッシュカード300問＋穴埋め150問 ― 社労士ドリル</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1a2e;--paper:#faf8f3;--warm:#f5f0e8;
+  --red:#c84b31;--red-soft:#e8896b;--red-light:#fee2e2;
+  --teal:#2a7f7f;--teal-light:#e8f4f4;
+  --gold:#c9930a;--gold-light:#fef9e7;
+  --green:#2d6a4f;--green-light:#e8f5ee;
+  --gray:#6b7280;--border:#ddd8cc;
+  --purple:#7c3aed;--purple-light:#ede9fe;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--ink);padding:10px 24px;display:flex;align-items:center;gap:12px;}
+.back-btn{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;display:flex;align-items:center;gap:6px;transition:color .2s;cursor:pointer;}
+.back-btn:hover{color:white;}
+.topbar-title{color:rgba(255,255,255,.45);font-size:12px;margin-left:auto;}
+
+/* ── HEADER ── */
+.hd{background:var(--ink);color:var(--paper);padding:40px 40px 32px;position:relative;overflow:hidden;}
+.hd::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px);}
+.hd-in{max-width:820px;margin:0 auto;position:relative;}
+.hd-eye{font-size:11px;letter-spacing:4px;color:var(--red-soft);margin-bottom:10px;font-weight:700;}
+.hd h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3.5vw,2rem);font-weight:900;line-height:1.3;margin-bottom:6px;}
+.hd h1 em{color:var(--red-soft);font-style:normal;}
+.hd-sub{font-size:13px;color:rgba(255,255,255,.5);font-weight:300;}
+
+/* ── SESSION DASHBOARD ── */
+.dash{max-width:820px;margin:20px auto 0;padding:0 20px;}
+.dash-inner{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;}
+.dash-top{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--border);}
+.dash-cell{padding:14px 16px;text-align:center;border-right:1px solid var(--border);}
+.dash-cell:last-child{border-right:none;}
+.dash-num{font-family:'DM Serif Display',serif;font-size:32px;line-height:1;}
+.dash-num.red{color:var(--red);}
+.dash-num.green{color:var(--green);}
+.dash-num.gold{color:var(--gold);}
+.dash-lbl{font-size:10px;color:var(--gray);font-weight:700;letter-spacing:1px;margin-top:2px;}
+.dash-streak{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;background:var(--warm);font-size:13px;font-weight:700;}
+.streak-badge{background:var(--red);color:white;border-radius:20px;padding:3px 12px;font-size:12px;}
+
+/* ── PROGRESS BAR ── */
+.prog-wrap{padding:0 20px 4px;}
+.prog-track{background:var(--border);border-radius:20px;height:8px;overflow:hidden;margin-bottom:4px;}
+.prog-bar{background:linear-gradient(90deg,var(--teal),var(--green));height:8px;border-radius:20px;width:0%;transition:width .6s cubic-bezier(.4,0,.2,1);}
+.prog-lbl{font-size:11px;color:var(--gray);text-align:right;}
+
+/* ── CATEGORY FILTER ── */
+.filter-wrap{max-width:820px;margin:16px auto 0;padding:0 20px;}
+.filter-label{font-size:11px;font-weight:700;color:var(--gray);letter-spacing:1px;margin-bottom:8px;}
+.filter-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.fc-chip{border:2px solid var(--border);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;cursor:pointer;transition:all .15s;background:white;color:var(--ink);}
+.fc-chip:hover{border-color:var(--ink);}
+.fc-chip.active{background:var(--ink);color:white;border-color:var(--ink);}
+.fc-chip.s1.active{background:#7c3aed;border-color:#7c3aed;}
+.fc-chip.s2.active{background:#c84b31;border-color:#c84b31;}
+.fc-chip.s3.active{background:#2a7f7f;border-color:#2a7f7f;}
+.fc-chip.s4.active{background:#c9930a;border-color:#c9930a;}
+.fc-chip.s5.active{background:#2d6a4f;border-color:#2d6a4f;}
+.fc-chip.s6.active{background:#6d28d9;border-color:#6d28d9;}
+.fc-chip.s7.active{background:#dc2626;border-color:#dc2626;}
+.fc-chip.s8.active{background:#0891b2;border-color:#0891b2;}
+.fc-chip.s9.active{background:#7c3aed;border-color:#7c3aed;}
+.fc-chip.s10.active{background:#d97706;border-color:#d97706;}
+.fc-chip.s11.active{background:#374151;border-color:#374151;}
+.fc-chip.weak.active{background:#be185d;border-color:#be185d;}
+
+/* ── MODE BTNS ── */
+.mode-wrap{max-width:820px;margin:12px auto 0;padding:0 20px;display:flex;gap:8px;flex-wrap:wrap;}
+.mode-btn{padding:8px 16px;border-radius:8px;border:2px solid var(--border);background:white;font-size:12px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit;}
+.mode-btn:hover{border-color:var(--ink);}
+.mode-btn.active{background:var(--ink);color:white;border-color:var(--ink);}
+.mode-btn.weak-mode{border-color:#be185d;color:#be185d;}
+.mode-btn.weak-mode.active{background:#be185d;color:white;}
+
+/* ── FLASH CARD AREA ── */
+.fc-wrap{max-width:740px;margin:20px auto 0;padding:0 20px 80px;}
+
+.fc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;font-size:12px;color:var(--gray);}
+.fc-counter{font-family:'DM Serif Display',serif;font-size:24px;color:var(--red);line-height:1;}
+.fc-counter span{font-size:12px;color:var(--gray);font-family:'Noto Sans JP',sans-serif;font-weight:400;}
+.fc-section-tag{font-size:10px;font-weight:700;background:var(--purple-light);color:var(--purple);border-radius:4px;padding:2px 8px;}
+
+/* ゲージ */
+.fc-gauge-wrap{margin-bottom:20px;}
+.fc-gauge-labels{display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:5px;}
+.fc-gauge-label-ng{color:var(--red);}
+.fc-gauge-label-ok{color:var(--green);}
+.fc-gauge-label-mid{color:var(--gray);font-size:10px;font-weight:400;}
+.fc-gauge-track{position:relative;height:14px;background:var(--border);border-radius:20px;overflow:hidden;display:flex;}
+.fc-gauge-ng{height:100%;background:linear-gradient(90deg,#c84b31,#e8896b);border-radius:20px 0 0 20px;transition:width .5s cubic-bezier(.4,0,.2,1);width:0%;}
+.fc-gauge-ok{height:100%;background:linear-gradient(90deg,#86efac,#2d6a4f);border-radius:0 20px 20px 0;transition:width .5s cubic-bezier(.4,0,.2,1);width:0%;margin-left:auto;}
+.fc-gauge-mid-line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:white;transform:translateX(-50%);z-index:2;}
+.fc-gauge-counts{display:flex;justify-content:space-between;font-size:11px;margin-top:3px;padding:0 2px;}
+.fc-gauge-count-ng{color:var(--red);font-weight:700;font-family:'DM Serif Display',serif;font-size:13px;}
+.fc-gauge-count-ok{color:var(--green);font-weight:700;font-family:'DM Serif Display',serif;font-size:13px;}
+.fc-gauge-remaining{color:var(--gray);font-size:10px;text-align:center;margin-top:2px;}
+
+/* カルーセル */
+.fc-carousel{position:relative;display:flex;align-items:center;justify-content:center;min-height:420px;overflow:hidden;margin-bottom:18px;}
+.fc-slot{position:absolute;width:72%;min-height:300px;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s cubic-bezier(.4,0,.2,1),filter .35s ease;cursor:pointer;border-radius:16px;}
+.fc-slot.prev{transform:translateX(-82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.curr{transform:translateX(0) scale(1);opacity:1;filter:none;z-index:10;}
+.fc-slot.next{transform:translateX(82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.hidden{opacity:0;pointer-events:none;z-index:0;}
+.fc-inner{position:relative;width:100%;min-height:300px;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.4,0,.2,1);}
+.fc-inner.flipped{transform:rotateY(180deg);}
+.fc-face{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.11);}
+.fc-front-face{background:white;border:2px solid var(--ink);}
+.fc-back-face{background:white;border:2px solid var(--ink);transform:rotateY(180deg);}
+.fc-front-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:9px 14px;display:flex;align-items:center;gap:8px;}
+.fc-front-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;}
+.fc-front-cat{font-size:10px;color:var(--gray);}
+.fc-front-body{flex:1;padding:16px 18px;display:flex;align-items:center;justify-content:center;}
+.fc-q{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;line-height:1.9;color:var(--ink);text-align:center;}
+.fc-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+.fc-tap-hint{text-align:center;padding:0 14px 10px;font-size:11px;color:var(--gray);}
+.fc-ox{display:flex;gap:8px;padding:0 14px 12px;}
+.fc-ox-btn{flex:1;padding:10px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-size:20px;font-weight:900;cursor:pointer;transition:all .15s;font-family:inherit;}
+.fc-ox-btn.o:hover{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.fc-ox-btn.x:hover{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.fc-back-hd{padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+.fc-verdict{font-size:12px;font-weight:700;padding:2px 10px;border-radius:20px;}
+.fc-verdict.ok{background:var(--green);color:white;}
+.fc-verdict.ng{background:var(--red);color:white;}
+.fc-user-ans{font-size:12px;font-weight:700;margin-left:auto;}
+.fc-back-body{flex:1;padding:12px 16px;overflow-y:auto;}
+.fc-answer{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ink);margin-bottom:8px;line-height:1.4;font-weight:700;}
+.fc-reason{font-size:12px;color:var(--ink);line-height:1.9;}
+.fc-reason strong{color:var(--ink);}
+.fc-reason mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+.fc-lawref{display:inline-block;margin-top:6px;font-size:10px;color:var(--teal);font-family:'DM Serif Display',serif;background:var(--teal-light);border:1px solid var(--teal);padding:2px 8px;border-radius:4px;}
+
+/* ナビ */
+.fc-nav{display:none;gap:10px;justify-content:center;padding:0 16px;}
+.fc-nav-btn{flex:1;max-width:150px;padding:11px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-family:inherit;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;transition:all .2s;text-align:center;}
+.fc-nav-btn:hover{border-color:var(--ink);}
+.fc-nav-btn.again{border-color:var(--red);color:var(--red);}
+.fc-nav-btn.again:hover{background:var(--red-light);}
+.fc-nav-btn.got{border-color:var(--green);color:var(--green);}
+.fc-nav-btn.got:hover{background:var(--green-light);}
+
+/* 結果画面 */
+.fc-result{display:none;text-align:center;padding:28px 20px;background:white;border:2px solid var(--ink);border-radius:16px;margin:0 0 20px;}
+.fc-result h3{font-family:'Noto Serif JP',serif;font-size:1.3rem;font-weight:900;margin-bottom:8px;}
+.fc-result-score{font-family:'DM Serif Display',serif;font-size:48px;color:var(--red);line-height:1;margin:8px 0 4px;}
+.fc-result-sub{font-size:13px;color:var(--gray);margin-bottom:20px;}
+.fc-emoji{font-size:36px;display:block;margin-bottom:8px;}
+.btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.fc-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:11px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.fc-restart-btn:hover{opacity:.82;}
+.fc-weak-btn{background:var(--red);color:white;border:none;border-radius:10px;padding:11px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.fc-weak-btn:hover{opacity:.82;}
+
+/* 苦手カードなしメッセージ */
+.no-weak{text-align:center;padding:40px 20px;background:white;border:2px solid var(--border);border-radius:16px;}
+.no-weak-emoji{font-size:48px;display:block;margin-bottom:12px;}
+
+/* セクション別習熟度 */
+.mastery-wrap{max-width:820px;margin:16px auto 0;padding:0 20px 40px;}
+.mastery-title{font-size:12px;font-weight:700;color:var(--gray);letter-spacing:1px;margin-bottom:10px;}
+.mastery-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:12px;}
+.mastery-label{width:130px;flex-shrink:0;font-size:11px;color:var(--ink);}
+.mastery-track{flex:1;background:var(--border);border-radius:10px;height:8px;overflow:hidden;}
+.mastery-bar{height:8px;border-radius:10px;background:var(--teal);transition:width .6s ease;}
+.mastery-pct{width:32px;text-align:right;font-size:11px;font-weight:700;color:var(--teal);}
+
+@media(max-width:600px){
+  .hd{padding:28px 16px 24px;}
+  .dash{padding:0 12px;}
+  .filter-wrap,.mode-wrap,.mastery-wrap{padding:0 12px;}
+  .fc-wrap{padding:0 12px 80px;}
+  .dash-top{grid-template-columns:1fr 1fr 1fr;}
+  .dash-num{font-size:24px;}
+}
+
+/* ── TAB NAV ── */
+.tab-nav{background:var(--ink);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:100;}
+.tab-nav-in{max-width:820px;margin:0 auto;display:flex;}
+.tab-btn{flex:1;padding:13px 8px;font-size:13px;font-weight:700;color:rgba(255,255,255,.4);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;}
+.tab-btn:hover{color:rgba(255,255,255,.75);}
+.tab-btn.active{color:white;border-color:var(--red-soft);}
+.tab-btn.active.t2{border-color:#a78bfa;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+@media(max-width:600px){.tab-btn{font-size:11px;padding:11px 4px;}}
+/* ── 穴埋めタブ ── */
+.blank-wrap{max-width:820px;margin:0 auto;padding:20px 20px 80px;}
+.blank-filter-wrap{margin-bottom:16px;}
+.blank-filter-label{font-size:11px;font-weight:700;color:var(--gray);letter-spacing:1px;margin-bottom:8px;}
+.blank-chips-row{display:flex;flex-wrap:wrap;gap:6px;}
+.blank-chip{border:2px solid var(--border);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;cursor:pointer;transition:all .2s;background:white;color:var(--ink);}
+.blank-chip:hover{border-color:var(--ink);}
+.blank-chip.active{background:var(--ink);color:white;border-color:var(--ink);}
+.blank-dash{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;margin-bottom:16px;}
+.blank-dash-top{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--border);}
+.blank-dash-cell{padding:12px 14px;text-align:center;border-right:1px solid var(--border);}
+.blank-dash-cell:last-child{border-right:none;}
+.blank-dash-num{font-family:'DM Serif Display',serif;font-size:28px;line-height:1;}
+.blank-dash-lbl{font-size:10px;color:var(--gray);font-weight:700;letter-spacing:1px;margin-top:2px;}
+.blank-prog-row{display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--warm);}
+.blank-prog-track{flex:1;background:var(--border);border-radius:10px;height:6px;overflow:hidden;}
+.blank-prog-bar{height:6px;background:linear-gradient(90deg,var(--purple),#a78bfa);border-radius:10px;width:0%;transition:width .5s;}
+.blank-prog-lbl{font-size:11px;color:var(--gray);white-space:nowrap;}
+.bcard{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;margin-bottom:20px;}
+.bcard-hd{display:flex;align-items:center;gap:12px;padding:11px 18px;background:var(--warm);border-bottom:1px solid var(--border);}
+.bcard-num{font-family:'DM Serif Display',serif;font-size:28px;color:var(--purple);line-height:1;}
+.bcard-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;background:var(--purple);color:white;border-radius:4px;padding:2px 8px;margin-bottom:3px;}
+.bcard-type{font-size:11px;color:var(--gray);}
+.bcard-body{padding:18px 20px;}
+.bcard-q{font-size:14px;font-weight:500;line-height:2.8;margin-bottom:16px;color:var(--ink);}
+.blank{display:inline-block;min-width:68px;border-bottom:2.5px solid var(--ink);text-align:center;padding:0 6px;margin:0 2px;cursor:pointer;font-weight:700;transition:background .2s;border-radius:4px 4px 0 0;}
+.blank:hover{background:rgba(124,58,237,.08);}
+.blank.sel{background:#ede9fe;border-color:var(--purple);}
+.blank.ok-fill{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.blank.ng-fill{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.bchips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.bchp{border:2px solid var(--border);border-radius:20px;padding:5px 14px;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;background:white;}
+.bchp:hover{border-color:var(--purple);background:var(--purple-light);}
+.bchp.used{opacity:.32;pointer-events:none;}
+.bchp.ok-c{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.bchp.ng-c{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.bchk-btn{background:var(--purple);color:white;border:none;border-radius:8px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit;}
+.bchk-btn:hover{opacity:.82;}
+.bchk-btn:disabled{opacity:.38;cursor:default;}
+.bans{display:none;border-radius:10px;padding:16px 18px;font-size:13px;margin-top:8px;}
+.bans.show{display:block;}
+.bans.ok{background:var(--green-light);border:1px solid #86efac;}
+.bans.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.bans-hd{font-weight:700;font-size:14px;margin-bottom:10px;}
+.bwhy{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.8;}
+.btip{background:var(--purple-light);border:1.5px solid #c4b5fd;border-radius:8px;padding:10px 14px;font-size:12px;line-height:1.9;margin-top:10px;}
+.blank-result{display:none;text-align:center;padding:28px 20px;background:white;border:2px solid var(--ink);border-radius:16px;margin-bottom:40px;}
+.blank-result h3{font-family:'Noto Serif JP',serif;font-size:1.3rem;font-weight:900;margin-bottom:8px;}
+.blank-result-score{font-family:'DM Serif Display',serif;font-size:48px;color:var(--purple);line-height:1;margin:8px 0 4px;}
+.blank-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:11px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:16px;transition:opacity .2s;}
+.blank-restart-btn:hover{opacity:.82;}
+@media(max-width:600px){.blank-wrap{padding:16px 12px 80px;}.bcard-body{padding:14px;}}
+
+/* ── 穴埋えカルーセル ── */
+.bfc-wrap{max-width:740px;margin:20px auto 0;padding:0 20px 80px;}
+.bfc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;font-size:12px;color:var(--gray);}
+.bfc-counter{font-family:'DM Serif Display',serif;font-size:24px;color:var(--purple);line-height:1;}
+.bfc-counter span{font-size:12px;color:var(--gray);font-family:'Noto Sans JP',sans-serif;font-weight:400;}
+.bfc-section-tag{font-size:10px;font-weight:700;background:var(--purple-light);color:var(--purple);border-radius:4px;padding:2px 8px;}
+.bfc-gauge-wrap{margin-bottom:18px;}
+.bfc-gauge-labels{display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:5px;}
+.bfc-gauge-label-ng{color:var(--red);}
+.bfc-gauge-label-ok{color:var(--green);}
+.bfc-gauge-label-mid{color:var(--gray);font-size:10px;font-weight:400;}
+.bfc-gauge-track{position:relative;height:12px;background:var(--border);border-radius:20px;overflow:hidden;display:flex;}
+.bfc-gauge-ng{height:100%;background:linear-gradient(90deg,#c84b31,#e8896b);border-radius:20px 0 0 20px;transition:width .5s;width:0%;}
+.bfc-gauge-ok{height:100%;background:linear-gradient(90deg,#86efac,#2d6a4f);border-radius:0 20px 20px 0;transition:width .5s;width:0%;margin-left:auto;}
+.bfc-gauge-mid-line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:white;transform:translateX(-50%);z-index:2;}
+.bfc-carousel{position:relative;display:flex;align-items:center;justify-content:center;min-height:320px;overflow:hidden;margin-bottom:16px;}
+.bfc-slot{position:absolute;width:88%;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s;border-radius:16px;}
+.bfc-slot.bprev{transform:translateX(-92%) scale(.88);opacity:.3;pointer-events:none;z-index:1;}
+.bfc-slot.bcurr{transform:translateX(0) scale(1);opacity:1;z-index:10;}
+.bfc-slot.bnext{transform:translateX(92%) scale(.88);opacity:.3;pointer-events:none;z-index:1;}
+.bfc-slot.bhidden{opacity:0;pointer-events:none;z-index:0;}
+.bfc-card{background:white;border:2px solid var(--ink);border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.09);}
+.bfc-card-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.bfc-card-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--purple);color:white;border-radius:4px;padding:2px 8px;}
+.bfc-card-type{font-size:11px;color:var(--gray);}
+.bfc-card-body{padding:18px 18px 14px;}
+.bfc-q{font-size:14px;font-weight:500;line-height:2.8;margin-bottom:14px;color:var(--ink);}
+.bblank{display:inline-block;min-width:64px;border-bottom:2.5px solid var(--ink);text-align:center;padding:0 5px;margin:0 2px;cursor:pointer;font-weight:700;transition:background .2s;border-radius:4px 4px 0 0;vertical-align:baseline;}
+.bblank:hover{background:rgba(124,58,237,.08);}
+.bblank.bsel{background:#ede9fe;border-color:var(--purple);}
+.bblank.bok-fill{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.bblank.bng-fill{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.bfc-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px;}
+.bfc-chp{border:2px solid var(--border);border-radius:20px;padding:5px 14px;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;background:white;}
+.bfc-chp:hover{border-color:var(--purple);background:var(--purple-light);}
+.bfc-chp.bok-c{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.bfc-chp.bng-c{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.bfc-chk-btn{background:var(--purple);color:white;border:none;border-radius:8px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit;}
+.bfc-chk-btn:hover{opacity:.82;}
+.bfc-chk-btn:disabled{opacity:.35;cursor:default;}
+.bfc-ans{display:none;border-radius:10px;padding:14px 16px;font-size:13px;margin-top:10px;}
+.bfc-ans.show{display:block;}
+.bfc-ans.ok{background:var(--green-light);border:1px solid #86efac;}
+.bfc-ans.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.bfc-ans-hd{font-weight:700;font-size:14px;margin-bottom:8px;}
+.bfc-why{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:9px 13px;margin-bottom:10px;font-size:13px;line-height:1.8;}
+.bfc-tip{background:var(--purple-light);border:1.5px solid #c4b5fd;border-radius:8px;padding:9px 13px;font-size:12px;line-height:1.9;margin-top:8px;}
+.bfc-nav{display:flex;gap:10px;justify-content:center;padding:0 16px;}
+.bfc-nav-btn{flex:1;max-width:160px;padding:11px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-family:inherit;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;transition:all .2s;text-align:center;}
+.bfc-nav-btn:hover{border-color:var(--ink);}
+.bfc-nav-btn.bagain{border-color:var(--red);color:var(--red);}
+.bfc-nav-btn.bagain:hover{background:var(--red-light);}
+.bfc-nav-btn.bnext{border-color:var(--green);color:var(--green);}
+.bfc-nav-btn.bnext:hover{background:var(--green-light);}
+.bfc-result{display:none;text-align:center;padding:28px 20px;background:white;border:2px solid var(--ink);border-radius:16px;margin:0 20px;}
+.bfc-result h3{font-family:'Noto Serif JP',serif;font-size:1.3rem;font-weight:900;margin-bottom:8px;}
+.bfc-result-score{font-family:'DM Serif Display',serif;font-size:48px;color:var(--purple);line-height:1;margin:8px 0 4px;}
+.bfc-result-sub{font-size:13px;color:var(--gray);margin-bottom:20px;}
+.bfc-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:11px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.bfc-restart-btn:hover{opacity:.82;}
+@media(max-width:600px){.bfc-wrap{padding:0 12px 80px;}.bfc-card-body{padding:14px 12px 10px;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span class="back-btn" onclick="location.href='index.html'">← 目次に戻る</span>
+  <span class="topbar-title">Day11 ／ 厚生年金法 全単元総復習 フラッシュカード300問＋穴埋め150問</span>
+</div>
+<nav class="tab-nav">
+  <div class="tab-nav-in">
+    <button class="tab-btn active" onclick="switchTab('fc',this)">🃏 フラッシュカード（300問）</button>
+    <button class="tab-btn t2" onclick="switchTab('blank',this)">✏️ 穴埋め（150問）</button>
+  </div>
+</nav>
+
+<div id="panel-fc" class="tab-panel active">
+<!-- HEADER -->
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-eye">国民年金法 — FLASH CARDS</div>
+    <h1>国年法 <em>全100問</em> フラッシュカード</h1>
+    <div class="hd-sub">Day1〜10の全論点 ― カテゴリ絞り込み・苦手モード搭載　</div>
+  </div>
+</div>
+
+<!-- SESSION DASHBOARD -->
+<div class="dash">
+  <div class="dash-inner">
+    <div class="dash-top">
+      <div class="dash-cell">
+        <div class="dash-num red" id="d-remaining">0</div>
+        <div class="dash-lbl">残り</div>
+      </div>
+      <div class="dash-cell">
+        <div class="dash-num green" id="d-ok">0</div>
+        <div class="dash-lbl">正解</div>
+      </div>
+      <div class="dash-cell">
+        <div class="dash-num gold" id="d-weak">0</div>
+        <div class="dash-lbl">苦手</div>
+      </div>
+    </div>
+    <div class="dash-streak">
+      <span>セッション進捗</span>
+      <span class="streak-badge" id="d-pct">0%</span>
+      <span id="d-mode-lbl" style="font-size:11px;color:var(--gray);margin-left:auto;"></span>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="prog-wrap" style="max-width:820px;margin:10px auto 0;padding:0 20px;">
+  <div class="prog-track"><div class="prog-bar" id="prog-bar"></div></div>
+  <div class="prog-lbl" id="prog-lbl">0 ／ 0 枚 回答済み</div>
+</div>
+
+<!-- CATEGORY FILTER -->
+<div class="filter-wrap">
+  <div class="filter-label">カテゴリで絞り込む</div>
+  <div class="filter-chips">
+    <div class="fc-chip active" data-sec="all" onclick="setFilter('all',this)">全て (300)</div>
+    <div class="fc-chip s1" data-sec="①目的・被保険者" onclick="setFilter('①目的・被保険者',this)">①目的・被保険者</div>
+    <div class="fc-chip s2" data-sec="②資格取得・喪失・届出" onclick="setFilter('②資格取得・喪失・届出',this)">②資格取得・喪失・届出</div>
+    <div class="fc-chip s3" data-sec="③保険料・免除・猶予" onclick="setFilter('③保険料・免除・猶予',this)">③保険料・免除・猶予</div>
+    <div class="fc-chip s4" data-sec="④老齢基礎年金" onclick="setFilter('④老齢基礎年金',this)">④老齢基礎年金</div>
+    <div class="fc-chip s5" data-sec="⑤障害基礎年金" onclick="setFilter('⑤障害基礎年金',this)">⑤障害基礎年金</div>
+    <div class="fc-chip s6" data-sec="⑥遺族・寡婦・一時金" onclick="setFilter('⑥遺族・寡婦・一時金',this)">⑥遺族・寡婦・一時金</div>
+    <div class="fc-chip s7" data-sec="⑦給付の通則・時効" onclick="setFilter('⑦給付の通則・時効',this)">⑦給付の通則・時効</div>
+    <div class="fc-chip s8" data-sec="⑧横断・総仕上げ" onclick="setFilter('⑧横断・総仕上げ',this)">⑧横断・総仕上げ</div>
+    <div class="fc-chip weak" data-sec="weak" onclick="setFilter('weak',this)">🔥 苦手のみ</div>
+  </div>
+
+<!-- FLASH CARD -->
+<div class="fc-wrap">
+  <div class="fc-meta">
+    <div class="fc-counter" id="fc-counter">1<span> / 300</span></div>
+    <div class="fc-section-tag" id="fc-section-tag"></div>
+  </div>
+
+  <div class="fc-gauge-wrap">
+    <div class="fc-gauge-labels">
+      <span class="fc-gauge-label-ng">❌ <span id="fc-ng-count">0</span></span>
+      <span class="fc-gauge-label-mid" id="fc-remaining">残り 300 枚</span>
+      <span class="fc-gauge-label-ok"><span id="fc-ok-count">0</span> ✅</span>
+    </div>
+    <div class="fc-gauge-track">
+      <div class="fc-gauge-ng" id="fc-gauge-ng"></div>
+      <div class="fc-gauge-mid-line"></div>
+      <div class="fc-gauge-ok" id="fc-gauge-ok"></div>
+    </div>
+  </div>
+
+  <div class="fc-carousel" id="fc-carousel">
+    <!-- 前のカード -->
+    <div class="fc-slot hidden" id="fc-slot-prev">
+      <div class="fc-inner" id="fc-inner-prev">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-prev-tag"></span>
+            <span class="fc-front-cat" id="fc-prev-cat"></span>
+          </div>
+          <div class="fc-front-body">
+            <div class="fc-q" id="fc-prev-q"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 現在のカード -->
+    <div class="fc-slot curr" id="fc-slot-curr" onclick="fcFlip()">
+      <div class="fc-inner" id="fc-inner">
+        <!-- 表 -->
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-tag"></span>
+            <span class="fc-front-cat" id="fc-cat"></span>
+          </div>
+          <div class="fc-front-body">
+            <div class="fc-q" id="fc-q"></div>
+          </div>
+          <div class="fc-tap-hint">タップで答え合わせ</div>
+          <div class="fc-ox">
+            <button class="fc-ox-btn o" onclick="event.stopPropagation();fcChoose(true)">○</button>
+            <button class="fc-ox-btn x" onclick="event.stopPropagation();fcChoose(false)">×</button>
+          </div>
+        </div>
+        <!-- 裏 -->
+        <div class="fc-face fc-back-face">
+          <div class="fc-back-hd">
+            <div class="fc-verdict" id="fc-verdict"></div>
+            <div class="fc-user-ans" id="fc-user-ans"></div>
+          </div>
+          <div class="fc-back-body">
+            <div class="fc-answer" id="fc-answer"></div>
+            <div class="fc-reason" id="fc-reason"></div>
+            <div class="fc-lawref" id="fc-lawref"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 次のカード -->
+    <div class="fc-slot hidden" id="fc-slot-next">
+      <div class="fc-inner" id="fc-inner-next">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-next-tag"></span>
+            <span class="fc-front-cat" id="fc-next-cat"></span>
+          </div>
+          <div class="fc-front-body">
+            <div class="fc-q" id="fc-next-q"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <div class="fc-nav" id="fc-nav">
+    <button class="fc-nav-btn again" onclick="fcNext(false)">😓 もう一度</button>
+    <button class="fc-nav-btn got" onclick="fcNext(true)">✅ 覚えた！</button>
+  </div>
+
+  <!-- 苦手ゼロメッセージ -->
+  <div class="no-weak" id="no-weak" style="display:none;">
+    <span class="no-weak-emoji">🎉</span>
+    <div style="font-family:'Noto Serif JP',serif;font-size:1.2rem;font-weight:900;margin-bottom:8px;">苦手カードがありません！</div>
+    <div style="font-size:13px;color:var(--gray);">全カードに挑戦してみましょう。</div>
+    <button class="fc-restart-btn" style="margin-top:16px;" onclick="setFilter('all',document.querySelector('[data-sec=all]'))">全カードに戻る</button>
+  </div>
+
+  <!-- 結果 -->
+  <div class="fc-result" id="fc-result">
+    <span class="fc-emoji" id="fc-emoji">🏆</span>
+    <h3>セッション完了！</h3>
+    <div class="fc-result-score" id="fc-result-score">0 / 0</div>
+    <div class="fc-result-sub" id="fc-result-sub"></div>
+    <div class="btn-row">
+      <button class="fc-restart-btn" onclick="fcRestart()">🔁 もう一周</button>
+      <button class="fc-weak-btn" id="btn-retry-weak" onclick="retryWeak()" style="display:none;">🔥 苦手だけ再挑戦</button>
+    </div>
+  </div>
+</div><!-- /fc-wrap -->
+
+<!-- セクション別習熟度 -->
+<div class="mastery-wrap" id="mastery-wrap" style="display:none;">
+  <div class="mastery-title">📊 セクション別 正解率（今回のセッション）</div>
+  <div id="mastery-bars"></div>
+</div><!-- /mastery-wrap -->
+
+</div><!-- /panel-fc -->
+
+<div id="panel-blank" class="tab-panel">
+<div class="bfc-wrap">
+
+  <!-- ダッシュボード -->
+  <div class="blank-dash" style="margin-bottom:14px;">
+    <div class="blank-dash-top">
+      <div class="blank-dash-cell"><div class="blank-dash-num" id="b-total" style="color:var(--purple);">0</div><div class="blank-dash-lbl">回答済み</div></div>
+      <div class="blank-dash-cell"><div class="blank-dash-num" id="b-ok" style="color:var(--green);">0</div><div class="blank-dash-lbl">全問正解</div></div>
+      <div class="blank-dash-cell"><div class="blank-dash-num" id="b-ng" style="color:var(--red);">0</div><div class="blank-dash-lbl">ミスあり</div></div>
+    </div>
+    <div class="blank-prog-row">
+      <div class="blank-prog-track"><div class="blank-prog-bar" id="b-prog-bar"></div></div>
+      <div class="blank-prog-lbl" id="b-prog-lbl">0 ／ 150 問</div>
+    </div>
+  </div>
+
+  <!-- カテゴリフィルター -->
+  <div class="blank-filter-wrap" style="margin-bottom:14px;">
+    <div class="blank-filter-label">カテゴリで絞り込む</div>
+    <div class="blank-chips-row" id="blank-chips-row">
+      <div class="blank-chip active" data-bsec="all" onclick="bSetFilter('all',this)">全て (150)</div>
+      <div class="blank-chip" data-bsec="①目的・被保険者" onclick="bSetFilter('①目的・被保険者',this)">①目的・被保険者</div>
+      <div class="blank-chip" data-bsec="②標準報酬・保険料" onclick="bSetFilter('②標準報酬・保険料',this)">②標準報酬</div>
+      <div class="blank-chip" data-bsec="③老齢厚生年金①" onclick="bSetFilter('③老齢厚生年金①',this)">③老齢厚生①</div>
+      <div class="blank-chip" data-bsec="④在職老齢・特別支給" onclick="bSetFilter('④在職老齢・特別支給',this)">④在職老齢</div>
+      <div class="blank-chip" data-bsec="⑤障害厚生年金" onclick="bSetFilter('⑤障害厚生年金',this)">⑤障害厚生</div>
+      <div class="blank-chip" data-bsec="⑥遺族厚生年金①" onclick="bSetFilter('⑥遺族厚生年金①',this)">⑥遺族①</div>
+      <div class="blank-chip" data-bsec="⑦遺族厚生年金②" onclick="bSetFilter('⑦遺族厚生年金②',this)">⑦遺族②</div>
+      <div class="blank-chip" data-bsec="⑧脱退一時金等" onclick="bSetFilter('⑧脱退一時金等',this)">⑧脱退・時効</div>
+      <div class="blank-chip" data-bsec="⑨3科目横断" onclick="bSetFilter('⑨3科目横断',this)">⑨3科目横断</div>
+      <div class="blank-chip" data-bsec="⑩管掌・離婚分割" onclick="bSetFilter('⑩管掌・離婚分割',this)">⑩管掌・分割</div>
+    </div>
+      <div class="blank-chip" data-bsec="①制度概要" onclick="bSetFilter('①制度概要',this)">①制度概要</div>
+      <div class="blank-chip" data-bsec="②被保険者" onclick="bSetFilter('②被保険者',this)">②被保険者</div>
+      <div class="blank-chip" data-bsec="③被扶養者" onclick="bSetFilter('③被扶養者',this)">③被扶養者</div>
+      <div class="blank-chip" data-bsec="④標準報酬・保険料" onclick="bSetFilter('④標準報酬・保険料',this)">④標準報酬・保険料</div>
+      <div class="blank-chip" data-bsec="⑤療養給付" onclick="bSetFilter('⑤療養給付',this)">⑤療養給付</div>
+      <div class="blank-chip" data-bsec="⑥傷病手当金" onclick="bSetFilter('⑥傷病手当金',this)">⑥傷病手当金</div>
+      <div class="blank-chip" data-bsec="⑦出産・死亡給付" onclick="bSetFilter('⑦出産・死亡給付',this)">⑦出産・死亡給付</div>
+      <div class="blank-chip" data-bsec="⑧継続・資格喪失後" onclick="bSetFilter('⑧継続・資格喪失後',this)">⑧継続・資格喪失後</div>
+      <div class="blank-chip" data-bsec="⑨第三者・審査・時効" onclick="bSetFilter('⑨第三者・審査・時効',this)">⑨第三者・審査・時効</div>
+      <div class="blank-chip" data-bsec="⑩健保組合・日雇" onclick="bSetFilter('⑩健保組合・日雇',this)">⑩健保組合・日雇</div>
+      <div class="blank-chip" data-bsec="⑪横断・数字まとめ" onclick="bSetFilter('⑪横断・数字まとめ',this)">⑪横断・数字まとめ</div>
+    </div>
+  </div>
+
+  <!-- ゲージ -->
+  <div class="bfc-gauge-wrap">
+    <div class="bfc-gauge-labels">
+      <span class="bfc-gauge-label-ng">❌ <span id="bfc-ng-count">0</span></span>
+      <span class="bfc-gauge-label-mid" id="bfc-remaining">残り 150 問</span>
+      <span class="bfc-gauge-label-ok"><span id="bfc-ok-count">0</span> ✅</span>
+    </div>
+    <div class="bfc-gauge-track">
+      <div class="bfc-gauge-ng" id="bfc-gauge-ng"></div>
+      <div class="bfc-gauge-mid-line"></div>
+      <div class="bfc-gauge-ok" id="bfc-gauge-ok"></div>
+    </div>
+  </div>
+
+  <!-- メタ -->
+  <div class="bfc-meta">
+    <div class="bfc-counter" id="bfc-counter">1<span> / 150</span></div>
+    <button onclick="bfcShuffle()" style="border:2px solid var(--border);background:white;border-radius:8px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;color:var(--ink);font-family:inherit;transition:all .2s;" onmouseover="this.style.borderColor='var(--purple)'" onmouseout="this.style.borderColor='var(--border)'">🔀 シャッフル</button>
+    <div class="bfc-section-tag" id="bfc-section-tag"></div>
+  </div>
+
+  <!-- カルーセル -->
+  <div class="bfc-carousel" id="bfc-carousel">
+    <div class="bfc-slot bhidden" id="bfc-slot-prev">
+      <div class="bfc-card">
+        <div class="bfc-card-hd"><span class="bfc-card-tag" id="bfc-prev-tag"></span><span class="bfc-card-type" id="bfc-prev-cat"></span></div>
+        <div class="bfc-card-body"><div class="bfc-q" id="bfc-prev-q"></div></div>
+      </div>
+    </div>
+    <div class="bfc-slot bcurr" id="bfc-slot-curr">
+      <div class="bfc-card" id="bfc-curr-card">
+        <div class="bfc-card-hd"><span class="bfc-card-tag" id="bfc-tag"></span><span class="bfc-card-type" id="bfc-cat"></span></div>
+        <div class="bfc-card-body">
+          <div class="bfc-q" id="bfc-q"></div>
+          <div class="bfc-chips" id="bfc-chips"></div>
+          <button class="bfc-chk-btn" id="bfc-chk-btn" onclick="bfcCheck()">答え合わせ</button>
+          <div class="bfc-ans" id="bfc-ans">
+            <div class="bfc-ans-hd" id="bfc-ans-hd"></div>
+            <div class="bfc-why" id="bfc-why"></div>
+            <div class="bfc-tip" id="bfc-tip"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bfc-slot bhidden" id="bfc-slot-next">
+      <div class="bfc-card">
+        <div class="bfc-card-hd"><span class="bfc-card-tag" id="bfc-next-tag"></span><span class="bfc-card-type" id="bfc-next-cat"></span></div>
+        <div class="bfc-card-body"><div class="bfc-q" id="bfc-next-q"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ナビ -->
+  <div class="bfc-nav" id="bfc-nav" style="display:none;">
+    <button class="bfc-nav-btn bagain" onclick="bfcNext(false)">😅 もう一度</button>
+    <button class="bfc-nav-btn bnext" onclick="bfcNext(true)">✅ 正解！次へ</button>
+  </div>
+
+  <!-- 結果 -->
+  <div class="bfc-result" id="bfc-result">
+    <span style="font-size:36px;display:block;margin-bottom:8px;" id="bfc-emoji">🏆</span>
+    <h3>穴埋め完了！</h3>
+    <div class="bfc-result-score" id="bfc-result-score">0 / 150</div>
+    <div class="bfc-result-sub" id="bfc-result-sub"></div>
+    <button class="bfc-restart-btn" onclick="bfcRestart()">🔁 もう一周する</button>
+  </div>
+
+</div><!-- /bfc-wrap -->
+</div><!-- /panel-blank -->
+
+<script>
+var ALL_CARDS = [
+  {tag:'K001',cat:'目的条文',section:'①目的・被保険者',correct:false,q:'国民年金法の目的条文の主語は「労働者」である。',answer:'× 誤り',reason:'主語は「<mark>国民</mark>」。健保・厚年は「労働者」、国年のみ「国民」。',law:'国年法第1条'},
+  {tag:'K002',cat:'目的条文',section:'①目的・被保険者',correct:true,q:'国民年金法第1条には「国民の共同連帯」という文言が使われている。',answer:'○ 正しい',reason:'「<mark>国民の共同連帯</mark>」は国年法のみ。健保・厚年には使われない文言。',law:'国年法第1条'},
+  {tag:'K003',cat:'被保険者種別',section:'①目的・被保険者',correct:true,q:'国民年金の被保険者は第1号・第2号・第3号の3種類である。',answer:'○ 正しい',reason:'国年法第7条：<mark>3種類</mark>。第1号・第2号・第3号。',law:'国年法第7条'},
+  {tag:'K004',cat:'第2号被保険者',section:'①目的・被保険者',correct:false,q:'厚生年金保険の被保険者は年齢に関係なく全員が第2号被保険者となる。',answer:'× 誤り',reason:'<mark>65歳以上で老齢年金等の受給権がある者は除外</mark>。「年齢制限なし」は最頻出引っかけ。',law:'国年法第7条'},
+  {tag:'K005',cat:'第3号被保険者',section:'①目的・被保険者',correct:true,q:'第3号被保険者の収入要件は年収130万円未満（60歳以上・障害者は180万円未満）である。',answer:'○ 正しい',reason:'収入要件：<mark>130万円未満</mark>（60歳以上・障害者は<mark>180万円未満</mark>）。健保被扶養者と同一基準。',law:'国年法第7条'},
+  {tag:'K006',cat:'第3号被保険者',section:'①目的・被保険者',correct:false,q:'第3号被保険者は法律婚の配偶者のみで、事実婚は対象外である。',answer:'× 誤り',reason:'事実婚（<mark>内縁関係</mark>）の配偶者も第3号被保険者になれる。',law:'国年法第7条'},
+  {tag:'K007',cat:'第3号保険料',section:'①目的・被保険者',correct:true,q:'第3号被保険者の保険料は個人負担がなく、第2号が属する制度全体で負担される。',answer:'○ 正しい',reason:'第3号の保険料は<mark>個人負担なし</mark>。第2号の属する年金制度全体で負担。',law:'国年法第87条の2'},
+  {tag:'K008',cat:'任意加入',section:'①目的・被保険者',correct:false,q:'受給資格不足の60歳以上65歳未満の者は国民年金に加入できない。',answer:'× 誤り',reason:'受給資格不足の<mark>60〜65歳未満</mark>は<mark>任意加入</mark>できる（附則5条）。',law:'国年法附則第5条'},
+  {tag:'K009',cat:'特例任意加入',section:'①目的・被保険者',correct:true,q:'S40.4.1以前生まれで受給資格不足の65〜70歳未満の者は特例任意加入できる。',answer:'○ 正しい',reason:'特例任意加入（附則5条の2）：<mark>S40.4.1以前生まれ・65〜70歳未満・受給資格不足</mark>。',law:'国年法附則第5条の2'},
+  {tag:'K010',cat:'給付事由比較',section:'①目的・被保険者',correct:true,q:'健保の給付事由は疾病・負傷・出産・死亡で、老齢は含まれない。',answer:'○ 正しい',reason:'健保の給付事由：<mark>疾病・負傷・出産・死亡</mark>（老齢なし）。老齢は厚年・国年の担当。',law:'3科目比較'},
+  {tag:'K011',cat:'除外規定',section:'①目的・被保険者',correct:true,q:'65歳以上で老齢年金等の受給権がある者は第2号被保険者から除かれる。',answer:'○ 正しい',reason:'国年法第7条：<mark>65歳以上で老齢受給権あり→第2号から除外</mark>。',law:'国年法第7条'},
+  {tag:'K012',cat:'第1号年齢要件',section:'①目的・被保険者',correct:true,q:'第1号被保険者の年齢要件は20歳以上60歳未満である。',answer:'○ 正しい',reason:'第1号（法第7条）：<mark>20歳以上60歳未満</mark>。40年間（480ヵ月）が満額の基準。',law:'国年法第7条'},
+  {tag:'K013',cat:'資格取得日',section:'②資格取得・喪失・届出',correct:true,q:'第1号被保険者の資格取得日は「20歳に達した日」（誕生日の前日）である。',answer:'○ 正しい',reason:'「20歳に達した日」は民法上<mark>誕生日の前日</mark>。健保・厚年と同じルール。',law:'国年法第8条'},
+  {tag:'K014',cat:'資格喪失日',section:'②資格取得・喪失・届出',correct:false,q:'第1号被保険者が60歳に達した場合、60歳の誕生日の翌日に資格を喪失する。',answer:'× 誤り',reason:'60歳到達は<mark>当日喪失</mark>（翌日ではない）。翌日喪失は死亡した場合のみ。',law:'国年法第9条'},
+  {tag:'K015',cat:'資格喪失日',section:'②資格取得・喪失・届出',correct:true,q:'第1号被保険者が死亡した場合、死亡した日の翌日に資格を喪失する。',answer:'○ 正しい',reason:'死亡のみ<mark>翌日喪失</mark>。60歳到達・国外転出は当日喪失。',law:'国年法第9条'},
+  {tag:'K016',cat:'届出義務者',section:'②資格取得・喪失・届出',correct:false,q:'第1号被保険者の資格取得届は世帯主のみが行うことができる。',answer:'× 誤り',reason:'届出義務者は<mark>本人・世帯主・配偶者</mark>のいずれかでよい。',law:'国年法第12条'},
+  {tag:'K017',cat:'届出期限',section:'②資格取得・喪失・届出',correct:true,q:'第1号の資格取得届は14日以内（市町村長）、第3号は10日以内である。',answer:'○ 正しい',reason:'第1号：<mark>14日以内→市町村長</mark>。第3号：<mark>10日以内</mark>。',law:'国年法第12条'},
+  {tag:'K018',cat:'基礎年金番号',section:'②資格取得・喪失・届出',correct:false,q:'基礎年金番号は市町村長が付番し、転職のたびに番号が変わる。',answer:'× 誤り',reason:'付番者は<mark>厚生労働大臣</mark>。番号は<mark>生涯同一</mark>（転職・種別変更不変）。',law:'国年法第14条'},
+  {tag:'K019',cat:'基礎年金番号',section:'②資格取得・喪失・届出',correct:true,q:'基礎年金番号は10桁（記号4桁＋番号6桁）で3制度共通の番号である。',answer:'○ 正しい',reason:'<mark>10桁</mark>・3制度共通・昭和60年改正で導入・<mark>生涯同一</mark>。',law:'国年法第14条'},
+  {tag:'K020',cat:'国外転出',section:'②資格取得・喪失・届出',correct:true,q:'第1号被保険者が日本国内に住所を有しなくなった日に資格を喪失する（当日喪失）。',answer:'○ 正しい',reason:'国外転出は<mark>当日喪失</mark>（翌日ではない）。',law:'国年法第9条'},
+  {tag:'K021',cat:'受給権者の届出',section:'②資格取得・喪失・届出',correct:false,q:'老齢基礎年金の受給権者が住所を変更した場合、市町村長に届け出る。',answer:'× 誤り',reason:'受給権者の届出先は<mark>厚生労働大臣</mark>（日本年金機構）。被保険者は市町村長。',law:'国年法第36条の3'},
+  {tag:'K022',cat:'届出先比較',section:'②資格取得・喪失・届出',correct:true,q:'被保険者の資格取得届は市町村長へ、受給権者の住所変更届は厚生労働大臣へ届け出る。',answer:'○ 正しい',reason:'<mark>被保険者→市町村長</mark>・<mark>受給権者→厚生労働大臣</mark>（管理主体の違い）。',law:'国年法第12条・第36条の3'},
+  {tag:'K023',cat:'第3号特例',section:'②資格取得・喪失・届出',correct:true,q:'S61.4〜H8.3の第3号被保険者期間は届出遅れでも遡及認定される特例がある。',answer:'○ 正しい',reason:'<mark>S61.4〜H8.3</mark>の期間は届出遅れでも<mark>遡及認定</mark>。H8.4以降は届出必要。',law:'国年法附則第9条の2'},
+  {tag:'K024',cat:'種別変更',section:'②資格取得・喪失・届出',correct:true,q:'第2号被保険者は厚年等の被保険者となった日に、第3号被保険者は認定された日等に資格を取得する。',answer:'○ 正しい',reason:'第2号：<mark>厚年等なった日</mark>。第3号：<mark>認定日等</mark>。',law:'国年法第8条'},
+  {tag:'K025',cat:'保険料方式',section:'③保険料・免除・猶予',correct:false,q:'国民年金の第1号被保険者の保険料は所得に応じた報酬比例制である。',answer:'× 誤り',reason:'第1号の保険料は<mark>定額制</mark>（所得不問・全員一律）。報酬比例制は厚生年金。',law:'国年法第87条'},
+  {tag:'K026',cat:'法定免除',section:'③保険料・免除・猶予',correct:false,q:'生活保護の生活扶助受給者は申請することで保険料が免除される（法定免除）。',answer:'× 誤り',reason:'法定免除は<mark>申請不要</mark>で当然に免除。申請が必要なのは申請免除（法第90条）。',law:'国年法第89条'},
+  {tag:'K027',cat:'法定免除の対象',section:'③保険料・免除・猶予',correct:true,q:'障害基礎年金1級・2級の受給者は法定免除の対象となる。',answer:'○ 正しい',reason:'法定免除（法第89条）：障害年金<mark>1・2級</mark>受給者・生活保護受給者等。申請不要。',law:'国年法第89条'},
+  {tag:'K028',cat:'申請免除',section:'③保険料・免除・猶予',correct:true,q:'申請免除には全額免除・4分の3免除・半額免除・4分の1免除の4段階がある。',answer:'○ 正しい',reason:'申請免除（法第90条）は<mark>4段階</mark>。所得に応じて決まる。',law:'国年法第90条'},
+  {tag:'K029',cat:'全額免除の反映',section:'③保険料・免除・猶予',correct:true,q:'全額免除期間は受給資格期間に算入されるが、年金額は納付済み期間の2分の1として計算される。',answer:'○ 正しい',reason:'全額免除：受給資格<mark>算入○</mark>・年金額は<mark>1/2反映</mark>（産前産後免除の全額反映と異なる）。',law:'国年法第27条'},
+  {tag:'K030',cat:'若年者猶予',section:'③保険料・免除・猶予',correct:false,q:'若年者納付猶予制度は30歳未満の第1号被保険者が対象である。',answer:'× 誤り',reason:'若年者猶予の対象は<mark>50歳未満</mark>（30歳未満ではない）。',law:'国年法第90条の3'},
+  {tag:'K031',cat:'猶予の所得審査',section:'③保険料・免除・猶予',correct:true,q:'若年者猶予は本人と配偶者の所得を審査し、学生納付特例は本人の所得のみで審査する。',answer:'○ 正しい',reason:'若年者猶予：本人＋<mark>配偶者</mark>の所得審査。学生特例：<mark>本人のみ</mark>。',law:'国年法第90条の3・第90条の2'},
+  {tag:'K032',cat:'産前産後免除',section:'③保険料・免除・猶予',correct:true,q:'産前産後免除期間は保険料を納付したものとみなされ、老齢基礎年金の年金額に全額反映される。',answer:'○ 正しい',reason:'産前産後免除：<mark>保険料納付済み扱い→全額反映</mark>。他の免除と異なる重要なポイント。',law:'国年法第88条の2'},
+  {tag:'K033',cat:'産前産後期間',section:'③保険料・免除・猶予',correct:true,q:'産前産後免除の期間は出産予定日の前月から翌々月の4ヵ月間（多胎は6ヵ月間）である。',answer:'○ 正しい',reason:'単胎：<mark>前月〜翌々月の4ヵ月</mark>。多胎：<mark>3ヵ月前〜翌々月の6ヵ月</mark>。',law:'国年法第88条の2'},
+  {tag:'K034',cat:'追納',section:'③保険料・免除・猶予',correct:true,q:'免除・猶予を受けた期間は、承認を受けた月から10年以内に保険料を追納することができる。',answer:'○ 正しい',reason:'追納期限：承認月から<mark>10年以内</mark>。追納すれば納付済み期間として全額算入。',law:'国年法第94条'},
+  {tag:'K035',cat:'免除の比較',section:'③保険料・免除・猶予',correct:false,q:'全額免除期間と産前産後免除期間はともに老齢基礎年金の年金額に全額反映される。',answer:'× 誤り',reason:'全額免除は<mark>1/2反映</mark>。全額反映は産前産後免除のみ（納付済み扱いのため）。',law:'国年法第27条・第88条の2'},
+  {tag:'K036',cat:'猶予期間の扱い',section:'③保険料・免除・猶予',correct:true,q:'若年者猶予・学生納付特例期間は受給資格期間に算入されるが、年金額には算入されない。',answer:'○ 正しい',reason:'猶予期間：受給資格<mark>算入○</mark>・年金額<mark>算入×</mark>（追納しない限り増えない）。',law:'国年法第90条の2・第90条の3'},
+  {tag:'K037',cat:'定額制の理由',section:'③保険料・免除・猶予',correct:true,q:'国民年金の保険料が定額制なのは、自営業者・農業者など所得把握が困難な第1号被保険者が対象だからである。',answer:'○ 正しい',reason:'<mark>定額制</mark>の理由：自営業者・農業者は所得把握が困難。全員一律の方が管理が容易。',law:'国年法第87条'},
+  {tag:'K038',cat:'受給資格期間',section:'④老齢基礎年金',correct:false,q:'老齢基礎年金の受給資格期間は保険料納付済期間と免除期間を合算して25年以上である。',answer:'× 誤り',reason:'平成29年8月から<mark>10年</mark>に短縮。25年は旧要件。',law:'国年法第26条'},
+  {tag:'K039',cat:'老齢基礎年金の満額',section:'④老齢基礎年金',correct:true,q:'老齢基礎年金の満額は保険料納付済み期間480ヵ月（40年間）を基準として計算される。',answer:'○ 正しい',reason:'満額の基準：<mark>480ヵ月（40年間）</mark>。20〜60歳の全期間納付で満額。',law:'国年法第27条'},
+  {tag:'K040',cat:'支給開始年齢',section:'④老齢基礎年金',correct:true,q:'老齢基礎年金は原則として65歳から支給される。',answer:'○ 正しい',reason:'原則支給開始：<mark>65歳</mark>。繰上げで60歳〜、繰下げで66〜75歳。',law:'国年法第26条'},
+  {tag:'K041',cat:'繰上げ',section:'④老齢基礎年金',correct:true,q:'老齢基礎年金を繰上げ受給した場合、繰上げ1ヵ月につき0.4%減額される（S37.4.2以降生まれ）。',answer:'○ 正しい',reason:'繰上げ減額率：<mark>1ヵ月あたり0.4%</mark>（最大24%減）。旧0.5%。',law:'国年法附則第9条の2'},
+  {tag:'K042',cat:'繰下げ',section:'④老齢基礎年金',correct:true,q:'老齢基礎年金を繰下げ受給した場合、繰下げ1ヵ月につき0.7%増額される。',answer:'○ 正しい',reason:'繰下げ増額率：<mark>1ヵ月あたり0.7%</mark>（最大75歳まで繰下げ可）。',law:'国年法第28条'},
+  {tag:'K043',cat:'繰上げのデメリット',section:'④老齢基礎年金',correct:true,q:'老齢基礎年金を繰上げ受給すると、その後障害状態になっても障害基礎年金は支給されない。',answer:'○ 正しい',reason:'繰上げ後は<mark>障害基礎年金を受給できない</mark>（最大のデメリット）。',law:'国年法附則第9条の2'},
+  {tag:'K044',cat:'付加年金',section:'④老齢基礎年金',correct:true,q:'付加年金の保険料は月額400円で、受給額は200円×付加保険料納付月数である。',answer:'○ 正しい',reason:'付加保険料：<mark>400円/月</mark>。付加年金額：<mark>200円×納付月数</mark>（2年で元が取れる）。',law:'国年法第87条の2'},
+  {tag:'K045',cat:'振替加算',section:'④老齢基礎年金',correct:false,q:'振替加算の対象となるのは昭和41年4月2日以降生まれの配偶者である。',answer:'× 誤り',reason:'振替加算の対象は<mark>昭和41年4月1日以前生まれ</mark>。「以降」ではなく「以前」。',law:'国年法第16条の3'},
+  {tag:'K046',cat:'合算対象期間',section:'④老齢基礎年金',correct:true,q:'合算対象期間（カラ期間）は受給資格期間には算入されるが、年金額の計算には算入されない。',answer:'○ 正しい',reason:'カラ期間：受給資格<mark>算入○</mark>・年金額<mark>算入×</mark>（「カラ＝金額が空っぽ」）。',law:'国年法附則第9条'},
+  {tag:'K047',cat:'支給停止',section:'④老齢基礎年金',correct:true,q:'老齢基礎年金と障害基礎年金は同時には受給できず、選択制が適用される。',answer:'○ 正しい',reason:'老齢と障害は<mark>同時受給不可</mark>（支給調整・選択制）。',law:'国年法第36条'},
+  {tag:'K048',cat:'年金額計算式',section:'④老齢基礎年金',correct:true,q:'老齢基礎年金の額は「満額×（納付済み月数等÷480）」で計算される。',answer:'○ 正しい',reason:'計算式：満額×（<mark>納付済み月数÷480</mark>）。免除は段階的割合で算入。',law:'国年法第27条'},
+  {tag:'K049',cat:'付加年金と繰下げ',section:'④老齢基礎年金',correct:true,q:'老齢基礎年金を繰下げした場合、付加年金も同率で増額される。',answer:'○ 正しい',reason:'付加年金は老齢基礎年金と一体で繰下げ増額の対象となる。',law:'国年法第28条・第43条'},
+  {tag:'K050',cat:'受給権発生',section:'④老齢基礎年金',correct:true,q:'老齢基礎年金の受給権は受給資格期間を満たした者が65歳に達したときに発生する。',answer:'○ 正しい',reason:'老齢基礎年金の受給権発生：受給資格期間（<mark>10年</mark>）を満たし<mark>65歳</mark>に達した時点。',law:'国年法第26条'},
+  {tag:'K051',cat:'支給要件',section:'⑤障害基礎年金',correct:true,q:'障害基礎年金は初診日に被保険者であった者のほか、60〜65歳未満で国内居住の者も対象となる。',answer:'○ 正しい',reason:'対象者2類型（法第30条）：①初診日に<mark>被保険者</mark>②<mark>60〜65歳未満・国内居住</mark>。',law:'国年法第30条'},
+  {tag:'K052',cat:'保険料納付要件',section:'⑤障害基礎年金',correct:true,q:'障害基礎年金の保険料納付要件は初診日の前日において被保険者期間の3分の2以上が納付済みまたは免除期間であることである。',answer:'○ 正しい',reason:'納付要件：初診日の<mark>前日</mark>時点で<mark>3分の2以上</mark>が納付済み・免除。',law:'国年法第30条'},
+  {tag:'K053',cat:'直近1年特例',section:'⑤障害基礎年金',correct:true,q:'初診日が令和8年3月31日以前で直近1年間に未納がない場合も保険料納付要件を満たす。',answer:'○ 正しい',reason:'特例（法第30条）：直近<mark>1年間未納なし</mark>でも要件を満たす。',law:'国年法第30条'},
+  {tag:'K054',cat:'年金額1級',section:'⑤障害基礎年金',correct:false,q:'障害基礎年金1級の年金額は老齢基礎年金満額の1.5倍である。',answer:'× 誤り',reason:'障害1級は老齢基礎年金満額の<mark>1.25倍</mark>（1.5倍は誤り）。2級は満額×1.0倍。',law:'国年法第33条'},
+  {tag:'K055',cat:'年金額2級',section:'⑤障害基礎年金',correct:true,q:'障害基礎年金2級の年金額は老齢基礎年金の満額と同額である。',answer:'○ 正しい',reason:'2級は老齢基礎年金満額と<mark>同額</mark>（1.0倍）。1級は1.25倍。',law:'国年法第33条'},
+  {tag:'K056',cat:'障害認定日',section:'⑤障害基礎年金',correct:true,q:'障害認定日は初診日から1年6ヵ月を経過した日、またはその前に症状が固定した日である。',answer:'○ 正しい',reason:'障害認定日（法第34条）：初診日から<mark>1年6ヵ月後</mark>または症状固定日。',law:'国年法第34条'},
+  {tag:'K057',cat:'障害認定日の誤り',section:'⑤障害基礎年金',correct:false,q:'障害認定日は初診日から2年を経過した日である。',answer:'× 誤り',reason:'障害認定日は<mark>1年6ヵ月（18ヵ月）</mark>後（2年ではない）。',law:'国年法第34条'},
+  {tag:'K058',cat:'事後重症',section:'⑤障害基礎年金',correct:true,q:'事後重症は障害認定日後65歳に達する日の前日までに等級該当すれば請求でき、将来に向かって支給される。',answer:'○ 正しい',reason:'事後重症（法第31条）：<mark>65歳前日まで</mark>に請求・<mark>将来に向かって</mark>支給（遡及なし）。',law:'国年法第31条'},
+  {tag:'K059',cat:'子の加算',section:'⑤障害基礎年金',correct:true,q:'障害基礎年金には18歳到達年度末まで（障害1・2級の子は20歳未満）の子の加算がある。',answer:'○ 正しい',reason:'子の加算：<mark>18歳到達年度末</mark>まで（障害1・2級の子は<mark>20歳未満</mark>）。',law:'国年法第33条の2'},
+  {tag:'K060',cat:'支給停止',section:'⑤障害基礎年金',correct:true,q:'障害基礎年金は障害等級に該当しなくなった期間は支給が停止される。',answer:'○ 正しい',reason:'法第36条：障害等級に<mark>該当しなくなった期間</mark>は支給停止。',law:'国年法第36条'},
+  {tag:'K061',cat:'遡及請求',section:'⑤障害基礎年金',correct:true,q:'障害認定日の時点で等級に該当していたが請求しなかった場合、5年を限度として遡及請求できる。',answer:'○ 正しい',reason:'遡及請求：障害認定日から<mark>5年以内</mark>に限り遡及請求可能。',law:'国年法第30条'},
+  {tag:'K062',cat:'前日判定',section:'⑤障害基礎年金',correct:true,q:'障害基礎年金の納付要件の判定時点は初診日の前日であり、初診日当日の状況は問われない。',answer:'○ 正しい',reason:'判定時点は<mark>初診日の前日</mark>（当日ではない）。初診後の遡納を防ぐため。',law:'国年法第30条'},
+  {tag:'K063',cat:'受給権者',section:'⑥遺族・寡婦・一時金',correct:true,q:'遺族基礎年金の受給権者は「子のある配偶者」と「子」のみで、子のない配偶者は受給できない。',answer:'○ 正しい',reason:'法第37条：受給権者は<mark>子のある配偶者</mark>と<mark>子</mark>のみ。',law:'国年法第37条'},
+  {tag:'K064',cat:'子のない配偶者',section:'⑥遺族・寡婦・一時金',correct:false,q:'遺族基礎年金は子のない配偶者にも支給される。',answer:'× 誤り',reason:'遺族基礎年金は<mark>子のない配偶者には支給されない</mark>（遺族厚生年金との最大の違い）。',law:'国年法第37条'},
+  {tag:'K065',cat:'子の年齢要件',section:'⑥遺族・寡婦・一時金',correct:true,q:'遺族基礎年金の子は18歳到達年度末まで（障害1・2級は20歳未満）で婚姻していないことが要件。',answer:'○ 正しい',reason:'子の要件（法第37条の2）：<mark>18歳到達年度末</mark>・障害1・2級は<mark>20歳未満</mark>・婚姻していないこと。',law:'国年法第37条の2'},
+  {tag:'K066',cat:'寡婦年金',section:'⑥遺族・寡婦・一時金',correct:true,q:'寡婦年金は婚姻期間10年以上の妻に、60歳から65歳になるまでの期間支給される。',answer:'○ 正しい',reason:'寡婦年金（法第49条）：婚姻期間<mark>10年以上</mark>の妻に<mark>60〜65歳未満</mark>まで支給。',law:'国年法第49条'},
+  {tag:'K067',cat:'寡婦年金の年金額',section:'⑥遺族・寡婦・一時金',correct:false,q:'寡婦年金の年金額は夫の老齢基礎年金見込額の3分の2である。',answer:'× 誤り',reason:'寡婦年金の年金額は夫の見込額の<mark>4分の3</mark>（3分の2は誤り）。',law:'国年法第49条'},
+  {tag:'K068',cat:'寡婦年金の期限',section:'⑥遺族・寡婦・一時金',correct:false,q:'寡婦年金は65歳に達した後も引き続き支給される。',answer:'× 誤り',reason:'寡婦年金は<mark>65歳未満まで</mark>（65歳から老齢基礎年金に移行）。',law:'国年法第49条'},
+  {tag:'K069',cat:'死亡一時金',section:'⑥遺族・寡婦・一時金',correct:true,q:'死亡一時金は第1号として36ヵ月以上納付した者が死亡し、遺族基礎年金受給者がいない場合に支給される。',answer:'○ 正しい',reason:'死亡一時金（法第52条の2）：<mark>36ヵ月以上</mark>納付＋<mark>遺族基礎年金受給者なし</mark>。',law:'国年法第52条の2'},
+  {tag:'K070',cat:'死亡一時金の納付要件',section:'⑥遺族・寡婦・一時金',correct:false,q:'死亡一時金は第1号として12ヵ月以上納付した者が対象となる。',answer:'× 誤り',reason:'死亡一時金の納付要件は<mark>36ヵ月（3年）以上</mark>（12ヵ月ではない）。',law:'国年法第52条の2'},
+  {tag:'K071',cat:'選択制',section:'⑥遺族・寡婦・一時金',correct:true,q:'寡婦年金と死亡一時金の両方の受給権がある場合は、いずれか一方を選択して受給する。',answer:'○ 正しい',reason:'寡婦年金と死亡一時金は<mark>選択制</mark>（両方同時に受給不可）。',law:'国年法第52条の6'},
+  {tag:'K072',cat:'調整',section:'⑥遺族・寡婦・一時金',correct:true,q:'遺族基礎年金の受給権がある期間は、寡婦年金の支給は停止される。',answer:'○ 正しい',reason:'遺族基礎年金が優先：受給権がある間は寡婦年金は<mark>停止</mark>。',law:'国年法第51条'},
+  {tag:'K073',cat:'厚年との比較',section:'⑥遺族・寡婦・一時金',correct:false,q:'遺族基礎年金と遺族厚生年金のどちらも子のない配偶者は受給できない。',answer:'× 誤り',reason:'遺族<mark>厚生</mark>年金は子のない配偶者も受給可能。遺族<mark>基礎</mark>年金のみ不可。',law:'3科目比較'},
+  {tag:'K074',cat:'父子家庭',section:'⑥遺族・寡婦・一時金',correct:true,q:'平成26年改正で子のある夫（父）も遺族基礎年金を受給できるようになった。',answer:'○ 正しい',reason:'H26年改正：<mark>子のある夫</mark>も遺族基礎年金受給可能（男女平等の観点から）。',law:'国年法第37条'},
+  {tag:'K075',cat:'支払時期',section:'⑦給付の通則・時効',correct:true,q:'国民年金の年金給付は毎年偶数月（2・4・6・8・10・12月）に前2ヵ月分が支払われる。',answer:'○ 正しい',reason:'法第18条：<mark>偶数月</mark>（年6回）に<mark>前2ヵ月分</mark>支払い。健保・厚年も同じ。',law:'国年法第18条'},
+  {tag:'K076',cat:'支払時期の誤り',section:'⑦給付の通則・時効',correct:false,q:'国民年金の年金給付は毎月支払われる。',answer:'× 誤り',reason:'年金給付は<mark>偶数月に2ヵ月分まとめて</mark>（毎月ではない）。',law:'国年法第18条'},
+  {tag:'K077',cat:'受給権の保護',section:'⑦給付の通則・時効',correct:true,q:'年金受給権の譲渡・担保・差押えは原則禁止されているが、国税・地方税の滞納処分は例外として認められる。',answer:'○ 正しい',reason:'法第19条：原則<mark>禁止</mark>。例外：<mark>国税・地方税の滞納処分</mark>は可。',law:'国年法第19条'},
+  {tag:'K078',cat:'受給権の時効',section:'⑦給付の通則・時効',correct:false,q:'老齢基礎年金の受給権は5年間行使しないと時効によって消滅する。',answer:'× 誤り',reason:'受給権（基本権）は<mark>時効なし</mark>。5年で消滅するのは各月の年金（支分権）。',law:'国年法第102条'},
+  {tag:'K079',cat:'支分権の時効',section:'⑦給付の通則・時効',correct:true,q:'各月の年金を受け取る権利（支分権）は5年間行使しなければ時効によって消滅する。',answer:'○ 正しい',reason:'国年の支分権は<mark>5年</mark>で時効消滅（健保・厚年の2年より長い）。',law:'国年法第102条'},
+  {tag:'K080',cat:'保険料の時効',section:'⑦給付の通則・時効',correct:true,q:'国民年金保険料の徴収権は2年間行使しなければ時効によって消滅する。',answer:'○ 正しい',reason:'保険料徴収権は3科目とも<mark>2年</mark>（支分権の5年より短い）。',law:'国年法第102条'},
+  {tag:'K081',cat:'不服申立て',section:'⑦給付の通則・時効',correct:true,q:'国民年金の処分に不服がある場合、まず社会保険審査官に審査請求し、不服なら社会保険審査会に再審査請求できる。',answer:'○ 正しい',reason:'法第101条：①<mark>社会保険審査官</mark>→②<mark>社会保険審査会</mark>→③行政訴訟。',law:'国年法第101条'},
+  {tag:'K082',cat:'不服申立ての順序',section:'⑦給付の通則・時効',correct:false,q:'国民年金の処分に不服がある場合、最初に社会保険審査会に審査請求する。',answer:'× 誤り',reason:'最初は<mark>社会保険審査官</mark>（審査会ではない）。審査会は第2段階。',law:'国年法第101条'},
+  {tag:'K083',cat:'国庫負担の誤り',section:'⑦給付の通則・時効',correct:false,q:'国民年金の基礎年金給付費に対する国庫負担割合は3分の1である。',answer:'× 誤り',reason:'国庫負担は<mark>2分の1</mark>（H21年度〜）。旧来の3分の1は誤り。',law:'国年法第85条'},
+  {tag:'K084',cat:'国庫負担',section:'⑦給付の通則・時効',correct:true,q:'基礎年金給付費に対する国庫負担は2分の1（平成21年度から）である。',answer:'○ 正しい',reason:'法第85条：国庫負担は<mark>2分の1</mark>（H21年度〜）。旧3分の1から引き上げ。',law:'国年法第85条'},
+  {tag:'K085',cat:'時効の比較',section:'⑦給付の通則・時効',correct:true,q:'支分権の時効は健保・厚年が2年であるのに対し、国年のみ5年と異なる。',answer:'○ 正しい',reason:'支分権：健保・厚年<mark>2年</mark>・国年<mark>5年</mark>（国年のみ異なる重要な違い）。',law:'3科目比較'},
+  {tag:'K086',cat:'保険料時効の比較',section:'⑦給付の通則・時効',correct:true,q:'保険料徴収権の時効は健保・厚年・国年のすべてで2年である。',answer:'○ 正しい',reason:'保険料徴収権の時効は3科目とも<mark>2年</mark>で共通。',law:'3科目共通'},
+  {tag:'K087',cat:'主語の比較',section:'⑧横断・総仕上げ',correct:false,q:'健保法・厚年法・国年法の3科目すべてで目的条文の主語は「労働者」である。',answer:'× 誤り',reason:'健保・厚年の主語は<mark>労働者</mark>、国年のみ<mark>国民</mark>。',law:'3科目比較'},
+  {tag:'K088',cat:'収入要件',section:'⑧横断・総仕上げ',correct:true,q:'健保の被扶養者と国年の第3号の収入要件はともに年収130万円未満（60歳以上等は180万円未満）で同一である。',answer:'○ 正しい',reason:'健保被扶養者・国年第3号ともに<mark>130万円未満</mark>（60歳以上等は<mark>180万円未満</mark>）。同一基準。',law:'3科目共通'},
+  {tag:'K089',cat:'産前産後免除',section:'⑧横断・総仕上げ',correct:true,q:'厚年・国年ともに産前産後の保険料免除期間は保険料を納付したものとみなされ、年金額に全額反映される。',answer:'○ 正しい',reason:'厚年・国年の産前産後免除：<mark>保険料納付済み扱い→年金額全額反映</mark>。',law:'3科目共通'},
+  {tag:'K090',cat:'不服申立て',section:'⑧横断・総仕上げ',correct:true,q:'健保・厚年・国年のすべてで、不服申立ての第1段階は社会保険審査官への審査請求である。',answer:'○ 正しい',reason:'3科目共通：①<mark>社会保険審査官</mark>→②社会保険審査会→③行政訴訟。',law:'3科目共通'},
+  {tag:'K091',cat:'年金支払',section:'⑧横断・総仕上げ',correct:true,q:'健保・厚年・国年の年金給付はいずれも偶数月に前2ヵ月分がまとめて支払われる。',answer:'○ 正しい',reason:'3科目共通：<mark>偶数月払い・前2ヵ月分</mark>（昭和61年統一）。',law:'3科目共通'},
+  {tag:'K092',cat:'給付事由の比較',section:'⑧横断・総仕上げ',correct:false,q:'健保法の目的条文における給付事由には老齢が含まれる。',answer:'× 誤り',reason:'健保の給付事由は<mark>疾病・負傷・出産・死亡</mark>（老齢なし）。',law:'3科目比較'},
+  {tag:'K093',cat:'任意適用',section:'⑧横断・総仕上げ',correct:true,q:'健保・厚年の任意適用の同意要件はともに従業員の3分の2以上である。',answer:'○ 正しい',reason:'健保・厚年の任意適用：<mark>3分の2以上</mark>の同意が必要で共通。',law:'健保法・厚年法共通'},
+  {tag:'K094',cat:'振替加算と加給年金',section:'⑧横断・総仕上げ',correct:true,q:'厚生年金の加給年金は配偶者が65歳になると打ち切られ、国年の振替加算（S41.4.1以前生まれ）に切り替わる。',answer:'○ 正しい',reason:'加給年金（厚年）→<mark>振替加算（国年）</mark>に切替。S41.4.1以前生まれの配偶者のみ。',law:'国年法第16条の3・厚年法第44条'},
+  {tag:'K095',cat:'第3号特例',section:'⑧横断・総仕上げ',correct:true,q:'S61.4〜H8.3の第3号被保険者期間は届出が遅れた場合でも遡及認定される特例がある。',answer:'○ 正しい',reason:'<mark>S61.4〜H8.3</mark>の期間は届出遅れでも<mark>遡及認定</mark>。H8.4以降は届出必要。',law:'国年法附則第9条の2'},
+  {tag:'K096',cat:'数字の総整理（誤り）',section:'⑧横断・総仕上げ',correct:false,q:'国民年金の受給資格期間は25年、老齢基礎年金の満額基準は600ヵ月である。',answer:'× 誤り',reason:'受給資格期間は<mark>10年</mark>（H29.8〜）・満額基準は<mark>480ヵ月</mark>（40年間）。',law:'国年法第26条・第27条'},
+  {tag:'K097',cat:'数字の総整理（正）',section:'⑧横断・総仕上げ',correct:true,q:'障害基礎年金1級は満額×1.25倍、寡婦年金は夫の見込額の4分の3、死亡一時金の納付要件は36ヵ月以上である。',answer:'○ 正しい',reason:'<mark>1.25倍・3/4・36ヵ月</mark>の3点セット（誤りやすい数字）。',law:'国年法第33条・第49条・第52条の2'},
+  {tag:'K098',cat:'国庫負担の変遷',section:'⑧横断・総仕上げ',correct:true,q:'国年の国庫負担は2分の1（H21年度〜）で、旧来の3分の1から引き上げられた。',answer:'○ 正しい',reason:'国庫負担：<mark>2分の1</mark>（H21年度〜）→旧<mark>3分の1</mark>から引き上げ。少子化対策の一環。',law:'国年法第85条'},
+  {tag:'K099',cat:'振替加算の対象',section:'⑧横断・総仕上げ',correct:false,q:'振替加算の対象は昭和41年4月2日以降生まれの配偶者である。',answer:'× 誤り',reason:'振替加算の対象は<mark>昭和41年4月1日以前生まれ</mark>。「以降」ではなく「以前」。',law:'国年法第16条の3'},
+  {tag:'K100',cat:'遺族の比較',section:'⑧横断・総仕上げ',correct:true,q:'遺族基礎年金と異なり、遺族厚生年金は子のない配偶者も受給できる。',answer:'○ 正しい',reason:'遺族<mark>基礎</mark>：子のない配偶者は不可。遺族<mark>厚生</mark>：子のない配偶者も受給可。',law:'3科目比較'}
+,
+  {tag:'K101',cat:'国民皆年金',section:'①目的・被保険者',correct:true,q:'国民年金は昭和34年に制定され、昭和36年に施行されて国民皆年金体制が実現した。',answer:'○ 正しい',reason:'国民年金法：<mark>昭和34年制定・昭和36年施行</mark>。国民皆年金・国民皆保険が同時期に整備。',law:'国年法沿革'},
+  {tag:'K102',cat:'日本国憲法',section:'①目的・被保険者',correct:true,q:'国民年金法の目的規定は日本国憲法第25条の理念に基づいている。',answer:'○ 正しい',reason:'国年法第1条：「<mark>日本国憲法第25条</mark>の理念に基き」と明記。生存権の具体化。',law:'国年法第1条'},
+  {tag:'K103',cat:'被保険者の義務',section:'①目的・被保険者',correct:true,q:'20歳以上60歳未満の国内居住者は原則として国民年金に強制加入する義務がある。',answer:'○ 正しい',reason:'国民年金は強制加入制度。<mark>20〜60歳未満の国内居住者</mark>は原則全員が強制被保険者。',law:'国年法第7条'},
+  {tag:'K104',cat:'適用除外',section:'①目的・被保険者',correct:true,q:'老齢・障害・退職等を支給事由とする年金を受けられる者で60歳以上のものは第1号被保険者にならない。',answer:'○ 正しい',reason:'法第7条の適用除外：老齢・障害・退職年金受給者で60歳以上の者は第1号から除外。',law:'国年法第7条'},
+  {tag:'K105',cat:'第1号の定義',section:'①目的・被保険者',correct:false,q:'第1号被保険者は日本国内に住所を有する20歳以上60歳未満の者で第2号・第3号を除いた者である。',answer:'○ 正しい',reason:'法第7条第1項第1号：<mark>国内居住・20〜60歳未満・第2号・第3号・適用除外を除く</mark>者。',law:'国年法第7条'},
+  {tag:'K106',cat:'第2号の定義',section:'①目的・被保険者',correct:true,q:'第2号被保険者は厚生年金保険の被保険者である（65歳以上で老齢等の受給権がある者を除く）。',answer:'○ 正しい',reason:'第2号：<mark>厚年・共済の被保険者</mark>（65歳以上で老齢受給権あり→除外）。',law:'国年法第7条'},
+  {tag:'K107',cat:'第3号の定義',section:'①目的・被保険者',correct:true,q:'第3号被保険者は第2号被保険者の配偶者で主として第2号の収入により生計を維持する20〜60歳未満の者である。',answer:'○ 正しい',reason:'第3号：<mark>第2号の配偶者</mark>で主として第2号の収入で生計維持する<mark>20〜60歳未満</mark>の者。',law:'国年法第7条'},
+  {tag:'K108',cat:'第3号の生計維持',section:'①目的・被保険者',correct:true,q:'第3号被保険者の「主として第2号の収入により生計を維持」とは、年収130万円未満の者を指す。',answer:'○ 正しい',reason:'生計維持要件：年収<mark>130万円未満</mark>（60歳以上・障害者は180万円未満）。',law:'国年法第7条'},
+  {tag:'K109',cat:'国内居住',section:'①目的・被保険者',correct:true,q:'第1号被保険者の要件として国内に住所を有することが必要であり、日本国籍は要件ではない。',answer:'○ 正しい',reason:'第1号の要件は<mark>国内居住</mark>（住所地主義）。日本国籍は不要で外国人も対象。',law:'国年法第7条'},
+  {tag:'K110',cat:'任意加入者の保険料',section:'①目的・被保険者',correct:true,q:'任意加入被保険者の保険料は第1号被保険者と同額の定額保険料である。',answer:'○ 正しい',reason:'任意加入者の保険料：第1号と<mark>同額の定額</mark>。月額16,980円（令和6年度）。',law:'国年法附則第5条'},
+  {tag:'K111',cat:'特例任意加入の要件',section:'①目的・被保険者',correct:true,q:'特例任意加入の要件の一つは昭和40年4月1日以前に生まれていることである。',answer:'○ 正しい',reason:'特例任意加入（附則5条の2）：<mark>S40.4.1以前生まれ</mark>・65〜70歳未満・受給資格不足。',law:'国年法附則第5条の2'},
+  {tag:'K112',cat:'共済組合員',section:'①目的・被保険者',correct:true,q:'共済組合の組合員も国民年金の第2号被保険者となる（65歳以上で受給権あり者を除く）。',answer:'○ 正しい',reason:'第2号：厚年被保険者と<mark>共済組合員</mark>の両方を含む（65歳以上受給権者を除く）。',law:'国年法第7条'},
+  {tag:'K113',cat:'事実婚の配偶者',section:'①目的・被保険者',correct:true,q:'第3号被保険者の「配偶者」には法律上の婚姻関係のない事実婚（内縁関係）の配偶者も含まれる。',answer:'○ 正しい',reason:'第3号の「配偶者」：法律婚だけでなく<mark>事実婚（内縁関係）</mark>も含む。健保と同様。',law:'国年法第7条'},
+  {tag:'K114',cat:'第3号の年齢',section:'①目的・被保険者',correct:false,q:'第3号被保険者に年齢要件はなく、第2号の配偶者であれば何歳でも第3号になれる。',answer:'× 誤り',reason:'第3号には<mark>20歳以上60歳未満</mark>の年齢要件がある（60歳以上は第3号になれない）。',law:'国年法第7条'},
+  {tag:'K115',cat:'海外居住者の任意加入',section:'①目的・被保険者',correct:true,q:'日本国籍を有する者で海外に居住する20歳以上65歳未満の者は任意加入できる。',answer:'○ 正しい',reason:'海外居住の日本国民：<mark>任意加入可</mark>（国内居住要件の例外。附則第5条）。',law:'国年法附則第5条'},
+  {tag:'K116',cat:'第3号の届出',section:'①目的・被保険者',correct:true,q:'第3号被保険者となった場合の届出は、第2号被保険者の配偶者が勤務する事業主を経由して行う。',answer:'○ 正しい',reason:'第3号の届出：<mark>第2号の事業主を経由</mark>して機構へ届出（直接届出ではない）。',law:'国年法第12条'},
+  {tag:'K117',cat:'国民年金基金',section:'①目的・被保険者',correct:true,q:'国民年金基金は第1号被保険者の老齢基礎年金に上乗せする任意加入の給付制度である。',answer:'○ 正しい',reason:'国民年金基金：第1号被保険者が任意加入できる<mark>上乗せ制度</mark>。付加年金との選択制。',law:'国年法第115条'},
+  {tag:'K118',cat:'付加年金と基金',section:'①目的・被保険者',correct:false,q:'付加年金と国民年金基金は同時に加入することができる。',answer:'× 誤り',reason:'付加年金と国民年金基金は<mark>選択制</mark>（同時加入不可）。どちらか一方のみ。',law:'国年法第87条の2'},
+  {tag:'K119',cat:'厚年と国年の関係',section:'①目的・被保険者',correct:true,q:'厚生年金の被保険者は同時に国民年金の第2号被保険者でもある（二重加入）。',answer:'○ 正しい',reason:'厚年被保険者は同時に国年第2号でもある（<mark>二重加入</mark>）。基礎年金部分（国年）＋報酬比例部分（厚年）。',law:'国年法第7条'},
+  {tag:'K120',cat:'昭和61年改正',section:'①目的・被保険者',correct:true,q:'昭和61年4月の基礎年金制度導入により、第3号被保険者制度が創設された。',answer:'○ 正しい',reason:'<mark>昭和61年4月</mark>：基礎年金制度導入・第3号被保険者制度創設。国年が全国民共通の基礎に。',law:'国年法沿革'},
+  {tag:'K121',cat:'第1号の特例',section:'①目的・被保険者',correct:true,q:'第1号被保険者が60歳に達した月の前月まで保険料を納付し、受給資格期間を満たす場合もある。',answer:'○ 正しい',reason:'第1号は<mark>60歳到達の前月まで</mark>保険料を納付する（60歳到達月は翌月初日が喪失日となる場合あり）。',law:'国年法第9条'},
+  {tag:'K122',cat:'保険者',section:'①目的・被保険者',correct:true,q:'国民年金の保険者は政府（厚生労働大臣）であり、業務は日本年金機構が行う。',answer:'○ 正しい',reason:'国民年金の保険者：<mark>政府（厚生労働大臣）</mark>。実務は<mark>日本年金機構</mark>が委託処理。',law:'国年法第2条'},
+  {tag:'K123',cat:'目的条文比較',section:'①目的・被保険者',correct:true,q:'健保・厚年の目的条文に「生活の安定と福祉の向上に寄与する」という文言があるが、国年法にはこの文言はない。',answer:'× 誤り',reason:'国年法第1条にも「生活の安定と福祉の向上」という文言は<mark>ある</mark>（「生活の安定を図り，福祉の向上に寄与する」）。',law:'国年法第1条'},
+  {tag:'K124',cat:'20歳前障害',section:'①目的・被保険者',correct:true,q:'20歳前に初診日がある傷病による障害については、20歳に達した日（またはその後に障害等級該当した日）から障害基礎年金が支給される。',answer:'○ 正しい',reason:'20歳前障害（法第30条の4）：保険料納付要件なし。ただし所得制限あり。<mark>20歳到達日</mark>から支給。',law:'国年法第30条の4'},
+  {tag:'K125',cat:'第3号の収入基準',section:'①目的・被保険者',correct:true,q:'第3号被保険者の年収130万円の判定は月額換算では108,333円以下が基準となる。',answer:'○ 正しい',reason:'130万円÷12ヵ月＝<mark>108,333円/月</mark>。この月額基準で判定されることが多い。',law:'国年法第7条'},
+  {tag:'K126',cat:'資格取得比較',section:'②資格取得・喪失・届出',correct:true,q:'第1号被保険者の資格取得日は「20歳に達した日」で、第2号は厚年等の被保険者となった日、第3号は認定された日等である。',answer:'○ 正しい',reason:'種別ごとの資格取得日：第1号<mark>20歳到達日</mark>・第2号<mark>厚年等なった日</mark>・第3号<mark>認定日等</mark>。',law:'国年法第8条'},
+  {tag:'K127',cat:'資格喪失の事由',section:'②資格取得・喪失・届出',correct:true,q:'第1号被保険者が第2号・第3号の被保険者となった日に第1号の資格を喪失する。',answer:'○ 正しい',reason:'種別変更は<mark>同日付</mark>で旧種別喪失・新種別取得。第1号→第2号への変更はよくある事例。',law:'国年法第9条'},
+  {tag:'K128',cat:'喪失と取得の同日',section:'②資格取得・喪失・届出',correct:true,q:'種別変更の場合、同一日に旧種別の資格喪失と新種別の資格取得が行われる。',answer:'○ 正しい',reason:'種別変更は<mark>同日付</mark>で処理される（例：就職日に第1号喪失・第2号取得）。',law:'国年法第8条・第9条'},
+  {tag:'K129',cat:'第3号の喪失',section:'②資格取得・喪失・届出',correct:true,q:'第3号被保険者は、第2号被保険者の配偶者でなくなった日等に資格を喪失する。',answer:'○ 正しい',reason:'第3号の喪失事由：配偶者が厚年等の<mark>被保険者でなくなった日の翌日</mark>等。',law:'国年法第9条'},
+  {tag:'K130',cat:'死亡による喪失',section:'②資格取得・喪失・届出',correct:true,q:'被保険者が死亡した場合、死亡した日の翌日に国民年金の被保険者資格を喪失する。',answer:'○ 正しい',reason:'死亡の場合：<mark>死亡した日の翌日</mark>に資格喪失（全種別共通）。',law:'国年法第9条'},
+  {tag:'K131',cat:'60歳到達の前日',section:'②資格取得・喪失・届出',correct:false,q:'第1号被保険者が60歳の誕生日に資格を喪失する。',answer:'× 誤り',reason:'「60歳に達した日」は誕生日の<mark>前日</mark>（民法の年齢計算）。したがって誕生日の前日に喪失。',law:'国年法第9条'},
+  {tag:'K132',cat:'基礎年金番号の付番時期',section:'②資格取得・喪失・届出',correct:true,q:'基礎年金番号は被保険者資格を取得した際に付番される。',answer:'○ 正しい',reason:'基礎年金番号：資格取得時に<mark>厚生労働大臣から付番</mark>。10桁の番号で生涯同一。',law:'国年法第14条'},
+  {tag:'K133',cat:'種別確認',section:'②資格取得・喪失・届出',correct:true,q:'厚生労働大臣は被保険者の種別を確認することができる。',answer:'○ 正しい',reason:'法第14条の2：厚生労働大臣は<mark>種別を確認</mark>する権限がある。',law:'国年法第14条の2'},
+  {tag:'K134',cat:'第2号の届出不要',section:'②資格取得・喪失・届出',correct:true,q:'第2号・第3号被保険者の資格取得・喪失については、被保険者本人による市町村への届出は不要である。',answer:'○ 正しい',reason:'第2号は事業主、第3号は事業主経由で届出。第1号のみ市町村への届出義務がある。',law:'国年法第12条'},
+  {tag:'K135',cat:'届出先の法令',section:'②資格取得・喪失・届出',correct:true,q:'第1号被保険者の資格取得届の届出先は市町村長である（令和2年改正前は市町村長のみだった）。',answer:'○ 正しい',reason:'第1号の届出先：<mark>市町村長</mark>（原則）。日本年金機構への届出も可能。',law:'国年法第12条'},
+  {tag:'K136',cat:'住所変更届',section:'②資格取得・喪失・届出',correct:true,q:'第1号被保険者が住所を変更した場合、14日以内に市町村長に届け出なければならない。',answer:'○ 正しい',reason:'住所変更届：<mark>14日以内</mark>に<mark>市町村長</mark>へ。これは住民基本台帳の手続きと連動する。',law:'国年法第12条'},
+  {tag:'K137',cat:'氏名変更届',section:'②資格取得・喪失・届出',correct:true,q:'第1号被保険者が氏名を変更した場合、14日以内に届け出なければならない。',answer:'○ 正しい',reason:'氏名変更届：<mark>14日以内</mark>に届出。婚姻・離婚等で氏名が変わる場合に必要。',law:'国年法第12条'},
+  {tag:'K138',cat:'受給権者の届出期限',section:'②資格取得・喪失・届出',correct:true,q:'受給権者の住所変更届の期限は14日以内である。',answer:'○ 正しい',reason:'受給権者の住所変更届：<mark>14日以内</mark>に厚生労働大臣（日本年金機構）へ。',law:'国年法第36条の3'},
+  {tag:'K139',cat:'届出の重要性',section:'②資格取得・喪失・届出',correct:true,q:'届出を怠った場合、未届期間中の年金が支給されないことがある。',answer:'○ 正しい',reason:'届出は権利発生要件ではないが、<mark>届出がないと支払いができない</mark>実務上の問題がある。',law:'国年法第12条'},
+  {tag:'K140',cat:'第3号の届出経路',section:'②資格取得・喪失・届出',correct:true,q:'第3号被保険者の資格取得届は第2号被保険者の事業主を経由して提出する。',answer:'○ 正しい',reason:'第3号の届出：<mark>第2号の事業主経由</mark>→日本年金機構（厚生労働大臣）。',law:'国年法第12条'},
+  {tag:'K141',cat:'旧姓の基礎年金番号',section:'②資格取得・喪失・届出',correct:true,q:'改姓後も基礎年金番号は変わらず、旧姓時代の年金記録も同一番号で管理される。',answer:'○ 正しい',reason:'基礎年金番号は<mark>生涯同一</mark>。改姓・転職・種別変更があっても番号は変わらない。',law:'国年法第14条'},
+  {tag:'K142',cat:'マイナンバーとの連携',section:'②資格取得・喪失・届出',correct:true,q:'基礎年金番号とマイナンバーは連携されており、手続きの効率化が図られている。',answer:'○ 正しい',reason:'基礎年金番号とマイナンバーは連携。将来的には基礎年金番号の廃止も検討されている。',law:'国年法第14条'},
+  {tag:'K143',cat:'適用除外の届出',section:'②資格取得・喪失・届出',correct:true,q:'適用除外の事由が消滅した場合、14日以内に届け出なければならない。',answer:'○ 正しい',reason:'適用除外事由消滅後：<mark>14日以内</mark>に届出（第1号として改めて加入手続きが必要）。',law:'国年法第12条'},
+  {tag:'K144',cat:'国外転出と再加入',section:'②資格取得・喪失・届出',correct:true,q:'国外転出で第1号資格を喪失した日本国籍者が帰国した場合、改めて第1号被保険者として資格を取得する。',answer:'○ 正しい',reason:'帰国後は国内居住が回復するため<mark>再び第1号</mark>として資格取得。届出が必要。',law:'国年法第8条'},
+  {tag:'K145',cat:'離婚による第3号喪失',section:'②資格取得・喪失・届出',correct:true,q:'第3号被保険者が離婚して第2号の配偶者でなくなった場合、第3号の資格を喪失する。',answer:'○ 正しい',reason:'離婚で<mark>第3号の資格喪失</mark>。その後20〜60歳未満なら第1号として加入義務が生じる。',law:'国年法第9条'},
+  {tag:'K146',cat:'配偶者の死亡',section:'②資格取得・喪失・届出',correct:true,q:'第3号被保険者の配偶者（第2号）が死亡した場合、第3号の資格を喪失する。',answer:'○ 正しい',reason:'第2号の死亡→第3号の資格喪失事由の一つ。以後は第1号として加入義務が生じる。',law:'国年法第9条'},
+  {tag:'K147',cat:'資格取得と保険料',section:'②資格取得・喪失・届出',correct:true,q:'第1号被保険者としての資格取得月から保険料の納付義務が生じる。',answer:'○ 正しい',reason:'保険料の納付義務は<mark>資格取得月から</mark>発生（資格喪失月の前月まで）。',law:'国年法第88条'},
+  {tag:'K148',cat:'基礎年金番号通知書',section:'②資格取得・喪失・届出',correct:true,q:'厚生労働大臣は基礎年金番号を付番した際に基礎年金番号通知書を交付する。',answer:'○ 正しい',reason:'基礎年金番号付番時：<mark>基礎年金番号通知書</mark>を交付（年金手帳に代わるもの）。',law:'国年法第14条'},
+  {tag:'K149',cat:'被保険者証',section:'②資格取得・喪失・届出',correct:false,q:'国民年金被保険者には健康保険証と同様の被保険者証が交付される。',answer:'× 誤り',reason:'国民年金には被保険者証は発行されない。基礎年金番号通知書が<mark>身分確認書類</mark>として機能。',law:'国年法第14条'},
+  {tag:'K150',cat:'第2号の喪失日',section:'②資格取得・喪失・届出',correct:true,q:'第2号被保険者が厚生年金の被保険者でなくなった日の翌日に第2号の資格を喪失する。',answer:'○ 正しい',reason:'第2号の喪失：厚年等の被保険者でなくなった日の<mark>翌日</mark>（第1号の当日喪失と異なる点）。',law:'国年法第9条'},
+  {tag:'K151',cat:'保険料の金額',section:'③保険料・免除・猶予',correct:true,q:'令和6年度の国民年金保険料は月額16,980円である。',answer:'○ 正しい',reason:'令和6年度の第1号保険料：月額<mark>16,980円</mark>（毎年度改定・物価・賃金スライドあり）。',law:'国年法第87条'},
+  {tag:'K152',cat:'前納割引',section:'③保険料・免除・猶予',correct:true,q:'保険料を前納した場合、前納期間に応じて割引が受けられる。',answer:'○ 正しい',reason:'前納：6ヵ月・1年・2年などの前納で<mark>割引</mark>あり。2年前納が最大割引（口座振替）。',law:'国年法第93条'},
+  {tag:'K153',cat:'口座振替の割引',section:'③保険料・免除・猶予',correct:true,q:'口座振替による当月納付（早割）は月額50円の割引が受けられる（令和6年度）。',answer:'○ 正しい',reason:'口座振替の当月末引落（早割）：<mark>50円/月割引</mark>。',law:'国年法第93条'},
+  {tag:'K154',cat:'保険料の納付期限',section:'③保険料・免除・猶予',correct:true,q:'国民年金保険料の納付期限は翌月末日である。',answer:'○ 正しい',reason:'保険料の納付期限：<mark>翌月末日</mark>（例：4月分→5月末日まで）。',law:'国年法第92条'},
+  {tag:'K155',cat:'保険料の2年追納',section:'③保険料・免除・猶予',correct:true,q:'保険料は最長2年間遡って納付することができる（後納制度）。',answer:'× 誤り',reason:'後納制度（平成24年〜令和7年）とは別に、通常の保険料は<mark>2年以内の未納分</mark>を納付できる。',law:'国年法第92条'},
+  {tag:'K156',cat:'免除と猶予の違い',section:'③保険料・免除・猶予',correct:true,q:'免除は保険料の納付が全部または一部免除される制度であり、猶予は納付を将来に先送りする制度である。',answer:'○ 正しい',reason:'免除：<mark>納付義務が軽減・消滅</mark>。猶予：<mark>納付を先送り</mark>（10年以内に追納可能）。',law:'国年法第89条〜第90条の3'},
+  {tag:'K157',cat:'申請免除の申請期間',section:'③保険料・免除・猶予',correct:true,q:'申請免除は7月から翌年6月までの1年間を単位として申請する。',answer:'○ 正しい',reason:'申請免除の申請期間：<mark>7月〜翌年6月</mark>の1年間が単位（前年7月からの申請も可）。',law:'国年法第90条'},
+  {tag:'K158',cat:'申請免除の所得基準',section:'③保険料・免除・猶予',correct:true,q:'申請免除は前年の所得に基づいて審査される。',answer:'○ 正しい',reason:'申請免除の所得審査：<mark>前年所得</mark>（1〜6月申請は前々年所得）が基準。',law:'国年法第90条'},
+  {tag:'K159',cat:'全額免除の所得基準',section:'③保険料・免除・猶予',correct:true,q:'全額免除の所得基準は（扶養親族等の数＋1）×35万円＋22万円以下である。',answer:'○ 正しい',reason:'全額免除の所得基準：<mark>（扶養親族数＋1）×35万円＋22万円以下</mark>（基礎控除後の所得）。',law:'国年法第90条'},
+  {tag:'K160',cat:'法定免除の期間',section:'③保険料・免除・猶予',correct:true,q:'法定免除は該当事由が生じた月の前月から消滅した月まで適用される。',answer:'○ 正しい',reason:'法定免除の期間：事由発生の<mark>前月から消滅した月まで</mark>。障害年金の受給期間と連動。',law:'国年法第89条'},
+  {tag:'K161',cat:'法定免除の届出',section:'③保険料・免除・猶予',correct:true,q:'法定免除の事由が生じた場合、14日以内に届け出ることが必要である。',answer:'○ 正しい',reason:'法定免除は自動適用だが、<mark>届出義務</mark>がある。届出で正式に免除処理される。',law:'国年法第89条'},
+  {tag:'K162',cat:'学生納付特例',section:'③保険料・免除・猶予',correct:true,q:'学生納付特例は大学・短大・専修学校等に在学中の学生が対象で本人の所得のみで審査される。',answer:'○ 正しい',reason:'学生特例（法第90条の2）：在学中の学生・<mark>本人所得のみ</mark>で審査（世帯主・配偶者は不問）。',law:'国年法第90条の2'},
+  {tag:'K163',cat:'学生特例の対象校',section:'③保険料・免除・猶予',correct:true,q:'学生納付特例の対象となる学校には大学院も含まれる。',answer:'○ 正しい',reason:'学生特例対象：大学・大学院・短大・専修学校・各種学校等。<mark>大学院も含まれる</mark>。',law:'国年法第90条の2'},
+  {tag:'K164',cat:'猶予期間の追納',section:'③保険料・免除・猶予',correct:true,q:'猶予を受けた期間の保険料は承認を受けた月の翌月から起算して10年以内に追納できる。',answer:'○ 正しい',reason:'追納期限：<mark>承認月の翌月から10年以内</mark>。古い期間から先に追納する原則。',law:'国年法第94条'},
+  {tag:'K165',cat:'追納の加算額',section:'③保険料・免除・猶予',correct:true,q:'3年度以上経過した後に追納する場合、一定の加算額が加えられる。',answer:'○ 正しい',reason:'追納時の加算：承認日から<mark>3年度以上経過</mark>した場合、当時の保険料に加算額が上乗せされる。',law:'国年法第94条'},
+  {tag:'K166',cat:'半額免除と追納',section:'③保険料・免除・猶予',correct:true,q:'半額免除期間は保険料の2分の1を納付しており、追納は残りの2分の1を対象とする。',answer:'○ 正しい',reason:'半額免除：<mark>半分は納付済み</mark>・半分は免除。追納は<mark>免除された半分</mark>が対象。',law:'国年法第90条'},
+  {tag:'K167',cat:'産前産後免除の届出',section:'③保険料・免除・猶予',correct:true,q:'産前産後期間の免除を受けるには届出（申請）が必要である。',answer:'○ 正しい',reason:'産前産後免除は<mark>届出（申請）が必要</mark>（法定免除のような自動適用ではない）。',law:'国年法第88条の2'},
+  {tag:'K168',cat:'産前産後と育児休業',section:'③保険料・免除・猶予',correct:true,q:'産前産後の保険料免除は産前産後休業期間中の免除であり、育児休業中の免除とは別制度である。',answer:'○ 正しい',reason:'産前産後免除と育児休業中の免除は<mark>別制度</mark>。育児休業中の免除は別途適用（第1号にはない）。',law:'国年法第88条の2'},
+  {tag:'K169',cat:'免除申請の代理',section:'③保険料・免除・猶予',correct:true,q:'申請免除の申請は被保険者の法定代理人も行うことができる。',answer:'○ 正しい',reason:'申請免除は被保険者本人または<mark>法定代理人</mark>が申請可能。',law:'国年法第90条'},
+  {tag:'K170',cat:'産前産後と法定免除の比較',section:'③保険料・免除・猶予',correct:false,q:'産前産後免除と法定免除はどちらも年金額に全額反映される。',answer:'× 誤り',reason:'産前産後免除は<mark>全額反映</mark>・法定免除は<mark>1/2反映</mark>。両者は異なる。',law:'国年法第88条の2・第89条'},
+  {tag:'K171',cat:'配偶者の免除',section:'③保険料・免除・猶予',correct:false,q:'第3号被保険者は保険料を免除されているため、申請免除の申請はできない。',answer:'× 誤り',reason:'第3号は<mark>保険料の個人負担なし</mark>（免除ではなく制度的に不要）。申請免除は第1号対象。',law:'国年法第87条の2'},
+  {tag:'K172',cat:'保険料の猶予と時効',section:'③保険料・免除・猶予',correct:true,q:'猶予期間中に10年の追納期限が過ぎた場合、その期間の保険料は追納できなくなる。',answer:'○ 正しい',reason:'追納期限（10年）を過ぎた保険料は<mark>追納不可</mark>。受給資格期間には算入されるが年金額は増えない。',law:'国年法第94条'},
+  {tag:'K173',cat:'4分の1免除の納付額',section:'③保険料・免除・猶予',correct:true,q:'4分の1免除の場合、通常の保険料の4分の3を納付する（残りの4分の1が免除）。',answer:'○ 正しい',reason:'4分の1免除：<mark>4分の3を納付</mark>・4分の1が免除。年金額は免除分について一定割合で算入。',law:'国年法第90条'},
+  {tag:'K174',cat:'免除期間中の受給権',section:'③保険料・免除・猶予',correct:true,q:'全額免除期間中であっても、障害基礎年金・遺族基礎年金の受給権は発生しうる。',answer:'○ 正しい',reason:'全額免除期間は保険料未納とは異なり<mark>受給権者として保護</mark>される。障害・遺族給付も対象。',law:'国年法第89条'},
+  {tag:'K175',cat:'法定免除と任意納付',section:'③保険料・免除・猶予',correct:true,q:'法定免除に該当する者でも、本人が希望すれば保険料を任意に納付することができる。',answer:'○ 正しい',reason:'法定免除の者も<mark>任意に保険料を納付</mark>できる（年金額を増やすため）。特例制度あり。',law:'国年法第89条'},
+  {tag:'K176',cat:'繰上げの手続き',section:'④老齢基礎年金',correct:true,q:'繰上げ請求は60歳から64歳の間に年金事務所等で手続きを行う。',answer:'○ 正しい',reason:'繰上げ請求：<mark>60〜64歳</mark>の間に申出。一度繰上げすると取り消し不可（不可逆）。',law:'国年法附則第9条の2'},
+  {tag:'K177',cat:'繰上げの不可逆性',section:'④老齢基礎年金',correct:true,q:'老齢基礎年金の繰上げ請求を行った後は取り消すことができない。',answer:'○ 正しい',reason:'繰上げは<mark>取り消し不可</mark>。一度請求すると一生涯その減額率が続く。',law:'国年法附則第9条の2'},
+  {tag:'K178',cat:'繰下げの手続き',section:'④老齢基礎年金',correct:true,q:'繰下げ申出は66歳以降に行い、申出時点によって増額率が決定する。',answer:'○ 正しい',reason:'繰下げ：<mark>66歳以降</mark>に申出。申出日の月によって1ヵ月単位で0.7%ずつ増額。',law:'国年法第28条'},
+  {tag:'K179',cat:'繰下げの上限',section:'④老齢基礎年金',correct:true,q:'令和4年4月以降、老齢基礎年金の繰下げの上限年齢は75歳に引き上げられた。',answer:'○ 正しい',reason:'繰下げ上限：<mark>75歳</mark>（令和4年4月〜）。旧上限は70歳。最大増額率は84%（75歳時）。',law:'国年法第28条'},
+  {tag:'K180',cat:'繰下げの最大増額',section:'④老齢基礎年金',correct:true,q:'75歳まで繰下げた場合の増額率は最大84%となる。',answer:'○ 正しい',reason:'75歳繰下げの増額率：0.7%×120ヵ月（60ヵ月分）＝<mark>84%増</mark>（最大）。',law:'国年法第28条'},
+  {tag:'K181',cat:'繰下げと妻の加給年金',section:'④老齢基礎年金',correct:true,q:'老齢厚生年金を繰下げすると、繰下げ期間中は加給年金が支給停止となる。',answer:'○ 正しい',reason:'老齢厚年の繰下げ中：<mark>加給年金は支給停止</mark>（繰下げ待機期間は加給年金なし）。',law:'厚年法・国年法'},
+  {tag:'K182',cat:'付加年金の対象者',section:'④老齢基礎年金',correct:true,q:'付加年金を利用できるのは第1号被保険者と任意加入被保険者のみである。',answer:'○ 正しい',reason:'付加年金の加入対象：<mark>第1号被保険者と任意加入被保険者</mark>。第2号・第3号は加入不可。',law:'国年法第87条の2'},
+  {tag:'K183',cat:'付加年金の受給資格',section:'④老齢基礎年金',correct:true,q:'付加年金は老齢基礎年金の受給権者が付加保険料を納付していた場合に受給できる。',answer:'○ 正しい',reason:'付加年金：老齢基礎年金の受給権者に支給。老齢基礎年金と<mark>セットで支給</mark>される。',law:'国年法第43条'},
+  {tag:'K184',cat:'付加年金の死亡消滅',section:'④老齢基礎年金',correct:true,q:'付加年金の受給権は老齢基礎年金と同様に死亡により消滅する。',answer:'○ 正しい',reason:'付加年金は老齢基礎年金と一体の給付。<mark>死亡により消滅</mark>（遺族には支給されない）。',law:'国年法第43条'},
+  {tag:'K185',cat:'振替加算の趣旨',section:'④老齢基礎年金',correct:true,q:'振替加算は昭和61年の基礎年金制度導入前から年金制度に参加していた世代の不利益を補正するための制度である。',answer:'○ 正しい',reason:'振替加算の趣旨：<mark>旧制度世代（S41.4.1以前生まれ）</mark>の老齢基礎年金が少なくなることへの補完。',law:'国年法第16条の3'},
+  {tag:'K186',cat:'振替加算の額',section:'④老齢基礎年金',correct:true,q:'振替加算の額は配偶者の生年月日に応じて異なり、若い世代ほど少額になる。',answer:'○ 正しい',reason:'振替加算額：<mark>生年月日で異なる</mark>。S41.4.1以前生まれの中で若い世代ほど老齢基礎年金が多いため加算額が減少。',law:'国年法第16条の3'},
+  {tag:'K187',cat:'特別支給の老齢基礎年金',section:'④老齢基礎年金',correct:false,q:'60歳から64歳の間に受給できる特別支給の老齢基礎年金は存在する。',answer:'× 誤り',reason:'「特別支給の老齢基礎年金」は<mark>存在しない</mark>。特別支給があるのは老齢厚生年金のみ。',law:'国年法・厚年法比較'},
+  {tag:'K188',cat:'老齢基礎年金と就労',section:'④老齢基礎年金',correct:true,q:'老齢基礎年金は就労していても支給停止されない。',answer:'○ 正しい',reason:'老齢基礎年金は就労・所得に関係なく支給。<mark>在職老齢年金制度は厚生年金のみ</mark>に適用。',law:'国年法第26条'},
+  {tag:'K189',cat:'受給資格期間の計算',section:'④老齢基礎年金',correct:true,q:'受給資格期間の10年の計算において、合算対象期間（カラ期間）も算入される。',answer:'○ 正しい',reason:'受給資格期間（10年）：納付済み期間＋免除期間＋<mark>合算対象期間（カラ期間）</mark>を合算。',law:'国年法第26条'},
+  {tag:'K190',cat:'老齢基礎年金の端数',section:'④老齢基礎年金',correct:true,q:'老齢基礎年金の計算で端数が生じた場合、50円未満は切り捨て、50円以上は切り上げる。',answer:'○ 正しい',reason:'端数処理：<mark>50円未満切捨て・50円以上切上げ</mark>（年金支払時は1円単位）。',law:'国年法第27条'},
+  {tag:'K191',cat:'繰上げと寡婦年金',section:'④老齢基礎年金',correct:true,q:'老齢基礎年金を繰上げ受給した場合、寡婦年金の受給権は消滅する。',answer:'○ 正しい',reason:'繰上げのデメリット：<mark>寡婦年金の受給権が消滅</mark>（繰上げで老齢年金を選択したため）。',law:'国年法附則第9条の2'},
+  {tag:'K192',cat:'老齢基礎年金の失権',section:'④老齢基礎年金',correct:true,q:'老齢基礎年金の受給権は受給権者が死亡した場合に消滅する。',answer:'○ 正しい',reason:'老齢基礎年金の失権事由：<mark>死亡</mark>（主な事由）。年金は一身専属権で相続はされない。',law:'国年法第29条'},
+  {tag:'K193',cat:'免除期間の年金額計算',section:'④老齢基礎年金',correct:true,q:'4分の3免除期間の老齢基礎年金への反映割合は8分の5である。',answer:'○ 正しい',reason:'4分の3免除期間の反映：<mark>8分の5</mark>（本人負担1/4＋国庫1/2×（1/2÷3/4相当）で計算）。',law:'国年法第27条'},
+  {tag:'K194',cat:'半額免除の反映',section:'④老齢基礎年金',correct:true,q:'半額免除期間の老齢基礎年金への反映割合は4分の3である。',answer:'○ 正しい',reason:'半額免除期間の反映：<mark>4分の3</mark>（本人負担1/2＋国庫補助分1/4の合計）。',law:'国年法第27条'},
+  {tag:'K195',cat:'4分の1免除の反映',section:'④老齢基礎年金',correct:true,q:'4分の1免除期間の老齢基礎年金への反映割合は8分の7である。',answer:'○ 正しい',reason:'4分の1免除期間の反映：<mark>8分の7</mark>（本人負担3/4＋国庫補助1/8の合計）。',law:'国年法第27条'},
+  {tag:'K196',cat:'老齢基礎年金の開始月',section:'④老齢基礎年金',correct:true,q:'老齢基礎年金は65歳に達した日の属する月の翌月から支給される。',answer:'○ 正しい',reason:'老齢基礎年金の支給開始：<mark>65歳に達した日の属する月の翌月</mark>から（誕生月の翌月から）。',law:'国年法第26条'},
+  {tag:'K197',cat:'繰下げ待機期間',section:'④老齢基礎年金',correct:true,q:'繰下げ待機期間中（65〜75歳）は老齢基礎年金は支給されない。',answer:'○ 正しい',reason:'繰下げ待機中：<mark>年金支給なし</mark>。申出した時点で待機月数分を一括受給することも可能（5年以内）。',law:'国年法第28条'},
+  {tag:'K198',cat:'一括繰下げ',section:'④老齢基礎年金',correct:true,q:'70歳以降に繰下げ申出をした場合、5年前の時点で繰下げ申出があったとみなして一括受給できる（65歳以降の時点が上限）。',answer:'○ 正しい',reason:'5年遡及みなし：70歳以降の申出でも<mark>5年前みなし一括受給</mark>が可能（65歳は起算点）。',law:'国年法第28条'},
+  {tag:'K199',cat:'特例的繰下げ',section:'④老齢基礎年金',correct:true,q:'老齢基礎年金と老齢厚生年金は別々に繰下げすることができる。',answer:'○ 正しい',reason:'老齢基礎年金と老齢厚生年金は<mark>別々に繰下げ可能</mark>（同時に繰下げする必要はない）。',law:'国年法第28条・厚年法'},
+  {tag:'K200',cat:'満額の意味',section:'④老齢基礎年金',correct:true,q:'「老齢基礎年金の満額」とは480ヵ月（40年間）すべて保険料を納付した場合の額を指す。',answer:'○ 正しい',reason:'老齢基礎年金の<mark>満額</mark>：<mark>480ヵ月全期間納付</mark>した場合の額（令和6年度：816,000円/年）。',law:'国年法第27条'},
+  {tag:'K201',cat:'20歳前傷病',section:'⑤障害基礎年金',correct:true,q:'20歳前の傷病による障害は保険料の納付要件がなく、20歳に達した日から障害基礎年金が支給される。',answer:'○ 正しい',reason:'20歳前傷病（法第30条の4）：<mark>保険料納付要件なし</mark>。20歳到達日または障害等級該当日から支給。',law:'国年法第30条の4'},
+  {tag:'K202',cat:'20歳前傷病の所得制限',section:'⑤障害基礎年金',correct:true,q:'20歳前傷病による障害基礎年金には所得制限が設けられている。',answer:'○ 正しい',reason:'20歳前傷病の障害基礎年金：<mark>所得制限あり</mark>（一定所得以上で全部・一部停止）。',law:'国年法第36条の3'},
+  {tag:'K203',cat:'障害認定日請求',section:'⑤障害基礎年金',correct:true,q:'障害認定日以降に請求した場合でも、認定日に遡って受給権が発生する（遡及請求）。',answer:'○ 正しい',reason:'遡及請求：障害認定日以降5年以内なら<mark>認定日に遡って</mark>受給権発生・支給可能。',law:'国年法第30条'},
+  {tag:'K204',cat:'遡及請求の時効',section:'⑤障害基礎年金',correct:true,q:'遡及請求においても5年の時効が適用され、5年より前の分は時効消滅する。',answer:'○ 正しい',reason:'遡及請求の支分権：<mark>5年の時効</mark>が適用。5年以上前の分は時効消滅するため注意。',law:'国年法第102条'},
+  {tag:'K205',cat:'障害の程度',section:'⑤障害基礎年金',correct:true,q:'障害基礎年金の1・2級の障害の程度は国民年金法施行令に定める障害等級表による。',answer:'○ 正しい',reason:'障害等級：<mark>国民年金法施行令の障害等級表</mark>（1級・2級）による認定。',law:'国年法第30条'},
+  {tag:'K206',cat:'3級障害',section:'⑤障害基礎年金',correct:false,q:'障害基礎年金には1級・2級・3級の3段階がある。',answer:'× 誤り',reason:'障害基礎年金は<mark>1級・2級のみ</mark>（3級はない）。3級があるのは障害厚生年金。',law:'国年法第30条'},
+  {tag:'K207',cat:'3級と障害手当金',section:'⑤障害基礎年金',correct:true,q:'障害厚生年金には3級があり、障害手当金（一時金）も存在するが、障害基礎年金には3級も障害手当金もない。',answer:'○ 正しい',reason:'障害基礎年金：<mark>1・2級のみ</mark>。障害手当金なし。3級・手当金は厚年のみ（基礎との違い）。',law:'厚年法・国年法比較'},
+  {tag:'K208',cat:'障害の変化',section:'⑤障害基礎年金',correct:true,q:'障害基礎年金の受給中に障害の程度が変化した場合、改定請求または支給停止申請をすることができる。',answer:'○ 正しい',reason:'障害の変化：悪化→改定請求（等級アップ）・回復→<mark>支給停止</mark>（等級非該当で停止）。',law:'国年法第34条'},
+  {tag:'K209',cat:'障害認定日後の悪化',section:'⑤障害基礎年金',correct:true,q:'障害認定日以降に障害が悪化した場合、厚生労働大臣に改定の請求をすることができる。',answer:'○ 正しい',reason:'改定請求（法第34条）：障害認定日以降に障害の程度が<mark>増悪した場合</mark>に等級アップを請求。',law:'国年法第34条'},
+  {tag:'K210',cat:'併合認定',section:'⑤障害基礎年金',correct:true,q:'既に障害基礎年金を受給している者が別の傷病で新たに障害状態になった場合、前後の障害を併合して等級を認定することがある。',answer:'○ 正しい',reason:'併合認定（法第31条）：前後の障害を<mark>併合</mark>して1・2級の認定をする制度。',law:'国年法第31条'},
+  {tag:'K211',cat:'支給停止の解除',section:'⑤障害基礎年金',correct:true,q:'障害基礎年金が支給停止された場合でも、再び障害等級に該当すれば支給停止が解除される。',answer:'○ 正しい',reason:'支給停止の解除：再び障害等級に<mark>該当した場合</mark>に支給再開（失権ではなく停止）。',law:'国年法第36条'},
+  {tag:'K212',cat:'受給権の失権',section:'⑤障害基礎年金',correct:true,q:'障害基礎年金の受給権は受給権者が死亡した場合に消滅する。',answer:'○ 正しい',reason:'障害基礎年金の失権：主な事由は<mark>死亡</mark>。等級非該当での停止は失権ではない。',law:'国年法第35条'},
+  {tag:'K213',cat:'初診日の重要性',section:'⑤障害基礎年金',correct:true,q:'障害基礎年金において初診日は被保険者要件・保険料納付要件・障害認定日の起算点として重要な意味を持つ。',answer:'○ 正しい',reason:'初診日：①被保険者要件の判定日②保険料<mark>納付要件の前日判定</mark>の基準③<mark>認定日の起算点</mark>。',law:'国年法第30条'},
+  {tag:'K214',cat:'治療中の障害認定',section:'⑤障害基礎年金',correct:true,q:'症状が固定していなくても、初診日から1年6ヵ月を経過した日が障害認定日となる。',answer:'○ 正しい',reason:'障害認定日：初診日から1年6ヵ月後（<mark>治癒・症状固定がなくても</mark>この日が認定日）。',law:'国年法第34条'},
+  {tag:'K215',cat:'人工透析の認定日',section:'⑤障害基礎年金',correct:true,q:'人工透析を開始した場合、透析開始から3ヵ月を経過した日が障害認定日となる特例がある。',answer:'○ 正しい',reason:'人工透析の特例：透析開始から<mark>3ヵ月後</mark>が障害認定日（1年6ヵ月の例外）。',law:'国年法施行令'},
+  {tag:'K216',cat:'障害と老齢の調整',section:'⑤障害基礎年金',correct:true,q:'障害基礎年金と老齢基礎年金を同時に受給することはできない（選択制）。',answer:'○ 正しい',reason:'障害基礎年金と老齢基礎年金は<mark>選択制</mark>（同時受給不可）。どちらか有利な方を選択。',law:'国年法第36条'},
+  {tag:'K217',cat:'障害と遺族の調整',section:'⑤障害基礎年金',correct:true,q:'障害基礎年金と遺族基礎年金を同時に受給することはできない（選択制）。',answer:'○ 正しい',reason:'障害基礎年金と遺族基礎年金も<mark>選択制</mark>（同時受給不可）。',law:'国年法第36条'},
+  {tag:'K218',cat:'初診日の証明',section:'⑤障害基礎年金',correct:true,q:'初診日は原則として医療機関の証明書（受診状況等証明書）により確認する。',answer:'○ 正しい',reason:'初診日の証明：<mark>受診状況等証明書</mark>（初診医療機関が作成）が原則の証明方法。',law:'国年法施行規則'},
+  {tag:'K219',cat:'配偶者の加給なし',section:'⑤障害基礎年金',correct:true,q:'障害基礎年金には配偶者に対する加算はなく、子の加算のみである。',answer:'○ 正しい',reason:'障害基礎年金：<mark>子の加算のみ</mark>（配偶者加給なし）。配偶者加給は老齢・障害厚年にある。',law:'国年法第33条の2'},
+  {tag:'K220',cat:'第3子以降の加算',section:'⑤障害基礎年金',correct:true,q:'障害基礎年金の子の加算は第3子以降は1・2人目の加算額の半額以下となる。',answer:'○ 正しい',reason:'子の加算：1・2人目各<mark>234,800円</mark>、3人目以降各<mark>78,300円</mark>（令和6年度）。',law:'国年法第33条の2'},
+  {tag:'K221',cat:'事後重症の効果',section:'⑤障害基礎年金',correct:true,q:'事後重症による障害基礎年金は認定日以前には遡及せず、請求月の翌月から支給される。',answer:'○ 正しい',reason:'事後重症：<mark>請求月の翌月から将来に向かって</mark>支給（認定日への遡及なし）。',law:'国年法第31条'},
+  {tag:'K222',cat:'障害基礎年金の請求先',section:'⑤障害基礎年金',correct:true,q:'障害基礎年金の請求は厚生労働大臣（日本年金機構）に対して行う。',answer:'○ 正しい',reason:'障害基礎年金の請求先：<mark>厚生労働大臣（日本年金機構）</mark>。市町村ではない。',law:'国年法第30条'},
+  {tag:'K223',cat:'特別障害給付金',section:'⑤障害基礎年金',correct:true,q:'学生納付特例・任意加入未加入期間中に初診日がある傷病による障害者には特別障害給付金が支給される場合がある。',answer:'○ 正しい',reason:'<mark>特別障害給付金</mark>：制度上の対象外期間中の障害者に対する特別措置（月額6.6万円等）。',law:'特定障害者給付金法'},
+  {tag:'K224',cat:'精神の障害',section:'⑤障害基礎年金',correct:true,q:'精神の障害（統合失調症等）も障害基礎年金の対象となる。',answer:'○ 正しい',reason:'精神の障害も身体の障害と同様に<mark>障害基礎年金の対象</mark>（障害等級に該当する場合）。',law:'国年法第30条'},
+  {tag:'K225',cat:'傷病手当金との調整',section:'⑤障害基礎年金',correct:true,q:'障害基礎年金の受給者が健保の傷病手当金を受給する場合、傷病手当金が調整（減額）される。',answer:'○ 正しい',reason:'傷病手当金と障害年金：<mark>傷病手当金が減額調整</mark>（障害年金額に応じて差額支給）。',law:'健保法第108条'},
+  {tag:'K226',cat:'遺族基礎年金の支給額',section:'⑥遺族・寡婦・一時金',correct:true,q:'遺族基礎年金の年金額は老齢基礎年金の満額と同額であり、子の数に応じた加算がある。',answer:'○ 正しい',reason:'遺族基礎年金：<mark>老齢基礎年金満額相当＋子の加算</mark>（子の人数により加算額が異なる）。',law:'国年法第38条'},
+  {tag:'K227',cat:'子のある配偶者の受給額',section:'⑥遺族・寡婦・一時金',correct:true,q:'子のある配偶者が受給する遺族基礎年金は、老齢基礎年金満額に子の加算を加えた額である。',answer:'○ 正しい',reason:'配偶者受給：<mark>満額相当＋子の加算</mark>。子1人なら満額＋234,800円（令和6年度）。',law:'国年法第38条'},
+  {tag:'K228',cat:'子が単独受給',section:'⑥遺族・寡婦・一時金',correct:true,q:'子が遺族基礎年金を単独受給する場合（配偶者がいない等）、子の加算を含む額が支給される。',answer:'○ 正しい',reason:'子が単独受給：<mark>満額相当÷子の数×それぞれ</mark>に子の加算を加えた額（構造は複雑）。',law:'国年法第38条'},
+  {tag:'K229',cat:'配偶者失格による子への移行',section:'⑥遺族・寡婦・一時金',correct:true,q:'配偶者が再婚した場合などに受給権を失い、その後子が遺族基礎年金を受給することになる。',answer:'○ 正しい',reason:'配偶者の受給権消滅（再婚等）→その後<mark>子が受給権者</mark>となる場合がある。',law:'国年法第40条'},
+  {tag:'K230',cat:'遺族の範囲',section:'⑥遺族・寡婦・一時金',correct:true,q:'遺族基礎年金の「遺族」に該当するのは被保険者等の配偶者（子のある）と子のみで、父母・祖父母・兄弟姉妹は含まれない。',answer:'○ 正しい',reason:'遺族基礎年金の「遺族」：<mark>子のある配偶者と子のみ</mark>。父母等は含まれない（遺族厚年とは異なる）。',law:'国年法第37条'},
+  {tag:'K231',cat:'子の婚姻と失権',section:'⑥遺族・寡婦・一時金',correct:true,q:'遺族基礎年金の「子」が婚姻した場合、子としての受給権を失う。',answer:'○ 正しい',reason:'子の受給権の失権事由：<mark>婚姻</mark>・離縁・死亡・18歳到達年度末（障害1・2級は20歳）等。',law:'国年法第40条'},
+  {tag:'K232',cat:'配偶者と子の同時受給',section:'⑥遺族・寡婦・一時金',correct:true,q:'子のある配偶者が受給している間、子は遺族基礎年金の受給権があっても支給停止される。',answer:'○ 正しい',reason:'配偶者が受給中は<mark>子の分は支給停止</mark>（配偶者が優先）。配偶者が受給権を失えば子に移行。',law:'国年法第41条'},
+  {tag:'K233',cat:'死亡一時金と寡婦年金の額',section:'⑥遺族・寡婦・一時金',correct:true,q:'死亡一時金の金額は保険料納付期間に応じて増加し、36ヵ月〜839ヵ月以上の区分で120,000円〜320,000円の範囲となる。',answer:'○ 正しい',reason:'死亡一時金の額：納付期間に応じて<mark>120,000〜320,000円</mark>程度（付加保険料がある場合は8,500円加算）。',law:'国年法第52条の2'},
+  {tag:'K234',cat:'付加保険料と死亡一時金',section:'⑥遺族・寡婦・一時金',correct:true,q:'付加保険料を36ヵ月以上納付した者が死亡した場合、死亡一時金に8,500円が加算される。',answer:'○ 正しい',reason:'付加保険料の死亡一時金加算：<mark>8,500円</mark>（付加保険料を36ヵ月以上納付した場合）。',law:'国年法第52条の2'},
+  {tag:'K235',cat:'寡婦年金の受給要件',section:'⑥遺族・寡婦・一時金',correct:true,q:'寡婦年金の受給要件の一つは夫が第1号被保険者として保険料を10年以上納付していたことである。',answer:'○ 正しい',reason:'寡婦年金の要件：夫が<mark>第1号として10年以上</mark>の保険料納付（免除期間含む）。',law:'国年法第49条'},
+  {tag:'K236',cat:'寡婦年金の受給資格',section:'⑥遺族・寡婦・一時金',correct:true,q:'寡婦年金を受給するためには、夫が老齢基礎年金・障害基礎年金を受給していなかったことが要件である。',answer:'○ 正しい',reason:'寡婦年金の要件：夫が<mark>老齢基礎年金・障害基礎年金の受給権を有していなかった</mark>こと。',law:'国年法第49条'},
+  {tag:'K237',cat:'寡婦年金の失権',section:'⑥遺族・寡婦・一時金',correct:true,q:'寡婦年金の受給権は妻が再婚した場合に消滅する。',answer:'○ 正しい',reason:'寡婦年金の失権事由：<mark>再婚</mark>・65歳到達・死亡等（65歳到達時に老齢基礎年金へ移行）。',law:'国年法第53条'},
+  {tag:'K238',cat:'死亡一時金の請求権者',section:'⑥遺族・寡婦・一時金',correct:true,q:'死亡一時金を受給できる遺族は配偶者・子・父母・孫・祖父母・兄弟姉妹の順位で決まる。',answer:'○ 正しい',reason:'死亡一時金の受給者順位：<mark>配偶者・子・父母・孫・祖父母・兄弟姉妹</mark>（この順序）。',law:'国年法第52条の3'},
+  {tag:'K239',cat:'死亡一時金の請求期限',section:'⑥遺族・寡婦・一時金',correct:true,q:'死亡一時金の請求期限は死亡日の翌日から2年以内である。',answer:'○ 正しい',reason:'死亡一時金の請求期限：死亡日の翌日から<mark>2年以内</mark>（時効：2年）。',law:'国年法第52条の4'},
+  {tag:'K240',cat:'寡婦年金と老齢基礎年金',section:'⑥遺族・寡婦・一時金',correct:true,q:'65歳に達した妻が老齢基礎年金を受給できる場合、寡婦年金は支給停止される。',answer:'○ 正しい',reason:'65歳到達で<mark>寡婦年金は終了</mark>（老齢基礎年金に移行）。これが寡婦年金の上限年齢の理由。',law:'国年法第53条'},
+  {tag:'K241',cat:'遺族基礎年金の失権',section:'⑥遺族・寡婦・一時金',correct:true,q:'遺族基礎年金の受給権は受給権者の死亡・婚姻等により消滅する。',answer:'○ 正しい',reason:'遺族基礎年金の失権：<mark>死亡・婚姻・養子縁組</mark>等。受給権者ごとに管理。',law:'国年法第40条'},
+  {tag:'K242',cat:'被保険者の死亡要件',section:'⑥遺族・寡婦・一時金',correct:true,q:'遺族基礎年金の支給要件となる「被保険者等の死亡」には、被保険者であった者の死亡も含まれる。',answer:'○ 正しい',reason:'法第37条の死亡要件：①<mark>被保険者</mark>の死亡②<mark>被保険者であった者</mark>（受給資格要件を満たす者）の死亡。',law:'国年法第37条'},
+  {tag:'K243',cat:'保険料納付要件（遺族）',section:'⑥遺族・寡婦・一時金',correct:true,q:'遺族基礎年金にも保険料納付要件があり、死亡した者の被保険者期間のうち3分の2以上が納付済みまたは免除期間であることが必要である。',answer:'○ 正しい',reason:'遺族基礎年金の納付要件：<mark>3分の2以上</mark>が納付済み・免除（障害基礎年金と同一の要件）。',law:'国年法第37条'},
+  {tag:'K244',cat:'直近1年特例（遺族）',section:'⑥遺族・寡婦・一時金',correct:true,q:'遺族基礎年金にも直近1年間未納がない場合の特例がある（死亡日が令和8年3月31日以前）。',answer:'○ 正しい',reason:'遺族基礎年金の直近1年特例：令和8年3月31日以前の死亡で<mark>直近1年間未納なし</mark>は要件を満たす。',law:'国年法第37条'},
+  {tag:'K245',cat:'寡婦年金と死亡一時金の選択',section:'⑥遺族・寡婦・一時金',correct:true,q:'寡婦年金と死亡一時金の選択は、どちらが有利かを計算した上で行うことが重要である。',answer:'○ 正しい',reason:'選択のポイント：長生き→寡婦年金が有利（毎年受給）、早期死亡→死亡一時金が有利な場合も。',law:'国年法第52条の6'},
+  {tag:'K246',cat:'遺族基礎年金と遺族厚年の併給',section:'⑥遺族・寡婦・一時金',correct:true,q:'遺族基礎年金と遺族厚生年金は原則として同時に受給することができる。',answer:'○ 正しい',reason:'遺族基礎年金（国年）と遺族厚生年金（厚年）は<mark>原則同時受給可</mark>（基礎と上乗せの関係）。',law:'国年法・厚年法'},
+  {tag:'K247',cat:'遺族基礎年金の計算',section:'⑥遺族・寡婦・一時金',correct:true,q:'子が1人の場合の子のある配偶者への遺族基礎年金額は、老齢基礎年金満額＋子1人の加算額である。',answer:'○ 正しい',reason:'子1人の遺族基礎年金：<mark>満額相当＋234,800円</mark>（令和6年度の子1人の加算額）。',law:'国年法第38条'},
+  {tag:'K248',cat:'子の加算の変動',section:'⑥遺族・寡婦・一時金',correct:true,q:'子が18歳到達年度末を迎えると、その子に対する加算がなくなる（障害1・2級の子は除く）。',answer:'○ 正しい',reason:'子の加算は子が<mark>18歳到達年度末を迎えると終了</mark>（障害1・2級の子は20歳まで継続）。',law:'国年法第38条'},
+  {tag:'K249',cat:'死亡一時金の非課税',section:'⑥遺族・寡婦・一時金',correct:true,q:'死亡一時金は所得税の課税対象とならない。',answer:'○ 正しい',reason:'死亡一時金は<mark>非課税</mark>（相続税の課税対象となる場合はあるが所得税は非課税）。',law:'国年法・税法'},
+  {tag:'K250',cat:'寡婦年金の非課税',section:'⑥遺族・寡婦・一時金',correct:true,q:'寡婦年金は公的年金として所得税の課税対象となる（公的年金等控除の適用がある）。',answer:'○ 正しい',reason:'寡婦年金は<mark>公的年金等</mark>として所得税の課税対象（ただし公的年金等控除が適用される）。',law:'国年法・税法'},
+  {tag:'K251',cat:'年金の支払日',section:'⑦給付の通則・時効',correct:true,q:'年金の支払日は偶数月の15日であることが多いが、法律上は支払月内に支払われれば足りる。',answer:'○ 正しい',reason:'年金の支払日：法律上は偶数月内に支払えばよい。実務上は<mark>偶数月15日</mark>に支払われることが多い。',law:'国年法第18条'},
+  {tag:'K252',cat:'年金の日割り計算なし',section:'⑦給付の通則・時効',correct:true,q:'年金は月を単位として支給されるため、日割り計算は行われない。',answer:'○ 正しい',reason:'年金は<mark>月単位</mark>で支給。月の途中で受給権が発生・消滅しても日割り計算は行わない。',law:'国年法第18条'},
+  {tag:'K253',cat:'受給権の一身専属性',section:'⑦給付の通則・時効',correct:true,q:'年金受給権は一身専属の権利であり、相続することはできない。',answer:'○ 正しい',reason:'年金受給権は<mark>一身専属</mark>（受給権者個人の権利）。死亡で消滅し相続されない。',law:'国年法第19条'},
+  {tag:'K254',cat:'差押えの例外',section:'⑦給付の通則・時効',correct:true,q:'年金受給権に対する差押えの禁止は公序良俗に関する規定であり、当事者間で合意しても差押えを有効にすることはできない。',answer:'○ 正しい',reason:'差押え禁止は<mark>強行規定</mark>（当事者合意でも排除不可）。受給権者の保護が目的。',law:'国年法第19条'},
+  {tag:'K255',cat:'時効の援用',section:'⑦給付の通則・時効',correct:true,q:'支分権の時効は援用がなければ時効の効果が生じない。',answer:'○ 正しい',reason:'支分権の時効：<mark>援用が必要</mark>（自動的に消滅はしない。政府側が援用することはほとんどない）。',law:'国年法第102条'},
+  {tag:'K256',cat:'時効の中断',section:'⑦給付の通則・時効',correct:true,q:'保険料の請求は時効の中断事由となる。',answer:'○ 正しい',reason:'時効の中断事由：<mark>請求・差押え・承認</mark>等。保険料を請求されると時効がリセットされる。',law:'国年法第102条'},
+  {tag:'K257',cat:'審査請求の期限',section:'⑦給付の通則・時効',correct:true,q:'社会保険審査官への審査請求は処分があったことを知った日の翌日から60日以内に行う。',answer:'○ 正しい',reason:'審査請求期限：処分を知った日の翌日から<mark>60日以内</mark>（社会保険審査官へ）。',law:'国年法第101条'},
+  {tag:'K258',cat:'再審査請求の期限',section:'⑦給付の通則・時効',correct:true,q:'社会保険審査官の決定に不服がある場合、決定書の謄本が送付された日の翌日から60日以内に再審査請求できる。',answer:'○ 正しい',reason:'再審査請求期限：決定書謄本送付日の翌日から<mark>60日以内</mark>（社会保険審査会へ）。',law:'国年法第101条'},
+  {tag:'K259',cat:'行政訴訟の前置',section:'⑦給付の通則・時効',correct:false,q:'国民年金の処分に不服がある場合、行政訴訟（取消訴訟）を直接提起できる。',answer:'× 誤り',reason:'審査請求前置主義：まず<mark>社会保険審査官に審査請求</mark>してから行政訴訟（審査請求前置）。',law:'国年法第101条の2'},
+  {tag:'K260',cat:'国庫負担の財源',section:'⑦給付の通則・時効',correct:true,q:'基礎年金給付費に充てる国庫負担の財源は主に消費税収入である。',answer:'○ 正しい',reason:'国庫負担の財源：<mark>消費税収入</mark>が主な財源（社会保障と税の一体改革の一環）。',law:'国年法第85条'},
+  {tag:'K261',cat:'国庫負担の対象',section:'⑦給付の通則・時効',correct:true,q:'国庫負担は基礎年金給付費だけでなく、国民年金事業に要する費用の全額も国庫負担である。',answer:'○ 正しい',reason:'国庫負担：①基礎年金給付費の<mark>2分の1</mark>②国民年金事業費は<mark>全額</mark>国庫負担。',law:'国年法第85条'},
+  {tag:'K262',cat:'国民年金基金への国庫負担',section:'⑦給付の通則・時効',correct:false,q:'国民年金基金に対しても国庫からの補助がある。',answer:'× 誤り',reason:'国民年金基金は<mark>任意加入の私的年金</mark>の性格があり、国庫補助の対象ではない（基礎年金のみ）。',law:'国年法第115条'},
+  {tag:'K263',cat:'受給権の保護と差押え',section:'⑦給付の通則・時効',correct:true,q:'年金を銀行口座に振り込まれた後の預金に対しては差し押さえが可能である。',answer:'○ 正しい',reason:'振込後の預金は<mark>差押え可能</mark>（年金受給権としての保護が失われる）。受給前と後で扱いが異なる。',law:'国年法第19条・民事執行法'},
+  {tag:'K264',cat:'社会保険審査会',section:'⑦給付の通則・時効',correct:true,q:'社会保険審査会は委員長と委員6人で構成され、厚生労働大臣の下に置かれる。',answer:'○ 正しい',reason:'社会保険審査会：委員長＋委員<mark>6人</mark>（計7人）。<mark>厚生労働大臣</mark>の下に設置。',law:'社会保険審査官及び社会保険審査会法'},
+  {tag:'K265',cat:'社会保険審査官',section:'⑦給付の通則・時効',correct:true,q:'社会保険審査官は地方厚生局に配置され、審査請求事件を担当する。',answer:'○ 正しい',reason:'社会保険審査官：<mark>地方厚生（支）局</mark>に配置。個別の審査請求を担当する行政官。',law:'社会保険審査官及び社会保険審査会法'},
+  {tag:'K266',cat:'未支払年金',section:'⑦給付の通則・時効',correct:true,q:'受給権者が死亡した場合、その者に支払われるべきであった年金（未支払年金）は遺族が請求できる。',answer:'○ 正しい',reason:'未支払年金：受給権者死亡前に支払われるはずだった年金は<mark>未支払年金として遺族が請求可能</mark>。',law:'国年法第19条'},
+  {tag:'K267',cat:'未支払年金の遺族の範囲',section:'⑦給付の通則・時効',correct:true,q:'未支払年金を請求できる遺族は配偶者・子・父母・孫・祖父母・兄弟姉妹等である。',answer:'○ 正しい',reason:'未支払年金の請求者：<mark>配偶者・子・父母・孫・祖父母・兄弟姉妹</mark>等（法第19条に規定）。',law:'国年法第19条'},
+  {tag:'K268',cat:'情報提供義務',section:'⑦給付の通則・時効',correct:true,q:'厚生労働大臣は被保険者や受給権者に対して年金に関する情報を提供する義務がある。',answer:'○ 正しい',reason:'情報提供義務（法第14条の3）：厚生労働大臣は<mark>情報提供義務</mark>がある（ねんきん定期便等）。',law:'国年法第14条の3'},
+  {tag:'K269',cat:'不服申立てと処分の執行',section:'⑦給付の通則・時効',correct:true,q:'審査請求・再審査請求をしても、処分の執行は原則として停止されない。',answer:'○ 正しい',reason:'審査請求中も<mark>処分の執行は停止しない</mark>（執行停止は例外的に認められる場合あり）。',law:'国年法第101条'},
+  {tag:'K270',cat:'国庫負担の推移',section:'⑦給付の通則・時効',correct:true,q:'基礎年金給付費に対する国庫負担は昭和61年の制度導入時から平成20年度までは3分の1であった。',answer:'○ 正しい',reason:'国庫負担の変遷：S61年〜<mark>H20年度：3分の1</mark>→H21年度〜：2分の1に引き上げ。',law:'国年法第85条'},
+  {tag:'K271',cat:'調整給付',section:'⑦給付の通則・時効',correct:false,q:'国民年金には物価・賃金の変動に応じて年金額を調整するマクロ経済スライドの仕組みがある。',answer:'○ 正しい',reason:'<mark>マクロ経済スライド</mark>：少子高齢化に対応するため、物価・賃金スライドを抑制する調整の仕組み。',law:'国年法第27条の2'},
+  {tag:'K272',cat:'国民年金特別会計',section:'⑦給付の通則・時効',correct:true,q:'国民年金の財政は国民年金特別会計（年金特別会計）で管理される。',answer:'○ 正しい',reason:'国民年金の財政：<mark>国民年金特別会計（年金特別会計）</mark>で一元管理（平成18年度〜年金特会に統合）。',law:'国年法第76条'},
+  {tag:'K273',cat:'積立金',section:'⑦給付の通則・時効',correct:true,q:'国民年金は賦課方式を基本としながら一定の積立金を保有している。',answer:'○ 正しい',reason:'国民年金：<mark>修正積立方式</mark>（賦課方式＋積立方式の組み合わせ）。年金積立金管理運用独立行政法人（GPIF）が運用。',law:'国年法第76条'},
+  {tag:'K274',cat:'不正受給と返還',section:'⑦給付の通則・時効',correct:true,q:'不正な手段で年金を受給した者は、受給額の返還を求められることがある。',answer:'○ 正しい',reason:'不正受給：<mark>受給額の返還</mark>と場合によっては<mark>加算金</mark>（最大40%）の徴収。',law:'国年法第第96条'},
+  {tag:'K275',cat:'年金の遡及支払い',section:'⑦給付の通則・時効',correct:true,q:'受給権発生後に遡及して請求した場合、最大5年前まで遡った支払いが行われる。',answer:'○ 正しい',reason:'支分権の時効（5年）の範囲内で<mark>5年前まで遡及</mark>して支払われる（受給権自体は時効なし）。',law:'国年法第102条'},
+  {tag:'K276',cat:'老齢基礎年金と老齢厚生年金',section:'⑧横断・総仕上げ',correct:true,q:'厚生年金の被保険者は老齢基礎年金と老齢厚生年金の両方を受給できる（基礎年金の上乗せ）。',answer:'○ 正しい',reason:'厚年被保険者：老齢<mark>基礎年金（国年）＋老齢厚生年金（厚年）</mark>の二階建て年金。',law:'国年法・厚年法'},
+  {tag:'K277',cat:'保険料の横断比較',section:'⑧横断・総仕上げ',correct:true,q:'健保の保険料は標準報酬月額×保険料率、厚年も同様、国年（第1号）は定額制と、3科目で保険料方式が異なる。',answer:'○ 正しい',reason:'健保・厚年：<mark>報酬比例制</mark>（標準報酬月額×料率）。国年第1号：<mark>定額制</mark>（所得不問）。',law:'3科目比較'},
+  {tag:'K278',cat:'任意継続と任意加入の違い',section:'⑧横断・総仕上げ',correct:true,q:'健保の「任意継続」は退職後も健保に加入し続ける制度で、国年の「任意加入」とは別の制度である。',answer:'○ 正しい',reason:'健保の<mark>任意継続</mark>（退職後継続）と国年の<mark>任意加入</mark>（60歳以降の追加加入）は別概念。',law:'健保法・国年法比較'},
+  {tag:'K279',cat:'傷病手当金と障害年金',section:'⑧横断・総仕上げ',correct:true,q:'健保の傷病手当金は業務外の傷病による労務不能時に支給され、障害基礎年金は障害状態が固定後に支給される点で異なる。',answer:'○ 正しい',reason:'傷病手当金：<mark>療養中の所得補償</mark>（最大18ヵ月）。障害基礎年金：<mark>障害固定後の恒久給付</mark>。',law:'健保法・国年法比較'},
+  {tag:'K280',cat:'3科目の支払月',section:'⑧横断・総仕上げ',correct:true,q:'健保の傷病手当金は月単位で支払われるが、年金（老齢・障害・遺族）は偶数月に2ヵ月分まとめて支払われる。',answer:'○ 正しい',reason:'傷病手当金：<mark>随時支払い</mark>。年金：<mark>偶数月払い（2ヵ月分）</mark>。支払方法が異なる。',law:'健保法・国年法比較'},
+  {tag:'K281',cat:'障害3科目の比較',section:'⑧横断・総仕上げ',correct:true,q:'障害厚生年金には3級と障害手当金があるが、障害基礎年金には3級も障害手当金もない。',answer:'○ 正しい',reason:'障害<mark>厚生</mark>年金：1〜3級＋障害手当金。障害<mark>基礎</mark>年金：<mark>1・2級のみ</mark>（3級・手当金なし）。',law:'国年法・厚年法比較'},
+  {tag:'K282',cat:'加給年金と振替加算',section:'⑧横断・総仕上げ',correct:true,q:'厚生年金の加給年金は被保険者期間20年以上の老齢厚生年金受給者に対象配偶者がいる場合に加算され、配偶者65歳到達時に振替加算（国年）に切り替わる。',answer:'○ 正しい',reason:'加給年金（厚年）：被保険者20年以上の老齢厚生年金受給者に加算→配偶者65歳で<mark>振替加算（国年）</mark>に切替。',law:'厚年法・国年法'},
+  {tag:'K283',cat:'遺族の横断比較',section:'⑧横断・総仕上げ',correct:true,q:'遺族基礎年金の受給権者は子のある配偶者と子のみだが、遺族厚生年金は子のない配偶者・父母・祖父母なども受給できる。',answer:'○ 正しい',reason:'遺族基礎年金：<mark>子のある配偶者・子</mark>のみ。遺族厚生年金：<mark>子のない配偶者・父母等</mark>も対象（遺族の範囲が広い）。',law:'国年法・厚年法比較'},
+  {tag:'K284',cat:'第3号と被扶養者の同時認定',section:'⑧横断・総仕上げ',correct:true,q:'健保の被扶養者として認定されると、同時に国民年金の第3号被保険者として認定されることが多い。',answer:'○ 正しい',reason:'健保被扶養者認定と国年第3号認定は連動。事業主が<mark>一括で手続き</mark>する（第2号の事業主が届出）。',law:'健保法・国年法'},
+  {tag:'K285',cat:'離婚時年金分割と国年',section:'⑧横断・総仕上げ',correct:false,q:'国民年金の老齢基礎年金も離婚時の年金分割の対象となる。',answer:'× 誤り',reason:'年金分割の対象は<mark>厚生年金の報酬比例部分のみ</mark>。老齢基礎年金（国年）は対象外。',law:'厚年法・国年法比較'},
+  {tag:'K286',cat:'遺族基礎年金の保険料要件',section:'⑧横断・総仕上げ',correct:true,q:'遺族基礎年金・障害基礎年金の保険料納付要件は同一（被保険者期間の3分の2以上納付済み・免除、または直近1年間未納なし）である。',answer:'○ 正しい',reason:'遺族・障害基礎年金の納付要件：ともに<mark>3分の2以上</mark>または<mark>直近1年間未納なし</mark>で同一。',law:'国年法第30条・第37条'},
+  {tag:'K287',cat:'国年と厚年の一体改革',section:'⑧横断・総仕上げ',correct:true,q:'平成29年8月に受給資格期間が25年から10年に短縮され、無年金者の救済が図られた。',answer:'○ 正しい',reason:'H29.8〜：受給資格期間<mark>10年</mark>に短縮（旧25年）。無年金者約64万人が新たに年金受給可能に。',law:'国年法第26条'},
+  {tag:'K288',cat:'マイナンバーと年金手続き',section:'⑧横断・総仕上げ',correct:true,q:'マイナンバーを利用することで、年金の住所変更届などの手続きが簡素化されている。',answer:'○ 正しい',reason:'マイナンバー活用：住所変更を<mark>住民基本台帳で自動把握</mark>→一部の届出不要に（手続き簡素化）。',law:'国年法第14条'},
+  {tag:'K289',cat:'ねんきん定期便',section:'⑧横断・総仕上げ',correct:true,q:'ねんきん定期便は毎年誕生月に送付される年金記録のお知らせである。',answer:'○ 正しい',reason:'ねんきん定期便：<mark>毎年誕生月</mark>に送付。50歳未満は加入実績、50歳以上は見込み額を通知。',law:'国年法第14条の3'},
+  {tag:'K290',cat:'年金記録問題',section:'⑧横断・総仕上げ',correct:true,q:'年金記録問題（消えた年金）への対応として第三者委員会による申立て制度が設けられた。',answer:'○ 正しい',reason:'年金記録問題：<mark>社会保険審査会の第三者委員会</mark>等で証言・間接証拠による記録訂正が可能に。',law:'国年法沿革'},
+  {tag:'K291',cat:'保険料水準固定方式',section:'⑧横断・総仕上げ',correct:true,q:'平成16年改正により、保険料水準の上限を固定した上でマクロ経済スライドで給付額を調整する「保険料水準固定方式」が導入された。',answer:'○ 正しい',reason:'H16年改正：<mark>保険料水準固定方式</mark>導入。保険料の上限固定＋マクロ経済スライドによる給付調整。',law:'国年法第87条'},
+  {tag:'K292',cat:'国民年金の財政検証',section:'⑧横断・総仕上げ',correct:true,q:'国民年金の財政状況については、5年ごとに財政再計算（財政検証）が行われる。',answer:'○ 正しい',reason:'財政検証：<mark>5年ごと</mark>に実施（経済・人口等の将来見通しに基づく長期財政見通しの見直し）。',law:'国年法第4条の3'},
+  {tag:'K293',cat:'第1号の特権',section:'⑧横断・総仕上げ',correct:true,q:'第1号被保険者は付加年金・国民年金基金・iDeCo（個人型確定拠出年金）を活用して老後の準備ができる。',answer:'○ 正しい',reason:'第1号は厚生年金がないため、<mark>付加年金・国民年金基金・iDeCo</mark>で自助努力をする選択肢がある。',law:'国年法・確定拠出年金法'},
+  {tag:'K294',cat:'iDeCoと国民年金',section:'⑧横断・総仕上げ',correct:true,q:'iDeCo（個人型確定拠出年金）は第1号・第2号・第3号被保険者全員が加入できる。',answer:'○ 正しい',reason:'iDeCo：<mark>全種別の国民年金被保険者</mark>が加入可能（拠出限度額は種別で異なる）。',law:'確定拠出年金法'},
+  {tag:'K295',cat:'企業年金と国民年金',section:'⑧横断・総仕上げ',correct:true,q:'企業年金（確定給付・確定拠出）は厚生年金の上乗せであり、国民年金の第1号被保険者は利用できない（一部を除く）。',answer:'○ 正しい',reason:'企業年金：厚生年金被保険者（第2号）が対象。第1号は原則<mark>利用不可</mark>（国民年金基金等で代替）。',law:'国年法・企業年金法'},
+  {tag:'K296',cat:'3科目の財源比較',section:'⑧横断・総仕上げ',correct:true,q:'健保・厚年は保険料と事業主負担が主な財源だが、国民年金（第1号）は保険料と国庫負担（2分の1）が財源で事業主負担はない。',answer:'○ 正しい',reason:'国年第1号：<mark>保険料＋国庫負担（1/2）</mark>（事業主負担なし）。健保・厚年：保険料＋事業主負担＋国庫補助。',law:'3科目比較'},
+  {tag:'K297',cat:'合算対象期間の具体例',section:'⑧横断・総仕上げ',correct:true,q:'昭和61年3月以前に厚生年金の被保険者期間があった場合、その期間の一部は合算対象期間となりうる。',answer:'○ 正しい',reason:'カラ期間の代表例：S61年3月以前の<mark>厚生年金被保険者期間のうち国年強制加入前の期間</mark>等。',law:'国年法附則第9条'},
+  {tag:'K298',cat:'在外邦人と国年',section:'⑧横断・総仕上げ',correct:true,q:'海外に居住する日本国籍者は国民年金の強制適用対象外だが、任意加入により老齢基礎年金を確保できる。',answer:'○ 正しい',reason:'海外居住の邦人：強制適用外→<mark>任意加入</mark>で老齢基礎年金の受給資格期間を積み上げ可能。',law:'国年法附則第5条'},
+  {tag:'K299',cat:'年金制度の国際比較',section:'⑧横断・総仕上げ',correct:true,q:'日本の国民年金は全国民をカバーする基礎年金制度であり、ILO条約や社会保障協定に基づく国際的な協力関係がある。',answer:'○ 正しい',reason:'国民年金：国際的にも<mark>社会保障協定</mark>を締結し（米・英・独・仏等）、保険料の二重払い防止を実現。',law:'国年法・社会保障協定'},
+  {tag:'K300',cat:'国民年金の将来',section:'⑧横断・総仕上げ',correct:true,q:'少子高齢化の進展に伴い、マクロ経済スライドによる給付抑制が続く見通しである。',answer:'○ 正しい',reason:'マクロ経済スライド：少子高齢化で<mark>給付水準が徐々に抑制</mark>される。財政検証で50年後の水準を毎回試算。',law:'国年法第27条の2'}
+];
+
+
+
+// ── 状態管理 ──
+var deck = [];          // 現在の出題デッキ
+var idx = 0;            // 現在のカードindex
+var flipped = false;
+var okCount = 0;
+var ngCount = 0;
+var LS_KEY = 'kounen_day11_weak';
+function loadWeak(){try{var r=localStorage.getItem(LS_KEY);return r?(function(){var s={};var arr=JSON.parse(r);for(var i=0;i<arr.length;i++)s[arr[i]]=true;return s;})():{};}catch(e){return {};}}
+function saveWeak(){try{localStorage.setItem(LS_KEY,JSON.stringify(Object.keys(weakSet).map(Number)));}catch(e){}}
+var weakSet = loadWeak();
+var currentFilter = 'all';
+var currentMode = 'shuffle';
+
+// セクション別集計
+var sectionStats = {};
+ALL_CARDS.forEach(function(c,i) {
+  var s = c.section;
+  if (!sectionStats[s]) sectionStats[s] = {total:0, ok:0};
+  sectionStats[s].total++;
+});
+
+// ── デッキ構築 ──
+function buildDeck() {
+  var base;
+  if (currentFilter === 'all') {
+    base=(function(){var r=[];for(var _i=0;_i<ALL_CARDS.length;_i++)r.push(_i);return r;}());
+  } else if (currentFilter === 'weak') {
+    base = Object.keys(weakSet).map(Number);
+  } else {
+    base = (function(){var r=[];for(var _i=0;_i<ALL_CARDS.length;_i++){if(ALL_CARDS[_i].section===currentFilter)r.push(_i);}return r;}());
+  }
+
+  if (currentMode === 'shuffle' || currentMode === 'weak') {
+    // Fisher-Yates シャッフル
+    for (var i = base.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      [base[i], base[j]] = [base[j], base[i]];
+    }
+  }
+  // weak モードは苦手カードを先頭に
+  if (currentMode === 'weak' && Object.keys(weakSet).length > 0) {
+    var weakFirst=(function(){var r=[];for(var _i=0;_i<base.length;_i++){if(weakSet[base[_i]])r.push(base[_i]);}return r;}());
+    var rest=(function(){var r=[];for(var _i=0;_i<base.length;_i++){if(!weakSet[base[_i]])r.push(base[_i]);}return r;}());
+    base = weakFirst.concat(rest);
+  }
+
+  deck = base;
+}
+
+// ── フィルター設定 ──
+function setFilter(sec, el) {
+  // チップのスタイル
+  document.querySelectorAll('.fc-chip').forEach(function(c){c.classList.remove('active');});
+  el.classList.add('active');
+  currentFilter = sec;
+
+  // 苦手モードの場合
+  if (sec === 'weak') {
+    if (Object.keys(weakSet).length === 0) {
+      document.getElementById('no-weak').style.display = 'block';
+      document.getElementById('fc-carousel').style.display = 'none';
+      document.getElementById('fc-result').style.display = 'none';
+      document.getElementById('mastery-wrap').style.display = 'none';
+      updateDash();
+      return;
+    }
+  }
+  document.getElementById('no-weak').style.display = 'none';
+  document.getElementById('fc-result').style.display = 'none';
+  fcInit();
+}
+
+// ── モード設定 ──
+function setMode(mode) {
+  document.querySelectorAll('.mode-btn').forEach(function(b){b.classList.remove('active');});
+  document.getElementById('btn-' + mode).classList.add('active');
+  currentMode = mode;
+  if (mode === 'weak') {
+    setFilter('weak', document.querySelector('[data-sec="weak"]'));
+  } else {
+    fcInit();
+  }
+}
+
+// ── 初期化 ──
+function fcInit() {
+  buildDeck();
+  idx = 0; okCount = 0; ngCount = 0; flipped = false;
+  // セクション統計リセット
+  for(var _si=0;_si<ALL_CARDS.length;_si++){var _sc=ALL_CARDS[_si];var _ss=_sc.section;if(!sectionStats[_ss])sectionStats[_ss]={total:0,ok:0};sectionStats[_ss].total++;}
+  document.getElementById('fc-result').style.display = 'none';
+  document.getElementById('fc-carousel').style.display = 'flex';
+  document.getElementById('fc-nav').style.display = 'none';
+  document.getElementById('mastery-wrap').style.display = 'none';
+  updateDash();
+  if (deck.length > 0) { fcRender(); } else { updateGauge(); }
+}
+
+// ── レンダリング ──
+function fcRender() {
+  if (deck.length === 0) return;
+  var curr = ALL_CARDS[deck[idx]];
+  var prev = idx > 0 ? ALL_CARDS[deck[idx-1]] : null;
+  var next = idx < deck.length - 1 ? ALL_CARDS[deck[idx+1]] : null;
+
+  // 前後カード
+  setSlot('fc-slot-prev','fc-prev-tag','fc-prev-cat','fc-prev-q', prev);
+  setSlot('fc-slot-next','fc-next-tag','fc-next-cat','fc-next-q', next);
+
+  // 現在カード
+  document.getElementById('fc-tag').textContent = curr.tag;
+  document.getElementById('fc-cat').textContent = curr.cat;
+  document.getElementById('fc-q').innerHTML = curr.q;
+  document.getElementById('fc-section-tag').textContent = curr.section;
+
+  var verdict = document.getElementById('fc-verdict');
+  verdict.textContent = curr.correct ? '○　正しい' : '×　誤り';
+  verdict.className = 'fc-verdict ' + (curr.correct ? 'ok' : 'ng');
+  document.getElementById('fc-answer').textContent = curr.answer;
+  document.getElementById('fc-reason').innerHTML = curr.reason.replace(/　/g,'<br>');
+  document.getElementById('fc-lawref').textContent = curr.law;
+
+  var inner = document.getElementById('fc-inner');
+  inner.classList.remove('flipped');
+  flipped = false;
+  var userAns = document.getElementById('fc-user-ans');
+  if (userAns) userAns.textContent = '';
+  document.getElementById('fc-nav').style.display = 'none';
+  var tph=document.getElementById('fc-tap-hint');if(tph)tph.style.display='';
+
+  // カウンター
+  document.getElementById('fc-counter').innerHTML =
+    (idx+1) + '<span> / ' + deck.length + '</span>';
+
+  updateGauge();
+  updateDash();
+}
+
+function setSlot(slotId, tagId, catId, qId, card) {
+  var slot = document.getElementById(slotId);
+  if (!card) { slot.classList.add('hidden'); slot.classList.remove('prev','next'); return; }
+  slot.classList.remove('hidden');
+  slot.classList.add(slotId.includes('prev') ? 'prev' : 'next');
+  document.getElementById(tagId).textContent = card.tag;
+  document.getElementById(catId).textContent = card.cat;
+  document.getElementById(qId).innerHTML = card.q;
+}
+
+// ── ゲージ更新 ──
+function updateGauge() {
+  var total = deck.length;
+  var half = 50;
+  var okPct = Math.min(okCount / total * 100, half);
+  var ngPct = Math.min(ngCount / total * 100, half);
+  document.getElementById('fc-gauge-ok').style.width = okPct + '%';
+  document.getElementById('fc-gauge-ng').style.width = ngPct + '%';
+  document.getElementById('fc-ok-count').textContent = okCount;
+  document.getElementById('fc-ng-count').textContent = ngCount;
+  var rem = deck.length - idx;
+  document.getElementById('fc-remaining').textContent = '残り ' + rem + ' 枚';
+}
+
+// ── ダッシュボード更新 ──
+function updateDash() {
+  var total = deck.length;
+  var answered = okCount + ngCount;
+  var pct = total > 0 ? Math.round(answered / total * 100) : 0;
+  document.getElementById('d-remaining').textContent = Math.max(total - answered, 0);
+  document.getElementById('d-ok').textContent = okCount;
+  document.getElementById('d-weak').textContent = Object.keys(weakSet).length;
+  document.getElementById('d-pct').textContent = pct + '%';
+  document.getElementById('prog-bar').style.width = pct + '%';
+  document.getElementById('prog-lbl').textContent = answered + ' ／ ' + total + ' 枚 回答済み';
+
+  var modeLbls = {shuffle:'🔀 シャッフルモード', order:'📚 Day順モード', weak:'🔥 苦手集中モード'};
+  document.getElementById('d-mode-lbl').textContent = modeLbls[currentMode] || '';
+}
+
+// ── フリップ（カードタップ直接めくり：○×未選択のまま確認するケース）──
+function fcFlip() {
+  var inner = document.getElementById('fc-inner');
+  if (!flipped) {
+    flipped = true;
+    inner.classList.add('flipped');
+    document.getElementById('fc-user-ans').textContent = '（○×で回答してください）';
+    document.getElementById('fc-user-ans').style.color = 'var(--gray)';
+    // ボタンを通常表示に戻しておく
+    var againBtn = document.querySelector('.fc-nav-btn.again');
+    var gotBtn   = document.querySelector('.fc-nav-btn.got');
+    againBtn.style.display = 'block';
+    againBtn.textContent   = '😓 もう一度';
+    gotBtn.style.display   = 'block';
+    gotBtn.textContent     = '✅ 覚えた！';
+    setTimeout(function(){ document.getElementById('fc-nav').style.display = 'flex'; }, 280);
+  } else {
+    flipped = false;
+    inner.classList.remove('flipped');
+    document.getElementById('fc-nav').style.display = 'none';
+  }
+}
+
+// ── ○×ボタン ──
+function fcChoose(userSaidTrue) {
+  if (flipped) return;
+  var curr = ALL_CARDS[deck[idx]];
+  var cardIdx = deck[idx];
+  var isCorrect = (userSaidTrue === curr.correct);
+
+  // ── 正誤判定と同時に苦手を自動登録・解除 ──
+  if (isCorrect) {
+    okCount++;
+    sectionStats[curr.section].ok++;
+    delete weakSet[cardIdx];   // 正解 → 苦手から外す
+  } else {
+    ngCount++;
+    weakSet[cardIdx]=true;      // 不正解 → 即・苦手登録
+  }
+  saveWeak();
+  document.getElementById('d-weak').textContent = Object.keys(weakSet).length;
+  updateGauge();
+  updateDash();
+
+  // ユーザーへのフィードバック表示
+  var userAns = document.getElementById('fc-user-ans');
+  if (userAns) {
+    userAns.textContent = isCorrect ? '✅ 正解！' : '❌ 不正解 → 苦手に追加';
+    userAns.style.color = isCorrect ? 'var(--green)' : 'var(--red)';
+    userAns.style.fontWeight = '700';
+  }
+
+  // ナビボタンのラベルを結果に応じて変更（押す＝次へ進むだけ）
+  var againBtn = document.querySelector('.fc-nav-btn.again');
+  var gotBtn   = document.querySelector('.fc-nav-btn.got');
+  if (isCorrect) {
+    againBtn.style.display = 'none';
+    gotBtn.style.display   = 'block';
+    gotBtn.textContent     = '次へ →';
+  } else {
+    againBtn.style.display = 'block';
+    againBtn.textContent   = '次へ →';
+    gotBtn.style.display   = 'none';
+  }
+
+  var th=document.getElementById('fc-tap-hint');if(th)th.style.display='none';
+  flipped = true;
+  document.getElementById('fc-inner').classList.add('flipped');
+  setTimeout(function(){ document.getElementById('fc-nav').style.display = 'flex'; }, 280);
+}
+
+// ── 次へ ──
+// fcChoose経由の場合：判定・カウント済み。ボタンは「次へ進む」だけ。
+// fcFlip直接めくり→手動ボタンの場合：got引数でここで判定する。
+function fcNext(got) {
+  var cardIdx = deck[idx];
+  var userAnsEl = document.getElementById('fc-user-ans');
+  var alreadyJudged = userAnsEl && userAnsEl.textContent.includes('正解');
+
+  // ○×ボタン未押しでタップめくり→手動ボタンを押した場合のみここで判定
+  if (!alreadyJudged) {
+    if (got) {
+      okCount++;
+      sectionStats[ALL_CARDS[cardIdx].section].ok++;
+      delete weakSet[cardIdx];
+    } else {
+      ngCount++;
+      weakSet[cardIdx]=true;
+    }
+    saveWeak();
+    updateGauge();
+    updateDash();
+  }
+
+  // ボタンの表示をリセット
+  var againBtn = document.querySelector('.fc-nav-btn.again');
+  var gotBtn   = document.querySelector('.fc-nav-btn.got');
+  againBtn.style.display = 'block';
+  againBtn.textContent   = '😓 もう一度';
+  gotBtn.style.display   = 'block';
+  gotBtn.textContent     = '✅ 覚えた！';
+
+  document.getElementById('fc-nav').style.display = 'none';
+  document.getElementById('d-weak').textContent = Object.keys(weakSet).length;
+
+  if (idx + 1 >= deck.length) {
+    showResult();
+    return;
+  }
+  idx++;
+  fcRender();
+}
+
+// ── 結果表示 ──
+function showResult() {
+  updateGauge();
+  updateDash();
+  document.getElementById('fc-carousel').style.display = 'none';
+  document.getElementById('fc-remaining').textContent = '残り 0 枚';
+
+  var total = deck.length;
+  var pct = Math.round(okCount / total * 100);
+  document.getElementById('fc-result-score').textContent = okCount + ' / ' + total;
+  document.getElementById('fc-result-sub').textContent =
+    '正答率 ' + pct + '% ― ' +
+    (pct >= 90 ? '完璧！次の科目へ進もう 🚀' :
+     pct >= 70 ? '合格ライン！苦手カードを復習しよう' :
+     pct >= 50 ? 'もう一周して定着させよう' : '連想図を見直してから再挑戦！');
+  document.getElementById('fc-emoji').textContent = pct >= 90 ? '🏆' : pct >= 70 ? '✨' : pct >= 50 ? '📖' : '💪';
+  document.getElementById('fc-result').style.display = 'block';
+
+  var weakBtn = document.getElementById('btn-retry-weak');
+  weakBtn.style.display = Object.keys(weakSet).length > 0 ? 'inline-block' : 'none';
+
+  // セクション別習熟度
+  renderMastery();
+  document.getElementById('mastery-wrap').style.display = 'block';
+
+  setTimeout(function(){
+    document.getElementById('fc-result').scrollIntoView({behavior:'smooth',block:'start'});
+  }, 200);
+}
+
+// ── セクション別習熟度レンダリング ──
+function renderMastery() {
+  var wrap = document.getElementById('mastery-bars');
+  wrap.innerHTML = '';
+
+  var sections = [
+    '①制度概要','②被保険者','③被扶養者','④標準報酬・保険料',
+    '⑤療養給付','⑥傷病手当金','⑦出産・死亡給付','⑧継続・資格喪失後',
+    '⑨第三者・審査・時効','⑩健保組合・日雇','⑪横断・数字まとめ'
+  ];
+
+  sections.forEach(function(sec) {
+    var stat = sectionStats[sec];
+    if (!stat || stat.total === 0) return;
+    var pct = Math.round(stat.ok / stat.total * 100);
+    var barColor = pct >= 80 ? 'var(--green)' : pct >= 60 ? 'var(--teal)' : pct >= 40 ? 'var(--gold)' : 'var(--red)';
+    wrap.innerHTML += `
+      <div class="mastery-row">
+        <div class="mastery-label">${sec}</div>
+        <div class="mastery-track">
+          <div class="mastery-bar" style="width:${pct}%;background:${barColor};"></div>
+        </div>
+        <div class="mastery-pct" style="color:${barColor};">${pct}%</div>
+      </div>`;
+  });
+}
+
+// ── リスタート ──
+function fcRestart() {
+  document.getElementById('fc-result').style.display = 'none';
+  document.getElementById('mastery-wrap').style.display = 'none';
+  fcInit();
+}
+
+// ── 苦手のみ再挑戦 ──
+function retryWeak() {
+  setFilter('weak', document.querySelector('[data-sec="weak"]'));
+}
+
+// ── 起動 ──
+
+// ═══════════════════════════════════════════════════
+// 穴埋め問題データ（100問）  ※ q内のbSel引数は\' でエスケープ済み
+// ═══════════════════════════════════════════════════
+
+
+var BLANK_Q = [
+{id:'B01',sec:'①目的・被保険者',cat:'目的条文',law:'国年法第1条',q:'国民年金法の目的条文の主語は「<span class="bblank" id="B01a" data-qid="B01" data-bid="B01a">　　</span>」であり、健保・厚年の主語「<span class="bblank" id="B01b" data-qid="B01" data-bid="B01b">　　</span>」とは異なる。',chips:['国民','労働者','被保険者','国家'],defs:{'B01a':'国民','B01b':'労働者'},why:'国年の主語は「<mark>国民</mark>」・健保・厚年は「<mark>労働者</mark>」。国年のみ主語が異なる。',tip:'健保・厚年=労働者、国年=国民。目的条文の主語は超頻出。'},
+{id:'B02',sec:'①目的・被保険者',cat:'第2号の除外',law:'国年法第7条',q:'厚年被保険者のうち、<span class="bblank" id="B02a" data-qid="B02" data-bid="B02a">　　</span>歳以上で老齢年金等の受給権がある者は第2号被保険者から<span class="bblank" id="B02b" data-qid="B02" data-bid="B02b">　　</span>される。',chips:['65','除外','60','算入'],defs:{'B02a':'65','B02b':'除外'},why:'<mark>65歳以上</mark>で老齢年金等の受給権がある者は<mark>除外</mark>。「年齢制限なし」は誤り。',tip:'65歳以上で受給権あり→除外が最頻出引っかけ。'},
+{id:'B03',sec:'①目的・被保険者',cat:'第3号の要件',law:'国年法第7条',q:'第3号被保険者の収入要件：年収<span class="bblank" id="B03a" data-qid="B03" data-bid="B03a">　　</span>万円未満（60歳以上・障害者は<span class="bblank" id="B03b" data-qid="B03" data-bid="B03b">　　</span>万円未満）。保険料個人負担は<span class="bblank" id="B03c" data-qid="B03" data-bid="B03c">　　</span>。',chips:['130','180','なし','100','あり'],defs:{'B03a':'130','B03b':'180','B03c':'なし'},why:'第3号の収入要件：<mark>130万円未満</mark>（60歳以上・障害者は<mark>180万円未満</mark>）。保険料個人負担は<mark>なし</mark>。',tip:'130万・180万・個人負担なしの3点セット。健保の被扶養者と同一基準。'},
+{id:'B04',sec:'①目的・被保険者',cat:'任意加入',law:'国年法附則第5条',q:'任意加入は受給資格不足の<span class="bblank" id="B04a" data-qid="B04" data-bid="B04a">　　</span>歳以上<span class="bblank" id="B04b" data-qid="B04" data-bid="B04b">　　</span>歳未満が対象。特例任意加入はS40.4.1以前生まれの<span class="bblank" id="B04b" data-qid="B04" data-bid="B04b">　　</span>歳以上<span class="bblank" id="B04c" data-qid="B04" data-bid="B04c">　　</span>歳未満。',chips:['60','65','70'],defs:{'B04a':'60','B04b':'65','B04c':'70'},why:'任意加入：受給資格不足の<mark>60〜65歳未満</mark>。特例任意加入：<mark>65〜70歳未満</mark>（S40.4.1以前生まれ）。',tip:'60〜65→任意加入・65〜70→特例任意加入の2段階救済措置。'},
+{id:'B05',sec:'①目的・被保険者',cat:'給付事由の比較',law:'3科目比較',q:'健保の給付事由は<span class="bblank" id="B05a" data-qid="B05" data-bid="B05a">　　</span>・負傷・出産・死亡。厚年・国年の給付事由は老齢・<span class="bblank" id="B05b" data-qid="B05" data-bid="B05b">　　</span>・死亡。',chips:['疾病','障害','傷病','出産'],defs:{'B05a':'疾病','B05b':'障害'},why:'健保：<mark>疾病</mark>・負傷・出産・死亡。厚年・国年：老齢・<mark>障害</mark>・死亡。老齢は健保に含まれない。',tip:'健保に「老齢」はない。現役世代の「今のリスク」を扱う健保には老齢給付がない。'},
+{id:'B06',sec:'①目的・被保険者',cat:'届出義務者',law:'国年法第12条',q:'第1号被保険者の資格取得届の義務者：被保険者<span class="bblank" id="B06a" data-qid="B06" data-bid="B06a">　　</span>・<span class="bblank" id="B06b" data-qid="B06" data-bid="B06b">　　</span>・配偶者のいずれか。期限は<span class="bblank" id="B06c" data-qid="B06" data-bid="B06c">　　</span>日以内（市町村長へ）。',chips:['本人','世帯主','14','10','30'],defs:{'B06a':'本人','B06b':'世帯主','B06c':'14'},why:'届出義務者：<mark>本人・世帯主・配偶者</mark>のいずれか。期限：<mark>14日以内</mark>→市町村長。',tip:'世帯主のみという誤りが頻出。本人・世帯主・配偶者の3者がいずれもOK。'},
+{id:'B07',sec:'②資格取得・喪失・届出',cat:'資格取得日',law:'国年法第8条',q:'第1号被保険者の資格取得日：「<span class="bblank" id="B07a" data-qid="B07" data-bid="B07a">　　</span>歳に達した日」＝誕生日の<span class="bblank" id="B07b" data-qid="B07" data-bid="B07b">　　</span>日。',chips:['20','前','60','当','翌'],defs:{'B07a':'20','B07b':'前'},why:'「20歳に達した日」は民法上<mark>誕生日の前日</mark>。健保・厚年も同じルール。',tip:'民法の「達した日」は誕生日の前日。これは3科目共通のルール。'},
+{id:'B08',sec:'②資格取得・喪失・届出',cat:'資格喪失日',law:'国年法第9条',q:'第1号被保険者が死亡した場合は<span class="bblank" id="B08a" data-qid="B08" data-bid="B08a">　　</span>日喪失、60歳に達した場合は<span class="bblank" id="B08b" data-qid="B08" data-bid="B08b">　　</span>日喪失。',chips:['翌','当','前'],defs:{'B08a':'翌','B08b':'当'},why:'死亡のみ<mark>翌日</mark>喪失・60歳到達・国外転出は<mark>当日</mark>喪失。',tip:'死亡のみ翌日、それ以外は当日。死亡を例外として覚える。'},
+{id:'B09',sec:'②資格取得・喪失・届出',cat:'基礎年金番号',law:'国年法第14条',q:'基礎年金番号の付番者は<span class="bblank" id="B09a" data-qid="B09" data-bid="B09a">　　</span>で、<span class="bblank" id="B09b" data-qid="B09" data-bid="B09b">　　</span>桁の番号。転職・種別変更があっても<span class="bblank" id="B09c" data-qid="B09" data-bid="B09c">　　</span>の番号が使われる。',chips:['厚生労働大臣','10','同一','市町村長','変更される'],defs:{'B09a':'厚生労働大臣','B09b':'10','B09c':'同一'},why:'付番者：<mark>厚生労働大臣</mark>。<mark>10桁</mark>。<mark>生涯同一</mark>（転職・種別変更不変）。',tip:'厚生労働大臣付番・10桁・生涯同一の3点セット。'},
+{id:'B10',sec:'②資格取得・喪失・届出',cat:'届出先比較',law:'国年法第12条・第36条の3',q:'被保険者の資格取得届は<span class="bblank" id="B10a" data-qid="B10" data-bid="B10a">　　</span>へ。受給権者の住所変更届は<span class="bblank" id="B10b" data-qid="B10" data-bid="B10b">　　</span>へ。いずれも<span class="bblank" id="B10c" data-qid="B10" data-bid="B10c">　　</span>日以内。',chips:['市町村長','厚生労働大臣','14','10'],defs:{'B10a':'市町村長','B10b':'厚生労働大臣','B10c':'14'},why:'<mark>被保険者の届出→市町村長</mark>・<mark>受給権者の届出→厚生労働大臣</mark>（管理主体の違い）。',tip:'管理が年金機構（厚生労働大臣）に移るタイミングで届出先も変わる。'},
+{id:'B11',sec:'②資格取得・喪失・届出',cat:'第3号特例',law:'国年法附則第9条の2',q:'昭和61年4月〜平成<span class="bblank" id="B11a" data-qid="B11" data-bid="B11a">　　</span>年3月の第3号期間は届出遅れでも<span class="bblank" id="B11b" data-qid="B11" data-bid="B11b">　　</span>認定される。',chips:['8','遡及','10','不'],defs:{'B11a':'8','B11b':'遡及'},why:'<mark>S61.4〜H8.3</mark>の期間は届出遅れでも<mark>遡及認定</mark>。H8.4以降は届出必要。',tip:'制度発足直後（S61）の届出漏れを救済した特例。H8.3が境界点。'},
+{id:'B12',sec:'②資格取得・喪失・届出',cat:'種別変更',law:'国年法第8条・第9条',q:'第1号被保険者が就職して厚生年金の被保険者となった日に、第1号の資格を<span class="bblank" id="B12a" data-qid="B12" data-bid="B12a">　　</span>し第2号の資格を<span class="bblank" id="B12b" data-qid="B12" data-bid="B12b">　　</span>する（同日付）。',chips:['喪失','取得'],defs:{'B12a':'喪失','B12b':'取得'},why:'種別変更は<mark>同日付</mark>で旧種別喪失・新種別取得。届出により処理される。',tip:'就職・退職のたびに種別が切り替わる。同日付というのが重要。'},
+{id:'B13',sec:'③保険料・免除・猶予',cat:'保険料方式',law:'国年法第87条',q:'国民年金第1号被保険者の保険料は<span class="bblank" id="B13a" data-qid="B13" data-bid="B13a">　　</span>制。厚生年金は<span class="bblank" id="B13b" data-qid="B13" data-bid="B13b">　　</span>比例制。',chips:['定額','報酬','所得','段階'],defs:{'B13a':'定額','B13b':'報酬'},why:'国民年金：<mark>定額制</mark>（所得不問）。厚生年金：<mark>報酬比例制</mark>（標準報酬月額×料率）。',tip:'定額制は自営業者の所得把握困難から生まれた設計。厚年は報酬比例。'},
+{id:'B14',sec:'③保険料・免除・猶予',cat:'法定免除',law:'国年法第89条',q:'法定免除（法第89条）の対象：障害年金<span class="bblank" id="B14a" data-qid="B14" data-bid="B14a">　　</span>・<span class="bblank" id="B14b" data-qid="B14" data-bid="B14b">　　</span>級の受給者、生活保護受給者等。申請は<span class="bblank" id="B14c" data-qid="B14" data-bid="B14c">　　</span>。',chips:['1','2','不要','3','必要'],defs:{'B14a':'1','B14b':'2','B14c':'不要'},why:'法定免除：障害年金<mark>1・2級</mark>受給者・生活保護受給者等。申請<mark>不要</mark>（当然に免除）。',tip:'法定免除は申請不要。「法定」=法律上当然に発生する。'},
+{id:'B15',sec:'③保険料・免除・猶予',cat:'申請免除',law:'国年法第90条',q:'申請免除は<span class="bblank" id="B15a" data-qid="B15" data-bid="B15a">　　</span>額免除・4分の3免除・<span class="bblank" id="B15b" data-qid="B15" data-bid="B15b">　　</span>額免除・4分の1免除の<span class="bblank" id="B15c" data-qid="B15" data-bid="B15c">　　</span>段階。',chips:['全','半','4','3','2'],defs:{'B15a':'全','B15b':'半','B15c':'4'},why:'申請免除は<mark>全額</mark>・<mark>4分の3</mark>・<mark>半額</mark>・<mark>4分の1</mark>の<mark>4段階</mark>。',tip:'4段階は確実に覚える。3段階や2段階という誤りに注意。'},
+{id:'B16',sec:'③保険料・免除・猶予',cat:'若年者猶予',law:'国年法第90条の3',q:'若年者納付猶予の対象：<span class="bblank" id="B16a" data-qid="B16" data-bid="B16a">　　</span>歳未満。所得審査は本人と<span class="bblank" id="B16b" data-qid="B16" data-bid="B16b">　　</span>（学生特例は本人<span class="bblank" id="B16c" data-qid="B16" data-bid="B16c">　　</span>）。',chips:['50','配偶者','のみ','30'],defs:{'B16a':'50','B16b':'配偶者','B16c':'のみ'},why:'若年者猶予：<mark>50歳未満</mark>・本人＋<mark>配偶者</mark>の所得審査。学生特例：本人<mark>のみ</mark>。',tip:'50歳未満（30歳未満は誤り）・配偶者も審査（学生特例は本人のみ）。'},
+{id:'B17',sec:'③保険料・免除・猶予',cat:'産前産後免除',law:'国年法第88条の2',q:'産前産後免除：出産予定日の<span class="bblank" id="B17a" data-qid="B17" data-bid="B17a">　　</span>月から翌々月の<span class="bblank" id="B17b" data-qid="B17" data-bid="B17b">　　</span>ヵ月間。免除期間は保険料<span class="bblank" id="B17c" data-qid="B17" data-bid="B17c">　　</span>扱いで年金額に全額反映。',chips:['前','4','納付済み','6','未納'],defs:{'B17a':'前','B17b':'4','B17c':'納付済み'},why:'産前産後免除：出産予定日の<mark>前月〜翌々月の4ヵ月</mark>。免除期間は<mark>保険料納付済み</mark>扱い→年金額に<mark>全額反映</mark>。',tip:'産前産後免除のみ「納付済み扱い→全額反映」。他の免除（1/2反映）と根本的に異なる。'},
+{id:'B18',sec:'③保険料・免除・猶予',cat:'免除の年金反映',law:'国年法第27条',q:'全額免除期間の年金額への反映は<span class="bblank" id="B18a" data-qid="B18" data-bid="B18a">　　</span>分の1。産前産後免除は<span class="bblank" id="B18b" data-qid="B18" data-bid="B18b">　　</span>額反映。カラ期間は反映<span class="bblank" id="B18c" data-qid="B18" data-bid="B18c">　　</span>。',chips:['2','全','なし','1'],defs:{'B18a':'2','B18b':'全','B18c':'なし'},why:'全額免除：年金額<mark>1/2反映</mark>。産前産後免除：<mark>全額反映</mark>。カラ期間：<mark>反映なし</mark>。',tip:'3種類の比較を表で覚える。産前産後のみが全額反映という点が重要。'},
+{id:'B19',sec:'③保険料・免除・猶予',cat:'追納',law:'国年法第94条',q:'免除・猶予を受けた期間は、承認を受けた月から<span class="bblank" id="B19a" data-qid="B19" data-bid="B19a">　　</span>年以内に保険料を<span class="bblank" id="B19b" data-qid="B19" data-bid="B19b">　　</span>することができる。',chips:['10','追納','5','返還'],defs:{'B19a':'10','B19b':'追納'},why:'追納期限：承認月から<mark>10年以内</mark>。追納すれば<mark>納付済み期間</mark>として全額算入される。',tip:'10年という追納期限。追納すれば年金額が増える。'},
+{id:'B20',sec:'④老齢基礎年金',cat:'受給資格期間',law:'国年法第26条',q:'老齢基礎年金の受給資格期間は<span class="bblank" id="B20a" data-qid="B20" data-bid="B20a">　　</span>年（<span class="bblank" id="B20b" data-qid="B20" data-bid="B20b">　　</span>ヵ月）以上（平成<span class="bblank" id="B20c" data-qid="B20" data-bid="B20c">　　</span>年8月〜）。',chips:['10','120','29','25','300'],defs:{'B20a':'10','B20b':'120','B20c':'29'},why:'受給資格期間：<mark>10年（120ヵ月）</mark>以上（<mark>平成29年8月</mark>〜）。旧25年から短縮。',tip:'現行10年・旧25年。平成29年8月が転換点。'},
+{id:'B21',sec:'④老齢基礎年金',cat:'老齢基礎年金の計算',law:'国年法第27条',q:'老齢基礎年金の満額基準は<span class="bblank" id="B21a" data-qid="B21" data-bid="B21a">　　</span>ヵ月（<span class="bblank" id="B21b" data-qid="B21" data-bid="B21b">　　</span>年間）。計算式：満額×（<span class="bblank" id="B21c" data-qid="B21" data-bid="B21c">　　</span>÷480）。',chips:['480','40','納付済み月数','600','50'],defs:{'B21a':'480','B21b':'40','B21c':'納付済み月数'},why:'満額基準：<mark>480ヵ月（40年間）</mark>。計算式：満額×（<mark>納付済み月数÷480</mark>）。',tip:'480ヵ月（40年）が満額。20〜60歳の全期間納付で満額。'},
+{id:'B22',sec:'④老齢基礎年金',cat:'繰上げ・繰下げ',law:'国年法附則第9条の2・第28条',q:'繰上げは1ヵ月あたり<span class="bblank" id="B22a" data-qid="B22" data-bid="B22a">　　</span>%減額、繰下げは1ヵ月あたり<span class="bblank" id="B22b" data-qid="B22" data-bid="B22b">　　</span>%増額。繰下げは最大<span class="bblank" id="B22c" data-qid="B22" data-bid="B22c">　　</span>歳まで。',chips:['0.4','0.7','75','0.5','65'],defs:{'B22a':'0.4','B22b':'0.7','B22c':'75'},why:'繰上げ：1ヵ月あたり<mark>0.4%</mark>減額。繰下げ：1ヵ月あたり<mark>0.7%</mark>増額（最大<mark>75歳</mark>まで）。',tip:'繰上げ0.4%・繰下げ0.7%・最大75歳の3点セット。'},
+{id:'B23',sec:'④老齢基礎年金',cat:'付加年金',law:'国年法第87条の2',q:'付加年金の保険料：月額<span class="bblank" id="B23a" data-qid="B23" data-bid="B23a">　　</span>円。付加年金額：<span class="bblank" id="B23b" data-qid="B23" data-bid="B23b">　　</span>円×付加保険料納付月数。',chips:['400','200','600','100'],defs:{'B23a':'400','B23b':'200'},why:'付加保険料：月額<mark>400円</mark>。付加年金額：<mark>200円×納付月数</mark>（2年で元が取れる）。',tip:'400円払って200円×月数をもらう。2年間受給すれば元が取れる計算。'},
+{id:'B24',sec:'④老齢基礎年金',cat:'振替加算',law:'国年法第16条の3',q:'振替加算の対象：昭和<span class="bblank" id="B24a" data-qid="B24" data-bid="B24a">　　</span>年4月<span class="bblank" id="B24b" data-qid="B24" data-bid="B24b">　　</span>日<span class="bblank" id="B24c" data-qid="B24" data-bid="B24c">　　</span>生まれの配偶者が対象。',chips:['41','1','以前','42','以降'],defs:{'B24a':'41','B24b':'1','B24c':'以前'},why:'振替加算の対象：<mark>昭和41年4月1日以前</mark>生まれの配偶者（「以降」ではなく「以前」）。',tip:'「以前・以降」が最頻出の引っかけ。S41.4.1以前を確実に記憶する。'},
+{id:'B25',sec:'④老齢基礎年金',cat:'合算対象期間',law:'国年法附則第9条',q:'合算対象期間（カラ期間）は受給<span class="bblank" id="B25a" data-qid="B25" data-bid="B25a">　　</span>期間には算入されるが、<span class="bblank" id="B25b" data-qid="B25" data-bid="B25b">　　</span>の計算には算入されない。',chips:['資格','年金額','保険料','支給'],defs:{'B25a':'資格','B25b':'年金額'},why:'カラ期間：受給<mark>資格期間</mark>には算入される（○）が、<mark>年金額</mark>の計算には算入されない（×）。',tip:'「カラ」=金額が空っぽ。期間だけ稼げて金額は増えない。'},
+{id:'B26',sec:'④老齢基礎年金',cat:'繰上げのデメリット',law:'国年法附則第9条の2',q:'老齢基礎年金を繰上げ受給すると、その後<span class="bblank" id="B26a" data-qid="B26" data-bid="B26a">　　</span>基礎年金は支給されない。また減額率は<span class="bblank" id="B26b" data-qid="B26" data-bid="B26b">　　</span>。',chips:['障害','一生涯','老齢','一時的'],defs:{'B26a':'障害','B26b':'一生涯'},why:'繰上げ後は<mark>障害基礎年金を受給できない</mark>。また繰上げによる減額は<mark>一生涯</mark>（元に戻せない）。',tip:'繰上げの最大デメリット：①障害基礎年金受給不可 ②減額が一生続く。'},
+{id:'B27',sec:'⑤障害基礎年金',cat:'支給要件',law:'国年法第30条',q:'障害基礎年金の対象：①初診日に<span class="bblank" id="B27a" data-qid="B27" data-bid="B27a">　　</span>であった者②<span class="bblank" id="B27b" data-qid="B27" data-bid="B27b">　　</span>歳以上65歳未満で国内居住の者。',chips:['被保険者','60','40','20'],defs:{'B27a':'被保険者','B27b':'60'},why:'対象者2類型：①初診日に<mark>被保険者</mark>②<mark>60歳</mark>以上65歳未満で国内居住（過去被保険者）。',tip:'「被保険者のみ」は誤り。60〜65歳の国内居住も対象。'},
+{id:'B28',sec:'⑤障害基礎年金',cat:'保険料納付要件',law:'国年法第30条',q:'障害基礎年金の納付要件：初診日の<span class="bblank" id="B28a" data-qid="B28" data-bid="B28a">　　</span>時点で被保険者期間の<span class="bblank" id="B28b" data-qid="B28" data-bid="B28b">　　</span>分の2以上が納付済み・免除。',chips:['前日','3','当日','2'],defs:{'B28a':'前日','B28b':'3'},why:'納付要件：初診日の<mark>前日</mark>時点で被保険者期間の<mark>3分の2以上</mark>が納付済み・免除。',tip:'「前日」判定・「3分の2以上」の2点が重要。当日判定は誤り。'},
+{id:'B29',sec:'⑤障害基礎年金',cat:'年金額',law:'国年法第33条',q:'障害基礎年金の年金額：1級は老齢基礎年金満額の<span class="bblank" id="B29a" data-qid="B29" data-bid="B29a">　　</span>倍、2級は<span class="bblank" id="B29b" data-qid="B29" data-bid="B29b">　　</span>倍（満額と同額）。',chips:['1.25','1','1.5','0.75'],defs:{'B29a':'1.25','B29b':'1'},why:'障害1級：満額×<mark>1.25</mark>倍。2級：満額×<mark>1</mark>倍（満額と同額）。',tip:'1.25倍が正解（1.5倍は誤り）。1.25という数字を確実に記憶する。'},
+{id:'B30',sec:'⑤障害基礎年金',cat:'障害認定日',law:'国年法第34条',q:'障害認定日：初診日から<span class="bblank" id="B30a" data-qid="B30" data-bid="B30a">　　</span>ヵ月（<span class="bblank" id="B30b" data-qid="B30" data-bid="B30b">　　</span>年<span class="bblank" id="B30c" data-qid="B30" data-bid="B30c">　　</span>ヵ月）後、または症状固定日。',chips:['18','1','6','12','24'],defs:{'B30a':'18','B30b':'1','B30c':'6'},why:'障害認定日：初診日から<mark>18ヵ月（1年6ヵ月）</mark>後または症状固定日（いずれか早い方）。',tip:'1年6ヵ月（18ヵ月）が正解。2年後は誤り。'},
+{id:'B31',sec:'⑤障害基礎年金',cat:'事後重症',law:'国年法第31条',q:'事後重症は認定日後<span class="bblank" id="B31a" data-qid="B31" data-bid="B31a">　　</span>歳に達する日の<span class="bblank" id="B31b" data-qid="B31" data-bid="B31b">　　</span>日までに等級該当すれば請求可能。支給は<span class="bblank" id="B31c" data-qid="B31" data-bid="B31c">　　</span>に向かって行われる。',chips:['65','前','将来','70','過去'],defs:{'B31a':'65','B31b':'前','B31c':'将来'},why:'事後重症：<mark>65歳に達する日の前日</mark>までに請求・<mark>将来に向かって</mark>支給（遡及なし）。',tip:'65歳前日が期限・将来支給（遡及なし）の2点を確認。'},
+{id:'B32',sec:'⑤障害基礎年金',cat:'子の加算',law:'国年法第33条の2',q:'障害基礎年金の子の加算：原則<span class="bblank" id="B32a" data-qid="B32" data-bid="B32a">　　</span>歳到達年度末まで。障害1・2級の子は<span class="bblank" id="B32b" data-qid="B32" data-bid="B32b">　　</span>歳未満。',chips:['18','20','16','22'],defs:{'B32a':'18','B32b':'20'},why:'子の加算：<mark>18歳到達年度末</mark>まで。障害1・2級の子は<mark>20歳未満</mark>。',tip:'18歳（一般）と20歳未満（障害1・2級）の使い分けが重要。'},
+{id:'B33',sec:'⑥遺族・寡婦・一時金',cat:'遺族基礎年金受給権者',law:'国年法第37条',q:'遺族基礎年金の受給権者は「<span class="bblank" id="B33a" data-qid="B33" data-bid="B33a">　　</span>のある配偶者」と「<span class="bblank" id="B33b" data-qid="B33" data-bid="B33b">　　</span>」のみ。',chips:['子','孫','父母'],defs:{'B33a':'子','B33b':'子'},why:'受給権者：<mark>子のある配偶者</mark>と<mark>子</mark>のみ。子のない配偶者は受給不可。',tip:'子のない配偶者は不可。遺族厚生年金との最大の違い。'},
+{id:'B34',sec:'⑥遺族・寡婦・一時金',cat:'子の年齢要件',law:'国年法第37条の2',q:'遺族基礎年金の「子」：原則<span class="bblank" id="B34a" data-qid="B34" data-bid="B34a">　　</span>歳到達年度末まで。障害1・2級の子は<span class="bblank" id="B34b" data-qid="B34" data-bid="B34b">　　</span>歳未満。婚姻して<span class="bblank" id="B34c" data-qid="B34" data-bid="B34c">　　</span>こと。',chips:['18','20','いない','16','いる'],defs:{'B34a':'18','B34b':'20','B34c':'いない'},why:'子の要件：<mark>18歳到達年度末</mark>まで（障害1・2級は<mark>20歳未満</mark>）・現に婚姻して<mark>いない</mark>こと。',tip:'3条件：18歳到達年度末・障害は20歳未満・婚姻していないこと。'},
+{id:'B35',sec:'⑥遺族・寡婦・一時金',cat:'寡婦年金',law:'国年法第49条',q:'寡婦年金：婚姻期間<span class="bblank" id="B35a" data-qid="B35" data-bid="B35a">　　</span>年以上の妻に<span class="bblank" id="B35b" data-qid="B35" data-bid="B35b">　　</span>歳〜<span class="bblank" id="B35c" data-qid="B35" data-bid="B35c">　　</span>歳未満まで支給。年金額は夫の見込額の4分の3。',chips:['10','60','65','5','70'],defs:{'B35a':'10','B35b':'60','B35c':'65'},why:'寡婦年金：婚姻期間<mark>10年以上</mark>・<mark>60〜65歳未満</mark>まで支給・夫の見込額の<mark>4分の3</mark>。',tip:'10年・60〜65歳・3/4の3点セット。「3分の2」は誤り（健保傷病手当金の割合と混同しない）。'},
+{id:'B36',sec:'⑥遺族・寡婦・一時金',cat:'死亡一時金',law:'国年法第52条の2',q:'死亡一時金：第1号として<span class="bblank" id="B36a" data-qid="B36" data-bid="B36a">　　</span>ヵ月以上納付した者が死亡し、<span class="bblank" id="B36b" data-qid="B36" data-bid="B36b">　　</span>受給者がいない場合に支給。',chips:['36','遺族基礎年金','12','老齢基礎年金'],defs:{'B36a':'36','B36b':'遺族基礎年金'},why:'死亡一時金：<mark>36ヵ月（3年）以上</mark>納付＋<mark>遺族基礎年金受給者がいない</mark>場合に支給。',tip:'36ヵ月（3年）が最低要件。12ヵ月は誤り。遺族基礎年金が優先。'},
+{id:'B37',sec:'⑥遺族・寡婦・一時金',cat:'選択制',law:'国年法第52条の6',q:'寡婦年金と死亡一時金の両方の受給権がある場合は<span class="bblank" id="B37a" data-qid="B37" data-bid="B37a">　　</span>制。遺族基礎年金受給権がある間は寡婦年金は<span class="bblank" id="B37b" data-qid="B37" data-bid="B37b">　　</span>される。',chips:['選択','停止','重複','加算'],defs:{'B37a':'選択','B37b':'停止'},why:'寡婦年金と死亡一時金は<mark>選択制</mark>（重複不可）。遺族基礎年金受給中は寡婦年金は<mark>停止</mark>。',tip:'選択制・停止の2点。遺族基礎年金が最優先。'},
+{id:'B38',sec:'⑥遺族・寡婦・一時金',cat:'遺族の比較',law:'3科目比較',q:'遺族基礎年金は子のない配偶者に<span class="bblank" id="B38a" data-qid="B38" data-bid="B38a">　　</span>支給される。遺族厚生年金は子のない配偶者に<span class="bblank" id="B38b" data-qid="B38" data-bid="B38b">　　</span>支給される。',chips:['支給されない','支給される'],defs:{'B38a':'支給されない','B38b':'支給される'},why:'遺族基礎年金：子のない配偶者は<mark>支給されない</mark>。遺族厚生年金：子のない配偶者も<mark>支給される</mark>。',tip:'遺族基礎年金と遺族厚生年金の最大の違い。毎年出題される横断論点。'},
+{id:'B39',sec:'⑦給付の通則・時効',cat:'支払時期',law:'国年法第18条',q:'年金は毎年<span class="bblank" id="B39a" data-qid="B39" data-bid="B39a">　　</span>月（年<span class="bblank" id="B39b" data-qid="B39" data-bid="B39b">　　</span>回）に前<span class="bblank" id="B39c" data-qid="B39" data-bid="B39c">　　</span>ヵ月分支払われる。',chips:['偶数','6','2','奇数','3'],defs:{'B39a':'偶数','B39b':'6','B39c':'2'},why:'年金は毎年<mark>偶数月</mark>（年<mark>6回</mark>）に前<mark>2ヵ月分</mark>支払われる。3科目共通。',tip:'偶数月・年6回・前2ヵ月分の3点。3科目すべてで共通。'},
+{id:'B40',sec:'⑦給付の通則・時効',cat:'受給権の保護',law:'国年法第19条',q:'年金受給権の<span class="bblank" id="B40a" data-qid="B40" data-bid="B40a">　　</span>・担保・差押えは原則禁止。例外：<span class="bblank" id="B40b" data-qid="B40" data-bid="B40b">　　</span>の滞納処分による差押えは可能。',chips:['譲渡','国税・地方税','相続','健康保険料'],defs:{'B40a':'譲渡','B40b':'国税・地方税'},why:'受給権の<mark>譲渡・担保・差押え</mark>原則禁止。例外：<mark>国税・地方税の滞納処分</mark>は可。',tip:'禁止の3点セット。国税・地方税の滞納処分のみが例外。'},
+{id:'B41',sec:'⑦給付の通則・時効',cat:'時効',law:'国年法第102条',q:'受給権（基本権）の時効は<span class="bblank" id="B41a" data-qid="B41" data-bid="B41a">　　</span>。支分権は<span class="bblank" id="B41b" data-qid="B41" data-bid="B41b">　　</span>年。保険料徴収権は<span class="bblank" id="B41c" data-qid="B41" data-bid="B41c">　　</span>年で時効消滅。',chips:['なし','5','2','3','10'],defs:{'B41a':'なし','B41b':'5','B41c':'2'},why:'受給権（基本権）：<mark>時効なし</mark>。支分権：<mark>5年</mark>。保険料徴収権：<mark>2年</mark>。',tip:'時効なし・5年・2年の3段階を覚える。'},
+{id:'B42',sec:'⑦給付の通則・時効',cat:'時効の比較',law:'3科目比較',q:'支分権の時効：健保・厚年は<span class="bblank" id="B42a" data-qid="B42" data-bid="B42a">　　</span>年、国年は<span class="bblank" id="B42b" data-qid="B42" data-bid="B42b">　　</span>年。保険料徴収権は3科目とも<span class="bblank" id="B42c" data-qid="B42" data-bid="B42c">　　</span>年。',chips:['2','5','3'],defs:{'B42a':'2','B42b':'5','B42c':'2'},why:'支分権：健保・厚年<mark>2年</mark>・国年<mark>5年</mark>（国年のみ異なる）。保険料徴収権：3科目とも<mark>2年</mark>。',tip:'国年の支分権のみ5年というのが3科目横断の頻出論点。'},
+{id:'B43',sec:'⑦給付の通則・時効',cat:'不服申立て',law:'国年法第101条',q:'国民年金の処分への不服：まず<span class="bblank" id="B43a" data-qid="B43" data-bid="B43a">　　</span>に審査請求、不服なら<span class="bblank" id="B43b" data-qid="B43" data-bid="B43b">　　</span>に再審査請求。',chips:['社会保険審査官','社会保険審査会','厚生労働大臣'],defs:{'B43a':'社会保険審査官','B43b':'社会保険審査会'},why:'不服申立て：①<mark>社会保険審査官</mark>→②<mark>社会保険審査会</mark>→③行政訴訟。',tip:'審査官（個人）→審査会（合議体）の順。「官→会」と覚える。'},
+{id:'B44',sec:'⑦給付の通則・時効',cat:'国庫負担',law:'国年法第85条',q:'基礎年金給付費に対する国庫負担割合は<span class="bblank" id="B44a" data-qid="B44" data-bid="B44a">　　</span>分の<span class="bblank" id="B44b" data-qid="B44" data-bid="B44b">　　</span>（平成<span class="bblank" id="B44c" data-qid="B44" data-bid="B44c">　　</span>年度〜）。',chips:['2','1','21','3','10'],defs:{'B44a':'2','B44b':'1','B44c':'21'},why:'国庫負担：基礎年金給付費の<mark>2分の1</mark>（<mark>平成21年度</mark>〜）。旧3分の1から引き上げ。',tip:'2分の1（現行）・3分の1（旧）・平成21年度が転換点。'},
+{id:'B45',sec:'⑧横断・総仕上げ',cat:'目的条文',law:'3科目比較',q:'健保・厚年の主語は「<span class="bblank" id="B45a" data-qid="B45" data-bid="B45a">　　</span>」、国年の主語は「<span class="bblank" id="B45b" data-qid="B45" data-bid="B45b">　　</span>」。国年のみ「<span class="bblank" id="B45c" data-qid="B45" data-bid="B45c">　　</span>の共同連帯」という文言。',chips:['労働者','国民','国民'],defs:{'B45a':'労働者','B45b':'国民','B45c':'国民'},why:'健保・厚年：主語<mark>労働者</mark>。国年：主語<mark>国民</mark>。国年のみ「<mark>国民の共同連帯</mark>」。',tip:'目的条文の3科目比較は毎年出題される超頻出。'},
+{id:'B46',sec:'⑧横断・総仕上げ',cat:'収入要件の横断',law:'3科目共通',q:'健保の被扶養者と国年の第3号の収入要件は年収<span class="bblank" id="B46a" data-qid="B46" data-bid="B46a">　　</span>万円未満（60歳以上等は<span class="bblank" id="B46b" data-qid="B46" data-bid="B46b">　　</span>万円未満）で<span class="bblank" id="B46c" data-qid="B46" data-bid="B46c">　　</span>。',chips:['130','180','同一','100','異なる'],defs:{'B46a':'130','B46b':'180','B46c':'同一'},why:'健保被扶養者・国年第3号ともに<mark>130万円未満</mark>（60歳以上等は<mark>180万円未満</mark>）で<mark>同一基準</mark>。',tip:'両制度が連動して設計されているため同一基準。横断問題の定番。'},
+{id:'B47',sec:'⑧横断・総仕上げ',cat:'産前産後免除の横断',law:'3科目共通',q:'厚年・国年の産前産後免除は保険料<span class="bblank" id="B47a" data-qid="B47" data-bid="B47a">　　</span>扱いで年金額に<span class="bblank" id="B47b" data-qid="B47" data-bid="B47b">　　</span>反映される。',chips:['納付済み','全額','未納','半額'],defs:{'B47a':'納付済み','B47b':'全額'},why:'厚年・国年の産前産後免除：<mark>保険料納付済み扱い→全額反映</mark>。3科目すべてに制度あり。',tip:'産前産後免除の「全額反映」は他の免除と根本的に異なる。少子化対策の一環。'},
+{id:'B48',sec:'⑧横断・総仕上げ',cat:'振替加算と数字',law:'国年法第16条の3',q:'振替加算の対象：昭和<span class="bblank" id="B48a" data-qid="B48" data-bid="B48a">　　</span>年4月<span class="bblank" id="B48b" data-qid="B48" data-bid="B48b">　　</span>日以前生まれの配偶者。障害1級は満額×<span class="bblank" id="B48c" data-qid="B48" data-bid="B48c">　　</span>倍。',chips:['41','1','1.25','42','1.5'],defs:{'B48a':'41','B48b':'1','B48c':'1.25'},why:'振替加算：<mark>昭和41年4月1日以前</mark>生まれの配偶者。障害1級：満額×<mark>1.25</mark>倍。',tip:'振替加算のS41.4.1・障害1級の1.25倍は超頻出引っかけ数字。セットで覚える。'},
+{id:'B49',sec:'⑧横断・総仕上げ',cat:'寡婦年金と死亡一時金の数字',law:'国年法第49条・第52条の2',q:'寡婦年金の年金額は夫の見込額の<span class="bblank" id="B49a" data-qid="B49" data-bid="B49a">　　</span>分の3。死亡一時金の納付要件は<span class="bblank" id="B49b" data-qid="B49" data-bid="B49b">　　</span>ヵ月以上。',chips:['4','36','3','12'],defs:{'B49a':'4','B49b':'36'},why:'寡婦年金：夫の見込額の<mark>4分の3</mark>。死亡一時金：<mark>36ヵ月（3年）以上</mark>納付。',tip:'4分の3（寡婦年金）・36ヵ月（死亡一時金）の2数字を確実に。'},
+{id:'B50',sec:'⑧横断・総仕上げ',cat:'国庫負担と時効の横断',law:'3科目共通',q:'国庫負担：基礎年金給付費の<span class="bblank" id="B50a" data-qid="B50" data-bid="B50a">　　</span>分の1（H21年度〜）。支分権の時効：健保・厚年<span class="bblank" id="B50b" data-qid="B50" data-bid="B50b">　　</span>年・国年<span class="bblank" id="B50c" data-qid="B50" data-bid="B50c">　　</span>年。',chips:['2','2','5','3','1'],defs:{'B50a':'2','B50b':'2','B50c':'5'},why:'国庫負担：<mark>2分の1</mark>（H21年度〜）。支分権：健保・厚年<mark>2年</mark>・国年<mark>5年</mark>。',tip:'2分の1・2年・5年の3数字を横断でまとめて覚える。'}
+];
+
+
+
+// ── タブ切り替え ──
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById('panel-' + name).classList.add('active');
+  btn.classList.add('active');
+  if (name === 'blank') { bfcInit(); }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+
+// ═══════════════════════════════════════════════════
+// 穴埋えカルーセルロジック
+// ═══════════════════════════════════════════════════
+var bFilter  = 'all';
+var bfcDeck  = [];
+var bfcIdx   = 0;
+var bfcOk    = 0;
+var bfcNg    = 0;
+var bfcDone  = {};   // {Bxx: 'ok'|'ng'}
+var bfcState = {};   // {Bxx: {bid: val}}
+var bfcSelId = {};   // {Bxx: bid}
+
+// ── フィルター ──
+function bSetFilter(sec, el) {
+  document.querySelectorAll('.blank-chip').forEach(function(c){ c.classList.remove('active'); });
+  el.classList.add('active');
+  bFilter = sec;
+  bfcInit();
+}
+
+// ── デッキ構築 ──
+var bfcShuffleMode = false;
+
+function bfcBuildDeck() {
+  if (bFilter === 'all') {
+    bfcDeck = BLANK_Q.slice();
+  } else {
+    bfcDeck = BLANK_Q.filter(function(q){ return q.sec === bFilter; });
+  }
+  if (bfcShuffleMode) {
+    for (var i = bfcDeck.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = bfcDeck[i]; bfcDeck[i] = bfcDeck[j]; bfcDeck[j] = tmp;
+    }
+  }
+}
+
+function bfcShuffle() {
+  bfcShuffleMode = !bfcShuffleMode;
+  var btn = event.target;
+  if (bfcShuffleMode) {
+    btn.style.background = 'var(--purple)';
+    btn.style.color = 'white';
+    btn.style.borderColor = 'var(--purple)';
+    btn.textContent = '🔀 シャッフル中';
+  } else {
+    btn.style.background = 'white';
+    btn.style.color = 'var(--ink)';
+    btn.style.borderColor = 'var(--border)';
+    btn.textContent = '🔀 シャッフル';
+  }
+  bfcInit();
+}
+
+// ── 初期化 ──
+function bfcInit() {
+  bfcBuildDeck();
+  bfcIdx = 0; bfcOk = 0; bfcNg = 0;
+  bfcDone = {}; bfcState = {}; bfcSelId = {};
+  document.getElementById('bfc-result').style.display = 'none';
+  document.getElementById('bfc-carousel').style.display = 'flex';
+  document.getElementById('bfc-nav').style.display = 'none';
+  bfcUpdateGauge();
+  bfcUpdateDash();
+  if (bfcDeck.length > 0) { bfcRender(); }
+}
+
+// ── カード描画 ──
+function bfcRender() {
+  if (bfcDeck.length === 0) return;
+  var curr = bfcDeck[bfcIdx];
+  var prev = bfcIdx > 0 ? bfcDeck[bfcIdx-1] : null;
+  var next = bfcIdx < bfcDeck.length-1 ? bfcDeck[bfcIdx+1] : null;
+
+  // prev スロット
+  var pslot = document.getElementById('bfc-slot-prev');
+  if (prev) {
+    pslot.className = 'bfc-slot bprev';
+    document.getElementById('bfc-prev-tag').textContent = prev.id;
+    document.getElementById('bfc-prev-cat').textContent = prev.cat;
+    document.getElementById('bfc-prev-q').innerHTML = prev.q;
+  } else {
+    pslot.className = 'bfc-slot bhidden';
+  }
+
+  // next スロット
+  var nslot = document.getElementById('bfc-slot-next');
+  if (next) {
+    nslot.className = 'bfc-slot bnext';
+    document.getElementById('bfc-next-tag').textContent = next.id;
+    document.getElementById('bfc-next-cat').textContent = next.cat;
+    document.getElementById('bfc-next-q').innerHTML = next.q;
+  } else {
+    nslot.className = 'bfc-slot bhidden';
+  }
+
+  // curr スロット
+  document.getElementById('bfc-slot-curr').className = 'bfc-slot bcurr';
+  document.getElementById('bfc-tag').textContent  = curr.id;
+  document.getElementById('bfc-cat').textContent  = curr.cat + ' ／ ' + curr.law;
+  document.getElementById('bfc-section-tag').textContent = curr.sec;
+  document.getElementById('bfc-counter').innerHTML =
+    (bfcIdx+1) + '<span> / ' + bfcDeck.length + '</span>';
+
+  // 問題文（data属性付きblankはinnerHTMLで挿入）
+  document.getElementById('bfc-q').innerHTML = curr.q;
+
+  // 選択肢チップ
+  var chipsHTML = curr.chips.map(function(c){
+    return '<div class="bfc-chp" data-val="' + c.replace(/"/g,'&quot;') +
+           '" onclick="bfcFill(\'' + curr.id + '\',this)">' + c + '</div>';
+  }).join('');
+  document.getElementById('bfc-chips').innerHTML = chipsHTML;
+
+  // 答え合わせボタン・解説リセット
+  var btn = document.getElementById('bfc-chk-btn');
+  btn.disabled = false;
+  var ans = document.getElementById('bfc-ans');
+  ans.className = 'bfc-ans';
+
+  // ナビ非表示
+  document.getElementById('bfc-nav').style.display = 'none';
+
+  // delegationで.bblankクリックを処理
+  var qEl = document.getElementById('bfc-q');
+  qEl.onclick = function(e) {
+    var t = e.target;
+    if (t.classList.contains('bblank')) {
+      bfcSel(curr.id, t.dataset.bid);
+    }
+  };
+
+  // 既回答なら状態復元
+  if (bfcDone[curr.id]) {
+    var defs = curr.defs;
+    var st = bfcState[curr.id] || {};
+    Object.keys(defs).forEach(function(bid){
+      var el = document.getElementById(bid);
+      if (!el) return;
+      el.textContent = st[bid] || '';
+      var ok = st[bid] === defs[bid];
+      el.className = 'bblank ' + (ok ? 'bok-fill' : 'bng-fill');
+    });
+    document.querySelectorAll('#bfc-chips .bfc-chp').forEach(function(c){
+      var isAns = Object.values(defs).indexOf(c.dataset.val) >= 0;
+      c.classList.add(isAns ? 'bok-c' : 'bng-c');
+    });
+    var allOk = bfcDone[curr.id] === 'ok';
+    ans.className = 'bfc-ans show ' + (allOk ? 'ok' : 'ng');
+    document.getElementById('bfc-ans-hd').textContent = allOk ? '⭕ 全問正解！' : '❌ 不正解あり';
+    document.getElementById('bfc-ans-hd').style.color  = allOk ? 'var(--green)' : 'var(--red)';
+    document.getElementById('bfc-why').innerHTML = curr.why;
+    document.getElementById('bfc-tip').innerHTML = '💡 ' + curr.tip;
+    btn.disabled = true;
+    document.getElementById('bfc-nav').style.display = 'flex';
+    var againBtn = document.querySelector('.bfc-nav-btn.bagain');
+    var nextBtn  = document.querySelector('.bfc-nav-btn.bnext');
+    if (allOk) { againBtn.style.display='none'; nextBtn.style.display='block'; nextBtn.textContent='次へ →'; }
+    else { againBtn.style.display='block'; againBtn.textContent='次へ →'; nextBtn.style.display='none'; }
+  }
+
+  bfcUpdateGauge();
+  bfcUpdateDash();
+}
+
+// ── 空欄選択 ──
+function bfcSel(qid, bid) {
+  if (bfcDone[qid]) return;
+  var prev = bfcSelId[qid];
+  if (prev) {
+    var pe = document.getElementById(prev);
+    if (pe) pe.classList.remove('bsel');
+  }
+  if (prev === bid) { bfcSelId[qid] = null; return; }
+  bfcSelId[qid] = bid;
+  var el = document.getElementById(bid);
+  if (el) el.classList.add('bsel');
+}
+
+// ── 選択肢を空欄に埋める ──
+function bfcFill(qid, chipEl) {
+  var curr = bfcDeck[bfcIdx];
+  if (!curr || curr.id !== qid) return;
+  if (bfcDone[qid]) return;
+  var selBid = bfcSelId[qid];
+  if (!selBid) {
+    // 空欄未選択なら未入力の最初の空欄に自動挿入
+    var keys = Object.keys(curr.defs);
+    if (!bfcState[qid]) bfcState[qid] = {};
+    var empty = null;
+    for (var i=0; i<keys.length; i++) {
+      if (bfcState[qid][keys[i]] === undefined) { empty = keys[i]; break; }
+    }
+    if (!empty) return;
+    selBid = empty;
+    bfcSelId[qid] = selBid;
+  }
+  var val = chipEl.dataset.val;
+  var el = document.getElementById(selBid);
+  if (!el) return;
+  el.textContent = val;
+  el.classList.remove('bsel');
+  if (!bfcState[qid]) bfcState[qid] = {};
+  bfcState[qid][selBid] = val;
+  bfcSelId[qid] = null;
+}
+
+// ── 答え合わせ ──
+function bfcCheck() {
+  var curr = bfcDeck[bfcIdx];
+  if (!curr || bfcDone[curr.id]) return;
+  var defs = curr.defs;
+  var keys = Object.keys(defs);
+  var st = bfcState[curr.id] || {};
+  if (!keys.every(function(k){ return st[k] !== undefined; })) {
+    alert('すべての空欄を埋めてください');
+    return;
+  }
+  var allOk = true;
+  keys.forEach(function(bid){
+    var el = document.getElementById(bid);
+    if (!el) return;
+    var ok = st[bid] === defs[bid];
+    el.classList.remove('bsel','bok-fill','bng-fill');
+    el.classList.add(ok ? 'bok-fill' : 'bng-fill');
+    if (!ok) allOk = false;
+  });
+  document.querySelectorAll('#bfc-chips .bfc-chp').forEach(function(c){
+    var isAns = Object.values(defs).indexOf(c.dataset.val) >= 0;
+    c.classList.add(isAns ? 'bok-c' : 'bng-c');
+  });
+  bfcDone[curr.id] = allOk ? 'ok' : 'ng';
+  if (allOk) bfcOk++; else bfcNg++;
+  var ans = document.getElementById('bfc-ans');
+  ans.className = 'bfc-ans show ' + (allOk ? 'ok' : 'ng');
+  var hd = document.getElementById('bfc-ans-hd');
+  hd.textContent = allOk ? '⭕ 全問正解！' : '❌ 不正解あり（赤い空欄を確認）';
+  hd.style.color  = allOk ? 'var(--green)' : 'var(--red)';
+  document.getElementById('bfc-why').innerHTML = curr.why;
+  document.getElementById('bfc-tip').innerHTML = '💡 ' + curr.tip;
+  document.getElementById('bfc-chk-btn').disabled = true;
+  var againBtn = document.querySelector('.bfc-nav-btn.bagain');
+  var nextBtn  = document.querySelector('.bfc-nav-btn.bnext');
+  if (allOk) {
+    againBtn.style.display = 'none';
+    nextBtn.style.display  = 'block';
+    nextBtn.textContent    = '次へ →';
+  } else {
+    againBtn.style.display = 'block';
+    againBtn.textContent   = '次へ →';
+    nextBtn.style.display  = 'none';
+  }
+  document.getElementById('bfc-nav').style.display = 'flex';
+  bfcUpdateGauge();
+  bfcUpdateDash();
+  setTimeout(function(){
+    document.getElementById('bfc-ans').scrollIntoView({behavior:'smooth',block:'nearest'});
+  }, 100);
+}
+
+// ── 次へ ──
+function bfcNext(correct) {
+  document.getElementById('bfc-nav').style.display = 'none';
+  if (bfcIdx + 1 >= bfcDeck.length) {
+    bfcShowResult(); return;
+  }
+  bfcIdx++;
+  bfcRender();
+  // カード上部にスクロール
+  setTimeout(function(){
+    var el = document.getElementById('bfc-slot-curr');
+    if (el) el.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }, 100);
+}
+
+// ── ゲージ更新 ──
+function bfcUpdateGauge() {
+  var total = bfcDeck.length;
+  if (total === 0) return;
+  var half = 50;
+  document.getElementById('bfc-gauge-ok').style.width = Math.min(bfcOk/total*100, half) + '%';
+  document.getElementById('bfc-gauge-ng').style.width = Math.min(bfcNg/total*100, half) + '%';
+  document.getElementById('bfc-ok-count').textContent = bfcOk;
+  document.getElementById('bfc-ng-count').textContent = bfcNg;
+  document.getElementById('bfc-remaining').textContent = '残り ' + (total - bfcIdx) + ' 問';
+}
+
+// ── ダッシュ更新 ──
+function bfcUpdateDash() {
+  var answered = Object.keys(bfcDone).length;
+  var total    = bfcDeck.length;
+  var pct      = total > 0 ? Math.round(answered / total * 100) : 0;
+  document.getElementById('b-total').textContent = answered;
+  document.getElementById('b-ok').textContent    = bfcOk;
+  document.getElementById('b-ng').textContent    = bfcNg;
+  document.getElementById('b-prog-bar').style.width = pct + '%';
+  document.getElementById('b-prog-lbl').textContent = answered + ' ／ ' + total + ' 問';
+}
+
+// ── 完了 ──
+function bfcShowResult() {
+  var total = bfcDeck.length;
+  var pct   = total > 0 ? Math.round(bfcOk / total * 100) : 0;
+  document.getElementById('bfc-carousel').style.display = 'none';
+  document.getElementById('bfc-nav').style.display = 'none';
+  document.getElementById('bfc-result').style.display = 'block';
+  document.getElementById('bfc-result-score').textContent = bfcOk + ' / ' + total;
+  document.getElementById('bfc-result-sub').textContent =
+    '全問正解率 ' + pct + '% ― ' +
+    (pct >= 90 ? '完璧！' : pct >= 70 ? '合格圏内！苦手箇所を復習しよう' : 'もう一周して定着させよう');
+  document.getElementById('bfc-emoji').textContent = pct >= 90 ? '🏆' : pct >= 70 ? '✨' : '📖';
+  setTimeout(function(){
+    document.getElementById('bfc-result').scrollIntoView({behavior:'smooth',block:'start'});
+  }, 200);
+}
+
+// ── リスタート ──
+function bfcRestart() {
+  document.getElementById('bfc-result').style.display = 'none';
+  document.getElementById('bfc-carousel').style.display = 'flex';
+  bfcInit();
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  fcInit();
+  bfcInit();
+});
+
+
+window.setFilter = setFilter;
+window.bSetFilter = bSetFilter;
+window.fcFlip = fcFlip;
+window.fcChoose = fcChoose;
+window.fcNext = fcNext;
+window.fcRestart = fcRestart;
+window.retryWeak = retryWeak;
+window.bfcCheck = bfcCheck;
+window.bfcNext = bfcNext;
+window.switchTab = switchTab;
+</script>
+</body>
+</html>

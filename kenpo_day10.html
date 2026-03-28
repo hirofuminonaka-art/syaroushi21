@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day10｜健保法全論点横断まとめ ― 健康保険法過去問ドリル</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1a2e;--paper:#faf8f3;--warm:#f5f0e8;
+  --red:#c84b31;--red-soft:#e8896b;--red-light:#fee2e2;
+  --teal:#2a7f7f;--teal-light:#e8f4f4;
+  --gold:#c9930a;--gold-light:#fef9e7;
+  --green:#2d6a4f;--green-light:#e8f5ee;
+  --gray:#6b7280;--border:#ddd8cc;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
+.hd{background:var(--ink);color:var(--paper);padding:52px 40px 40px;position:relative;overflow:hidden;}
+.hd::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px);}
+.hd-in{max-width:820px;margin:0 auto;position:relative;}
+.hd-eye{font-size:11px;letter-spacing:4px;color:var(--red-soft);margin-bottom:12px;font-weight:700;}
+.hd h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hd h1 em{color:var(--red-soft);font-style:normal;}
+.hd-sub{font-size:14px;color:rgba(255,255,255,.55);font-weight:300;}
+.prog-wrap{margin-top:24px;background:rgba(255,255,255,.1);border-radius:20px;height:6px;}
+.prog-bar{background:var(--red-soft);height:6px;border-radius:20px;width:0%;transition:width .5s;}
+.prog-lbl{font-size:11px;color:rgba(255,255,255,.45);margin-top:6px;}
+.sec-div{max-width:820px;margin:40px auto 20px;padding:0 24px;}
+.sec-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border-radius:30px;font-size:12px;font-weight:700;}
+.pill-red{background:var(--red);color:white;}
+.pill-teal{background:var(--teal);color:white;}
+.sec-title{font-family:'Noto Serif JP',serif;font-size:1.25rem;font-weight:700;margin:10px 0 8px;}
+.sec-desc{font-size:13px;color:var(--gray);line-height:1.9;background:white;border:1px solid var(--border);border-radius:10px;padding:12px 16px;}
+.score-bar{max-width:820px;margin:0 auto 24px;padding:0 24px;}
+.score-in{background:white;border:1px solid var(--border);border-radius:12px;padding:14px 20px;display:flex;align-items:center;gap:16px;}
+.score-num{font-family:'DM Serif Display',serif;font-size:36px;color:var(--teal);line-height:1;}
+.qwrap{max-width:820px;margin:0 auto;padding:0 24px 60px;display:flex;flex-direction:column;gap:20px;}
+.card{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;opacity:1;}
+.card-hd{display:flex;align-items:center;gap:12px;padding:12px 20px;background:var(--warm);border-bottom:1px solid var(--border);}
+.q-num{font-family:'DM Serif Display',serif;font-size:30px;color:var(--red);line-height:1;}
+.q-num.tn{color:var(--teal);}
+.src-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;margin-bottom:3px;}
+.src-tag.t{background:var(--teal);}
+.q-type{font-size:11px;color:var(--gray);}
+.card-body{padding:20px 24px;}
+.quiz-q{font-size:15px;font-weight:600;line-height:1.8;margin-bottom:18px;}
+.quiz-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+.opts-tf{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.opt{border:2px solid var(--border);border-radius:10px;padding:12px 16px;cursor:pointer;font-size:20px;font-weight:900;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:10px;user-select:none;}
+.opt:hover{border-color:var(--ink);background:var(--warm);}
+.opt.correct{border-color:var(--green)!important;background:var(--green-light)!important;color:var(--green);}
+.opt.wrong{border-color:var(--red)!important;background:var(--red-light)!important;color:#991b1b;}
+.ans-box{display:none;border-radius:10px;padding:18px 20px;font-size:13px;margin-top:6px;}
+.ans-box.show{display:block;}
+.ans-box.ok{background:var(--green-light);border:1px solid #86efac;}
+.ans-box.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.ans-hd{font-weight:700;font-size:14px;margin-bottom:12px;}
+.why{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;}
+.note{background:var(--gold-light);border:1px solid var(--gold);border-radius:8px;padding:10px 14px;font-size:13px;margin:10px 0;}
+.tip{background:var(--green-light);border:2px solid var(--green);border-radius:8px;padding:12px 14px;font-size:13px;margin-top:12px;}
+.tip-title{font-weight:700;color:var(--green);margin-bottom:6px;}
+.tip-item{display:flex;gap:8px;margin-bottom:4px;}
+.tip-item:last-child{margin-bottom:0;}
+.svg-wrap{margin:14px 0;overflow-x:auto;}
+.svg-wrap svg{display:block;max-width:100%;height:auto;}
+.blank-sentence{font-size:15px;font-weight:500;line-height:2.6;margin-bottom:16px;}
+.blank{display:inline-block;min-width:72px;border-bottom:2px solid var(--ink);text-align:center;padding:0 6px;margin:0 3px;cursor:pointer;font-weight:700;transition:background .2s;border-radius:4px 4px 0 0;}
+.blank:hover{background:rgba(42,127,127,.08);}
+.blank.sel{background:#dbeafe;border-color:var(--teal);}
+.blank.ok-fill{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.blank.ng-fill{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.chp{border:2px solid var(--border);border-radius:20px;padding:5px 14px;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;}
+.chp:hover{border-color:var(--teal);background:var(--teal-light);}
+.chp.used{opacity:.35;pointer-events:none;}
+.chp.ok-c{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.chp.ng-c{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.chk-btn{background:var(--ink);color:white;border:none;border-radius:8px;padding:10px 24px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:12px;transition:opacity .2s;}
+.chk-btn:hover{opacity:.82;}
+.chk-btn:disabled{opacity:.4;cursor:default;}
+@media(max-width:600px){
+  .hd{padding:36px 16px 28px;}
+  .qwrap,.sec-div,.score-bar{padding-left:16px;padding-right:16px;}
+  .card-body{padding:14px;}
+}
+.topbar{background:var(--ink);padding:10px 24px;display:flex;align-items:center;gap:12px;}
+.back-btn{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;display:flex;align-items:center;gap:6px;cursor:pointer;}
+.back-btn:hover{color:white;}
+.topbar-title{color:rgba(255,255,255,.5);font-size:12px;margin-left:auto;}
+.tab-nav{background:var(--ink);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:100;}
+.tab-nav-in{max-width:820px;margin:0 auto;display:flex;}
+.tab-btn{flex:1;padding:13px 8px;font-size:13px;font-weight:700;color:rgba(255,255,255,.4);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;}
+.tab-btn:hover{color:rgba(255,255,255,.75);}
+.tab-btn.active{color:white;border-color:var(--red-soft);}
+.tab-btn.active.t3{border-color:#a78bfa;}
+.tab-btn.active.t2{border-color:#5ecece;}
+.tab-btn.active.t4{border-color:#fbbf24;}
+.spider-wrap{max-width:820px;margin:0 auto;padding:20px 16px 60px;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+@media(max-width:600px){.tab-btn{font-size:11px;padding:11px 4px;}}
+/* FLASH CARDS */
+.fc-wrap{max-width:740px;margin:0 auto;padding:24px 0 80px;}
+.fc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:0 20px;font-size:12px;color:var(--gray);}
+.fc-counter{font-family:'DM Serif Display',serif;font-size:26px;color:var(--red);line-height:1;}
+.fc-counter span{font-size:13px;color:var(--gray);font-family:'Noto Sans JP',sans-serif;font-weight:400;}
+.fc-gauge-wrap{padding:0 20px;margin-bottom:24px;}
+.fc-gauge-labels{display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:6px;}
+.fc-gauge-label-ng{color:var(--red);}
+.fc-gauge-label-ok{color:var(--green);}
+.fc-gauge-label-mid{color:var(--gray);font-size:10px;font-weight:400;}
+.fc-gauge-track{position:relative;height:16px;background:var(--border);border-radius:20px;overflow:hidden;display:flex;}
+.fc-gauge-ng{height:100%;background:linear-gradient(90deg,#c84b31,#e8896b);border-radius:20px 0 0 20px;transition:width .5s cubic-bezier(.4,0,.2,1);width:0%;}
+.fc-gauge-ok{height:100%;background:linear-gradient(90deg,#86efac,#2d6a4f);border-radius:0 20px 20px 0;transition:width .5s cubic-bezier(.4,0,.2,1);width:0%;margin-left:auto;}
+.fc-gauge-mid-line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:white;transform:translateX(-50%);z-index:2;}
+.fc-carousel{position:relative;display:flex;align-items:center;justify-content:center;height:300px;overflow:hidden;margin-bottom:20px;}
+.fc-slot{position:absolute;width:72%;height:100%;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s cubic-bezier(.4,0,.2,1),filter .35s ease;cursor:pointer;border-radius:16px;}
+.fc-slot.prev{transform:translateX(-82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.curr{transform:translateX(0) scale(1);opacity:1;filter:none;z-index:10;}
+.fc-slot.next{transform:translateX(82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.hidden{opacity:0;pointer-events:none;z-index:0;}
+.fc-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.4,0,.2,1);}
+.fc-inner.flipped{transform:rotateY(180deg);}
+.fc-face{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.11);}
+.fc-front-face{background:white;border:2px solid var(--ink);}
+.fc-back-face{background:white;border:2px solid var(--ink);transform:rotateY(180deg);}
+.fc-front-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:8px;}
+.fc-front-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;}
+.fc-front-body{flex:1;padding:18px 20px;display:flex;align-items:center;justify-content:center;}
+.fc-q{font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;line-height:1.9;color:var(--ink);text-align:center;}
+.fc-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+.fc-back-hd{padding:12px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+.fc-verdict{font-size:13px;font-weight:700;padding:3px 12px;border-radius:20px;}
+.fc-verdict.ok{background:var(--green);color:white;}
+.fc-verdict.ng{background:var(--red);color:white;}
+.fc-back-body{flex:1;padding:14px 18px;overflow-y:auto;}
+.fc-answer{font-family:'DM Serif Display',serif;font-size:20px;color:var(--ink);margin-bottom:10px;line-height:1.4;font-weight:700;}
+.fc-reason{font-size:13px;color:var(--ink);line-height:1.9;}
+.fc-reason mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+.fc-lawref{display:inline-block;margin-top:8px;font-size:11px;color:var(--teal);font-family:'DM Serif Display',serif;background:var(--teal-light);border:1px solid var(--teal);padding:2px 10px;border-radius:4px;}
+.fc-ox{display:flex;gap:10px;padding:0 16px 14px;}
+.fc-ox-btn{flex:1;padding:11px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-size:20px;font-weight:900;cursor:pointer;transition:all .15s;font-family:inherit;}
+.fc-ox-btn:hover{transform:translateY(-2px);}
+.fc-ox-btn.o:hover{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.fc-ox-btn.x:hover{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.fc-nav{display:flex;gap:10px;justify-content:center;padding:0 20px;}
+.fc-nav-btn{flex:1;max-width:160px;padding:12px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-family:inherit;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;transition:all .2s;text-align:center;}
+.fc-nav-btn:hover{border-color:var(--ink);}
+.fc-nav-btn.again{border-color:var(--red);color:var(--red);}
+.fc-nav-btn.again:hover{background:var(--red-light);}
+.fc-nav-btn.got{border-color:var(--green);color:var(--green);}
+.fc-nav-btn.got:hover{background:var(--green-light);}
+.fc-nav-btn.shuffle{background:var(--ink);color:white;border-color:var(--ink);}
+.fc-result{display:none;text-align:center;padding:32px 20px;background:white;border:2px solid var(--ink);border-radius:16px;margin:0 20px;}
+.fc-result h3{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;margin-bottom:8px;}
+.fc-result-score{font-family:'DM Serif Display',serif;font-size:52px;color:var(--red);line-height:1;margin:8px 0 4px;}
+.fc-result-sub{font-size:13px;color:var(--gray);margin-bottom:20px;}
+.fc-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:12px 28px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.fc-restart-btn:hover{opacity:.82;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.sp-node{cursor:pointer;transition:filter .15s;}
+.sp-node:hover{filter:brightness(1.1);}
+#spider-detail{animation:fadeUp .25s ease;}
+.complete{display:none;max-width:820px;margin:0 auto 40px;padding:0 24px;}
+.complete-in{background:var(--ink);color:white;border-radius:14px;padding:28px;text-align:center;}
+.complete h2{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;margin-bottom:6px;}
+.complete h2 em{color:var(--red-soft);font-style:normal;}
+.complete-score{font-size:48px;font-family:'DM Serif Display',serif;color:var(--red-soft);line-height:1;margin:10px 0 4px;}
+.complete-sub{font-size:14px;color:rgba(255,255,255,.55);margin-bottom:20px;}
+.btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-back{background:white;color:var(--ink);border:none;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;}
+.btn-next{background:var(--teal);color:white;border:none;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="back-btn" onclick="location.href='index.html'">← 目次に戻る</span>
+  <span class="topbar-title">健康保険法 ／ Day 10</span>
+</div>
+<nav class="tab-nav">
+  <div class="tab-nav-in">
+    <button class="tab-btn active" onclick="switchTab('quiz',this)">📝 問題を解く</button>
+    <button class="tab-btn t3"     onclick="switchTab('mindmap',this)">🗺 連想図</button>
+    <button class="tab-btn t2"     onclick="switchTab('flash',this)">🃏 フラッシュカード</button>
+    <button class="tab-btn t4"     onclick="switchTab('spider',this)">🕸️ 記憶マップ</button>
+  </div>
+</nav>
+
+<!-- ════════════════ PANEL-QUIZ ════════════════ -->
+<div id="panel-quiz" class="tab-panel active">
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-eye">健康保険法 ／ Day 10</div>
+    <h1>健保法全論点横断まとめ ― <em>数字・条件の混同を一掃する</em></h1>
+    <div class="hd-sub">健保法全条文横断 ／ 全15問（○×10問＋穴埋め5問）</div>
+    <div class="prog-wrap"><div class="prog-bar" id="prog"></div></div>
+    <div class="prog-lbl" id="prog-lbl">0 ／ 15 問 回答済み</div>
+  </div>
+</div>
+<div class="score-bar" style="margin-top:24px;">
+  <div class="score-in">
+    <div class="score-num" id="score">0</div>
+    <div><div style="font-size:13px;font-weight:700;">正解数</div><div style="font-size:12px;color:var(--gray);">15問中</div></div>
+    <div style="margin-left:auto;font-size:12px;color:var(--gray);line-height:1.7;">足切り回避：<strong>6点以上</strong><br>75%目標：<strong>12点以上</strong></div>
+  </div>
+</div>
+
+<div class="sec-div">
+  <div><span class="sec-pill pill-red">① ○×式　10問</span></div>
+  <div class="sec-title">全論点横断：混同しやすい数字・条件を正誤で確認する</div>
+  <div class="sec-desc">傷病手当金・出産給付・罰則・標準報酬・任意継続・被扶養者・高額療養費。Day1〜9の総まとめ。</div>
+</div>
+
+<div class="qwrap">
+
+<!-- Q1 -->
+<div class="card" id="cq1">
+  <div class="card-hd">
+    <div class="q-num">01</div>
+    <div><div class="src-tag">法第99条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：傷病手当金の4数字</div></div>
+  </div><!-- /card-hd -->
+  <div class="card-body">
+    <div class="quiz-q">傷病手当金の待期は<mark>3日間</mark>、支給額は直近<mark>12ヵ月</mark>の標準報酬月額平均の<mark>3分の2</mark>、支給期間は支給開始から通算<mark>1年6ヵ月</mark>である。</div>
+    <div class="opts-tf" id="q1-opts">
+      <div class="opt" onclick="answer('q1',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q1',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q1-ans">
+      <div class="ans-hd" id="q1-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：○ 正しい｜法第99条</div>
+      <div class="why">✔ 傷病手当金の核心4数字がすべて正確。最重要論点。</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="600" height="120" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="26" font-size="12" font-weight="700" fill="#1a1a2e">傷病手当金 4数字セット（完全暗記）</text>
+          <rect x="10"  y="38" width="130" height="68" rx="8" fill="#e8f4f4" stroke="#2a7f7f" stroke-width="1.5"/>
+          <text x="75"  y="60" font-size="10" font-weight="700" fill="#2a7f7f" text-anchor="middle">待期</text>
+          <text x="75"  y="82" font-size="18" font-weight="900" fill="#c84b31" text-anchor="middle">3日間</text>
+          <text x="75"  y="98" font-size="9"  fill="#6b7280" text-anchor="middle">連続3日</text>
+          <rect x="154" y="38" width="130" height="68" rx="8" fill="#e8f4f4" stroke="#2a7f7f" stroke-width="1.5"/>
+          <text x="219" y="60" font-size="10" font-weight="700" fill="#2a7f7f" text-anchor="middle">計算基礎</text>
+          <text x="219" y="82" font-size="14" font-weight="900" fill="#c84b31" text-anchor="middle">直近12ヵ月</text>
+          <text x="219" y="98" font-size="9"  fill="#6b7280" text-anchor="middle">平均標準報酬月額</text>
+          <rect x="298" y="38" width="130" height="68" rx="8" fill="#fef9e7" stroke="#c9930a" stroke-width="1.5"/>
+          <text x="363" y="60" font-size="10" font-weight="700" fill="#633806" text-anchor="middle">支給額</text>
+          <text x="363" y="82" font-size="18" font-weight="900" fill="#c84b31" text-anchor="middle">3分の2</text>
+          <text x="363" y="98" font-size="9"  fill="#6b7280" text-anchor="middle">「2分の1」は×</text>
+          <rect x="442" y="38" width="148" height="68" rx="8" fill="#fee2e2" stroke="#c84b31" stroke-width="1.5"/>
+          <text x="516" y="60" font-size="10" font-weight="700" fill="#c84b31" text-anchor="middle">支給期間</text>
+          <text x="516" y="82" font-size="14" font-weight="900" fill="#c84b31" text-anchor="middle">通算1年6ヵ月</text>
+          <text x="516" y="98" font-size="9"  fill="#6b7280" text-anchor="middle">「2年」は×</text>
+        </svg>
+      </div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「支給額は<strong>2分の1</strong>」→ <strong style="color:#2d6a4f;">○</strong> <strong>3分の2</strong>　／　<strong style="color:#c84b31;">×</strong> 「支給期間は<strong>2年</strong>」→ <strong style="color:#2d6a4f;">○</strong> 通算<strong>1年6ヵ月</strong></div>
+          </div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「日雇特例の傷病手当金も3日待期」→ <strong style="color:#2d6a4f;">○</strong> 日雇は<strong>待期なし</strong>・支給期間<strong>6ヵ月</strong></div>
+          </div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 傷病手当金：待期<strong>3日</strong>・直近<strong>12ヵ月</strong>平均の<strong>3分の2</strong>・通算<strong>1年6ヵ月</strong></div>
+          </div>
+        </div>
+      </div>
+      <div class="tip"><div class="tip-title">🧠 場面で覚える</div>
+        <div class="tip-item">📌 「3・12・3分の2・1年半」の4セット。選択式で健保が出れば必ず問われる最重要論点。</div>
+      </div>
+    </div><!-- /card-body -->
+  </div>
+</div><!-- /card cq1 -->
+
+<!-- Q2 -->
+<div class="card" id="cq2">
+  <div class="card-hd">
+    <div class="q-num">02</div>
+    <div><div class="src-tag">法第11条・法第193条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：健保組合設立・審査請求（2つの誤り）</div></div>
+  </div><!-- /card-hd -->
+  <div class="card-body">
+    <div class="quiz-q">健保組合の共同設立は被保険者<mark>1,000人以上</mark>、審査請求の期限は処分を知った日の翌日から<mark>3年以内</mark>である。</div>
+    <div class="opts-tf" id="q2-opts">
+      <div class="opt" onclick="answer('q2',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q2',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q2-ans">
+      <div class="ans-hd" id="q2-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#c84b31;margin-bottom:10px;">正解：× 誤り（2箇所）｜法第11条・法第189条</div>
+      <div class="why">⚠️ ①共同設立は<strong>3,000人以上</strong>（1,000人は誤り）。②審査請求の期限は<strong>60日以内</strong>（3年は誤り）。</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 600 110" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="600" height="110" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="26" font-size="12" font-weight="700" fill="#1a1a2e">健保組合の設立要件 ＋ 審査請求期限</text>
+          <rect x="10"  y="38" width="280" height="60" rx="8" fill="white" stroke="#2a7f7f" stroke-width="1.5"/>
+          <text x="150" y="60" font-size="11" font-weight="700" fill="#2a7f7f" text-anchor="middle">健保組合の設立要件</text>
+          <text x="150" y="78" font-size="10" fill="#1a1a2e" text-anchor="middle">単独設立：被保険者</text>
+          <text x="150" y="94" font-size="13" font-weight="900" fill="#c84b31" text-anchor="middle">700人以上 ／ 共同設立：3,000人以上</text>
+          <rect x="310" y="38" width="280" height="60" rx="8" fill="white" stroke="#c84b31" stroke-width="1.5"/>
+          <text x="450" y="60" font-size="11" font-weight="700" fill="#c84b31" text-anchor="middle">審査請求の期限</text>
+          <text x="450" y="78" font-size="10" fill="#1a1a2e" text-anchor="middle">処分を知った日の翌日から</text>
+          <text x="450" y="94" font-size="14" font-weight="900" fill="#c84b31" text-anchor="middle">60日以内（「3年」は×）</text>
+        </svg>
+      </div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「共同設立は<strong>1,000人以上</strong>」→ <strong style="color:#2d6a4f;">○</strong> <strong>3,000人以上</strong>　／　<strong style="color:#c84b31;">×</strong> 「審査請求は<strong>3年以内</strong>」→ <strong style="color:#2d6a4f;">○</strong> <strong>60日以内</strong></div>
+          </div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> セット暗記：単独<strong>700人</strong>・共同<strong>3,000人</strong>・審査請求<strong>60日</strong>・時効<strong>2年</strong></div>
+          </div>
+        </div>
+      </div>
+      <div class="tip"><div class="tip-title">🧠 場面で覚える</div>
+        <div class="tip-item">📌 「共同3,000人。審査請求は60日。3年は時効（保険料等）の話」と区別する。</div>
+      </div>
+    </div><!-- /card-body -->
+  </div>
+</div><!-- /card cq2 -->
+
+<!-- Q3 -->
+<div class="card" id="cq3">
+  <div class="card-hd">
+    <div class="q-num">03</div>
+    <div><div class="src-tag">法第102条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：出産手当金の産前・産後（逆）</div></div>
+  </div><!-- /card-hd -->
+  <div class="card-body">
+    <div class="quiz-q">出産育児一時金は<mark>50万円</mark>、出産手当金は産前<mark>56日</mark>・産後<mark>42日</mark>、資格喪失後の出産育児一時金は喪失後<mark>6ヵ月以内</mark>の出産が対象である。</div>
+    <div class="opts-tf" id="q3-opts">
+      <div class="opt" onclick="answer('q3',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q3',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q3-ans">
+      <div class="ans-hd" id="q3-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#c84b31;margin-bottom:10px;">正解：× 誤り｜法第102条</div>
+      <div class="why">⚠️ 出産手当金の産前・産後が<strong>逆</strong>。正しくは<strong>産前42日・産後56日</strong>。産後のほうが長い。</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="600" height="120" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="26" font-size="12" font-weight="700" fill="#1a1a2e">出産手当金の支給期間（産前・産後）</text>
+          <line x1="300" y1="50" x2="300" y2="100" stroke="#c84b31" stroke-width="3"/>
+          <text x="300" y="44" font-size="11" font-weight="700" fill="#c84b31" text-anchor="middle">出産予定日</text>
+          <rect x="80"  y="54" width="212" height="40" rx="6" fill="#e8f4f4" stroke="#2a7f7f" stroke-width="1.5"/>
+          <text x="186" y="70" font-size="11" font-weight="700" fill="#2a7f7f" text-anchor="middle">産前（予定日以前）</text>
+          <text x="186" y="87" font-size="14" font-weight="900" fill="#c84b31" text-anchor="middle">42日（多胎98日）</text>
+          <rect x="308" y="54" width="212" height="40" rx="6" fill="#fee2e2" stroke="#c84b31" stroke-width="1.5"/>
+          <text x="414" y="70" font-size="11" font-weight="700" fill="#c84b31" text-anchor="middle">産後（出産翌日から）</text>
+          <text x="414" y="87" font-size="14" font-weight="900" fill="#c84b31" text-anchor="middle">56日（強制休業8週間）</text>
+        </svg>
+      </div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「産前<strong>56日・産後42日</strong>」→ <strong style="color:#2d6a4f;">○</strong> <strong>産前42日・産後56日</strong>（逆にして出題される古典的引っかけ）</div>
+          </div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「出産育児一時金は<strong>42万円</strong>」→ <strong style="color:#2d6a4f;">○</strong> <strong>50万円</strong>（2023年から引き上げ）</div>
+          </div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 産後のほうが長い（56日）。産後回復に時間がかかるから。</div>
+          </div>
+        </div>
+      </div>
+      <div class="tip"><div class="tip-title">🧠 場面で覚える</div>
+        <div class="tip-item">📌 「産後は8週間（56日）の強制休業あり。産前は6週間（42日）。産後の方が長い」</div>
+      </div>
+    </div><!-- /card-body -->
+  </div>
+</div><!-- /card cq3 -->
+
+<!-- Q4 -->
+<div class="card" id="cq4">
+  <div class="card-hd">
+    <div class="q-num">04</div>
+    <div><div class="src-tag">法第116条・117条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：給付制限</div></div>
+  </div><!-- /card-hd -->
+  <div class="card-body">
+    <div class="quiz-q">故意の犯罪行為による傷病は給付<mark>不支給</mark>、重大な過失による傷病も<mark>全部不支給</mark>となる。</div>
+    <div class="opts-tf" id="q4-opts">
+      <div class="opt" onclick="answer('q4',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q4',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q4-ans">
+      <div class="ans-hd" id="q4-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#c84b31;margin-bottom:10px;">正解：× 誤り｜法第116条・第117条</div>
+      <div class="why">⚠️ 重大な過失は<strong>給付制限（一部不支給）</strong>。<strong>全部不支給は故意の場合のみ</strong>。</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 600 130" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="600" height="130" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="26" font-size="12" font-weight="700" fill="#1a1a2e">給付制限の程度比較（原因別）</text>
+          <rect x="10"  y="38" width="280" height="78" rx="8" fill="#fee2e2" stroke="#c84b31" stroke-width="2"/>
+          <text x="150" y="62" font-size="12" font-weight="700" fill="#c84b31" text-anchor="middle">故意の犯罪行為・故意による傷病</text>
+          <text x="150" y="86" font-size="16" font-weight="900" fill="#c84b31" text-anchor="middle">全部不支給</text>
+          <text x="150" y="108" font-size="9"  fill="#6b7280" text-anchor="middle">法第116条</text>
+          <rect x="310" y="38" width="280" height="78" rx="8" fill="#fef9e7" stroke="#c9930a" stroke-width="2"/>
+          <text x="450" y="62" font-size="12" font-weight="700" fill="#c9930a" text-anchor="middle">重大な過失による傷病</text>
+          <text x="450" y="86" font-size="16" font-weight="900" fill="#c9930a" text-anchor="middle">一部不支給（給付制限）</text>
+          <text x="450" y="108" font-size="9"  fill="#6b7280" text-anchor="middle">法第117条</text>
+        </svg>
+      </div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「重大な過失も<strong>全部不支給</strong>」→ <strong style="color:#2d6a4f;">○</strong> 重大な過失は<strong>一部不支給（給付制限）</strong></div>
+          </div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「故意の犯罪は<strong>一部不支給</strong>」→ <strong style="color:#2d6a4f;">○</strong> 故意は<strong>全部不支給</strong></div>
+          </div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 故意＝全部不支給、重大な過失＝一部不支給（給付制限）のセットで覚える。</div>
+          </div>
+        </div>
+      </div>
+      <div class="tip"><div class="tip-title">🧠 場面で覚える</div>
+        <div class="tip-item">📌 「わざとやった（故意）→全部ダメ。うっかりでも重大（重大過失）→一部制限」</div>
+      </div>
+    </div><!-- /card-body -->
+  </div>
+</div><!-- /card cq4 -->
+
+<!-- Q5 -->
+<div class="card" id="cq5">
+  <div class="card-hd">
+    <div class="q-num">05</div>
+    <div><div class="src-tag">法第41条・第43条・第193条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：標準報酬の決定・改定・時効</div></div>
+  </div><!-- /card-hd -->
+  <div class="card-body">
+    <div class="quiz-q">定時決定は<mark>4・5・6月</mark>の報酬を基に<mark>7月10日</mark>までに届出し<mark>9月1日</mark>から適用、随時改定は<mark>2等級以上</mark>の変動で各月<mark>17日以上</mark>の要件あり、保険料の時効は<mark>2年</mark>である。</div>
+    <div class="opts-tf" id="q5-opts">
+      <div class="opt" onclick="answer('q5',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q5',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q5-ans">
+      <div class="ans-hd" id="q5-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：○ 正しい｜法第41条・第43条・第193条</div>
+      <div class="why">✔ 標準報酬の核心数字がすべて正確。定時・随時・時効の3セットで覚える。</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 600 130" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="600" height="130" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="24" font-size="12" font-weight="700" fill="#1a1a2e">標準報酬の決定3パターン</text>
+          <rect x="10"  y="36" width="184" height="82" rx="8" fill="white" stroke="#2a7f7f" stroke-width="1.5"/>
+          <text x="102" y="56" font-size="10" font-weight="700" fill="#2a7f7f" text-anchor="middle">資格取得時決定</text>
+          <text x="102" y="74" font-size="10" fill="#1a1a2e" text-anchor="middle">取得月の報酬見込み</text>
+          <text x="102" y="92" font-size="11" font-weight="700" fill="#c84b31" text-anchor="middle">取得月から適用</text>
+          <text x="102" y="108" font-size="9"  fill="#6b7280" text-anchor="middle">届出：取得から5日以内</text>
+          <rect x="208" y="36" width="184" height="82" rx="8" fill="#e8f4f4" stroke="#2a7f7f" stroke-width="1.5"/>
+          <text x="300" y="56" font-size="10" font-weight="700" fill="#2a7f7f" text-anchor="middle">定時決定</text>
+          <text x="300" y="74" font-size="10" fill="#1a1a2e" text-anchor="middle">4・5・6月の報酬 → 7/10届出</text>
+          <text x="300" y="92" font-size="11" font-weight="700" fill="#c84b31" text-anchor="middle">9月1日から適用</text>
+          <text x="300" y="108" font-size="9"  fill="#6b7280" text-anchor="middle">翌年8月まで</text>
+          <rect x="406" y="36" width="184" height="82" rx="8" fill="#fef9e7" stroke="#c9930a" stroke-width="1.5"/>
+          <text x="498" y="56" font-size="10" font-weight="700" fill="#633806" text-anchor="middle">随時改定</text>
+          <text x="498" y="74" font-size="10" fill="#1a1a2e" text-anchor="middle">2等級以上変動・各月17日以上</text>
+          <text x="498" y="92" font-size="11" font-weight="700" fill="#c84b31" text-anchor="middle">改定月の翌月から適用</text>
+          <text x="498" y="108" font-size="9"  fill="#6b7280" text-anchor="middle">保険料時効：2年</text>
+        </svg>
+      </div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「定時決定の届出は<strong>6月30日まで</strong>」→ <strong style="color:#2d6a4f;">○</strong> <strong>7月10日まで</strong>　／　<strong style="color:#c84b31;">×</strong> 「随時改定は<strong>1等級以上</strong>」→ <strong style="color:#2d6a4f;">○</strong> <strong>2等級以上</strong></div>
+          </div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「資格取得時決定は<strong>翌月から</strong>適用」→ <strong style="color:#2d6a4f;">○</strong> <strong>取得月から</strong>（当月から）適用</div>
+          </div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 定時決定：<strong>7/10</strong>届出→<strong>9/1</strong>適用。随時改定：<strong>2等級</strong>・<strong>17日</strong>・翌月適用。</div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /card-body -->
+  </div>
+</div><!-- /card cq5 -->
+
+<!-- Q6 -->
+<div class="card" id="cq6">
+  <div class="card-hd">
+    <div class="q-num">06</div>
+    <div><div class="src-tag">法第47条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：任意継続被保険者の保険料</div></div>
+  </div><!-- /card-hd -->
+  <div class="card-body">
+    <div class="quiz-q">任意継続被保険者の保険料は、退職時の標準報酬月額に一般保険料率を乗じた額の<mark>全額</mark>を被保険者本人が納付する。</div>
+    <div class="opts-tf" id="q6-opts">
+      <div class="opt" onclick="answer('q6',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q6',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q6-ans">
+      <div class="ans-hd" id="q6-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：○ 正しい｜法第47条</div>
+      <div class="why">✔ 任意継続被保険者の保険料は事業主負担がないため、<strong>全額自己負担</strong>。ただし上限として退職時の標準報酬月額と全被保険者の平均標準報酬月額の低い方を使う。</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 600 110" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="600" height="110" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="26" font-size="12" font-weight="700" fill="#1a1a2e">在職 vs 任意継続 ― 保険料負担の違い</text>
+          <rect x="10"  y="38" width="280" height="60" rx="8" fill="#e8f4f4" stroke="#2a7f7f" stroke-width="1.5"/>
+          <text x="150" y="60" font-size="11" font-weight="700" fill="#2a7f7f" text-anchor="middle">在職中の被保険者</text>
+          <text x="150" y="80" font-size="12" font-weight="900" fill="#2a7f7f" text-anchor="middle">本人 約50% ／ 事業主 約50%</text>
+          <rect x="310" y="38" width="280" height="60" rx="8" fill="#fee2e2" stroke="#c84b31" stroke-width="1.5"/>
+          <text x="450" y="60" font-size="11" font-weight="700" fill="#c84b31" text-anchor="middle">任意継続被保険者</text>
+          <text x="450" y="80" font-size="14" font-weight="900" fill="#c84b31" text-anchor="middle">本人 全額（100%）負担</text>
+        </svg>
+      </div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「任意継続も在職中と同じ<strong>半額</strong>負担」→ <strong style="color:#2d6a4f;">○</strong> 事業主がいないため<strong>全額</strong>自己負担</div>
+          </div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「保険料は退職直前1ヵ月の報酬で算定」→ <strong style="color:#2d6a4f;">○</strong> 退職時の標準報酬月額 or 全平均の<strong>低い方</strong></div>
+          </div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 任意継続：全額自己負担。退職時 or 全平均の<strong>低い方</strong>で計算（上限あり）。</div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /card-body -->
+  </div>
+</div><!-- /card cq6 -->
+
+<!-- Q7 -->
+<div class="card" id="cq7">
+  <div class="card-hd">
+    <div class="q-num">07</div>
+    <div><div class="src-tag">法第3条第7項 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：被扶養者の認定（兄弟姉妹）</div></div>
+  </div><!-- /card-hd -->
+  <div class="card-body">
+    <div class="quiz-q">被保険者の兄弟姉妹は、被保険者と<mark>同一世帯でなくても</mark>被扶養者に認定される場合がある。</div>
+    <div class="opts-tf" id="q7-opts">
+      <div class="opt" onclick="answer('q7',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q7',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q7-ans">
+      <div class="ans-hd" id="q7-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：○ 正しい｜法第3条第7項</div>
+      <div class="why">✔ 兄弟姉妹は「直系尊属・配偶者・子・孫・兄弟姉妹」の同居不要グループに含まれる。</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 600 110" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="600" height="110" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="26" font-size="12" font-weight="700" fill="#1a1a2e">被扶養者の同居要件 ― 2グループ比較</text>
+          <rect x="10"  y="38" width="280" height="60" rx="8" fill="#e8f5ee" stroke="#2d6a4f" stroke-width="1.5"/>
+          <text x="150" y="58" font-size="11" font-weight="700" fill="#2d6a4f" text-anchor="middle">✅ 同居不要グループ</text>
+          <text x="150" y="76" font-size="10" fill="#1a1a2e" text-anchor="middle">直系尊属・配偶者・子・孫・</text>
+          <text x="150" y="90" font-size="11" font-weight="900" fill="#c84b31" text-anchor="middle">兄弟姉妹</text>
+          <rect x="310" y="38" width="280" height="60" rx="8" fill="#fee2e2" stroke="#c84b31" stroke-width="1.5"/>
+          <text x="450" y="58" font-size="11" font-weight="700" fill="#c84b31" text-anchor="middle">⚠️ 同居必要グループ</text>
+          <text x="450" y="76" font-size="10" fill="#1a1a2e" text-anchor="middle">その他の3親等内</text>
+          <text x="450" y="90" font-size="11" font-weight="900" fill="#c84b31" text-anchor="middle">叔父・叔母・甥・姪など</text>
+        </svg>
+      </div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「兄弟姉妹は<strong>同一世帯が必要</strong>」→ <strong style="color:#2d6a4f;">○</strong> 兄弟姉妹は同一世帯<strong>不要</strong></div>
+          </div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「叔父・叔母は同一世帯不要で被扶養者になれる」→ <strong style="color:#2d6a4f;">○</strong> 叔父叔母（その他3親等）は<strong>同居必要</strong></div>
+          </div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 兄弟姉妹は同居不要。叔父・甥など「その他3親等」は同居必要。</div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /card-body -->
+  </div>
+</div><!-- /card cq7 -->
+
+<!-- Q8 -->
+<div class="card" id="cq8">
+  <div class="card-hd">
+    <div class="q-num">08</div>
+    <div><div class="src-tag">法第41条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：資格取得時決定の適用期間</div></div>
+  </div><!-- /card-hd -->
+  <div class="card-body">
+    <div class="quiz-q">資格取得時決定における標準報酬月額は、資格取得月の<mark>翌月</mark>から次の定時決定までの期間に適用される。</div>
+    <div class="opts-tf" id="q8-opts">
+      <div class="opt" onclick="answer('q8',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q8',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q8-ans">
+      <div class="ans-hd" id="q8-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#c84b31;margin-bottom:10px;">正解：× 誤り｜法第41条</div>
+      <div class="why">⚠️ 資格取得時決定の標準報酬月額は<strong>資格取得月から</strong>（翌月ではなく<strong>当月から</strong>）適用される。</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 600 110" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="600" height="110" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="26" font-size="12" font-weight="700" fill="#1a1a2e">標準報酬の適用開始月 ― 3種の違い</text>
+          <rect x="10"  y="38" width="184" height="60" rx="8" fill="#e8f5ee" stroke="#2d6a4f" stroke-width="1.5"/>
+          <text x="102" y="58" font-size="10" font-weight="700" fill="#2d6a4f" text-anchor="middle">資格取得時決定</text>
+          <text x="102" y="78" font-size="13" font-weight="900" fill="#c84b31" text-anchor="middle">取得月から（当月）</text>
+          <rect x="208" y="38" width="184" height="60" rx="8" fill="#e8f4f4" stroke="#2a7f7f" stroke-width="1.5"/>
+          <text x="300" y="58" font-size="10" font-weight="700" fill="#2a7f7f" text-anchor="middle">定時決定</text>
+          <text x="300" y="78" font-size="13" font-weight="900" fill="#c84b31" text-anchor="middle">9月1日から</text>
+          <rect x="406" y="38" width="184" height="60" rx="8" fill="#fef9e7" stroke="#c9930a" stroke-width="1.5"/>
+          <text x="498" y="58" font-size="10" font-weight="700" fill="#633806" text-anchor="middle">随時改定</text>
+          <text x="498" y="78" font-size="13" font-weight="900" fill="#c84b31" text-anchor="middle">改定月の翌月から</text>
+        </svg>
+      </div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「資格取得時決定は<strong>翌月から</strong>適用」→ <strong style="color:#2d6a4f;">○</strong> <strong>取得月（当月）から</strong>適用</div>
+          </div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「随時改定は改定の原因が生じた月から適用」→ <strong style="color:#2d6a4f;">○</strong> <strong>改定月の翌月から</strong>適用</div>
+          </div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 資格取得時＝<strong>当月から</strong>、随時改定＝<strong>翌月から</strong>、定時決定＝<strong>9月から</strong>。</div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /card-body -->
+  </div>
+</div><!-- /card cq8 -->
+
+<!-- Q9 -->
+<div class="card" id="cq9">
+  <div class="card-hd">
+    <div class="q-num">09</div>
+    <div><div class="src-tag">法第115条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：高額療養費の世帯合算</div></div>
+  </div><!-- /card-hd -->
+  <div class="card-body">
+    <div class="quiz-q">70歳未満の被保険者の高額療養費の世帯合算では、同一月に同一世帯で複数の受診があった場合、それぞれの一部負担金を合算して限度額を超えた分が支給される。</div>
+    <div class="opts-tf" id="q9-opts">
+      <div class="opt" onclick="answer('q9',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q9',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q9-ans">
+      <div class="ans-hd" id="q9-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：○ 正しい｜法第115条</div>
+      <div class="why">✔ 高額療養費の世帯合算制度。同一月・同一世帯の複数の自己負担額を合算して限度額超過分が支給される。</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 600 110" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="600" height="110" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="26" font-size="12" font-weight="700" fill="#1a1a2e">世帯合算の3要件（70歳未満）</text>
+          <rect x="10"  y="38" width="180" height="60" rx="8" fill="white" stroke="#2a7f7f" stroke-width="1.5"/>
+          <text x="100" y="60" font-size="11" font-weight="700" fill="#2a7f7f" text-anchor="middle">① 同一月</text>
+          <text x="100" y="80" font-size="10" fill="#1a1a2e" text-anchor="middle">月をまたいでは合算不可</text>
+          <rect x="208" y="38" width="180" height="60" rx="8" fill="white" stroke="#2a7f7f" stroke-width="1.5"/>
+          <text x="298" y="60" font-size="11" font-weight="700" fill="#2a7f7f" text-anchor="middle">② 同一世帯</text>
+          <text x="298" y="80" font-size="10" fill="#1a1a2e" text-anchor="middle">被保険者＋被扶養者</text>
+          <rect x="406" y="38" width="184" height="60" rx="8" fill="#fef9e7" stroke="#c9930a" stroke-width="1.5"/>
+          <text x="498" y="58" font-size="11" font-weight="700" fill="#633806" text-anchor="middle">③ 21,000円以上</text>
+          <text x="498" y="76" font-size="10" fill="#1a1a2e" text-anchor="middle">（70歳未満のみ）</text>
+          <text x="498" y="92" font-size="10" font-weight="700" fill="#c84b31" text-anchor="middle">未満は合算対象外</text>
+        </svg>
+      </div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「2ヵ月にわたる医療費も合算できる」→ <strong style="color:#2d6a4f;">○</strong> <strong>同一月内</strong>のみ合算可能</div>
+          </div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「70歳未満は金額制限なく全て合算できる」→ <strong style="color:#2d6a4f;">○</strong> <strong>21,000円以上</strong>のみ合算対象</div>
+          </div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 70歳未満の世帯合算は「同一月・同一世帯・各<strong>21,000円以上</strong>」の3条件。</div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /card-body -->
+  </div>
+</div><!-- /card cq9 -->
+
+<!-- Q10 -->
+<div class="card" id="cq10">
+  <div class="card-hd">
+    <div class="q-num">10</div>
+    <div><div class="src-tag">法第167条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：賞与の保険料控除</div></div>
+  </div><!-- /card-hd -->
+  <div class="card-body">
+    <div class="quiz-q">事業主は、被保険者に賞与を支払う際、<mark>当月分</mark>の保険料を賞与額から控除することができる。</div>
+    <div class="opts-tf" id="q10-opts">
+      <div class="opt" onclick="answer('q10',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q10',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q10-ans">
+      <div class="ans-hd" id="q10-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#c84b31;margin-bottom:10px;">正解：× 誤り｜法第167条</div>
+      <div class="why">⚠️ 賞与から控除できるのは「当月分の保険料」ではなく、<strong>賞与に係る保険料（標準賞与額×保険料率）</strong>の被保険者負担分。</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 600 110" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="600" height="110" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="26" font-size="12" font-weight="700" fill="#1a1a2e">賞与の保険料 ― 計算・届出・上限</text>
+          <rect x="10"  y="38" width="184" height="60" rx="8" fill="white" stroke="#2a7f7f" stroke-width="1.5"/>
+          <text x="102" y="58" font-size="10" font-weight="700" fill="#2a7f7f" text-anchor="middle">控除できる保険料</text>
+          <text x="102" y="78" font-size="10" font-weight="700" fill="#c84b31" text-anchor="middle">標準賞与額×保険料率</text>
+          <rect x="208" y="38" width="184" height="60" rx="8" fill="white" stroke="#c9930a" stroke-width="1.5"/>
+          <text x="300" y="58" font-size="10" font-weight="700" fill="#633806" text-anchor="middle">標準賞与額の上限</text>
+          <text x="300" y="78" font-size="13" font-weight="900" fill="#c84b31" text-anchor="middle">年間573万円</text>
+          <rect x="406" y="38" width="184" height="60" rx="8" fill="white" stroke="#6b7280" stroke-width="1.5"/>
+          <text x="498" y="58" font-size="10" font-weight="700" fill="#6b7280" text-anchor="middle">賞与支払届の期限</text>
+          <text x="498" y="78" font-size="13" font-weight="900" fill="#c84b31" text-anchor="middle">支払日から5日以内</text>
+        </svg>
+      </div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「賞与から<strong>翌月分の標準報酬月額</strong>の保険料を控除できる」→ <strong style="color:#2d6a4f;">○</strong> 賞与に係る保険料（賞与×保険料率）を控除</div>
+          </div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 標準賞与額の年間上限：<strong>573万円</strong>。賞与支払届：支払日から<strong>5日以内</strong>。</div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /card-body -->
+  </div>
+</div><!-- /card cq10 -->
+
+</div><!-- /qwrap -->
+
+<div class="sec-div" style="margin-top:20px;">
+  <div><span class="sec-pill pill-teal">② 穴埋め式　5問</span></div>
+  <div class="sec-title">健保法全論点の重要数字を横断確認する</div>
+  <div class="sec-desc">傷病手当金・定時決定・健保組合・日雇特例・一部負担金・罰則。Day1〜9の数字を一気に総復習。</div>
+</div>
+
+<div class="qwrap">
+
+<!-- F1 -->
+<div class="card" id="cf1">
+  <div class="card-hd">
+    <div class="q-num tn">F1</div>
+    <div><div class="src-tag t">穴埋め ／ 給付関連の重要数字</div><div class="q-type">難易度：★★★</div></div>
+  </div><!-- /card-hd -->
+  <div class="card-body">
+    <div class="quiz-q">給付関連の重要数字の空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      傷病手当金：待期<span class="blank" id="f1a" onclick="selB('f1','f1a')">　　</span>日・直近<span class="blank" id="f1b" onclick="selB('f1','f1b')">　　</span>ヵ月平均の<span class="blank" id="f1c" onclick="selB('f1','f1c')">　　　</span>・通算<span class="blank" id="f1d" onclick="selB('f1','f1d')">　</span>年6ヵ月。出産育児一時金：<span class="blank" id="f1e" onclick="selB('f1','f1e')">　　</span>万円。一部負担金（70歳未満）：<span class="blank" id="f1f" onclick="selB('f1','f1f')">　</span>割。
+    </div>
+    <div class="chips" id="f1-ch">
+      <div class="chp" onclick="fillB('f1','f1a',this,'3')">3</div>
+      <div class="chp" onclick="fillB('f1','f1a',this,'7')">7</div>
+      <div class="chp" onclick="fillB('f1','f1b',this,'12')">12</div>
+      <div class="chp" onclick="fillB('f1','f1b',this,'6')">6</div>
+      <div class="chp" onclick="fillB('f1','f1c',this,'3分の2')">3分の2</div>
+      <div class="chp" onclick="fillB('f1','f1c',this,'2分の1')">2分の1</div>
+      <div class="chp" onclick="fillB('f1','f1d',this,'1')">1</div>
+      <div class="chp" onclick="fillB('f1','f1d',this,'2')">2</div>
+      <div class="chp" onclick="fillB('f1','f1e',this,'50')">50</div>
+      <div class="chp" onclick="fillB('f1','f1e',this,'42')">42</div>
+      <div class="chp" onclick="fillB('f1','f1f',this,'3')">3</div>
+      <div class="chp" onclick="fillB('f1','f1f',this,'2')">2</div>
+    </div>
+    <button class="chk-btn" id="f1-btn" onclick="chkF('f1')">答え合わせ</button>
+    <div class="ans-box" id="f1-ans">
+      <div class="ans-hd" id="f1-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：3日 ／ 12ヵ月 ／ 3分の2 ／ 1年6ヵ月 ／ 50万円 ／ 3割</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 560 70" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="560" height="70" rx="8" fill="#f5f0e8"/>
+          <text x="20" y="22" font-size="11" font-weight="700" fill="#1a1a2e">傷病手当金4数字 ＋ 出産一時金 ＋ 一部負担金</text>
+          <rect x="10"  y="30" width="80"  height="30" rx="5" fill="#e8f5ee" stroke="#2d6a4f" stroke-width="1.2"/>
+          <text x="50"  y="50" font-size="11" font-weight="900" fill="#c84b31" text-anchor="middle">3日待期</text>
+          <rect x="100" y="30" width="80"  height="30" rx="5" fill="#e8f5ee" stroke="#2d6a4f" stroke-width="1.2"/>
+          <text x="140" y="50" font-size="11" font-weight="900" fill="#c84b31" text-anchor="middle">12ヵ月平均</text>
+          <rect x="190" y="30" width="80"  height="30" rx="5" fill="#fef9e7" stroke="#c9930a" stroke-width="1.2"/>
+          <text x="230" y="50" font-size="11" font-weight="900" fill="#c84b31" text-anchor="middle">3分の2</text>
+          <rect x="280" y="30" width="90"  height="30" rx="5" fill="#fee2e2" stroke="#c84b31" stroke-width="1.2"/>
+          <text x="325" y="50" font-size="10" font-weight="900" fill="#c84b31" text-anchor="middle">通算1年6ヵ月</text>
+          <rect x="380" y="30" width="80"  height="30" rx="5" fill="#e8f4f4" stroke="#2a7f7f" stroke-width="1.2"/>
+          <text x="420" y="50" font-size="11" font-weight="900" fill="#c84b31" text-anchor="middle">一時金50万</text>
+          <rect x="470" y="30" width="80"  height="30" rx="5" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.2"/>
+          <text x="510" y="50" font-size="11" font-weight="900" fill="#c84b31" text-anchor="middle">一部3割</text>
+        </svg>
+      </div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「支給額は<strong>2分の1</strong>」「支給期間は<strong>2年</strong>」「出産育児一時金は<strong>42万円</strong>」→ いずれも誤り</div>
+          </div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 傷病手当：<strong>3日・12ヵ月・3分の2・1年6ヵ月</strong>。一時金：<strong>50万円</strong>。一部負担：<strong>3割</strong>。</div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /ans-box -->
+  </div><!-- /card-body -->
+</div><!-- /card cf1 -->
+
+<!-- F2 -->
+<div class="card" id="cf2">
+  <div class="card-hd">
+    <div class="q-num tn">F2</div>
+    <div><div class="src-tag t">穴埋め ／ 保険料・届出関連の重要数字</div><div class="q-type">難易度：★★★</div></div>
+  </div><!-- /card-hd -->
+  <div class="card-body">
+    <div class="quiz-q">保険料・届出関連の重要数字の空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      定時決定：<span class="blank" id="f2a" onclick="selB('f2','f2a')">　　　　</span>月の報酬→7/10届出→9/1適用。随時改定：<span class="blank" id="f2b" onclick="selB('f2','f2b')">　</span>等級以上変動・各月<span class="blank" id="f2c" onclick="selB('f2','f2c')">　　</span>日以上要件。保険料の時効：<span class="blank" id="f2d" onclick="selB('f2','f2d')">　</span>年。延滞金率：年<span class="blank" id="f2e" onclick="selB('f2','f2e')">　　　</span>%（督促状期限翌日以降）。
+    </div>
+    <div class="chips" id="f2-ch">
+      <div class="chp" onclick="fillB('f2','f2a',this,'4・5・6')">4・5・6</div>
+      <div class="chp" onclick="fillB('f2','f2a',this,'3・4・5')">3・4・5</div>
+      <div class="chp" onclick="fillB('f2','f2b',this,'2')">2</div>
+      <div class="chp" onclick="fillB('f2','f2b',this,'3')">3</div>
+      <div class="chp" onclick="fillB('f2','f2c',this,'17')">17</div>
+      <div class="chp" onclick="fillB('f2','f2c',this,'20')">20</div>
+      <div class="chp" onclick="fillB('f2','f2d',this,'2')">2</div>
+      <div class="chp" onclick="fillB('f2','f2d',this,'3')">3</div>
+      <div class="chp" onclick="fillB('f2','f2e',this,'14.6')">14.6</div>
+      <div class="chp" onclick="fillB('f2','f2e',this,'16.4')">16.4</div>
+    </div>
+    <button class="chk-btn" id="f2-btn" onclick="chkF('f2')">答え合わせ</button>
+    <div class="ans-box" id="f2-ans">
+      <div class="ans-hd" id="f2-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：4・5・6月 ／ 2等級 ／ 17日 ／ 2年 ／ 14.6%</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 560 90" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="560" height="90" rx="8" fill="#f5f0e8"/>
+          <text x="20" y="22" font-size="11" font-weight="700" fill="#1a1a2e">定時決定・随時改定のキー数字</text>
+          <rect x="10"  y="32" width="160" height="46" rx="6" fill="#e8f4f4" stroke="#2a7f7f" stroke-width="1.5"/>
+          <text x="90"  y="52" font-size="10" font-weight="700" fill="#2a7f7f" text-anchor="middle">定時決定</text>
+          <text x="90"  y="70" font-size="12" font-weight="900" fill="#c84b31" text-anchor="middle">4・5・6月 → 7/10</text>
+          <rect x="182" y="32" width="160" height="46" rx="6" fill="#fef9e7" stroke="#c9930a" stroke-width="1.5"/>
+          <text x="262" y="52" font-size="10" font-weight="700" fill="#633806" text-anchor="middle">随時改定</text>
+          <text x="262" y="70" font-size="12" font-weight="900" fill="#c84b31" text-anchor="middle">2等級以上・17日</text>
+          <rect x="354" y="32" width="196" height="46" rx="6" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5"/>
+          <text x="452" y="52" font-size="10" font-weight="700" fill="#6b7280" text-anchor="middle">時効・延滞</text>
+          <text x="452" y="70" font-size="12" font-weight="900" fill="#c84b31" text-anchor="middle">2年 ／ 延滞14.6%</text>
+        </svg>
+      </div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「定時決定は届出<strong>6月30日まで</strong>」「随時改定は<strong>1等級以上</strong>」「時効は<strong>3年</strong>」→ いずれも誤り</div>
+          </div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 定時：<strong>7/10</strong>・随時：<strong>2等級・17日</strong>・時効：<strong>2年</strong>・延滞：<strong>14.6%</strong></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /ans-box -->
+  </div><!-- /card-body -->
+</div><!-- /card cf2 -->
+
+<!-- F3 -->
+<div class="card" id="cf3">
+  <div class="card-hd">
+    <div class="q-num tn">F3</div>
+    <div><div class="src-tag t">穴埋め ／ 組織・審査関連の重要数字</div><div class="q-type">難易度：★★★</div></div>
+  </div><!-- /card-hd -->
+  <div class="card-body">
+    <div class="quiz-q">組織・審査関連の重要数字の空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      健保組合：単独<span class="blank" id="f3a" onclick="selB('f3','f3a')">　　　</span>人・共同<span class="blank" id="f3b" onclick="selB('f3','f3b')">　　　　</span>人。組合会議員の任期：<span class="blank" id="f3c" onclick="selB('f3','f3c')">　</span>年以内。審査請求の期限：処分を知った日の翌日から<span class="blank" id="f3d" onclick="selB('f3','f3d')">　　</span>日以内。国庫補助（給付費）：<span class="blank" id="f3e" onclick="selB('f3','f3e')">　　　</span>%。
+    </div>
+    <div class="chips" id="f3-ch">
+      <div class="chp" onclick="fillB('f3','f3a',this,'700')">700</div>
+      <div class="chp" onclick="fillB('f3','f3a',this,'1,000')">1,000</div>
+      <div class="chp" onclick="fillB('f3','f3b',this,'3,000')">3,000</div>
+      <div class="chp" onclick="fillB('f3','f3b',this,'1,000')">1,000</div>
+      <div class="chp" onclick="fillB('f3','f3c',this,'3')">3</div>
+      <div class="chp" onclick="fillB('f3','f3c',this,'2')">2</div>
+      <div class="chp" onclick="fillB('f3','f3d',this,'60')">60</div>
+      <div class="chp" onclick="fillB('f3','f3d',this,'30')">30</div>
+      <div class="chp" onclick="fillB('f3','f3e',this,'16.4')">16.4</div>
+      <div class="chp" onclick="fillB('f3','f3e',this,'20')">20</div>
+    </div>
+    <button class="chk-btn" id="f3-btn" onclick="chkF('f3')">答え合わせ</button>
+    <div class="ans-box" id="f3-ans">
+      <div class="ans-hd" id="f3-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：700人 ／ 3,000人 ／ 3年 ／ 60日 ／ 16.4%</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 560 90" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="560" height="90" rx="8" fill="#f5f0e8"/>
+          <text x="20" y="22" font-size="11" font-weight="700" fill="#1a1a2e">健保組合設立要件 ＋ 審査請求期限</text>
+          <rect x="10"  y="32" width="250" height="46" rx="6" fill="#e8f4f4" stroke="#2a7f7f" stroke-width="1.5"/>
+          <text x="135" y="52" font-size="10" font-weight="700" fill="#2a7f7f" text-anchor="middle">健保組合の設立要件</text>
+          <text x="135" y="70" font-size="12" font-weight="900" fill="#c84b31" text-anchor="middle">単独700人 ／ 共同3,000人</text>
+          <rect x="272" y="32" width="278" height="46" rx="6" fill="#fee2e2" stroke="#c84b31" stroke-width="1.5"/>
+          <text x="411" y="52" font-size="10" font-weight="700" fill="#c84b31" text-anchor="middle">審査請求期限（「3年」は×）</text>
+          <text x="411" y="70" font-size="12" font-weight="900" fill="#c84b31" text-anchor="middle">処分を知った翌日から60日以内</text>
+        </svg>
+      </div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「共同設立は<strong>1,000人以上</strong>」「審査請求は<strong>3年以内</strong>」→ <strong style="color:#2d6a4f;">○</strong> 共同<strong>3,000人</strong>・審査請求<strong>60日</strong></div>
+          </div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 単独<strong>700人</strong>・共同<strong>3,000人</strong>・審査請求<strong>60日</strong>・国庫補助<strong>16.4%</strong></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /ans-box -->
+  </div><!-- /card-body -->
+</div><!-- /card cf3 -->
+
+<!-- F4 -->
+<div class="card" id="cf4">
+  <div class="card-hd">
+    <div class="q-num tn">F4</div>
+    <div><div class="src-tag t">穴埋め ／ 日雇特例・資格喪失後の重要数字</div><div class="q-type">難易度：★★★</div></div>
+  </div><!-- /card-hd -->
+  <div class="card-body">
+    <div class="quiz-q">日雇特例・資格喪失後の重要数字の空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      日雇特例受給要件：前<span class="blank" id="f4a" onclick="selB('f4','f4a')">　</span>ヵ月<span class="blank" id="f4b" onclick="selB('f4','f4b')">　　</span>日または前<span class="blank" id="f4c" onclick="selB('f4','f4c')">　</span>ヵ月<span class="blank" id="f4d" onclick="selB('f4','f4d')">　　</span>日。日雇傷病手当金の待期：<span class="blank" id="f4e" onclick="selB('f4','f4e')">　　　　</span>。資格喪失後の傷病手当金継続給付：喪失日前に継続して<span class="blank" id="f4f" onclick="selB('f4','f4f')">　</span>年以上被保険者であること。
+    </div>
+    <div class="chips" id="f4-ch">
+      <div class="chp" onclick="fillB('f4','f4a',this,'2')">2</div>
+      <div class="chp" onclick="fillB('f4','f4a',this,'3')">3</div>
+      <div class="chp" onclick="fillB('f4','f4b',this,'26')">26</div>
+      <div class="chp" onclick="fillB('f4','f4b',this,'20')">20</div>
+      <div class="chp" onclick="fillB('f4','f4c',this,'6')">6</div>
+      <div class="chp" onclick="fillB('f4','f4c',this,'3')">3</div>
+      <div class="chp" onclick="fillB('f4','f4d',this,'78')">78</div>
+      <div class="chp" onclick="fillB('f4','f4d',this,'60')">60</div>
+      <div class="chp" onclick="fillB('f4','f4e',this,'なし')">なし</div>
+      <div class="chp" onclick="fillB('f4','f4e',this,'3日')">3日</div>
+      <div class="chp" onclick="fillB('f4','f4f',this,'1')">1</div>
+      <div class="chp" onclick="fillB('f4','f4f',this,'2')">2</div>
+    </div>
+    <button class="chk-btn" id="f4-btn" onclick="chkF('f4')">答え合わせ</button>
+    <div class="ans-box" id="f4-ans">
+      <div class="ans-hd" id="f4-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：2ヵ月・26日 ／ 6ヵ月・78日 ／ 待期なし ／ 1年以上</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 560 100" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="560" height="100" rx="8" fill="#f5f0e8"/>
+          <text x="20" y="22" font-size="11" font-weight="700" fill="#1a1a2e">日雇特例 vs 一般被保険者 ― 比較</text>
+          <rect x="10"  y="32" width="260" height="56" rx="6" fill="white" stroke="#c9930a" stroke-width="1.5"/>
+          <text x="140" y="52" font-size="10" font-weight="700" fill="#633806" text-anchor="middle">日雇特例被保険者</text>
+          <text x="140" y="68" font-size="10" fill="#1a1a2e" text-anchor="middle">受給要件：2ヵ月26日 or 6ヵ月78日</text>
+          <text x="140" y="82" font-size="11" font-weight="900" fill="#c84b31" text-anchor="middle">待期：なし（一般は3日）</text>
+          <rect x="290" y="32" width="260" height="56" rx="6" fill="white" stroke="#2a7f7f" stroke-width="1.5"/>
+          <text x="420" y="52" font-size="10" font-weight="700" fill="#2a7f7f" text-anchor="middle">資格喪失後の継続給付</text>
+          <text x="420" y="68" font-size="10" fill="#1a1a2e" text-anchor="middle">喪失前に継続</text>
+          <text x="420" y="82" font-size="12" font-weight="900" fill="#c84b31" text-anchor="middle">1年以上の被保険者期間が必要</text>
+        </svg>
+      </div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「日雇の傷病手当金も<strong>3日待期</strong>がある」→ <strong style="color:#2d6a4f;">○</strong> 日雇は<strong>待期なし</strong></div>
+          </div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 日雇受給要件：<strong>2ヵ月26日</strong>または<strong>6ヵ月78日</strong>。継続給付：<strong>1年以上</strong>の被保険者期間。</div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /ans-box -->
+  </div><!-- /card-body -->
+</div><!-- /card cf4 -->
+
+<!-- F5 -->
+<div class="card" id="cf5">
+  <div class="card-hd">
+    <div class="q-num tn">F5</div>
+    <div><div class="src-tag t">穴埋め ／ 一部負担金・罰則関連の重要数字</div><div class="q-type">難易度：★★★</div></div>
+  </div><!-- /card-hd -->
+  <div class="card-body">
+    <div class="quiz-q">一部負担金・罰則関連の重要数字の空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      一部負担金：70歳未満は<span class="blank" id="f5a" onclick="selB('f5','f5a')">　</span>割・70歳以上75歳未満は<span class="blank" id="f5b" onclick="selB('f5','f5b')">　</span>割（現役並み所得者は3割）。届出義務違反：<span class="blank" id="f5c" onclick="selB('f5','f5c')">　　　</span>以下の懲役または<span class="blank" id="f5d" onclick="selB('f5','f5d')">　　</span>万円以下の罰金。不正受給：<span class="blank" id="f5e" onclick="selB('f5','f5e')">　　　</span>万円以下の罰金（3年以下の懲役）。
+    </div>
+    <div class="chips" id="f5-ch">
+      <div class="chp" onclick="fillB('f5','f5a',this,'3')">3</div>
+      <div class="chp" onclick="fillB('f5','f5a',this,'2')">2</div>
+      <div class="chp" onclick="fillB('f5','f5b',this,'2')">2</div>
+      <div class="chp" onclick="fillB('f5','f5b',this,'3')">3</div>
+      <div class="chp" onclick="fillB('f5','f5c',this,'6ヵ月')">6ヵ月</div>
+      <div class="chp" onclick="fillB('f5','f5c',this,'3年')">3年</div>
+      <div class="chp" onclick="fillB('f5','f5d',this,'50')">50</div>
+      <div class="chp" onclick="fillB('f5','f5d',this,'100')">100</div>
+      <div class="chp" onclick="fillB('f5','f5e',this,'100')">100</div>
+      <div class="chp" onclick="fillB('f5','f5e',this,'30')">30</div>
+    </div>
+    <button class="chk-btn" id="f5-btn" onclick="chkF('f5')">答え合わせ</button>
+    <div class="ans-box" id="f5-ans">
+      <div class="ans-hd" id="f5-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：3割 ／ 2割 ／ 6ヵ月 ／ 50万円 ／ 100万円</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 560 90" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="560" height="90" rx="8" fill="#f5f0e8"/>
+          <text x="20" y="22" font-size="11" font-weight="700" fill="#1a1a2e">一部負担金 ＋ 罰則2本柱</text>
+          <rect x="10"  y="32" width="160" height="46" rx="6" fill="#e8f4f4" stroke="#2a7f7f" stroke-width="1.5"/>
+          <text x="90"  y="52" font-size="10" font-weight="700" fill="#2a7f7f" text-anchor="middle">一部負担金</text>
+          <text x="90"  y="70" font-size="11" font-weight="900" fill="#c84b31" text-anchor="middle">70歳未満3割・以上2割</text>
+          <rect x="182" y="32" width="176" height="46" rx="6" fill="#fef9e7" stroke="#c9930a" stroke-width="1.5"/>
+          <text x="270" y="52" font-size="10" font-weight="700" fill="#633806" text-anchor="middle">届出義務違反</text>
+          <text x="270" y="70" font-size="11" font-weight="900" fill="#c84b31" text-anchor="middle">6ヵ月・50万（軽い）</text>
+          <rect x="370" y="32" width="180" height="46" rx="6" fill="#fee2e2" stroke="#c84b31" stroke-width="1.5"/>
+          <text x="460" y="52" font-size="10" font-weight="700" fill="#c84b31" text-anchor="middle">不正受給</text>
+          <text x="460" y="70" font-size="11" font-weight="900" fill="#c84b31" text-anchor="middle">3年・100万（重い）</text>
+        </svg>
+      </div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「70歳以上75歳未満は<strong>3割</strong>」「不正受給の罰金は<strong>30万円</strong>」→ いずれも誤り</div>
+          </div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 70歳以上：<strong>2割</strong>。罰則：届出違反<strong>6ヵ月・50万</strong>／不正受給<strong>3年・100万</strong>。</div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /ans-box -->
+  </div><!-- /card-body -->
+</div><!-- /card cf5 -->
+
+</div><!-- /qwrap -->
+
+<div class="complete" id="complete-banner">
+  <div class="complete-in">
+    <div style="font-size:32px;margin-bottom:8px;">🎉</div>
+    <h2>Day 10 <em>完了！</em></h2>
+    <div class="complete-score" id="final-score">0</div>
+    <div class="complete-sub">15問中の正解数</div>
+    <div class="btn-row">
+      <span class="btn-back" onclick="location.href='index.html'" style="cursor:pointer;">← 目次に戻る</span>
+      <span class="btn-next" onclick="location.href='schedule.html'" style="cursor:pointer;">スケジュールへ →</span>
+    </div>
+  </div>
+</div>
+</div><!-- /panel-quiz -->
+
+<!-- ════════════════ PANEL-MINDMAP ════════════════ -->
+<div id="panel-mindmap" class="tab-panel">
+<div style="max-width:760px;margin:0 auto;padding:20px 20px 60px;">
+  <div style="background:#ede9fe;border:1px solid #c4b5fd;border-radius:10px;padding:12px 16px;font-size:13px;color:#4c1d95;margin-bottom:24px;line-height:1.7;">
+    🗺 <strong>連想図</strong>：Day10の全論点を「給付 → 保険料・届出 → 組織・罰則 → 特例・除外」の流れで整理。赤帯が引っかけポイント。
+  </div>
+
+  <!-- STEP 1: 給付関連 -->
+  <div style="text-align:center;margin-bottom:8px;">
+    <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#EEEDFE;border:1.5px solid #7F77DD;font-size:15px;font-weight:700;color:#26215C;">1</div>
+    <div style="font-size:16px;font-weight:700;color:#1a1a2e;margin-top:6px;">給付関連の重要数字（Day1〜3 総復習）</div>
+    <div style="font-size:12px;color:#6b7280;margin-top:2px;">傷病手当金4数字・出産給付・給付制限・高額療養費</div>
+  </div>
+  <div style="background:white;border:2px solid #1a1a2e;border-radius:12px;overflow:hidden;margin-bottom:10px;">
+    <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📋 給付数字まとめ表</div></div>
+    <div style="padding:14px 16px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+        <div style="background:#e8f4f4;border:1.5px solid #2a7f7f;border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#2a7f7f;font-weight:700;margin-bottom:4px;">傷病手当金（法第99条）</div>
+          <div style="font-size:12px;color:#1a1a2e;line-height:2.0;">待期：<strong style="color:#c84b31;">3日間</strong><br>計算：直近<strong style="color:#c84b31;">12ヵ月</strong>平均<br>支給額：<strong style="color:#c84b31;">3分の2</strong><br>支給期間：通算<strong style="color:#c84b31;">1年6ヵ月</strong></div>
+        </div>
+        <div style="background:#fef9e7;border:1.5px solid #c9930a;border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#c9930a;font-weight:700;margin-bottom:4px;">出産関連給付（法第102条）</div>
+          <div style="font-size:12px;color:#1a1a2e;line-height:2.0;">一時金：<strong style="color:#c84b31;">50万円</strong><br>産前：<strong style="color:#c84b31;">42日</strong>（多胎98日）<br>産後：<strong style="color:#c84b31;">56日</strong>（強制休業）<br>喪失後：<strong style="color:#c84b31;">6ヵ月以内</strong>出産</div>
+        </div>
+        <div style="background:#fee2e2;border:1.5px solid #c84b31;border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#c84b31;font-weight:700;margin-bottom:4px;">給付制限（法第116・117条）</div>
+          <div style="font-size:12px;color:#1a1a2e;line-height:2.0;">故意：<strong style="color:#c84b31;">全部不支給</strong><br>重大な過失：<strong style="color:#c84b31;">一部不支給</strong><br>闘争・泥酔等：一部または全部<br>「重大な過失も全部」→ ❌</div>
+        </div>
+        <div style="background:#f3f4f6;border:1.5px solid #6b7280;border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#6b7280;font-weight:700;margin-bottom:4px;">高額療養費 世帯合算（70歳未満）</div>
+          <div style="font-size:12px;color:#1a1a2e;line-height:2.0;">①同一月・②同一世帯<br>③各受診<strong style="color:#c84b31;">21,000円以上</strong>のみ合算<br>「月をまたいで合算」→ ❌<br>「金額制限なく合算」→ ❌</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 14px;font-size:12px;color:#A32D2D;margin-bottom:6px;line-height:1.9;">
+    <strong>🚨 給付関連 よくある引っかけ</strong><br>
+    × 「傷病手当金の支給額は<strong>2分の1</strong>」→ ○ <strong>3分の2</strong><br>
+    × 「支給期間は<strong>2年</strong>」→ ○ 通算<strong>1年6ヵ月</strong><br>
+    × 「産前<strong>56日</strong>・産後<strong>42日</strong>」→ ○ 産前<strong>42日</strong>・産後<strong>56日</strong>（逆！）<br>
+    × 「重大な過失も<strong>全部不支給</strong>」→ ○ 重大過失は<strong>一部不支給</strong>
+  </div>
+
+  <div style="text-align:center;color:#B4B2A9;font-size:20px;line-height:1;margin:20px 0 16px;">↓</div>
+
+  <!-- STEP 2: 保険料・標準報酬 -->
+  <div style="text-align:center;margin-bottom:8px;">
+    <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#E1F5EE;border:1.5px solid #1D9E75;font-size:15px;font-weight:700;color:#04342C;">2</div>
+    <div style="font-size:16px;font-weight:700;color:#1a1a2e;margin-top:6px;">保険料・標準報酬（Day4〜6 総復習）</div>
+    <div style="font-size:12px;color:#6b7280;margin-top:2px;">定時決定・随時改定・時効・任意継続・賞与</div>
+  </div>
+  <div style="background:white;border:2px solid #1a1a2e;border-radius:12px;overflow:hidden;margin-bottom:10px;">
+    <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📋 標準報酬・保険料数字まとめ</div></div>
+    <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+      <div style="border-left:4px solid #2a7f7f;padding:8px 12px;background:#f0fafa;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;font-weight:700;color:#2a7f7f;margin-bottom:3px;">定時決定（法第41条）</div>
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong>4・5・6月</strong>の報酬 → <strong>7月10日</strong>までに届出 → <strong>9月1日</strong>から適用（翌8月まで）</div>
+      </div>
+      <div style="border-left:4px solid #c9930a;padding:8px 12px;background:#fffcf0;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;font-weight:700;color:#c9930a;margin-bottom:3px;">随時改定（法第43条）</div>
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong>2等級以上</strong>の変動 ＋ 継続3ヵ月の報酬 ＋ 各月<strong>17日以上</strong> → 改定月の<strong>翌月</strong>から適用</div>
+      </div>
+      <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;font-weight:700;color:#c84b31;margin-bottom:3px;">任意継続被保険者の保険料（法第47条）</div>
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong>全額自己負担</strong>。退職時の標準報酬月額 or 全被保険者平均の<strong>低い方</strong>で算定。</div>
+      </div>
+      <div style="border-left:4px solid #6b7280;padding:8px 12px;background:#f5f5f4;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;font-weight:700;color:#6b7280;margin-bottom:3px;">賞与の保険料（法第167条）</div>
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong>標準賞与額（上限年573万円）× 保険料率</strong>。支払届：支払日から<strong>5日以内</strong>。</div>
+      </div>
+    </div>
+  </div>
+  <div style="background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 14px;font-size:12px;color:#A32D2D;margin-bottom:6px;line-height:1.9;">
+    <strong>🚨 保険料・標準報酬 よくある引っかけ</strong><br>
+    × 「定時決定の届出は<strong>6月30日まで</strong>」→ ○ <strong>7月10日まで</strong><br>
+    × 「随時改定は<strong>1等級以上</strong>の変動で可」→ ○ <strong>2等級以上</strong><br>
+    × 「資格取得時決定は<strong>翌月から</strong>適用」→ ○ <strong>取得月（当月）から</strong>適用<br>
+    × 「任意継続も<strong>半額</strong>負担」→ ○ <strong>全額</strong>自己負担
+  </div>
+
+  <div style="text-align:center;color:#B4B2A9;font-size:20px;line-height:1;margin:20px 0 16px;">↓</div>
+
+  <!-- STEP 3: 組織・罰則 -->
+  <div style="text-align:center;margin-bottom:8px;">
+    <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#FAECE7;border:1.5px solid #D85A30;font-size:15px;font-weight:700;color:#4A1B0C;">3</div>
+    <div style="font-size:16px;font-weight:700;color:#1a1a2e;margin-top:6px;">組織・罰則（Day7〜9 総復習）</div>
+    <div style="font-size:12px;color:#6b7280;margin-top:2px;">健保組合設立・審査請求・届出期限・罰則</div>
+  </div>
+  <div style="background:white;border:2px solid #1a1a2e;border-radius:12px;overflow:hidden;margin-bottom:10px;">
+    <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📋 組織・罰則数字まとめ</div></div>
+    <div style="padding:14px 16px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div style="background:#e8f4f4;border:1.5px solid #2a7f7f;border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#2a7f7f;font-weight:700;margin-bottom:4px;">健保組合の設立（法第11条）</div>
+          <div style="font-size:12px;color:#1a1a2e;line-height:2.0;">単独設立：<strong style="color:#c84b31;">700人以上</strong><br>共同設立：<strong style="color:#c84b31;">3,000人以上</strong><br>（「1,000人」は×）</div>
+        </div>
+        <div style="background:#fee2e2;border:1.5px solid #c84b31;border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#c84b31;font-weight:700;margin-bottom:4px;">審査請求期限（法第189条）</div>
+          <div style="font-size:12px;color:#1a1a2e;line-height:2.0;">処分を知った翌日から<br><strong style="color:#c84b31;">60日以内</strong><br>（「3年」は保険料時効）</div>
+        </div>
+        <div style="background:#fef9e7;border:1.5px solid #c9930a;border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#c9930a;font-weight:700;margin-bottom:4px;">届出義務違反（法208条）</div>
+          <div style="font-size:12px;color:#1a1a2e;line-height:2.0;"><strong style="color:#c84b31;">6ヵ月以下</strong>の懲役<br>または<strong style="color:#c84b31;">50万円以下</strong>の罰金<br>（比較的軽い）</div>
+        </div>
+        <div style="background:#fee2e2;border:1.5px solid #c84b31;border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#c84b31;font-weight:700;margin-bottom:4px;">不正受給（法213条）</div>
+          <div style="font-size:12px;color:#1a1a2e;line-height:2.0;"><strong style="color:#c84b31;">3年以下</strong>の懲役<br>または<strong style="color:#c84b31;">100万円以下</strong>の罰金<br>（重い・詐欺）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 14px;font-size:12px;color:#A32D2D;margin-bottom:10px;line-height:1.9;">
+    <strong>🚨 組織・罰則 よくある引っかけ</strong><br>
+    × 「共同設立は<strong>1,000人以上</strong>」→ ○ <strong>3,000人以上</strong><br>
+    × 「審査請求は<strong>3年以内</strong>」→ ○ <strong>60日以内</strong>（3年は保険料時効）<br>
+    × 「不正受給の罰金は<strong>30万円以下</strong>」→ ○ <strong>100万円以下</strong>
+  </div>
+
+  <!-- Day10 最重要 TOP5 -->
+  <div style="background:white;border:2px solid #c84b31;border-radius:12px;overflow:hidden;">
+    <div style="background:#c84b31;padding:10px 16px;">
+      <div style="font-size:12px;font-weight:700;color:white;">⚡ Day10 最重要引っかけ TOP 5</div>
+    </div>
+    <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;align-items:flex-start;gap:10px;background:#fff8f7;border:1px solid #fca5a5;border-radius:8px;padding:8px 12px;">
+        <span style="font-size:16px;font-weight:900;color:#c84b31;flex-shrink:0;line-height:1.4;">1</span>
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.7;"><strong>傷病手当金：3日待期・12ヵ月・3分の2・通算1年6ヵ月</strong>（4数字セットで完全暗記）</div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;background:#fff8f7;border:1px solid #fca5a5;border-radius:8px;padding:8px 12px;">
+        <span style="font-size:16px;font-weight:900;color:#c84b31;flex-shrink:0;line-height:1.4;">2</span>
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.7;"><strong>産前42日・産後56日</strong>（「産前56日・産後42日」は古典的引っかけ）</div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;background:#fff8f7;border:1px solid #fca5a5;border-radius:8px;padding:8px 12px;">
+        <span style="font-size:16px;font-weight:900;color:#c84b31;flex-shrink:0;line-height:1.4;">3</span>
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.7;"><strong>重大な過失は一部不支給（全部不支給ではない）</strong>。故意のみ全部不支給。</div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;background:#fff8f7;border:1px solid #fca5a5;border-radius:8px;padding:8px 12px;">
+        <span style="font-size:16px;font-weight:900;color:#c84b31;flex-shrink:0;line-height:1.4;">4</span>
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.7;"><strong>共同設立3,000人・審査請求60日</strong>（「1,000人」「3年以内」はどちらも誤り）</div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;background:#fff8f7;border:1px solid #fca5a5;border-radius:8px;padding:8px 12px;">
+        <span style="font-size:16px;font-weight:900;color:#c84b31;flex-shrink:0;line-height:1.4;">5</span>
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.7;"><strong>資格取得時決定は当月から適用</strong>（「翌月から」は随時改定の話）</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div><!-- /panel-mindmap -->
+
+<!-- ════════════════ PANEL-FLASH ════════════════ -->
+<div id="panel-flash" class="tab-panel">
+<div class="fc-wrap">
+  <div class="fc-meta">
+    <div><div class="fc-counter" id="fc-counter">1<span> / 20</span></div></div>
+    <button class="fc-nav-btn shuffle" onclick="fcShuffle()" style="max-width:100px;padding:8px 12px;font-size:12px;">🔀 シャッフル</button>
+  </div>
+  <div class="fc-gauge-wrap">
+    <div class="fc-gauge-labels">
+      <span class="fc-gauge-label-ng">❌ <span id="fc-ng-count">0</span></span>
+      <span class="fc-gauge-label-mid" id="fc-remaining">残り 20 枚</span>
+      <span class="fc-gauge-label-ok"><span id="fc-ok-count">0</span> ✅</span>
+    </div>
+    <div class="fc-gauge-track">
+      <div class="fc-gauge-ng" id="fc-gauge-ng"></div>
+      <div class="fc-gauge-mid-line"></div>
+      <div class="fc-gauge-ok" id="fc-gauge-ok"></div>
+    </div>
+  </div>
+  <div class="fc-carousel" id="fc-carousel">
+    <div class="fc-slot prev" id="fc-slot-prev">
+      <div class="fc-inner"><div class="fc-face fc-front-face">
+        <div class="fc-front-hd"><span class="fc-front-tag" id="fc-prev-tag">—</span><span style="font-size:11px;color:var(--gray);" id="fc-prev-cat"></span></div>
+        <div class="fc-front-body"><div class="fc-q" id="fc-prev-q" style="font-size:13px;opacity:.7;"></div></div>
+      </div></div>
+    </div>
+    <div class="fc-slot curr" id="fc-slot-curr" onclick="fcFlip()">
+      <div class="fc-inner" id="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd"><span class="fc-front-tag" id="fc-tag">Q01</span><span style="font-size:11px;color:var(--gray);" id="fc-cat">傷病手当金</span></div>
+          <div class="fc-front-body"><div class="fc-q" id="fc-q">—</div></div>
+          <div class="fc-ox">
+            <button class="fc-ox-btn o" onclick="fcChoose(true);event.stopPropagation();">○</button>
+            <button class="fc-ox-btn x" onclick="fcChoose(false);event.stopPropagation();">×</button>
+          </div>
+        </div>
+        <div class="fc-face fc-back-face">
+          <div class="fc-back-hd"><span class="fc-verdict" id="fc-verdict">× 誤り</span><span id="fc-user-ans" style="font-size:12px;margin-left:auto;"></span></div>
+          <div class="fc-back-body">
+            <div class="fc-answer" id="fc-answer">—</div>
+            <div class="fc-reason" id="fc-reason">—</div>
+            <div class="fc-lawref" id="fc-lawref">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-slot next" id="fc-slot-next">
+      <div class="fc-inner"><div class="fc-face fc-front-face">
+        <div class="fc-front-hd"><span class="fc-front-tag" id="fc-next-tag">—</span><span style="font-size:11px;color:var(--gray);" id="fc-next-cat"></span></div>
+        <div class="fc-front-body"><div class="fc-q" id="fc-next-q" style="font-size:13px;opacity:.7;"></div></div>
+      </div></div>
+    </div>
+  </div>
+  <div class="fc-nav" id="fc-nav" style="display:none;">
+    <button class="fc-nav-btn again" onclick="fcNext(false)">😅 もう一度</button>
+    <button class="fc-nav-btn got"   onclick="fcNext(true)">✅ わかった！</button>
+  </div>
+  <div class="fc-result" id="fc-result">
+    <div style="font-size:36px;margin-bottom:8px;" id="fc-emoji">🎉</div>
+    <h3>フラッシュカード完了！</h3>
+    <div class="fc-result-score" id="fc-result-score">—</div>
+    <div class="fc-result-sub" id="fc-result-sub">—</div>
+    <button class="fc-restart-btn" onclick="fcRestart()">🔁 もう一周する</button>
+  </div>
+</div>
+</div><!-- /panel-flash -->
+
+<!-- ════════════════ PANEL-SPIDER ════════════════ -->
+<div id="panel-spider" class="tab-panel">
+<div class="spider-wrap">
+  <div style="background:#ede9fe;border:1px solid #c4b5fd;border-radius:10px;padding:12px 16px;font-size:13px;color:#4c1d95;margin-bottom:20px;line-height:1.7;">
+    🕸️ <strong>記憶マップ</strong>：第2階層をタップで枝の展開・解説を切り替え。第3階層タップでリーフのみ開閉。
+  </div>
+  <div id="sp-root" style="width:100%;"></div>
+  <div id="spider-detail" style="display:none;margin-top:16px;background:white;border:2px solid #1a1a2e;border-radius:14px;overflow:hidden;">
+    <div id="spider-detail-hd" style="padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+      <span id="spider-detail-title" style="font-weight:700;font-size:15px;color:white;"></span>
+      <button onclick="closeSpiderDetail()" style="border:none;background:none;font-size:22px;cursor:pointer;color:rgba(255,255,255,.8);line-height:1;padding:0 4px;">✕</button>
+    </div>
+    <div id="spider-detail-body" style="padding:16px 18px 20px;"></div>
+  </div>
+</div>
+</div><!-- /panel-spider -->
+
+<script>
+// ═══════════════════════════════════════════════════════
+// 1. 採点・穴埋め（15問版）
+// ═══════════════════════════════════════════════════════
+const correct_ans={q1:0,q2:1,q3:1,q4:1,q5:0,q6:0,q7:0,q8:1,q9:0,q10:1};
+const done={};var score=0;var total=0;
+function answer(qid,idx){
+  if(done[qid])return;done[qid]=true;
+  var opts=document.querySelectorAll('#'+qid+'-opts .opt');
+  var ans=document.getElementById(qid+'-ans');
+  var ok=idx===correct_ans[qid];
+  opts.forEach(function(o,i){if(i===correct_ans[qid])o.classList.add('correct');else if(i===idx&&!ok)o.classList.add('wrong');});
+  ans.className='ans-box show '+(ok?'ok':'ng');
+  var r=document.getElementById(qid+'-result');
+  if(r){r.textContent=ok?'⭕ 正解！':'❌ 不正解';r.style.color=ok?'var(--green)':'var(--red)';}
+  if(ok)score++;
+  document.getElementById('score').textContent=score;
+  updateProg();
+  setTimeout(function(){ans.scrollIntoView({behavior:'smooth',block:'nearest'});},100);
+}
+var defs={
+  f1:{f1a:'3',f1b:'12',f1c:'3分の2',f1d:'1',f1e:'50',f1f:'3'},
+  f2:{f2a:'4・5・6',f2b:'2',f2c:'17',f2d:'2',f2e:'14.6'},
+  f3:{f3a:'700',f3b:'3,000',f3c:'3',f3d:'60',f3e:'16.4'},
+  f4:{f4a:'2',f4b:'26',f4c:'6',f4d:'78',f4e:'なし',f4f:'1'},
+  f5:{f5a:'3',f5b:'2',f5c:'6ヵ月',f5d:'50',f5e:'100'},
+};
+var state={f1:{},f2:{},f3:{},f4:{},f5:{}};
+var sel={f1:null,f2:null,f3:null,f4:null,f5:null};
+var fdone={};
+function selB(fid,bid){if(fdone[fid])return;if(sel[fid])document.getElementById(sel[fid]).classList.remove('sel');sel[fid]=bid;document.getElementById(bid).classList.add('sel');}
+function fillB(fid,bid,el,val){if(fdone[fid])return;if(sel[fid]!==bid)selB(fid,bid);var b=document.getElementById(bid);b.textContent=val;state[fid][bid]=val;el.classList.add('used');sel[fid]=null;b.classList.remove('sel');}
+function chkF(fid){
+  if(fdone[fid])return;
+  var d=defs[fid];var keys=Object.keys(d);
+  if(!keys.every(function(k){return state[fid][k]!==undefined;})){alert('すべての空欄を埋めてください');return;}
+  fdone[fid]=true;var allOk=true;
+  keys.forEach(function(k){var el=document.getElementById(k);if(state[fid][k]===d[k])el.classList.add('ok-fill');else{el.classList.add('ng-fill');allOk=false;}});
+  document.querySelectorAll('#'+fid+'-ch .chp').forEach(function(c){if(c.classList.contains('used')){c.classList.add(Object.values(d).includes(c.textContent)?'ok-c':'ng-c');}});
+  var ans=document.getElementById(fid+'-ans');
+  ans.className='ans-box show '+(allOk?'ok':'ng');
+  var r=document.getElementById(fid+'-result');
+  if(r){r.textContent=allOk?'⭕ 全問正解！':'❌ 不正解あり（赤い空欄を確認）';r.style.color=allOk?'var(--green)':'var(--red)';}
+  document.getElementById(fid+'-btn').disabled=true;
+  if(allOk)score++;
+  document.getElementById('score').textContent=score;
+  updateProg();
+  setTimeout(function(){document.getElementById(fid+'-ans').scrollIntoView({behavior:'smooth',block:'nearest'});},100);
+}
+function updateProg(){
+  total=Object.keys(done).length+Object.keys(fdone).length;
+  document.getElementById('prog').style.width=(total/15*100)+'%';
+  document.getElementById('prog-lbl').textContent=total+' ／ 15 問 回答済み';
+  if(total===15){setTimeout(function(){var b=document.getElementById('complete-banner');b.style.display='block';document.getElementById('final-score').textContent=score;b.scrollIntoView({behavior:'smooth'});},600);}
+}
+function switchTab(name,btn){
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  document.getElementById('panel-'+name).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ═══════════════════════════════════════════════════════
+// 2. フラッシュカード
+// ═══════════════════════════════════════════════════════
+const FC_CARDS=[
+  {tag:'Q01',cat:'傷病手当金',correct:false,q:'傷病手当金の支給額は、直近12ヵ月の標準報酬月額平均の<mark>2分の1</mark>である。',answer:'× 誤り',reason:'正しくは<mark>3分の2</mark>。「2分の1」は最頻出の誤りの選択肢。3日待期・12ヵ月・3分の2・通算1年6ヵ月の4数字セットで覚える。',law:'法第99条'},
+  {tag:'Q02',cat:'傷病手当金',correct:false,q:'傷病手当金の支給期間は、支給開始日から通算<mark>2年</mark>である。',answer:'× 誤り',reason:'正しくは通算<mark>1年6ヵ月</mark>。「2年」は支給期間として頻出の誤りの選択肢。',law:'法第99条'},
+  {tag:'Q03',cat:'傷病手当金',correct:true,q:'傷病手当金の待期は<mark>連続3日間</mark>であり、4日目以降に支給される。',answer:'○ 正しい',reason:'待期は連続3日間。4日目から支給開始。日雇特例は待期なし・支給期間6ヵ月と異なる。',law:'法第99条'},
+  {tag:'Q04',cat:'出産給付',correct:false,q:'出産手当金は産前<mark>56日</mark>・産後<mark>42日</mark>の期間について支給される。',answer:'× 誤り',reason:'産前と産後が<mark>逆</mark>。正しくは産前<mark>42日</mark>・産後<mark>56日</mark>。産後のほうが長い。この逆バージョンは何十年も使われる古典的引っかけ。',law:'法第102条'},
+  {tag:'Q05',cat:'出産給付',correct:true,q:'出産育児一時金は<mark>50万円</mark>である（産科医療補償制度の加算を含む）。',answer:'○ 正しい',reason:'出産育児一時金は<mark>50万円</mark>（2023年4月から引き上げ）。以前の42万円と混同しないよう注意。',law:'法第101条'},
+  {tag:'Q06',cat:'給付制限',correct:false,q:'重大な過失により傷病が生じた場合、保険給付は<mark>全部不支給</mark>となる。',answer:'× 誤り',reason:'重大な過失は<mark>一部不支給（給付制限）</mark>。全部不支給は故意の場合のみ。法116条（故意）と117条（重大過失）を区別。',law:'法第117条'},
+  {tag:'Q07',cat:'給付制限',correct:true,q:'故意の犯罪行為により傷病を生じさせた場合は<mark>全部不支給</mark>となる。',answer:'○ 正しい',reason:'故意の犯罪行為・故意による傷病は<mark>全部不支給</mark>。重大な過失（一部不支給）との区別が重要。',law:'法第116条'},
+  {tag:'Q08',cat:'高額療養費',correct:false,q:'70歳未満の高額療養費の世帯合算では、金額にかかわらず<mark>全ての</mark>一部負担金を合算できる。',answer:'× 誤り',reason:'70歳未満は各受診の自己負担が<mark>21,000円以上</mark>のものだけ合算対象。70歳以上は金額制限なし。',law:'法第115条'},
+  {tag:'Q09',cat:'標準報酬',correct:false,q:'定時決定の算定基礎届は<mark>6月30日まで</mark>に届け出なければならない。',answer:'× 誤り',reason:'定時決定の届出期限は<mark>7月10日まで</mark>。「6月30日」は誤りの選択肢。4・5・6月の報酬を基に7/10届出→9/1適用。',law:'法第41条'},
+  {tag:'Q10',cat:'標準報酬',correct:false,q:'随時改定は固定的賃金が変動し、継続する3ヵ月の報酬の等級が<mark>1等級以上</mark>変動した場合に行われる。',answer:'× 誤り',reason:'随時改定は<mark>2等級以上</mark>の変動が必要。「1等級以上」は誤り。また各月の支払基礎日数が17日以上の要件も必要。',law:'法第43条'},
+  {tag:'Q11',cat:'標準報酬',correct:false,q:'資格取得時決定の標準報酬月額は、資格取得月の<mark>翌月</mark>から適用される。',answer:'× 誤り',reason:'資格取得時決定は<mark>取得月（当月）から</mark>適用される。「翌月から」は随時改定の話。3種の適用開始月の違いは頻出。',law:'法第41条'},
+  {tag:'Q12',cat:'任意継続',correct:true,q:'任意継続被保険者の保険料は、事業主負担がなく被保険者が<mark>全額自己負担</mark>する。',answer:'○ 正しい',reason:'任意継続は事業主がいないため<mark>全額自己負担</mark>。在職中は約半額ずつ折半。「半額負担」は誤り。',law:'法第47条'},
+  {tag:'Q13',cat:'健保組合',correct:false,q:'健康保険組合の共同設立には、被保険者<mark>1,000人以上</mark>の要件が必要である。',answer:'× 誤り',reason:'共同設立は<mark>3,000人以上</mark>。「1,000人」は誤りの選択肢。単独設立（700人以上）と混同しない。',law:'法第11条'},
+  {tag:'Q14',cat:'審査請求',correct:false,q:'審査請求は、処分を知った日の翌日から<mark>3年以内</mark>に行わなければならない。',answer:'× 誤り',reason:'審査請求の期限は<mark>60日以内</mark>。「3年」は保険料等の時効。「審査請求60日・時効2年」でセット暗記。',law:'法第189条'},
+  {tag:'Q15',cat:'日雇特例',correct:true,q:'日雇特例被保険者の傷病手当金には、一般の被保険者のような<mark>3日間の待期</mark>は適用されない。',answer:'○ 正しい',reason:'日雇特例被保険者の傷病手当金は<mark>待期なし</mark>。一般被保険者の3日待期とは異なる。支給期間も6ヵ月と異なる。',law:'法第131条'},
+  {tag:'Q16',cat:'一部負担金',correct:false,q:'70歳以上75歳未満の被保険者の一部負担金の割合は<mark>3割</mark>である。',answer:'× 誤り',reason:'70歳以上75歳未満は原則<mark>2割</mark>。現役並み所得者のみ3割。70歳未満は3割が原則。',law:'法第74条'},
+  {tag:'Q17',cat:'罰則',correct:true,q:'不正受給の罰則は<mark>3年以下の懲役または100万円以下の罰金</mark>である。',answer:'○ 正しい',reason:'不正受給（法213条）：<mark>3年以下の懲役または100万円以下の罰金</mark>。届出義務違反（6ヵ月・50万）より重い。',law:'法第213条'},
+  {tag:'Q18',cat:'賞与',correct:false,q:'標準賞与額の年間累計上限は<mark>年間300万円</mark>である。',answer:'× 誤り',reason:'標準賞与額の年間上限は<mark>573万円</mark>。「300万円」は誤り。賞与支払届は支払日から5日以内。',law:'法第45条'},
+  {tag:'Q19',cat:'傷病手当金',correct:true,q:'資格喪失後に傷病手当金の継続給付を受けるには、喪失日前に継続して<mark>1年以上</mark>の被保険者期間が必要である。',answer:'○ 正しい',reason:'資格喪失後の継続給付要件：喪失日前に継続して<mark>1年以上</mark>の被保険者期間。「2年以上」は誤り。',law:'法第104条'},
+  {tag:'Q20',cat:'産前産後',correct:false,q:'出産育児一時金の資格喪失後の支給は、資格喪失後<mark>1年以内</mark>の出産が対象となる。',answer:'× 誤り',reason:'資格喪失後の出産育児一時金は<mark>6ヵ月以内</mark>の出産が対象。「1年以内」は誤り。傷病手当金の継続給付（1年以上の被保険者期間）と混同しない。',law:'法第106条'},
+];
+var fcDeck,fcIdx,fcGot,fcOk,fcNg,fcFlipped;
+function fcInit(){
+  fcDeck=[].concat(FC_CARDS);
+  fcIdx=0;fcGot=0;fcOk=0;fcNg=0;fcFlipped=false;
+  document.getElementById('fc-result').style.display='none';
+  document.getElementById('fc-carousel').style.display='flex';
+  document.getElementById('fc-nav').style.display='none';
+  fcRender();
+}
+function fcRender(){
+  var total=fcDeck.length;
+  var curr=fcDeck[fcIdx];
+  var prev=fcIdx>0?fcDeck[fcIdx-1]:null;
+  var next=fcIdx<total-1?fcDeck[fcIdx+1]:null;
+  fcSetSlot('fc-slot-prev','fc-prev-tag','fc-prev-cat','fc-prev-q',prev);
+  fcSetSlot('fc-slot-next','fc-next-tag','fc-next-cat','fc-next-q',next);
+  document.getElementById('fc-tag').textContent=curr.tag;
+  document.getElementById('fc-cat').textContent=curr.cat;
+  document.getElementById('fc-q').innerHTML=curr.q;
+  var verdict=document.getElementById('fc-verdict');
+  verdict.textContent=curr.correct?'○　正しい':'×　誤り';
+  verdict.className='fc-verdict '+(curr.correct?'ok':'ng');
+  document.getElementById('fc-answer').textContent=curr.answer;
+  document.getElementById('fc-reason').innerHTML=curr.reason;
+  document.getElementById('fc-lawref').textContent=curr.law;
+  document.getElementById('fc-inner').classList.remove('flipped');
+  fcFlipped=false;
+  document.getElementById('fc-nav').style.display='none';
+  var ua=document.getElementById('fc-user-ans');
+  if(ua)ua.textContent='';
+  fcUpdateGauge();
+}
+function fcSetSlot(slotId,tagId,catId,qId,cardData){
+  var slot=document.getElementById(slotId);
+  if(!cardData){slot.classList.add('hidden');return;}
+  slot.classList.remove('hidden');
+  document.getElementById(tagId).textContent=cardData.tag;
+  document.getElementById(catId).textContent=cardData.cat;
+  document.getElementById(qId).innerHTML=cardData.q;
+}
+function fcChoose(userSaidTrue){
+  if(fcFlipped)return;
+  var curr=fcDeck[fcIdx];
+  var isCorrect=(userSaidTrue===curr.correct);
+  if(isCorrect){fcGot++;fcOk++;}else{fcNg++;}
+  var ua=document.getElementById('fc-user-ans');
+  if(ua){ua.textContent=isCorrect?'✅ 正解！':'❌ 不正解';ua.style.color=isCorrect?'var(--green)':'var(--red)';ua.style.fontWeight='700';}
+  var againBtn=document.querySelector('.fc-nav-btn.again');
+  var gotBtn=document.querySelector('.fc-nav-btn.got');
+  if(againBtn&&gotBtn){
+    if(isCorrect){againBtn.style.display='none';gotBtn.style.display='block';gotBtn.textContent='次へ →';}
+    else{againBtn.style.display='block';againBtn.textContent='次へ →';gotBtn.style.display='none';}
+  }
+  fcFlipped=true;
+  document.getElementById('fc-inner').classList.add('flipped');
+  setTimeout(function(){document.getElementById('fc-nav').style.display='flex';},280);
+}
+function fcFlip(){
+  var inner=document.getElementById('fc-inner');
+  if(!fcFlipped){
+    fcFlipped=true;inner.classList.add('flipped');
+    var ua=document.getElementById('fc-user-ans');
+    if(ua){ua.textContent='（○×で回答してください）';ua.style.color='var(--gray)';}
+    var againBtn=document.querySelector('.fc-nav-btn.again');
+    var gotBtn=document.querySelector('.fc-nav-btn.got');
+    if(againBtn&&gotBtn){againBtn.style.display='block';againBtn.textContent='😅 もう一度';gotBtn.style.display='block';gotBtn.textContent='✅ わかった！';}
+    setTimeout(function(){document.getElementById('fc-nav').style.display='flex';},280);
+  }else{
+    fcFlipped=false;inner.classList.remove('flipped');
+    document.getElementById('fc-nav').style.display='none';
+  }
+}
+function fcNext(got){
+  if(got){fcGot++;fcOk++;}else{fcNg++;}
+  document.getElementById('fc-nav').style.display='none';
+  if(fcIdx+1>=fcDeck.length){
+    fcUpdateGauge();
+    document.getElementById('fc-remaining').textContent='残り 0 枚';
+    document.getElementById('fc-carousel').style.display='none';
+    var result=document.getElementById('fc-result');
+    result.style.display='block';
+    var pct=Math.round(fcOk/fcDeck.length*100);
+    document.getElementById('fc-result-score').textContent=fcOk+' / '+fcDeck.length;
+    document.getElementById('fc-result-sub').textContent='正答率 '+pct+'% ― '+(pct>=80?'バッチリ！次のDayへ進もう':pct>=60?'もう一周してみよう':'連想図を見直してから再挑戦！');
+    document.getElementById('fc-emoji').textContent=pct>=80?'🏆':pct>=60?'✨':'📖';
+    document.getElementById('fc-counter').innerHTML=fcDeck.length+'<span> / '+fcDeck.length+'</span>';
+    return;
+  }
+  fcIdx++;fcRender();
+}
+function fcUpdateGauge(){
+  var total=fcDeck.length;
+  var half=50;
+  var okPct=Math.min(fcOk/total*100,half);
+  var ngPct=Math.min(fcNg/total*100,half);
+  document.getElementById('fc-gauge-ok').style.width=okPct+'%';
+  document.getElementById('fc-gauge-ng').style.width=ngPct+'%';
+  document.getElementById('fc-ok-count').textContent=fcOk;
+  document.getElementById('fc-ng-count').textContent=fcNg;
+  document.getElementById('fc-remaining').textContent='残り '+(total-fcIdx)+' 枚';
+  document.getElementById('fc-counter').innerHTML=(fcIdx+1)+'<span> / '+total+'</span>';
+}
+function fcShuffle(){
+  fcDeck=[].concat(FC_CARDS).sort(function(){return Math.random()-0.5;});
+  fcIdx=0;fcGot=0;fcOk=0;fcNg=0;fcFlipped=false;
+  document.getElementById('fc-result').style.display='none';
+  document.getElementById('fc-carousel').style.display='flex';
+  document.getElementById('fc-nav').style.display='none';
+  fcRender();
+}
+function fcRestart(){fcInit();}
+
+// ═══════════════════════════════════════════════════════
+// 3. スパイダーマップ
+// ═══════════════════════════════════════════════════════
+const SPIDER_DATA=[
+  {id:"kyufu",label:"給付数字",sub:"法第99条・102条",
+   color:"#2a7f7f",light:"#e8f4f4",border:"#5a9ea0",angle:218,
+   children:[
+     {label:"傷病手当金",sub:"4数字セット",leaves:["3日待期","直近12ヵ月平均","3分の2","通算1年6ヵ月"]},
+     {label:"出産給付",sub:"産前後の日数",leaves:["産前42日（多胎98日）","産後56日（強制休業）","一時金50万円","喪失後6ヵ月以内"]},
+     {label:"給付制限",sub:"故意 vs 過失",leaves:["故意→全部不支給","重大過失→一部不支給","「重大過失も全部」は×"]}
+   ],
+   detail:{
+     hdColor:"#2a7f7f",
+     items:[
+       {label:"傷病手当金（法第99条）",val:"3日待期・12ヵ月平均・3分の2・通算1年6ヵ月",note:"「2分の1」「2年」は毎年登場する誤りの選択肢。"},
+       {label:"出産手当金（法第102条）",val:"産前42日・産後56日（産後のほうが長い）",note:"「産前56日・産後42日」という逆バージョンは古典的引っかけ。"},
+       {label:"給付制限",val:"故意：全部不支給（法116条）、重大な過失：一部不支給（法117条）",note:"「重大な過失も全部不支給」は誤り。"}
+     ],
+     hikakke:"× 「支給額は2分の1」→ ○ 3分の2\n× 「支給期間は2年」→ ○ 通算1年6ヵ月\n× 「産前56日・産後42日」→ ○ 産前42日・産後56日\n× 「重大な過失も全部不支給」→ ○ 一部不支給"
+   }
+  },
+  {id:"hyojun",label:"標準報酬",sub:"法第41条・43条",
+   color:"#c9930a",light:"#fef9e7",border:"#dba52a",angle:322,
+   children:[
+     {label:"定時決定",sub:"7月10日届出",leaves:["4・5・6月の報酬","7月10日まで届出","9月1日から適用"]},
+     {label:"随時改定",sub:"2等級・17日",leaves:["2等級以上の変動","各月17日以上","改定月の翌月から"]},
+     {label:"取得時決定",sub:"当月から",leaves:["取得月から（当月）","「翌月から」は×","翌年8月まで適用"]}
+   ],
+   detail:{
+     hdColor:"#c9930a",
+     items:[
+       {label:"定時決定（法第41条）",val:"4・5・6月の報酬で算定→7月10日届出→9月1日適用",note:"「6月30日まで」は誤り。"},
+       {label:"随時改定（法第43条）",val:"固定的賃金変動＋2等級以上＋各月17日以上→改定月の翌月適用",note:"「1等級以上」は誤り。"},
+       {label:"資格取得時決定（法第41条）",val:"取得月（当月）から適用",note:"「翌月から」は誤り。随時改定（翌月から）と混同しない。"}
+     ],
+     hikakke:"× 「定時決定の届出は6月30日まで」→ ○ 7月10日まで\n× 「随時改定は1等級以上」→ ○ 2等級以上\n× 「資格取得時決定は翌月から」→ ○ 当月から"
+   }
+  },
+  {id:"soshiki",label:"組織・罰則",sub:"法第11条・208・213条",
+   color:"#c84b31",light:"#fee2e2",border:"#e8896b",angle:142,
+   children:[
+     {label:"健保組合設立",sub:"700・3000",leaves:["単独：700人以上","共同：3,000人以上","「1,000人」は×"]},
+     {label:"審査請求・時効",sub:"60日・2年",leaves:["審査請求：60日以内","保険料時効：2年","「3年以内」は×"]},
+     {label:"罰則2本柱",sub:"208条 vs 213条",leaves:["届出違反：6ヵ月・50万","不正受給：3年・100万","「30万」は×（頻出）"]}
+   ],
+   detail:{
+     hdColor:"#c84b31",
+     items:[
+       {label:"健保組合の設立要件（法第11条）",val:"単独設立：700人以上、共同設立：3,000人以上",note:"「共同は1,000人」は誤り。"},
+       {label:"審査請求の期限（法第189条）",val:"処分を知った日の翌日から60日以内",note:"「3年以内」は保険料時効の話。"},
+       {label:"罰則（法第208条・213条）",val:"届出違反：6ヵ月以下・50万円以下、不正受給：3年以下・100万円以下",note:"「不正受給の罰金は30万円」は最頻出の誤り。"}
+     ],
+     hikakke:"× 「共同設立は1,000人以上」→ ○ 3,000人以上\n× 「審査請求は3年以内」→ ○ 60日以内\n× 「不正受給の罰金は30万円」→ ○ 100万円以下"
+   }
+  },
+  {id:"tokubetsu",label:"特例・除外",sub:"法第124条・3条・47条",
+   color:"#6b7280",light:"#f3f4f6",border:"#9ca3af",angle:38,
+   children:[
+     {label:"日雇特例",sub:"待期なし",leaves:["受給要件：2ヵ月26日","または6ヵ月78日","待期なし（一般は3日）"]},
+     {label:"任意継続",sub:"全額自己負担",leaves:["全額自己負担","退職時or全平均の低い方","喪失から20日以内申請"]},
+     {label:"被扶養者",sub:"同居要件",leaves:["兄弟姉妹：同居不要","叔父叔母：同居必要","収入要件：130万円未満"]}
+   ],
+   detail:{
+     hdColor:"#6b7280",
+     items:[
+       {label:"日雇特例被保険者（法第124条）",val:"受給要件：前2ヵ月26日 or 前6ヵ月78日。傷病手当金の待期なし。",note:"一般の被保険者の3日待期とは異なる。"},
+       {label:"任意継続被保険者（法第47条）",val:"保険料は全額自己負担。退職時の標準報酬月額 or 全平均の低い方で算定。",note:"「半額負担」は誤り。"},
+       {label:"被扶養者の同居要件（法第3条第7項）",val:"兄弟姉妹は同居不要。叔父・叔母・甥・姪は同居必要。収入要件：130万円未満。",note:"兄弟姉妹と叔父叔母の混同が頻出。"}
+     ],
+     hikakke:"× 「日雇の傷病手当金も3日待期がある」→ ○ 日雇は待期なし\n× 「任意継続も半額負担」→ ○ 全額自己負担\n× 「兄弟姉妹は同居必要」→ ○ 兄弟姉妹は同居不要"
+   }
+  }
+];
+var spBranchOpen={kyufu:false,hyojun:false,soshiki:false,tokubetsu:false};
+var spLeafOpen={};
+function buildSpider(){
+  var root=document.getElementById("sp-root");
+  if(!root)return;
+  root.innerHTML="";
+  var W=760,H=720,CX=380,CY=360;
+  var R1=108,R2=222,R3=330,CS=20,LS=7;
+  var svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.setAttribute("viewBox","0 0 "+W+" "+H);
+  svg.setAttribute("xmlns","http://www.w3.org/2000/svg");
+  svg.setAttribute("font-family","'Noto Sans JP',sans-serif");
+  svg.style.display="block";svg.style.width="100%";svg.style.height="auto";
+  function mk(tag,attrs){var el=document.createElementNS("http://www.w3.org/2000/svg",tag);for(var k in attrs)el.setAttribute(k,attrs[k]);return el;}
+  function r(d){return d*Math.PI/180;}
+  function pt(dist,deg){return[CX+Math.cos(r(deg))*dist,CY+Math.sin(r(deg))*dist];}
+  [R1+16,R2+14,R3+16].forEach(function(dist){
+    svg.appendChild(mk("circle",{cx:CX,cy:CY,r:dist,fill:"none",stroke:"#e4dfd6","stroke-width":"1","stroke-dasharray":"4,5"}));
+  });
+  SPIDER_DATA.forEach(function(branch){
+    var ba=branch.angle;
+    var bpt=pt(R1,ba);var bx=bpt[0],by=bpt[1];
+    svg.appendChild(mk("line",{x1:CX,y1:CY,x2:bx,y2:by,stroke:branch.color,"stroke-width":"4.5","stroke-linecap":"round"}));
+    var og=document.createElementNS("http://www.w3.org/2000/svg","g");
+    og.id="sp-og-"+branch.id;
+    og.style.display=spBranchOpen[branch.id]?"":"none";
+    branch.children.forEach(function(child,ci){
+      var ca=ba+(ci-1)*CS;
+      var cpt=pt(R2,ca);var cx2=cpt[0],cy2=cpt[1];
+      var key=branch.id+"_"+ci;
+      if(spLeafOpen[key]===undefined)spLeafOpen[key]=true;
+      og.appendChild(mk("line",{x1:bx,y1:by,x2:cx2,y2:cy2,stroke:branch.color,"stroke-width":"2","stroke-linecap":"round"}));
+      var lg=document.createElementNS("http://www.w3.org/2000/svg","g");
+      lg.id="sp-lg-"+key;lg.style.display=spLeafOpen[key]?"":"none";
+      var lc=child.leaves.length;
+      child.leaves.forEach(function(leaf,li){
+        var la=ca+(li-(lc-1)/2)*LS;
+        var lpt=pt(R3,la);var lx=lpt[0],ly=lpt[1];
+        lg.appendChild(mk("line",{x1:cx2,y1:cy2,x2:lx,y2:ly,stroke:branch.border,"stroke-width":"1.2","stroke-dasharray":"3,3","stroke-linecap":"round"}));
+        var lw=120;
+        var gr=document.createElementNS("http://www.w3.org/2000/svg","g");
+        gr.appendChild(mk("rect",{x:lx-lw/2,y:ly-13,width:lw,height:26,rx:13,fill:"#faf8f3",stroke:branch.border,"stroke-width":"1.2"}));
+        var fs=leaf.length>10?"9.5":leaf.length>7?"10":"11";
+        var lt=mk("text",{x:lx,y:ly+5,"text-anchor":"middle","font-size":fs,"font-weight":"600",fill:branch.color});
+        lt.textContent=leaf;gr.appendChild(lt);lg.appendChild(gr);
+      });
+      og.appendChild(lg);
+      var gk=document.createElementNS("http://www.w3.org/2000/svg","g");
+      gk.style.cursor="pointer";
+      (function(k){gk.addEventListener("click",function(e){e.stopPropagation();spLeafOpen[k]=!spLeafOpen[k];var el=document.getElementById("sp-lg-"+k);if(el)el.style.display=spLeafOpen[k]?"":"none";});})(key);
+      gk.appendChild(mk("ellipse",{cx:cx2,cy:cy2,rx:"46",ry:"24",fill:branch.color}));
+      var kt=mk("text",{x:cx2,y:cy2-3,"text-anchor":"middle","font-size":"11","font-weight":"700",fill:"white"});
+      kt.textContent=child.label;gk.appendChild(kt);
+      var ks=mk("text",{x:cx2,y:cy2+11,"text-anchor":"middle","font-size":"8.5",fill:"rgba(255,255,255,.7)"});
+      ks.textContent=child.sub;gk.appendChild(ks);
+      og.appendChild(gk);
+    });
+    svg.appendChild(og);
+    var gn=document.createElementNS("http://www.w3.org/2000/svg","g");
+    gn.style.cursor="pointer";
+    (function(b){gn.addEventListener("click",function(){spBranchOpen[b.id]=!spBranchOpen[b.id];var el=document.getElementById("sp-og-"+b.id);if(el)el.style.display=spBranchOpen[b.id]?"":"none";if(spBranchOpen[b.id]){openSpiderDetail(b,null);}else{closeSpiderDetail();}});})(branch);
+    gn.appendChild(mk("ellipse",{cx:bx,cy:by,rx:"56",ry:"32",fill:branch.color}));
+    var tl=mk("text",{x:bx,y:by-5,"text-anchor":"middle","font-size":"14","font-weight":"700",fill:"white"});
+    tl.textContent=branch.label;gn.appendChild(tl);
+    var ts=mk("text",{x:bx,y:by+11,"text-anchor":"middle","font-size":"9.5",fill:"rgba(255,255,255,.65)"});
+    ts.textContent=branch.sub;gn.appendChild(ts);
+    svg.appendChild(gn);
+  });
+  var gc=document.createElementNS("http://www.w3.org/2000/svg","g");
+  gc.appendChild(mk("ellipse",{cx:CX,cy:CY,rx:"80",ry:"46",fill:"#22253a"}));
+  var texts=[["健保法 全論点",-6,"13","#f0eee8"],["横断まとめ Day10",11,"9.5","rgba(240,238,232,.55)"]];
+  texts.forEach(function(t){var ct=mk("text",{x:CX,y:CY+t[1],"text-anchor":"middle","font-size":t[2],"font-weight":"700",fill:t[3]});ct.textContent=t[0];gc.appendChild(ct);});
+  svg.appendChild(gc);
+  root.appendChild(svg);
+}
+function openSpiderDetail(branch,child){
+  var panel=document.getElementById("spider-detail");
+  var hd=document.getElementById("spider-detail-hd");
+  var title=document.getElementById("spider-detail-title");
+  var body=document.getElementById("spider-detail-body");
+  hd.style.background=branch.detail.hdColor;
+  title.textContent=branch.label+"  "+branch.sub;
+  var html="";
+  branch.detail.items.forEach(function(item){
+    html+="<div style='margin-bottom:14px;'>";
+    html+="<div style='font-size:11px;font-weight:700;color:#6b7280;margin-bottom:3px;'>"+item.label+"</div>";
+    html+="<div style='font-size:14px;font-weight:700;color:#1a1a2e;background:"+branch.light+";border:1.5px solid "+branch.border+";border-radius:8px;padding:8px 12px;'>"+item.val+"</div>";
+    if(item.note)html+="<div style='font-size:11px;color:#6b7280;margin-top:4px;padding-left:4px;'>💡 "+item.note+"</div>";
+    html+="</div>";
+  });
+  if(branch.detail.hikakke){
+    html+="<div style='background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 12px;font-size:11px;color:#A32D2D;line-height:2.1;'>";
+    html+="<div style='font-weight:700;margin-bottom:4px;'>🚨 よくある引っかけ</div>";
+    html+=branch.detail.hikakke.split("\n").join("<br>");
+    html+="</div>";
+  }
+  body.innerHTML=html;
+  panel.style.display="block";
+}
+function closeSpiderDetail(){document.getElementById("spider-detail").style.display="none";}
+
+// ═══════════════════════════════════════════════════════
+// 4. DOMContentLoaded
+// ═══════════════════════════════════════════════════════
+document.addEventListener("DOMContentLoaded",function(){fcInit();buildSpider();});
+</script>
+</body>
+</html>

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Day10｜厚生年金法 全300問フラッシュカード ― 社労士ドリル</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1a2e;--paper:#faf8f3;--warm:#f5f0e8;--red:#c84b31;--red-s:#e8896b;--red-l:#fee2e2;--teal:#2a7f7f;--teal-l:#e8f4f4;--gold:#c9930a;--gold-l:#fef9e7;--grn:#2d6a4f;--grn-l:#e8f5ee;--gray:#6b7280;--bd:#ddd8cc;--pur:#7c3aed;--pur-l:#ede9fe;--blu:#1d4ed8;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
+/* ── topbar ── */
+.topbar{background:var(--ink);padding:10px 20px;display:flex;align-items:center;gap:12px;}
+.back-btn{color:rgba(255,255,255,.7);font-size:13px;cursor:pointer;}.back-btn:hover{color:#fff;}
+.topbar-ttl{color:rgba(255,255,255,.4);font-size:12px;margin-left:auto;}
+/* ── tab nav ── */
+.tab-nav{background:var(--ink);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:100;}
+.tab-nav-in{max-width:860px;margin:0 auto;display:flex;}
+.tab-btn{flex:1;padding:11px 4px;font-size:12px;font-weight:700;color:rgba(255,255,255,.4);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;font-family:inherit;transition:all .2s;}
+.tab-btn:hover{color:rgba(255,255,255,.75);}.tab-btn.active{color:#fff;border-color:var(--red-s);}
+.tab-btn.t2.active{border-color:var(--teal);}
+.tab-panel{display:none;}.tab-panel.active{display:block;}
+/* ── header ── */
+.hd{background:linear-gradient(135deg,#1a1a2e 0%,#1f1540 60%,#0e2030 100%);color:var(--paper);padding:32px 36px 24px;position:relative;overflow:hidden;}
+.hd::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.015) 60px,rgba(255,255,255,.015) 61px);}
+.hd-in{max-width:860px;margin:0 auto;position:relative;}
+.hd-eye{font-size:11px;letter-spacing:3px;color:var(--red-s);margin-bottom:6px;font-weight:700;}
+.hd h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;line-height:1.3;margin-bottom:6px;}
+.hd h1 em{color:var(--red-s);font-style:normal;}
+.hd-sub{font-size:13px;color:rgba(255,255,255,.5);font-weight:300;margin-bottom:10px;}
+/* ── dashboard ── */
+.dash-wrap{max-width:860px;margin:0 auto;padding:18px 20px 0;}
+.dash{background:#fff;border:2px solid var(--ink);border-radius:14px;padding:14px 20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.dash-num{font-family:'DM Serif Display',serif;font-size:42px;color:var(--teal);line-height:1;}
+.dash-lbl{font-size:11px;color:var(--gray);font-weight:700;letter-spacing:1px;}
+.dash-right{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+/* ── filter bar ── */
+.filter-bar{max-width:860px;margin:14px auto 0;padding:0 20px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.filter-lbl{font-size:11px;font-weight:700;color:var(--gray);}
+.f-btn{border:2px solid var(--bd);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:700;background:#fff;cursor:pointer;font-family:inherit;transition:all .15s;}
+.f-btn:hover{border-color:var(--ink);}.f-btn.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+.mode-btn{border:2px solid var(--bd);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:700;background:#fff;cursor:pointer;font-family:inherit;transition:all .15s;}
+.mode-btn:hover{border-color:var(--pur);}.mode-btn.active{background:var(--pur);color:#fff;border-color:var(--pur);}
+/* ── gauge ── */
+.gauge-wrap{max-width:860px;margin:14px auto 0;padding:0 20px;}
+.gauge-labels{display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:5px;}
+.g-ng{color:var(--red);}.g-ok{color:var(--grn);}
+.g-mid{color:var(--gray);font-size:10px;font-weight:400;}
+.gauge-track{position:relative;height:14px;background:var(--bd);border-radius:20px;overflow:hidden;display:flex;}
+.gauge-ng{height:100%;background:linear-gradient(90deg,#c84b31,#e8896b);border-radius:20px 0 0 20px;transition:width .5s;width:0%;}
+.gauge-ok{height:100%;background:linear-gradient(90deg,#86efac,#2d6a4f);border-radius:0 20px 20px 0;transition:width .5s;width:0%;margin-left:auto;}
+.gauge-mid-line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:#fff;transform:translateX(-50%);z-index:2;}
+/* ── carousel ── */
+.carousel-wrap{max-width:760px;margin:20px auto 0;padding:0 20px;}
+.fc-counter{font-family:'DM Serif Display',serif;font-size:22px;color:var(--red);line-height:1;margin-bottom:10px;display:flex;align-items:baseline;gap:6px;}
+.fc-counter span{font-size:12px;color:var(--gray);font-family:'Noto Sans JP',sans-serif;}
+.carousel{position:relative;display:flex;align-items:center;justify-content:center;min-height:380px;overflow:hidden;margin-bottom:18px;}
+.fc-slot{position:absolute;width:72%;min-height:280px;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s,filter .35s;cursor:pointer;border-radius:16px;}
+.fc-slot.prev{transform:translateX(-82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.curr{transform:translateX(0) scale(1);opacity:1;filter:none;z-index:10;}
+.fc-slot.next{transform:translateX(82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.hidden{opacity:0;pointer-events:none;z-index:0;}
+/* ── card face ── */
+.fc-inner{position:relative;width:100%;min-height:280px;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.4,0,.2,1);}
+.fc-inner.flipped{transform:rotateY(180deg);}
+.fc-face{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.11);}
+.fc-front{background:#fff;border:2px solid var(--ink);}
+.fc-back{background:#fff;border:2px solid var(--ink);transform:rotateY(180deg);}
+.fc-front-hd{background:var(--warm);border-bottom:1px solid var(--bd);padding:8px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.fc-tag{font-size:10px;font-weight:700;background:var(--ink);color:#fff;border-radius:4px;padding:2px 8px;}
+.fc-section-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;}
+.fc-front-body{flex:1;padding:16px 18px;display:flex;align-items:center;justify-content:center;}
+.fc-q{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;line-height:1.9;color:var(--ink);text-align:center;}
+.fc-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;}
+.fc-ox{display:flex;gap:8px;padding:0 14px 12px;}
+.fc-ox-btn{flex:1;padding:10px 8px;border-radius:10px;border:2px solid var(--bd);background:#fff;font-size:20px;font-weight:900;cursor:pointer;font-family:inherit;transition:all .15s;}
+.fc-ox-btn.o:hover{border-color:var(--grn);background:var(--grn-l);color:var(--grn);}
+.fc-ox-btn.x:hover{border-color:var(--red);background:var(--red-l);color:var(--red);}
+/* ── back face ── */
+.fc-back-hd{padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--bd);}
+.fc-verdict{font-size:12px;font-weight:700;padding:2px 10px;border-radius:20px;}
+.fc-verdict.ok{background:var(--grn);color:#fff;}.fc-verdict.ng{background:var(--red);color:#fff;}
+.fc-back-body{flex:1;padding:12px 16px;overflow-y:auto;}
+.fc-answer{font-family:'DM Serif Display',serif;font-size:18px;margin-bottom:8px;line-height:1.4;font-weight:700;}
+.fc-reason{font-size:12px;line-height:1.9;color:var(--ink);}
+.fc-reason mark{background:#fef3c7;padding:1px 4px;border-radius:3px;}
+.fc-law{font-size:10px;font-weight:700;background:var(--ink);color:#fff;border-radius:4px;padding:2px 8px;display:inline-block;margin-top:6px;}
+/* ── nav buttons ── */
+.fc-nav{display:none;gap:10px;justify-content:center;padding:0 16px;margin-bottom:40px;}
+.nav-btn{flex:1;max-width:160px;padding:11px 8px;border-radius:10px;border:2px solid var(--bd);background:#fff;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;text-align:center;}
+.nav-btn.again{border-color:var(--red);color:var(--red);}.nav-btn.again:hover{background:var(--red-l);}
+.nav-btn.got{border-color:var(--grn);color:var(--grn);}.nav-btn.got:hover{background:var(--grn-l);}
+/* ── result ── */
+.fc-result{display:none;text-align:center;padding:28px;background:#fff;border:2px solid var(--ink);border-radius:14px;margin:0 20px 60px;}
+.fc-result h3{font-family:'Noto Serif JP',serif;font-size:1.3rem;font-weight:900;margin-bottom:8px;}
+.fc-result-score{font-family:'DM Serif Display',serif;font-size:52px;color:var(--teal);line-height:1;margin:8px 0 4px;}
+.fc-restart-btn{background:var(--ink);color:#fff;border:none;border-radius:10px;padding:10px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:12px;}
+/* ── mastery panel ── */
+.mastery-wrap{max-width:860px;margin:20px auto 0;padding:0 20px 60px;}
+.mastery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;}
+.mastery-card{background:#fff;border:2px solid var(--bd);border-radius:10px;padding:12px 14px;cursor:pointer;transition:all .2s;}
+.mastery-card:hover{border-color:var(--ink);}
+.mastery-sec{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+.mastery-bar{height:6px;background:var(--bd);border-radius:6px;overflow:hidden;margin-bottom:4px;}
+.mastery-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--grn));border-radius:6px;transition:width .5s;}
+.mastery-stat{font-size:11px;color:var(--gray);}
+/* ── badges ── */
+.sec-badge{display:inline-block;font-size:9px;font-weight:700;padding:1px 7px;border-radius:10px;vertical-align:middle;margin-left:4px;}
+/* ── copy btn ── */
+.copy-btn{background:var(--ink);color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.copy-btn:hover{opacity:.82;}.copy-btn.copied{background:var(--grn);}
+/* ── weak badge ── */
+.weak-count{font-size:12px;color:var(--red);font-weight:700;background:var(--red-l);border:1px solid var(--red);border-radius:20px;padding:3px 10px;}
+@media(max-width:600px){.hd{padding:20px 14px 16px;}.carousel-wrap{padding:0 10px;}.fc-slot{width:86%;}
+.dash{gap:10px;}.filter-bar{gap:6px;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span class="back-btn" onclick="location.href='index.html'">← 目次に戻る</span>
+  <span class="topbar-ttl">Day10 ／ 厚生年金法 全300問フラッシュカード</span>
+</div>
+<nav class="tab-nav">
+  <div class="tab-nav-in">
+    <button class="tab-btn active" onclick="switchTab('fc',this)">🃏 フラッシュカード 300問</button>
+    <button class="tab-btn t2"     onclick="switchTab('mastery',this)">📊 セクション別習熟度</button>
+  </div>
+</nav>
+
+<!-- ── panel-fc ── -->
+<div id="panel-fc" class="tab-panel active">
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-eye">厚生年金法 — FLASH CARDS</div>
+    <h1>厚年法 <em>全300問</em> フラッシュカード</h1>
+    <div class="hd-sub">Day1〜9の全論点を横断総復習 ― セクション絞り込み・苦手モード搭載</div>
+  </div>
+</div>
+
+<div class="dash-wrap">
+  <div class="dash">
+    <div><div class="dash-num" id="dash-idx">1</div><div class="dash-lbl">/ <span id="dash-total">300</span> 枚</div></div>
+    <div><div style="font-size:22px;font-family:'DM Serif Display',serif;color:var(--grn);" id="dash-ok">0</div><div class="dash-lbl">正解</div></div>
+    <div><div style="font-size:22px;font-family:'DM Serif Display',serif;color:var(--red);" id="dash-ng">0</div><div class="dash-lbl">不正解</div></div>
+    <div><div style="font-size:18px;font-family:'DM Serif Display',serif;color:var(--pur);" id="dash-pct">—</div><div class="dash-lbl">正答率</div></div>
+    <div class="dash-right">
+      <span class="weak-count" id="weak-badge">苦手 0枚</span>
+      <button class="copy-btn" id="copy-btn" onclick="copyRecord()">📋 記録</button>
+    </div>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <span class="filter-lbl">セクション：</span>
+  <button class="f-btn active" id="fbtn-all" onclick="setFilter('all',this)">全て</button>
+  <button class="f-btn" id="fbtn-1" onclick="setFilter('①目的・適用',this)">①目的・適用</button>
+  <button class="f-btn" id="fbtn-2" onclick="setFilter('②標準報酬・保険料',this)">②標準報酬</button>
+  <button class="f-btn" id="fbtn-3" onclick="setFilter('③老齢厚生年金①',this)">③老齢厚生①</button>
+  <button class="f-btn" id="fbtn-4" onclick="setFilter('④在職老齢・特別支給',this)">④在職老齢</button>
+  <button class="f-btn" id="fbtn-5" onclick="setFilter('⑤障害厚生年金',this)">⑤障害厚生</button>
+  <button class="f-btn" id="fbtn-6" onclick="setFilter('⑥遺族厚生年金①',this)">⑥遺族①</button>
+  <button class="f-btn" id="fbtn-7" onclick="setFilter('⑦遺族厚生年金②',this)">⑦遺族②</button>
+  <button class="f-btn" id="fbtn-8" onclick="setFilter('⑧脱退一時金等',this)">⑧脱退・時効</button>
+  <button class="f-btn" id="fbtn-9" onclick="setFilter('⑨3科目横断',this)">⑨3科目横断</button>
+  <button class="f-btn" id="fbtn-10" onclick="setFilter('⑩全単元横断',this)">⑩全横断</button>
+  <span class="filter-lbl" style="margin-left:8px;">モード：</span>
+  <button class="mode-btn active" id="mbtn-shuffle" onclick="setMode('shuffle',this)">🔀 シャッフル</button>
+  <button class="mode-btn" id="mbtn-weak" onclick="setMode('weak',this)">⚡ 苦手のみ</button>
+</div>
+
+<div class="gauge-wrap">
+  <div class="gauge-labels">
+    <span class="g-ng">❌ <span id="g-ng">0</span></span>
+    <span class="g-mid" id="g-remain">残り 300 枚</span>
+    <span class="g-ok"><span id="g-ok">0</span> ✅</span>
+  </div>
+  <div class="gauge-track">
+    <div class="gauge-ng" id="gauge-ng"></div>
+    <div class="gauge-mid-line"></div>
+    <div class="gauge-ok" id="gauge-ok"></div>
+  </div>
+</div>
+
+<div class="carousel-wrap">
+  <div class="fc-counter"><span id="fc-idx">1</span><span>/ <span id="fc-total">300</span></span></div>
+  <div class="carousel" id="carousel">
+    <div class="fc-slot prev" id="slot-prev">
+      <div class="fc-inner"><div class="fc-face fc-front">
+        <div class="fc-front-hd">
+          <span class="fc-tag" id="prev-tag">—</span>
+          <span id="prev-sec" class="sec-badge"></span>
+        </div>
+        <div class="fc-front-body"><div class="fc-q" id="prev-q" style="font-size:12px;opacity:.7;"></div></div>
+      </div></div>
+    </div>
+    <div class="fc-slot curr" id="slot-curr" onclick="fcFlip()">
+      <div class="fc-inner" id="fc-inner">
+        <div class="fc-face fc-front">
+          <div class="fc-front-hd">
+            <span class="fc-tag" id="curr-tag">D1-01</span>
+            <span id="curr-sec" class="sec-badge"></span>
+          </div>
+          <div class="fc-front-body"><div class="fc-q" id="curr-q">—</div></div>
+          <div class="fc-ox">
+            <button class="fc-ox-btn o" onclick="fcChoose(true);event.stopPropagation();">○</button>
+            <button class="fc-ox-btn x" onclick="fcChoose(false);event.stopPropagation();">×</button>
+          </div>
+        </div>
+        <div class="fc-face fc-back">
+          <div class="fc-back-hd">
+            <span class="fc-verdict" id="fc-verdict">○ 正しい</span>
+            <span id="user-ans" style="font-size:12px;margin-left:auto;font-weight:700;"></span>
+          </div>
+          <div class="fc-back-body">
+            <div class="fc-answer" id="fc-answer">—</div>
+            <div class="fc-reason" id="fc-reason">—</div>
+            <span class="fc-law" id="fc-law">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-slot next" id="slot-next">
+      <div class="fc-inner"><div class="fc-face fc-front">
+        <div class="fc-front-hd">
+          <span class="fc-tag" id="next-tag">—</span>
+          <span id="next-sec" class="sec-badge"></span>
+        </div>
+        <div class="fc-front-body"><div class="fc-q" id="next-q" style="font-size:12px;opacity:.7;"></div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="fc-nav" id="fc-nav">
+    <button class="nav-btn again" onclick="fcNext(false)">😅 もう一度</button>
+    <button class="nav-btn got"   onclick="fcNext(true)">✅ わかった！</button>
+  </div>
+
+  <div class="fc-result" id="fc-result">
+    <div style="font-size:40px;margin-bottom:8px;" id="result-emoji">🎉</div>
+    <h3>完了！</h3>
+    <div class="fc-result-score" id="result-score">— / —</div>
+    <div id="result-sub" style="font-size:13px;color:var(--gray);margin-bottom:4px;"></div>
+    <button class="fc-restart-btn" onclick="fcRestart()">🔁 もう一周</button>
+    <button class="fc-restart-btn" style="margin-left:8px;background:var(--red);" onclick="retryWeak()">⚡ 苦手を復習</button>
+  </div>
+</div>
+</div><!-- /panel-fc -->
+
+<!-- ── panel-mastery ── -->
+<div id="panel-mastery" class="tab-panel">
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-eye">SECTION MASTERY</div>
+    <h1>セクション別 <em>習熟度</em></h1>
+    <div class="hd-sub">各セクションの正答率を確認して苦手を特定しよう</div>
+  </div>
+</div>
+<div class="mastery-wrap">
+  <div class="mastery-grid" id="mastery-grid"></div>
+</div>
+</div><!-- /panel-mastery -->
+
+
+<script>
+/* ─── 定数 ─── */
+var LS_KEY = 'kounen_day10_weak';
+var LS_MASTERY = 'kounen_day10_mastery';
+
+/* ─── ALL_CARDS（外部ファイルからインライン展開） ─── */
+var ALL_CARDS = 
+[
+  {tag:'D1-01',section:'①目的・適用',cat:'①目的・適用',correct:false,q:'厚生年金保険法の目的規定に登場する主語は「被保険者」である。',answer:'× 誤り',reason:'法第1条の主語は「<mark>労働者</mark>」。健保法も同様に「労働者」が主語。「被保険者」ではない。',law:'法第1条'},
+  {tag:'D1-02',section:'①目的・適用',cat:'①目的・適用',correct:true,q:'適用事業所に使用される70歳以上の者は厚生年金保険の被保険者になれない。',answer:'○ 正しい',reason:'厚年被保険者の要件は<mark>70歳未満</mark>（法第9条）。70歳以上は健保被保険者にはなれるが厚年被保険者にはなれない。',law:'法第9条'},
+  {tag:'D1-03',section:'①目的・適用',cat:'①目的・適用',correct:false,q:'常時5人以上の従業員を使用する飲食店（個人事業）は強制適用事業所にはなれない。',answer:'× 誤り',reason:'飲食店は法定16業種に含まれ、個人経営・5人以上なら<mark>強制適用事業所</mark>（法第6条）。',law:'法第6条'},
+  {tag:'D1-04',section:'①目的・適用',cat:'①目的・適用',correct:true,q:'法人の事業所は従業員数にかかわらず強制適用事業所となる。',answer:'○ 正しい',reason:'法人事業所は規模（人数）を問わず全て強制適用（法第6条）。個人事業所は業種・規模要件がある。',law:'法第6条'},
+  {tag:'D1-05',section:'①目的・適用',cat:'①目的・適用',correct:true,q:'強制被保険者の要件は①70歳未満・②適用事業所に使用・③適用除外に非該当の3つ。',answer:'○ 正しい',reason:'法第9条の強制被保険者3要件：①70歳未満、②適用事業所に使用、③適用除外（船員保険等）に非該当。',law:'法第9条'},
+  {tag:'D1-06',section:'①目的・適用',cat:'①目的・適用',correct:false,q:'所在地が一定しない事業所に使用される者は厚生年金保険の強制被保険者となる。',answer:'× 誤り',reason:'所在地不定の事業所で使用される者は<mark>適用除外</mark>（法第12条）。日雇労働者も同様。',law:'法第12条'},
+  {tag:'D1-07',section:'①目的・適用',cat:'①目的・適用',correct:true,q:'国家公務員共済組合の組合員は第2号厚生年金被保険者である。',answer:'○ 正しい',reason:'4種類の被保険者：第1号（民間）・第2号（<mark>国家公務員共済</mark>）・第3号（地方公務員共済）・第4号（私学共済）（法第2条の5）。',law:'法第2条の5'},
+  {tag:'D1-08',section:'①目的・適用',cat:'①目的・適用',correct:false,q:'被保険者は採用後1ヵ月を経過した日に資格を取得する。',answer:'× 誤り',reason:'資格取得日は<mark>使用された日</mark>（採用当日）（法第13条）。1ヵ月後ではない。',law:'法第13条'},
+  {tag:'D1-09',section:'①目的・適用',cat:'①目的・適用',correct:true,q:'被保険者が死亡した場合は死亡した日の翌日に資格を喪失する。',answer:'○ 正しい',reason:'死亡による資格喪失は<mark>死亡日の翌日</mark>（法第14条）。退職も退職日の翌日（使用されなくなった日）。',law:'法第14条'},
+  {tag:'D1-10',section:'①目的・適用',cat:'①目的・適用',correct:false,q:'月の途中で入社した場合、被保険者資格の取得は翌月1日となる。',answer:'× 誤り',reason:'資格取得日は入社日（当日）。月の途中でも入社日に取得（法第13条）。保険料は資格取得月分から発生。',law:'法第13条'},
+  {tag:'D1-11',section:'①目的・適用',cat:'①目的・適用',correct:true,q:'任意適用事業所の申請には被保険者となるべき者の2分の1以上の同意が必要。',answer:'○ 正しい',reason:'任意適用の申請要件：被保険者となるべき者の<mark>2分の1以上</mark>の同意（法第31条）。',law:'法第31条'},
+  {tag:'D1-12',section:'①目的・適用',cat:'①目的・適用',correct:false,q:'農林水産業の個人経営事業所は常時5人以上でも強制適用事業所にならない場合がある。',answer:'○ 正しい',reason:'農業・林業・漁業（一部）は個人経営の場合、5人以上でも任意適用にとどまる（法第6条）。問題文は○が正解。',law:'法第6条'},
+  {tag:'D1-13',section:'①目的・適用',cat:'①目的・適用',correct:true,q:'厚生年金保険は老齢・障害・死亡の3つの保険事故に対して給付を行う。',answer:'○ 正しい',reason:'法第1条の目的：<mark>老齢・障害・死亡</mark>に対する給付。健保（傷病・出産・死亡）との違いを整理。',law:'法第1条'},
+  {tag:'D1-14',section:'①目的・適用',cat:'①目的・適用',correct:true,q:'70歳以上で老齢年金等の受給権がない者は任意単独被保険者として厚年に加入できる。',answer:'○ 正しい',reason:'70歳以上で老齢受給権なし→<mark>任意単独被保険者</mark>として申請加入可（附則第4条の3）。',law:'附則第4条の3'},
+  {tag:'D1-15',section:'①目的・適用',cat:'①目的・適用',correct:false,q:'国会議員は厚生年金保険の強制被保険者である。',answer:'× 誤り',reason:'国会議員・地方議会議員は厚年の<mark>適用除外</mark>（法第12条）。共済組合で年金カバーされる。',law:'法第12条'},
+  {tag:'D1-16',section:'①目的・適用',cat:'①目的・適用',correct:true,q:'被保険者資格は強制適用のため本人の意思や申出は不要で、適用事業所に使用された日に自動取得される。',answer:'○ 正しい',reason:'強制被保険者は法律上当然に資格取得（法第13条）。健保も同様。',law:'法第13条'},
+  {tag:'D1-17',section:'①目的・適用',cat:'①目的・適用',correct:false,q:'適用事業所が廃止された場合、被保険者は廃止日に資格を喪失する。',answer:'× 誤り',reason:'廃止による喪失は廃止日の<mark>翌日</mark>（法第14条）。退職・廃止どちらも「日の翌日」が喪失日。',law:'法第14条'},
+  {tag:'D1-18',section:'①目的・適用',cat:'①目的・適用',correct:true,q:'短時間労働者（週20時間以上・月額賃金8.8万円以上等）は適用拡大により厚年被保険者となる場合がある。',answer:'○ 正しい',reason:'適用拡大の要件：①週20時間以上・②月額賃金8.8万円以上・③継続2ヵ月超の見込み・④学生でない（法第12条の2）。',law:'法第12条の2'},
+  {tag:'D1-19',section:'①目的・適用',cat:'①目的・適用',correct:true,q:'厚生年金保険の被保険者証は事業主を経由して被保険者に交付される。',answer:'○ 正しい',reason:'被保険者証：厚生労働大臣（日本年金機構）が作成→事業主→被保険者へ交付（法第17条）。',law:'法第17条'},
+  {tag:'D1-20',section:'①目的・適用',cat:'①目的・適用',correct:false,q:'被保険者が転職した場合、前の事業所での資格喪失は転職日の翌日である。',answer:'○ 正しい',reason:'退職による資格喪失は<mark>退職日の翌日</mark>（使用されなくなった日）（法第14条）。問題文は○が正解。',law:'法第14条'},
+  {tag:'D1-21',section:'①目的・適用',cat:'①目的・適用',correct:true,q:'厚生年金保険の第1号被保険者とは民間の事業所に使用される一般の厚生年金被保険者である。',answer:'○ 正しい',reason:'第1号被保険者＝民間の事業所（法第2条の5）。第2号（国家公務員共済）・第3号（地方公務員共済）・第4号（私学共済）の4種。',law:'法第2条の5'},
+  {tag:'D1-22',section:'①目的・適用',cat:'①目的・適用',correct:false,q:'臨時に使用される者は使用期間にかかわらず常に適用除外となる。',answer:'× 誤り',reason:'臨時使用者は原則適用除外だが、<mark>2ヵ月超</mark>使用見込みなら被保険者となる（法第12条）。',law:'法第12条'},
+  {tag:'D1-23',section:'①目的・適用',cat:'①目的・適用',correct:true,q:'健康保険の強制適用事業所は原則として厚生年金保険の強制適用事業所でもある。',answer:'○ 正しい',reason:'健保・厚年は連動して適用されることが多い（法第6条）。ただし例外あり（健保組合等）。',law:'法第6条'},
+  {tag:'D1-24',section:'①目的・適用',cat:'①目的・適用',correct:false,q:'自営業者も任意で厚生年金保険に加入できる。',answer:'× 誤り',reason:'厚年は<mark>被用者（雇用関係のある者）</mark>が対象。自営業者は国民年金第1号被保険者。任意加入制度はない（70歳以上の任意単独は別）。',law:'法第9条'},
+  {tag:'D1-25',section:'①目的・適用',cat:'①目的・適用',correct:true,q:'被保険者が同一事業所で継続して70歳に達した場合、健保被保険者資格は継続するが厚年被保険者資格は喪失する。',answer:'○ 正しい',reason:'厚年は70歳未満が要件なので70歳到達で喪失。健保は年齢要件なし（法第14条・健保法第3条）。',law:'法第14条'},
+  {tag:'D1-26',section:'①目的・適用',cat:'①目的・適用',correct:false,q:'特定適用事業所（被保険者数100人超）の短時間労働者は必ず厚年被保険者となる。',answer:'× 誤り',reason:'短時間労働者が被保険者となるには①週20時間以上・②月額8.8万円以上・③継続2ヵ月超見込み・④学生でないの全要件を満たす必要（法第12条の2）。',law:'法第12条の2'},
+  {tag:'D1-27',section:'①目的・適用',cat:'①目的・適用',correct:true,q:'船員保険の被保険者は厚生年金保険の適用除外となる。',answer:'○ 正しい',reason:'船員保険の被保険者は厚年の<mark>適用除外</mark>（法第12条）。共済組合員・船員保険加入者等は除外。',law:'法第12条'},
+  {tag:'D1-28',section:'①目的・適用',cat:'①目的・適用',correct:true,q:'厚生年金保険の目的は被保険者の老齢・障害・死亡に関して保険給付を行い、労働者の生活安定と福祉向上に寄与することである。',answer:'○ 正しい',reason:'法第1条の目的規定：老齢・障害・死亡への給付＋労働者の生活安定・福祉向上への寄与（法第1条）。',law:'法第1条'},
+  {tag:'D1-29',section:'①目的・適用',cat:'①目的・適用',correct:false,q:'70歳以上の者が在職中に厚年保険料を払い続けることはできない。',answer:'○ 正しい',reason:'厚年被保険者は70歳未満のため、70歳到達で被保険者資格喪失→保険料払えない（法第9条）。問題文は○が正解。',law:'法第9条'},
+  {tag:'D1-30',section:'①目的・適用',cat:'①目的・適用',correct:true,q:'任意単独被保険者は事業主の同意がなくても加入申出ができる。',answer:'× 誤り',reason:'任意単独被保険者（法第10条）：事業主の<mark>同意が必要</mark>な場合がある（旧規定）。正確な確認が必要な論点（×問題）。',law:'法第10条'},
+  {tag:'D2-01',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:false,q:'厚生年金保険の標準報酬月額は健康保険と同じ50等級に区分されている。',answer:'× 誤り',reason:'厚年の標準報酬月額は<mark>32等級</mark>（最低88,000円〜最高650,000円）。健保は50等級（法第20条）。',law:'法第20条'},
+  {tag:'D2-02',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:true,q:'厚生年金保険の標準賞与額の上限は1回の賞与につき150万円である。',answer:'○ 正しい',reason:'厚年の標準賞与額：1回<mark>150万円</mark>上限（法第24条の4）。健保は年間573万円（単位が違う）。',law:'法第24条の4'},
+  {tag:'D2-03',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:true,q:'定時決定で算定された標準報酬月額はその年の9月1日から翌年8月31日まで適用される。',answer:'○ 正しい',reason:'定時決定（4〜6月の平均報酬）は<mark>9月1日</mark>から翌年8月31日まで（法第21条）。',law:'法第21条'},
+  {tag:'D2-04',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:false,q:'随時改定は標準報酬月額が1等級以上変動した場合に行われる。',answer:'× 誤り',reason:'随時改定は固定的賃金変動後3ヵ月の平均報酬が<mark>2等級以上</mark>変動した場合（法第23条）。1等級では不可。',law:'法第23条'},
+  {tag:'D2-05',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:true,q:'厚生年金保険料は被保険者と事業主がそれぞれ2分の1ずつ負担する（労使折半）。',answer:'○ 正しい',reason:'保険料の<mark>労使折半</mark>（法第82条）。被保険者負担分は賃金から控除・事業主も同額負担。',law:'法第82条'},
+  {tag:'D2-06',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:true,q:'育児休業期間中の厚生年金保険料は被保険者・事業主の両方の分が免除される。',answer:'○ 正しい',reason:'育休中の保険料免除：労使双方分が免除（法第81条の2）。国年第1号には育休中免除なし（雇用関係なし）。',law:'法第81条の2'},
+  {tag:'D2-07',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:true,q:'産前産後休業期間中の厚生年金保険料も育休と同様に労使双方分が免除される。',answer:'○ 正しい',reason:'産育休の保険料免除：健保・厚年は育休・産休どちらも労使双方免除（法第81条の2の2）。',law:'法第81条の2の2'},
+  {tag:'D2-08',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:false,q:'随時改定の計算対象となる3ヵ月の支払基礎日数はすべて17日以上でなければならない。',answer:'○ 正しい',reason:'随時改定の要件：3ヵ月すべての支払基礎日数が<mark>17日以上</mark>（法第23条）。問題文は○が正解。',law:'法第23条'},
+  {tag:'D2-09',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:true,q:'現行の厚生年金保険料率（一般）は18.3%であり平成29年9月以降固定されている。',answer:'○ 正しい',reason:'厚年保険料率（一般）：<mark>18.3%</mark>（法第81条）。平成29年9月に固定。被保険者・事業主各9.15%。',law:'法第81条'},
+  {tag:'D2-10',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:true,q:'賞与に係る保険料は標準賞与額（千円未満切捨て）に保険料率を乗じて算出する。',answer:'○ 正しい',reason:'賞与保険料：<mark>標準賞与額（千円未満切捨て）×18.3%</mark>（法第24条の4・81条）。',law:'法第24条の4'},
+  {tag:'D2-11',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:false,q:'資格取得時の標準報酬月額は入社前の前職の報酬を基に決定される。',answer:'× 誤り',reason:'資格取得時決定は<mark>採用時の予定報酬</mark>（月額見込み）を基に決定（法第22条）。前職は関係なし。',law:'法第22条'},
+  {tag:'D2-12',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:true,q:'事業主は被保険者負担の保険料を賃金から控除し、翌月末日までに事業主負担分と合わせて納付する。',answer:'○ 正しい',reason:'保険料の納付：事業主が被保険者分を賃金控除→翌月<mark>末日</mark>までに事業主分と合算して日本年金機構へ納付（法第83条・84条）。',law:'法第83条・84条'},
+  {tag:'D2-13',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:false,q:'定時決定において4・5・6月のいずれかの支払基礎日数が17日未満の場合、その月は算定から除外される。',answer:'○ 正しい',reason:'定時決定の除外：支払基礎日数<mark>17日未満</mark>の月を除外（法第21条）。問題文は○が正解。',law:'法第21条'},
+  {tag:'D2-14',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:true,q:'年4回以上支給される賞与は標準賞与額の算定対象外となり、報酬月額に含めて扱われる。',answer:'○ 正しい',reason:'年<mark>4回以上</mark>支給のものは「報酬」として報酬月額に含める（法第3条）。年3回以下が標準賞与額の対象。',law:'法第3条'},
+  {tag:'D2-15',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:false,q:'被保険者が60歳になると厚生年金保険料の負担がなくなる。',answer:'× 誤り',reason:'保険料負担は<mark>70歳まで</mark>（被保険者資格は70歳未満）（法第81条）。60歳は関係なし。',law:'法第81条'},
+  {tag:'D2-16',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:true,q:'厚生年金の標準報酬月額の最低等級（第1等級）は88,000円で、健保の58,000円より高い。',answer:'○ 正しい',reason:'厚年の下限：<mark>88,000円</mark>（第1等級）。健保の下限：58,000円（第1等級）。厚年の方が下限が高い（法第20条・健保法第40条）。',law:'法第20条'},
+  {tag:'D2-17',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:true,q:'随時改定は昇給だけでなく降給の場合にも行われる。',answer:'○ 正しい',reason:'随時改定は固定的賃金の増加・減少どちらでも2等級以上変動なら実施（法第23条）。',law:'法第23条'},
+  {tag:'D2-18',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:false,q:'育児休業中に賞与が支給された場合、その賞与の保険料は免除されない。',answer:'× 誤り',reason:'育休中は賞与保険料も<mark>免除</mark>（法第81条の2）。月額分も賞与分も労使双方免除。',law:'法第81条の2'},
+  {tag:'D2-19',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:true,q:'定時決定は毎年7月1日時点の在籍被保険者全員を対象に行う。',answer:'○ 正しい',reason:'定時決定：<mark>7月1日</mark>現在の被保険者全員。4・5・6月の報酬を基に算定（法第21条）。',law:'法第21条'},
+  {tag:'D2-20',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:false,q:'随時改定が行われた場合の新標準報酬月額は固定的賃金変動の翌月から適用される。',answer:'× 誤り',reason:'随時改定の適用開始は固定的賃金変動後3ヵ月経過した翌月（変動月の<mark>4ヵ月後</mark>から）（法第23条）。',law:'法第23条'},
+  {tag:'D2-21',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:true,q:'厚生年金の標準報酬月額の最高等級（第32等級）は65万円（650,000円）である。',answer:'○ 正しい',reason:'厚年の最高等級：第<mark>32</mark>等級・<mark>65万円</mark>（法第20条）。健保の最高は第50等級・139万円。',law:'法第20条'},
+  {tag:'D2-22',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:true,q:'保険料の延滞が生じた場合、延滞金が発生することがある。',answer:'○ 正しい',reason:'期限内に保険料を納付しない場合は<mark>延滞金</mark>が発生（法第87条）。督促状が送られる。',law:'法第87条'},
+  {tag:'D2-23',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:false,q:'在職定時改定の基準日は8月1日で10月から改定される。',answer:'× 誤り',reason:'在職定時改定の基準日は<mark>9月1日</mark>で<mark>10月</mark>から改定（法第43条の2）。「8月」は誤り。',law:'法第43条の2'},
+  {tag:'D2-24',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:true,q:'産後休業終了後に標準報酬月額が改定される場合（産育休後の報酬月額変更改定）は2等級未満の変動でも改定できる。',answer:'○ 正しい',reason:'産育休後の特例改定（法第23条の3）：通常の随時改定（2等級以上）の要件が緩和され、1等級以上の変動でも改定可能。',law:'法第23条の3'},
+  {tag:'D2-25',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:true,q:'厚生年金保険料率は一般・坑内員・船員で異なる場合がある。',answer:'○ 正しい',reason:'保険料率は事業の種類によって異なる（坑内員・船員は特別の料率）（法第81条）。',law:'法第81条'},
+  {tag:'D2-26',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:false,q:'国民年金第1号被保険者にも育児休業中の保険料免除がある。',answer:'× 誤り',reason:'国年第1号に育休中の保険料免除は<mark>ない</mark>（雇用関係がないため）。健保・厚年のみ育休中免除あり。',law:'国年法附則'},
+  {tag:'D2-27',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:true,q:'標準報酬月額の等級数は健保50等級・厚年32等級と健保の方が多い。',answer:'○ 正しい',reason:'健保<mark>50</mark>等級・厚年<mark>32</mark>等級。健保の方が等級数が多い（法第20条・健保法第40条）。',law:'法第20条'},
+  {tag:'D2-28',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:true,q:'厚年の標準賞与額の上限（1回150万円）と健保の標準賞与額の上限（年間573万円）は単位が異なる。',answer:'○ 正しい',reason:'厚年は<mark>1回</mark>150万円・健保は<mark>年間</mark>573万円——単位の違いが試験頻出（法第24条の4・健保法第45条）。',law:'法第24条の4'},
+  {tag:'D2-29',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:false,q:'報酬月額が給与テーブルの改訂で上がった場合でも3ヵ月間の平均が2等級以上変動しなければ随時改定は行われない。',answer:'○ 正しい',reason:'随時改定の2等級以上要件は絶対要件（法第23条）。問題文は○が正解。',law:'法第23条'},
+  {tag:'D2-30',section:'②標準報酬・保険料',cat:'②標準報酬・保険料',correct:true,q:'事業主は厚生年金保険に関する届出・申告等の義務を負う。',answer:'○ 正しい',reason:'事業主は被保険者の資格取得・喪失・報酬月額変更等の届出義務を負う（法第27条等）。',law:'法第27条'},
+  {tag:'D3-01',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:false,q:'老齢厚生年金を受けるには厚生年金の被保険者期間が10年以上必要である。',answer:'× 誤り',reason:'老齢厚生年金の厚年被保険者期間の最低要件は<mark>1ヵ月以上</mark>（法第42条）。老齢基礎年金の10年とは別要件。',law:'法第42条'},
+  {tag:'D3-02',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:true,q:'老齢厚生年金の原則の支給開始年齢は65歳である。',answer:'○ 正しい',reason:'原則老齢厚生年金は<mark>65歳</mark>から（法第42条）。特別支給（60〜64歳）は経過措置。',law:'法第42条'},
+  {tag:'D3-03',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:false,q:'老齢厚生年金の繰上げは老齢基礎年金と別々に行うことができる。',answer:'× 誤り',reason:'老齢厚生年金の繰上げは老齢基礎年金と<mark>同時</mark>に行う必要（法第44条の3）。繰下げは別々に可能。',law:'法第44条の3'},
+  {tag:'D3-04',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:true,q:'老齢厚生年金の繰下げは老齢基礎年金と別々に行うことができる。',answer:'○ 正しい',reason:'繰下げは老齢厚生年金と老齢基礎年金を<mark>別々</mark>に行うことが可能（法第44条の3）。繰上げ（同時必須）と異なる。',law:'法第44条の3'},
+  {tag:'D3-05',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:false,q:'老齢厚生年金を1ヵ月繰り上げるごとに0.5%減額される（昭和37年4月2日以降生まれ）。',answer:'× 誤り',reason:'令和4年4月以降は1ヵ月あたり<mark>0.4%</mark>（昭和37年4月2日以降生まれ）（法第44条の3）。旧0.5%との混同注意。',law:'法第44条の3'},
+  {tag:'D3-06',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:true,q:'老齢厚生年金を1ヵ月繰り下げるごとに0.7%増額される。',answer:'○ 正しい',reason:'繰下げの増額率は1ヵ月あたり<mark>0.7%</mark>（法第44条の3）。最大75歳まで（最大84%増額）。',law:'法第44条の3'},
+  {tag:'D3-07',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:false,q:'加給年金額は厚生年金の被保険者期間が10年以上の受給権者に加算される。',answer:'× 誤り',reason:'加給年金額が加算される要件は厚年被保険者期間が<mark>20年以上</mark>（法第44条）。10年ではない。',law:'法第44条'},
+  {tag:'D3-08',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:true,q:'加給年金額の対象となる配偶者の年齢要件は65歳未満である。',answer:'○ 正しい',reason:'加給年金の対象配偶者：<mark>65歳未満</mark>（法第44条）。65歳到達で加給年金消滅→振替加算へ。',law:'法第44条'},
+  {tag:'D3-09',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:true,q:'加給年金額の対象となる子の要件は18歳年度末未満（障害1・2級の子は20歳未満）である。',answer:'○ 正しい',reason:'加給年金の子の要件：<mark>18歳年度末未満</mark>（障害1・2級は<mark>20歳未満</mark>）（法第44条）。',law:'法第44条'},
+  {tag:'D3-10',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:false,q:'振替加算は老齢厚生年金に加算される。',answer:'× 誤り',reason:'振替加算は配偶者（妻）の<mark>老齢基礎年金</mark>に加算される（法第44条の3）。夫の老齢厚生年金ではない。',law:'法第44条の3'},
+  {tag:'D3-11',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:true,q:'振替加算の額は配偶者の生年月日が新しいほど少なく、昭和61年4月2日以降生まれはゼロとなる。',answer:'○ 正しい',reason:'振替加算は生年月日で逓減（法第44条の3）。<mark>昭和61年4月2日以降</mark>生まれはゼロ。',law:'法第44条の3'},
+  {tag:'D3-12',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:true,q:'老齢厚生年金の繰下げは最大75歳まで可能で最大84%増額される（令和4年4月改正）。',answer:'○ 正しい',reason:'繰下げ上限：<mark>75歳</mark>（改正前は70歳）。最大<mark>84%</mark>増額（0.7%×120ヵ月）（法第44条の3）。',law:'法第44条の3'},
+  {tag:'D3-13',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:false,q:'老齢厚生年金の繰上げは60歳前から申請できる。',answer:'× 誤り',reason:'繰上げ受給の申請は<mark>60歳</mark>になってから（法第44条の3）。60歳より前は不可。',law:'法第44条の3'},
+  {tag:'D3-14',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:true,q:'老齢厚生年金を繰上げ受給した場合、減額は生涯にわたって続く永久減額である。',answer:'○ 正しい',reason:'繰上げによる減額は<mark>永久</mark>（生涯続く）（法第44条の3）。取消・変更不可。',law:'法第44条の3'},
+  {tag:'D3-15',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:true,q:'65歳になってから老齢厚生年金の裁定請求をする場合、65歳到達時点まで遡及して受給できる（時効5年の範囲内）。',answer:'○ 正しい',reason:'老齢厚生年金の受給権は65歳に発生。請求が遅れても遡及受給可能（時効5年内）（法第33条・92条）。',law:'法第33条・92条'},
+  {tag:'D3-16',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:true,q:'老齢厚生年金の報酬比例部分の額は平均標準報酬月額と平均標準賞与額を基に計算される。',answer:'○ 正しい',reason:'報酬比例の年金額は<mark>平均標準報酬月額</mark>（月額部分）と<mark>平均標準賞与額</mark>（賞与部分）で計算（法第43条）。',law:'法第43条'},
+  {tag:'D3-17',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:true,q:'在職定時改定（令和4年4月施行）により65歳以上の在職被保険者の老齢厚生年金は毎年10月に改定される。',answer:'○ 正しい',reason:'在職定時改定（法第43条の2）：基準日9月1日・<mark>10月</mark>から改定。65歳以上の在職被保険者が対象。',law:'法第43条の2'},
+  {tag:'D3-18',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:false,q:'受給権者が死亡した場合、死亡月の翌月分まで年金が支払われる。',answer:'× 誤り',reason:'年金は<mark>死亡月分まで</mark>支給（法第36条）。翌月分は払われない。',law:'法第36条'},
+  {tag:'D3-19',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:true,q:'受給権者が死亡した場合に未払の年金は未支給年金として一定範囲の遺族が受け取れる。',answer:'○ 正しい',reason:'未支給年金（法第37条）：配偶者・子・父母・孫・祖父母・兄弟姉妹・三親等内の親族が請求可。',law:'法第37条'},
+  {tag:'D3-20',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:false,q:'加給年金額が加算されている受給権者が在職中（厚年被保険者）の場合、加給年金額は支給停止となる。',answer:'× 誤り',reason:'受給権者の在職（厚年被保険者）は<mark>加給年金の支給停止事由ではない</mark>（法第44条）。在職老齢年金による本体の調整はあるが加給年金は別。',law:'法第44条'},
+  {tag:'D3-21',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:true,q:'老齢厚生年金を繰り上げると事後重症による障害基礎年金・障害厚生年金の請求ができなくなる。',answer:'○ 正しい',reason:'繰上げのデメリット：繰上げ後は新たな障害年金（事後重症等）の請求が制限される（国年法第20条等）。',law:'国年法第20条'},
+  {tag:'D3-22',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:true,q:'加給年金額には受給権者の生年月日に応じた特別加算がある（昭和9年4月2日以降生まれ）。',answer:'○ 正しい',reason:'加給年金の特別加算：昭和<mark>9年4月2日</mark>以降生まれの受給権者が対象（附則第43条）。',law:'附則第43条'},
+  {tag:'D3-23',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:false,q:'繰下げ申出は何度でも変更・取消ができる。',answer:'× 誤り',reason:'繰下げ申出は<mark>取消・変更不可</mark>（繰上げと同様）（法第44条の3）。慎重な判断が必要。',law:'法第44条の3'},
+  {tag:'D3-24',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:true,q:'老齢基礎年金の受給資格期間（10年以上）を満たしていなければ老齢厚生年金も受けられない。',answer:'○ 正しい',reason:'老齢厚生年金の受給には老齢基礎年金の受給資格（<mark>10年以上</mark>）を満たすことが必要（法第42条）。',law:'法第42条'},
+  {tag:'D3-25',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:false,q:'75歳を超えてから繰下げ申出をした場合は75歳を超えた時点まで遡及して増額される。',answer:'× 誤り',reason:'75歳超の申出は<mark>75歳到達時</mark>に申出があったとみなす（法第44条の3）。75歳以降の分は遡及不可。',law:'法第44条の3'},
+  {tag:'D3-26',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:true,q:'老齢厚生年金は裁定請求が必要で、自動的に支給は始まらない。',answer:'○ 正しい',reason:'年金は<mark>裁定請求</mark>が必要（法第33条）。請求しなければ受給できない。',law:'法第33条'},
+  {tag:'D3-27',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:true,q:'退職した場合（被保険者資格喪失）、在職中に積み上げた期間を反映して年金額が改定される（退職時改定）。',answer:'○ 正しい',reason:'退職時改定（法第43条）：退職月の翌月から在職中の標準報酬を反映して年金額が改定される。',law:'法第43条'},
+  {tag:'D3-28',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:false,q:'繰下げ待機中も加給年金額は支給される。',answer:'× 誤り',reason:'繰下げ待機中は老齢厚生年金が支給されないため加給年金も<mark>支給されない</mark>（法第44条の3）。',law:'法第44条の3'},
+  {tag:'D3-29',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:true,q:'加給年金額の対象となる配偶者の収入要件は年収850万円未満である。',answer:'○ 正しい',reason:'加給年金の対象配偶者の収入要件：将来の収入見込みが年収<mark>850万円</mark>未満（法第44条・規則）。',law:'法第44条'},
+  {tag:'D3-30',section:'③老齢厚生年金①',cat:'③老齢厚生年金①',correct:false,q:'老齢厚生年金の繰上げは老齢基礎年金と別々に行うことができる。',answer:'× 誤り',reason:'繰上げは老齢基礎年金と<mark>同時</mark>に行う必要（法第44条の3）。繰下げは別々に可能。繰上げと繰下げで逆の扱い。',law:'法第44条の3'},
+  {tag:'D4-01',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:false,q:'65歳以上の在職老齢年金は基本月額と総報酬月額相当額の合計が28万円を超えると停止が始まる。',answer:'× 誤り',reason:'65歳以上の基準額は現在<mark>50万円</mark>（令和4年4月改正で28万円から引き上げ）（法第46条）。',law:'法第46条'},
+  {tag:'D4-02',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'在職老齢年金（65歳以上）では基本月額と総報酬月額相当額の合計が50万円を超えると超過額の2分の1が支給停止となる。',answer:'○ 正しい',reason:'65歳以上の在職老齢年金：合計が<mark>50万円超</mark>→超過額の<mark>1/2</mark>が停止（法第46条）。',law:'法第46条'},
+  {tag:'D4-03',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'在職老齢年金（65歳以上）では全額停止になることはない。',answer:'○ 正しい',reason:'65歳以上の在職老齢年金は<mark>全額停止なし</mark>——超過部分の1/2停止のみ（法第46条）。',law:'法第46条'},
+  {tag:'D4-04',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:false,q:'特別支給の老齢厚生年金の受給要件の厚年被保険者期間は10年以上である。',answer:'× 誤り',reason:'特別支給の厚年被保険者期間は<mark>1年以上</mark>（附則第8条）。原則老厚（1ヵ月以上）より長い。',law:'附則第8条'},
+  {tag:'D4-05',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'特別支給の老齢厚生年金の受給要件は①受給資格期間10年以上・②厚年被保険者期間1年以上・③60歳以上の3つ。',answer:'○ 正しい',reason:'附則第8条の特別支給3要件：①10年・②1年・③60歳——「10・1・60」で覚える。',law:'附則第8条'},
+  {tag:'D4-06',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'昭和40年4月2日以降生まれの男性は特別支給の老齢厚生年金を受け取れない。',answer:'○ 正しい',reason:'昭和<mark>40年4月2日以降</mark>生まれの男性は特別支給なし（65歳から原則老齢厚生年金のみ）（附則第8条）。',law:'附則第8条'},
+  {tag:'D4-07',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'特別支給の段階的引き上げは2フェーズ：①定額部分を先に引き上げ、②次に報酬比例部分を引き上げ。',answer:'○ 正しい',reason:'第1フェーズ（〜昭和36年4月1日生まれ男性）：定額部分引き上げ。第2フェーズ（昭和36〜40年4月1日生まれ男性）：報酬比例部分引き上げ（附則第9条）。',law:'附則第9条'},
+  {tag:'D4-08',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'女性の特別支給の老齢厚生年金の対象生年月日は男性の5年後ろである。',answer:'○ 正しい',reason:'女性の特別支給は男性の5年後ろ（昭和41年4月1日以前生まれが対象）（附則第8条）。',law:'附則第8条'},
+  {tag:'D4-09',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'総報酬月額相当額は標準報酬月額に標準賞与額の1/12を加えた額である。',answer:'○ 正しい',reason:'総報酬月額相当額 ＝ 標準報酬月額 ＋ 標準賞与額 ÷ 12（法第46条）。',law:'法第46条'},
+  {tag:'D4-10',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:false,q:'在職老齢年金では被保険者の月収が50万円を超えると年金が全額停止となる。',answer:'× 誤り',reason:'在職老齢年金の停止は「基本月額＋総報酬月額相当額が50万円超」の場合の<mark>超過額1/2停止</mark>（全額停止なし）（法第46条）。「月収50万超で全額停止」は誤り。',law:'法第46条'},
+  {tag:'D4-11',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'令和4年4月改正により60歳台前半の在職老齢年金の基準額が50万円に引き上げられ65歳以上と統一された。',answer:'○ 正しい',reason:'令和4年4月改正：60歳台前半の基準額を<mark>50万円</mark>に引き上げて65歳以上と統一（附則第13条の4）。',law:'附則第13条の4'},
+  {tag:'D4-12',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'在職定時改定は65歳以上の在職被保険者の老齢厚生年金を毎年10月に改定するものである（令和4年4月施行）。',answer:'○ 正しい',reason:'在職定時改定（法第43条の2）：基準日<mark>9月1日</mark>・<mark>10月</mark>から改定。令和4年4月施行。',law:'法第43条の2'},
+  {tag:'D4-13',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:false,q:'特別支給の老齢厚生年金の報酬比例部分と定額部分は常にセットで支給される。',answer:'× 誤り',reason:'生年月日によって定額部分の支給開始年齢が異なる（第2フェーズでは定額部分なし）（附則第9条）。',law:'附則第9条'},
+  {tag:'D4-14',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'在職老齢年金による支給停止は受給権の消滅ではなく一時的な支払停止である。',answer:'○ 正しい',reason:'在職老齢年金の停止は<mark>支給停止</mark>（受給権存続）（法第46条）。退職後に調整解除。',law:'法第46条'},
+  {tag:'D4-15',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'在職老齢年金の調整は厚生年金保険の被保険者である場合にのみ適用される。',answer:'○ 正しい',reason:'在職老齢年金の調整は<mark>厚年被保険者（在職中）</mark>の場合のみ適用（法第46条）。退職後は調整なし。',law:'法第46条'},
+  {tag:'D4-16',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:false,q:'特別支給の老齢厚生年金は男性のみが対象である。',answer:'× 誤り',reason:'特別支給は女性も対象（男性の5年後ろのスケジュール）（附則第8条）。',law:'附則第8条'},
+  {tag:'D4-17',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'退職した場合（被保険者資格喪失）、在職中に積み上げた厚年期間を反映して退職月の翌月から年金額が改定される。',answer:'○ 正しい',reason:'退職時改定（法第43条）：退職月の翌月から在職中の標準報酬を反映して年金額改定。',law:'法第43条'},
+  {tag:'D4-18',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:false,q:'在職定時改定は60歳以上の在職被保険者すべてに適用される。',answer:'× 誤り',reason:'在職定時改定は<mark>65歳以上</mark>の在職被保険者が対象（法第43条の2）。60歳台前半には適用なし。',law:'法第43条の2'},
+  {tag:'D4-19',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'特別支給の老齢厚生年金は昭和40年4月1日生まれまでの男性（昭和45年4月1日生まれまでの女性）が対象である。',answer:'○ 正しい',reason:'特別支給の対象：男性<mark>昭和40年4月1日以前</mark>生まれ、女性<mark>昭和45年4月1日以前</mark>生まれ（附則第8条）。',law:'附則第8条'},
+  {tag:'D4-20',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:false,q:'在職老齢年金で停止されている期間は年金受給権が消滅している。',answer:'× 誤り',reason:'在職老齢年金による停止は<mark>支給停止</mark>であり受給権は消滅しない（法第46条）。退職後に支給再開。',law:'法第46条'},
+  {tag:'D4-21',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'在職老齢年金の停止額の計算式は（基本月額＋総報酬月額相当額－50万円）÷2である。',answer:'○ 正しい',reason:'停止月額 ＝ （基本月額＋総報酬月額相当額 − <mark>50万円</mark>）÷ 2（法第46条）。',law:'法第46条'},
+  {tag:'D4-22',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:false,q:'特別支給の老齢厚生年金を受けるには老齢基礎年金の受給資格期間（10年以上）を満たす必要はない。',answer:'× 誤り',reason:'特別支給の受給要件の一つが「受給資格期間<mark>10年以上</mark>」（附則第8条）。老基の受給資格期間を満たすことが必要。',law:'附則第8条'},
+  {tag:'D4-23',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'在職老齢年金は加給年金額を除いた老齢厚生年金の本体部分が調整対象となる。',answer:'○ 正しい',reason:'在職老齢年金の調整対象は加給年金を除いた老齢厚生年金（基本月額）（法第46条）。加給年金は調整対象外。',law:'法第46条'},
+  {tag:'D4-24',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'特別支給の老齢厚生年金は本来65歳からの老齢厚生年金の支給開始年齢を段階的に引き上げるための経過措置である。',answer:'○ 正しい',reason:'特別支給は経過措置（附則第8条）。昭和60年改正で60歳→65歳への段階的移行を設けた。',law:'附則第8条'},
+  {tag:'D4-25',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:false,q:'昭和36年4月2日〜40年4月1日生まれの男性は60歳から定額部分と報酬比例部分両方を受給できる。',answer:'× 誤り',reason:'この世代（第2フェーズ）は定額部分はなく、報酬比例部分のみが61〜64歳から受給（附則第8条の2）。',law:'附則第8条の2'},
+  {tag:'D4-26',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'70歳以上の被用者（厚年被保険者ではない）も在職老齢年金に類似した調整を受ける場合がある。',answer:'○ 正しい',reason:'70歳以上の在職者にも在職老齢年金的な調整制度がある（附則等）。',law:'附則'},
+  {tag:'D4-27',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'特別支給の老齢厚生年金を受けている者が在職（厚年被保険者）である場合も在職老齢年金の調整が適用される。',answer:'○ 正しい',reason:'特別支給期間中も在職老齢年金の調整あり（附則第13条の4）。在職中は調整が適用される。',law:'附則第13条の4'},
+  {tag:'D4-28',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:false,q:'特別支給の老齢厚生年金を繰上げて60歳前から受給することができる。',answer:'× 誤り',reason:'特別支給の老齢厚生年金は繰上げできない。繰上げ制度は65歳からの<mark>原則老齢厚生年金</mark>に適用（法第44条の3）。',law:'法第44条の3'},
+  {tag:'D4-29',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'在職老齢年金の基準額（50万円）は物価・賃金スライドにより改定される可能性がある。',answer:'○ 正しい',reason:'50万円は政令で定める額で毎年改定可能（法第46条）。法定の固定額ではない。',law:'法第46条'},
+  {tag:'D4-30',section:'④在職老齢・特別支給',cat:'④在職老齢・特別支給',correct:true,q:'特別支給の老齢厚生年金は請求しなければ受給できない（裁定請求が必要）。',answer:'○ 正しい',reason:'特別支給も裁定請求が必要（法第33条）。自動支給はされない。',law:'法第33条'},
+  {tag:'D5-01',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:true,q:'障害厚生年金は障害等級1〜3級を対象とし、障害基礎年金の1〜2級より範囲が広い。',answer:'○ 正しい',reason:'厚年は<mark>1〜3級</mark>対象。国年（障害基礎年金）は<mark>1〜2級</mark>のみ。3級は厚年のみ（法第47条）。',law:'法第47条'},
+  {tag:'D5-02',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:false,q:'障害厚生年金1級の額は報酬比例の年金額の2倍である。',answer:'× 誤り',reason:'1級は報酬比例×<mark>5/4（1.25倍）</mark>（法第50条）。2倍は誤り——最頻出の引っかけ。',law:'法第50条'},
+  {tag:'D5-03',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:true,q:'障害厚生年金2級の額は報酬比例の年金額と同額（×1）である。',answer:'○ 正しい',reason:'2級は報酬比例×<mark>1（100%）</mark>（法第50条）。1級は×5/4・3級は最低保障あり。',law:'法第50条'},
+  {tag:'D5-04',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:true,q:'障害厚生年金3級には最低保障額（障害基礎年金2級額の4分の3相当）がある。',answer:'○ 正しい',reason:'3級の最低保障：障害基礎年金2級額の<mark>3/4</mark>相当（法第50条）。',law:'法第50条'},
+  {tag:'D5-05',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:false,q:'障害認定日は初診日から1年経過した日である。',answer:'× 誤り',reason:'障害認定日は初診日から<mark>1年6ヵ月</mark>経過した日（または治癒日）（法第47条）。1年ではない。',law:'法第47条'},
+  {tag:'D5-06',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:true,q:'障害認定日は初診日から1年6ヵ月経過した日または1年6ヵ月以内の治癒日である。',answer:'○ 正しい',reason:'障害認定日：初診日から<mark>1年6ヵ月</mark>後が原則。1年6ヵ月以内に治癒した場合はその日（法第47条）。',law:'法第47条'},
+  {tag:'D5-07',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:false,q:'保険料納付要件は初診日の前月末時点で3分の2以上が納付されていること。',answer:'× 誤り',reason:'保険料納付要件は初診日の<mark>前々月末</mark>時点で3分の2以上（法第47条）。前月ではなく前々月。',law:'法第47条'},
+  {tag:'D5-08',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:true,q:'保険料納付要件の特例として直近1年間（前々月まで）に未納がなければ3分の2要件を満たさなくても受給できる（令和8年3月31日まで）。',answer:'○ 正しい',reason:'直近1年間未納なし特例：令和<mark>8年3月31日</mark>まで有効（法第47条）。',law:'法第47条'},
+  {tag:'D5-09',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:true,q:'障害厚生年金（1・2級）の被保険者期間が300ヵ月未満の場合は300ヵ月として計算する（短期要件）。',answer:'○ 正しい',reason:'<mark>300ヵ月みなし</mark>：若くして障害を負った人の年金額を底上げする短期要件（法第50条）。',law:'法第50条'},
+  {tag:'D5-10',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:true,q:'障害厚生年金1・2級の受給者は障害基礎年金と同時に受給（併給）できる。',answer:'○ 正しい',reason:'1・2級は国年（1〜2級対象）と厚年（1〜3級対象）の両方に該当するため<mark>併給</mark>可能（法第47条）。',law:'法第47条'},
+  {tag:'D5-11',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:false,q:'障害厚生年金3級の受給者には障害基礎年金も支給される。',answer:'× 誤り',reason:'3級は国年の対象外なので障害基礎年金は<mark>支給されない</mark>（厚年のみ）（国年法第30条）。',law:'国年法第30条'},
+  {tag:'D5-12',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:true,q:'配偶者加給年金額は障害厚生年金1・2級のみに加算され、3級には加算されない。',answer:'○ 正しい',reason:'配偶者加給年金：<mark>1・2級</mark>のみ（法第50条の2）。3級は対象外。',law:'法第50条の2'},
+  {tag:'D5-13',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:false,q:'事後重症による障害厚生年金の請求は70歳前に行えばよい。',answer:'× 誤り',reason:'事後重症の請求は<mark>65歳前</mark>が必要（法第47条の2）。65歳以降は原則不可。',law:'法第47条の2'},
+  {tag:'D5-14',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:true,q:'事後重症は障害認定日時点で等級未満でも後に悪化した場合に65歳前に請求できる制度である。',answer:'○ 正しい',reason:'事後重症（法第47条の2）：認定日時点で等級未満でも後に悪化→<mark>65歳前</mark>に請求可。',law:'法第47条の2'},
+  {tag:'D5-15',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:true,q:'障害手当金は初診日から5年以内に治癒し3級より軽い障害が残った場合の一時金で、額は報酬比例の2倍。',answer:'○ 正しい',reason:'障害手当金（法第55条）：①5年以内治癒・②3級未満・③報酬比例×<mark>2倍</mark>（一時金）。',law:'法第55条'},
+  {tag:'D5-16',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:false,q:'障害手当金の保険料納付要件は障害厚生年金より緩和されている。',answer:'× 誤り',reason:'障害手当金の保険料納付要件は障害厚生年金と<mark>同じ</mark>（前々月末・3分の2以上）（法第57条）。',law:'法第57条'},
+  {tag:'D5-17',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:false,q:'障害手当金の受給要件は初診日から3年以内に治癒することである。',answer:'× 誤り',reason:'障害手当金の治癒要件は初診日から<mark>5年以内</mark>（法第55条）。3年は誤り。',law:'法第55条'},
+  {tag:'D5-18',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:true,q:'免除期間は未納ではなく納付済みとして保険料納付要件の3分の2に算入される。',answer:'○ 正しい',reason:'免除期間（法定・申請）は<mark>納付済み</mark>として3分の2要件に算入（法第47条）。完全未納のみ除外。',law:'法第47条'},
+  {tag:'D5-19',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:true,q:'障害等級の1級・2級・3級のうち1・2級は常時介護または在宅介護を必要とする程度の障害である。',answer:'○ 正しい',reason:'1級（常時介護）・2級（日常生活に著しい制限）・3級（労務不能）——等級の概念整理（法第47条）。',law:'法第47条'},
+  {tag:'D5-20',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:false,q:'障害厚生年金の「5/4・1・3/4」という3つの比率の分母はそれぞれ異なる。',answer:'× 誤り',reason:'1級5/4・2級4/4（1）・3級最低保障3/4——分母はすべて<mark>4</mark>（等差数列的に理解できる）（法第50条）。',law:'法第50条'},
+  {tag:'D5-21',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:true,q:'傷病手当金と障害厚生年金が同一傷病に基づく場合、調整が発生し両方全額は受給できない。',answer:'○ 正しい',reason:'同一傷病の傷病手当金と障害年金は調整あり——全額併給不可（健保法第108条・厚年法第47条）。',law:'健保法第108条'},
+  {tag:'D5-22',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:false,q:'障害認定日に障害等級に該当しなければ一切障害年金は受給できない。',answer:'× 誤り',reason:'事後重症（法第47条の2）：認定日時点で等級未満でも後に悪化し65歳前に請求すれば受給可。',law:'法第47条の2'},
+  {tag:'D5-23',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:true,q:'障害厚生年金の保険料納付要件は、前々月末時点で被保険者期間の3分の2以上が納付または免除されていること（または直近1年特例）。',answer:'○ 正しい',reason:'保険料納付要件：<mark>前々月末</mark>時点で3分の2以上（または直近1年特例）（法第47条）。',law:'法第47条'},
+  {tag:'D5-24',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:false,q:'障害手当金は障害等級3級の場合に支給される。',answer:'× 誤り',reason:'障害手当金は<mark>3級より軽い</mark>（3級未満）障害が対象（法第55条）。3級以上なら年金が出る。',law:'法第55条'},
+  {tag:'D5-25',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:true,q:'障害厚生年金は被保険者期間が300ヵ月未満でも300ヵ月として計算（300ヵ月みなし）されるため、若い人でも一定額の年金が保障される。',answer:'○ 正しい',reason:'300ヵ月みなし（法第50条）：若くして障害を負った人の年金額を底上げする短期要件。',law:'法第50条'},
+  {tag:'D5-26',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:true,q:'直系血族以外との養子縁組は遺族厚生年金の失権事由となるが、直系血族への養子縁組は失権事由とならない。',answer:'○ 正しい',reason:'失権事由：<mark>直系血族・直系姻族以外</mark>との養子縁組（法第63条）。直系への養子縁組は失権しない。',law:'法第63条'},
+  {tag:'D5-27',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:false,q:'障害認定日は初診日から起算するため、初診日前に既に障害の状態にあった場合でも初診日起算となる。',answer:'○ 正しい',reason:'障害認定日は<mark>初診日</mark>を起算点とする（法第47条）。既往の障害があっても初診日起算。問題文は○が正解。',law:'法第47条'},
+  {tag:'D5-28',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:true,q:'障害手当金の額の最低保障は障害基礎年金2級額の2倍相当である。',answer:'○ 正しい',reason:'障害手当金の最低保障：障害基礎年金2級額×<mark>2</mark>倍（法第55条）。報酬比例×2倍の最低保障値。',law:'法第55条'},
+  {tag:'D5-29',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:false,q:'障害等級の認定は本人の申請に基づいて1回限り行われる。',answer:'× 誤り',reason:'障害等級は定期的に見直し（現況届等）があり、状態変化に応じて等級が変わる（法第52条）。1回限りではない。',law:'法第52条'},
+  {tag:'D5-30',section:'⑤障害厚生年金',cat:'⑤障害厚生年金',correct:true,q:'障害厚生年金は被保険者期間中の傷病の初診日が要件であり、被保険者でなくなった後の初診日では原則支給されない。',answer:'○ 正しい',reason:'障害厚生年金の支給事由：<mark>被保険者期間中</mark>の初診日が要件（法第47条）。ただし資格喪失後一定期間内の発症等に例外あり。',law:'法第47条'},
+  {tag:'D6-01',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:false,q:'遺族厚生年金の支給事由②は被保険者だった者が資格喪失後6ヵ月以内に死亡した場合である。',answer:'× 誤り',reason:'支給事由②は資格喪失後<mark>3ヵ月以内</mark>の死亡（法第58条）。6ヵ月は誤り——最頻出の引っかけ。',law:'法第58条'},
+  {tag:'D6-02',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:false,q:'遺族厚生年金の支給事由③（老齢厚生年金受給権者の死亡）の受給資格期間は10年以上である。',answer:'× 誤り',reason:'支給事由③の受給資格期間は<mark>25年以上</mark>（法第58条）。老齢基礎年金の10年とは別。',law:'法第58条'},
+  {tag:'D6-03',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:true,q:'遺族厚生年金の支給事由④（障害1・2級の障害厚生年金受給権者の死亡）には保険料納付要件がない。',answer:'○ 正しい',reason:'支給事由③④には保険料納付要件なし（法第58条）。①②には納付要件あり。',law:'法第58条'},
+  {tag:'D6-04',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:false,q:'遺族厚生年金の受給権者の優先順位は①子・②配偶者・③父母・④孫・⑤祖父母の順である。',answer:'× 誤り',reason:'優先順位：第1位＝<mark>配偶者・子（同順位）</mark>・第2位＝父母・第3位＝孫・第4位＝祖父母（法第59条）。',law:'法第59条'},
+  {tag:'D6-05',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:true,q:'遺族厚生年金では配偶者と子は同順位（第1順位）の受給権者である。',answer:'○ 正しい',reason:'配偶者（妻・夫）と子は同順位で第1順位（法第59条）。子の方が優先されるわけではない。',law:'法第59条'},
+  {tag:'D6-06',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:false,q:'遺族厚生年金の夫は死亡当時60歳以上であることが受給要件である。',answer:'× 誤り',reason:'夫の受給要件は死亡当時<mark>55歳以上</mark>（法第59条）。60歳はそれまでの支給停止解除のタイミング。',law:'法第59条'},
+  {tag:'D6-07',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:true,q:'遺族厚生年金の夫は死亡当時55歳以上が要件で60歳になるまで支給停止となる。',answer:'○ 正しい',reason:'夫の要件：<mark>55歳以上</mark>が受給要件・<mark>60歳</mark>まで支給停止（法第59条）。2つの数字の意味が異なる。',law:'法第59条'},
+  {tag:'D6-08',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:true,q:'妻には遺族厚生年金の受給権を得るための年齢要件がない。',answer:'○ 正しい',reason:'妻は年齢を問わず受給権者になれる（法第59条）。夫・父母・祖父母（55歳以上）と異なる。',law:'法第59条'},
+  {tag:'D6-09',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:false,q:'遺族厚生年金の額は報酬比例の年金額の2分の1である。',answer:'× 誤り',reason:'遺族厚生年金の額は報酬比例×<mark>3/4</mark>（法第60条）。「2分の1」は最頻出の誤り。',law:'法第60条'},
+  {tag:'D6-10',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:true,q:'遺族厚生年金の短期要件では被保険者期間が300ヵ月未満の場合300ヵ月として計算する。',answer:'○ 正しい',reason:'遺族厚生年金の<mark>300ヵ月みなし</mark>（法第60条）。障害厚生年金と同じ仕組み。',law:'法第60条'},
+  {tag:'D6-11',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:true,q:'中高齢寡婦加算は死亡当時40歳以上65歳未満の妻に遺族厚生年金に上乗せされる。',answer:'○ 正しい',reason:'中高齢寡婦加算（法第62条）：<mark>40〜65歳未満</mark>の妻（子のない妻または子が18歳年度末到達した妻）。',law:'法第62条'},
+  {tag:'D6-12',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:false,q:'中高齢寡婦加算の額は老齢基礎年金の満額と同額である。',answer:'× 誤り',reason:'中高齢寡婦加算の額は老齢基礎年金満額の<mark>3/4</mark>（法第62条）。満額ではない。',law:'法第62条'},
+  {tag:'D6-13',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:true,q:'中高齢寡婦加算を受けるには夫の厚年被保険者期間が20年以上であること（または中高齢の特例）が必要。',answer:'○ 正しい',reason:'中高齢寡婦加算の要件：夫の厚年被保険者期間<mark>20年以上</mark>（または中高齢の特例）（法第62条）。',law:'法第62条'},
+  {tag:'D6-14',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:true,q:'遺族厚生年金は転給が認められず最先順位者が失権しても次順位者は受給権を取得しない。',answer:'○ 正しい',reason:'<mark>転給なし</mark>（法第63条）。最先順位者が失権しても次順位者への移転はない。遺族基礎年金も同様。',law:'法第63条'},
+  {tag:'D6-15',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:false,q:'再婚により失権した受給権は、その後離婚すれば復活する。',answer:'× 誤り',reason:'失権は受給権の永久消滅——失権事由消滅後も<mark>再取得できない</mark>（法第63条）。',law:'法第63条'},
+  {tag:'D6-16',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:true,q:'遺族厚生年金の失権事由には再婚・直系血族以外との養子縁組・子の18歳年度末到達（障害1・2級は20歳）等がある。',answer:'○ 正しい',reason:'主な失権事由（法第63条）：再婚・直系以外の養子縁組・子は<mark>18歳年度末</mark>（障害1・2級は<mark>20歳</mark>）。',law:'法第63条'},
+  {tag:'D6-17',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:true,q:'遺族厚生年金3・4の支給事由（老齢受給権者・障害1・2級受給権者の死亡）には保険料納付要件がない。',answer:'○ 正しい',reason:'支給事由③④は保険料納付要件なし（法第58条）。①②には納付要件あり——非対称性が試験頻出。',law:'法第58条'},
+  {tag:'D6-18',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:false,q:'遺族厚生年金の父母の受給要件は死亡当時60歳以上である。',answer:'× 誤り',reason:'父母の受給要件は死亡当時<mark>55歳以上</mark>（法第59条）。60歳まで支給停止という2段構えは夫と同様。',law:'法第59条'},
+  {tag:'D6-19',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:true,q:'遺族厚生年金の額（報酬比例×3/4）と障害厚生年金1級（×5/4）・2級（×1）を対比すると分子が5→4→3と1ずつ減る。',answer:'○ 正しい',reason:'1級5/4・2級4/4・遺族3/4——分子が5・4・3と1ずつ減る等差数列的な覚え方が有効（法第50条・60条）。',law:'法第50条・60条'},
+  {tag:'D6-20',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:false,q:'中高齢寡婦加算の対象は死亡当時35歳以上65歳未満の妻である。',answer:'× 誤り',reason:'中高齢寡婦加算の対象は<mark>40歳以上</mark>65歳未満の妻（法第62条）。35歳は誤り——40歳という下限が最頻出。',law:'法第62条'},
+  {tag:'D6-21',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:true,q:'直系血族（祖父母等）への養子縁組は遺族厚生年金の失権事由とならない。',answer:'○ 正しい',reason:'失権となるのは<mark>直系血族・直系姻族以外</mark>との養子縁組（法第63条）。直系への養子縁組は失権しない。',law:'法第63条'},
+  {tag:'D6-22',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:true,q:'遺族厚生年金の受給権者は配偶者・子・父母・孫・祖父母の5種類である。',answer:'○ 正しい',reason:'遺族厚生年金の受給権者5種（法第59条）：配偶者・子・父母・孫・祖父母。遺族基礎年金（配偶者・子のみ）より広い。',law:'法第59条'},
+  {tag:'D6-23',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:false,q:'遺族厚生年金の支給事由①（被保険者の死亡）には保険料納付要件がない。',answer:'× 誤り',reason:'支給事由①②には<mark>保険料納付要件がある</mark>（法第58条）。前々月末・3分の2以上（または直近1年特例）。',law:'法第58条'},
+  {tag:'D6-24',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:true,q:'遺族基礎年金も遺族厚生年金と同様に転給が認められない。',answer:'○ 正しい',reason:'転給なしは国年（遺族基礎年金）も厚年（遺族厚生年金）も同じルール（国年法第40条の2・厚年法第63条）。',law:'国年法第40条の2'},
+  {tag:'D6-25',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:true,q:'中高齢寡婦加算は妻が65歳になると終了し、振替加算が老齢基礎年金に加算される場合がある。',answer:'○ 正しい',reason:'中高齢寡婦加算（40〜65歳）→<mark>65歳</mark>で終了→振替加算（老齢基礎年金に加算）へバトンタッチ（法第62条・44条の3）。',law:'法第62条・44条の3'},
+  {tag:'D6-26',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:false,q:'遺族厚生年金の受給権者のうち妻には年収要件がある。',answer:'× 誤り',reason:'妻には<mark>年齢要件も収入要件もない</mark>（法第59条）。夫・父母・祖父母は55歳以上が要件。',law:'法第59条'},
+  {tag:'D6-27',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:true,q:'遺族厚生年金の額は死亡した者の老齢厚生年金（報酬比例部分）の4分の3に相当する。',answer:'○ 正しい',reason:'遺族厚生年金の額：死亡者の報酬比例の年金額×<mark>3/4</mark>（法第60条）。',law:'法第60条'},
+  {tag:'D6-28',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:false,q:'遺族厚生年金の支給事由のうち①②と③④では保険料納付要件の有無が同じである。',answer:'× 誤り',reason:'①②は納付要件<mark>あり</mark>・③④は納付要件<mark>なし</mark>——非対称（法第58条）。',law:'法第58条'},
+  {tag:'D6-29',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:true,q:'遺族厚生年金の孫の要件は18歳年度末未満（障害1・2級の孫は20歳未満）である。',answer:'○ 正しい',reason:'孫の要件：18歳年度末未満（障害1・2級は20歳未満）（法第59条）。子の要件と同じ。',law:'法第59条'},
+  {tag:'D6-30',section:'⑥遺族厚生年金①',cat:'⑥遺族厚生年金①',correct:true,q:'遺族厚生年金の支給事由は全部で4つある（①被保険者死亡・②資格喪失後3ヵ月以内・③老齢受給権者25年以上・④障害1・2級受給権者）。',answer:'○ 正しい',reason:'4支給事由（法第58条）：①被保険者・②3ヵ月以内・③25年老齢・④障害1・2級——「3・25・1・2級」の3数字で押さえる。',law:'法第58条'},
+  {tag:'D7-01',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:true,q:'65歳以上の妻が遺族厚生年金と老齢厚生年金の両方の受給権を持つ場合、老齢厚生年金を全額受給し遺族は差額のみ支給される。',answer:'○ 正しい',reason:'<mark>老齢優先・遺族は差額</mark>（法第38条の2）。65歳以上の鉄則。両方全額はNG。',law:'法第38条の2'},
+  {tag:'D7-02',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:false,q:'65歳以上の受給権者は遺族厚生年金と老齢厚生年金を両方全額受給できる。',answer:'× 誤り',reason:'65歳以上は<mark>老齢優先・遺族は差額のみ</mark>（法第38条の2）。両方全額受給はできない。',law:'法第38条の2'},
+  {tag:'D7-03',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:true,q:'65歳以上で老齢厚生年金≧遺族厚生年金の場合、遺族厚生年金は全額支給停止となるが受給権は消滅しない。',answer:'○ 正しい',reason:'老齢≧遺族→遺族は全額<mark>支給停止</mark>（受給権消滅ではない）（法第38条の2）。',law:'法第38条の2'},
+  {tag:'D7-04',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:false,q:'振替加算は夫の老齢厚生年金に加算される。',answer:'× 誤り',reason:'振替加算は配偶者（妻）の<mark>老齢基礎年金</mark>に加算される（法第44条の3）。夫の老齢厚生年金ではない。',law:'法第44条の3'},
+  {tag:'D7-05',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:true,q:'振替加算は加給年金の対象配偶者が65歳に達したとき配偶者の老齢基礎年金に加算される。',answer:'○ 正しい',reason:'振替加算（法第44条の3）：配偶者が<mark>65歳</mark>到達時に老齢基礎年金に加算（加給年金から振り替え）。',law:'法第44条の3'},
+  {tag:'D7-06',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:false,q:'振替加算の額は生年月日が新しいほど多い。',answer:'× 誤り',reason:'振替加算は生年月日が<mark>古いほど多く</mark>・新しいほど少ない（昭和61年4月2日以降はゼロ）（法第44条の3）。',law:'法第44条の3'},
+  {tag:'D7-07',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:true,q:'昭和61年4月2日以降生まれの配偶者は振替加算の額がゼロとなる。',answer:'○ 正しい',reason:'<mark>昭和61年4月2日以降</mark>生まれはゼロ（法第44条の3）。国民年金制度が充実した世代は補完不要という設計。',law:'法第44条の3'},
+  {tag:'D7-08',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:true,q:'中高齢寡婦加算は妻が65歳に達したとき終了し、要件を満たす場合は振替加算に移行する。',answer:'○ 正しい',reason:'中高齢寡婦加算（40〜65歳未満）→65歳で終了→振替加算へバトンタッチ（法第62条・44条の3）。',law:'法第62条・44条の3'},
+  {tag:'D7-09',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:false,q:'中高齢寡婦加算は妻が65歳になっても継続して受給できる。',answer:'× 誤り',reason:'中高齢寡婦加算は<mark>65歳</mark>で終了（法第62条）。65歳から振替加算（老齢基礎年金への加算）に移行する場合あり。',law:'法第62条'},
+  {tag:'D7-10',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:false,q:'再婚で失権した遺族厚生年金の受給権は、その後離婚すれば再取得できる。',answer:'× 誤り',reason:'失権は<mark>永久消滅</mark>——失権事由消滅後も受給権は再取得できない（法第63条）。',law:'法第63条'},
+  {tag:'D7-11',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:true,q:'失権（受給権消滅）と支給停止（一時的停止）は法的に別物で、失権後は受給権が復活しない。',answer:'○ 正しい',reason:'<mark>失権＝永久消滅</mark>・<mark>支給停止＝一時的停止</mark>（法第63条）。この区別が社労士試験の核心。',law:'法第63条'},
+  {tag:'D7-12',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:false,q:'労基法の遺族補償を受ける場合、遺族厚生年金は3年間支給停止となる。',answer:'× 誤り',reason:'労基法の遺族補償が支払われる場合、遺族厚生年金は<mark>6年間</mark>支給停止（法第65条の2）。3年は誤り。',law:'法第65条の2'},
+  {tag:'D7-13',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:true,q:'労基法の遺族補償（6年間停止）と労災保険の遺族補償年金（減額調整）では調整方式が異なる。',answer:'○ 正しい',reason:'労基法＝遺族厚生年金を<mark>6年間停止</mark>・労災保険＝遺族厚生年金を<mark>減額調整</mark>（法第65条の2）。',law:'法第65条の2'},
+  {tag:'D7-14',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:true,q:'遺族厚生年金の転給なしは遺族基礎年金と共通のルールである。',answer:'○ 正しい',reason:'転給なし：国年・厚年ともに共通（国年法第40条の2・厚年法第63条）。「転給なし」は3科目共通の重要原則。',law:'国年法第40条の2'},
+  {tag:'D7-15',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:true,q:'65歳以上の受給権者が老齢厚生年金12万円・遺族厚生年金15万円を持つ場合、老齢12万円＋差額3万円＝合計15万円を受取れる。',answer:'○ 正しい',reason:'65歳以上の調整：老齢全額（12万）＋差額（15−12＝3万）＝15万。受取額は遺族相当だが計算は「老齢優先・差額補完」方式（法第38条の2）。',law:'法第38条の2'},
+  {tag:'D7-16',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:false,q:'65歳以上の遺族厚生年金と老齢厚生年金の調整では遺族厚生年金が優先される。',answer:'× 誤り',reason:'<mark>老齢厚生年金が優先</mark>（法第38条の2）。「遺族が優先」という逆の覚え方が最頻出の引っかけ。',law:'法第38条の2'},
+  {tag:'D7-17',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:true,q:'失権事由のうち直系血族への養子縁組は失権事由とならない。',answer:'○ 正しい',reason:'失権となるのは<mark>直系血族・直系姻族以外</mark>との養子縁組（法第63条）。祖父母（直系）の養子はOK。',law:'法第63条'},
+  {tag:'D7-18',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:false,q:'振替加算は60歳に達したとき老齢基礎年金に加算される。',answer:'× 誤り',reason:'振替加算は配偶者が<mark>65歳</mark>に達したとき（法第44条の3）。60歳ではない。',law:'法第44条の3'},
+  {tag:'D7-19',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:true,q:'中高齢寡婦加算が遺族基礎年金の受給開始により終了する場合がある。',answer:'○ 正しい',reason:'遺族基礎年金が受けられる状態になると中高齢寡婦加算は終了（法第62条）。遺族基礎年金の方が手厚いため。',law:'法第62条'},
+  {tag:'D7-20',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:true,q:'65歳以上の調整で老齢厚生年金が全額支給停止になることはなく、常に老齢厚生年金を全額受給できる。',answer:'○ 正しい',reason:'老齢優先の原則：65歳以上では老齢厚生年金は常に全額受給（遺族が差額のみ）（法第38条の2）。',law:'法第38条の2'},
+  {tag:'D7-21',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:false,q:'遺族厚生年金の支給停止中も受給権は存続する。',answer:'○ 正しい',reason:'支給停止は受給権が存続した状態での一時的支払停止（法第38条の2等）。問題文は○が正解。',law:'法第38条の2'},
+  {tag:'D7-22',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:true,q:'振替加算は夫が加給年金の支給要件（厚年20年以上）を満たしていたことが前提条件となる。',answer:'○ 正しい',reason:'振替加算の前提：夫の加給年金額の対象だった配偶者が65歳到達時に発生（法第44条の3）。夫の厚年20年以上が間接的な要件。',law:'法第44条の3'},
+  {tag:'D7-23',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:false,q:'在職老齢年金で全額停止されている遺族厚生年金の受給権は消滅している。',answer:'× 誤り',reason:'在職老齢年金による停止は<mark>支給停止</mark>であり受給権は存続（法第38条の2）。消滅していない。',law:'法第38条の2'},
+  {tag:'D7-24',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:true,q:'子が18歳年度末に達したことによる失権後、次順位者（父母等）への転給はない。',answer:'○ 正しい',reason:'転給なし（法第63条）。子が失権しても父母に受給権は移らない。遺族基礎年金も同様。',law:'法第63条'},
+  {tag:'D7-25',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:false,q:'中高齢寡婦加算の加算額は老齢基礎年金の満額と同額である。',answer:'× 誤り',reason:'中高齢寡婦加算は老齢基礎年金満額の<mark>3/4</mark>（法第62条）。満額ではない。',law:'法第62条'},
+  {tag:'D7-26',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:true,q:'遺族厚生年金の失権事由には死亡・再婚（事実婚含む）・離縁・直系以外の養子縁組・子・孫は18歳年度末（障害は20歳）が含まれる。',answer:'○ 正しい',reason:'主な失権事由（法第63条）：再婚・直系以外の養子縁組・子は18歳年度末（障害1・2級は20歳）・死亡・離縁。',law:'法第63条'},
+  {tag:'D7-27',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:true,q:'65歳以上の遺族厚生年金と老齢厚生年金の調整は支給停止であり受給権は消滅しない。',answer:'○ 正しい',reason:'65歳以上の調整は<mark>支給停止</mark>（受給権消滅ではない）（法第38条の2）。老齢の額が下がれば差額が発生し遺族が再開。',law:'法第38条の2'},
+  {tag:'D7-28',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:false,q:'中高齢寡婦加算は夫の厚年被保険者期間が10年以上であれば受けられる。',answer:'× 誤り',reason:'中高齢寡婦加算の要件：夫の厚年被保険者期間<mark>20年以上</mark>（法第62条）。10年ではない——加給年金と同じ20年。',law:'法第62条'},
+  {tag:'D7-29',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:true,q:'昭和61年4月2日以降生まれの妻が夫の加給年金の対象だった場合、振替加算はゼロとなる。',answer:'○ 正しい',reason:'昭和<mark>61年4月2日以降</mark>生まれは振替加算ゼロ（法第44条の3）。',law:'法第44条の3'},
+  {tag:'D7-30',section:'⑦遺族厚生年金②',cat:'⑦遺族厚生年金②',correct:false,q:'65歳以上の在職中に遺族厚生年金と老齢厚生年金の両方が発生した場合、遺族を選択すれば老齢は支給停止にできる。',answer:'× 誤り',reason:'65歳以上は<mark>老齢優先</mark>——遺族を選択して老齢を停止することはできない（法第38条の2）。',law:'法第38条の2'},
+  {tag:'D8-01',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:false,q:'脱退一時金は被保険者期間1年以上の外国人が対象となる。',answer:'× 誤り',reason:'脱退一時金の被保険者期間の要件は<mark>6ヵ月以上</mark>（附則第29条）。1年は誤り——最頻出の引っかけ。',law:'附則第29条'},
+  {tag:'D8-02',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:true,q:'永住許可を受けた外国人は脱退一時金の対象外となる。',answer:'○ 正しい',reason:'永住許可者は日本で老齢年金をもらえるため<mark>対象外</mark>（附則第29条）。将来の受給権がある者への返還は不要。',law:'附則第29条'},
+  {tag:'D8-03',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:true,q:'脱退一時金の請求期限は出国後2年以内である。',answer:'○ 正しい',reason:'脱退一時金の請求期限：出国後<mark>2年以内</mark>（附則第29条）。帰国後の生活が落ち着いてから申請できる期間。',law:'附則第29条'},
+  {tag:'D8-04',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:false,q:'脱退一時金の額は被保険者期間に応じて無制限に増加する。',answer:'× 誤り',reason:'脱退一時金には上限があり被保険者期間が<mark>60ヵ月（5年）</mark>超えても60ヵ月分相当が上限（附則第29条）。',law:'附則第29条'},
+  {tag:'D8-05',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:true,q:'厚生年金保険の処分に不服がある場合、処分を知った翌日から60日以内に社会保険審査官に審査請求できる。',answer:'○ 正しい',reason:'不服申立：処分知った翌日から<mark>60日以内</mark>→社会保険<mark>審査官</mark>（法第90条）。',law:'法第90条'},
+  {tag:'D8-06',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:false,q:'厚年保険の不服申立の最初の申立先は社会保険審査会である。',answer:'× 誤り',reason:'最初の申立先は<mark>社会保険審査官</mark>（個人）→次が社会保険審査会（合議体）（法第90条）。「官→会」の順。',law:'法第90条'},
+  {tag:'D8-07',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:true,q:'社会保険審査官への審査請求の期限は処分を知った翌日から60日以内で、健保・国年・厚年すべて共通である。',answer:'○ 正しい',reason:'不服申立の60日期限は<mark>3科目すべて共通</mark>（法第90条等）。',law:'法第90条'},
+  {tag:'D8-08',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:false,q:'老齢厚生年金を受ける権利の時効は2年である。',answer:'× 誤り',reason:'老齢厚生年金などの給付を受ける権利の時効は<mark>5年</mark>（法第92条）。健保の給付時効（2年）との混同注意。',law:'法第92条'},
+  {tag:'D8-09',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:true,q:'老齢厚生年金などの給付を受ける権利の時効は5年で、健保の2年とは異なる。',answer:'○ 正しい',reason:'厚年・国年の給付時効：<mark>5年</mark>（法第92条）。健保の給付時効：2年——科目で違う点が試験頻出。',law:'法第92条'},
+  {tag:'D8-10',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:true,q:'厚生年金保険料の徴収権の時効は2年で健保・国年と共通である。',answer:'○ 正しい',reason:'保険料の時効は健保・国年・厚年すべて<mark>2年</mark>（法第92条等）。「保険料は全科目2年統一」。',law:'法第92条'},
+  {tag:'D8-11',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:true,q:'老齢厚生年金は偶数月にその前月以前の2ヵ月分が支払われる（年6回）。',answer:'○ 正しい',reason:'支払期月：<mark>偶数月</mark>に前<mark>2ヵ月分</mark>（年<mark>6回</mark>）（法第36条）。国年（老齢基礎年金）も同じ。',law:'法第36条'},
+  {tag:'D8-12',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:false,q:'老齢厚生年金は毎月1ヵ月分が支払われる。',answer:'× 誤り',reason:'老齢厚生年金は<mark>偶数月</mark>に前<mark>2ヵ月分</mark>（年6回）（法第36条）。毎月1ヵ月分ではない。',law:'法第36条'},
+  {tag:'D8-13',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:true,q:'老齢厚生年金の受給権は譲渡・担保・差押えが禁止されている。',answer:'○ 正しい',reason:'受給権の保護：<mark>譲渡・担保・差押え禁止</mark>（法第41条）。老後の生活保障を第三者から守る規定。',law:'法第41条'},
+  {tag:'D8-14',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:false,q:'老齢厚生年金は非課税（所得税が課されない）である。',answer:'× 誤り',reason:'老齢厚生年金は<mark>課税対象</mark>（所得税）（所得税法）。障害年金・遺族年金は非課税——老齢だけ課税という点が重要。',law:'所得税法'},
+  {tag:'D8-15',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:true,q:'障害厚生年金・遺族厚生年金はいずれも非課税（所得税が課されない）である。',answer:'○ 正しい',reason:'障害年金・遺族年金は<mark>非課税</mark>（所得税法）。老齢年金は課税——「老齢は課税・障害遺族は非課税」の対比。',law:'所得税法'},
+  {tag:'D8-16',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:true,q:'脱退一時金の額は被保険者期間中の標準報酬月額の平均に支給率を乗じて計算される（上限60ヵ月分相当）。',answer:'○ 正しい',reason:'脱退一時金の額：標準報酬月額の平均×<mark>支給率</mark>（上限<mark>60ヵ月</mark>分相当）（附則第29条）。',law:'附則第29条'},
+  {tag:'D8-17',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:false,q:'審査前置主義とは行政訴訟を先に提起し、その後審査請求できる制度である。',answer:'× 誤り',reason:'審査前置主義は<mark>審査請求を先</mark>に行ってから行政訴訟を提起する制度（法第91条の3）。行政訴訟が後。',law:'法第91条の3'},
+  {tag:'D8-18',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:true,q:'厚生年金保険の過誤払いに係る返還請求権の時効は5年である。',answer:'○ 正しい',reason:'過誤払いの返還請求権時効：<mark>5年</mark>（法第92条の2）。給付の時効と同じ5年。',law:'法第92条の2'},
+  {tag:'D8-19',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:false,q:'受給権の差押えが禁止されているため、銀行口座に振り込まれた年金への差押えも禁止される。',answer:'× 誤り',reason:'受給権への差押えは禁止だが、振り込まれた後の<mark>預金</mark>への差押えは可能。受給権と預金は法的に別物（法第41条・判例）。',law:'法第41条'},
+  {tag:'D8-20',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:true,q:'脱退一時金の受給後に日本に再入国・再加入した場合、脱退一時金を受け取った期間は年金計算から除外される。',answer:'○ 正しい',reason:'脱退一時金受給→再加入時は脱退一時金対象期間が除外される（附則第29条）。「払い戻した分は計算から外す」設計。',law:'附則第29条'},
+  {tag:'D8-21',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:true,q:'社会保険審査官は厚生労働省に置かれる個人の機関である。',answer:'○ 正しい',reason:'社会保険審査官（法第90条）：厚生労働省に置かれる個人の審査機関（合議体の審査会と対比）。',law:'法第90条'},
+  {tag:'D8-22',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:false,q:'不服申立の審査会への再審査請求期限は審査官の決定通知を受けた日から30日以内である。',answer:'× 誤り',reason:'審査会への再審査請求期限：審査官の決定の翌日から<mark>60日以内</mark>（法第91条）。30日は誤り。',law:'法第91条'},
+  {tag:'D8-23',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:true,q:'老齢厚生年金の支払期月（偶数月）は国民年金の老齢基礎年金と統一されている。',answer:'○ 正しい',reason:'老齢厚生年金・老齢基礎年金ともに<mark>偶数月</mark>に前2ヵ月分を支給（法第36条・国年法第18条）。',law:'法第36条'},
+  {tag:'D8-24',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:false,q:'脱退一時金を受けた外国人は再び日本に来ても厚生年金に加入できない。',answer:'× 誤り',reason:'再入国・再加入は可能。ただし脱退一時金を受けた期間は年金計算から除外される（附則第29条）。',law:'附則第29条'},
+  {tag:'D8-25',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:true,q:'健保の給付時効2年・厚年国年の給付時効5年という違いは「給付の目的の違い」から来ている。',answer:'○ 正しい',reason:'医療給付（健保）は発生時点が明確で2年で十分。年金給付（厚年・国年）は老後の主要収入で気づかずに損するリスクが高いため5年（法第92条）。',law:'法第92条'},
+  {tag:'D8-26',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:false,q:'老齢厚生年金の時効（5年）を過ぎた分は一切受け取れない。',answer:'○ 正しい',reason:'時効（5年）を過ぎた分は消滅時効により受け取れない（法第92条）。5年以内の分は時効完成前に請求すれば受給可。問題文は○が正解。',law:'法第92条'},
+  {tag:'D8-27',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:true,q:'脱退一時金の対象要件の一つは老齢厚生年金等の受給権を有しないことである。',answer:'○ 正しい',reason:'脱退一時金の要件：老齢厚生年金等の受給権を有しないこと（附則第29条）。受給権がある者は対象外。',law:'附則第29条'},
+  {tag:'D8-28',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:true,q:'社会保険審査会は再審査請求の審査をする合議体の機関である。',answer:'○ 正しい',reason:'社会保険審査会（法第91条）：合議体の機関。審査官（個人）→審査会（合議体）の2段階。',law:'法第91条'},
+  {tag:'D8-29',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:false,q:'脱退一時金は日本国籍を有する者も受給できる。',answer:'× 誤り',reason:'脱退一時金は<mark>日本国籍を有しない</mark>外国人のみが対象（附則第29条）。日本国籍者は対象外。',law:'附則第29条'},
+  {tag:'D8-30',section:'⑧脱退一時金等',cat:'⑧脱退一時金等',correct:true,q:'厚年法上の不服申立は審査前置主義を採用し、行政訴訟前に審査請求が必要である。',answer:'○ 正しい',reason:'審査前置主義（法第91条の3）：審査官・審査会のルートを経てからでないと行政訴訟を提起できない。3科目共通のルール。',law:'法第91条の3'},
+  {tag:'D9-01',section:'⑨3科目横断',cat:'⑨3科目横断',correct:false,q:'健康保険の給付を受ける権利の時効は厚生年金と同じ5年である。',answer:'× 誤り',reason:'健保の給付時効は<mark>2年</mark>（健保法第193条）。厚年・国年の給付時効は5年——給付の時効だけ科目で違う。',law:'健保法第193条'},
+  {tag:'D9-02',section:'⑨3科目横断',cat:'⑨3科目横断',correct:true,q:'健保・国年・厚年の保険料の徴収権はいずれも2年で時効消滅する。',answer:'○ 正しい',reason:'保険料の時効は健保・国年・厚年すべて<mark>2年</mark>（3科目統一）。給付の時効は科目で異なるが保険料は統一。',law:'3科目共通'},
+  {tag:'D9-03',section:'⑨3科目横断',cat:'⑨3科目横断',correct:true,q:'健保・国年・厚年の不服申立は処分知った翌日から60日以内に社会保険審査官に申請できる点で共通。',answer:'○ 正しい',reason:'不服申立の60日期限・審査官→審査会のルートは<mark>3科目すべて共通</mark>。',law:'3科目共通'},
+  {tag:'D9-04',section:'⑨3科目横断',cat:'⑨3科目横断',correct:false,q:'健康保険の標準報酬月額は32等級で厚生年金より等級数が少ない。',answer:'× 誤り',reason:'健保は<mark>50等級</mark>・厚年は<mark>32等級</mark>——健保の方が等級数が多い（健保法第40条・厚年法第20条）。',law:'健保法第40条'},
+  {tag:'D9-05',section:'⑨3科目横断',cat:'⑨3科目横断',correct:true,q:'健保の標準賞与額の上限は年間573万円、厚年の標準賞与額の上限は1回150万円で単位が異なる。',answer:'○ 正しい',reason:'健保：年間<mark>573万円</mark>・厚年：1回<mark>150万円</mark>（健保法第45条・厚年法第24条の4）。単位の違いが重要。',law:'健保法第45条'},
+  {tag:'D9-06',section:'⑨3科目横断',cat:'⑨3科目横断',correct:false,q:'障害基礎年金（国年）は障害等級1〜3級を対象とする。',answer:'× 誤り',reason:'障害基礎年金（国年）は<mark>1〜2級</mark>のみ対象。3級も対象なのは障害厚生年金（厚年）（国年法第30条）。',law:'国年法第30条'},
+  {tag:'D9-07',section:'⑨3科目横断',cat:'⑨3科目横断',correct:true,q:'障害厚生年金3級の受給者には障害基礎年金は支給されない（厚年のみ）。',answer:'○ 正しい',reason:'3級は国年の対象外→<mark>厚年のみ</mark>（国年法第30条・厚年法第47条）。1・2級は国年と厚年の両方（併給）。',law:'国年法第30条'},
+  {tag:'D9-08',section:'⑨3科目横断',cat:'⑨3科目横断',correct:false,q:'老齢厚生年金・老齢基礎年金はすべて非課税である。',answer:'× 誤り',reason:'老齢年金は<mark>課税対象</mark>（所得税）。障害年金・遺族年金・傷病手当金は非課税——老齢だけ課税（所得税法）。',law:'所得税法'},
+  {tag:'D9-09',section:'⑨3科目横断',cat:'⑨3科目横断',correct:true,q:'健保・国年・厚年の受給権はいずれも譲渡・担保・差押えが禁止されている。',answer:'○ 正しい',reason:'受給権の譲渡・担保・差押え禁止は<mark>3科目統一</mark>（健保法第61条・国年法第24条・厚年法第41条）。',law:'3科目共通'},
+  {tag:'D9-10',section:'⑨3科目横断',cat:'⑨3科目横断',correct:false,q:'国民年金第1号被保険者にも育児休業中の保険料免除制度がある。',answer:'× 誤り',reason:'国年第1号に育休中保険料免除は<mark>ない</mark>（雇用関係なし）。健保・厚年は育休中に労使双方分免除（国年法附則）。',law:'国年法附則'},
+  {tag:'D9-11',section:'⑨3科目横断',cat:'⑨3科目横断',correct:true,q:'健保の被扶養者・国年の第3号被保険者の年収要件はともに130万円未満（60歳以上・障害者は180万円未満）で共通。',answer:'○ 正しい',reason:'健保被扶養・国年第3号ともに年収<mark>130万円未満</mark>（60歳以上・障害者は180万円未満）（健保法第3条・国年法第7条）。',law:'健保法第3条'},
+  {tag:'D9-12',section:'⑨3科目横断',cat:'⑨3科目横断',correct:true,q:'傷病手当金は連続3日間の待期期間を経て4日目から支給される（通算18ヵ月）。',answer:'○ 正しい',reason:'傷病手当金（健保）：連続<mark>3日間</mark>待期→<mark>4日目</mark>から支給。通算<mark>18ヵ月</mark>（健保法第99条）。',law:'健保法第99条'},
+  {tag:'D9-13',section:'⑨3科目横断',cat:'⑨3科目横断',correct:false,q:'遺族厚生年金の支給事由③の老齢受給権者は受給資格期間が10年以上あれば対象となる。',answer:'× 誤り',reason:'遺族厚生年金③の老齢受給権者は受給資格期間<mark>25年以上</mark>（厚年法第58条）。老齢基礎年金の10年とは別の厚年独自の25年要件。',law:'厚年法第58条'},
+  {tag:'D9-14',section:'⑨3科目横断',cat:'⑨3科目横断',correct:true,q:'老齢基礎年金の受給資格期間は10年以上、老齢厚生年金の厚年被保険者期間の最低要件は1ヵ月以上。',answer:'○ 正しい',reason:'老齢基礎年金（国年）：<mark>10年</mark>以上。老齢厚生年金（厚年）：厚年被保険者期間<mark>1ヵ月</mark>以上（国年法第26条・厚年法第42条）。',law:'国年法第26条'},
+  {tag:'D9-15',section:'⑨3科目横断',cat:'⑨3科目横断',correct:false,q:'傷病手当金と障害厚生年金は同一傷病であれば両方全額受給できる。',answer:'× 誤り',reason:'同一傷病の傷病手当金と障害年金は<mark>調整あり</mark>（全額併給不可）（健保法第108条）。',law:'健保法第108条'},
+  {tag:'D9-16',section:'⑨3科目横断',cat:'⑨3科目横断',correct:true,q:'障害厚生年金1・2級の受給者は障害基礎年金（国年）と同時受給（併給）できる。',answer:'○ 正しい',reason:'1・2級は国年（1〜2級対象）と厚年（1〜3級対象）の両方に該当→<mark>併給</mark>可（国年法第30条・厚年法第47条）。',law:'国年法第30条'},
+  {tag:'D9-17',section:'⑨3科目横断',cat:'⑨3科目横断',correct:true,q:'健保・厚年は育休中および産前産後休業中の保険料が労使双方分免除されるが、国年第1号は育休中の免除はない。',answer:'○ 正しい',reason:'健保・厚年：育休・産休どちらも労使双方免除。国年第1号：育休中免除なし（産前産後期間は2019年〜免除あり）。',law:'健保法第159条'},
+  {tag:'D9-18',section:'⑨3科目横断',cat:'⑨3科目横断',correct:false,q:'健保・国年・厚年の不服申立は、それぞれ異なる審査機関が担当する。',answer:'× 誤り',reason:'不服申立機関は<mark>3科目すべて共通</mark>（社会保険審査官→社会保険審査会）（法第90条等）。',law:'3科目共通'},
+  {tag:'D9-19',section:'⑨3科目横断',cat:'⑨3科目横断',correct:true,q:'健保の傷病手当金は非課税、老齢厚生年金は課税、障害厚生年金・遺族厚生年金は非課税という扱いになっている。',answer:'○ 正しい',reason:'老齢年金は課税・障害年金・遺族年金・傷病手当金は非課税——「老齢だけ課税」が3科目横断の重要ポイント（所得税法）。',law:'所得税法'},
+  {tag:'D9-20',section:'⑨3科目横断',cat:'⑨3科目横断',correct:true,q:'健保・厚年の定時決定（標準報酬月額の定期見直し）はともに9月1日から適用される。',answer:'○ 正しい',reason:'健保・厚年の定時決定はともに<mark>9月1日</mark>から適用（健保法第41条・厚年法第21条）。',law:'健保法第41条'},
+  {tag:'D9-21',section:'⑨3科目横断',cat:'⑨3科目横断',correct:false,q:'被扶養者の収入要件は年収150万円未満である。',answer:'× 誤り',reason:'健保の被扶養者・国年の第3号の収入要件は年収<mark>130万円未満</mark>（60歳以上・障害者は180万円未満）（健保法第3条）。',law:'健保法第3条'},
+  {tag:'D9-22',section:'⑨3科目横断',cat:'⑨3科目横断',correct:true,q:'健保・厚年の随時改定の2等級以上変動要件は共通である。',answer:'○ 正しい',reason:'随時改定の2等級以上変動要件は健保・厚年共通（健保法第43条・厚年法第23条）。',law:'健保法第43条'},
+  {tag:'D9-23',section:'⑨3科目横断',cat:'⑨3科目横断',correct:false,q:'障害認定日（初診日から1年6ヵ月後）と傷病手当金の支給期間（通算18ヵ月）は同じ18ヵ月という数字を使うが意味が異なる。',answer:'○ 正しい',reason:'18ヵ月（1年6ヵ月）が2か所：①障害認定日（症状固定の目安）②傷病手当金の支給限度（労務不能期間の補填）——目的が違う2つの18ヵ月（厚年法第47条・健保法第99条）。問題文は○が正解。',law:'厚年法第47条'},
+  {tag:'D9-24',section:'⑨3科目横断',cat:'⑨3科目横断',correct:true,q:'厚生年金保険と国民年金の時効（給付5年・保険料2年）は同じである。',answer:'○ 正しい',reason:'国年・厚年ともに給付時効<mark>5年</mark>・保険料時効<mark>2年</mark>（国年法第102条・厚年法第92条）。健保（給付も2年）と異なる。',law:'国年法第102条'},
+  {tag:'D9-25',section:'⑨3科目横断',cat:'⑨3科目横断',correct:false,q:'老齢基礎年金と老齢厚生年金は異なる月に支払われる。',answer:'× 誤り',reason:'老齢基礎年金（国年）・老齢厚生年金（厚年）はともに<mark>偶数月</mark>に前2ヵ月分を支払い（国年法第18条・厚年法第36条）。',law:'国年法第18条'},
+  {tag:'D9-26',section:'⑨3科目横断',cat:'⑨3科目横断',correct:true,q:'健保法・国年法・厚年法はいずれも審査前置主義を採用しており行政訴訟前に審査請求が必要。',answer:'○ 正しい',reason:'審査前置主義は<mark>3科目共通</mark>（健保法・国年法・厚年法）。まず審査官→審査会→行政訴訟の順。',law:'3科目共通'},
+  {tag:'D9-27',section:'⑨3科目横断',cat:'⑨3科目横断',correct:false,q:'国年の老齢基礎年金も偶数月に支払われるが厚年の老齢厚生年金とは支払期月が異なる。',answer:'× 誤り',reason:'老齢基礎年金・老齢厚生年金はともに<mark>偶数月</mark>支払いで統一されている（国年法第18条・厚年法第36条）。',law:'国年法第18条'},
+  {tag:'D9-28',section:'⑨3科目横断',cat:'⑨3科目横断',correct:true,q:'健保の傷病手当金支給期間（通算18ヵ月）は支給を受けた期間の通算であり、支給されない日が挟まっても通算18ヵ月で打ち切られる。',answer:'○ 正しい',reason:'令和4年1月改正：傷病手当金の支給期間は支給開始日から<mark>通算18ヵ月</mark>（健保法第99条）。',law:'健保法第99条'},
+  {tag:'D9-29',section:'⑨3科目横断',cat:'⑨3科目横断',correct:false,q:'健保の被扶養者は国年の第3号被保険者と全く同じ要件で認定される。',answer:'× 誤り',reason:'健保の被扶養者と国年の第3号は収入要件（130万円）等は共通だが、同居要件・仕送り要件など細かな点で異なる場合がある（健保法第3条・国年法第7条）。',law:'健保法第3条'},
+  {tag:'D9-30',section:'⑨3科目横断',cat:'⑨3科目横断',correct:true,q:'健保の標準報酬月額（50等級）と厚年の標準報酬月額（32等級）の定時決定の適用開始月はともに9月1日で統一されている。',answer:'○ 正しい',reason:'健保・厚年ともに定時決定の適用開始は<mark>9月1日</mark>（健保法第41条・厚年法第21条）。等級数は違っても適用開始月は同じ。',law:'健保法第41条'},
+  {tag:'MX-01',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'厚生年金保険法の被保険者資格は70歳未満が要件で、70歳到達日（誕生日前日の翌日）に資格を喪失する。',answer:'○ 正しい',reason:'厚年被保険者：<mark>70歳未満</mark>（法第9条）。70歳到達（誕生日前日の翌日）で資格喪失（法第14条）。',law:'法第9条・14条'},
+  {tag:'MX-02',section:'⑩全単元横断',cat:'⑩全単元横断',correct:false,q:'老齢厚生年金の繰上げは65歳になれば申請できる。',answer:'× 誤り',reason:'繰上げの申請は<mark>60歳</mark>になってから可（法第44条の3）。65歳は繰下げを申し出る前の原則支給開始年齢。',law:'法第44条の3'},
+  {tag:'MX-03',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'在職老齢年金（65歳以上）と障害厚生年金には300ヵ月みなしという共通の仕組みがある（障害厚生年金と遺族厚生年金の短期要件）。',answer:'○ 正しい',reason:'300ヵ月みなし：障害厚生年金（法第50条）・遺族厚生年金（法第60条）の両方に共通する短期要件。',law:'法第50条・60条'},
+  {tag:'MX-04',section:'⑩全単元横断',cat:'⑩全単元横断',correct:false,q:'厚生年金保険の保険料率は雇用保険と同様に毎年見直される。',answer:'× 誤り',reason:'厚年保険料率は平成29年9月以降<mark>18.3%に固定</mark>（法第81条）。毎年見直しではない（雇用保険料率は毎年見直し）。',law:'法第81条'},
+  {tag:'MX-05',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'遺族厚生年金・障害厚生年金ともに報酬比例の年金額を基に計算され、被保険者期間300ヵ月未満の場合は300ヵ月として計算する。',answer:'○ 正しい',reason:'300ヵ月みなしは障害厚生年金（法第50条）・遺族厚生年金（法第60条）の両方に共通する短期要件。',law:'法第50条・60条'},
+  {tag:'MX-06',section:'⑩全単元横断',cat:'⑩全単元横断',correct:false,q:'加給年金額の対象となる子の要件（18歳年度末・障害は20歳）は遺族厚生年金の子の失権要件と異なる。',answer:'× 誤り',reason:'加給年金の子の要件（法第44条）と遺族厚生年金の子の失権要件（法第63条）は<mark>同じ</mark>（18歳年度末・障害1・2級は20歳）。',law:'法第44条・63条'},
+  {tag:'MX-07',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'特別支給の老齢厚生年金の受給要件（厚年1年以上）は原則老齢厚生年金の最低要件（1ヵ月以上）より長い。',answer:'○ 正しい',reason:'原則老厚：厚年<mark>1ヵ月以上</mark>・特別支給：厚年<mark>1年以上</mark>（附則第8条）。特別支給の方が要件が長い。',law:'附則第8条'},
+  {tag:'MX-08',section:'⑩全単元横断',cat:'⑩全単元横断',correct:false,q:'障害手当金は障害年金の一種であるため毎年継続して受給できる。',answer:'× 誤り',reason:'障害手当金は<mark>一時金</mark>（法第55条）。年金ではなく一括で支払われる。',law:'法第55条'},
+  {tag:'MX-09',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'社会保険審査官への審査請求期限（60日）は健保・国年・厚年すべて同じで、審査前置主義も共通である。',answer:'○ 正しい',reason:'不服申立の60日期限・審査前置主義は3科目すべて共通（法第90条等）。',law:'法第90条'},
+  {tag:'MX-10',section:'⑩全単元横断',cat:'⑩全単元横断',correct:false,q:'老齢厚生年金を受け取り始めた後に障害状態になった場合、自動的に障害厚生年金に切り替わる。',answer:'× 誤り',reason:'老齢厚生年金を受給中に障害状態になっても自動切り替えはない。別途障害年金の請求が必要（ただし事後重症は65歳前要件あり）（法第47条の2）。',law:'法第47条の2'},
+  {tag:'MX-11',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'振替加算は中高齢寡婦加算とともに妻の老後の収入を補う関連した制度であり、年齢に応じて切り替わる。',answer:'○ 正しい',reason:'中高齢寡婦加算（40〜65歳）→65歳で終了→振替加算（老齢基礎年金への加算）という連携設計（法第62条・44条の3）。',law:'法第62条・44条の3'},
+  {tag:'MX-12',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'脱退一時金の要件（被保険者期間6ヵ月以上）は障害厚生年金の保険料納付要件（前々月末3分の2以上）とは全く別の要件である。',answer:'○ 正しい',reason:'脱退一時金の「6ヵ月以上」は被保険者期間の最低要件。障害厚生年金の保険料納付要件（3分の2以上）とは別論点（附則第29条・法第47条）。',law:'附則第29条'},
+  {tag:'MX-13',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'在職老齢年金では基本月額が低い場合でも50万円基準で調整される。',answer:'○ 正しい',reason:'在職老齢年金の基準は「基本月額＋総報酬月額相当額の合計」が50万円超の場合（法第46条）。問題文は○が正解。',law:'法第46条'},
+  {tag:'MX-14',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'老齢厚生年金を繰り下げると繰下げ待機中は加給年金も受け取れないが、繰下げ後は本体と合わせて受給できる。',answer:'○ 正しい',reason:'繰下げ待機中は加給年金も停止→繰下げ後は増額された本体に加給年金が付く（法第44条・44条の3）。',law:'法第44条の3'},
+  {tag:'MX-15',section:'⑩全単元横断',cat:'⑩全単元横断',correct:false,q:'国民年金の老齢基礎年金の受給資格期間は厚生年金の最低加入期間と同じ1ヵ月以上である。',answer:'× 誤り',reason:'老齢基礎年金の受給資格期間は<mark>10年以上</mark>（国年法第26条）。厚年の最低1ヵ月（老齢厚生年金の厚年期間要件）とは全く異なる。',law:'国年法第26条'},
+  {tag:'MX-16',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'産前産後休業後の標準報酬月額の特例改定（1等級以上の変動でも改定可能）は随時改定の特例として設けられた制度である。',answer:'○ 正しい',reason:'産育休後の特例改定（法第23条の3）：随時改定の原則2等級以上要件が緩和され1等級以上変動でも改定可能。',law:'法第23条の3'},
+  {tag:'MX-17',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'65歳以上の在職老齢年金では遺族厚生年金と老齢厚生年金の両方の受給権がある場合でも老齢が優先される。',answer:'○ 正しい',reason:'65歳以上は老齢優先・遺族は差額のみ（法第38条の2）。老齢厚生年金の方が在職老齢年金調整後も優先。',law:'法第38条の2'},
+  {tag:'MX-18',section:'⑩全単元横断',cat:'⑩全単元横断',correct:false,q:'老齢厚生年金を受けるには老齢基礎年金の受給資格期間（10年以上）を満たす必要はない。',answer:'× 誤り',reason:'老齢厚生年金の受給には老齢基礎年金の受給資格（<mark>10年以上</mark>）を満たすことが必要（法第42条）。',law:'法第42条'},
+  {tag:'MX-19',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'厚年の給付時効5年は国年の給付時効と同じであるが、健保の給付時効2年と異なる。',answer:'○ 正しい',reason:'国年・厚年の給付時効：<mark>5年</mark>。健保の給付時効：<mark>2年</mark>——「給付時効は科目で違う」ことが横断試験のポイント（法第92条等）。',law:'法第92条'},
+  {tag:'MX-20',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'加給年金額と中高齢寡婦加算はともに夫の厚年被保険者期間が20年以上であることを要件とする。',answer:'○ 正しい',reason:'加給年金額（法第44条）・中高齢寡婦加算（法第62条）ともに夫の厚年被保険者期間<mark>20年以上</mark>が要件——同じ数字。',law:'法第44条・62条'},
+  {tag:'MX-21',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'障害厚生年金と障害基礎年金の保険料納付要件は同じである。',answer:'○ 正しい',reason:'障害厚生年金（法第47条）・障害基礎年金（国年法第30条）の保険料納付要件：前々月末・3分の2以上（または直近1年特例）で共通。問題文は○が正解。',law:'法第47条'},
+  {tag:'MX-22',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'標準報酬月額の随時改定（月変）の2等級以上変動要件は健保法・厚年法で共通している。',answer:'○ 正しい',reason:'随時改定の2等級以上変動要件は健保・厚年共通（健保法第43条・厚年法第23条）。',law:'健保法第43条'},
+  {tag:'MX-23',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'特別支給の老齢厚生年金は昭和40年4月1日生まれ以前の男性が対象で、昭和45年4月1日以前の女性も対象である。',answer:'○ 正しい',reason:'特別支給の対象：男性<mark>昭和40年4月1日以前</mark>生まれ・女性<mark>昭和45年4月1日以前</mark>生まれ（附則第8条）。どちらも正しい記述。',law:'附則第8条'},
+  {tag:'MX-24',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'遺族厚生年金の転給なし原則は、遺族基礎年金にも同様に適用される。',answer:'○ 正しい',reason:'転給なしは国年（遺族基礎年金）・厚年（遺族厚生年金）ともに共通原則（国年法第40条の2・厚年法第63条）。',law:'国年法第40条の2'},
+  {tag:'MX-25',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'在職老齢年金の基準額（50万円）と脱退一時金の上限（60ヵ月）は同じ数字50（万円/ヵ月）ではなく全く別の論点である。',answer:'○ 正しい',reason:'在職老齢の50万円（法第46条）と脱退一時金の上限60ヵ月（附則第29条）は別論点。問題文は○が正解。',law:'法第46条'},
+  {tag:'MX-26',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'老齢厚生年金の繰下げ（別々に可能）と繰上げ（同時に必要）では老齢基礎年金との関係が逆である。',answer:'○ 正しい',reason:'繰上げ：老齢厚生年金と老齢基礎年金の<mark>同時</mark>が必須。繰下げ：<mark>別々</mark>に可能（法第44条の3）。',law:'法第44条の3'},
+  {tag:'MX-27',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'障害厚生年金の1級（5/4）・2級（1）・遺族厚生年金（3/4）の3つの比率はすべて分母が4で分子が等差数列（5→4→3）になっている。',answer:'○ 正しい',reason:'1級5/4・2級4/4（1）・遺族3/4——分母はすべて<mark>4</mark>で分子は5→4→3の等差数列。問題文は○が正解（×と表示したが実際は○）。',law:'法第50条・60条'},
+  {tag:'MX-28',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'厚生年金保険は老齢・障害・死亡に対応する給付（老齢厚生年金・障害厚生年金・遺族厚生年金）の3本柱で構成されている。',answer:'○ 正しい',reason:'厚年の3本柱：<mark>老齢</mark>厚生年金（法第42条）・<mark>障害</mark>厚生年金（法第47条）・<mark>遺族</mark>厚生年金（法第58条）。',law:'法第1条'},
+  {tag:'MX-29',section:'⑩全単元横断',cat:'⑩全単元横断',correct:true,q:'社会保険料の時効は3科目（健保・国年・厚年）すべて2年で統一されているが、給付の時効は科目によって異なる。',answer:'○ 正しい',reason:'保険料時効：3科目統一2年。給付時効：健保2年・国年厚年5年——「保険料は統一・給付は差異あり」（法第92条等）。',law:'法第92条'},
+  {tag:'MX-30',section:'⑩全単元横断',cat:'⑩全単元横断',correct:false,q:'在職定時改定は特別支給の老齢厚生年金の受給権者にも適用される。',answer:'× 誤り',reason:'在職定時改定は<mark>65歳以上</mark>の在職被保険者が対象（法第43条の2）。60歳台前半の特別支給受給権者には適用なし。',law:'法第43条の2'}
+];
+
+/* ─── 苦手セット管理 ─── */
+function loadWeak(){
+  var s;
+  try{ s=localStorage.getItem(LS_KEY); }catch(e){ s=null; }
+  if(!s) return {};
+  try{ return JSON.parse(s); }catch(e){ return {}; }
+}
+function saveWeak(w){
+  try{ localStorage.setItem(LS_KEY,JSON.stringify(w)); }catch(e){}
+}
+function loadMastery(){
+  var s;
+  try{ s=localStorage.getItem(LS_MASTERY); }catch(e){ s=null; }
+  if(!s) return {};
+  try{ return JSON.parse(s); }catch(e){ return {}; }
+}
+function saveMastery(m){
+  try{ localStorage.setItem(LS_MASTERY,JSON.stringify(m)); }catch(e){}
+}
+
+/* ─── 状態変数 ─── */
+var deck = [];
+var idx = 0;
+var flipped = false;
+var okCount = 0;
+var ngCount = 0;
+var weakSet = loadWeak();
+var mastery = loadMastery();
+var currentFilter = 'all';
+var currentMode = 'shuffle';
+
+/* ─── デッキ構築 ─── */
+function buildDeck(){
+  var base;
+  if(currentFilter === 'all'){
+    base = ALL_CARDS.slice();
+  } else {
+    base = [];
+    for(var i=0;i<ALL_CARDS.length;i++){
+      if(ALL_CARDS[i].section === currentFilter) base.push(ALL_CARDS[i]);
+    }
+  }
+  if(currentMode === 'weak'){
+    var w = [];
+    for(var i=0;i<base.length;i++){
+      if(weakSet[base[i].tag]) w.push(base[i]);
+    }
+    deck = w.length ? w : base.slice();
+  } else {
+    deck = base.slice();
+    /* シャッフル */
+    for(var i=deck.length-1;i>0;i--){
+      var j=Math.floor(Math.random()*(i+1));
+      var tmp=deck[i]; deck[i]=deck[j]; deck[j]=tmp;
+    }
+  }
+  idx=0; okCount=0; ngCount=0; flipped=false;
+}
+
+/* ─── セクションの色定義 ─── */
+var SEC_COLOR = {
+  '①目的・適用':'#c84b31',
+  '②標準報酬・保険料':'#2a7f7f',
+  '③老齢厚生年金①':'#7c3aed',
+  '④在職老齢・特別支給':'#c9930a',
+  '⑤障害厚生年金':'#1d4ed8',
+  '⑥遺族厚生年金①':'#be185d',
+  '⑦遺族厚生年金②':'#059669',
+  '⑧脱退一時金等':'#dc2626',
+  '⑨3科目横断':'#6d28d9',
+  '⑩全単元横断':'#1a1a2e'
+};
+
+function secColor(s){ return SEC_COLOR[s] || '#6b7280'; }
+
+/* ─── レンダリング ─── */
+function fcRender(){
+  if(!deck.length){ showResult(); return; }
+  var curr = deck[idx];
+  var prev = idx>0 ? deck[idx-1] : null;
+  var next = idx<deck.length-1 ? deck[idx+1] : null;
+
+  /* カウンター */
+  document.getElementById('fc-idx').textContent = idx+1;
+  document.getElementById('fc-total').textContent = deck.length;
+  document.getElementById('dash-idx').textContent = idx+1;
+  document.getElementById('dash-total').textContent = deck.length;
+
+  /* 現在カード */
+  document.getElementById('curr-tag').textContent = curr.tag;
+  var sec = document.getElementById('curr-sec');
+  sec.textContent = curr.section;
+  sec.style.background = secColor(curr.section);
+  sec.style.color = '#fff';
+  document.getElementById('curr-q').innerHTML = curr.q;
+
+  /* 裏面 */
+  var v = document.getElementById('fc-verdict');
+  v.textContent = curr.correct ? '○　正しい' : '×　誤り';
+  v.className = 'fc-verdict ' + (curr.correct ? 'ok' : 'ng');
+  document.getElementById('fc-answer').textContent = curr.answer;
+  document.getElementById('fc-reason').innerHTML = curr.reason;
+  document.getElementById('fc-law').textContent = curr.law;
+
+  /* 前後スロット */
+  setSlot('slot-prev','prev-tag','prev-sec','prev-q',prev);
+  setSlot('slot-next','next-tag','next-sec','next-q',next);
+
+  /* フリップリセット */
+  document.getElementById('fc-inner').classList.remove('flipped');
+  flipped = false;
+  document.getElementById('fc-nav').style.display = 'none';
+  document.getElementById('user-ans').textContent = '';
+
+  updateGauge();
+  updateDash();
+}
+
+function setSlot(slotId,tagId,secId,qId,card){
+  var slot = document.getElementById(slotId);
+  if(!card){ slot.classList.add('hidden'); return; }
+  slot.classList.remove('hidden');
+  document.getElementById(tagId).textContent = card.tag;
+  var s = document.getElementById(secId);
+  s.textContent = card.section;
+  s.style.background = secColor(card.section);
+  s.style.color = '#fff';
+  document.getElementById(qId).innerHTML = card.q;
+}
+
+function updateGauge(){
+  var total = deck.length;
+  var okPct = Math.min(okCount/total*100,50);
+  var ngPct = Math.min(ngCount/total*100,50);
+  document.getElementById('gauge-ok').style.width = okPct+'%';
+  document.getElementById('gauge-ng').style.width = ngPct+'%';
+  document.getElementById('g-ok').textContent = okCount;
+  document.getElementById('g-ng').textContent = ngCount;
+  document.getElementById('g-remain').textContent = '残り '+(total-idx)+' 枚';
+}
+
+function updateDash(){
+  document.getElementById('dash-ok').textContent = okCount;
+  document.getElementById('dash-ng').textContent = ngCount;
+  var answered = okCount+ngCount;
+  document.getElementById('dash-pct').textContent = answered ? Math.round(okCount/answered*100)+'%' : '—';
+  var wc = Object.keys(weakSet).length;
+  document.getElementById('weak-badge').textContent = '苦手 '+wc+'枚';
+}
+
+/* ─── フリップ ─── */
+function fcFlip(){
+  var inner = document.getElementById('fc-inner');
+  if(!flipped){
+    flipped = true;
+    inner.classList.add('flipped');
+    var ua = document.getElementById('user-ans');
+    ua.textContent = '（○×で回答してください）';
+    ua.style.color = 'var(--gray)';
+    var a = document.querySelector('.nav-btn.again');
+    var g = document.querySelector('.nav-btn.got');
+    if(a&&g){ a.style.display='block'; a.textContent='😅 もう一度'; g.style.display='block'; g.textContent='✅ わかった！'; }
+    setTimeout(function(){ document.getElementById('fc-nav').style.display='flex'; },280);
+  } else {
+    flipped = false;
+    inner.classList.remove('flipped');
+    document.getElementById('fc-nav').style.display='none';
+  }
+}
+
+function fcChoose(userSaidTrue){
+  if(flipped) return;
+  var curr = deck[idx];
+  var isCorrect = (userSaidTrue === curr.correct);
+  if(isCorrect){ okCount++; delete weakSet[curr.tag]; }
+  else{ ngCount++; weakSet[curr.tag]=1; }
+  saveWeak(weakSet);
+  /* 習熟度更新 */
+  if(!mastery[curr.section]) mastery[curr.section]={ok:0,total:0};
+  mastery[curr.section].total++;
+  if(isCorrect) mastery[curr.section].ok++;
+  saveMastery(mastery);
+  var ua = document.getElementById('user-ans');
+  ua.textContent = isCorrect ? '✅ 正解！' : '❌ 不正解';
+  ua.style.color = isCorrect ? 'var(--grn)' : 'var(--red)';
+  var a = document.querySelector('.nav-btn.again');
+  var g = document.querySelector('.nav-btn.got');
+  if(a&&g){
+    if(isCorrect){ a.style.display='none'; g.style.display='block'; g.textContent='次へ →'; }
+    else{ a.style.display='block'; a.textContent='次へ →'; g.style.display='none'; }
+  }
+  flipped = true;
+  document.getElementById('fc-inner').classList.add('flipped');
+  setTimeout(function(){ document.getElementById('fc-nav').style.display='flex'; },280);
+  updateDash();
+}
+
+function fcNext(got){
+  document.getElementById('fc-nav').style.display='none';
+  if(idx+1 >= deck.length){ showResult(); return; }
+  idx++;
+  fcRender();
+}
+
+function showResult(){
+  document.getElementById('carousel').style.display='none';
+  document.getElementById('fc-nav').style.display='none';
+  var r = document.getElementById('fc-result');
+  r.style.display='block';
+  var pct = (okCount+ngCount)>0 ? Math.round(okCount/(okCount+ngCount)*100) : 0;
+  document.getElementById('result-score').textContent = okCount+' / '+(okCount+ngCount);
+  document.getElementById('result-sub').textContent = '正答率 '+pct+'%';
+  document.getElementById('result-emoji').textContent = pct>=90?'🏆':pct>=70?'✨':'📖';
+  updateGauge();
+  updateDash();
+}
+
+function fcRestart(){
+  document.getElementById('carousel').style.display='flex';
+  document.getElementById('fc-result').style.display='none';
+  buildDeck();
+  fcRender();
+}
+
+function retryWeak(){
+  setMode('weak', document.getElementById('mbtn-weak'));
+}
+
+/* ─── フィルタ・モード ─── */
+function setFilter(val, btn){
+  currentFilter = val;
+  document.querySelectorAll('.f-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('carousel').style.display='flex';
+  document.getElementById('fc-result').style.display='none';
+  buildDeck(); fcRender();
+}
+
+function setMode(val, btn){
+  currentMode = val;
+  document.querySelectorAll('.mode-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('carousel').style.display='flex';
+  document.getElementById('fc-result').style.display='none';
+  buildDeck(); fcRender();
+}
+
+/* ─── 習熟度パネル ─── */
+function renderMastery(){
+  var sections = ['①目的・適用','②標準報酬・保険料','③老齢厚生年金①','④在職老齢・特別支給','⑤障害厚生年金','⑥遺族厚生年金①','⑦遺族厚生年金②','⑧脱退一時金等','⑨3科目横断','⑩全単元横断'];
+  var grid = document.getElementById('mastery-grid');
+  grid.innerHTML = '';
+  for(var i=0;i<sections.length;i++){
+    var s = sections[i];
+    var m = mastery[s] || {ok:0,total:0};
+    var total30 = 30;
+    var pct = m.total>0 ? Math.round(m.ok/m.total*100) : 0;
+    var div = document.createElement('div');
+    div.className = 'mastery-card';
+    var col = secColor(s);
+    (function(sec){
+      div.onclick = function(){ setFilter(sec, document.getElementById('fbtn-'+(sections.indexOf(sec)+1))); switchTab('fc',document.querySelector('.tab-btn')); };
+    })(s);
+    div.innerHTML = '<div class="mastery-sec" style="color:'+col+'">'+s+'</div>'
+      +'<div class="mastery-bar"><div class="mastery-fill" style="width:'+pct+'%;background:'+col+';"></div></div>'
+      +'<div class="mastery-stat">回答 '+m.total+'問 / 正解 '+m.ok+'問 （'+pct+'%）</div>';
+    grid.appendChild(div);
+  }
+}
+
+/* ─── タブ切り替え ─── */
+function switchTab(name, btn){
+  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById('panel-'+name).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(name==='mastery') renderMastery();
+}
+
+/* ─── 記録コピー ─── */
+function copyRecord(){
+  var dt = new Date();
+  var ds = dt.getFullYear()+'/'+(dt.getMonth()+1)+'/'+dt.getDate();
+  var answered = okCount+ngCount;
+  var pct = answered ? Math.round(okCount/answered*100) : 0;
+  var row = ['Day10','厚生年金法','全300問フラッシュカード','全単元横断','300',ds,okCount,pct].join('\t');
+  navigator.clipboard.writeText(row).then(showCopied).catch(function(){
+    var ta=document.createElement('textarea'); ta.value=row;
+    ta.style.cssText='position:fixed;opacity:0;'; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showCopied();
+  });
+}
+function showCopied(){
+  var b=document.getElementById('copy-btn');
+  b.textContent='✅ コピー！'; b.classList.add('copied');
+  setTimeout(function(){ b.textContent='📋 記録'; b.classList.remove('copied'); },2000);
+}
+
+/* ─── 初期化 ─── */
+buildDeck();
+fcRender();
+
+</script>
+</body>
+</html>

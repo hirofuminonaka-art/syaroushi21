@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>社労士試験対策ドリル ― 目次</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1a2e; --paper:#faf8f3; --warm:#f5f0e8;
+  --red:#c84b31; --red-soft:#e8896b; --red-light:#fee2e2;
+  --teal:#2a7f7f; --teal-light:#e8f4f4;
+  --gold:#c9930a; --gold-light:#fef9e7;
+  --green:#2d6a4f; --green-light:#e8f5ee;
+  --gray:#6b7280; --border:#ddd8cc;
+  --purple:#7c3aed; --purple-light:#ede9fe;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
+
+/* ヘッダー */
+.topbar{background:var(--ink);padding:14px 24px;display:flex;align-items:center;gap:12px;}
+.site-title{color:white;font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;letter-spacing:.5px;}
+.site-sub{color:rgba(255,255,255,.4);font-size:11px;margin-left:auto;letter-spacing:1px;}
+
+.hd{background:var(--ink);color:var(--paper);padding:44px 40px 36px;position:relative;overflow:hidden;}
+.hd::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px);}
+.hd-in{max-width:900px;margin:0 auto;position:relative;}
+.hd-eye{font-size:11px;letter-spacing:3px;color:var(--red-soft);margin-bottom:10px;font-weight:700;}
+.hd h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hd h1 em{color:var(--red-soft);font-style:normal;}
+.hd-sub{font-size:13px;color:rgba(255,255,255,.45);font-weight:300;}
+
+/* 本文 */
+.main{max-width:900px;margin:0 auto;padding:40px 20px 80px;}
+
+/* 科目ブロック */
+.subject{margin-bottom:48px;}
+.subject-hd{display:flex;align-items:center;gap:14px;margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid var(--ink);}
+.subject-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.subject-name{font-family:'Noto Serif JP',serif;font-size:1.15rem;font-weight:900;}
+.subject-count{font-size:11px;color:var(--gray);margin-left:auto;font-weight:700;letter-spacing:1px;}
+
+/* ドリルカードグリッド */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.card{background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;display:block;transition:transform .15s,box-shadow .15s;}
+.card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.12);}
+.card-top{padding:12px 14px 8px;border-bottom:1px solid var(--border);}
+.card-day{font-family:'DM Serif Display',serif;font-size:26px;color:var(--ink);line-height:1;}
+.card-label{font-size:10px;font-weight:700;letter-spacing:1px;margin-top:3px;color:var(--gray);}
+.card-body{padding:10px 14px 12px;}
+.card-unit{font-size:12px;line-height:1.6;font-weight:500;}
+.card-meta{font-size:10px;color:var(--gray);margin-top:5px;}
+
+/* 特殊カード（FC・過去問） */
+.card.fc .card-top{background:var(--purple-light);}
+.card.fc .card-day{color:var(--purple);}
+.card.exam .card-top{background:var(--gold-light);}
+.card.exam .card-day{color:var(--gold);}
+
+/* 凡例 */
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px;padding:12px 16px;background:white;border:1px solid var(--border);border-radius:10px;}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--gray);font-weight:700;}
+.legend-dot{width:12px;height:12px;border-radius:3px;}
+
+@media(max-width:600px){
+  .hd{padding:28px 20px 22px;}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:8px;}
+  .main{padding:24px 14px 60px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="site-title">社労士試験対策ドリル</div>
+  <div class="site-sub">2027年合格目標</div>
+</div>
+
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-eye">SYAROUSHI DRILL — INDEX</div>
+    <h1>社労士試験対策<em>ドリル</em> 目次</h1>
+    <div class="hd-sub">5科目 ／ 全57ドリル ― 問題・連想図・FC・記憶マップ の4タブ構成</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#e8f4f4;border:1.5px solid #2a7f7f;"></div>通常ドリル（○×＋穴埋め）</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--purple-light);border:1.5px solid var(--purple);"></div>フラッシュカード</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--gold-light);border:1.5px solid var(--gold);"></div>過去問演習</div>
+  </div>
+
+  <!-- 健康保険法 -->
+  <div class="subject">
+    <div class="subject-hd">
+      <div class="subject-icon" style="background:#e8f4f4;">🏥</div>
+      <div class="subject-name">健康保険法</div>
+      <div class="subject-count">12 DAYS</div>
+    </div>
+    <div class="grid">
+      <a class="card" href="kenpo_day1.html"><div class="card-top"><div class="card-day">1</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">総則・目的・保険者</div><div class="card-meta">○×5問＋穴埋め5問</div></div></a>
+      <a class="card" href="kenpo_day2.html"><div class="card-top"><div class="card-day">2</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">被保険者・被扶養者・資格得喪</div><div class="card-meta">○×5問＋穴埋め5問</div></div></a>
+      <a class="card" href="kenpo_day3.html"><div class="card-top"><div class="card-day">3</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">標準報酬月額・等級・算定基礎届</div><div class="card-meta">○×5問＋穴埋め5問</div></div></a>
+      <a class="card" href="kenpo_day4.html"><div class="card-top"><div class="card-day">4</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">療養の給付・一部負担金・高額療養費</div><div class="card-meta">○×5問＋穴埋め5問</div></div></a>
+      <a class="card" href="kenpo_day5.html"><div class="card-top"><div class="card-day">5</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">埋葬料・継続給付・家族給付</div><div class="card-meta">○×5問＋穴埋め5問</div></div></a>
+      <a class="card" href="kenpo_day6.html"><div class="card-top"><div class="card-day">6</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">第三者行為・審査請求・保険料徴収</div><div class="card-meta">○×5問＋穴埋め5問</div></div></a>
+      <a class="card" href="kenpo_day7.html"><div class="card-top"><div class="card-day">7</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">日雇特例被保険者</div><div class="card-meta">○×5問＋穴埋め5問</div></div></a>
+      <a class="card" href="kenpo_day8.html"><div class="card-top"><div class="card-day">8</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">健保組合・財政・保健事業</div><div class="card-meta">○×5問＋穴埋め5問</div></div></a>
+      <a class="card" href="kenpo_day9.html"><div class="card-top"><div class="card-day">9</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">適用事業所・罰則・雑則</div><div class="card-meta">○×5問＋穴埋め5問</div></div></a>
+      <a class="card" href="kenpo_day10.html"><div class="card-top"><div class="card-day">10</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">全論点横断まとめ</div><div class="card-meta">○×10問＋穴埋め5問</div></div></a>
+      <a class="card fc" href="kenpo_day11.html"><div class="card-top"><div class="card-day">11</div><div class="card-label">FLASH CARDS</div></div><div class="card-body"><div class="card-unit">全300問 フラッシュカード＋穴埋め100問</div><div class="card-meta">苦手モード搭載</div></div></a>
+      <a class="card exam" href="kenpo_day12.html"><div class="card-top"><div class="card-day">12</div><div class="card-label">PAST EXAM</div></div><div class="card-body"><div class="card-unit">過去問○×演習 60問＋5択60問</div><div class="card-meta">苦手モード搭載</div></div></a>
+    </div>
+  </div>
+
+  <!-- 厚生年金法 -->
+  <div class="subject">
+    <div class="subject-hd">
+      <div class="subject-icon" style="background:#ede9fe;">🏦</div>
+      <div class="subject-name">厚生年金法</div>
+      <div class="subject-count">12 DAYS</div>
+    </div>
+    <div class="grid">
+      <a class="card" href="kounen_day1.html"><div class="card-top"><div class="card-day">1</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">目的・適用事業所・被保険者・資格</div><div class="card-meta">全10問</div></div></a>
+      <a class="card" href="kounen_day2.html"><div class="card-top"><div class="card-day">2</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">標準報酬の決定・改定・保険料の納付</div><div class="card-meta">全10問</div></div></a>
+      <a class="card" href="kounen_day3.html"><div class="card-top"><div class="card-day">3</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">老齢厚生年金①受給要件・加給年金・繰上繰下</div><div class="card-meta">全10問</div></div></a>
+      <a class="card" href="kounen_day4.html"><div class="card-top"><div class="card-day">4</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">在職老齢年金・特別支給の老齢厚生年金</div><div class="card-meta">全10問</div></div></a>
+      <a class="card" href="kounen_day5.html"><div class="card-top"><div class="card-day">5</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">障害厚生年金・障害手当金</div><div class="card-meta">全10問</div></div></a>
+      <a class="card" href="kounen_day6.html"><div class="card-top"><div class="card-day">6</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">遺族厚生年金①支給事由・受給権者・年金額</div><div class="card-meta">全10問</div></div></a>
+      <a class="card" href="kounen_day7.html"><div class="card-top"><div class="card-day">7</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">遺族厚生年金②振替加算・併給調整・失権</div><div class="card-meta">全10問</div></div></a>
+      <a class="card" href="kounen_day8.html"><div class="card-top"><div class="card-day">8</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">脱退一時金・不服申立・時効・支払期月</div><div class="card-meta">全10問</div></div></a>
+      <a class="card" href="kounen_day9.html"><div class="card-top"><div class="card-day">9</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">3科目横断 健保・国年・厚年</div><div class="card-meta">全10問</div></div></a>
+      <a class="card fc" href="kounen_day10.html"><div class="card-top"><div class="card-day">10</div><div class="card-label">FLASH CARDS</div></div><div class="card-body"><div class="card-unit">全300問 フラッシュカード</div><div class="card-meta">苦手モード搭載</div></div></a>
+      <a class="card fc" href="kounen_day11.html"><div class="card-top"><div class="card-day">11</div><div class="card-label">FLASH CARDS</div></div><div class="card-body"><div class="card-unit">全300問 フラッシュカード（続）</div><div class="card-meta">苦手モード搭載</div></div></a>
+      <a class="card exam" href="kounen_day12.html"><div class="card-top"><div class="card-day">12</div><div class="card-label">PAST EXAM</div></div><div class="card-body"><div class="card-unit">過去問○×演習 60問＋5択60問</div><div class="card-meta">苦手モード搭載</div></div></a>
+    </div>
+  </div>
+
+  <!-- 国民年金法 -->
+  <div class="subject">
+    <div class="subject-hd">
+      <div class="subject-icon" style="background:#fef9e7;">📋</div>
+      <div class="subject-name">国民年金法</div>
+      <div class="subject-count">12 DAYS</div>
+    </div>
+    <div class="grid">
+      <a class="card" href="kokunen_day1.html"><div class="card-top"><div class="card-day">1</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">目的・被保険者の種別・任意加入</div><div class="card-meta">国年法第1条・第7条・附則第5条</div></div></a>
+      <a class="card" href="kokunen_day2.html"><div class="card-top"><div class="card-day">2</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">被保険者の資格・届出</div><div class="card-meta">国年法第8条〜第14条</div></div></a>
+      <a class="card" href="kokunen_day3.html"><div class="card-top"><div class="card-day">3</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">保険料・免除制度</div><div class="card-meta">国年法第87条〜第90条の3</div></div></a>
+      <a class="card" href="kokunen_day4.html"><div class="card-top"><div class="card-day">4</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">老齢基礎年金・繰上繰下</div><div class="card-meta">国年法第26条〜第28条</div></div></a>
+      <a class="card" href="kokunen_day5.html"><div class="card-top"><div class="card-day">5</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">障害基礎年金</div><div class="card-meta">国年法第30条〜第36条</div></div></a>
+      <a class="card" href="kokunen_day6.html"><div class="card-top"><div class="card-day">6</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">遺族基礎年金・寡婦年金・死亡一時金</div><div class="card-meta">国年法第37条〜第52条の6</div></div></a>
+      <a class="card" href="kokunen_day7.html"><div class="card-top"><div class="card-day">7</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">時効・支払期月・不服申立</div><div class="card-meta">国年法第18条・第19条・第85条</div></div></a>
+      <a class="card" href="kokunen_day8.html"><div class="card-top"><div class="card-day">8</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">付加年金・合算対象期間</div><div class="card-meta">国年法第16条の3・第27条</div></div></a>
+      <a class="card" href="kokunen_day9.html"><div class="card-top"><div class="card-day">9</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">3科目横断比較 健保・厚年・国年</div><div class="card-meta">全10問</div></div></a>
+      <a class="card" href="kokunen_day10.html"><div class="card-top"><div class="card-day">10</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">総復習 Day1〜9 横断まとめ</div><div class="card-meta">全10問</div></div></a>
+      <a class="card fc" href="kokunen_day11.html"><div class="card-top"><div class="card-day">11</div><div class="card-label">FLASH CARDS</div></div><div class="card-body"><div class="card-unit">全100問 フラッシュカード</div><div class="card-meta">苦手モード搭載</div></div></a>
+      <a class="card exam" href="kokunen_day12.html"><div class="card-top"><div class="card-day">12</div><div class="card-label">PAST EXAM</div></div><div class="card-body"><div class="card-unit">過去問○×演習 60問＋5択60問</div><div class="card-meta">苦手モード搭載</div></div></a>
+    </div>
+  </div>
+
+  <!-- 労働基準法 -->
+  <div class="subject">
+    <div class="subject-hd">
+      <div class="subject-icon" style="background:#fee2e2;">⚖️</div>
+      <div class="subject-name">労働基準法</div>
+      <div class="subject-count">12 DAYS</div>
+    </div>
+    <div class="grid">
+      <a class="card" href="roki_day1.html"><div class="card-top"><div class="card-day">1</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">目的・均等待遇・労働条件の明示</div><div class="card-meta">労基法第1条〜第23条</div></div></a>
+      <a class="card" href="roki_day2.html"><div class="card-top"><div class="card-day">2</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">平均賃金・賃金支払原則・休業手当</div><div class="card-meta">労基法第12条・第24条〜第26条・第37条</div></div></a>
+      <a class="card" href="roki_day3.html"><div class="card-top"><div class="card-day">3</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">法定労働時間・時間外・三六協定</div><div class="card-meta">労基法第32条〜第36条・第40条</div></div></a>
+      <a class="card" href="roki_day4.html"><div class="card-top"><div class="card-day">4</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">年次有給休暇</div><div class="card-meta">労基法第39条</div></div></a>
+      <a class="card" href="roki_day5.html"><div class="card-top"><div class="card-day">5</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">就業規則・制裁・減給</div><div class="card-meta">労基法第89条〜第93条・第91条</div></div></a>
+      <a class="card" href="roki_day6.html"><div class="card-top"><div class="card-day">6</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">年少者・女性保護</div><div class="card-meta">労基法第56条〜第68条</div></div></a>
+      <a class="card" href="roki_day7.html"><div class="card-top"><div class="card-day">7</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">監督・罰則・時効</div><div class="card-meta">労基法第97条〜第116条</div></div></a>
+      <a class="card" href="roki_day8.html"><div class="card-top"><div class="card-day">8</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">変形労働時間・フレックス・裁量労働</div><div class="card-meta">労基法第32条の2〜第38条の4</div></div></a>
+      <a class="card" href="roki_day9.html"><div class="card-top"><div class="card-day">9</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">横断 労基・安衛・均等・育介</div><div class="card-meta">全10問</div></div></a>
+      <a class="card" href="roki_day10.html"><div class="card-top"><div class="card-day">10</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">Day1〜9 頻出引っかけ総まとめ</div><div class="card-meta">全10問</div></div></a>
+      <a class="card fc" href="roki_day11.html"><div class="card-top"><div class="card-day">11</div><div class="card-label">FLASH CARDS</div></div><div class="card-body"><div class="card-unit">フラッシュカード</div><div class="card-meta">苦手モード搭載</div></div></a>
+      <a class="card exam" href="roki_day12.html"><div class="card-top"><div class="card-day">12</div><div class="card-label">PAST EXAM</div></div><div class="card-body"><div class="card-unit">過去問○×演習 60問＋5択60問</div><div class="card-meta">苦手モード搭載</div></div></a>
+    </div>
+  </div>
+
+  <!-- 労働安全衛生法 -->
+  <div class="subject">
+    <div class="subject-hd">
+      <div class="subject-icon" style="background:#e8f5ee;">🦺</div>
+      <div class="subject-name">労働安全衛生法</div>
+      <div class="subject-count">9 DAYS</div>
+    </div>
+    <div class="grid">
+      <a class="card" href="anei_day1.html"><div class="card-top"><div class="card-day">1</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">安全衛生管理体制</div><div class="card-meta">安衛法第10条〜第19条</div></div></a>
+      <a class="card" href="anei_day2.html"><div class="card-top"><div class="card-day">2</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">安全衛生教育・健康診断</div><div class="card-meta">安衛法第59条〜第66条</div></div></a>
+      <a class="card" href="anei_day3.html"><div class="card-top"><div class="card-day">3</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">長時間労働者への医師面接・ストレスチェック</div><div class="card-meta">安衛法第66条の8〜第66条の10</div></div></a>
+      <a class="card" href="anei_day4.html"><div class="card-top"><div class="card-day">4</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">危険有害業務・化学物質管理・計画届</div><div class="card-meta">安衛法第28条の2・第57条・第88条</div></div></a>
+      <a class="card" href="anei_day5.html"><div class="card-top"><div class="card-day">5</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">安全基準・定期自主検査・特定機械</div><div class="card-meta">安衛法第20条・第41条・第42条・第45条</div></div></a>
+      <a class="card" href="anei_day6.html"><div class="card-top"><div class="card-day">6</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">健康障害防止・製造禁止・表示義務</div><div class="card-meta">安衛法第22条・第55条・第57条</div></div></a>
+      <a class="card" href="anei_day7.html"><div class="card-top"><div class="card-day">7</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">統括安全衛生責任者・元方事業者の義務</div><div class="card-meta">安衛法第15条・第16条・第29条・第30条</div></div></a>
+      <a class="card" href="anei_day8.html"><div class="card-top"><div class="card-day">8</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">労働者の申告・監督・罰則</div><div class="card-meta">安衛法第97条・第98条・第119条・第122条</div></div></a>
+      <a class="card" href="anei_day9.html"><div class="card-top"><div class="card-day">9</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">目的条文・全横断まとめ</div><div class="card-meta">安衛法第1条・全横断</div></div></a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

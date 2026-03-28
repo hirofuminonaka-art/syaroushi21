@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day7｜日雇特例被保険者 ― 健保法過去問ドリル</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1a2e;--paper:#faf8f3;--warm:#f5f0e8;
+  --red:#c84b31;--red-soft:#e8896b;--red-light:#fee2e2;
+  --teal:#2a7f7f;--teal-light:#e8f4f4;
+  --gold:#c9930a;--gold-light:#fef9e7;
+  --green:#2d6a4f;--green-light:#e8f5ee;
+  --gray:#6b7280;--border:#ddd8cc;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
+
+.hd{background:var(--ink);color:var(--paper);padding:52px 40px 40px;position:relative;overflow:hidden;}
+.hd::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px);}
+.hd-in{max-width:820px;margin:0 auto;position:relative;}
+.hd-eye{font-size:11px;letter-spacing:4px;color:var(--red-soft);margin-bottom:12px;font-weight:700;}
+.hd h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hd h1 em{color:var(--red-soft);font-style:normal;}
+.hd-sub{font-size:14px;color:rgba(255,255,255,.55);font-weight:300;}
+.prog-wrap{margin-top:24px;background:rgba(255,255,255,.1);border-radius:20px;height:6px;}
+.prog-bar{background:var(--red-soft);height:6px;border-radius:20px;width:0%;transition:width .5s;}
+.prog-lbl{font-size:11px;color:rgba(255,255,255,.45);margin-top:6px;}
+
+.sec-div{max-width:820px;margin:40px auto 20px;padding:0 24px;}
+.sec-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border-radius:30px;font-size:12px;font-weight:700;}
+.pill-red{background:var(--red);color:white;}
+.pill-teal{background:var(--teal);color:white;}
+.sec-title{font-family:'Noto Serif JP',serif;font-size:1.25rem;font-weight:700;margin:10px 0 8px;}
+.sec-desc{font-size:13px;color:var(--gray);line-height:1.9;background:white;border:1px solid var(--border);border-radius:10px;padding:12px 16px;}
+
+.score-bar{max-width:820px;margin:0 auto 24px;padding:0 24px;}
+.score-in{background:white;border:1px solid var(--border);border-radius:12px;padding:14px 20px;display:flex;align-items:center;gap:16px;}
+.score-num{font-family:'DM Serif Display',serif;font-size:36px;color:var(--teal);line-height:1;}
+
+.qwrap{max-width:820px;margin:0 auto;padding:0 24px 60px;display:flex;flex-direction:column;gap:20px;}
+.card{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s;}
+.card.vis{opacity:1;transform:none;}
+.card-hd{display:flex;align-items:center;gap:12px;padding:12px 20px;background:var(--warm);border-bottom:1px solid var(--border);}
+.q-num{font-family:'DM Serif Display',serif;font-size:30px;color:var(--red);line-height:1;}
+.q-num.tn{color:var(--teal);}
+.src-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;margin-bottom:3px;}
+.src-tag.t{background:var(--teal);}
+.q-type{font-size:11px;color:var(--gray);}
+.card-body{padding:20px 24px;}
+.quiz-q{font-size:15px;font-weight:600;line-height:1.8;margin-bottom:18px;}
+.quiz-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+
+.opts-tf{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.opt{border:2px solid var(--border);border-radius:10px;padding:12px 16px;cursor:pointer;font-size:20px;font-weight:900;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:10px;user-select:none;}
+.opt:hover{border-color:var(--ink);background:var(--warm);}
+.opt.correct{border-color:var(--green)!important;background:var(--green-light)!important;color:var(--green);}
+.opt.wrong{border-color:var(--red)!important;background:var(--red-light)!important;color:#991b1b;}
+
+.ans-box{display:none;border-radius:10px;padding:18px 20px;font-size:13px;margin-top:6px;}
+.ans-box.show{display:block;}
+.ans-box.ok{background:var(--green-light);border:1px solid #86efac;}
+.ans-box.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.ans-hd{font-weight:700;font-size:14px;margin-bottom:12px;}.ans-hd:empty{margin-bottom:0;}
+.why{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;}
+.tip{background:var(--green-light);border:2px solid var(--green);border-radius:8px;padding:12px 14px;font-size:13px;margin-top:12px;}
+.tip-title{font-weight:700;color:var(--green);margin-bottom:6px;}
+.tip-item{display:flex;gap:8px;margin-bottom:4px;}
+.tip-item:last-child{margin-bottom:0;}
+
+.svg-wrap{margin:14px 0;overflow-x:auto;}
+.svg-wrap svg{display:block;max-width:100%;height:auto;}
+
+.blank-sentence{font-size:15px;font-weight:500;line-height:2.6;margin-bottom:16px;}
+.blank{display:inline-block;min-width:72px;border-bottom:2px solid var(--ink);text-align:center;padding:0 6px;margin:0 3px;cursor:pointer;font-weight:700;transition:background .2s;border-radius:4px 4px 0 0;}
+.blank:hover{background:rgba(42,127,127,.08);}
+.blank.sel{background:#dbeafe;border-color:var(--teal);}
+.blank.ok-fill{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.blank.ng-fill{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.chp{border:2px solid var(--border);border-radius:20px;padding:5px 14px;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;}
+.chp:hover{border-color:var(--teal);background:var(--teal-light);}
+.chp.used{opacity:.35;pointer-events:none;}
+.chp.ok-c{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.chp.ng-c{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.chk-btn{background:var(--ink);color:white;border:none;border-radius:8px;padding:10px 24px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:12px;transition:opacity .2s;}
+.chk-btn:hover{opacity:.82;}
+.chk-btn:disabled{opacity:.4;cursor:default;}
+
+@media(max-width:600px){
+  .hd{padding:36px 16px 28px;}
+  .qwrap,.sec-div,.score-bar{padding-left:16px;padding-right:16px;}
+  .card-body{padding:14px;}
+}
+
+.topbar{background:var(--ink);padding:10px 24px;display:flex;align-items:center;gap:12px;}
+.back-btn{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;display:flex;align-items:center;gap:6px;transition:color .2s;cursor:pointer;}
+.back-btn:hover{color:white;}
+.topbar-title{color:rgba(255,255,255,.5);font-size:12px;margin-left:auto;}
+.tab-nav{background:var(--ink);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:100;}
+.tab-nav-in{max-width:820px;margin:0 auto;display:flex;}
+.tab-btn{flex:1;padding:13px 8px;font-size:13px;font-weight:700;color:rgba(255,255,255,.4);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;}
+.tab-btn:hover{color:rgba(255,255,255,.75);}
+.tab-btn.active{color:white;border-color:var(--red-soft);}
+.tab-btn.active.t3{border-color:#a78bfa;}
+.tab-btn.active.t2{border-color:#5ecece;}
+.tab-btn.active.t4{border-color:#fbbf24;}
+
+.spider-wrap{max-width:820px;margin:0 auto;padding:20px 16px 60px;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+@media(max-width:600px){.tab-btn{font-size:11px;padding:11px 4px;}}
+
+/* ── FLASH CARDS ── */
+.fc-wrap{max-width:740px;margin:0 auto;padding:24px 0 80px;}
+.fc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:0 20px;font-size:12px;color:var(--gray);}
+.fc-counter{font-family:'DM Serif Display',serif;font-size:26px;color:var(--red);line-height:1;}
+.fc-counter span{font-size:13px;color:var(--gray);font-family:'Noto Sans JP',sans-serif;font-weight:400;}
+.fc-gauge-wrap{padding:0 20px;margin-bottom:24px;}
+.fc-gauge-labels{display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:6px;}
+.fc-gauge-label-ng{color:var(--red);}
+.fc-gauge-label-ok{color:var(--green);}
+.fc-gauge-label-mid{color:var(--gray);font-size:10px;font-weight:400;}
+.fc-gauge-track{position:relative;height:16px;background:var(--border);border-radius:20px;overflow:hidden;display:flex;}
+.fc-gauge-ng{height:100%;background:linear-gradient(90deg,#c84b31,#e8896b);border-radius:20px 0 0 20px;transition:width .5s cubic-bezier(.4,0,.2,1);width:0%;}
+.fc-gauge-ok{height:100%;background:linear-gradient(90deg,#86efac,#2d6a4f);border-radius:0 20px 20px 0;transition:width .5s cubic-bezier(.4,0,.2,1);width:0%;margin-left:auto;}
+.fc-gauge-mid-line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:white;transform:translateX(-50%);z-index:2;}
+.fc-gauge-counts{display:flex;justify-content:space-between;font-size:11px;margin-top:4px;padding:0 2px;}
+.fc-gauge-count-ng{color:var(--red);font-weight:700;font-family:'DM Serif Display',serif;font-size:14px;}
+.fc-gauge-count-ok{color:var(--green);font-weight:700;font-family:'DM Serif Display',serif;font-size:14px;}
+.fc-gauge-remaining{color:var(--gray);font-size:10px;text-align:center;margin-top:2px;}
+.fc-carousel{position:relative;display:flex;align-items:center;justify-content:center;height:300px;overflow:hidden;margin-bottom:20px;}
+.fc-slot{position:absolute;width:72%;height:100%;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s cubic-bezier(.4,0,.2,1),filter .35s ease;cursor:pointer;border-radius:16px;}
+.fc-slot.prev{transform:translateX(-82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.curr{transform:translateX(0) scale(1);opacity:1;filter:none;z-index:10;}
+.fc-slot.next{transform:translateX(82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.hidden{opacity:0;pointer-events:none;z-index:0;}
+.fc-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.4,0,.2,1);}
+.fc-inner.flipped{transform:rotateY(180deg);}
+.fc-face{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.11);}
+.fc-front-face{background:white;border:2px solid var(--ink);}
+.fc-back-face{background:white;border:2px solid var(--ink);transform:rotateY(180deg);}
+.fc-front-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:8px;}
+.fc-front-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;}
+.fc-front-body{flex:1;padding:18px 20px;display:flex;align-items:center;justify-content:center;}
+.fc-q{font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;line-height:1.9;color:var(--ink);text-align:center;}
+.fc-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+.fc-tap-hint{text-align:center;padding:0 16px 12px;font-size:11px;color:var(--gray);}
+.fc-back-hd{padding:12px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+.fc-verdict{font-size:13px;font-weight:700;padding:3px 12px;border-radius:20px;}
+.fc-verdict.ok{background:var(--green);color:white;}
+.fc-verdict.ng{background:var(--red);color:white;}
+.fc-back-body{flex:1;padding:14px 18px;overflow-y:auto;}
+.fc-answer{font-family:'DM Serif Display',serif;font-size:20px;color:var(--ink);margin-bottom:10px;line-height:1.4;font-weight:700;}
+.fc-reason{font-size:13px;color:var(--ink);line-height:1.9;}
+.fc-lawref{display:inline-block;margin-top:8px;font-size:11px;color:var(--teal);font-family:'DM Serif Display',serif;background:var(--teal-light);border:1px solid var(--teal);padding:2px 10px;border-radius:4px;}
+.fc-ox{display:flex;gap:10px;padding:0 16px 14px;}
+.fc-ox-btn{flex:1;padding:11px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-size:20px;font-weight:900;cursor:pointer;transition:all .15s;font-family:inherit;}
+.fc-ox-btn:hover{transform:translateY(-2px);}
+.fc-ox-btn.o:hover{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.fc-ox-btn.x:hover{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.fc-nav{display:flex;gap:10px;justify-content:center;padding:0 20px;}
+.fc-nav-btn{flex:1;max-width:160px;padding:12px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-family:inherit;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;transition:all .2s;text-align:center;}
+.fc-nav-btn:hover{border-color:var(--ink);}
+.fc-nav-btn.again{border-color:var(--red);color:var(--red);}
+.fc-nav-btn.again:hover{background:var(--red-light);}
+.fc-nav-btn.got{border-color:var(--green);color:var(--green);}
+.fc-nav-btn.got:hover{background:var(--green-light);}
+.fc-nav-btn.shuffle{background:var(--ink);color:white;border-color:var(--ink);}
+.fc-result{display:none;text-align:center;padding:32px 20px;background:white;border:2px solid var(--ink);border-radius:16px;margin:0 20px;}
+.fc-result h3{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;margin-bottom:8px;}
+.fc-result-score{font-family:'DM Serif Display',serif;font-size:52px;color:var(--red);line-height:1;margin:8px 0 4px;}
+.fc-result-sub{font-size:13px;color:var(--gray);margin-bottom:20px;}
+.fc-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:12px 28px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.fc-restart-btn:hover{opacity:.82;}
+
+/* ── スパイダーマップ ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.sp-node{cursor:pointer;transition:filter .15s;}
+.sp-node:hover{filter:brightness(1.1);}
+#spider-detail{animation:fadeUp .25s ease;}
+
+.complete{display:none;max-width:820px;margin:0 auto 40px;padding:0 24px;}
+.complete-in{background:var(--ink);color:white;border-radius:14px;padding:28px;text-align:center;}
+.complete h2{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;margin-bottom:6px;}
+.complete h2 em{color:var(--red-soft);font-style:normal;}
+.complete-score{font-size:48px;font-family:'DM Serif Display',serif;color:var(--red-soft);line-height:1;margin:10px 0 4px;}
+.complete-sub{font-size:14px;color:rgba(255,255,255,.55);margin-bottom:20px;}
+.btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-back{background:white;color:var(--ink);border:none;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;}
+.btn-next{background:var(--teal);color:white;border:none;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;}
+.btn-copy{background:var(--gold);color:white;border:none;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;}
+.btn-copy:hover{opacity:.85;}
+.btn-copy.copied{background:var(--green);}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="back-btn" onclick="location.href='index.html'">← 目次に戻る</span>
+  <span class="topbar-title">Block 7 ／ Day 7</span>
+</div>
+
+<nav class="tab-nav">
+  <div class="tab-nav-in">
+    <button class="tab-btn active" onclick="switchTab('quiz',this)">📝 問題を解く</button>
+    <button class="tab-btn t3"     onclick="switchTab('mindmap',this)">🗺 連想図</button>
+    <button class="tab-btn t2"     onclick="switchTab('flash',this)">🃏 フラッシュカード</button>
+    <button class="tab-btn t4"     onclick="switchTab('spider',this)">🕸️ 記憶マップ</button>
+  </div>
+</nav>
+
+<!-- ========== 問題パネル ========== -->
+<div id="panel-quiz" class="tab-panel active">
+
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-eye">健康保険法 ／ Block 7 ／ Day 7</div>
+    <h1>日雇特例被保険者 ― <em>一般被保険者との違いを制度ごとに整理</em></h1>
+    <div class="hd-sub">○×式 5問 ＋ 穴埋め式 5問 ― 全10問　図解で理解を深める</div>
+    <div class="prog-wrap"><div class="prog-bar" id="prog"></div></div>
+    <div class="prog-lbl" id="prog-lbl">0 ／ 10 問 回答済み</div>
+  </div>
+</div>
+
+<div class="score-bar" style="margin-top:28px;">
+  <div class="score-in">
+    <div class="score-num" id="score">0</div>
+    <div>
+      <div style="font-weight:700;font-size:14px;">正解数</div>
+      <div style="font-size:12px;color:var(--gray);">10問中 ／ 選択肢・語句をタップして答え合わせ</div>
+    </div>
+  </div>
+</div>
+
+<div style="max-width:820px;margin:0 auto 8px;padding:0 24px;text-align:right;">
+  <button class="btn-copy" id="copy-btn" onclick="copyRecord()" style="font-size:13px;padding:8px 18px;">📋 記録をコピー</button>
+</div>
+
+<div class="sec-div">
+  <div><span class="sec-pill pill-red">① ○×式　5問</span></div>
+  <div class="sec-title">正誤判断で「日雇特例被保険者」の引っかけを叩き込む</div>
+  <div class="sec-desc">定義の「2ヵ月以内」と移行要件の「1ヵ月超」、印紙納付の仕組み、傷病手当金の待期・給付要件、任意継続の有無。頻出の引っかけを○×形式で確認する。</div>
+</div>
+
+<div class="qwrap">
+
+<!-- Q1 -->
+<div class="card" id="cq1">
+  <div class="card-hd"><div class="q-num">01</div><div><div class="src-tag">法第3条第2項・法第123条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：日雇労働者の定義・移行要件</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">日雇労働者であっても、<mark>2ヵ月を超えて</mark>継続して同一の事業所に使用されるに至った場合は、一般の被保険者となる。</div>
+    <div class="opts-tf" id="q1-opts"><div class="opt" onclick="answer('q1',0)">○ 正しい</div><div class="opt" onclick="answer('q1',1)">× 誤り</div></div>
+    <div class="ans-box" id="q1-ans">
+      <div class="ans-hd" id="q1-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#c84b31;margin-bottom:10px;">正解：× 誤り｜法第3条第2項・法第123条</div>
+      <div class="why">⚠️ 「<strong>2ヵ月を超えて</strong>」が誤り。正しくは<strong>1ヵ月を超えて</strong>継続して使用されるに至った場合に一般の被保険者となる。</div>
+      <!-- 定義カード -->
+      <div style="background:#f0f9f9;border:2px solid #2a7f7f;border-radius:10px;padding:12px 14px;margin:10px 0;">
+        <div style="font-size:11px;font-weight:700;color:#2a7f7f;margin-bottom:6px;">📖 定義（法第3条第2項）</div>
+        <div style="font-size:12px;line-height:1.9;"><strong>日雇労働者</strong>：①日々雇い入れられる者、または②<strong>2ヵ月以内</strong>の期間を定めて使用される者。<br>→ 同一事業所で<strong>1ヵ月を超えて</strong>継続使用された場合は一般の被保険者に<strong>強制移行</strong>。</div>
+        <div style="margin-top:8px;background:#d4f0f0;border-radius:6px;padding:6px 10px;font-size:11px;color:#085041;">
+          💡 <strong>なぜ「1ヵ月超」が境目か？</strong>日雇いとしての臨時性が失われ、実態として継続雇用と認められるため、社会保険の安定的な保護に切り替える。
+        </div>
+      </div>
+      <!-- 概念図SVG -->
+      <div class="svg-wrap"><svg viewBox="0 0 680 120" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+        <rect width="680" height="120" rx="10" fill="#f5f0e8"/>
+        <text x="20" y="24" font-size="12" font-weight="700" fill="#1a1a2e">📊 日雇労働者 → 一般被保険者への移行ライン</text>
+        <!-- 日雇ゾーン -->
+        <rect x="20" y="38" width="290" height="56" rx="8" fill="#e8f4f4" stroke="#2a7f7f" stroke-width="1.5"/>
+        <text x="165" y="60" text-anchor="middle" font-size="11" font-weight="700" fill="#2a7f7f">日雇特例被保険者</text>
+        <text x="165" y="80" text-anchor="middle" font-size="10" fill="#085041">（日々雇い / 2ヵ月以内の期間雇用）</text>
+        <!-- 矢印 -->
+        <line x1="310" y1="66" x2="360" y2="66" stroke="#c84b31" stroke-width="2"/>
+        <polygon points="360,62 370,66 360,70" fill="#c84b31"/>
+        <text x="335" y="58" text-anchor="middle" font-size="9" fill="#c84b31" font-weight="700">1ヵ月超</text>
+        <text x="335" y="82" text-anchor="middle" font-size="9" fill="#c84b31">継続使用</text>
+        <!-- 一般ゾーン -->
+        <rect x="370" y="38" width="290" height="56" rx="8" fill="#fee2e2" stroke="#c84b31" stroke-width="1.5"/>
+        <text x="515" y="60" text-anchor="middle" font-size="11" font-weight="700" fill="#c84b31">一般の被保険者に強制移行</text>
+        <text x="515" y="80" text-anchor="middle" font-size="10" fill="#991b1b">（通常の健保適用・資格取得日から）</text>
+      </svg></div>
+      <!-- 比較表 -->
+      <div style="background:white;border:1px solid #ddd8cc;border-radius:10px;overflow:hidden;margin:10px 0;">
+        <div style="background:#2a7f7f;padding:8px 14px;"><div style="font-size:11px;font-weight:700;color:white;">⚖️ 「2ヵ月」が出てくる2つの意味（混同注意）</div></div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <tr style="background:#f5f0e8;">
+            <th style="padding:7px 10px;text-align:left;border-bottom:1px solid #ddd8cc;color:#6b7280;font-weight:700;">数字</th>
+            <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #ddd8cc;font-weight:700;">意味</th>
+            <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #ddd8cc;font-weight:700;">根拠</th>
+          </tr>
+          <tr style="border-bottom:1px solid #f0ece4;background:#f0fafa;">
+            <td style="padding:7px 10px;font-weight:700;color:#2a7f7f;">2ヵ月以内</td>
+            <td style="padding:7px 10px;text-align:center;">日雇労働者の<strong>定義</strong>（この期間内の雇用なら日雇）</td>
+            <td style="padding:7px 10px;text-align:center;font-size:10px;color:#6b7280;">法第3条第2項</td>
+          </tr>
+          <tr style="background:#fff8f7;">
+            <td style="padding:7px 10px;font-weight:700;color:#c84b31;">1ヵ月超</td>
+            <td style="padding:7px 10px;text-align:center;color:#c84b31;">一般被保険者への<strong>移行基準</strong>（これを超えたら移行）</td>
+            <td style="padding:7px 10px;text-align:center;font-size:10px;color:#6b7280;">法第123条</td>
+          </tr>
+        </table>
+        <div style="padding:8px 14px;background:#fff3cd;border-top:1px solid #fde68a;">
+          <div style="font-size:11px;color:#633806;">⚠️ 試験は「2ヵ月を超えて」と書いて引っかける。定義の「2ヵ月」と移行の「1ヵ月」は別の数字。</div>
+        </div>
+      </div>
+      <div style="background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 14px;font-size:12px;color:#A32D2D;margin:10px 0;line-height:1.9;">
+        <div style="font-weight:700;margin-bottom:4px;">🚨 引っかけパターン</div>
+        × 「<strong>2ヵ月を超えて</strong>継続使用→一般被保険者」→ ○ <strong>1ヵ月を超えて</strong>で移行<br>
+        × 「日々雇い入れられる者は日雇労働者に含まれない」→ ○ 含まれる（①日々雇い、②2ヵ月以内）
+      </div>
+      <div style="background:#1a1a2e;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:12px;color:rgba(255,255,255,.9);line-height:1.9;">
+        <div style="font-size:11px;font-weight:700;color:#e8896b;margin-bottom:4px;">🎯 試験で狙われるポイント</div>
+        選択式・択一式の両方で「1ヵ月」「2ヵ月」を入れ替えて出題される頻出論点。日雇特例被保険者の問題は「数字」の問題がほぼ必ず1問出ると想定して臨む。
+      </div>
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 鈴木さんは日雇い労働者として登録しているが、ある現場で2ヵ月を超えて継続して同じ事業所に使用されるようになった。その翌日から一般の被保険者に切り替わる——「なぜ2ヵ月超で切替？」——短期の単発労働者を日雇特例で保護する仕組みだが、実態が継続雇用になれば一般被保険者として正式に保護するべき。「日雇い」という身分が2ヵ月を超えた継続雇用の実態と矛盾するから自動的に切り替わる。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="card" id="cq2">
+  <div class="card-hd"><div class="q-num">02</div><div><div class="src-tag">法第126条・法第170条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：印紙納付方式</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">日雇特例被保険者の保険料は、事業主が<mark>健康保険印紙</mark>を日雇特例被保険者手帳に貼付し、<mark>消印</mark>することによって納付が完了する。</div>
+    <div class="opts-tf" id="q2-opts"><div class="opt" onclick="answer('q2',0)">○ 正しい</div><div class="opt" onclick="answer('q2',1)">× 誤り</div></div>
+    <div class="ans-box" id="q2-ans">
+      <div class="ans-hd" id="q2-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：○ 正しい｜法第126条・法第170条</div>
+      <div class="why">✔ 日雇特例被保険者の保険料納付は<strong>印紙納付方式</strong>。事業主が健康保険印紙を手帳に貼付し消印することで、その日の保険料が納付されたことになる。</div>
+      <!-- 定義カード -->
+      <div style="background:#f0f9f9;border:2px solid #2a7f7f;border-radius:10px;padding:12px 14px;margin:10px 0;">
+        <div style="font-size:11px;font-weight:700;color:#2a7f7f;margin-bottom:6px;">📖 定義（印紙納付方式）</div>
+        <div style="font-size:12px;line-height:1.9;"><strong>健康保険印紙</strong>：日雇特例被保険者の保険料を納付するための専用印紙。<br><strong>消印</strong>：印紙に日付印を押すこと。消印した時点で保険料納付完了。<br><strong>手帳</strong>：日雇特例被保険者手帳。被保険者が携帯し、印紙の貼付記録を管理。</div>
+        <div style="margin-top:8px;background:#d4f0f0;border-radius:6px;padding:6px 10px;font-size:11px;color:#085041;">
+          💡 <strong>なぜ印紙納付か？</strong>日雇労働者は雇用が日々変わるため、通常の月次納付ができない。事業主が働いた日ごとに印紙を貼ることで日単位の納付を実現。
+        </div>
+      </div>
+      <!-- フロー図 -->
+      <div style="background:white;border:1px solid #ddd8cc;border-radius:10px;overflow:hidden;margin:10px 0;">
+        <div style="background:#2a7f7f;padding:8px 14px;"><div style="font-size:11px;font-weight:700;color:white;">🔀 印紙納付の流れ</div></div>
+        <div style="padding:12px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;background:#f5f0e8;border-radius:8px;padding:8px 12px;">
+            <div style="background:#2a7f7f;color:white;font-weight:900;font-size:13px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">①</div>
+            <div style="font-size:12px;">事業主が<strong>健康保険印紙を購入</strong>（郵便局または印紙受払取扱機関）</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;background:#e8f4f4;border:1.5px solid #2a7f7f;border-radius:8px;padding:8px 12px;">
+            <div style="background:#2a7f7f;color:white;font-weight:900;font-size:13px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">②</div>
+            <div style="font-size:12px;">被保険者手帳に<strong>印紙を貼付</strong>（賃金支払日ごと）</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;background:#fef9e7;border:1.5px solid #c9930a;border-radius:8px;padding:8px 12px;">
+            <div style="background:#c9930a;color:white;font-weight:900;font-size:13px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">③</div>
+            <div style="font-size:12px;">事業主が<strong>消印</strong>（日付印）→ <strong>その日の保険料納付完了</strong></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;background:#e8f5ee;border:1.5px solid #2d6a4f;border-radius:8px;padding:8px 12px;">
+            <div style="background:#2d6a4f;color:white;font-weight:900;font-size:13px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">④</div>
+            <div style="font-size:12px;">手帳の印紙貼付状況が<strong>給付受給の要件確認</strong>に使われる</div>
+          </div>
+        </div>
+      </div>
+      <!-- 比較表 -->
+      <div style="background:white;border:1px solid #ddd8cc;border-radius:10px;overflow:hidden;margin:10px 0;">
+        <div style="background:#2a7f7f;padding:8px 14px;"><div style="font-size:11px;font-weight:700;color:white;">⚖️ 日雇vs一般 保険料納付方法の違い</div></div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <tr style="background:#f5f0e8;">
+            <th style="padding:7px 10px;border-bottom:1px solid #ddd8cc;color:#6b7280;font-weight:700;"></th>
+            <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #ddd8cc;color:#2a7f7f;font-weight:700;">日雇特例被保険者</th>
+            <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #ddd8cc;color:#c84b31;font-weight:700;">一般の被保険者</th>
+          </tr>
+          <tr style="border-bottom:1px solid #f0ece4;">
+            <td style="padding:7px 10px;font-weight:600;">納付方法</td>
+            <td style="padding:7px 10px;text-align:center;font-weight:700;color:#2a7f7f;">印紙納付（手帳に貼付）</td>
+            <td style="padding:7px 10px;text-align:center;font-weight:700;color:#c84b31;">月次納付（翌月末日）</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0ece4;">
+            <td style="padding:7px 10px;font-weight:600;">納付単位</td>
+            <td style="padding:7px 10px;text-align:center;">日単位</td>
+            <td style="padding:7px 10px;text-align:center;">月単位</td>
+          </tr>
+          <tr>
+            <td style="padding:7px 10px;font-weight:600;">証明ツール</td>
+            <td style="padding:7px 10px;text-align:center;">日雇特例被保険者手帳</td>
+            <td style="padding:7px 10px;text-align:center;">被保険者証</td>
+          </tr>
+        </table>
+      </div>
+      <div style="background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 14px;font-size:12px;color:#A32D2D;margin:10px 0;line-height:1.9;">
+        <div style="font-weight:700;margin-bottom:4px;">🚨 引っかけパターン</div>
+        × 「<strong>被保険者自身</strong>が印紙を貼付して消印する」→ ○ <strong>事業主</strong>が貼付・消印<br>
+        × 「<strong>割印</strong>することで納付完了」→ ○ <strong>消印</strong>（割印ではない）
+      </div>
+      <div style="background:#1a1a2e;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:12px;color:rgba(255,255,255,.9);line-height:1.9;">
+        <div style="font-size:11px;font-weight:700;color:#e8896b;margin-bottom:4px;">🎯 試験で狙われるポイント</div>
+        「誰が」貼付・消印するかと、「割印か消印か」の2点が頻出。事業主の義務として定められており、被保険者ではない点が引っかけの核心。
+      </div>
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 田中さん（日雇い）が現場で働いた。毎日の賃金から引く代わりに、事業主が健康保険印紙を手帳に貼り付けて消印する——これで保険料納付完了。「なぜ印紙方式？」——日雇い労働者は毎日違う現場に行く。給与計算・銀行振込という通常の手続きが現実的に機能しないため、現場で即座に印紙を貼ることで納付を完結させる工夫。「貼るのは事業主・手帳を持つのは労働者」という役割分担も重要。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="card" id="cq3">
+  <div class="card-hd"><div class="q-num">03</div><div><div class="src-tag">法第135条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：傷病手当金の給付要件・待期</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">日雇特例被保険者の傷病手当金は、療養のため<mark>労務に服することができない日</mark>が継続して<mark>3日</mark>に達した場合に、<mark>4日目</mark>から支給される。</div>
+    <div class="opts-tf" id="q3-opts"><div class="opt" onclick="answer('q3',0)">○ 正しい</div><div class="opt" onclick="answer('q3',1)">× 誤り</div></div>
+    <div class="ans-box" id="q3-ans">
+      <div class="ans-hd" id="q3-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#c84b31;margin-bottom:10px;">正解：× 誤り｜法第135条</div>
+      <div class="why">⚠️ 一般の被保険者の傷病手当金には<strong>3日の待期</strong>があるが、日雇特例被保険者の傷病手当金には<strong>待期がない</strong>（初日から支給される可能性がある）。ただし<strong>給付日数</strong>と<strong>納付要件</strong>の条件がある。</div>
+      <!-- 定義カード -->
+      <div style="background:#f0f9f9;border:2px solid #2a7f7f;border-radius:10px;padding:12px 14px;margin:10px 0;">
+        <div style="font-size:11px;font-weight:700;color:#2a7f7f;margin-bottom:6px;">📖 定義（法第135条）</div>
+        <div style="font-size:12px;line-height:1.9;"><strong>日雇傷病手当金</strong>：療養のため労務に服することができない日に支給。待期規定（3日間の待期）は<strong>適用されない</strong>。<br>ただし支給には<strong>納付要件</strong>を満たす必要がある：<br>　① <strong>受給前2ヵ月間に通算26日分以上</strong>の保険料納付（短期要件）<br>　② <strong>受給前6ヵ月間に通算78日分以上</strong>の保険料納付（長期要件）</div>
+        <div style="margin-top:8px;background:#d4f0f0;border-radius:6px;padding:6px 10px;font-size:11px;color:#085041;">
+          💡 <strong>なぜ待期なしか？</strong>日雇労働者は元々不安定雇用のため、一般の継続雇用と同じ3日待期を課すと実質的に給付が受けられなくなるため。
+        </div>
+      </div>
+      <!-- 比較表 -->
+      <div style="background:white;border:1px solid #ddd8cc;border-radius:10px;overflow:hidden;margin:10px 0;">
+        <div style="background:#2a7f7f;padding:8px 14px;"><div style="font-size:11px;font-weight:700;color:white;">⚖️ 傷病手当金 日雇 vs 一般（最重要比較）</div></div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <tr style="background:#f5f0e8;">
+            <th style="padding:7px 10px;border-bottom:1px solid #ddd8cc;color:#6b7280;font-weight:700;"></th>
+            <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #ddd8cc;color:#2a7f7f;font-weight:700;">日雇特例被保険者</th>
+            <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #ddd8cc;color:#c84b31;font-weight:700;">一般の被保険者</th>
+          </tr>
+          <tr style="border-bottom:1px solid #f0ece4;">
+            <td style="padding:7px 10px;font-weight:600;">待期</td>
+            <td style="padding:7px 10px;text-align:center;font-size:14px;font-weight:900;color:#2a7f7f;">なし</td>
+            <td style="padding:7px 10px;text-align:center;font-size:14px;font-weight:900;color:#c84b31;">3日間（継続）</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0ece4;">
+            <td style="padding:7px 10px;font-weight:600;">給付日額</td>
+            <td style="padding:7px 10px;text-align:center;">標準賃金日額の<strong>60%</strong></td>
+            <td style="padding:7px 10px;text-align:center;">標準報酬日額の<strong>2/3</strong></td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0ece4;">
+            <td style="padding:7px 10px;font-weight:600;">給付期間</td>
+            <td style="padding:7px 10px;text-align:center;">支給開始から<strong>6ヵ月</strong></td>
+            <td style="padding:7px 10px;text-align:center;">支給開始から<strong>1年6ヵ月</strong></td>
+          </tr>
+          <tr>
+            <td style="padding:7px 10px;font-weight:600;">納付要件</td>
+            <td style="padding:7px 10px;text-align:center;font-size:11px;">前2ヵ月に<strong>26日分以上</strong><br>または前6ヵ月に<strong>78日分以上</strong></td>
+            <td style="padding:7px 10px;text-align:center;font-size:11px;">被保険者であること<br>（納付日数要件なし）</td>
+          </tr>
+        </table>
+        <div style="padding:8px 14px;background:#fff3cd;border-top:1px solid #fde68a;">
+          <div style="font-size:11px;color:#633806;">⚠️ 日雇は待期なし・給付期間は<strong>6ヵ月</strong>（一般の1年6ヵ月より短い）。数字を混同しない。</div>
+        </div>
+      </div>
+      <div style="background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 14px;font-size:12px;color:#A32D2D;margin:10px 0;line-height:1.9;">
+        <div style="font-weight:700;margin-bottom:4px;">🚨 引っかけパターン</div>
+        × 「日雇傷病手当金は<strong>3日待期</strong>がある」→ ○ 待期規定の適用<strong>なし</strong><br>
+        × 「給付期間は<strong>1年6ヵ月</strong>」→ ○ 日雇は<strong>6ヵ月</strong>（1/3の期間）
+      </div>
+      <div style="background:#1a1a2e;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:12px;color:rgba(255,255,255,.9);line-height:1.9;">
+        <div style="font-size:11px;font-weight:700;color:#e8896b;margin-bottom:4px;">🎯 試験で狙われるポイント</div>
+        「待期3日」は一般の被保険者のルール。日雇特例被保険者に当てはめる引っかけが最頻出。「6ヵ月 vs 1年6ヵ月」の給付期間の違いも選択式で頻出。
+      </div>
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 佐藤さん（日雇い）が体調不良で3日間休んだ。一般被保険者なら3日間の待期があるが、日雇特例被保険者は継続3日に達したら4日目から支給される——「なぜ同じ3日待期？」——実は問題文は正しい。待期3日は一般も日雇いも同じ。ただし給付期間が一般の通算1年6ヵ月に対して日雇いは6ヵ月——「なぜ短い？」——日雇いは短期雇用が前提で、長期給付が想定されていない設計。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q4 -->
+<div class="card" id="cq4">
+  <div class="card-hd"><div class="q-num">04</div><div><div class="src-tag">法第126条・法第145条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：任意継続・療養給付の納付要件</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">日雇特例被保険者が資格を喪失した後も、一般の被保険者と同様に<mark>任意継続被保険者</mark>となることができる。</div>
+    <div class="opts-tf" id="q4-opts"><div class="opt" onclick="answer('q4',0)">○ 正しい</div><div class="opt" onclick="answer('q4',1)">× 誤り</div></div>
+    <div class="ans-box" id="q4-ans">
+      <div class="ans-hd" id="q4-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#c84b31;margin-bottom:10px;">正解：× 誤り｜法第126条等</div>
+      <div class="why">⚠️ 日雇特例被保険者に<strong>任意継続被保険者の制度はない</strong>。資格喪失後の保護は、所定の納付要件を満たす場合に限り「継続給付」という形で行われる。</div>
+      <!-- 定義カード -->
+      <div style="background:#f0f9f9;border:2px solid #2a7f7f;border-radius:10px;padding:12px 14px;margin:10px 0;">
+        <div style="font-size:11px;font-weight:700;color:#2a7f7f;margin-bottom:6px;">📖 日雇特例被保険者と資格喪失後の保護</div>
+        <div style="font-size:12px;line-height:1.9;"><strong>任意継続被保険者</strong>：一般の被保険者が退職後に最長2年間継続して保険に加入できる制度。<strong>日雇特例被保険者には適用されない。</strong><br><strong>日雇の継続給付</strong>：資格喪失後も、受診月の前2ヵ月に26日分または前6ヵ月に78日分以上の納付があれば、3ヵ月間は療養給付を受けられる。</div>
+        <div style="margin-top:8px;background:#d4f0f0;border-radius:6px;padding:6px 10px;font-size:11px;color:#085041;">
+          💡 <strong>なぜ任意継続がないか？</strong>日雇労働者は雇用が流動的で、印紙で日々納付する仕組みのため、月単位の任意継続保険料を管理する制度設計と相容れない。
+        </div>
+      </div>
+      <!-- 比較表：喪失後の保護 -->
+      <div style="background:white;border:1px solid #ddd8cc;border-radius:10px;overflow:hidden;margin:10px 0;">
+        <div style="background:#2a7f7f;padding:8px 14px;"><div style="font-size:11px;font-weight:700;color:white;">⚖️ 資格喪失後の保護 日雇 vs 一般（制度比較）</div></div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <tr style="background:#f5f0e8;">
+            <th style="padding:7px 10px;border-bottom:1px solid #ddd8cc;color:#6b7280;font-weight:700;"></th>
+            <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #ddd8cc;color:#2a7f7f;font-weight:700;">日雇特例被保険者</th>
+            <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #ddd8cc;color:#c84b31;font-weight:700;">一般の被保険者</th>
+          </tr>
+          <tr style="border-bottom:1px solid #f0ece4;">
+            <td style="padding:7px 10px;font-weight:600;">任意継続</td>
+            <td style="padding:7px 10px;text-align:center;font-size:14px;font-weight:900;color:#c84b31;">なし</td>
+            <td style="padding:7px 10px;text-align:center;font-size:14px;font-weight:900;color:#2a7f7f;">あり（最長2年）</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0ece4;">
+            <td style="padding:7px 10px;font-weight:600;">喪失後給付</td>
+            <td style="padding:7px 10px;text-align:center;font-size:11px;">継続給付<br>（納付要件あり・最長3ヵ月）</td>
+            <td style="padding:7px 10px;text-align:center;font-size:11px;">継続給付<br>（被保険者期間1年以上・最長6ヵ月）</td>
+          </tr>
+          <tr>
+            <td style="padding:7px 10px;font-weight:600;">喪失後の療養給付要件</td>
+            <td style="padding:7px 10px;text-align:center;font-size:11px;">前2ヵ月に26日分以上<br>または前6ヵ月に78日分以上</td>
+            <td style="padding:7px 10px;text-align:center;font-size:11px;">被保険者期間が<br>継続2ヵ月以上</td>
+          </tr>
+        </table>
+      </div>
+      <div style="background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 14px;font-size:12px;color:#A32D2D;margin:10px 0;line-height:1.9;">
+        <div style="font-weight:700;margin-bottom:4px;">🚨 引っかけパターン</div>
+        × 「日雇特例被保険者も任意継続被保険者になれる」→ ○ 任意継続制度は<strong>適用なし</strong><br>
+        × 「任意継続は3年間」→ ○ 一般の場合も<strong>最長2年間</strong>
+      </div>
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 山田さんは日雇い労働者として働いていたが健康上の理由で現場を離れた。一般の被保険者なら任意継続できるが、日雇特例被保険者には任意継続という制度がない——「なぜ？」——任意継続は事業主との雇用関係を前提とした制度。日雇いは雇用関係が流動的で「継続」という概念が馴染まない。離職後も保護が必要なら一定の納付実績があれば継続給付という別の仕組みが用意されている。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q5 -->
+<div class="card" id="cq5">
+  <div class="card-hd"><div class="q-num">05</div><div><div class="src-tag">法第129条・法第145条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：療養給付の納付要件（短期・長期）</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">日雇特例被保険者が療養の給付を受けるためには、受診月の<mark>前2ヵ月間</mark>に通算して<mark>26日分</mark>以上の保険料が納付されていなければならない。</div>
+    <div class="opts-tf" id="q5-opts"><div class="opt" onclick="answer('q5',0)">○ 正しい</div><div class="opt" onclick="answer('q5',1)">× 誤り</div></div>
+    <div class="ans-box" id="q5-ans">
+      <div class="ans-hd" id="q5-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：○ 正しい｜法第129条・法第145条</div>
+      <div class="why">✔ <strong>短期要件</strong>：受診月の前2ヵ月間に通算26日分以上の納付。記述は正確。なお長期要件（前6ヵ月間に78日分以上）を満たしても受給できる。</div>
+      <!-- 定義カード -->
+      <div style="background:#f0f9f9;border:2px solid #2a7f7f;border-radius:10px;padding:12px 14px;margin:10px 0;">
+        <div style="font-size:11px;font-weight:700;color:#2a7f7f;margin-bottom:6px;">📖 定義（療養給付の納付要件）</div>
+        <div style="font-size:12px;line-height:1.9;"><strong>短期要件</strong>：受診月の<strong>前2ヵ月間に通算26日分以上</strong>の保険料納付<br><strong>長期要件</strong>：受診月の<strong>前6ヵ月間に通算78日分以上</strong>の保険料納付<br>→ どちらか一方を満たせば療養の給付を受けられる。</div>
+        <div style="margin-top:8px;background:#d4f0f0;border-radius:6px;padding:6px 10px;font-size:11px;color:#085041;">
+          💡 <strong>なぜ2種類の要件か？</strong>毎月コンスタントに働けない場合でも、より長い期間での納付実績で救済する「長期要件」が代替手段として用意されている。
+        </div>
+      </div>
+      <!-- 概念図SVG -->
+      <div class="svg-wrap"><svg viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+        <rect width="680" height="160" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="26" font-size="12" font-weight="700" fill="#1a1a2e">📋 療養給付の納付要件（いずれか一方を満たせばOK）</text>
+        <!-- 短期 -->
+        <rect x="20" y="40" width="300" height="100" rx="8" fill="#e8f4f4" stroke="#2a7f7f" stroke-width="2"/>
+        <text x="170" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="#2a7f7f">【短期要件】</text>
+        <text x="170" y="84" text-anchor="middle" font-size="22" font-weight="900" fill="#2a7f7f">前2ヵ月</text>
+        <text x="170" y="106" text-anchor="middle" font-size="14" font-weight="900" fill="#2a7f7f">通算26日分以上</text>
+        <text x="170" y="128" text-anchor="middle" font-size="10" fill="#085041">法第129条第1項</text>
+        <!-- OR -->
+        <text x="340" y="94" text-anchor="middle" font-size="16" font-weight="900" fill="#c9930a">OR</text>
+        <!-- 長期 -->
+        <rect x="360" y="40" width="300" height="100" rx="8" fill="#fef9e7" stroke="#c9930a" stroke-width="2"/>
+        <text x="510" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="#c9930a">【長期要件】</text>
+        <text x="510" y="84" text-anchor="middle" font-size="22" font-weight="900" fill="#c9930a">前6ヵ月</text>
+        <text x="510" y="106" text-anchor="middle" font-size="14" font-weight="900" fill="#c9930a">通算78日分以上</text>
+        <text x="510" y="128" text-anchor="middle" font-size="10" fill="#633806">法第129条第2項</text>
+      </svg></div>
+      <!-- 比較表 -->
+      <div style="background:white;border:1px solid #ddd8cc;border-radius:10px;overflow:hidden;margin:10px 0;">
+        <div style="background:#2a7f7f;padding:8px 14px;"><div style="font-size:11px;font-weight:700;color:white;">⚖️ 短期要件 vs 長期要件</div></div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <tr style="background:#f5f0e8;">
+            <th style="padding:7px 10px;border-bottom:1px solid #ddd8cc;color:#6b7280;font-weight:700;"></th>
+            <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #ddd8cc;color:#2a7f7f;font-weight:700;">短期要件</th>
+            <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #ddd8cc;color:#c9930a;font-weight:700;">長期要件</th>
+          </tr>
+          <tr style="border-bottom:1px solid #f0ece4;">
+            <td style="padding:7px 10px;font-weight:600;">基準期間</td>
+            <td style="padding:7px 10px;text-align:center;font-weight:700;color:#2a7f7f;">前2ヵ月</td>
+            <td style="padding:7px 10px;text-align:center;font-weight:700;color:#c9930a;">前6ヵ月</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0ece4;">
+            <td style="padding:7px 10px;font-weight:600;">必要日数</td>
+            <td style="padding:7px 10px;text-align:center;font-size:16px;font-weight:900;color:#2a7f7f;">26日分以上</td>
+            <td style="padding:7px 10px;text-align:center;font-size:16px;font-weight:900;color:#c9930a;">78日分以上</td>
+          </tr>
+          <tr>
+            <td style="padding:7px 10px;font-weight:600;">計算メモ</td>
+            <td style="padding:7px 10px;text-align:center;font-size:11px;">月平均13日×2ヵ月≒26日</td>
+            <td style="padding:7px 10px;text-align:center;font-size:11px;">月平均13日×6ヵ月＝78日</td>
+          </tr>
+        </table>
+        <div style="padding:8px 14px;background:#fff3cd;border-top:1px solid #fde68a;">
+          <div style="font-size:11px;color:#633806;">⚠️ 「前2ヵ月・前6ヵ月」と「26日・78日」の組み合わせを入れ替えた引っかけに注意。78÷6＝13、26÷2＝13（月13日基準）で整合する。</div>
+        </div>
+      </div>
+      <div style="background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 14px;font-size:12px;color:#A32D2D;margin:10px 0;line-height:1.9;">
+        <div style="font-weight:700;margin-bottom:4px;">🚨 引っかけパターン</div>
+        × 「前2ヵ月に<strong>78日分</strong>以上」→ ○ 前2ヵ月は<strong>26日分</strong>（78は前6ヵ月の数字）<br>
+        × 「前6ヵ月に<strong>26日分</strong>以上」→ ○ 前6ヵ月は<strong>78日分</strong>（26は前2ヵ月の数字）
+      </div>
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 鈴木さん（日雇い）が病院に行こうとしている。受診月の前2ヵ月に通算26日分以上の保険料が納付されていないと療養の給付を受けられない——「なぜ26日？」——月13日働けば保険料を26日分（2ヵ月×13日）納付できる計算。「月の半分程度働いていれば給付を受けられる」という現実的なライン。6ヵ月・78日の長期要件も同じ月13日の基準——「月13日が日雇いの基準数字」と覚える。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /qwrap -->
+
+<div class="sec-div" style="margin-top:20px;">
+  <div><span class="sec-pill pill-teal">② 穴埋め式　5問</span></div>
+  <div class="sec-title">数字・語句を埋めて日雇特例制度の核心数字を定着させる</div>
+  <div class="sec-desc">定義（2ヵ月）・移行（1ヵ月超）・納付要件（26日・78日）・給付期間（6ヵ月）・待期（なし）。選択式試験で繰り返し出る数字・語句を穴埋め形式で確認する。</div>
+</div>
+
+<div class="qwrap">
+
+<!-- F1 -->
+<div class="card" id="cf1">
+  <div class="card-hd"><div class="q-num tn">F1</div><div><div class="src-tag t">穴埋め ／ 定義・移行要件（法第3条・法第123条）</div><div class="q-type">難易度：★★★</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">日雇労働者の定義と移行要件に関する空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      日雇労働者とは、日々雇い入れられる者、または
+      <span class="blank" id="f1a" onclick="selB('f1','f1a')">　　</span>
+      ヵ月以内の期間を定めて使用される者をいう。ただし同一事業所で
+      <span class="blank" id="f1b" onclick="selB('f1','f1b')">　　</span>
+      ヵ月を超えて継続使用されるに至ったときは
+      <span class="blank" id="f1c" onclick="selB('f1','f1c')">　　　　　　　　　　</span>
+      となる。
+    </div>
+    <div class="chips" id="f1-ch">
+      <div class="chp" onclick="fillB('f1','f1a',this,'2')">2</div>
+      <div class="chp" onclick="fillB('f1','f1a',this,'3')">3</div>
+      <div class="chp" onclick="fillB('f1','f1b',this,'1')">1</div>
+      <div class="chp" onclick="fillB('f1','f1b',this,'2')">2</div>
+      <div class="chp" onclick="fillB('f1','f1c',this,'一般の被保険者')">一般の被保険者</div>
+      <div class="chp" onclick="fillB('f1','f1c',this,'日雇特例被保険者')">日雇特例被保険者</div>
+    </div>
+    <button class="chk-btn" id="f1-btn" onclick="chkF('f1')">答え合わせ</button>
+    <div class="ans-box" id="f1-ans">
+      <div class="ans-hd" id="f1-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：2ヵ月 ／ 1ヵ月 ／ 一般の被保険者</div>
+      <div style="background:#f0f9f9;border:2px solid #2a7f7f;border-radius:10px;padding:12px 14px;margin:10px 0;">
+        <div style="font-size:11px;font-weight:700;color:#2a7f7f;margin-bottom:6px;">📖 数字の整理（法第3条第2項・法第123条）</div>
+        <div style="font-size:12px;line-height:1.9;"><strong>定義</strong>：2ヵ月以内の期間を定めて使用 → 日雇労働者（日雇特例被保険者）<br><strong>移行</strong>：1ヵ月を超えて継続使用 → 一般の被保険者に強制移行</div>
+      </div>
+      <div style="background:white;border:1px solid #ddd8cc;border-radius:10px;overflow:hidden;margin:10px 0;">
+        <div style="background:#2a7f7f;padding:8px 14px;"><div style="font-size:11px;font-weight:700;color:white;">⚖️ 「1」と「2」の役割（最頻出の引っかけ）</div></div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <tr style="background:#f5f0e8;">
+            <th style="padding:7px 10px;border-bottom:1px solid #ddd8cc;color:#6b7280;font-weight:700;">数字</th>
+            <th style="padding:7px 10px;border-bottom:1px solid #ddd8cc;font-weight:700;">使われる場面</th>
+          </tr>
+          <tr style="border-bottom:1px solid #f0ece4;background:#f0fafa;">
+            <td style="padding:7px 10px;font-size:20px;font-weight:900;color:#2a7f7f;text-align:center;">2</td>
+            <td style="padding:7px 10px;">定義の期間（<strong>2ヵ月以内</strong>の期間を定めた雇用 → 日雇）</td>
+          </tr>
+          <tr style="background:#fff8f7;">
+            <td style="padding:7px 10px;font-size:20px;font-weight:900;color:#c84b31;text-align:center;">1</td>
+            <td style="padding:7px 10px;color:#c84b31;">移行の基準（<strong>1ヵ月を超えて</strong>継続使用 → 一般へ）</td>
+          </tr>
+        </table>
+      </div>
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 日雇労働者の定義——「2ヵ月以内の期間を定めて使用される者」または「日々雇用される者」。「なぜ2ヵ月？」——2ヵ月を超えると実態上は継続雇用と見なせるから。2ヵ月超えたら一般被保険者に切り替わる——「なぜ1ヵ月超ではなく2ヵ月超？」——1ヵ月程度の短期プロジェクト（繁忙期対応等）まで日雇いとして認め、それを超える継続雇用に一般被保険者としての保護を与える現実的な区切り。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F2 -->
+<div class="card" id="cf2">
+  <div class="card-hd"><div class="q-num tn">F2</div><div><div class="src-tag t">穴埋め ／ 療養給付の納付要件（法第129条）</div><div class="q-type">難易度：★★☆</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">療養の給付を受けるための納付要件（短期・長期）に関する空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      受診月の前
+      <span class="blank" id="f2a" onclick="selB('f2','f2a')">　　</span>
+      ヵ月間に通算
+      <span class="blank" id="f2b" onclick="selB('f2','f2b')">　　</span>
+      日分以上の保険料が納付されているか、または前
+      <span class="blank" id="f2c" onclick="selB('f2','f2c')">　　</span>
+      ヵ月間に通算
+      <span class="blank" id="f2d" onclick="selB('f2','f2d')">　　</span>
+      日分以上の保険料が納付されていること。
+    </div>
+    <div class="chips" id="f2-ch">
+      <div class="chp" onclick="fillB('f2','f2a',this,'2')">2</div>
+      <div class="chp" onclick="fillB('f2','f2a',this,'6')">6</div>
+      <div class="chp" onclick="fillB('f2','f2b',this,'26')">26</div>
+      <div class="chp" onclick="fillB('f2','f2b',this,'78')">78</div>
+      <div class="chp" onclick="fillB('f2','f2c',this,'6')">6</div>
+      <div class="chp" onclick="fillB('f2','f2c',this,'2')">2</div>
+      <div class="chp" onclick="fillB('f2','f2d',this,'78')">78</div>
+      <div class="chp" onclick="fillB('f2','f2d',this,'26')">26</div>
+    </div>
+    <button class="chk-btn" id="f2-btn" onclick="chkF('f2')">答え合わせ</button>
+    <div class="ans-box" id="f2-ans">
+      <div class="ans-hd" id="f2-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：2ヵ月 ／ 26日 ／ 6ヵ月 ／ 78日</div>
+      <div style="background:#f0f9f9;border:2px solid #2a7f7f;border-radius:10px;padding:12px 14px;margin:10px 0;">
+        <div style="font-size:11px;font-weight:700;color:#2a7f7f;margin-bottom:6px;">📖 納付要件の仕組み（法第129条）</div>
+        <div style="font-size:12px;line-height:1.9;">短期・長期いずれかを満たせば療養給付が受けられる。<br>数字の根拠：<strong>月あたり13日</strong>の労働を基準として、2ヵ月×13日＝26日、6ヵ月×13日＝78日。</div>
+      </div>
+      <div style="background:white;border:1px solid #ddd8cc;border-radius:10px;overflow:hidden;margin:10px 0;">
+        <div style="background:#2a7f7f;padding:8px 14px;"><div style="font-size:11px;font-weight:700;color:white;">⚖️ 納付要件の数字セット（混同注意）</div></div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <tr style="background:#f5f0e8;">
+            <th style="padding:7px 10px;border-bottom:1px solid #ddd8cc;color:#6b7280;font-weight:700;">要件</th>
+            <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #ddd8cc;font-weight:700;">基準期間</th>
+            <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #ddd8cc;font-weight:700;">必要日数</th>
+          </tr>
+          <tr style="border-bottom:1px solid #f0ece4;background:#f0fafa;">
+            <td style="padding:7px 10px;font-weight:600;">短期要件</td>
+            <td style="padding:7px 10px;text-align:center;font-size:16px;font-weight:900;color:#2a7f7f;">2ヵ月</td>
+            <td style="padding:7px 10px;text-align:center;font-size:16px;font-weight:900;color:#2a7f7f;">26日分</td>
+          </tr>
+          <tr style="background:#fff8f7;">
+            <td style="padding:7px 10px;font-weight:600;">長期要件</td>
+            <td style="padding:7px 10px;text-align:center;font-size:16px;font-weight:900;color:#c9930a;">6ヵ月</td>
+            <td style="padding:7px 10px;text-align:center;font-size:16px;font-weight:900;color:#c9930a;">78日分</td>
+          </tr>
+        </table>
+        <div style="padding:8px 14px;background:#fff3cd;border-top:1px solid #fde68a;">
+          <div style="font-size:11px;color:#633806;">💡 2↔26、6↔78を対で覚える。入れ替えた「2ヵ月78日」「6ヵ月26日」は誤り。</div>
+        </div>
+      </div>
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 日雇特例被保険者の納付要件——短期：前2ヵ月に26日分以上、長期：前6ヵ月に78日分以上。どちらも「月13日」が基準——26÷2＝13、78÷6＝13。「月の半分程度働いていれば保険が使える」という設計。「なぜ月13日？」——日雇い労働の現実的な就労日数として、週3〜4日程度働ける人を保護する水準として設定された。完全に月1〜2回しか働かない人は対象外という線引き。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F3 -->
+<div class="card" id="cf3">
+  <div class="card-hd"><div class="q-num tn">F3</div><div><div class="src-tag t">穴埋め ／ 傷病手当金の給付期間・待期（法第135条）</div><div class="q-type">難易度：★★★</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">傷病手当金の待期・給付期間に関する空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      日雇特例被保険者の傷病手当金には
+      <span class="blank" id="f3a" onclick="selB('f3','f3a')">　　　</span>
+      の規定は適用されない。給付期間は支給開始から
+      <span class="blank" id="f3b" onclick="selB('f3','f3b')">　　</span>
+      ヵ月間であり、一般の被保険者の
+      <span class="blank" id="f3c" onclick="selB('f3','f3c')">　　</span>
+      ヵ月より短い。
+    </div>
+    <div class="chips" id="f3-ch">
+      <div class="chp" onclick="fillB('f3','f3a',this,'3日待期')">3日待期</div>
+      <div class="chp" onclick="fillB('f3','f3a',this,'7日待期')">7日待期</div>
+      <div class="chp" onclick="fillB('f3','f3b',this,'6')">6</div>
+      <div class="chp" onclick="fillB('f3','f3b',this,'12')">12</div>
+      <div class="chp" onclick="fillB('f3','f3c',this,'18')">18</div>
+      <div class="chp" onclick="fillB('f3','f3c',this,'12')">12</div>
+    </div>
+    <button class="chk-btn" id="f3-btn" onclick="chkF('f3')">答え合わせ</button>
+    <div class="ans-box" id="f3-ans">
+      <div class="ans-hd" id="f3-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：3日待期 ／ 6ヵ月 ／ 18ヵ月（1年6ヵ月）</div>
+      <div style="background:#f0f9f9;border:2px solid #2a7f7f;border-radius:10px;padding:12px 14px;margin:10px 0;">
+        <div style="font-size:11px;font-weight:700;color:#2a7f7f;margin-bottom:6px;">📖 傷病手当金の給付期間比較（法第135条）</div>
+        <div style="font-size:12px;line-height:1.9;"><strong>日雇傷病手当金</strong>：待期なし、給付期間<strong>6ヵ月</strong>（支給開始日から）<br><strong>一般の傷病手当金</strong>：3日待期あり、給付期間<strong>1年6ヵ月（18ヵ月）</strong></div>
+      </div>
+      <div style="background:white;border:1px solid #ddd8cc;border-radius:10px;overflow:hidden;margin:10px 0;">
+        <div style="background:#2a7f7f;padding:8px 14px;"><div style="font-size:11px;font-weight:700;color:white;">⚖️ 傷病手当金 日雇 vs 一般（給付比較）</div></div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <tr style="background:#f5f0e8;">
+            <th style="padding:7px 10px;border-bottom:1px solid #ddd8cc;color:#6b7280;font-weight:700;"></th>
+            <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #ddd8cc;color:#2a7f7f;font-weight:700;">日雇特例</th>
+            <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #ddd8cc;color:#c84b31;font-weight:700;">一般被保険者</th>
+          </tr>
+          <tr style="border-bottom:1px solid #f0ece4;">
+            <td style="padding:7px 10px;font-weight:600;">待期</td>
+            <td style="padding:7px 10px;text-align:center;font-weight:700;color:#2a7f7f;">なし</td>
+            <td style="padding:7px 10px;text-align:center;font-weight:700;color:#c84b31;">3日（継続）</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0ece4;">
+            <td style="padding:7px 10px;font-weight:600;">給付期間</td>
+            <td style="padding:7px 10px;text-align:center;font-size:16px;font-weight:900;color:#2a7f7f;">6ヵ月</td>
+            <td style="padding:7px 10px;text-align:center;font-size:16px;font-weight:900;color:#c84b31;">18ヵ月（1年6ヵ月）</td>
+          </tr>
+          <tr>
+            <td style="padding:7px 10px;font-weight:600;">給付日額</td>
+            <td style="padding:7px 10px;text-align:center;font-size:11px;">標準賃金日額の<strong>60%</strong></td>
+            <td style="padding:7px 10px;text-align:center;font-size:11px;">標準報酬日額の<strong>2/3</strong></td>
+          </tr>
+        </table>
+        <div style="padding:8px 14px;background:#fff3cd;border-top:1px solid #fde68a;">
+          <div style="font-size:11px;color:#633806;">⚠️ 日雇6ヵ月 ÷ 3 = 2ヵ月ではなく、一般の1年6ヵ月の<strong>1/3</strong>が日雇の6ヵ月。</div>
+        </div>
+      </div>
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 日雇特例被保険者の傷病手当金——待期3日後の4日目から、給付期間は6ヵ月。一般は1年6ヵ月。「なぜ日雇いは6ヵ月？」——日雇い労働者は短期雇用が前提。長期療養が必要な状態になれば、日雇い労働者としての就労自体が困難になるという現実的な判断。「一般の3分の1の期間」——日雇いの雇用の流動性・不安定性を反映した設計。待期3日は一般と同じ——軽症フィルターは共通。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F4 -->
+<div class="card" id="cf4">
+  <div class="card-hd"><div class="q-num tn">F4</div><div><div class="src-tag t">穴埋め ／ 保険料の納付方式・手帳管理（法第126条・法第170条）</div><div class="q-type">難易度：★★☆</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">日雇特例被保険者の保険料納付方法に関する空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      日雇特例被保険者の保険料は
+      <span class="blank" id="f4a" onclick="selB('f4','f4a')">　　　　</span>
+      方式で納付される。
+      <span class="blank" id="f4b" onclick="selB('f4','f4b')">　　　　</span>
+      が健康保険印紙を手帳に貼付し、
+      <span class="blank" id="f4c" onclick="selB('f4','f4c')">　　</span>
+      することで納付が完了する。
+    </div>
+    <div class="chips" id="f4-ch">
+      <div class="chp" onclick="fillB('f4','f4a',this,'印紙納付')">印紙納付</div>
+      <div class="chp" onclick="fillB('f4','f4a',this,'月次納付')">月次納付</div>
+      <div class="chp" onclick="fillB('f4','f4b',this,'事業主')">事業主</div>
+      <div class="chp" onclick="fillB('f4','f4b',this,'被保険者')">被保険者</div>
+      <div class="chp" onclick="fillB('f4','f4c',this,'消印')">消印</div>
+      <div class="chp" onclick="fillB('f4','f4c',this,'割印')">割印</div>
+    </div>
+    <button class="chk-btn" id="f4-btn" onclick="chkF('f4')">答え合わせ</button>
+    <div class="ans-box" id="f4-ans">
+      <div class="ans-hd" id="f4-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：印紙納付 ／ 事業主 ／ 消印</div>
+      <div style="background:#f0f9f9;border:2px solid #2a7f7f;border-radius:10px;padding:12px 14px;margin:10px 0;">
+        <div style="font-size:11px;font-weight:700;color:#2a7f7f;margin-bottom:6px;">📖 3点セット（法第170条）</div>
+        <div style="font-size:12px;line-height:1.9;"><strong>①印紙納付</strong>：日雇専用の納付方式<br><strong>②事業主</strong>：印紙を購入・貼付・消印する義務者<br><strong>③消印</strong>（≠割印）：印紙に日付印を押すこと。押した時点で納付完了。</div>
+      </div>
+      <div style="background:#fff3cd;border-radius:6px;padding:8px 12px;font-size:11px;color:#633806;margin:8px 0;">
+        ⚠️ 手帳は<strong>被保険者が保管・携帯</strong>するが、印紙を<strong>購入・貼付・消印するのは事業主</strong>。<strong>消印</strong>（割印ではない）で納付完了。
+      </div>
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 日雇特例被保険者の保険料納付——事業主が健康保険印紙を購入→日雇特例被保険者手帳に貼付→消印（日付印）で完了。「なぜこの手順？」——毎日違う現場に行く日雇い労働者の保険料を確実に徴収するため、現場で即時完結する仕組みが必要。手帳は被保険者が携帯して各現場で提示——保険加入の証明書としても機能する。「事業主が買って貼って消す・労働者が持ち歩く」という役割分担を整理。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F5 -->
+<div class="card" id="cf5">
+  <div class="card-hd"><div class="q-num tn">F5</div><div><div class="src-tag t">穴埋め ／ 日雇 vs 一般 相違点まとめ</div><div class="q-type">難易度：★★★</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">日雇特例と一般被保険者の相違点に関する空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      日雇特例被保険者には
+      <span class="blank" id="f5a" onclick="selB('f5','f5a')">　　　　　　　　　　</span>
+      の制度はない。資格喪失後の継続給付として、受診月の前
+      <span class="blank" id="f5b" onclick="selB('f5','f5b')">　　</span>
+      ヵ月間に通算
+      <span class="blank" id="f5c" onclick="selB('f5','f5c')">　　</span>
+      日分以上の保険料納付があれば療養給付が継続される。
+    </div>
+    <div class="chips" id="f5-ch">
+      <div class="chp" onclick="fillB('f5','f5a',this,'任意継続被保険者')">任意継続被保険者</div>
+      <div class="chp" onclick="fillB('f5','f5a',this,'特例退職被保険者')">特例退職被保険者</div>
+      <div class="chp" onclick="fillB('f5','f5b',this,'6')">6</div>
+      <div class="chp" onclick="fillB('f5','f5b',this,'2')">2</div>
+      <div class="chp" onclick="fillB('f5','f5c',this,'78')">78</div>
+      <div class="chp" onclick="fillB('f5','f5c',this,'26')">26</div>
+    </div>
+    <button class="chk-btn" id="f5-btn" onclick="chkF('f5')">答え合わせ</button>
+    <div class="ans-box" id="f5-ans">
+      <div class="ans-hd" id="f5-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：任意継続被保険者 ／ 6ヵ月 ／ 78日分</div>
+      <div style="background:#f0f9f9;border:2px solid #2a7f7f;border-radius:10px;padding:12px 14px;margin:10px 0;">
+        <div style="font-size:11px;font-weight:700;color:#2a7f7f;margin-bottom:6px;">📖 日雇に「ない」制度と「ある」代替策</div>
+        <div style="font-size:12px;line-height:1.9;"><strong>任意継続被保険者：日雇には適用なし</strong><br>代わりに「継続給付（長期要件）」：前6ヵ月に78日分以上の納付で資格喪失後も療養給付が3ヵ月継続。<br><strong>短期要件</strong>（前2ヵ月×26日）との違いも整理する。</div>
+      </div>
+      <div style="background:white;border:1px solid #ddd8cc;border-radius:10px;overflow:hidden;margin:10px 0;">
+        <div style="background:#2a7f7f;padding:8px 14px;"><div style="font-size:11px;font-weight:700;color:white;">⚖️ 日雇特例 「ある」vs「ない」制度一覧</div></div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <tr style="background:#f5f0e8;">
+            <th style="padding:7px 10px;text-align:left;border-bottom:1px solid #ddd8cc;color:#6b7280;font-weight:700;">制度</th>
+            <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #ddd8cc;color:#2a7f7f;font-weight:700;">日雇特例</th>
+            <th style="padding:7px 10px;text-align:center;border-bottom:1px solid #ddd8cc;color:#c84b31;font-weight:700;">一般被保険者</th>
+          </tr>
+          <tr style="border-bottom:1px solid #f0ece4;">
+            <td style="padding:7px 10px;font-weight:600;">任意継続被保険者</td>
+            <td style="padding:7px 10px;text-align:center;font-weight:700;color:#c84b31;">❌ なし</td>
+            <td style="padding:7px 10px;text-align:center;font-weight:700;color:#2a7f7f;">✅ あり（最長2年）</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0ece4;">
+            <td style="padding:7px 10px;font-weight:600;">傷病手当金（3日待期）</td>
+            <td style="padding:7px 10px;text-align:center;font-weight:700;color:#c84b31;">❌ 待期なし</td>
+            <td style="padding:7px 10px;text-align:center;font-weight:700;color:#2a7f7f;">✅ 3日待期あり</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0ece4;">
+            <td style="padding:7px 10px;font-weight:600;">印紙納付方式</td>
+            <td style="padding:7px 10px;text-align:center;font-weight:700;color:#2a7f7f;">✅ あり（日雇のみ）</td>
+            <td style="padding:7px 10px;text-align:center;font-weight:700;color:#c84b31;">❌ なし（月次納付）</td>
+          </tr>
+          <tr>
+            <td style="padding:7px 10px;font-weight:600;">被保険者手帳</td>
+            <td style="padding:7px 10px;text-align:center;font-weight:700;color:#2a7f7f;">✅ あり（印紙管理）</td>
+            <td style="padding:7px 10px;text-align:center;font-weight:700;color:#c84b31;">❌ なし（被保険者証）</td>
+          </tr>
+        </table>
+      </div>
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 日雇特例被保険者と一般被保険者の最大の違い——任意継続制度がない。「なぜ？」——任意継続は継続的な雇用関係を前提とした制度。日雇いは雇用が流動的で「継続」という概念が制度設計上馴染まない。ただし前6ヵ月に78日分以上の保険料を納付した記録があれば、資格喪失後3ヵ月間は継続給付が受けられる——日雇いなりの「事後保護」の仕組み。「任意継続なし・でも継続給付あり」という代替措置を理解すると整理しやすい。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /qwrap -->
+
+<script>
+const DAY_META = {day:'Day7',block:'Block7',unit:'日雇特例被保険者',range:'法第3条・第123条〜第165条・第170条',total:10};
+
+function copyRecord(){
+  const saved=JSON.parse(localStorage.getItem('kenpo_day7.html')||'{}');
+  const c=saved.correct??score??0;const t=saved.total??10;
+  const dt=saved.ts?new Date(saved.ts):new Date();
+  const ds=dt.getFullYear()+'/'+String(dt.getMonth()+1).padStart(2,'0')+'/'+String(dt.getDate()).padStart(2,'0');
+  const row=[DAY_META.day,DAY_META.block,DAY_META.unit,DAY_META.range,t,ds,c,t>0?Math.round(c/t*100):0].join('\t');
+  navigator.clipboard.writeText(row).then(showCopied).catch(()=>{
+    const ta=document.createElement('textarea');ta.value=row;ta.style.cssText='position:fixed;opacity:0;';
+    document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showCopied();
+  });
+}
+function showCopied(){
+  ['copy-btn','copy-btn2'].forEach(id=>{const b=document.getElementById(id);if(!b)return;b.textContent='✅ コピーしました！';b.classList.add('copied');setTimeout(()=>{b.textContent='📋 記録をコピー';b.classList.remove('copied');},2500);});
+}
+// Q1:×、Q2:○、Q3:×、Q4:×、Q5:○  → idx: 0=○,1=×
+const correct_ans={q1:1,q2:0,q3:1,q4:1,q5:0};
+const done={};let score=0;let total=0;
+
+function answer(qid,idx){
+  if(done[qid])return;done[qid]=true;
+  const opts=document.querySelectorAll('#'+qid+'-opts .opt');
+  const ans=document.getElementById(qid+'-ans');
+  const ok=idx===correct_ans[qid];
+  opts.forEach((o,i)=>{if(i===correct_ans[qid])o.classList.add('correct');else if(i===idx&&!ok)o.classList.add('wrong');});
+  ans.className='ans-box show '+(ok?'ok':'ng');
+  const resultEl=document.getElementById(qid+'-result');
+  if(resultEl){
+    resultEl.textContent=ok?'⭕ 正解！':'❌ 不正解';
+    resultEl.style.fontSize='18px';resultEl.style.fontWeight='900';
+    resultEl.style.color=ok?'var(--green)':'var(--red)';resultEl.style.marginBottom='8px';
+  }
+  if(ok)score++;
+  document.getElementById('score').textContent=score;
+  updateProg();
+  setTimeout(()=>ans.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+}
+
+const defs={
+  f1:{f1a:'2',f1b:'1',f1c:'一般の被保険者'},
+  f2:{f2a:'2',f2b:'26',f2c:'6',f2d:'78'},
+  f3:{f3a:'3日待期',f3b:'6',f3c:'18'},
+  f4:{f4a:'印紙納付',f4b:'事業主',f4c:'消印'},
+  f5:{f5a:'任意継続被保険者',f5b:'6',f5c:'78'},
+};
+const state={f1:{},f2:{},f3:{},f4:{},f5:{}};
+const sel={f1:null,f2:null,f3:null,f4:null,f5:null};
+const fdone={};
+
+function selB(fid,bid){
+  if(fdone[fid])return;
+  if(state[fid][bid]!==undefined){
+    const prevVal=state[fid][bid];
+    delete state[fid][bid];
+    document.getElementById(bid).textContent='　　';
+    document.querySelectorAll('#'+fid+'-ch .chp').forEach(c=>{
+      if(c.textContent===prevVal && c.classList.contains('used'))c.classList.remove('used');
+    });
+  }
+  document.querySelectorAll('#c'+fid+' .blank').forEach(b=>b.classList.remove('sel'));
+  sel[fid]=bid;document.getElementById(bid).classList.add('sel');
+}
+function fillB(fid,bid,chip,val){
+  if(fdone[fid])return;
+  const s=sel[fid];
+  if(!s){
+    const keys=Object.keys(defs[fid]);
+    const empty=keys.find(k=>state[fid][k]===undefined);
+    if(!empty)return;
+    document.getElementById(empty).textContent=val;
+    document.getElementById(empty).classList.remove('sel');
+    state[fid][empty]=val;chip.classList.add('used');
+    return;
+  }
+  if(state[fid][s]!==undefined){
+    const prevVal=state[fid][s];
+    document.querySelectorAll('#'+fid+'-ch .chp').forEach(c=>{
+      if(c.textContent===prevVal && c.classList.contains('used'))c.classList.remove('used');
+    });
+  }
+  document.getElementById(s).textContent=val;
+  document.getElementById(s).classList.remove('sel');
+  state[fid][s]=val;chip.classList.add('used');sel[fid]=null;
+}
+function chkF(fid){
+  if(fdone[fid])return;
+  const d=defs[fid];const keys=Object.keys(d);
+  if(!keys.every(k=>state[fid][k]!==undefined)){alert('すべての空欄を埋めてください');return;}
+  fdone[fid]=true;let allOk=true;
+  keys.forEach(k=>{const el=document.getElementById(k);if(state[fid][k]===d[k])el.classList.add('ok-fill');else{el.classList.add('ng-fill');allOk=false;}});
+  document.querySelectorAll('#'+fid+'-ch .chp').forEach(c=>{if(c.classList.contains('used')){const v=c.textContent;c.classList.add(Object.values(d).includes(v)?'ok-c':'ng-c');}});
+  const ans=document.getElementById(fid+'-ans');
+  ans.className='ans-box show '+(allOk?'ok':'ng');
+  const resultEl=document.getElementById(fid+'-result');
+  if(resultEl){
+    resultEl.textContent=allOk?'⭕ 全問正解！':'❌ 不正解あり（赤い空欄を確認）';
+    resultEl.style.fontSize='18px';resultEl.style.fontWeight='900';
+    resultEl.style.color=allOk?'var(--green)':'var(--red)';resultEl.style.marginBottom='8px';
+  }
+  document.getElementById(fid+'-btn').disabled=true;
+  if(allOk)score++;document.getElementById('score').textContent=score;
+  updateProg();setTimeout(()=>ans.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+}
+function updateProg(){
+  total=Object.keys(done).length+Object.keys(fdone).length;
+  document.getElementById('prog').style.width=(total/10*100)+'%';
+  document.getElementById('prog-lbl').textContent=total+' ／ 10 問 回答済み';
+  if(total>=10)showComplete();
+}
+function showComplete(){
+  localStorage.setItem('kenpo_day7.html',JSON.stringify({done:true,correct:score,total:10,ts:Date.now()}));
+  document.getElementById('final-score').textContent=score;
+  const b=document.getElementById('complete-banner');b.style.display='block';
+  setTimeout(()=>b.scrollIntoView({behavior:'smooth',block:'start'}),200);
+}
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:.08});
+document.querySelectorAll('.card').forEach(c=>io.observe(c));
+</script>
+
+</div><!-- /panel-quiz -->
+
+<!-- ========== 連想図 ========== -->
+<div id="panel-mindmap" class="tab-panel">
+<div style="max-width:760px;margin:0 auto;padding:20px 20px 60px;">
+  <div style="background:#ede9fe;border:1px solid #c4b5fd;border-radius:10px;padding:12px 16px;font-size:13px;color:#4c1d95;margin-bottom:24px;line-height:1.7;">
+    🗺 <strong>連想図</strong>：Day7の全論点を「定義→保険料→給付→制度の違い」の流れで整理。
+  </div>
+
+  <!-- STEP1 定義・移行 -->
+  <div style="text-align:center;margin-bottom:8px;">
+    <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#EEEDFE;border:1.5px solid #7F77DD;font-size:15px;font-weight:700;color:#26215C;">1</div>
+    <div style="font-size:16px;font-weight:700;color:#1a1a2e;margin-top:6px;">定義と移行要件（法第3条・法第123条）</div>
+  </div>
+  <div style="background:linear-gradient(135deg,#26215C,#4c3a9e);border-radius:12px;padding:14px 20px;margin-bottom:12px;color:white;text-align:center;">
+    <div style="font-size:11px;opacity:.7;margin-bottom:6px;">🎵 シュール語呂</div>
+    <div style="font-size:17px;font-weight:900;line-height:1.9;">「<span style="color:#fde68a;">2ヵ月以内で日雇い</span>。<br><span style="color:#fde68a;">1ヵ月超えたら一般被保険者</span>。<br>2と1を入れ替えるのが試験の罠。」</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+    <div style="background:#E1F5EE;border:2px solid #1D9E75;border-radius:10px;padding:14px;">
+      <div style="font-size:12px;font-weight:700;color:#085041;margin-bottom:6px;">日雇労働者の定義</div>
+      <div style="font-size:12px;color:#085041;line-height:1.9;">①日々雇い入れられる者<br>②<strong>2ヵ月以内</strong>の期間を定めて<br>　使用される者</div>
+    </div>
+    <div style="background:#fee2e2;border:2px solid #c84b31;border-radius:10px;padding:14px;">
+      <div style="font-size:12px;font-weight:700;color:#4A1B0C;margin-bottom:6px;">一般への移行条件</div>
+      <div style="font-size:12px;color:#712B13;line-height:1.9;">同一事業所で<strong>1ヵ月を超えて</strong><br>継続使用されるに至った場合<br>→ 一般の被保険者に強制移行</div>
+    </div>
+  </div>
+  <div style="background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 14px;font-size:12px;color:#A32D2D;margin-bottom:6px;">
+    🚨 × 「2ヵ月を超えて→一般へ」→ ○ <strong>1ヵ月</strong>を超えたら移行
+  </div>
+  <div style="text-align:center;color:#B4B2A9;font-size:20px;margin-bottom:20px;">↓</div>
+
+  <!-- STEP2 印紙納付 -->
+  <div style="text-align:center;margin-bottom:8px;">
+    <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#E1F5EE;border:1.5px solid #1D9E75;font-size:15px;font-weight:700;color:#04342C;">2</div>
+    <div style="font-size:16px;font-weight:700;color:#1a1a2e;margin-top:6px;">保険料納付（法第170条）― 印紙納付方式</div>
+  </div>
+  <div style="background:linear-gradient(135deg,#085041,#2a7f7f);border-radius:12px;padding:14px 20px;margin-bottom:12px;color:white;text-align:center;">
+    <div style="font-size:11px;opacity:.7;margin-bottom:6px;">🎵 シュール語呂</div>
+    <div style="font-size:17px;font-weight:900;line-height:1.9;">「<span style="color:#fde68a;">印紙は事業主が買って貼って消す</span>。<br>手帳は労働者が持つ。<br>消印（割印じゃない）で納付完了。」</div>
+  </div>
+  <div style="background:white;border:2px solid #1a1a2e;border-radius:12px;overflow:hidden;margin-bottom:10px;">
+    <div style="background:#2a7f7f;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:white;">🔀 印紙納付の3ステップ</div></div>
+    <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;align-items:center;gap:12px;background:#e8f4f4;border-radius:8px;padding:10px 14px;">
+        <div style="font-size:20px;font-weight:900;color:#2a7f7f;min-width:36px;text-align:center;">①</div>
+        <div><div style="font-size:13px;font-weight:700;">事業主が健康保険印紙を購入</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;background:#fef9e7;border-radius:8px;padding:10px 14px;">
+        <div style="font-size:20px;font-weight:900;color:#c9930a;min-width:36px;text-align:center;">②</div>
+        <div><div style="font-size:13px;font-weight:700;">被保険者手帳に印紙を貼付</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;background:#fee2e2;border-radius:8px;padding:10px 14px;">
+        <div style="font-size:20px;font-weight:900;color:#c84b31;min-width:36px;text-align:center;">③</div>
+        <div><div style="font-size:13px;font-weight:700;">消印（日付印）→ 保険料納付完了</div></div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;color:#B4B2A9;font-size:20px;margin-bottom:20px;">↓</div>
+
+  <!-- STEP3 給付要件 -->
+  <div style="text-align:center;margin-bottom:8px;">
+    <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#FAEEDA;border:1.5px solid #BA7517;font-size:15px;font-weight:700;color:#412402;">3</div>
+    <div style="font-size:16px;font-weight:700;color:#1a1a2e;margin-top:6px;">療養給付の納付要件（法第129条）</div>
+  </div>
+  <div style="background:linear-gradient(135deg,#412402,#c9930a);border-radius:12px;padding:14px 20px;margin-bottom:12px;color:white;text-align:center;">
+    <div style="font-size:11px;opacity:.7;margin-bottom:6px;">🎵 シュール語呂</div>
+    <div style="font-size:17px;font-weight:900;line-height:1.9;">「<span style="color:#fde68a;">2と26はペア。6と78はペア</span>。<br>月13日が基準数字。<br>入れ替えたら即アウト。」</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+    <div style="background:#e8f4f4;border:2px solid #2a7f7f;border-radius:10px;padding:10px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;color:#2a7f7f;margin-bottom:4px;">短期要件</div>
+      <div style="font-size:24px;font-weight:900;color:#2a7f7f;">前2ヵ月</div>
+      <div style="font-size:18px;font-weight:900;color:#2a7f7f;">26日分</div>
+    </div>
+    <div style="background:#FAEEDA;border:2px solid #BA7517;border-radius:10px;padding:10px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;color:#c9930a;margin-bottom:4px;">長期要件</div>
+      <div style="font-size:24px;font-weight:900;color:#c9930a;">前6ヵ月</div>
+      <div style="font-size:18px;font-weight:900;color:#c9930a;">78日分</div>
+    </div>
+  </div>
+  <div style="text-align:center;color:#B4B2A9;font-size:20px;margin-bottom:20px;">↓</div>
+
+  <!-- STEP4 制度の違い -->
+  <div style="text-align:center;margin-bottom:8px;">
+    <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#FAECE7;border:1.5px solid #D85A30;font-size:15px;font-weight:700;color:#4A1B0C;">4</div>
+    <div style="font-size:16px;font-weight:700;color:#1a1a2e;margin-top:6px;">傷病手当金・任意継続（一般との違い）</div>
+  </div>
+  <div style="background:white;border:2px solid #1a1a2e;border-radius:12px;overflow:hidden;margin-bottom:10px;">
+    <div style="background:#c84b31;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:white;">📊 日雇 vs 一般 最重要比較表</div></div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <tr style="background:#f5f0e8;">
+        <th style="padding:8px 10px;text-align:left;border-bottom:1px solid #ddd8cc;font-weight:700;color:#6b7280;"></th>
+        <th style="padding:8px 10px;text-align:center;border-bottom:1px solid #ddd8cc;color:#2a7f7f;font-weight:700;">日雇特例</th>
+        <th style="padding:8px 10px;text-align:center;border-bottom:1px solid #ddd8cc;color:#c84b31;font-weight:700;">一般被保険者</th>
+      </tr>
+      <tr style="border-bottom:1px solid #f0ece4;">
+        <td style="padding:8px 10px;font-weight:600;">任意継続</td>
+        <td style="padding:8px 10px;text-align:center;font-weight:700;color:#c84b31;">❌ なし</td>
+        <td style="padding:8px 10px;text-align:center;font-weight:700;color:#2a7f7f;">✅ 最長2年</td>
+      </tr>
+      <tr style="border-bottom:1px solid #f0ece4;background:#fafaf8;">
+        <td style="padding:8px 10px;font-weight:600;">傷病手当金待期</td>
+        <td style="padding:8px 10px;text-align:center;font-weight:700;color:#2a7f7f;">待期なし</td>
+        <td style="padding:8px 10px;text-align:center;font-weight:700;color:#c84b31;">3日間</td>
+      </tr>
+      <tr style="border-bottom:1px solid #f0ece4;">
+        <td style="padding:8px 10px;font-weight:600;">傷病手当金期間</td>
+        <td style="padding:8px 10px;text-align:center;font-weight:700;color:#2a7f7f;">6ヵ月</td>
+        <td style="padding:8px 10px;text-align:center;font-weight:700;color:#c84b31;">1年6ヵ月</td>
+      </tr>
+      <tr style="background:#fafaf8;">
+        <td style="padding:8px 10px;font-weight:600;">納付方式</td>
+        <td style="padding:8px 10px;text-align:center;font-weight:700;color:#2a7f7f;">印紙納付（日単位）</td>
+        <td style="padding:8px 10px;text-align:center;font-weight:700;color:#c84b31;">月次納付</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- TOP5 -->
+  <div style="background:white;border:2px solid #c84b31;border-radius:12px;overflow:hidden;">
+    <div style="background:#c84b31;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:white;">⚡ 健保Day7 最重要引っかけ TOP5（シュール語呂つき）</div></div>
+    <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;gap:10px;background:#fff8f7;border:1px solid #fca5a5;border-radius:8px;padding:8px 12px;">
+        <span style="font-size:16px;font-weight:900;color:#c84b31;flex-shrink:0;">1</span>
+        <div style="font-size:12px;line-height:1.9;"><strong>「2ヵ月を超えて→一般へ」</strong>は誤り。→ ○ <strong>1ヵ月</strong>を超えたら移行。「2」と「1」を常に区別。</div>
+      </div>
+      <div style="display:flex;gap:10px;background:#f0fafa;border:1px solid #86c5c5;border-radius:8px;padding:8px 12px;">
+        <span style="font-size:16px;font-weight:900;color:#2a7f7f;flex-shrink:0;">2</span>
+        <div style="font-size:12px;line-height:1.9;"><strong>「被保険者が印紙を消印」</strong>は誤り。→ ○ <strong>事業主</strong>が貼付・消印。手帳を持つのは被保険者。</div>
+      </div>
+      <div style="display:flex;gap:10px;background:#fef9e7;border:1px solid #fde68a;border-radius:8px;padding:8px 12px;">
+        <span style="font-size:16px;font-weight:900;color:#c9930a;flex-shrink:0;">3</span>
+        <div style="font-size:12px;line-height:1.9;"><strong>「3日待期→4日目から支給」</strong>は一般のルール。日雇は<strong>待期なし</strong>（ただし給付期間6ヵ月）。</div>
+      </div>
+      <div style="display:flex;gap:10px;background:#e8f5ee;border:1px solid #86efac;border-radius:8px;padding:8px 12px;">
+        <span style="font-size:16px;font-weight:900;color:#2d6a4f;flex-shrink:0;">4</span>
+        <div style="font-size:12px;line-height:1.9;"><strong>「2ヵ月78日分以上」</strong>は誤り。→ ○ 2ヵ月は<strong>26日分</strong>。6ヵ月が78日分。数字のペアを守る。</div>
+      </div>
+      <div style="display:flex;gap:10px;background:#fff8f7;border:1px solid #fca5a5;border-radius:8px;padding:8px 12px;">
+        <span style="font-size:16px;font-weight:900;color:#c84b31;flex-shrink:0;">5</span>
+        <div style="font-size:12px;line-height:1.9;"><strong>「日雇も任意継続できる」</strong>は誤り。→ ○ 任意継続制度は<strong>適用なし</strong>。喪失後は継続給付のみ。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div><!-- /panel-mindmap -->
+
+<!-- ========== フラッシュカード ========== -->
+<div id="panel-flash" class="tab-panel">
+<div class="fc-wrap">
+  <div class="fc-meta">
+    <div class="fc-counter" id="fc-counter">1<span> / 15</span></div>
+    <button class="fc-nav-btn shuffle" onclick="fcShuffle()" style="max-width:120px;padding:8px 16px;font-size:12px;">🔀 シャッフル</button>
+  </div>
+  <div class="fc-gauge-wrap">
+    <div class="fc-gauge-labels">
+      <span class="fc-gauge-label-ng">❌ <span id="fc-ng-count">0</span></span>
+      <span class="fc-gauge-label-mid" id="fc-remaining">残り — 枚</span>
+      <span class="fc-gauge-label-ok"><span id="fc-ok-count">0</span> ✅</span>
+    </div>
+    <div class="fc-gauge-track">
+      <div class="fc-gauge-ng" id="fc-gauge-ng"></div>
+      <div class="fc-gauge-mid-line"></div>
+      <div class="fc-gauge-ok" id="fc-gauge-ok"></div>
+    </div>
+    <div class="fc-gauge-counts">
+      <span class="fc-gauge-count-ng" id="fc-ng-label">不正解</span>
+      <span class="fc-gauge-count-ok" id="fc-ok-label">正解</span>
+    </div>
+  </div>
+  <div class="fc-carousel" id="fc-carousel">
+    <!-- 前のカード -->
+    <div class="fc-slot prev" id="fc-slot-prev">
+      <div class="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd"><span class="fc-front-tag" id="fc-prev-tag">—</span><span style="font-size:11px;color:var(--gray);" id="fc-prev-cat"></span></div>
+          <div class="fc-front-body"><div class="fc-q" id="fc-prev-q" style="font-size:13px;opacity:.7;"></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- 現在のカード -->
+    <div class="fc-slot curr" id="fc-slot-curr" onclick="fcFlip()">
+      <div class="fc-inner" id="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-tag">—</span>
+            <span style="font-size:11px;color:var(--gray);" id="fc-cat"></span>
+          </div>
+          <div class="fc-front-body"><div class="fc-q" id="fc-q"></div></div>
+          <div class="fc-tap-hint">タップして答えを確認 ↑</div>
+          <div class="fc-ox">
+            <button class="fc-ox-btn x" onclick="event.stopPropagation();fcChoose(false)">× 誤り</button>
+            <button class="fc-ox-btn o" onclick="event.stopPropagation();fcChoose(true)">○ 正しい</button>
+          </div>
+        </div>
+        <div class="fc-face fc-back-face">
+          <div class="fc-back-hd">
+            <span class="fc-verdict" id="fc-verdict">○ 正しい</span>
+            <span id="fc-user-ans" style="font-size:13px;margin-left:8px;"></span>
+          </div>
+          <div class="fc-back-body">
+            <div class="fc-answer" id="fc-answer"></div>
+            <div class="fc-reason" id="fc-reason"></div>
+            <div class="fc-lawref" id="fc-lawref">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 次のカード -->
+    <div class="fc-slot next" id="fc-slot-next">
+      <div class="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd"><span class="fc-front-tag" id="fc-next-tag">—</span><span style="font-size:11px;color:var(--gray);" id="fc-next-cat"></span></div>
+          <div class="fc-front-body"><div class="fc-q" id="fc-next-q" style="font-size:13px;opacity:.7;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fc-nav" id="fc-nav" style="display:none;">
+    <button class="fc-nav-btn again" onclick="fcNext(false)">😅 もう一度</button>
+    <button class="fc-nav-btn got"   onclick="fcNext(true)">✅ わかった！</button>
+  </div>
+  <div class="fc-result" id="fc-result">
+    <div style="font-size:36px;margin-bottom:8px;" id="fc-emoji">🎉</div>
+    <h3>フラッシュカード完了！</h3>
+    <div class="fc-result-score" id="fc-result-score">—</div>
+    <div class="fc-result-sub" id="fc-result-sub">—</div>
+    <button class="fc-restart-btn" onclick="fcRestart()">🔁 もう一周する</button>
+  </div>
+</div>
+</div><!-- /panel-flash -->
+
+<!-- ========== スパイダーマップ ========== -->
+<div id="panel-spider" class="tab-panel">
+<div class="spider-wrap">
+  <div style="background:#ede9fe;border:1px solid #c4b5fd;border-radius:10px;padding:12px 16px;font-size:13px;color:#4c1d95;margin-bottom:20px;line-height:1.7;">
+    🕸️ <strong>記憶マップ</strong>：第2階層をタップで枝の展開・解説を切り替え。第3階層タップでリーフのみ開閉。
+  </div>
+  <div id="sp-root" style="width:100%;"></div>
+  <div id="spider-detail" style="display:none;margin-top:16px;background:white;border:2px solid #1a1a2e;border-radius:14px;overflow:hidden;">
+    <div id="spider-detail-hd" style="padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+      <span id="spider-detail-title" style="font-weight:700;font-size:15px;color:white;"></span>
+      <button onclick="closeSpiderDetail()" style="border:none;background:none;font-size:22px;cursor:pointer;color:rgba(255,255,255,.8);line-height:1;padding:0 4px;">x</button>
+    </div>
+    <div id="spider-detail-body" style="padding:16px 18px 20px;"></div>
+  </div>
+</div>
+</div><!-- /panel-spider -->
+
+<!-- 完了バナー -->
+<div class="complete" id="complete-banner">
+  <div class="complete-in">
+    <h2>Day 7 <em>完了！</em></h2>
+    <div class="complete-score" id="final-score">0</div>
+    <div class="complete-sub">10問中の正解数</div>
+    <div class="btn-row">
+      <span class="btn-back" onclick="location.href='index.html'" style="cursor:pointer;display:inline-block;">← 目次に戻る</span>
+      <button class="btn-copy" id="copy-btn2" onclick="copyRecord()" style="font-size:13px;padding:8px 18px;">📋 記録をコピー</button>
+      <span class="btn-next" onclick="location.href='day8.html'" style="cursor:pointer;display:inline-block;">Day 8 へ →</span>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────
+// フラッシュカード データ（15枚）
+// ─────────────────────────────────────
+const FC_CARDS = [
+  {tag:'Q01', cat:'定義・移行', correct:false,
+   q:'日雇労働者であっても、2ヵ月を超えて継続して同一の事業所に使用されるに至った場合は、一般の被保険者となる。',
+   answer:'× 誤り',
+   reason:'正しくは「1ヵ月を超えて」継続使用されるに至った場合に一般の被保険者となる。「2ヵ月」は定義の数字（2ヵ月以内）。\n🎵「2ヵ月以内が日雇いの定義。1ヵ月超えたら社員扱い。2と1を入れ替えるのが試験の罠。」',
+   law:'法第3条第2項・法第123条'},
+
+  {tag:'Q02', cat:'印紙納付', correct:true,
+   q:'日雇特例被保険者の保険料は、事業主が健康保険印紙を手帳に貼付し、消印することで納付が完了する。',
+   answer:'○ 正しい',
+   reason:'法第170条。事業主が印紙を購入・貼付・消印する義務を負う。被保険者ではない。\n🎵「印紙は事業主が買って貼って消す。手帳は労働者が持つ。」',
+   law:'法第126条・法第170条'},
+
+  {tag:'Q03', cat:'傷病手当金', correct:false,
+   q:'日雇特例被保険者の傷病手当金は、労務不能が3日続いた場合に4日目から支給される。',
+   answer:'× 誤り',
+   reason:'一般の被保険者には3日待期があるが、日雇特例被保険者の傷病手当金には待期規定の適用なし。給付期間も6ヵ月（一般の1年6ヵ月より短い）。\n🎵「日雇いは待期なし・6ヵ月。一般は3日待って・1年半。」',
+   law:'法第135条'},
+
+  {tag:'Q04', cat:'任意継続', correct:false,
+   q:'日雇特例被保険者が資格喪失した後も、一般の被保険者と同様に任意継続被保険者となることができる。',
+   answer:'× 誤り',
+   reason:'日雇特例被保険者に任意継続被保険者の制度はない。資格喪失後の保護は「継続給付」（前6ヵ月78日分以上の納付で3ヵ月継続）で対応。\n🎵「日雇いに任意継続なし。やめたら終わり。ただし78日分あれば3ヵ月延命。」',
+   law:'法第126条・法第145条'},
+
+  {tag:'Q05', cat:'療養給付要件', correct:true,
+   q:'日雇特例被保険者が療養給付を受けるには、受診月の前2ヵ月に通算26日分以上の保険料納付が必要である（短期要件）。',
+   answer:'○ 正しい',
+   reason:'法第129条の短期要件。または前6ヵ月に78日分以上（長期要件）でも受給可。どちらか一方を満たせばよい。\n🎵「2と26はペア。6と78はペア。月13日基準。」',
+   law:'法第129条'},
+
+  {tag:'定義', cat:'日雇労働者の定義', correct:true,
+   q:'日雇労働者とは、日々雇い入れられる者または2ヵ月以内の期間を定めて使用される者をいう。',
+   answer:'○ 正しい',
+   reason:'法第3条第2項。2類型：①日々雇い、②2ヵ月以内の期間雇用。この「2ヵ月」は定義の数字。移行基準の「1ヵ月超」とは別。',
+   law:'法第3条第2項'},
+
+  {tag:'引っかけ', cat:'印紙納付', correct:false,
+   q:'日雇特例被保険者が自ら健康保険印紙を購入して手帳に貼付する。',
+   answer:'× 誤り',
+   reason:'印紙の購入・貼付・消印は「事業主」の義務。被保険者が行うのではない。手帳の保管・携帯は被保険者が行う。\n🎵「事業主が全部やる。被保険者は手帳を持つだけ。」',
+   law:'法第170条'},
+
+  {tag:'数字', cat:'納付要件セット', correct:false,
+   q:'日雇特例被保険者の療養給付の長期要件は「前2ヵ月に78日分以上」の保険料納付である。',
+   answer:'× 誤り',
+   reason:'前2ヵ月は26日分（短期要件）。前6ヵ月が78日分（長期要件）。数字のペアが逆になっている。\n🎵「2と26。6と78。入れ替えたらアウト。」',
+   law:'法第129条'},
+
+  {tag:'比較', cat:'給付期間', correct:false,
+   q:'日雇特例被保険者の傷病手当金の給付期間は1年6ヵ月である。',
+   answer:'× 誤り',
+   reason:'1年6ヵ月（18ヵ月）は一般の被保険者の期間。日雇特例被保険者は6ヵ月（その1/3）。\n🎵「日雇いは6ヵ月。一般は1年半。3倍の差がある。」',
+   law:'法第135条'},
+
+  {tag:'引っかけ', cat:'消印vs割印', correct:false,
+   q:'日雇特例被保険者の保険料は、健康保険印紙に割印を押すことで納付が完了する。',
+   answer:'× 誤り',
+   reason:'「割印」ではなく「消印」が正しい用語。消印＝日付印を押して印紙を使用済みにすること。\n🎵「割印→消印。読み替え問題の定番。」',
+   law:'法第170条'},
+
+  {tag:'F1', cat:'定義と移行', correct:true,
+   q:'2ヵ月以内の期間を定めて使用される者は日雇労働者（日雇特例被保険者）であり、1ヵ月を超えて継続使用されると一般の被保険者となる。',
+   answer:'○ 正しい',
+   reason:'法第3条第2項・法第123条。「2ヵ月以内」（定義）と「1ヵ月超」（移行）は異なる数字。\n🎵「2ヵ月以内で日雇い。1ヵ月超えたら社員扱い。」',
+   law:'法第3条・法第123条'},
+
+  {tag:'F3', cat:'傷病手当金の比較', correct:true,
+   q:'日雇特例被保険者の傷病手当金には3日待期がなく、給付期間は6ヵ月である（一般は3日待期・1年6ヵ月）。',
+   answer:'○ 正しい',
+   reason:'日雇は待期なし・6ヵ月。一般は3日待期・1年6ヵ月。両者の違いを数字でセット記憶する。\n🎵「日雇いは待期なし・6ヵ月。一般は3日待って・1年半。」',
+   law:'法第135条'},
+
+  {tag:'F4', cat:'印紙納付3点セット', correct:true,
+   q:'日雇特例被保険者の保険料は「印紙納付方式」で、事業主が印紙を購入・貼付し「消印」することで完了する。',
+   answer:'○ 正しい',
+   reason:'3点セット：①印紙納付②事業主③消印（割印ではない）。\n🎵「印紙は事業主が買って貼って消す。割印ではなく消印。」',
+   law:'法第170条'},
+
+  {tag:'F5', cat:'任意継続・制度比較', correct:false,
+   q:'日雇特例被保険者には任意継続被保険者制度があり、資格喪失後も最長2年間保険を継続できる。',
+   answer:'× 誤り',
+   reason:'任意継続制度は日雇特例被保険者には適用されない。喪失後の保護は「継続給付」（前6ヵ月78日分以上→3ヵ月継続）のみ。\n🎵「日雇いに任意継続なし。継続したいなら前6ヵ月78日分貯める。」',
+   law:'法第126条・法第145条'},
+
+  {tag:'まとめ', cat:'Day7核心数字', correct:true,
+   q:'Day7の核心数字：定義2ヵ月・移行1ヵ月超・短期要件2×26・長期要件6×78・給付期間6ヵ月・待期なし。',
+   answer:'○ 正しい',
+   reason:'Day7はすべて「数字の引っかけ」問題。各数字の意味と組み合わせを完全記憶する。\n🎵「2ヵ月で入り、1ヵ月で出る。26と78でもらう。6ヵ月でもらい続ける。待期ゼロ。任意継続ゼロ。」',
+   law:'法第3条・第123条・第129条・第135条'},
+];
+
+// ─────────────────────────────────────
+// フラッシュカード ロジック（day6と同一）
+// ─────────────────────────────────────
+let fcDeck=[];let fcIdx=0;let fcGot=0;let fcFlipped=false;let fcOk=0;let fcNg=0;
+
+function fcUpdateGauge(){
+  const total=fcDeck.length;const remaining=total-fcIdx;const half=50;
+  const okPct=Math.min(fcOk/total*100,half);const ngPct=Math.min(fcNg/total*100,half);
+  document.getElementById('fc-gauge-ok').style.width=okPct+'%';
+  document.getElementById('fc-gauge-ng').style.width=ngPct+'%';
+  document.getElementById('fc-ok-count').textContent=fcOk;
+  document.getElementById('fc-ng-count').textContent=fcNg;
+  document.getElementById('fc-remaining').textContent='残り '+remaining+' 枚';
+  document.getElementById('fc-counter').innerHTML=`${fcIdx+1}<span> / ${total}</span>`;
+}
+function fcSetSlot(slotId,tagId,catId,qId,cardData){
+  const slot=document.getElementById(slotId);
+  if(!cardData){slot.classList.add('hidden');return;}
+  slot.classList.remove('hidden');
+  document.getElementById(tagId).textContent=cardData.tag;
+  document.getElementById(catId).textContent=cardData.cat;
+  document.getElementById(qId).innerHTML=cardData.q;
+}
+function fcRender(){
+  const total=fcDeck.length;const curr=fcDeck[fcIdx];
+  const prev=fcIdx>0?fcDeck[fcIdx-1]:null;const next=fcIdx<total-1?fcDeck[fcIdx+1]:null;
+  fcSetSlot('fc-slot-prev','fc-prev-tag','fc-prev-cat','fc-prev-q',prev);
+  fcSetSlot('fc-slot-next','fc-next-tag','fc-next-cat','fc-next-q',next);
+  document.getElementById('fc-tag').textContent=curr.tag;
+  document.getElementById('fc-cat').textContent=curr.cat;
+  document.getElementById('fc-q').innerHTML=curr.q;
+  const verdict=document.getElementById('fc-verdict');
+  verdict.textContent=curr.correct?'○　正しい':'×　誤り';
+  verdict.className='fc-verdict '+(curr.correct?'ok':'ng');
+  document.getElementById('fc-answer').textContent=curr.answer;
+  document.getElementById('fc-reason').innerHTML=curr.reason.replace(/\n/g,'<br>');
+  document.getElementById('fc-lawref').textContent=curr.law;
+  const inner=document.getElementById('fc-inner');inner.classList.remove('flipped');fcFlipped=false;
+  document.getElementById('fc-nav').style.display='none';
+  const u=document.getElementById('fc-user-ans');if(u)u.textContent='';
+  fcUpdateGauge();
+}
+function fcInit(){
+  fcDeck=[...FC_CARDS];fcIdx=0;fcGot=0;fcOk=0;fcNg=0;fcFlipped=false;
+  document.getElementById('fc-result').style.display='none';
+  document.getElementById('fc-carousel').style.display='flex';
+  document.getElementById('fc-nav').style.display='none';
+  fcRender();
+}
+function fcShuffle(){
+  fcDeck=[...FC_CARDS].sort(()=>Math.random()-.5);fcIdx=0;fcGot=0;fcOk=0;fcNg=0;fcFlipped=false;
+  document.getElementById('fc-result').style.display='none';
+  document.getElementById('fc-carousel').style.display='flex';
+  document.getElementById('fc-nav').style.display='none';
+  fcRender();
+}
+function fcChoose(userSaidTrue){
+  if(fcFlipped)return;const curr=fcDeck[fcIdx];const isCorrect=(userSaidTrue===curr.correct);
+  const u=document.getElementById('fc-user-ans');
+  if(u){u.textContent=isCorrect?'✅ 正解！':'❌ 不正解';u.style.color=isCorrect?'var(--green)':'var(--red)';u.style.fontWeight='700';}
+  fcFlipped=true;document.getElementById('fc-inner').classList.add('flipped');
+  setTimeout(()=>{document.getElementById('fc-nav').style.display='flex';},280);
+}
+function fcFlip(){
+  const inner=document.getElementById('fc-inner');
+  if(!fcFlipped){fcFlipped=true;inner.classList.add('flipped');const u=document.getElementById('fc-user-ans');if(u)u.textContent='';
+    setTimeout(()=>{document.getElementById('fc-nav').style.display='flex';},280);
+  }else{fcFlipped=false;inner.classList.remove('flipped');document.getElementById('fc-nav').style.display='none';}
+}
+function fcNext(got){
+  if(got){fcGot++;fcOk++;}else{fcNg++;}
+  document.getElementById('fc-nav').style.display='none';
+  if(fcIdx+1>=fcDeck.length){
+    fcUpdateGauge();document.getElementById('fc-remaining').textContent='残り 0 枚';
+    document.getElementById('fc-carousel').style.display='none';
+    const result=document.getElementById('fc-result');result.style.display='block';
+    const pct=Math.round(fcOk/fcDeck.length*100);
+    document.getElementById('fc-result-score').textContent=`${fcOk} / ${fcDeck.length}`;
+    document.getElementById('fc-result-sub').textContent=`正答率 ${pct}% ― ${pct>=80?'バッチリ！次のDayへ進もう':pct>=60?'もう一周してみよう':'連想図を見直してから再挑戦！'}`;
+    document.getElementById('fc-emoji').textContent=pct>=80?'🏆':pct>=60?'✨':'📖';
+    document.getElementById('fc-counter').innerHTML=`${fcDeck.length}<span> / ${fcDeck.length}</span>`;
+    return;
+  }
+  fcIdx++;fcRender();
+}
+function fcRestart(){fcInit();}
+
+function switchTab(name,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+name).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(name==='flash'&&fcDeck.length===0)fcInit();
+  if(name==='spider')buildSpider();
+}
+
+document.addEventListener('DOMContentLoaded',function(){fcInit();});
+</script>
+
+<!-- ========== スパイダーマップ JS ========== -->
+<script>
+const SPIDER_DATA = [
+  { id:"teigi", label:"定義・移行", sub:"法第3条・123条",
+    color:"#26215C", light:"#EEEDFE", border:"#7F77DD", angle:218,
+    children:[
+      { label:"日雇労働者", sub:"2類型の定義", leaves:["日々雇い入れられる","2ヵ月以内の期間雇用","どちらかに該当"] },
+      { label:"1ヵ月超で移行", sub:"一般被保険者へ", leaves:["同一事業所で継続","1ヵ月超が境目","2ヵ月超は誤り！"] },
+      { label:"手帳・資格", sub:"証明ツールの違い", leaves:["日雇特例→手帳","一般→被保険者証","移行時は返還"] }
+    ],
+    detail:{
+      hdColor:"#26215C",
+      items:[
+        {label:"日雇労働者の定義", val:"①日々雇い入れ ②2ヵ月以内の期間雇用", note:"語呂：2ヵ月以内で日雇い。"},
+        {label:"一般への移行", val:"同一事業所で1ヵ月を超えて継続使用→強制移行", note:""},
+        {label:"頻出引っかけ", val:"「2ヵ月を超えて→一般へ」は誤り。1ヵ月超が正しい", note:""}
+      ],
+      hikakke:"× 「2ヵ月を超えて継続使用→一般の被保険者」→ ○ 1ヵ月を超えて"
+    }
+  },
+  { id:"insho", label:"印紙納付", sub:"法第170条",
+    color:"#085041", light:"#E1F5EE", border:"#1D9E75", angle:322,
+    children:[
+      { label:"事業主の義務", sub:"購入・貼付・消印", leaves:["健康保険印紙を購入","手帳に貼付","消印で納付完了"] },
+      { label:"被保険者の義務", sub:"手帳の管理", leaves:["手帳を携帯・保管","使用時に提示","手帳返還（移行時）"] },
+      { label:"消印 vs 割印", sub:"用語の区別", leaves:["消印=日付印を押す","割印は誤り","押した日が納付日"] }
+    ],
+    detail:{
+      hdColor:"#085041",
+      items:[
+        {label:"誰が消印するか", val:"事業主（被保険者ではない）", note:"語呂：印紙は事業主が買って貼って消す。"},
+        {label:"消印の効果", val:"消印した時点で保険料納付完了", note:""},
+        {label:"割印との違い", val:"「消印」が正しい。「割印」は誤り（頻出引っかけ）", note:""}
+      ],
+      hikakke:"× 「被保険者が消印」→ ○ 事業主\n× 「割印」→ ○ 消印"
+    }
+  },
+  { id:"kyufu", label:"給付要件", sub:"法第129条・135条",
+    color:"#8f3a2a", light:"#f9ecea", border:"#c47a6a", angle:142,
+    children:[
+      { label:"短期要件", sub:"前2ヵ月×26日", leaves:["前2ヵ月間に","通算26日分以上","月13日基準"] },
+      { label:"長期要件", sub:"前6ヵ月×78日", leaves:["前6ヵ月間に","通算78日分以上","月13日基準"] },
+      { label:"傷病手当金", sub:"待期なし・6ヵ月", leaves:["3日待期の適用なし","給付期間6ヵ月","標準賃金日額60%"] }
+    ],
+    detail:{
+      hdColor:"#8f3a2a",
+      items:[
+        {label:"短期要件", val:"受診月の前2ヵ月に通算26日分以上", note:"語呂：2と26はペア。月13日基準。"},
+        {label:"長期要件", val:"受診月の前6ヵ月に通算78日分以上", note:"語呂：6と78はペア。"},
+        {label:"傷病手当金", val:"待期なし・6ヵ月（一般は3日待期・1年6ヵ月）", note:""}
+      ],
+      hikakke:"× 「前2ヵ月78日分」→ ○ 前2ヵ月は26日分\n× 「傷病手当金は3日待期」→ ○ 日雇は待期なし"
+    }
+  },
+  { id:"seido", label:"制度の違い", sub:"法第123条・145条",
+    color:"#412402", light:"#FAEEDA", border:"#BA7517", angle:38,
+    children:[
+      { label:"任意継続なし", sub:"日雇には不適用", leaves:["任意継続は適用外","喪失後は継続給付のみ","前6ヵ月78日→3ヵ月"] },
+      { label:"一般との相違", sub:"ない制度・ある制度", leaves:["待期なし（傷病手当）","印紙納付（日雇のみ）","被保険者手帳（日雇のみ）"] },
+      { label:"給付期間の差", sub:"6ヵ月 vs 1年6ヵ月", leaves:["日雇：6ヵ月","一般：1年6ヵ月","3倍の差がある"] }
+    ],
+    detail:{
+      hdColor:"#412402",
+      items:[
+        {label:"任意継続", val:"日雇特例被保険者には任意継続制度なし", note:"語呂：日雇いに任意継続なし。"},
+        {label:"喪失後の給付", val:"前6ヵ月78日分以上の納付→最長3ヵ月継続", note:"一般の継続給付（6ヵ月）より短い。"},
+        {label:"傷病手当金期間", val:"6ヵ月（一般の1年6ヵ月の1/3）", note:""}
+      ],
+      hikakke:"× 「日雇も任意継続できる」→ ○ 適用なし\n× 「日雇傷病手当金は1年6ヵ月」→ ○ 6ヵ月"
+    }
+  }
+];
+
+var spBranchOpen={teigi:false,insho:false,kyufu:false,seido:false};
+var spLeafOpen={};
+
+function buildSpider(){
+  var root=document.getElementById("sp-root");if(!root)return;root.innerHTML="";
+  var W=760,H=720,CX=380,CY=360;var R1=108,R2=222,R3=330,CS=20,LS=7;
+  var svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.setAttribute("viewBox","0 0 "+W+" "+H);svg.setAttribute("xmlns","http://www.w3.org/2000/svg");
+  svg.setAttribute("font-family","'Noto Sans JP',sans-serif");svg.style.display="block";svg.style.width="100%";svg.style.height="auto";
+
+  function mk(tag,attrs){var el=document.createElementNS("http://www.w3.org/2000/svg",tag);for(var k in attrs)el.setAttribute(k,attrs[k]);return el;}
+  function r(d){return d*Math.PI/180;}
+  function pt(dist,deg){return[CX+Math.cos(r(deg))*dist,CY+Math.sin(r(deg))*dist];}
+
+  [R1+16,R2+14,R3+16].forEach(function(dist){svg.appendChild(mk("circle",{cx:CX,cy:CY,r:dist,fill:"none",stroke:"#e4dfd6","stroke-width":"1","stroke-dasharray":"4,5"}));});
+
+  SPIDER_DATA.forEach(function(branch){
+    var ba=branch.angle;var bpt=pt(R1,ba);var bx=bpt[0],by=bpt[1];
+    svg.appendChild(mk("line",{x1:CX,y1:CY,x2:bx,y2:by,stroke:branch.color,"stroke-width":"4.5","stroke-linecap":"round"}));
+
+    var og=document.createElementNS("http://www.w3.org/2000/svg","g");og.id="sp-og-"+branch.id;og.style.display=spBranchOpen[branch.id]?"":"none";
+
+    branch.children.forEach(function(child,ci){
+      var lc=child.leaves.length;
+      var ca=ba+(ci-1)*CS;var cpt=pt(R2,ca);var cx2=cpt[0],cy2=cpt[1];var key=branch.id+"_"+ci;
+      if(spLeafOpen[key]===undefined)spLeafOpen[key]=true;
+      og.appendChild(mk("line",{x1:bx,y1:by,x2:cx2,y2:cy2,stroke:branch.color,"stroke-width":"2","stroke-linecap":"round"}));
+
+      var lg=document.createElementNS("http://www.w3.org/2000/svg","g");lg.id="sp-lg-"+key;lg.style.display=spLeafOpen[key]?"":"none";
+      child.leaves.forEach(function(leaf,li){
+        var la=ca+(li-(lc-1)/2)*LS;var lpt=pt(R3,la);var lx=lpt[0],ly=lpt[1];
+        lg.appendChild(mk("line",{x1:cx2,y1:cy2,x2:lx,y2:ly,stroke:branch.border,"stroke-width":"1.2","stroke-dasharray":"3,3","stroke-linecap":"round"}));
+        var lw=120;var gr=document.createElementNS("http://www.w3.org/2000/svg","g");
+        gr.appendChild(mk("rect",{x:lx-lw/2,y:ly-13,width:lw,height:26,rx:13,fill:"#faf8f3",stroke:branch.border,"stroke-width":"1.2"}));
+        var fs=leaf.length>10?"9.5":leaf.length>7?"10":"11";
+        var lt=mk("text",{x:lx,y:ly+5,"text-anchor":"middle","font-size":fs,"font-weight":"600",fill:branch.color});
+        lt.textContent=leaf;gr.appendChild(lt);lg.appendChild(gr);
+      });
+      og.appendChild(lg);
+
+      var gk=document.createElementNS("http://www.w3.org/2000/svg","g");gk.style.cursor="pointer";
+      (function(k,l){gk.addEventListener("click",function(e){e.stopPropagation();spLeafOpen[k]=!spLeafOpen[k];var el=document.getElementById("sp-lg-"+k);if(el)el.style.display=spLeafOpen[k]?"":"none";});})(key,lg);
+      gk.appendChild(mk("ellipse",{cx:cx2,cy:cy2,rx:"46",ry:"24",fill:branch.color}));
+      var kt=mk("text",{x:cx2,y:cy2-3,"text-anchor":"middle","font-size":"11","font-weight":"700",fill:"white"});
+      kt.textContent=child.label;gk.appendChild(kt);
+      var ks=mk("text",{x:cx2,y:cy2+11,"text-anchor":"middle","font-size":"8.5",fill:"rgba(255,255,255,.7)"});
+      ks.textContent=child.sub;gk.appendChild(ks);
+      og.appendChild(gk);
+    });
+    svg.appendChild(og);
+
+    var gn=document.createElementNS("http://www.w3.org/2000/svg","g");gn.style.cursor="pointer";
+    (function(b){gn.addEventListener("click",function(){spBranchOpen[b.id]=!spBranchOpen[b.id];var el=document.getElementById("sp-og-"+b.id);if(el)el.style.display=spBranchOpen[b.id]?"":"none";if(spBranchOpen[b.id]){openSpiderDetail(b,null);}else{closeSpiderDetail();}});})(branch);
+    gn.appendChild(mk("ellipse",{cx:bx,cy:by,rx:"56",ry:"32",fill:branch.color}));
+    var tl=mk("text",{x:bx,y:by-5,"text-anchor":"middle","font-size":"14","font-weight":"700",fill:"white"});tl.textContent=branch.label;gn.appendChild(tl);
+    var ts=mk("text",{x:bx,y:by+11,"text-anchor":"middle","font-size":"9.5",fill:"rgba(255,255,255,.65)"});ts.textContent=branch.sub;gn.appendChild(ts);
+    svg.appendChild(gn);
+  });
+
+  var gc=document.createElementNS("http://www.w3.org/2000/svg","g");
+  gc.appendChild(mk("ellipse",{cx:CX,cy:CY,rx:"80",ry:"46",fill:"#22253a"}));
+  [["健保法Day7",-6,"12","#f0eee8"],["法第3条・123〜165条",11,"9","rgba(240,238,232,.55)"]].forEach(function(t){
+    var ct=mk("text",{x:CX,y:CY+t[1],"text-anchor":"middle","font-size":t[2],"font-weight":"700",fill:t[3]});ct.textContent=t[0];gc.appendChild(ct);
+  });
+  svg.appendChild(gc);root.appendChild(svg);
+}
+
+function openSpiderDetail(branch,child){
+  var panel=document.getElementById("spider-detail");var hd=document.getElementById("spider-detail-hd");
+  var title=document.getElementById("spider-detail-title");var body=document.getElementById("spider-detail-body");
+  hd.style.background=branch.detail.hdColor;title.textContent=branch.label+"  "+branch.sub;
+  var html="";
+  branch.detail.items.forEach(function(item){
+    html+="<div style='margin-bottom:14px;'>";
+    html+="<div style='font-size:11px;font-weight:700;color:#6b7280;margin-bottom:3px;'>"+item.label+"</div>";
+    html+="<div style='font-size:14px;font-weight:700;color:#1a1a2e;background:"+branch.light+";border:1.5px solid "+branch.border+";border-radius:8px;padding:8px 12px;'>"+item.val+"</div>";
+    if(item.note)html+="<div style='font-size:11px;color:#6b7280;margin-top:4px;padding-left:4px;'>💡 "+item.note+"</div>";
+    html+="</div>";
+  });
+  if(branch.detail.hikakke){
+    html+="<div style='background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 12px;font-size:11px;color:#A32D2D;line-height:2.1;'>";
+    html+="<div style='font-weight:700;margin-bottom:4px;'>🚨 よくある引っかけ</div>";
+    html+=branch.detail.hikakke.split("\n").join("<br>");
+    html+="</div>";
+  }
+  body.innerHTML=html;panel.style.display="block";
+}
+function closeSpiderDetail(){document.getElementById("spider-detail").style.display="none";}
+</script>
+
+</body>
+</html>

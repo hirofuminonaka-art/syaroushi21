@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day5｜障害厚生年金・障害手当金 ― 厚生年金法過去問ドリル</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1a2e;--paper:#faf8f3;--warm:#f5f0e8;--red:#c84b31;--red-soft:#e8896b;--red-light:#fee2e2;--teal:#2a7f7f;--teal-light:#e8f4f4;--gold:#c9930a;--gold-light:#fef9e7;--green:#2d6a4f;--green-light:#e8f5ee;--gray:#6b7280;--border:#ddd8cc;--purple:#7c3aed;--purple-light:#ede9fe;--blue:#1d4ed8;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
+.topbar{background:var(--ink);padding:10px 20px;display:flex;align-items:center;gap:12px;}
+.back-btn{color:rgba(255,255,255,.7);font-size:13px;cursor:pointer;}.back-btn:hover{color:white;}
+.topbar-title{color:rgba(255,255,255,.45);font-size:12px;margin-left:auto;}
+.tab-nav{background:var(--ink);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:100;}
+.tab-nav-in{max-width:820px;margin:0 auto;display:flex;}
+.tab-btn{flex:1;padding:12px 6px;font-size:12px;font-weight:700;color:rgba(255,255,255,.4);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;font-family:inherit;}
+.tab-btn:hover{color:rgba(255,255,255,.75);}.tab-btn.active{color:white;border-color:var(--red-soft);}
+.tab-btn.t2.active{border-color:#a78bfa;}.tab-btn.t3.active{border-color:var(--teal);}.tab-btn.t4.active{border-color:var(--gold);}
+.tab-panel{display:none;}.tab-panel.active{display:block;}
+.hd{background:var(--ink);color:var(--paper);padding:36px 40px 28px;position:relative;overflow:hidden;}
+.hd::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px);}
+.hd-in{max-width:820px;margin:0 auto;position:relative;}
+.hd-eye{font-size:11px;letter-spacing:3px;color:var(--red-soft);margin-bottom:8px;font-weight:700;}
+.hd h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;line-height:1.3;margin-bottom:6px;}
+.hd h1 em{color:var(--red-soft);font-style:normal;}
+.hd-sub{font-size:13px;color:rgba(255,255,255,.5);font-weight:300;}
+.prog-wrap{margin-top:14px;background:rgba(255,255,255,.15);border-radius:20px;height:6px;overflow:hidden;}
+.prog-bar{height:6px;background:linear-gradient(90deg,var(--teal),var(--green));border-radius:20px;width:0%;transition:width .5s;}
+.prog-lbl{font-size:11px;color:rgba(255,255,255,.4);margin-top:4px;}
+.score-bar{max-width:820px;margin:0 auto;padding:0 20px;}
+.score-in{background:white;border:2px solid var(--ink);border-radius:12px;padding:12px 20px;display:flex;align-items:center;gap:16px;margin-top:20px;}
+.score-num{font-family:'DM Serif Display',serif;font-size:40px;color:var(--teal);line-height:1;}
+.score-lbl{font-size:11px;color:var(--gray);font-weight:700;letter-spacing:1px;}
+.copy-btn{margin-left:auto;background:var(--ink);color:white;border:none;border-radius:8px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.copy-btn:hover{opacity:.82;}.copy-btn.copied{background:var(--green);}
+.qwrap{max-width:820px;margin:24px auto 0;padding:0 20px 40px;display:flex;flex-direction:column;gap:20px;}
+.card{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;}
+.card-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.q-num{font-family:'DM Serif Display',serif;font-size:28px;color:var(--ink);line-height:1;min-width:36px;}
+.src-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;margin-bottom:3px;display:inline-block;}
+.q-type{font-size:11px;color:var(--gray);}
+.card-body{padding:16px 18px;}
+.quiz-q{font-size:14px;line-height:2;margin-bottom:14px;}
+.quiz-q mark{background:#fef3c7;padding:1px 3px;border-radius:3px;font-weight:700;}
+.opts-tf{display:flex;gap:10px;}
+.opt{flex:1;padding:10px;border:2px solid var(--border);border-radius:10px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s;background:white;}
+.opt:hover{border-color:var(--ink);}.opt.correct{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.opt.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.ans-box{display:none;margin-top:14px;border-radius:10px;padding:14px 16px;font-size:13px;}
+.ans-box.show{display:block;}.ans-box.ok{background:var(--green-light);border:1px solid #86efac;}.ans-box.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.ans-hd{font-weight:700;font-size:14px;margin-bottom:10px;}
+.why{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 13px;margin-bottom:10px;font-size:13px;line-height:1.85;}
+.why mark{background:#fed7aa;padding:1px 3px;border-radius:2px;font-weight:700;}
+.def-card{background:var(--teal-light);border:1.5px solid var(--teal);border-radius:8px;padding:10px 14px;margin-bottom:10px;font-size:12px;line-height:1.9;}
+.tip{background:var(--purple-light);border:1.5px solid #c4b5fd;border-radius:8px;padding:10px 13px;font-size:12px;line-height:1.9;margin-top:8px;}
+.law-tag{display:inline-block;background:var(--ink);color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:8px;}
+.blank-card-body{padding:16px 18px;}
+.blank-q{font-size:14px;line-height:2.8;margin-bottom:12px;}
+.blank{display:inline-block;min-width:60px;border-bottom:2.5px solid var(--ink);text-align:center;padding:0 4px;margin:0 2px;cursor:pointer;font-weight:700;transition:background .2s;border-radius:4px 4px 0 0;}
+.blank:hover{background:rgba(124,58,237,.08);}.blank.sel{background:var(--purple-light);border-color:var(--purple);}
+.blank.ok-fill{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.blank.ng-fill{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+.chp{border:2px solid var(--border);border-radius:20px;padding:5px 13px;cursor:pointer;font-size:13px;font-weight:600;background:white;transition:all .2s;}
+.chp:hover{border-color:var(--purple);}.chp.used{opacity:.3;pointer-events:none;}
+.chp.ok-c{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.chp.ng-c{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.chk-btn{background:var(--purple);color:white;border:none;border-radius:8px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit;}
+.chk-btn:hover{opacity:.82;}.chk-btn:disabled{opacity:.38;cursor:default;}
+.f-ans{display:none;margin-top:12px;border-radius:10px;padding:14px 16px;font-size:13px;}
+.f-ans.show{display:block;}.f-ans.ok{background:var(--green-light);border:1px solid #86efac;}.f-ans.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.complete-bar{display:none;max-width:820px;margin:0 auto;padding:0 20px 60px;}
+.complete-card{background:var(--ink);color:white;border-radius:16px;padding:28px;text-align:center;}
+.complete-card h2{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;margin-bottom:8px;}
+.complete-score{font-family:'DM Serif Display',serif;font-size:52px;color:#fde68a;line-height:1;margin-bottom:8px;}
+.copy-btn2{background:white;color:var(--ink);border:none;border-radius:8px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:12px;}
+.mm-wrap{max-width:820px;margin:0 auto;padding:20px 20px 60px;}
+.mm-step{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;margin-bottom:20px;}
+.mm-step-hd{background:var(--ink);padding:12px 18px;display:flex;align-items:center;gap:10px;}
+.mm-step-num{font-family:'DM Serif Display',serif;font-size:28px;color:#fde68a;line-height:1;}
+.mm-step-title{font-size:14px;font-weight:700;color:white;}
+.mm-step-body{padding:16px 18px;}
+.mm-item{border-left:4px solid var(--teal);padding:8px 12px;margin-bottom:10px;background:var(--teal-light);border-radius:0 8px 8px 0;font-size:13px;line-height:1.8;}
+.mm-item mark{background:#fed7aa;padding:1px 3px;border-radius:2px;font-weight:700;}
+.mm-alert{border-left:4px solid var(--red);padding:8px 12px;background:var(--red-light);border-radius:0 8px 8px 0;font-size:13px;line-height:1.8;margin-bottom:10px;}
+.mm-gorof{background:var(--gold-light);border:1.5px solid var(--gold);border-radius:8px;padding:9px 13px;font-size:12px;line-height:1.8;margin-top:8px;}
+.hikakke-box{background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin-top:16px;}
+.hikakke-hd{background:var(--ink);padding:9px 16px;}
+.hikakke-hd span{font-size:12px;font-weight:700;color:#fde68a;}
+.hikakke-body{padding:12px 16px;display:flex;flex-direction:column;gap:8px;}
+.hikakke-row{border-left:4px solid var(--red);padding:7px 12px;background:#fff8f7;border-radius:0 6px 6px 0;font-size:12px;line-height:1.8;}
+.fc-wrap{max-width:740px;margin:20px auto 0;padding:0 20px 80px;}
+.fc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.fc-counter{font-family:'DM Serif Display',serif;font-size:24px;color:var(--red);line-height:1;}
+.fc-counter span{font-size:12px;color:var(--gray);font-family:'Noto Sans JP',sans-serif;font-weight:400;}
+.fc-gauge-wrap{margin-bottom:20px;}
+.fc-gauge-labels{display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:5px;}
+.fc-gauge-label-ng{color:var(--red);}.fc-gauge-label-ok{color:var(--green);}
+.fc-gauge-label-mid{color:var(--gray);font-size:10px;font-weight:400;}
+.fc-gauge-track{position:relative;height:14px;background:var(--border);border-radius:20px;overflow:hidden;display:flex;}
+.fc-gauge-ng{height:100%;background:linear-gradient(90deg,#c84b31,#e8896b);border-radius:20px 0 0 20px;transition:width .5s;width:0%;}
+.fc-gauge-ok{height:100%;background:linear-gradient(90deg,#86efac,#2d6a4f);border-radius:0 20px 20px 0;transition:width .5s;width:0%;margin-left:auto;}
+.fc-gauge-mid-line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:white;transform:translateX(-50%);z-index:2;}
+.fc-carousel{position:relative;display:flex;align-items:center;justify-content:center;min-height:420px;overflow:hidden;margin-bottom:18px;}
+.fc-slot{position:absolute;width:72%;min-height:300px;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s,filter .35s ease;cursor:pointer;border-radius:16px;}
+.fc-slot.prev{transform:translateX(-82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.curr{transform:translateX(0) scale(1);opacity:1;filter:none;z-index:10;}
+.fc-slot.next{transform:translateX(82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.hidden{opacity:0;pointer-events:none;z-index:0;}
+.fc-inner{position:relative;width:100%;min-height:300px;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.4,0,.2,1);}
+.fc-inner.flipped{transform:rotateY(180deg);}
+.fc-face{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.11);}
+.fc-front-face{background:white;border:2px solid var(--ink);}
+.fc-back-face{background:white;border:2px solid var(--ink);transform:rotateY(180deg);}
+.fc-front-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:9px 14px;display:flex;align-items:center;gap:8px;}
+.fc-front-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;}
+.fc-front-body{flex:1;padding:16px 18px;display:flex;align-items:center;justify-content:center;}
+.fc-q{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;line-height:1.9;color:var(--ink);text-align:center;}
+.fc-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;}
+.fc-ox{display:flex;gap:8px;padding:0 14px 12px;}
+.fc-ox-btn{flex:1;padding:10px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-size:20px;font-weight:900;cursor:pointer;transition:all .15s;font-family:inherit;}
+.fc-ox-btn.o:hover{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.fc-ox-btn.x:hover{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.fc-back-hd{padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+.fc-verdict{font-size:12px;font-weight:700;padding:2px 10px;border-radius:20px;}
+.fc-verdict.ok{background:var(--green);color:white;}.fc-verdict.ng{background:var(--red);color:white;}
+.fc-back-body{flex:1;padding:12px 16px;overflow-y:auto;}
+.fc-answer{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ink);margin-bottom:8px;line-height:1.4;font-weight:700;}
+.fc-reason{font-size:12px;color:var(--ink);line-height:1.9;}
+.fc-reason mark{background:#fef3c7;padding:1px 4px;border-radius:3px;}
+.fc-nav{display:none;gap:10px;justify-content:center;padding:0 16px;}
+.fc-nav-btn{flex:1;max-width:160px;padding:11px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;text-align:center;}
+.fc-nav-btn.again{border-color:var(--red);color:var(--red);}.fc-nav-btn.again:hover{background:var(--red-light);}
+.fc-nav-btn.got{border-color:var(--green);color:var(--green);}.fc-nav-btn.got:hover{background:var(--green-light);}
+.fc-result{display:none;text-align:center;padding:24px;background:white;border:2px solid var(--ink);border-radius:14px;margin:0 20px;}
+.fc-result h3{font-family:'Noto Serif JP',serif;font-size:1.2rem;font-weight:900;margin-bottom:8px;}
+.fc-result-score{font-family:'DM Serif Display',serif;font-size:44px;color:var(--teal);line-height:1;margin:8px 0 4px;}
+.fc-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:12px;}
+.spider-wrap{max-width:820px;margin:0 auto;padding:20px 16px 60px;}
+svg text{font-family:'Noto Sans JP',sans-serif;}
+@media(max-width:600px){.hd{padding:24px 16px 20px;}.qwrap{padding:0 12px 40px;}.fc-wrap{padding:0 12px 80px;}.mm-wrap{padding:16px 12px 60px;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span class="back-btn" onclick="location.href='index.html'">← 目次に戻る</span>
+  <span class="topbar-title">Day5 ／ 厚生年金法 障害厚生年金・障害手当金</span>
+</div>
+<nav class="tab-nav">
+  <div class="tab-nav-in">
+    <button class="tab-btn active" onclick="switchTab('quiz',this)">📝 問題を解く</button>
+    <button class="tab-btn t3"     onclick="switchTab('mindmap',this)">🗺 連想図</button>
+    <button class="tab-btn t2"     onclick="switchTab('flash',this)">🃏 フラッシュカード</button>
+    <button class="tab-btn t4"     onclick="switchTab('spider',this)">🕸️ 記憶マップ</button>
+  </div>
+</nav>
+
+<div id="panel-quiz" class="tab-panel active">
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-eye">厚生年金法 ／ Day 5</div>
+    <h1>障害厚生年金・<em>障害手当金</em></h1>
+    <div class="hd-sub">○×式 5問 ＋ 穴埋め式 5問 ― 全10問　法第47条〜第57条</div>
+    <div class="prog-wrap"><div class="prog-bar" id="prog"></div></div>
+    <div class="prog-lbl" id="prog-lbl">0 ／ 10 問 回答済み</div>
+  </div>
+</div>
+<div class="score-bar">
+  <div class="score-in">
+    <div><div class="score-num" id="score">0</div><div class="score-lbl">正解数</div></div>
+    <div style="font-size:13px;color:var(--gray);"><div id="score-sub">問題に答えると集計されます</div></div>
+    <button class="copy-btn" id="copy-btn" onclick="copyRecord()">📋 記録をコピー</button>
+  </div>
+</div>
+
+<div class="qwrap">
+
+<!-- Q1 -->
+<div class="card" id="cq1">
+  <div class="card-hd"><div class="q-num">01</div>
+    <div><div class="src-tag">法第47条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：障害等級・国年との比較</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">障害厚生年金は障害等級<mark>1〜3級</mark>を対象とし、障害基礎年金が<mark>1〜2級</mark>のみを対象とするのに対し、<mark>3級</mark>まで対象範囲が広い。</div>
+    <div class="opts-tf" id="q1-opts">
+      <div class="opt" onclick="answer('q1',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q1',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q1-ans">
+      <div class="ans-hd" id="q1-result"></div>
+      <div class="why">✅ <strong>正しい。</strong><strong>法第47条（障害厚生年金）</strong>：障害厚生年金は<mark>1〜3級</mark>対象。障害基礎年金（国年）は<mark>1〜2級</mark>のみ。3級は厚年のみの給付で障害基礎年金は出ない。</div>
+      <div class="def-card">
+        <strong>📖 障害厚生年金 vs 障害基礎年金（等級の違い）</strong><br>
+        障害厚生年金：<mark>1級・2級・3級</mark>（3段階）<br>
+        障害基礎年金：<mark>1級・2級</mark>のみ（2段階）<br>
+        3級は厚年のみ——障害基礎年金の支給なし<br>
+        さらに厚年には<mark>障害手当金</mark>（一時金・3級より軽い場合）もある<br><br>
+        <strong>【立法趣旨】</strong>被用者は3級程度の障害でも就労不能になるリスクが高い。被用者専用の手厚い保護として3級まで対象範囲を拡大した。
+      </div>
+      <svg viewBox="0 0 520 90" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="520" height="90" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="22" font-size="11" font-weight="700" fill="#1a1a2e">障害給付の等級と種類</text>
+        <rect x="10" y="32" width="245" height="48" rx="7" fill="#2a7f7f"/>
+        <text x="132" y="52" font-size="11" font-weight="700" fill="white" text-anchor="middle">障害基礎年金（国年）</text>
+        <text x="132" y="68" font-size="10" fill="#a7f3d0" text-anchor="middle">1級・2級のみ（3級は対象外）</text>
+        <rect x="265" y="32" width="245" height="48" rx="7" fill="#c84b31"/>
+        <text x="387" y="52" font-size="11" font-weight="700" fill="white" text-anchor="middle">障害厚生年金（厚年）</text>
+        <text x="387" y="68" font-size="10" fill="#fca5a5" text-anchor="middle">1〜3級＋障害手当金（3級未満）</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「障害厚生年金は障害基礎年金と同様に1・2級のみ対象」→ <strong style="color:#2d6a4f;">○</strong> 厚年は<strong>3級まで</strong>対象</div></div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 3級の障害厚生年金受給者には障害基礎年金は支給されない（厚年のみ）。</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「厚年は3級プラス・国年は2級まで」——被用者保護で厚年の方が手厚い。</div>
+      <div class="law-tag">法第47条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 工場勤務の田中さん（35歳）が事故で右手の機能を大幅に失い3級の障害認定を受けた。国民年金だけなら3級は対象外で年金ゼロ——でも厚年に加入していたから障害厚生年金が受け取れる。「なぜ厚年は3級まで？」——工場作業員は手が動かなければ仕事を続けられない。被用者は3級でも稼得能力を失うリスクが高いから、国年より手厚い保護が設けられた。</div>
+    </div>
+  </div>
+</div><!-- /card cq1 -->
+
+<!-- Q2 -->
+<div class="card" id="cq2">
+  <div class="card-hd"><div class="q-num">02</div>
+    <div><div class="src-tag">法第50条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：障害厚生年金の額</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">障害厚生年金の額は、1級が報酬比例の年金額の<mark>4分の5（125%）</mark>、2級が報酬比例と同額、3級には最低保障額（障害基礎年金2級の<mark>4分の3</mark>相当）がある。</div>
+    <div class="opts-tf" id="q2-opts">
+      <div class="opt" onclick="answer('q2',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q2',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q2-ans">
+      <div class="ans-hd" id="q2-result"></div>
+      <div class="why">✅ <strong>正しい。</strong><strong>法第50条（障害厚生年金の額）</strong>：1級＝報酬比例×<mark>5/4（125%）</mark>、2級＝報酬比例×1（100%）、3級＝報酬比例（最低保障：障害基礎年金2級額の<mark>3/4</mark>）。配偶者加給年金は1・2級のみ加算（3級は対象外）。</div>
+      <div class="def-card">
+        <strong>📖 法第50条（障害厚生年金の額）</strong><br>
+        1級：報酬比例の年金額 × <mark>5/4（125%）</mark>——常時介護費用の上乗せ<br>
+        2級：報酬比例の年金額 × 1（100%）——基準<br>
+        3級：報酬比例の年金額（最低保障：障害基礎年金2級額 × <mark>3/4</mark>）<br>
+        配偶者加給年金：<mark>1・2級のみ</mark>（3級は対象外）<br><br>
+        <strong>【立法趣旨】</strong>1級は常時介護が必要なため介護費用を上乗せ。3級の最低保障は少額報酬比例しかない人の生活を守る底上げ措置。
+      </div>
+      <svg viewBox="0 0 520 90" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="520" height="90" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="22" font-size="11" font-weight="700" fill="#1a1a2e">障害厚生年金の額：等級別</text>
+        <rect x="10" y="32" width="155" height="48" rx="7" fill="#c84b31"/>
+        <text x="87" y="52" font-size="11" font-weight="700" fill="white" text-anchor="middle">1級</text>
+        <text x="87" y="67" font-size="10" fill="#fca5a5" text-anchor="middle">報酬比例 × 5/4（125%）</text>
+        <rect x="183" y="32" width="155" height="48" rx="7" fill="#2a7f7f"/>
+        <text x="260" y="52" font-size="11" font-weight="700" fill="white" text-anchor="middle">2級</text>
+        <text x="260" y="67" font-size="10" fill="#a7f3d0" text-anchor="middle">報酬比例 × 1（100%）</text>
+        <rect x="356" y="32" width="155" height="48" rx="7" fill="#7c3aed"/>
+        <text x="433" y="52" font-size="11" font-weight="700" fill="white" text-anchor="middle">3級</text>
+        <text x="433" y="67" font-size="10" fill="#ede9fe" text-anchor="middle">報酬比例（最低保障3/4）</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「1級は報酬比例の<strong>2倍</strong>」→ <strong style="color:#2d6a4f;">○</strong> <strong>5/4（1.25倍）</strong>——2倍は誤り</div></div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「3級に最低保障額はない」→ <strong style="color:#2d6a4f;">○</strong> 3級にも<strong>最低保障</strong>（障害基礎2級の3/4）あり</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「1級5/4・2級1・3級最低保障3/4」の3分数。分母はすべて4——4ベースで覚える。</div>
+      <div class="law-tag">法第50条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 鈴木さん（40歳・1級）の報酬比例が月15万円なら年金は5/4の月18.75万円。「なぜ1.25倍？」——1級は常時介護が必要で、ヘルパー代などの介護費用が追加でかかる。その分を上乗せした設計。2倍ではなく5/4という数字は「介護費用の上乗せ分」という合理的根拠から。分子が5・4・3と1ずつ減る等差数列と覚えると定着しやすい。</div>
+    </div>
+  </div>
+</div><!-- /card cq2 -->
+
+<!-- Q3 -->
+<div class="card" id="cq3">
+  <div class="card-hd"><div class="q-num">03</div>
+    <div><div class="src-tag">法第47条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：障害認定日</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">障害認定日とは、初診日から起算して<mark>1年6ヵ月</mark>を経過した日、またはその期間内に傷病が<mark>治癒</mark>した場合はその日をいう。</div>
+    <div class="opts-tf" id="q3-opts">
+      <div class="opt" onclick="answer('q3',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q3',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q3-ans">
+      <div class="ans-hd" id="q3-result"></div>
+      <div class="why">✅ <strong>正しい。</strong><strong>法第47条（障害認定日）</strong>：障害認定日＝初診日から<mark>1年6ヵ月</mark>経過した日。1年6ヵ月以内に治癒（症状固定）した場合はその日が認定日。「なぜ1年6ヵ月？」——多くの傷病は1〜2年で症状が固定されるという医学的根拠から。急性期の一時的障害と永続的障害を区別するための期間。</div>
+      <div class="def-card">
+        <strong>📖 法第47条（障害認定日）</strong><br>
+        原則：初診日から <mark>1年6ヵ月</mark>（18ヵ月）経過した日<br>
+        例外：1年6ヵ月以内に<mark>治癒</mark>（症状固定）→ 治癒日が認定日<br>
+        受給権発生：認定日に<mark>障害等級</mark>に該当＋保険料納付要件<br>
+        事後重症（法第47条の2）：認定日時点で等級未満でも後に悪化→<mark>65歳前</mark>に請求可<br><br>
+        <strong>【立法趣旨】</strong>1年6ヵ月待つことで一時的な急性期障害と永続的障害を区別。早期認定しすぎると回復後も年金が続く問題を防ぐ。
+      </div>
+      <svg viewBox="0 0 560 90" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="560" height="90" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="22" font-size="11" font-weight="700" fill="#1a1a2e">障害認定日のタイムライン</text>
+        <line x1="40" y1="55" x2="520" y2="55" stroke="#1a1a2e" stroke-width="2"/>
+        <line x1="80" y1="45" x2="80" y2="65" stroke="#c84b31" stroke-width="2.5"/>
+        <text x="80" y="38" font-size="10" font-weight="700" fill="#c84b31" text-anchor="middle">初診日</text>
+        <line x1="160" y1="47" x2="160" y2="63" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <text x="160" y="80" font-size="8" fill="#7c3aed" text-anchor="middle">治癒日（例）</text>
+        <line x1="300" y1="45" x2="300" y2="65" stroke="#2a7f7f" stroke-width="2.5"/>
+        <text x="300" y="38" font-size="10" font-weight="700" fill="#2a7f7f" text-anchor="middle">1年6ヵ月後</text>
+        <text x="300" y="80" font-size="9" fill="#2a7f7f" text-anchor="middle">← 原則の認定日</text>
+        <text x="160" y="30" font-size="8" fill="#6b7280" text-anchor="middle">この間に治癒→治癒日が認定日</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「障害認定日は初診日から<strong>1年</strong>経過した日」→ <strong style="color:#2d6a4f;">○</strong> <strong>1年6ヵ月</strong>（18ヵ月）</div></div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「認定日は必ず1年6ヵ月後」→ <strong style="color:#2d6a4f;">○</strong> 1年6ヵ月以内に<strong>治癒</strong>すればその治癒日が認定日</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「初診日から1年6ヵ月・または治癒日」の2パターン。1年・2年は誤り。</div>
+      <div class="law-tag">法第47条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 山田さんが交通事故で脊椎を損傷し初診を受けた。1年6ヵ月後が障害認定日——その時点で障害等級に該当していれば受給権が発生する。「なぜ1年6ヵ月待つ？」——交通事故直後はリハビリで回復する可能性がある。すぐに認定すると一時的な障害に年金を払い続けることになる。1年6ヵ月は「これ以上は回復しない」という症状固定の医学的目安から来ている。</div>
+    </div>
+  </div>
+</div><!-- /card cq3 -->
+
+<!-- Q4 -->
+<div class="card" id="cq4">
+  <div class="card-hd"><div class="q-num">04</div>
+    <div><div class="src-tag">法第55条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：障害手当金</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">障害手当金は、初診日から<mark>5年以内</mark>に傷病が治癒し、かつ障害等級<mark>3級</mark>に該当しない程度の障害状態にある者に支給される一時金であり、額は報酬比例の年金額の<mark>2倍</mark>に相当する。</div>
+    <div class="opts-tf" id="q4-opts">
+      <div class="opt" onclick="answer('q4',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q4',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q4-ans">
+      <div class="ans-hd" id="q4-result"></div>
+      <div class="why">✅ <strong>正しい。</strong><strong>法第55条（障害手当金）</strong>：①初診日から<mark>5年以内</mark>に治癒、②障害等級<mark>3級に該当しない</mark>（3級より軽い）障害残存、③額は報酬比例×<mark>2倍</mark>の一時金。3級以上なら障害年金が出るため、手当金は3級未満専用。「なぜ一時金？」——3級未満の軽度障害は継続的収入喪失でなく一時的損失として補填する考え方から。</div>
+      <div class="def-card">
+        <strong>📖 法第55条（障害手当金）</strong><br>
+        要件①：初診日から<mark>5年以内</mark>に治癒<br>
+        要件②：治癒後に<mark>3級より軽い</mark>障害が残存（3級以上なら年金が出る）<br>
+        支給額：報酬比例の年金額 × <mark>2倍</mark>（一時金・一括払い）<br>
+        最低保障：障害基礎年金2級額 × <mark>2倍</mark><br>
+        保険料要件：障害厚生年金と<mark>同じ</mark>（前々月末・3分の2以上）<br><br>
+        <strong>【立法趣旨】</strong>3級未満の軽度障害は継続的な収入喪失でないため年金より一時金で補填。
+      </div>
+      <svg viewBox="0 0 520 90" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="520" height="90" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="22" font-size="11" font-weight="700" fill="#1a1a2e">障害手当金の要件</text>
+        <rect x="10" y="32" width="155" height="48" rx="7" fill="#c84b31"/>
+        <text x="87" y="50" font-size="10" font-weight="700" fill="white" text-anchor="middle">要件①</text>
+        <text x="87" y="65" font-size="9" fill="#fca5a5" text-anchor="middle">初診日から5年以内に治癒</text>
+        <rect x="183" y="32" width="155" height="48" rx="7" fill="#7c3aed"/>
+        <text x="260" y="50" font-size="10" font-weight="700" fill="white" text-anchor="middle">要件②</text>
+        <text x="260" y="65" font-size="9" fill="#ede9fe" text-anchor="middle">3級より軽い障害残存</text>
+        <rect x="356" y="32" width="155" height="48" rx="7" fill="#2a7f7f"/>
+        <text x="433" y="50" font-size="10" font-weight="700" fill="white" text-anchor="middle">支給額</text>
+        <text x="433" y="65" font-size="9" fill="#a7f3d0" text-anchor="middle">報酬比例×2倍（一時金）</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「障害手当金は3級に該当する場合に支給」→ <strong style="color:#2d6a4f;">○</strong> <strong>3級より軽い（3級未満）</strong>が対象</div></div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「障害手当金の額は報酬比例の<strong>1.5倍</strong>」→ <strong style="color:#2d6a4f;">○</strong> <strong>2倍</strong></div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「5年・3級未満・2倍・一時金・保険料要件は同じ」の5点セット。</div>
+      <div class="law-tag">法第55条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 佐藤さん（30歳）が骨折で入院し3年後に治癒したが、指が少し動かしにくい後遺症が残った——3級より軽い障害。初診日から5年以内治癒なので障害手当金を一括受給できる。「なぜ年金でなく一時金？」——3級未満の軽度障害は仕事を完全に失うわけではないから、継続的な年金より一度きりの補填が適切。「2倍」という金額は「2年分の報酬比例」として設計された。</div>
+    </div>
+  </div>
+</div><!-- /card cq4 -->
+
+<!-- Q5 -->
+<div class="card" id="cq5">
+  <div class="card-hd"><div class="q-num">05</div>
+    <div><div class="src-tag">法第47条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：保険料納付要件</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">障害厚生年金の保険料納付要件は、初診日の属する月の<mark>前々月</mark>までに、被保険者期間の<mark>3分の2以上</mark>の期間について保険料が納付（免除）されていることである。</div>
+    <div class="opts-tf" id="q5-opts">
+      <div class="opt" onclick="answer('q5',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q5',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q5-ans">
+      <div class="ans-hd" id="q5-result"></div>
+      <div class="why">✅ <strong>正しい。</strong><strong>法第47条（保険料納付要件）</strong>：初診日の<mark>前々月末</mark>時点で被保険者期間の<mark>3分の2以上</mark>が納付（免除）済みであること。「なぜ前々月？」——前月の保険料は翌月末が納期限で未確定。確定している前々月末を基準とする。特例として直近1年間（令和8年3月31日まで）に未納がなければ3分の2要件を満たさなくてもOK。</div>
+      <div class="def-card">
+        <strong>📖 法第47条（保険料納付要件）</strong><br>
+        原則：初診日の<mark>前々月末</mark>時点で被保険者期間の<mark>3分の2以上</mark>が納付・免除済み<br>
+        特例：直近<mark>1年間</mark>に未納がなければOK（令和<mark>8</mark>年3月31日まで）<br>
+        免除期間：<mark>納付済み</mark>として算入（完全未納のみ除外）<br><br>
+        <strong>【立法趣旨】</strong>長期未納者まで保護すると不公平。一定の納付実績（3分の2）を持つ者に限定して制度の持続可能性を守る。
+      </div>
+      <svg viewBox="0 0 520 80" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="520" height="80" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="20" font-size="11" font-weight="700" fill="#1a1a2e">保険料納付要件：原則 vs 特例</text>
+        <rect x="10" y="28" width="245" height="42" rx="7" fill="#2a7f7f"/>
+        <text x="132" y="46" font-size="10" font-weight="700" fill="white" text-anchor="middle">原則（3分の2要件）</text>
+        <text x="132" y="61" font-size="9" fill="#a7f3d0" text-anchor="middle">前々月末で被保険者期間の2/3以上</text>
+        <rect x="265" y="28" width="245" height="42" rx="7" fill="#c9930a"/>
+        <text x="387" y="46" font-size="10" font-weight="700" fill="white" text-anchor="middle">特例（直近1年）</text>
+        <text x="387" y="61" font-size="9" fill="#fde68a" text-anchor="middle">直近1年間に未納なし（令和8年3月末まで）</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「初診日の<strong>前月末</strong>時点で3分の2以上」→ <strong style="color:#2d6a4f;">○</strong> <strong>前々月末</strong>（前月は納期限未到来で未確定）</div></div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 免除期間は未納ではなく<strong>納付済み</strong>として3分の2要件に算入される。</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「前々月末・3分の2以上・特例は直近1年・令和8年3月末まで」の4点。前月ではなく前々月が最頻出の引っかけ。</div>
+      <div class="law-tag">法第47条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 田中さん（45歳）が突然の病気で初診を受けた4月——「前々月末」の2月末時点の納付状況で要件を確認する。3月（前月）の保険料は4月30日が納期限でまだ未確定だから使えない。「3分の2でよい（全額でなくてよい）」——生活が苦しくて一部未納があっても3分の2払っていれば保護するという現実的な配慮。特例の直近1年は就職したばかりで加入期間が短い若い世代への配慮。</div>
+    </div>
+  </div>
+</div><!-- /card cq5 -->
+
+</div><!-- /qwrap -->
+
+<div class="qwrap">
+
+<!-- F1 -->
+<div class="card" id="cf1">
+  <div class="blank-card-body">
+    <div class="card-hd" style="margin:-16px -18px 16px;"><div class="q-num">06</div>
+      <div><div class="src-tag">法第50条 ／ 穴埋め式</div><div class="q-type">難易度：★★☆ ／ 単元：障害等級と年金額のセット</div></div>
+    </div>
+    <div class="blank-q">障害厚生年金：1級＝報酬比例×<span class="blank" id="f1a" onclick="selB('f1','f1a')">　　　</span>、2級＝報酬比例×<span class="blank" id="f1b" onclick="selB('f1','f1b')">　</span>、3級の最低保障は障害基礎2級額の<span class="blank" id="f1c" onclick="selB('f1','f1c')">　　　</span>。配偶者加給年金は<span class="blank" id="f1d" onclick="selB('f1','f1d')">　　　</span>のみ加算。</div>
+    <div class="chips" id="f1-chips">
+      <div class="chp" onclick="fillB('f1','f1a',this,'5/4')">5/4</div>
+      <div class="chp" onclick="fillB('f1','f1b',this,'1')">1</div>
+      <div class="chp" onclick="fillB('f1','f1c',this,'3/4')">3/4</div>
+      <div class="chp" onclick="fillB('f1','f1d',this,'1・2級')">1・2級</div>
+    </div>
+    <button class="chk-btn" id="chk-f1" onclick="chkF('f1')">答え合わせ</button>
+    <div class="f-ans" id="f1-ans">
+      <div class="ans-hd" id="f1-result"></div>
+      <div class="why">1級<mark>5/4</mark>・2級<mark>1</mark>・最低保障<mark>3/4</mark>。配偶者加給年金は<mark>1・2級</mark>のみ——3級は対象外。分子が5→4→3と1ずつ減る等差数列として覚えると定着しやすい。</div>
+      <svg viewBox="0 0 400 60" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="60" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">障害等級別の年金額（報酬比例を1として）</text>
+        <rect x="10" y="26" width="118" height="28" rx="5" fill="#c84b31"/>
+        <text x="69" y="44" font-size="11" font-weight="700" fill="white" text-anchor="middle">1級：5/4（125%）</text>
+        <rect x="138" y="26" width="118" height="28" rx="5" fill="#2a7f7f"/>
+        <text x="197" y="44" font-size="11" font-weight="700" fill="white" text-anchor="middle">2級：1（100%）</text>
+        <rect x="266" y="26" width="124" height="28" rx="5" fill="#7c3aed"/>
+        <text x="328" y="44" font-size="10" font-weight="700" fill="white" text-anchor="middle">3級：最低保障3/4</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「1級は報酬比例の2倍」→ <strong style="color:#2d6a4f;">○</strong> <strong>5/4（1.25倍）</strong></div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「5/4・1・3/4」の3分数はすべて分母4——分子が5・4・3と1ずつ減る。</div>
+      <div class="law-tag">法第50条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 「5/4・4/4・3/4」——全部分母が4。1級が5、2級が4（＝1）、3級の最低保障が3。分子5→4→3と1ずつ減る等差数列と気づくと定着する。配偶者加給年金が1・2級のみという点は、3級は比較的軽度で就労継続の可能性があるため扶養手当的な加算が不要という設計思想から来ている。</div>
+    </div>
+  </div>
+</div><!-- /card cf1 -->
+
+<!-- F2 -->
+<div class="card" id="cf2">
+  <div class="blank-card-body">
+    <div class="card-hd" style="margin:-16px -18px 16px;"><div class="q-num">07</div>
+      <div><div class="src-tag">法第47条 ／ 穴埋め式</div><div class="q-type">難易度：★★☆ ／ 単元：障害認定日と事後重症</div></div>
+    </div>
+    <div class="blank-q">障害認定日＝初診日から<span class="blank" id="f2a" onclick="selB('f2','f2a')">　　</span>ヵ月（1年6ヵ月）経過した日（または治癒日）。認定日に<span class="blank" id="f2b" onclick="selB('f2','f2b')">　　　　　</span>に該当で受給権発生。事後重症は<span class="blank" id="f2c" onclick="selB('f2','f2c')">　　</span>歳前に請求が必要。</div>
+    <div class="chips" id="f2-chips">
+      <div class="chp" onclick="fillB('f2','f2a',this,'18')">18</div>
+      <div class="chp" onclick="fillB('f2','f2b',this,'障害等級')">障害等級</div>
+      <div class="chp" onclick="fillB('f2','f2c',this,'65')">65</div>
+    </div>
+    <button class="chk-btn" id="chk-f2" onclick="chkF('f2')">答え合わせ</button>
+    <div class="f-ans" id="f2-ans">
+      <div class="ans-hd" id="f2-result"></div>
+      <div class="why">初診日から<mark>18</mark>ヵ月（1年6ヵ月）後が原則の認定日。認定日に<mark>障害等級</mark>に該当していれば受給権発生。事後重症は<mark>65</mark>歳前に請求——65歳以降は原則として新規の事後重症請求はできない。</div>
+      <svg viewBox="0 0 400 60" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="60" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">受給権発生の2パターン</text>
+        <rect x="10" y="26" width="180" height="28" rx="5" fill="#2a7f7f"/>
+        <text x="100" y="44" font-size="9" font-weight="700" fill="white" text-anchor="middle">認定日請求：認定日に等級該当</text>
+        <rect x="210" y="26" width="180" height="28" rx="5" fill="#c9930a"/>
+        <text x="300" y="44" font-size="9" font-weight="700" fill="white" text-anchor="middle">事後重症：後に悪化→65歳前請求</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「事後重症は70歳前なら請求できる」→ <strong style="color:#2d6a4f;">○</strong> <strong>65歳前</strong>に請求が必要</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「18ヵ月（1年6ヵ月）・障害等級・事後重症は65歳前」の3点。</div>
+      <div class="law-tag">法第47条・47条の2</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 山田さんは認定日時点では3級にも満たなかったが、その後症状が悪化して64歳のときに請求——事後重症で受給権が発生する。「なぜ65歳前？」——65歳になると老齢厚生年金の受給権が発生し、障害年金との関係が複雑になるから。65歳以降は原則として事後重症の新規請求はできない。「認定日に等級未満でも諦めないで65歳前に請求」が社労士実務の重要アドバイス。</div>
+    </div>
+  </div>
+</div><!-- /card cf2 -->
+
+<!-- F3 -->
+<div class="card" id="cf3">
+  <div class="blank-card-body">
+    <div class="card-hd" style="margin:-16px -18px 16px;"><div class="q-num">08</div>
+      <div><div class="src-tag">法第55条 ／ 穴埋め式</div><div class="q-type">難易度：★★★ ／ 単元：障害手当金の4要件</div></div>
+    </div>
+    <div class="blank-q">障害手当金：①初診日から<span class="blank" id="f3a" onclick="selB('f3','f3a')">　</span>年以内に治癒、②治癒後に<span class="blank" id="f3b" onclick="selB('f3','f3b')">　　　</span>より軽い障害残存、③額は報酬比例の年金額の<span class="blank" id="f3c" onclick="selB('f3','f3c')">　</span>倍（一時金）、④保険料要件は障害厚生年金と<span class="blank" id="f3d" onclick="selB('f3','f3d')">　　</span>。</div>
+    <div class="chips" id="f3-chips">
+      <div class="chp" onclick="fillB('f3','f3a',this,'5')">5</div>
+      <div class="chp" onclick="fillB('f3','f3b',this,'3級')">3級</div>
+      <div class="chp" onclick="fillB('f3','f3c',this,'2')">2</div>
+      <div class="chp" onclick="fillB('f3','f3d',this,'同じ')">同じ</div>
+    </div>
+    <button class="chk-btn" id="chk-f3" onclick="chkF('f3')">答え合わせ</button>
+    <div class="f-ans" id="f3-ans">
+      <div class="ans-hd" id="f3-result"></div>
+      <div class="why">①<mark>5</mark>年以内に治癒、②<mark>3級</mark>より軽い障害（3級なら年金が出る）、③報酬比例×<mark>2</mark>倍の一時金、④保険料要件は障害厚生年金と<mark>同じ</mark>。「5年・3級未満・2倍・同じ」の4ワードで体に入れる。</div>
+      <svg viewBox="0 0 400 60" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="60" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">障害手当金 vs 障害厚生年金3級の違い</text>
+        <rect x="10" y="26" width="180" height="28" rx="5" fill="#7c3aed"/>
+        <text x="100" y="40" font-size="9" font-weight="700" fill="white" text-anchor="middle">障害手当金</text>
+        <text x="100" y="52" font-size="8" fill="#ede9fe" text-anchor="middle">3級未満・5年以内治癒・2倍一時金</text>
+        <rect x="210" y="26" width="180" height="28" rx="5" fill="#c84b31"/>
+        <text x="300" y="40" font-size="9" font-weight="700" fill="white" text-anchor="middle">障害厚生年金（3級）</text>
+        <text x="300" y="52" font-size="8" fill="#fca5a5" text-anchor="middle">3級該当・報酬比例（最低保障あり）</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「障害手当金は3年以内に治癒した場合に支給」→ <strong style="color:#2d6a4f;">○</strong> <strong>5年以内</strong></div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「5年・3級未満・2倍・同じ（保険料要件）」の4ワードをセット暗記。</div>
+      <div class="law-tag">法第55条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 「5年・3級未満・2倍」——障害手当金は障害厚生年金の「下位版」。3級なら年金が出るが、それより軽い場合に5年以内治癒なら一時金2倍で補填する。「なぜ2倍？」——2級の年金（報酬比例×1）を2年分まとめて払うイメージ。継続的な障害でないから年金でなく一時金という設計の合理性が「2倍」という金額に表れている。</div>
+    </div>
+  </div>
+</div><!-- /card cf3 -->
+
+<!-- F4 -->
+<div class="card" id="cf4">
+  <div class="blank-card-body">
+    <div class="card-hd" style="margin:-16px -18px 16px;"><div class="q-num">09</div>
+      <div><div class="src-tag">法第47条 ／ 穴埋め式</div><div class="q-type">難易度：★★★ ／ 単元：保険料納付要件の詳細</div></div>
+    </div>
+    <div class="blank-q">保険料納付要件（原則）：初診日の<span class="blank" id="f4a" onclick="selB('f4','f4a')">　　　</span>末時点で被保険者期間の<span class="blank" id="f4b" onclick="selB('f4','f4b')">　　　　　</span>以上が納付・免除済み。特例：直近<span class="blank" id="f4c" onclick="selB('f4','f4c')">　</span>年間に未納なし（令和<span class="blank" id="f4d" onclick="selB('f4','f4d')">　</span>年3月31日まで）。</div>
+    <div class="chips" id="f4-chips">
+      <div class="chp" onclick="fillB('f4','f4a',this,'前々月')">前々月</div>
+      <div class="chp" onclick="fillB('f4','f4b',this,'3分の2')">3分の2</div>
+      <div class="chp" onclick="fillB('f4','f4c',this,'1')">1</div>
+      <div class="chp" onclick="fillB('f4','f4d',this,'8')">8</div>
+    </div>
+    <button class="chk-btn" id="chk-f4" onclick="chkF('f4')">答え合わせ</button>
+    <div class="f-ans" id="f4-ans">
+      <div class="ans-hd" id="f4-result"></div>
+      <div class="why"><mark>前々月</mark>末時点で<mark>3分の2</mark>以上が納付・免除済み。特例は直近<mark>1</mark>年間に未納なし（令和<mark>8</mark>年3月31日まで）。「前月ではなく前々月」——前月の保険料は翌月末が納期限で未確定だから確定している前々月末を基準にする。</div>
+      <svg viewBox="0 0 400 60" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="60" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">基準日：前々月末</text>
+        <rect x="10" y="26" width="180" height="28" rx="5" fill="#2a7f7f"/>
+        <text x="100" y="44" font-size="9" font-weight="700" fill="white" text-anchor="middle">原則：前々月末時点で2/3以上</text>
+        <rect x="210" y="26" width="180" height="28" rx="5" fill="#c9930a"/>
+        <text x="300" y="44" font-size="9" font-weight="700" fill="white" text-anchor="middle">特例：直近1年間に未納なし</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「初診日の<strong>前月末</strong>時点で確認」→ <strong style="color:#2d6a4f;">○</strong> <strong>前々月末</strong></div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「前々月末・3分の2・直近1年・令和8年3月31日」の4点。前月ではなく前々月が最頻出の引っかけ。</div>
+      <div class="law-tag">法第47条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 「前々月末」という基準——4月が初診日なら、2月末時点の納付状況で確認する。3月（前月）の保険料は4月30日が納期限でまだ未確定。「直近1年特例」は就職したばかりで加入期間が短い人への配慮——直近1年きちんと払っていれば保護する。令和8年3月31日という期限付き特例は、長期的には原則要件のみに絞っていく方向性を示している。</div>
+    </div>
+  </div>
+</div><!-- /card cf4 -->
+
+<!-- F5 -->
+<div class="card" id="cf5">
+  <div class="blank-card-body">
+    <div class="card-hd" style="margin:-16px -18px 16px;"><div class="q-num">10</div>
+      <div><div class="src-tag">法第50条 ／ 穴埋め式</div><div class="q-type">難易度：★★★ ／ 単元：300ヵ月みなし・国年との関係</div></div>
+    </div>
+    <div class="blank-q">被保険者期間が<span class="blank" id="f5a" onclick="selB('f5','f5a')">　　　</span>ヵ月未満の場合は<span class="blank" id="f5b" onclick="selB('f5','f5b')">　　　</span>ヵ月として計算（短期要件）。1・2級には障害基礎年金が<span class="blank" id="f5c" onclick="selB('f5','f5c')">　　　</span>されるが、3級には障害基礎年金は<span class="blank" id="f5d" onclick="selB('f5','f5d')">　　　　　</span>。</div>
+    <div class="chips" id="f5-chips">
+      <div class="chp" onclick="fillB('f5','f5a',this,'300')">300</div>
+      <div class="chp" onclick="fillB('f5','f5b',this,'300')">300</div>
+      <div class="chp" onclick="fillB('f5','f5c',this,'併給')">併給</div>
+      <div class="chp" onclick="fillB('f5','f5d',this,'支給されない')">支給されない</div>
+    </div>
+    <button class="chk-btn" id="chk-f5" onclick="chkF('f5')">答え合わせ</button>
+    <div class="f-ans" id="f5-ans">
+      <div class="ans-hd" id="f5-result"></div>
+      <div class="why">被保険者期間<mark>300</mark>ヵ月未満なら<mark>300</mark>ヵ月（25年）として計算——若くして障害を負った人の年金額を底上げ。1・2級には障害基礎年金が<mark>併給</mark>（国年も同時受給）。3級は障害基礎年金が<mark>支給されない</mark>——厚年のみ受給。</div>
+      <svg viewBox="0 0 400 60" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="60" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">300ヵ月みなし・国年との関係</text>
+        <rect x="10" y="26" width="180" height="28" rx="5" fill="#2a7f7f"/>
+        <text x="100" y="44" font-size="9" font-weight="700" fill="white" text-anchor="middle">300ヵ月未満→300ヵ月みなし</text>
+        <rect x="210" y="26" width="180" height="28" rx="5" fill="#c84b31"/>
+        <text x="300" y="44" font-size="9" font-weight="700" fill="white" text-anchor="middle">1・2級は国年併給・3級は厚年のみ</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「3級にも障害基礎年金が支給される」→ <strong style="color:#2d6a4f;">○</strong> 3級は<strong>障害基礎年金なし</strong>（厚年のみ）</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「300・300みなし・1・2級は併給・3級は厚年のみ」の4点セット。</div>
+      <div class="law-tag">法第50条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 25歳で障害を負った若者の被保険者期間はわずか36ヵ月——このまま計算すると障害厚生年金が極端に少なくなる。そこで300ヵ月（25年）とみなして計算する。「なぜ300ヵ月？」——若くして障害を負った人が老後の年金を積み上げられなかった不利を補正する制度設計。「3級に障害基礎年金なし」——3級は国年の対象外なので厚年のみ。1・2級は国年（1〜2級対象）と厚年の両方から受け取れる。</div>
+    </div>
+  </div>
+</div><!-- /card cf5 -->
+
+</div><!-- /qwrap -->
+
+<div class="complete-bar" id="complete-bar">
+  <div class="complete-card">
+    <h2>🎉 全問回答完了！</h2>
+    <div class="complete-score" id="complete-score">0 / 10</div>
+    <div style="color:rgba(255,255,255,.7);font-size:13px;" id="complete-msg"></div>
+    <button class="copy-btn2" id="copy-btn2" onclick="copyRecord()">📋 記録をコピー</button>
+  </div>
+</div>
+</div><!-- /panel-quiz -->
+
+<!-- PANEL-MINDMAP -->
+<div id="panel-mindmap" class="tab-panel">
+<div class="mm-wrap">
+  <div style="background:var(--teal-light);border:1px solid var(--teal);border-radius:10px;padding:12px 16px;font-size:13px;color:#1a4040;margin-bottom:24px;line-height:1.7;">
+    🗺 <strong>連想図</strong>：厚生年金法 Day5「障害厚生年金・障害手当金」の重要論点を3STEPで整理。
+  </div>
+  <div class="mm-step">
+    <div class="mm-step-hd"><div class="mm-step-num">1</div><div class="mm-step-title">障害厚生年金の等級と金額</div></div>
+    <div class="mm-step-body">
+      <div class="mm-item">📌 <strong>等級範囲</strong>：障害厚生年金は<mark>1〜3級</mark>。障害基礎年金（国年）は1〜2級のみ——被用者保護で3級まで対象。</div>
+      <div class="mm-item">📌 <strong>年金額</strong>：1級＝報酬比例×<mark>5/4</mark>、2級＝×1、3級＝最低保障（障害基礎2級の<mark>3/4</mark>）。配偶者加給年金は1・2級のみ。</div>
+      <div class="mm-item">📌 <strong>300ヵ月みなし</strong>：被保険者期間が300ヵ月未満なら300ヵ月として計算——若い人の年金額を底上げ。</div>
+      <div class="mm-item">📌 <strong>国年との関係</strong>：1・2級は障害基礎年金も併給。3級は厚年のみ（障害基礎年金なし）。</div>
+      <div class="mm-alert">🚨 「1級は2倍」は最頻出の誤り。正しくは<mark>5/4（1.25倍）</mark>——分子が5・4・3と1ずつ減る。</div>
+      <div class="mm-gorof">🧠 「5/4・4/4・3/4」——全部分母4。等差数列で覚えると間違えない。</div>
+    </div>
+  </div>
+  <div class="mm-step">
+    <div class="mm-step-hd"><div class="mm-step-num">2</div><div class="mm-step-title">障害認定日・受給要件・保険料納付要件</div></div>
+    <div class="mm-step-body">
+      <div class="mm-item">📌 <strong>障害認定日</strong>：初診日から<mark>1年6ヵ月</mark>（18ヵ月）経過した日（または治癒日）——症状固定の医学的目安。</div>
+      <div class="mm-item">📌 <strong>事後重症</strong>：認定日時点で等級未満でも後に悪化→<mark>65歳前</mark>に請求で受給権発生。</div>
+      <div class="mm-item">📌 <strong>保険料納付要件</strong>：初診日の<mark>前々月末</mark>時点で被保険者期間の<mark>3分の2以上</mark>が納付・免除済み（特例：直近1年間に未納なし・令和8年3月31日まで）。</div>
+      <div class="mm-alert">🚨 「前月末」は誤り。<mark>前々月末</mark>——前月の保険料は翌月末が納期限で未確定だから。</div>
+      <div class="mm-gorof">🧠 「1年6ヵ月（18ヵ月）・前々月末・3分の2・65歳前（事後重症）」の4数字をセット。</div>
+    </div>
+  </div>
+  <div class="mm-step">
+    <div class="mm-step-hd"><div class="mm-step-num">3</div><div class="mm-step-title">障害手当金</div></div>
+    <div class="mm-step-body">
+      <div class="mm-item">📌 <strong>支給要件</strong>：①初診日から<mark>5年以内</mark>に治癒、②<mark>3級より軽い</mark>障害が残存（3級以上なら年金）。</div>
+      <div class="mm-item">📌 <strong>支給額</strong>：報酬比例×<mark>2倍</mark>（一時金・一括払い）。保険料要件は障害厚生年金と同じ。</div>
+      <div class="hikakke-box">
+        <div class="hikakke-hd"><span>🔥 Day5 最重要引っかけ TOP5</span></div>
+        <div class="hikakke-body">
+          <div class="hikakke-row">× 1級の障害厚生年金は報酬比例の2倍 → ○ <strong>5/4（1.25倍）</strong></div>
+          <div class="hikakke-row">× 障害認定日は初診日から1年後 → ○ <strong>1年6ヵ月</strong>後（または治癒日）</div>
+          <div class="hikakke-row">× 保険料要件は前月末時点で確認 → ○ <strong>前々月末</strong>時点</div>
+          <div class="hikakke-row">× 障害手当金は3級に該当する場合に支給 → ○ <strong>3級より軽い（3級未満）</strong>が対象</div>
+          <div class="hikakke-row">× 3級の障害厚生年金に障害基礎年金も支給 → ○ 3級は<strong>障害基礎年金なし</strong>（厚年のみ）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mm-step" style="border-color:#1d4ed8;">
+    <div class="mm-step-hd" style="background:#1d4ed8;"><div class="mm-step-num" style="color:#bfdbfe;">⚖</div><div class="mm-step-title">障害厚生年金 vs 障害基礎年金 vs 障害手当金 比較表</div></div>
+    <div class="mm-step-body">
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:12px;min-width:520px;">
+          <thead>
+            <tr style="background:#1d4ed8;">
+              <th style="padding:8px 10px;color:white;text-align:left;border-bottom:2px solid #93c5fd;">論点</th>
+              <th style="padding:8px 10px;color:#bfdbfe;text-align:center;border-bottom:2px solid #93c5fd;">障害基礎年金</th>
+              <th style="padding:8px 10px;color:#fde68a;text-align:center;border-bottom:2px solid #93c5fd;">障害厚生年金</th>
+              <th style="padding:8px 10px;color:#a7f3d0;text-align:center;border-bottom:2px solid #93c5fd;">障害手当金</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #e0e7ff;background:#f8faff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">対象等級</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#fee2e2;">1〜2級のみ</mark></td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#dcfce7;">1〜3級</mark></td>
+              <td style="padding:8px 10px;text-align:center;">3級より軽い</td>
+            </tr>
+            <tr style="border-bottom:1px solid #e0e7ff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">支給形態</td>
+              <td style="padding:8px 10px;text-align:center;">年金（継続）</td>
+              <td style="padding:8px 10px;text-align:center;">年金（継続）</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#fee2e2;">一時金（一括）</mark></td>
+            </tr>
+            <tr style="border-bottom:1px solid #e0e7ff;background:#f8faff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">1級の額</td>
+              <td style="padding:8px 10px;text-align:center;">定額×5/4</td>
+              <td style="padding:8px 10px;text-align:center;">報酬比例×5/4</td>
+              <td style="padding:8px 10px;text-align:center;">—</td>
+            </tr>
+            <tr style="border-bottom:1px solid #e0e7ff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">手当金の額</td>
+              <td style="padding:8px 10px;text-align:center;">なし</td>
+              <td style="padding:8px 10px;text-align:center;">なし</td>
+              <td style="padding:8px 10px;text-align:center;">報酬比例×<mark style="background:#dcfce7;">2倍</mark></td>
+            </tr>
+            <tr style="background:#f8faff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">保険料要件</td>
+              <td style="padding:8px 10px;text-align:center;">前々月末・2/3以上</td>
+              <td style="padding:8px 10px;text-align:center;">前々月末・2/3以上</td>
+              <td style="padding:8px 10px;text-align:center;">同上（同じ）</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div><!-- /panel-mindmap -->
+
+<!-- PANEL-FLASH -->
+<div id="panel-flash" class="tab-panel">
+<div class="fc-wrap">
+  <div class="fc-meta">
+    <div><div class="fc-counter" id="fc-counter">1<span> / 20</span></div></div>
+    <button class="fc-nav-btn shuffle" onclick="fcShuffle()" style="max-width:100px;padding:8px 12px;font-size:12px;">🔀 シャッフル</button>
+  </div>
+  <div class="fc-gauge-wrap">
+    <div class="fc-gauge-labels">
+      <span class="fc-gauge-label-ng">❌ <span id="fc-ng-count">0</span></span>
+      <span class="fc-gauge-label-mid" id="fc-remaining">残り 20 枚</span>
+      <span class="fc-gauge-label-ok"><span id="fc-ok-count">0</span> ✅</span>
+    </div>
+    <div class="fc-gauge-track">
+      <div class="fc-gauge-ng" id="fc-gauge-ng"></div>
+      <div class="fc-gauge-mid-line"></div>
+      <div class="fc-gauge-ok" id="fc-gauge-ok"></div>
+    </div>
+  </div>
+  <div class="fc-carousel" id="fc-carousel">
+    <div class="fc-slot prev" id="fc-slot-prev"><div class="fc-inner"><div class="fc-face fc-front-face">
+      <div class="fc-front-hd"><span class="fc-front-tag" id="fc-prev-tag">—</span><span style="font-size:11px;color:var(--gray);" id="fc-prev-cat"></span></div>
+      <div class="fc-front-body"><div class="fc-q" id="fc-prev-q" style="font-size:13px;opacity:.7;"></div></div>
+    </div></div></div>
+    <div class="fc-slot curr" id="fc-slot-curr" onclick="fcFlip()">
+      <div class="fc-inner" id="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd"><span class="fc-front-tag" id="fc-tag">Q01</span><span style="font-size:11px;color:var(--gray);" id="fc-cat">障害等級</span></div>
+          <div class="fc-front-body"><div class="fc-q" id="fc-q">—</div></div>
+          <div class="fc-ox">
+            <button class="fc-ox-btn o" onclick="fcChoose(true);event.stopPropagation();">○</button>
+            <button class="fc-ox-btn x" onclick="fcChoose(false);event.stopPropagation();">×</button>
+          </div>
+        </div>
+        <div class="fc-face fc-back-face">
+          <div class="fc-back-hd"><span class="fc-verdict" id="fc-verdict">○　正しい</span><span id="fc-user-ans" style="font-size:12px;margin-left:auto;"></span></div>
+          <div class="fc-back-body">
+            <div class="fc-answer" id="fc-answer">—</div>
+            <div class="fc-reason" id="fc-reason">—</div>
+            <div class="fc-lawref" id="fc-lawref">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-slot next" id="fc-slot-next"><div class="fc-inner"><div class="fc-face fc-front-face">
+      <div class="fc-front-hd"><span class="fc-front-tag" id="fc-next-tag">—</span><span style="font-size:11px;color:var(--gray);" id="fc-next-cat"></span></div>
+      <div class="fc-front-body"><div class="fc-q" id="fc-next-q" style="font-size:13px;opacity:.7;"></div></div>
+    </div></div></div>
+  </div>
+  <div class="fc-nav" id="fc-nav" style="display:none;">
+    <button class="fc-nav-btn again" onclick="fcNext(false)">😅 もう一度</button>
+    <button class="fc-nav-btn got"   onclick="fcNext(true)">✅ わかった！</button>
+  </div>
+  <div class="fc-result" id="fc-result">
+    <div style="font-size:36px;margin-bottom:8px;" id="fc-emoji">🎉</div>
+    <h3>フラッシュカード完了！</h3>
+    <div class="fc-result-score" id="fc-result-score">—</div>
+    <div class="fc-result-sub" id="fc-result-sub">—</div>
+    <button class="fc-restart-btn" onclick="fcRestart()">🔁 もう一周する</button>
+  </div>
+</div>
+</div><!-- /panel-flash -->
+
+<!-- PANEL-SPIDER -->
+<div id="panel-spider" class="tab-panel">
+<div class="spider-wrap">
+  <div style="background:var(--teal-light);border:1px solid var(--teal);border-radius:10px;padding:12px 16px;font-size:13px;color:#1a4040;margin-bottom:20px;line-height:1.7;">
+    🕸️ <strong>記憶マップ</strong>：第2階層をタップで枝の展開・解説を切り替え。
+  </div>
+  <div id="sp-root" style="width:100%;"></div>
+  <div id="spider-detail" style="display:none;margin-top:16px;background:white;border:2px solid #1a1a2e;border-radius:14px;overflow:hidden;">
+    <div id="spider-detail-hd" style="padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+      <span id="spider-detail-title" style="font-weight:700;font-size:15px;color:white;"></span>
+      <button onclick="closeSpiderDetail()" style="border:none;background:none;font-size:22px;cursor:pointer;color:rgba(255,255,255,.8);line-height:1;padding:0 4px;">×</button>
+    </div>
+    <div id="spider-detail-body" style="padding:16px 18px 20px;"></div>
+  </div>
+</div>
+</div><!-- /panel-spider -->
+
+<script>
+var DAY_META={day:'Day5',block:'厚生年金法',unit:'障害厚生年金・障害手当金',range:'法第47条〜第57条',total:10};
+
+function copyRecord(){
+  var saved=JSON.parse(localStorage.getItem('kounen_day5')||'{}');
+  var cv=saved.correct!==undefined?saved.correct:(score||0);
+  var t=saved.total||10;
+  var dt=saved.ts?new Date(saved.ts):new Date();
+  var ds=dt.getFullYear()+'/'+String(dt.getMonth()+1).padStart(2,'0')+'/'+String(dt.getDate()).padStart(2,'0');
+  var row=[DAY_META.day,DAY_META.block,DAY_META.unit,DAY_META.range,t,ds,cv,t>0?Math.round(cv/t*100):0].join('\t');
+  navigator.clipboard.writeText(row).then(showCopied).catch(function(){var ta=document.createElement('textarea');ta.value=row;ta.style.cssText='position:fixed;opacity:0;';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showCopied();});
+}
+function showCopied(){['copy-btn','copy-btn2'].forEach(function(id){var b=document.getElementById(id);if(!b)return;b.textContent='✅ コピーしました！';b.classList.add('copied');setTimeout(function(){b.textContent='📋 記録をコピー';b.classList.remove('copied');},2500);});}
+
+var correct_ans={q1:0,q2:0,q3:0,q4:0,q5:0};
+var done={},score=0,total=0;
+function answer(qid,idx){
+  if(done[qid])return;done[qid]=true;
+  var opts=document.querySelectorAll('#'+qid+'-opts .opt');
+  var ans=document.getElementById(qid+'-ans');
+  var ok=idx===correct_ans[qid];
+  opts.forEach(function(o,i){if(i===correct_ans[qid])o.classList.add('correct');else if(i===idx&&!ok)o.classList.add('wrong');});
+  ans.className='ans-box show '+(ok?'ok':'ng');
+  var hd=document.getElementById(qid+'-result');
+  hd.textContent=ok?'⭕ 正解！':'❌ 不正解';hd.style.color=ok?'var(--green)':'var(--red)';
+  if(ok)score++;total++;
+  document.getElementById('score').textContent=score;
+  updateProg();
+  setTimeout(function(){ans.scrollIntoView({behavior:'smooth',block:'nearest'});},100);
+}
+
+var defs={
+  f1:{f1a:'5/4',f1b:'1',f1c:'3/4',f1d:'1・2級'},
+  f2:{f2a:'18',f2b:'障害等級',f2c:'65'},
+  f3:{f3a:'5',f3b:'3級',f3c:'2',f3d:'同じ'},
+  f4:{f4a:'前々月',f4b:'3分の2',f4c:'1',f4d:'8'},
+  f5:{f5a:'300',f5b:'300',f5c:'併給',f5d:'支給されない'}
+};
+var state={f1:{},f2:{},f3:{},f4:{},f5:{}};
+var sel={f1:null,f2:null,f3:null,f4:null,f5:null};
+var fdone={};
+function selB(fid,bid){
+  if(fdone[fid])return;
+  if(state[fid][bid]!==undefined){var pv=state[fid][bid];delete state[fid][bid];document.getElementById(bid).textContent='　　';document.querySelectorAll('#'+fid+'-chips .chp').forEach(function(c){if(c.textContent===pv&&c.classList.contains('used'))c.classList.remove('used');});}
+  document.querySelectorAll('[id^="'+fid+'"][class*="blank"]').forEach(function(b){b.classList.remove('sel');});
+  sel[fid]=bid;document.getElementById(bid).classList.add('sel');
+}
+function fillB(fid,bid,chip,val){
+  if(fdone[fid])return;
+  var s=bid?bid:sel[fid];
+  if(!s){var keys=Object.keys(defs[fid]);var empty=null;for(var i=0;i<keys.length;i++){if(state[fid][keys[i]]===undefined){empty=keys[i];break;}}if(!empty)return;s=empty;}
+  if(state[fid][s]!==undefined){var pv=state[fid][s];document.querySelectorAll('#'+fid+'-chips .chp').forEach(function(c){if(c.textContent===pv&&c.classList.contains('used'))c.classList.remove('used');});}
+  document.getElementById(s).textContent=val;document.getElementById(s).classList.remove('sel');
+  state[fid][s]=val;chip.classList.add('used');sel[fid]=null;
+}
+function chkF(fid){
+  if(fdone[fid])return;
+  var d=defs[fid];var keys=Object.keys(d);
+  if(!keys.every(function(k){return state[fid][k]!==undefined;})){alert('すべての空欄を埋めてください');return;}
+  fdone[fid]=true;var allOk=true;
+  keys.forEach(function(k){var el=document.getElementById(k);var ok=state[fid][k]===d[k];el.classList.add(ok?'ok-fill':'ng-fill');if(!ok)allOk=false;});
+  document.querySelectorAll('#'+fid+'-chips .chp').forEach(function(c){if(c.classList.contains('used')){var v=c.textContent;c.classList.add(Object.values(d).indexOf(v)>=0?'ok-c':'ng-c');}});
+  document.getElementById('chk-'+fid).disabled=true;
+  var ans=document.getElementById(fid+'-ans');ans.className='f-ans show '+(allOk?'ok':'ng');
+  var res=document.getElementById(fid+'-result');res.textContent=allOk?'⭕ 全問正解！':'❌ 不正解あり';res.style.color=allOk?'var(--green)':'var(--red)';
+  if(allOk)score++;total++;
+  document.getElementById('score').textContent=score;
+  updateProg();setTimeout(function(){ans.scrollIntoView({behavior:'smooth',block:'nearest'});},100);
+}
+function updateProg(){
+  var t=10,pct=Math.round(total/t*100);
+  document.getElementById('prog').style.width=pct+'%';
+  document.getElementById('prog-lbl').textContent=total+' ／ '+t+' 問 回答済み';
+  var sub=document.getElementById('score-sub');if(sub)sub.textContent=total+'問回答 / 正解率 '+(total>0?Math.round(score/total*100):0)+'%';
+  if(total===t)showComplete();
+}
+function showComplete(){
+  var bar=document.getElementById('complete-bar');bar.style.display='block';
+  document.getElementById('complete-score').textContent=score+' / 10';
+  var pct=Math.round(score/10*100);
+  document.getElementById('complete-msg').textContent=pct>=90?'🏆 完璧！':pct>=70?'✨ 合格圏内！':'📖 もう一周してみよう';
+  try{localStorage.setItem('kounen_day5',JSON.stringify({correct:score,total:10,ts:Date.now()}));}catch(e){}
+  setTimeout(function(){bar.scrollIntoView({behavior:'smooth',block:'start'});},200);
+}
+
+var FC_CARDS=[
+  {tag:'Q01',cat:'障害等級',correct:true,q:'障害厚生年金は<mark>1〜3級</mark>を対象とし、障害基礎年金の1〜2級より範囲が広い。',answer:'○ 正しい',reason:'<strong>法第47条</strong>：厚年は1〜3級対象。国年は1〜2級のみ。被用者は3級でも就労不能になるリスクがあるため厚年が手厚く保護。3級は厚年のみ——国年（障害基礎年金）は出ない。',law:'法第47条'},
+  {tag:'Q02',cat:'障害等級',correct:false,q:'障害厚生年金は障害基礎年金と同様に1・2級のみを対象とする。',answer:'× 誤り',reason:'<strong>法第47条</strong>：障害厚生年金は<mark>1〜3級</mark>対象。1〜2級のみは障害基礎年金（国年）。被用者専用の追加保護として3級まで対象範囲を拡大している。',law:'法第47条'},
+  {tag:'Q03',cat:'年金額',correct:false,q:'障害厚生年金1級の額は報酬比例の年金額の<mark>2倍</mark>である。',answer:'× 誤り',reason:'<strong>法第50条</strong>：1級は報酬比例×<mark>5/4（1.25倍）</mark>。2倍ではない。常時介護が必要な1級の介護費用相当を上乗せした結果が5/4。「2倍」は最頻出の引っかけ。',law:'法第50条'},
+  {tag:'Q04',cat:'年金額',correct:true,q:'障害厚生年金3級には最低保障額（障害基礎年金2級額の<mark>4分の3</mark>相当）がある。',answer:'○ 正しい',reason:'<strong>法第50条</strong>：3級の年金額は報酬比例だが、最低保障として障害基礎年金2級額の<mark>3/4</mark>相当が設定。少額の報酬比例しかない人の生活を守る底上げ。',law:'法第50条'},
+  {tag:'Q05',cat:'障害認定日',correct:false,q:'障害認定日は初診日から起算して<mark>1年</mark>を経過した日である。',answer:'× 誤り',reason:'<strong>法第47条</strong>：障害認定日は初診日から<mark>1年6ヵ月</mark>経過した日（または治癒日）。「1年」「2年」は誤り。多くの傷病が1年6ヵ月で症状固定されるという医学的根拠から。',law:'法第47条'},
+  {tag:'Q06',cat:'障害認定日',correct:true,q:'障害認定日は初診日から<mark>1年6ヵ月</mark>経過した日または1年6ヵ月以内の治癒日である。',answer:'○ 正しい',reason:'<strong>法第47条</strong>：1年6ヵ月経過が原則。1年6ヵ月以内に治癒した場合はその日が認定日。治癒日パターンも重要——骨折等の短期で治る傷病が対象。',law:'法第47条'},
+  {tag:'Q07',cat:'保険料納付要件',correct:false,q:'保険料納付要件は、初診日の<mark>前月末</mark>時点で被保険者期間の3分の2以上が納付済みであること。',answer:'× 誤り',reason:'<strong>法第47条</strong>：<mark>前々月末</mark>時点——前月の保険料は翌月末が納期限で未確定。「前月末」は最頻出の引っかけ。',law:'法第47条'},
+  {tag:'Q08',cat:'保険料納付要件',correct:true,q:'直近<mark>1年間</mark>に未納がなければ3分の2要件を満たさなくても障害厚生年金を受給できる（令和8年3月31日まで）。',answer:'○ 正しい',reason:'<strong>法第47条</strong>：直近1年間未納なし特例は令和8年3月31日まで。就職したばかりで加入期間が短い人でも保護する配慮。',law:'法第47条'},
+  {tag:'Q09',cat:'障害手当金',correct:true,q:'障害手当金は、初診日から<mark>5年以内</mark>に治癒し3級より軽い障害が残った場合に支給される一時金で、額は報酬比例の<mark>2倍</mark>。',answer:'○ 正しい',reason:'<strong>法第55条</strong>：5年以内に治癒・3級より軽い障害残存・報酬比例×2倍の一時金。「5年・3級未満・2倍」の3点セット。',law:'法第55条'},
+  {tag:'Q10',cat:'障害手当金',correct:false,q:'障害手当金は<mark>3級</mark>の障害状態にある場合に支給される。',answer:'× 誤り',reason:'<strong>法第55条</strong>：障害手当金は<mark>3級より軽い（3級未満）</mark>障害が対象。3級以上なら障害厚生年金が出るため手当金は出ない。',law:'法第55条'},
+  {tag:'Q11',cat:'300ヵ月みなし',correct:true,q:'障害厚生年金の額を計算する際、被保険者期間が<mark>300ヵ月未満</mark>の場合は300ヵ月とみなして計算する。',answer:'○ 正しい',reason:'<strong>法第50条</strong>：300ヵ月（25年）みなし——若くして障害を負った人の年金額を底上げ。加入期間が短くても25年分として計算することで少ない年金額にならないよう保護。',law:'法第50条'},
+  {tag:'Q12',cat:'国年との比較',correct:false,q:'3級の障害厚生年金受給者には障害基礎年金も併せて支給される。',answer:'× 誤り',reason:'<strong>法第47条・国年法第30条</strong>：障害基礎年金は1・2級のみ。3級は国年の対象外なので障害厚生年金のみ受給（障害基礎年金なし）。1・2級は厚年＋国年の両方受給できる。',law:'法第47条'},
+  {tag:'Q13',cat:'年金額',correct:true,q:'障害厚生年金1・2級の受給者には配偶者加給年金額が加算されるが、3級には加算されない。',answer:'○ 正しい',reason:'<strong>法第50条の2</strong>：配偶者加給年金は1・2級のみ。3級は加算なし。3級は比較的軽度で就労継続の可能性があるため扶養手当的な加給年金が不要という設計思想。',law:'法第50条の2'},
+  {tag:'Q14',cat:'事後重症',correct:true,q:'事後重症による障害厚生年金の請求は、<mark>65歳前</mark>に行わなければならない。',answer:'○ 正しい',reason:'<strong>法第47条の2</strong>：事後重症は65歳前に請求が必要。65歳以降は老齢厚生年金の受給権が発生し新たな障害年金（事後重症）の請求は原則できなくなる。',law:'法第47条の2'},
+  {tag:'Q15',cat:'障害手当金',correct:false,q:'障害手当金の保険料納付要件は、障害厚生年金より緩和された特別な要件が設けられている。',answer:'× 誤り',reason:'<strong>法第57条</strong>：障害手当金の保険料納付要件は障害厚生年金と<mark>同じ</mark>（前々月末・3分の2以上または直近1年特例）。特別な緩和要件はない。',law:'法第57条'},
+  {tag:'Q16',cat:'障害認定日',correct:false,q:'初診日から3年後に傷病が治癒した場合、治癒日が障害認定日となる。',answer:'× 誤り',reason:'<strong>法第47条</strong>：治癒日が認定日になるのは「1年6ヵ月<mark>以内</mark>の治癒」が条件。3年後に治癒した場合は1年6ヵ月経過日が認定日。',law:'法第47条'},
+  {tag:'Q17',cat:'年金額',correct:true,q:'障害厚生年金2級の額は報酬比例の年金額と同額（×1）である。',answer:'○ 正しい',reason:'<strong>法第50条</strong>：2級＝報酬比例×1（100%）。1級は×5/4（125%）・3級は最低保障あり。2級が基準（×1）で1級がそれより25%多い設計。',law:'法第50条'},
+  {tag:'Q18',cat:'国年との比較',correct:true,q:'障害厚生年金1・2級の受給者は障害基礎年金と<mark>併せて</mark>受給できる。',answer:'○ 正しい',reason:'<strong>法第47条・国年法第30条</strong>：1・2級は国年（1〜2級対象）でもあるため、障害厚生年金＋障害基礎年金の両方受給できる。3級は国年の対象外なので厚年のみ。',law:'法第47条'},
+  {tag:'Q19',cat:'保険料納付要件',correct:true,q:'保険料納付要件における免除期間は納付済みとして3分の2要件に算入される。',answer:'○ 正しい',reason:'<strong>法第47条</strong>：法定免除・申請免除期間は「保険料の納付があったもの」として算入。完全未納のみが除外対象。生活困窮で免除を受けていた人も保護するという公平な設計。',law:'法第47条'},
+  {tag:'Q20',cat:'300ヵ月みなし',correct:false,q:'被保険者期間が<mark>240ヵ月（20年）</mark>未満の場合は240ヵ月として計算する。',answer:'× 誤り',reason:'<strong>法第50条</strong>：みなし計算の基準は<mark>300ヵ月（25年）</mark>未満の場合に300ヵ月とみなす。240ヵ月（20年）は誤り。',law:'法第50条'}
+];
+
+var fcDeck=[],fcIdx=0,fcGot=0,fcFlipped=false,fcOk=0,fcNg=0;
+function fcUpdateGauge(){var total=fcDeck.length;document.getElementById('fc-gauge-ok').style.width=Math.min(fcOk/total*100,50)+'%';document.getElementById('fc-gauge-ng').style.width=Math.min(fcNg/total*100,50)+'%';document.getElementById('fc-ok-count').textContent=fcOk;document.getElementById('fc-ng-count').textContent=fcNg;document.getElementById('fc-remaining').textContent='残り '+(total-fcIdx)+' 枚';document.getElementById('fc-counter').innerHTML=(fcIdx+1)+'<span> / '+total+'</span>';}
+function fcSetSlot(sId,tId,cId,qId,d){var s=document.getElementById(sId);if(!d){s.classList.add('hidden');return;}s.classList.remove('hidden');document.getElementById(tId).textContent=d.tag;document.getElementById(cId).textContent=d.cat;document.getElementById(qId).innerHTML=d.q;}
+function fcRender(){var total=fcDeck.length,curr=fcDeck[fcIdx];fcSetSlot('fc-slot-prev','fc-prev-tag','fc-prev-cat','fc-prev-q',fcIdx>0?fcDeck[fcIdx-1]:null);fcSetSlot('fc-slot-next','fc-next-tag','fc-next-cat','fc-next-q',fcIdx<total-1?fcDeck[fcIdx+1]:null);document.getElementById('fc-tag').textContent=curr.tag;document.getElementById('fc-cat').textContent=curr.cat;document.getElementById('fc-q').innerHTML=curr.q;var v=document.getElementById('fc-verdict');v.textContent=curr.correct?'○　正しい':'×　誤り';v.className='fc-verdict '+(curr.correct?'ok':'ng');document.getElementById('fc-answer').textContent=curr.answer;document.getElementById('fc-reason').innerHTML=curr.reason;document.getElementById('fc-lawref').textContent=curr.law;document.getElementById('fc-inner').classList.remove('flipped');fcFlipped=false;document.getElementById('fc-nav').style.display='none';var ua=document.getElementById('fc-user-ans');if(ua)ua.textContent='';fcUpdateGauge();}
+function fcInit(){fcDeck=FC_CARDS.slice();for(var i=fcDeck.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=fcDeck[i];fcDeck[i]=fcDeck[j];fcDeck[j]=tmp;}fcIdx=0;fcGot=0;fcOk=0;fcNg=0;fcFlipped=false;document.getElementById('fc-result').style.display='none';document.getElementById('fc-carousel').style.display='flex';document.getElementById('fc-nav').style.display='none';fcRender();}
+function fcShuffle(){fcInit();}
+function fcChoose(userSaidTrue){if(fcFlipped)return;var curr=fcDeck[fcIdx];var isCorrect=(userSaidTrue===curr.correct);if(isCorrect){fcGot++;fcOk++;}else{fcNg++;}var ua=document.getElementById('fc-user-ans');if(ua){ua.textContent=isCorrect?'✅ 正解！':'❌ 不正解';ua.style.color=isCorrect?'var(--green)':'var(--red)';ua.style.fontWeight='700';}var again=document.querySelector('.fc-nav-btn.again');var got=document.querySelector('.fc-nav-btn.got');if(again&&got){if(isCorrect){again.style.display='none';got.style.display='block';got.textContent='次へ →';}else{again.style.display='block';again.textContent='次へ →';got.style.display='none';}}fcFlipped=true;document.getElementById('fc-inner').classList.add('flipped');setTimeout(function(){document.getElementById('fc-nav').style.display='flex';},280);}
+function fcFlip(){var inner=document.getElementById('fc-inner');if(!fcFlipped){fcFlipped=true;inner.classList.add('flipped');var ua=document.getElementById('fc-user-ans');if(ua){ua.textContent='（○×で回答してください）';ua.style.color='var(--gray)';}var again=document.querySelector('.fc-nav-btn.again');var got=document.querySelector('.fc-nav-btn.got');if(again&&got){again.style.display='block';again.textContent='😅 もう一度';got.style.display='block';got.textContent='✅ わかった！';}setTimeout(function(){document.getElementById('fc-nav').style.display='flex';},280);}else{fcFlipped=false;inner.classList.remove('flipped');document.getElementById('fc-nav').style.display='none';}}
+function fcNext(got){document.getElementById('fc-nav').style.display='none';if(fcIdx+1>=fcDeck.length){fcUpdateGauge();document.getElementById('fc-remaining').textContent='残り 0 枚';document.getElementById('fc-carousel').style.display='none';document.getElementById('fc-result').style.display='block';var pct=Math.round(fcOk/fcDeck.length*100);document.getElementById('fc-result-score').textContent=fcOk+' / '+fcDeck.length;document.getElementById('fc-result-sub').textContent='正答率 '+pct+'% ― '+(pct>=80?'バッチリ！':'もう一周してみよう');document.getElementById('fc-emoji').textContent=pct>=80?'🏆':'📖';document.getElementById('fc-counter').innerHTML=fcDeck.length+'<span> / '+fcDeck.length+'</span>';return;}fcIdx++;fcRender();}
+function fcRestart(){fcInit();}
+
+function switchTab(name,btn){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');btn.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});if(name==='flash'&&fcDeck.length===0)fcInit();if(name==='spider')buildSpider();}
+
+var SPIDER_DATA=[
+  {id:"toshaku",label:"障害等級・年金額",sub:"法第47条・50条",color:"#c84b31",light:"#fee2e2",border:"#e8896b",angle:218,
+   children:[
+     {label:"等級範囲",sub:"1〜3級",leaves:["1〜3級（厚年）","1〜2級（国年）","3級は厚年のみ","手当金は3級未満"]},
+     {label:"年金額",sub:"5/4・1・最低保障",leaves:["1級：5/4（125%）","2級：1（100%）","3級：最低保障3/4","配偶者加給：1・2級のみ"]}
+   ],
+   detail:{hdColor:"#c84b31",items:[{label:"等級範囲",val:"障害厚生年金は1〜3級（国年の1〜2級より広い）",note:"3級は厚年のみ。国年（障害基礎年金）は出ない"},{label:"1級",val:"報酬比例×5/4（125%）——常時介護費用の上乗せ",note:"2倍ではなく5/4——最頻出の引っかけ"},{label:"2級",val:"報酬比例×1（100%）——基準",note:""},{label:"3級",val:"報酬比例（最低保障：障害基礎2級額の3/4）",note:"配偶者加給年金は3級には加算なし"}],hikakke:"× 「1級は2倍」→ ○ 5/4（1.25倍）\n× 「3級に最低保障なし」→ ○ 障害基礎2級の3/4が最低保障"}
+  },
+  {id:"nintei",label:"障害認定日・要件",sub:"法第47条",color:"#2a7f7f",light:"#e8f4f4",border:"#5ab5b5",angle:322,
+   children:[
+     {label:"障害認定日",sub:"1年6ヵ月",leaves:["初診日から1年6ヵ月","または治癒日","症状固定の医学的目安","1年・2年は誤り"]},
+     {label:"事後重症",sub:"65歳前請求",leaves:["認定日時点で等級未満","後に悪化したケース","65歳前に請求必須","65歳以降は原則不可"]}
+   ],
+   detail:{hdColor:"#2a7f7f",items:[{label:"障害認定日",val:"初診日から1年6ヵ月（18ヵ月）経過した日（または治癒日）",note:"多くの傷病が1年6ヵ月で症状固定——医学的根拠"},{label:"受給権発生",val:"認定日時点で障害等級に該当＋保険料要件",note:""},{label:"事後重症",val:"認定日時点で等級未満でも後に悪化→65歳前に請求",note:"65歳以降は新規の事後重症請求は原則不可"}],hikakke:"× 「認定日は1年後」→ ○ 1年6ヵ月後\n× 「事後重症は70歳前でOK」→ ○ 65歳前が必須"}
+  },
+  {id:"nofu",label:"保険料納付要件",sub:"法第47条",color:"#7c3aed",light:"#ede9fe",border:"#a78bfa",angle:142,
+   children:[
+     {label:"原則（3分の2）",sub:"前々月末時点",leaves:["前々月末が基準","3分の2以上が納付・免除","免除期間も算入OK","前月末は誤り"]},
+     {label:"特例（直近1年）",sub:"令和8年3月末まで",leaves:["直近1年間に未納なし","令和8年3月31日まで","若い世代への配慮","廃止予定"]}
+   ],
+   detail:{hdColor:"#7c3aed",items:[{label:"原則",val:"初診日の前々月末時点で被保険者期間の3分の2以上が納付・免除",note:"前月の保険料は翌月末が納期限で未確定——だから前々月末が基準"},{label:"特例",val:"直近1年間（前々月〜13ヵ月前）に未納なし",note:"令和8年3月31日まで有効"}],hikakke:"× 「前月末時点で確認」→ ○ 前々月末（前月は未確定）"}
+  },
+  {id:"teate",label:"障害手当金",sub:"法第55条",color:"#c9930a",light:"#fef9e7",border:"#d4a733",angle:38,
+   children:[
+     {label:"支給要件",sub:"5年・3級未満",leaves:["初診日から5年以内","3級より軽い障害残存","5年以内に治癒","3年以内は誤り"]},
+     {label:"支給額",sub:"報酬比例×2倍",leaves:["報酬比例×2倍","一時金（一括払い）","最低保障：基礎2級×2","保険料要件は同じ"]}
+   ],
+   detail:{hdColor:"#c9930a",items:[{label:"支給要件",val:"①初診日から5年以内に治癒 ②3級より軽い障害残存",note:"3級以上なら障害厚生年金が出るため手当金は3級未満専用"},{label:"支給額",val:"報酬比例×2倍（一時金・一括払い）",note:"最低保障は障害基礎年金2級額×2倍"},{label:"保険料要件",val:"障害厚生年金と同じ（前々月末・3分の2以上）",note:""}],hikakke:"× 「5年以内に3級に該当する場合に支給」→ ○ 3級より軽い（3級未満）\n× 「3年以内が条件」→ ○ 5年以内"}
+  }
+];
+var spBranchOpen={toshaku:false,nintei:false,nofu:false,teate:false};
+var spLeafOpen={};
+
+function buildSpider(){
+  var root=document.getElementById("sp-root");if(!root)return;root.innerHTML="";
+  var W=760,H=720,CX=380,CY=360,R1=108,R2=222,R3=330,CS=20,LS=7;
+  var svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.setAttribute("viewBox","0 0 "+W+" "+H);svg.setAttribute("xmlns","http://www.w3.org/2000/svg");
+  svg.setAttribute("font-family","'Noto Sans JP',sans-serif");svg.style.display="block";svg.style.width="100%";svg.style.height="auto";
+  function mk(tag,attrs){var el=document.createElementNS("http://www.w3.org/2000/svg",tag);for(var k in attrs)el.setAttribute(k,attrs[k]);return el;}
+  function r(d){return d*Math.PI/180;}
+  function pt(dist,deg){return[CX+Math.cos(r(deg))*dist,CY+Math.sin(r(deg))*dist];}
+  [R1+16,R2+14,R3+16].forEach(function(dist){svg.appendChild(mk("circle",{cx:CX,cy:CY,r:dist,fill:"none",stroke:"#e4dfd6","stroke-width":"1","stroke-dasharray":"4,5"}));});
+  SPIDER_DATA.forEach(function(branch){
+    var ba=branch.angle;var bpt=pt(R1,ba);var bx=bpt[0],by=bpt[1];
+    svg.appendChild(mk("line",{x1:CX,y1:CY,x2:bx,y2:by,stroke:branch.color,"stroke-width":"4.5","stroke-linecap":"round"}));
+    var og=document.createElementNS("http://www.w3.org/2000/svg","g");og.id="sp-og-"+branch.id;og.style.display=spBranchOpen[branch.id]?"":"none";
+    branch.children.forEach(function(child,ci){
+      var ca=ba+(ci-1)*CS;var cpt=pt(R2,ca);var cx2=cpt[0],cy2=cpt[1];
+      var key=branch.id+"_"+ci;if(spLeafOpen[key]===undefined)spLeafOpen[key]=true;
+      og.appendChild(mk("line",{x1:bx,y1:by,x2:cx2,y2:cy2,stroke:branch.color,"stroke-width":"2","stroke-linecap":"round"}));
+      var lg=document.createElementNS("http://www.w3.org/2000/svg","g");lg.id="sp-lg-"+key;lg.style.display=spLeafOpen[key]?"":"none";
+      var lc=child.leaves.length;
+      child.leaves.forEach(function(leaf,li){
+        var la=ca+(li-(lc-1)/2)*LS;var lpt=pt(R3,la);var lx=lpt[0],ly=lpt[1];
+        lg.appendChild(mk("line",{x1:cx2,y1:cy2,x2:lx,y2:ly,stroke:branch.border,"stroke-width":"1.2","stroke-dasharray":"3,3","stroke-linecap":"round"}));
+        var lw=120;var gr=document.createElementNS("http://www.w3.org/2000/svg","g");
+        gr.appendChild(mk("rect",{x:lx-lw/2,y:ly-13,width:lw,height:26,rx:13,fill:"#faf8f3",stroke:branch.border,"stroke-width":"1.2"}));
+        var fs=leaf.length>10?"9.5":leaf.length>7?"10":"11";
+        var lt=mk("text",{x:lx,y:ly+5,"text-anchor":"middle","font-size":fs,"font-weight":"600",fill:branch.color});lt.textContent=leaf;gr.appendChild(lt);lg.appendChild(gr);
+      });
+      og.appendChild(lg);
+      var gk=document.createElementNS("http://www.w3.org/2000/svg","g");gk.style.cursor="pointer";
+      (function(k){gk.addEventListener("click",function(e){e.stopPropagation();spLeafOpen[k]=!spLeafOpen[k];var el=document.getElementById("sp-lg-"+k);if(el)el.style.display=spLeafOpen[k]?"":"none";});})(key);
+      gk.appendChild(mk("ellipse",{cx:cx2,cy:cy2,rx:"46",ry:"24",fill:branch.color}));
+      var kt=mk("text",{x:cx2,y:cy2-3,"text-anchor":"middle","font-size":"11","font-weight":"700",fill:"white"});kt.textContent=child.label;gk.appendChild(kt);
+      var ks=mk("text",{x:cx2,y:cy2+11,"text-anchor":"middle","font-size":"8.5",fill:"rgba(255,255,255,.7)"});ks.textContent=child.sub;gk.appendChild(ks);
+      og.appendChild(gk);
+    });
+    svg.appendChild(og);
+    var gn=document.createElementNS("http://www.w3.org/2000/svg","g");gn.style.cursor="pointer";
+    (function(b){gn.addEventListener("click",function(){spBranchOpen[b.id]=!spBranchOpen[b.id];var el=document.getElementById("sp-og-"+b.id);if(el)el.style.display=spBranchOpen[b.id]?"":"none";if(spBranchOpen[b.id]){openSpiderDetail(b,null);}else{closeSpiderDetail();}});})(branch);
+    gn.appendChild(mk("ellipse",{cx:bx,cy:by,rx:"56",ry:"32",fill:branch.color}));
+    var tl=mk("text",{x:bx,y:by-5,"text-anchor":"middle","font-size":"13","font-weight":"700",fill:"white"});tl.textContent=branch.label;gn.appendChild(tl);
+    var ts=mk("text",{x:bx,y:by+11,"text-anchor":"middle","font-size":"9",fill:"rgba(255,255,255,.65)"});ts.textContent=branch.sub;gn.appendChild(ts);
+    svg.appendChild(gn);
+  });
+  var gc=document.createElementNS("http://www.w3.org/2000/svg","g");
+  gc.appendChild(mk("ellipse",{cx:CX,cy:CY,rx:"80",ry:"46",fill:"#22253a"}));
+  var ctexts=[["厚生年金法",-6,"13","#f0eee8"],["障害厚生年金・手当金",11,"8.5","rgba(240,238,232,.55)"]];
+  ctexts.forEach(function(t){var ct=mk("text",{x:CX,y:CY+t[1],"text-anchor":"middle","font-size":t[2],"font-weight":"700",fill:t[3]});ct.textContent=t[0];gc.appendChild(ct);});
+  svg.appendChild(gc);root.appendChild(svg);
+}
+function openSpiderDetail(branch,child){
+  var panel=document.getElementById("spider-detail");
+  var hd=document.getElementById("spider-detail-hd");
+  var title=document.getElementById("spider-detail-title");
+  var body=document.getElementById("spider-detail-body");
+  hd.style.background=branch.detail.hdColor;title.textContent=branch.label+"  "+branch.sub;
+  var html="";
+  branch.detail.items.forEach(function(item){
+    html+="<div style='margin-bottom:14px;'><div style='font-size:11px;font-weight:700;color:#6b7280;margin-bottom:3px;'>"+item.label+"</div>";
+    html+="<div style='font-size:14px;font-weight:700;color:#1a1a2e;background:"+branch.light+";border:1.5px solid "+branch.border+";border-radius:8px;padding:8px 12px;'>"+item.val+"</div>";
+    if(item.note)html+="<div style='font-size:11px;color:#6b7280;margin-top:4px;padding-left:4px;'>💡 "+item.note+"</div>";
+    html+="</div>";
+  });
+  if(branch.detail.hikakke){
+    html+="<div style='background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 12px;font-size:11px;color:#A32D2D;line-height:2.1;'>";
+    html+="<div style='font-weight:700;margin-bottom:4px;'>🚨 よくある引っかけ</div>";
+    html+=branch.detail.hikakke.split("\n").join("<br>");html+="</div>";
+  }
+  body.innerHTML=html;panel.style.display="block";
+}
+function closeSpiderDetail(){document.getElementById("spider-detail").style.display="none";}
+
+document.addEventListener("DOMContentLoaded",function(){fcInit();buildSpider();});
+</script>
+</body>
+</html>

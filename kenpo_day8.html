@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day8｜健保組合・財政・保健事業 ― 健保法過去問ドリル</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1a2e;--paper:#faf8f3;--warm:#f5f0e8;
+  --red:#c84b31;--red-soft:#e8896b;--red-light:#fee2e2;
+  --teal:#2a7f7f;--teal-light:#e8f4f4;
+  --gold:#c9930a;--gold-light:#fef9e7;
+  --green:#2d6a4f;--green-light:#e8f5ee;
+  --gray:#6b7280;--border:#ddd8cc;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
+
+.hd{background:var(--ink);color:var(--paper);padding:52px 40px 40px;position:relative;overflow:hidden;}
+.hd::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px);}
+.hd-in{max-width:820px;margin:0 auto;position:relative;}
+.hd-eye{font-size:11px;letter-spacing:4px;color:var(--red-soft);margin-bottom:12px;font-weight:700;}
+.hd h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hd h1 em{color:var(--red-soft);font-style:normal;}
+.hd-sub{font-size:14px;color:rgba(255,255,255,.55);font-weight:300;}
+.prog-wrap{margin-top:24px;background:rgba(255,255,255,.1);border-radius:20px;height:6px;}
+.prog-bar{background:var(--red-soft);height:6px;border-radius:20px;width:0%;transition:width .5s;}
+.prog-lbl{font-size:11px;color:rgba(255,255,255,.45);margin-top:6px;}
+
+.sec-div{max-width:820px;margin:40px auto 20px;padding:0 24px;}
+.sec-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border-radius:30px;font-size:12px;font-weight:700;}
+.pill-red{background:var(--red);color:white;}
+.pill-teal{background:var(--teal);color:white;}
+.sec-title{font-family:'Noto Serif JP',serif;font-size:1.25rem;font-weight:700;margin:10px 0 8px;}
+.sec-desc{font-size:13px;color:var(--gray);line-height:1.9;background:white;border:1px solid var(--border);border-radius:10px;padding:12px 16px;}
+
+.score-bar{max-width:820px;margin:0 auto 24px;padding:0 24px;}
+.score-in{background:white;border:1px solid var(--border);border-radius:12px;padding:14px 20px;display:flex;align-items:center;gap:16px;}
+.score-num{font-family:'DM Serif Display',serif;font-size:36px;color:var(--teal);line-height:1;}
+
+.qwrap{max-width:820px;margin:0 auto;padding:0 24px 60px;display:flex;flex-direction:column;gap:20px;}
+.card{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s;}
+.card.vis{opacity:1;transform:none;}
+.card-hd{display:flex;align-items:center;gap:12px;padding:12px 20px;background:var(--warm);border-bottom:1px solid var(--border);}
+.q-num{font-family:'DM Serif Display',serif;font-size:30px;color:var(--red);line-height:1;}
+.q-num.tn{color:var(--teal);}
+.src-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;margin-bottom:3px;}
+.src-tag.t{background:var(--teal);}
+.q-type{font-size:11px;color:var(--gray);}
+.card-body{padding:20px 24px;}
+.quiz-q{font-size:15px;font-weight:600;line-height:1.8;margin-bottom:18px;}
+.quiz-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+
+.opts-tf{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.opt{border:2px solid var(--border);border-radius:10px;padding:12px 16px;cursor:pointer;font-size:20px;font-weight:900;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:10px;user-select:none;}
+.opt:hover{border-color:var(--ink);background:var(--warm);}
+.opt.correct{border-color:var(--green)!important;background:var(--green-light)!important;color:var(--green);}
+.opt.wrong{border-color:var(--red)!important;background:var(--red-light)!important;color:#991b1b;}
+
+.ans-box{display:none;border-radius:10px;padding:18px 20px;font-size:13px;margin-top:6px;}
+.ans-box.show{display:block;}
+.ans-box.ok{background:var(--green-light);border:1px solid #86efac;}
+.ans-box.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.ans-hd{font-weight:700;font-size:14px;margin-bottom:12px;}.ans-hd:empty{margin-bottom:0;}
+.why{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;}
+.tip{background:var(--green-light);border:2px solid var(--green);border-radius:8px;padding:12px 14px;font-size:13px;margin-top:12px;}
+.tip-title{font-weight:700;color:var(--green);margin-bottom:6px;}
+.tip-item{display:flex;gap:8px;margin-bottom:4px;}
+.tip-item:last-child{margin-bottom:0;}
+
+.svg-wrap{margin:14px 0;overflow-x:auto;}
+.svg-wrap svg{display:block;max-width:100%;height:auto;}
+
+.blank-sentence{font-size:15px;font-weight:500;line-height:2.6;margin-bottom:16px;}
+.blank{display:inline-block;min-width:72px;border-bottom:2px solid var(--ink);text-align:center;padding:0 6px;margin:0 3px;cursor:pointer;font-weight:700;transition:background .2s;border-radius:4px 4px 0 0;}
+.blank:hover{background:rgba(42,127,127,.08);}
+.blank.sel{background:#dbeafe;border-color:var(--teal);}
+.blank.ok-fill{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.blank.ng-fill{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.chp{border:2px solid var(--border);border-radius:20px;padding:5px 14px;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;}
+.chp:hover{border-color:var(--teal);background:var(--teal-light);}
+.chp.used{opacity:.35;pointer-events:none;}
+.chp.ok-c{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.chp.ng-c{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.chk-btn{background:var(--ink);color:white;border:none;border-radius:8px;padding:10px 24px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:12px;transition:opacity .2s;}
+.chk-btn:hover{opacity:.82;}
+.chk-btn:disabled{opacity:.4;cursor:default;}
+
+@media(max-width:600px){
+  .hd{padding:36px 16px 28px;}
+  .qwrap,.sec-div,.score-bar{padding-left:16px;padding-right:16px;}
+  .card-body{padding:14px;}
+}
+
+.topbar{background:var(--ink);padding:10px 24px;display:flex;align-items:center;gap:12px;}
+.back-btn{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;display:flex;align-items:center;gap:6px;transition:color .2s;cursor:pointer;}
+.back-btn:hover{color:white;}
+.topbar-title{color:rgba(255,255,255,.5);font-size:12px;margin-left:auto;}
+.tab-nav{background:var(--ink);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:100;}
+.tab-nav-in{max-width:820px;margin:0 auto;display:flex;}
+.tab-btn{flex:1;padding:13px 8px;font-size:13px;font-weight:700;color:rgba(255,255,255,.4);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;}
+.tab-btn:hover{color:rgba(255,255,255,.75);}
+.tab-btn.active{color:white;border-color:var(--red-soft);}
+.tab-btn.active.t3{border-color:#a78bfa;}
+.tab-btn.active.t2{border-color:#5ecece;}
+.tab-btn.active.t4{border-color:#fbbf24;}
+
+.spider-wrap{max-width:820px;margin:0 auto;padding:20px 16px 60px;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+@media(max-width:600px){.tab-btn{font-size:11px;padding:11px 4px;}}
+
+/* ── FLASH CARDS ── */
+.fc-wrap{max-width:740px;margin:0 auto;padding:24px 0 80px;}
+.fc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:0 20px;font-size:12px;color:var(--gray);}
+.fc-counter{font-family:'DM Serif Display',serif;font-size:26px;color:var(--red);line-height:1;}
+.fc-counter span{font-size:13px;color:var(--gray);font-family:'Noto Sans JP',sans-serif;font-weight:400;}
+.fc-gauge-wrap{padding:0 20px;margin-bottom:24px;}
+.fc-gauge-labels{display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:6px;}
+.fc-gauge-label-ng{color:var(--red);}
+.fc-gauge-label-ok{color:var(--green);}
+.fc-gauge-label-mid{color:var(--gray);font-size:10px;font-weight:400;}
+.fc-gauge-track{position:relative;height:16px;background:var(--border);border-radius:20px;overflow:hidden;display:flex;}
+.fc-gauge-ng{height:100%;background:linear-gradient(90deg,#c84b31,#e8896b);border-radius:20px 0 0 20px;transition:width .5s cubic-bezier(.4,0,.2,1);width:0%;}
+.fc-gauge-ok{height:100%;background:linear-gradient(90deg,#86efac,#2d6a4f);border-radius:0 20px 20px 0;transition:width .5s cubic-bezier(.4,0,.2,1);width:0%;margin-left:auto;}
+.fc-gauge-mid-line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:white;transform:translateX(-50%);z-index:2;}
+.fc-gauge-counts{display:flex;justify-content:space-between;font-size:11px;margin-top:4px;padding:0 2px;}
+.fc-gauge-count-ng{color:var(--red);font-weight:700;font-family:'DM Serif Display',serif;font-size:14px;}
+.fc-gauge-count-ok{color:var(--green);font-weight:700;font-family:'DM Serif Display',serif;font-size:14px;}
+.fc-gauge-remaining{color:var(--gray);font-size:10px;text-align:center;margin-top:2px;}
+.fc-carousel{position:relative;display:flex;align-items:center;justify-content:center;height:300px;overflow:hidden;margin-bottom:20px;}
+.fc-slot{position:absolute;width:72%;height:100%;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s cubic-bezier(.4,0,.2,1),filter .35s ease;cursor:pointer;border-radius:16px;}
+.fc-slot.prev{transform:translateX(-82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.curr{transform:translateX(0) scale(1);opacity:1;filter:none;z-index:10;}
+.fc-slot.next{transform:translateX(82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.hidden{opacity:0;pointer-events:none;z-index:0;}
+.fc-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.4,0,.2,1);}
+.fc-inner.flipped{transform:rotateY(180deg);}
+.fc-face{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.11);}
+.fc-front-face{background:white;border:2px solid var(--ink);}
+.fc-back-face{background:white;border:2px solid var(--ink);transform:rotateY(180deg);}
+.fc-front-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:8px;}
+.fc-front-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;}
+.fc-front-body{flex:1;padding:18px 20px;display:flex;align-items:center;justify-content:center;}
+.fc-q{font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;line-height:1.9;color:var(--ink);text-align:center;}
+.fc-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+.fc-tap-hint{text-align:center;padding:0 16px 12px;font-size:11px;color:var(--gray);}
+.fc-back-hd{padding:12px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+.fc-verdict{font-size:13px;font-weight:700;padding:3px 12px;border-radius:20px;}
+.fc-verdict.ok{background:var(--green);color:white;}
+.fc-verdict.ng{background:var(--red);color:white;}
+.fc-back-body{flex:1;padding:14px 18px;overflow-y:auto;}
+.fc-answer{font-family:'DM Serif Display',serif;font-size:20px;color:var(--ink);margin-bottom:10px;line-height:1.4;font-weight:700;}
+.fc-reason{font-size:13px;color:var(--ink);line-height:1.9;}
+.fc-lawref{display:inline-block;margin-top:8px;font-size:11px;color:var(--teal);font-family:'DM Serif Display',serif;background:var(--teal-light);border:1px solid var(--teal);padding:2px 10px;border-radius:4px;}
+.fc-ox{display:flex;gap:10px;padding:0 16px 14px;}
+.fc-ox-btn{flex:1;padding:11px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-size:20px;font-weight:900;cursor:pointer;transition:all .15s;font-family:inherit;}
+.fc-ox-btn:hover{transform:translateY(-2px);}
+.fc-ox-btn.o:hover{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.fc-ox-btn.x:hover{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.fc-nav{display:flex;gap:10px;justify-content:center;padding:0 20px;}
+.fc-nav-btn{flex:1;max-width:160px;padding:12px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-family:inherit;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;transition:all .2s;text-align:center;}
+.fc-nav-btn:hover{border-color:var(--ink);}
+.fc-nav-btn.again{border-color:var(--red);color:var(--red);}
+.fc-nav-btn.again:hover{background:var(--red-light);}
+.fc-nav-btn.got{border-color:var(--green);color:var(--green);}
+.fc-nav-btn.got:hover{background:var(--green-light);}
+.fc-nav-btn.shuffle{background:var(--ink);color:white;border-color:var(--ink);}
+.fc-result{display:none;text-align:center;padding:32px 20px;background:white;border:2px solid var(--ink);border-radius:16px;margin:0 20px;}
+.fc-result h3{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;margin-bottom:8px;}
+.fc-result-score{font-family:'DM Serif Display',serif;font-size:52px;color:var(--red);line-height:1;margin:8px 0 4px;}
+.fc-result-sub{font-size:13px;color:var(--gray);margin-bottom:20px;}
+.fc-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:12px 28px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.fc-restart-btn:hover{opacity:.82;}
+
+/* ── スパイダーマップ ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.sp-node{cursor:pointer;transition:filter .15s;}
+.sp-node:hover{filter:brightness(1.1);}
+#spider-detail{animation:fadeUp .25s ease;}
+
+.complete{display:none;max-width:820px;margin:0 auto 40px;padding:0 24px;}
+.complete-in{background:var(--ink);color:white;border-radius:14px;padding:28px;text-align:center;}
+.complete h2{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;margin-bottom:6px;}
+.complete h2 em{color:var(--red-soft);font-style:normal;}
+.complete-score{font-size:48px;font-family:'DM Serif Display',serif;color:var(--red-soft);line-height:1;margin:10px 0 4px;}
+.complete-sub{font-size:14px;color:rgba(255,255,255,.55);margin-bottom:20px;}
+.btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-back{background:white;color:var(--ink);border:none;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;}
+.btn-next{background:var(--teal);color:white;border:none;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;}
+.btn-copy{background:var(--gold);color:white;border:none;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;}
+.btn-copy:hover{opacity:.85;}
+.btn-copy.copied{background:var(--green);}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="back-btn" onclick="location.href='index.html'">← 目次に戻る</span>
+  <span class="topbar-title">Block 8 ／ Day 8</span>
+</div>
+
+<nav class="tab-nav">
+  <div class="tab-nav-in">
+    <button class="tab-btn active" onclick="switchTab('quiz',this)">📝 問題を解く</button>
+    <button class="tab-btn t3"     onclick="switchTab('mindmap',this)">🗺 連想図</button>
+    <button class="tab-btn t2"     onclick="switchTab('flash',this)">🃏 フラッシュカード</button>
+    <button class="tab-btn t4"     onclick="switchTab('spider',this)">🕸️ 記憶マップ</button>
+  </div>
+</nav>
+
+<!-- ========== 問題パネル ========== -->
+<div id="panel-quiz" class="tab-panel active">
+
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-eye">健康保険法 ／ Block 8 ／ Day 8</div>
+    <h1>健保組合・財政・保健事業 ― <em>設立要件・組合会・保険料率を整理</em></h1>
+    <div class="hd-sub">○×式 5問 ＋ 穴埋め式 5問 ― 全10問　図解で理解を深める</div>
+    <div class="prog-wrap"><div class="prog-bar" id="prog"></div></div>
+    <div class="prog-lbl" id="prog-lbl">0 ／ 10 問 回答済み</div>
+  </div>
+</div>
+
+<div class="score-bar" style="margin-top:28px;">
+  <div class="score-in">
+    <div class="score-num" id="score">0</div>
+    <div>
+      <div style="font-weight:700;font-size:14px;">正解数</div>
+      <div style="font-size:12px;color:var(--gray);">10問中 ／ 選択肢・語句をタップして答え合わせ</div>
+    </div>
+  </div>
+</div>
+
+<div style="max-width:820px;margin:0 auto 8px;padding:0 24px;text-align:right;">
+  <button class="btn-copy" id="copy-btn" onclick="copyRecord()" style="font-size:13px;padding:8px 18px;">📋 記録をコピー</button>
+</div>
+
+<div class="sec-div">
+  <div><span class="sec-pill pill-red">① ○×式　5問</span></div>
+  <div class="sec-title">正誤判断で「健保組合・財政・保健事業」の引っかけを叩き込む</div>
+  <div class="sec-desc">単独700人・共同3,000人・組合会「偶同数3年」・国庫補助16.4%・保健事業の義務任意区別。試験頻出論点を○×で確認。</div>
+</div>
+
+<div class="qwrap">
+
+<!-- Q1 -->
+<div class="card" id="cq1">
+  <div class="card-hd"><div class="q-num">01</div><div><div class="src-tag">法第11条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：健保組合の設立要件</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">健康保険組合を設立するには、<mark>700人以上</mark>の被保険者を使用する事業主が、厚生労働大臣の認可を受けなければならない（単独設立の場合）。</div>
+    <div class="opts-tf" id="q1-opts"><div class="opt" onclick="answer('q1',0)">○ 正しい</div><div class="opt" onclick="answer('q1',1)">× 誤り</div></div>
+    <div class="ans-box" id="q1-ans">
+      <div class="ans-hd" id="q1-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：○ 正しい｜法第11条第1項</div>
+      <div class="why">✔ 単独設立の要件：<strong>700人以上</strong>の被保険者を使用する事業主＋厚生労働大臣の<strong>認可</strong>。正確な記述。</div>
+
+      <div style="margin:10px 0;overflow-x:auto;">
+        <table class="cmp-table">
+          <tr><th>設立形態</th><th style="text-align:center;">被保険者数</th><th style="text-align:center;">手続き</th></tr>
+          <tr><td><strong>単独設立</strong>（1事業主）</td><td style="text-align:center;font-weight:900;color:var(--red);font-size:16px;">700人以上</td><td style="text-align:center;">厚生労働大臣の認可</td></tr>
+          <tr><td><strong>共同設立</strong>（2以上の事業主）</td><td style="text-align:center;font-weight:900;color:var(--red);font-size:16px;">合計3,000人以上</td><td style="text-align:center;">厚生労働大臣の認可</td></tr>
+          <tr><td>認可後の解散（任意）</td><td style="text-align:center;color:var(--gray);">要件なし</td><td style="text-align:center;"><strong>組合会の議決</strong>＋認可</td></tr>
+        </table>
+      </div>
+
+      <div class="hikkake">
+        <div class="hikkake-title">🚨 引っかけパターン</div>
+        × 「単独設立は<strong>1,000人以上</strong>」→ ○ <strong>700人以上</strong><br>
+        × 「共同設立は<strong>1,000人以上</strong>」→ ○ <strong>3,000人以上</strong>（問題の1,000人は誤り）<br>
+        × 「設立に<strong>届出</strong>が必要」→ ○ <strong>認可</strong>が必要（届出より厳格）
+      </div>
+
+      <div style="background:#1a1a2e;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:12px;color:rgba(255,255,255,.9);line-height:1.9;">
+        <div style="font-size:11px;font-weight:700;color:#e8896b;margin-bottom:4px;">🎯 試験で狙われるポイント</div>
+        700人（単独）と3,000人（共同）の数字は択一式で毎年出る。「共同設立は1,000人以上」という誤りの選択肢が定番。認可か届出かも一緒に問われる。
+      </div>
+      <div class="tip"><div class="tip-title">🧠 場面で覚える</div>
+        <div class="tip-item">📌 🎵「1社で独立して健保を作るには700人。複数企業が集まるには合計3,000人。3,000人集めてようやく1つの組合が作れる」</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="card" id="cq2">
+  <div class="card-hd"><div class="q-num">02</div><div><div class="src-tag">法第26条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：健保組合の解散</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">健康保険組合は、被保険者数が<mark>500人を下回った</mark>場合、厚生労働大臣の認可を受けて解散することができる。</div>
+    <div class="opts-tf" id="q2-opts"><div class="opt" onclick="answer('q2',0)">○ 正しい</div><div class="opt" onclick="answer('q2',1)">× 誤り</div></div>
+    <div class="ans-box" id="q2-ans">
+      <div class="ans-hd" id="q2-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#c84b31;margin-bottom:10px;">正解：× 誤り｜法第26条</div>
+      <div class="why">⚠️ 健保組合の任意解散は<strong>被保険者数の要件がない</strong>。組合会の<strong>議決</strong>により解散できる。「500人を下回った場合」という要件は存在しない。</div>
+
+      <div style="background:#f5f0e8;border-radius:10px;padding:14px 16px;margin:10px 0;">
+        <div style="font-size:11px;font-weight:700;color:var(--teal);margin-bottom:8px;">📖 解散の3パターン（法第26条）</div>
+        <div style="display:flex;flex-direction:column;gap:6px;font-size:12px;">
+          <div style="background:white;border-radius:8px;padding:10px 12px;border-left:4px solid var(--green);">
+            <div style="font-weight:700;color:var(--green);margin-bottom:4px;">① 任意解散</div>
+            組合会の議決＋厚生労働大臣の認可。<strong>被保険者数の要件なし</strong>。
+          </div>
+          <div style="background:white;border-radius:8px;padding:10px 12px;border-left:4px solid var(--gold);">
+            <div style="font-weight:700;color:var(--gold);margin-bottom:4px;">② 強制解散（命令解散）</div>
+            厚生労働大臣が<strong>解散を命じる</strong>。財政悪化等で被保険者の保護ができない場合。
+          </div>
+          <div style="background:white;border-radius:8px;padding:10px 12px;border-left:4px solid var(--red);">
+            <div style="font-weight:700;color:var(--red);margin-bottom:4px;">③ 合併による解散</div>
+            他の健保組合との合併で解散。
+          </div>
+        </div>
+      </div>
+
+      <div class="hikkake">
+        <div class="hikkake-title">🚨 引っかけパターン</div>
+        × 「被保険者数が一定以下になったら解散できる」→ ○ <strong>被保険者数の要件はない</strong><br>
+        × 「解散は厚生労働大臣の命令のみ可能」→ ○ 組合会の<strong>議決でも</strong>任意解散できる
+      </div>
+
+      <div style="background:#1a1a2e;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:12px;color:rgba(255,255,255,.9);line-height:1.9;">
+        <div style="font-size:11px;font-weight:700;color:#e8896b;margin-bottom:4px;">🎯 試験で狙われるポイント</div>
+        「被保険者数が一定以下になったら解散できる」という誤解を利用した問題が毎年出る。正解は「組合会の議決＋認可」。人数要件はない。この誤解は試験委員に何度も使われている。
+      </div>
+      <div class="tip"><div class="tip-title">🧠 場面で覚える</div>
+        <div class="tip-item">📌 🎵「健保組合を解散したいなら組合会で多数決を取って厚生労働大臣に申請するだけ。人数要件はない。経営判断で解散できる」</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="card" id="cq3">
+  <div class="card-hd"><div class="q-num">03</div><div><div class="src-tag">法第150条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：準備金の積立義務</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">全国健康保険協会は、毎事業年度末において、<mark>1ヵ月分の保険給付</mark>に相当する額以上の準備金を積み立てなければならない。</div>
+    <div class="opts-tf" id="q3-opts"><div class="opt" onclick="answer('q3',0)">○ 正しい</div><div class="opt" onclick="answer('q3',1)">× 誤り</div></div>
+    <div class="ans-box" id="q3-ans">
+      <div class="ans-hd" id="q3-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：○ 正しい｜法第150条第1項</div>
+      <div class="why">✔ 協会けんぽの準備金積立義務。<strong>1ヵ月分の保険給付相当額以上</strong>を毎事業年度末に積立。財政安定のための制度。</div>
+
+      <div style="background:#f5f0e8;border-radius:10px;padding:12px 14px;margin:10px 0;">
+        <div style="font-size:11px;font-weight:700;color:var(--teal);margin-bottom:8px;">📖 協会けんぽの財政（重要ポイント）</div>
+        <div style="display:flex;flex-direction:column;gap:6px;font-size:12px;">
+          <div style="background:white;border-radius:6px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;">
+            <span>準備金の最低積立額</span>
+            <span style="font-weight:900;color:var(--red);">1ヵ月分の保険給付相当額</span>
+          </div>
+          <div style="background:white;border-radius:6px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;">
+            <span>国庫補助（事務費）</span>
+            <span style="font-weight:900;color:var(--teal);">全額</span>
+          </div>
+          <div style="background:white;border-radius:6px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;">
+            <span>国庫補助（給付費等）</span>
+            <span style="font-weight:900;color:var(--teal);">16.4%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hikkake">
+        <div class="hikkake-title">🚨 引っかけパターン</div>
+        × 「準備金は<strong>3ヵ月分</strong>以上」→ ○ <strong>1ヵ月分</strong>以上<br>
+        × 「国庫補助（給付費）は<strong>20%</strong>」→ ○ <strong>16.4%</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q4 -->
+<div class="card" id="cq4">
+  <div class="card-hd"><div class="q-num">04</div><div><div class="src-tag">法第20条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：組合会の構成</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">健康保険組合の組合会は、被保険者および事業主を代表する組合会議員で組織され、組合会議員の定数は<mark>偶数</mark>でなければならない。</div>
+    <div class="opts-tf" id="q4-opts"><div class="opt" onclick="answer('q4',0)">○ 正しい</div><div class="opt" onclick="answer('q4',1)">× 誤り</div></div>
+    <div class="ans-box" id="q4-ans">
+      <div class="ans-hd" id="q4-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：○ 正しい｜法第20条第1項・第2項</div>
+      <div class="why">✔ 組合会議員の定数は<strong>偶数</strong>。被保険者代表と事業主代表を<strong>同数</strong>にするため（労使同数の原則）。</div>
+
+      <div style="background:#f5f0e8;border-radius:10px;padding:12px 14px;margin:10px 0;">
+        <div style="font-size:11px;font-weight:700;color:var(--teal);margin-bottom:8px;">📖 組合会の構成</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;">
+          <div style="background:var(--teal-light);border:1.5px solid var(--teal);border-radius:8px;padding:10px;text-align:center;">
+            <div style="font-weight:700;color:var(--teal);margin-bottom:4px;">被保険者代表議員</div>
+            被保険者が選出
+          </div>
+          <div style="background:var(--red-light);border:1.5px solid var(--red);border-radius:8px;padding:10px;text-align:center;">
+            <div style="font-weight:700;color:var(--red);margin-bottom:4px;">事業主代表議員</div>
+            事業主が選出または選任
+          </div>
+        </div>
+        <div style="margin-top:8px;background:#d4f0f0;border-radius:6px;padding:6px 10px;font-size:11px;color:#085041;">
+          💡 定数が<strong>偶数</strong>→両代表を<strong>同数</strong>にできる。奇数だと同数にならない。<br>
+          議員の任期：<strong>3年以内</strong>（定款で定める）
+        </div>
+      </div>
+
+      <div class="hikkake">
+        <div class="hikkake-title">🚨 引っかけパターン</div>
+        × 「定数は<strong>奇数</strong>でなければならない」→ ○ <strong>偶数</strong>（労使同数にするため）<br>
+        × 「議員の任期は<strong>4年以内</strong>」→ ○ <strong>3年以内</strong>
+      </div>
+
+      <div style="background:#1a1a2e;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:12px;color:rgba(255,255,255,.9);line-height:1.9;">
+        <div style="font-size:11px;font-weight:700;color:#e8896b;margin-bottom:4px;">🎯 試験で狙われるポイント</div>
+        「1ヵ月分」と「16.4%」はセットで選択式に出ることがある。「3ヵ月分」「20%」などの誤りが用意されている。両方正確に覚えておく必要がある。
+      </div>
+
+      <div style="background:#1a1a2e;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:12px;color:rgba(255,255,255,.9);line-height:1.9;">
+        <div style="font-size:11px;font-weight:700;color:#e8896b;margin-bottom:4px;">🎯 試験で狙われるポイント</div>
+        「偶数」「同数」「3年以内」の3点セットは穴埋め問題の定番。なぜ偶数でないといけないか（労使同数にするため）という理由も一緒に覚えると選択式の文脈問題にも対応できる。
+      </div>
+      <div class="tip"><div class="tip-title">🧠 場面で覚える</div>
+        <div class="tip-item">📌 🎵「労使同数で対等に決める組合会。6人なら3対3、10人なら5対5。奇数にすると対等にならないから偶数限定」</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q5 -->
+<div class="card" id="cq5">
+  <div class="card-hd"><div class="q-num">05</div><div><div class="src-tag">法第153条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：保健事業・福祉事業</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">健康保険組合は、保険給付のほかに、<mark>任意で</mark>保健事業および福祉事業を行うことができる。</div>
+    <div class="opts-tf" id="q5-opts"><div class="opt" onclick="answer('q5',0)">○ 正しい</div><div class="opt" onclick="answer('q5',1)">× 誤り</div></div>
+    <div class="ans-box" id="q5-ans">
+      <div class="ans-hd" id="q5-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：○ 正しい｜法第153条</div>
+      <div class="why">✔ 保健事業（健診・保健指導等）と福祉事業（保養所等）は<strong>任意</strong>で実施できる。義務ではない点が重要。</div>
+
+      <div style="margin:10px 0;overflow-x:auto;">
+        <table class="cmp-table">
+          <tr><th>事業の種類</th><th style="text-align:center;">義務 or 任意</th><th>例</th></tr>
+          <tr><td>保険給付</td><td style="text-align:center;color:var(--red);font-weight:700;">義務</td><td>療養の給付・傷病手当金等</td></tr>
+          <tr><td>保健事業</td><td style="text-align:center;color:var(--green);font-weight:700;">任意</td><td>健康診断・保健指導・健康相談</td></tr>
+          <tr><td>福祉事業</td><td style="text-align:center;color:var(--green);font-weight:700;">任意</td><td>保養所・直営病院・貸付事業</td></tr>
+          <tr><td>付加給付</td><td style="text-align:center;color:var(--green);font-weight:700;">任意</td><td>法定給付に上乗せする独自給付</td></tr>
+        </table>
+      </div>
+
+      <div class="hikkake">
+        <div class="hikkake-title">🚨 引っかけパターン</div>
+        × 「保健事業は<strong>義務</strong>として実施しなければならない」→ ○ <strong>任意</strong>（やらなくてもよい）<br>
+        × 「協会けんぽは付加給付を行える」→ ○ 付加給付は<strong>健保組合のみ</strong>（協会けんぽは不可）
+      </div>
+
+      <div style="background:#1a1a2e;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:12px;color:rgba(255,255,255,.9);line-height:1.9;">
+        <div style="font-size:11px;font-weight:700;color:#e8896b;margin-bottom:4px;">🎯 試験で狙われるポイント</div>
+        保健事業が「義務か任意か」は毎回どこかで問われる。「協会けんぽは付加給付を行えない（健保組合のみ）」という周辺知識も択一式で出る頻度が高い。
+      </div>
+      <div class="tip"><div class="tip-title">🧠 場面で覚える</div>
+        <div class="tip-item">📌 🎵「健保組合の保養所は義務ではなく福祉事業としてオプションでやっている。資金の余裕がある組合が任意でやっている」</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /qwrap -->
+
+<div class="sec-div" style="margin-top:20px;">
+  <div><span class="sec-pill pill-teal">② 穴埋め式　5問</span></div>
+  <div class="sec-title">健保組合の重要数字・語句を定着させる</div>
+  <div class="sec-desc">700人・3,000人・偶数・同数・全額・16.4%・30/1000〜130/1000。選択式で直接問われる数字を穴埋めで確認。</div>
+</div>
+
+<div class="qwrap">
+
+<!-- F1 -->
+<div class="card" id="cf1">
+  <div class="card-hd"><div class="q-num tn">F1</div><div><div class="src-tag t">穴埋め ／ 健保組合の設立要件（法第11条）</div><div class="q-type">難易度：★★☆</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">健保組合の設立要件に関する空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      単独設立：被保険者数
+      <span class="blank" id="f1a" onclick="selB('f1','f1a')">　　　</span>
+      人以上。共同設立：合計
+      <span class="blank" id="f1b" onclick="selB('f1','f1b')">　　　　</span>
+      人以上。いずれも厚生労働大臣の
+      <span class="blank" id="f1c" onclick="selB('f1','f1c')">　　</span>
+      が必要。
+    </div>
+    <div class="chips" id="f1-ch">
+      <div class="chp" onclick="fillB('f1','f1a',this,'700')">700</div>
+      <div class="chp" onclick="fillB('f1','f1a',this,'1000')">1000</div>
+      <div class="chp" onclick="fillB('f1','f1b',this,'3,000')">3,000</div>
+      <div class="chp" onclick="fillB('f1','f1b',this,'1,000')">1,000</div>
+      <div class="chp" onclick="fillB('f1','f1c',this,'認可')">認可</div>
+      <div class="chp" onclick="fillB('f1','f1c',this,'届出')">届出</div>
+    </div>
+    <button class="chk-btn" id="f1-btn" onclick="chkF('f1')">答え合わせ</button>
+    <div class="ans-box" id="f1-ans">
+      <div class="ans-hd" id="f1-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：700人 ／ 3,000人 ／ 認可</div>
+      <div style="background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:8px 12px;font-size:12px;color:#A32D2D;margin:8px 0;">
+        ⚠️ 共同設立は「<strong>3,000人</strong>」。「1,000人」は誤りの選択肢として頻出。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F2 -->
+<div class="card" id="cf2">
+  <div class="card-hd"><div class="q-num tn">F2</div><div><div class="src-tag t">穴埋め ／ 組合会の構成（法第20条）</div><div class="q-type">難易度：★★☆</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">組合会の構成に関する空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      組合会議員の定数は
+      <span class="blank" id="f2a" onclick="selB('f2','f2a')">　　</span>
+      でなければならない。被保険者代表と事業主代表は
+      <span class="blank" id="f2b" onclick="selB('f2','f2b')">　　</span>
+      （原則）。議員の任期は
+      <span class="blank" id="f2c" onclick="selB('f2','f2c')">　　</span>
+      年以内（定款で定める）。
+    </div>
+    <div class="chips" id="f2-ch">
+      <div class="chp" onclick="fillB('f2','f2a',this,'偶数')">偶数</div>
+      <div class="chp" onclick="fillB('f2','f2a',this,'奇数')">奇数</div>
+      <div class="chp" onclick="fillB('f2','f2b',this,'同数')">同数</div>
+      <div class="chp" onclick="fillB('f2','f2b',this,'3対1')">3対1</div>
+      <div class="chp" onclick="fillB('f2','f2c',this,'3')">3</div>
+      <div class="chp" onclick="fillB('f2','f2c',this,'4')">4</div>
+    </div>
+    <button class="chk-btn" id="f2-btn" onclick="chkF('f2')">答え合わせ</button>
+    <div class="ans-box" id="f2-ans">
+      <div class="ans-hd" id="f2-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：偶数 ／ 同数 ／ 3年以内</div>
+    </div>
+  </div>
+</div>
+
+<!-- F3 -->
+<div class="card" id="cf3">
+  <div class="card-hd"><div class="q-num tn">F3</div><div><div class="src-tag t">穴埋め ／ 国庫補助（法第153条の2）</div><div class="q-type">難易度：★★★</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">協会けんぽへの国庫補助に関する空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      国は、協会の事務の執行に要する費用の
+      <span class="blank" id="f3a" onclick="selB('f3','f3a')">　　　　</span>
+      を補助する（事務費補助）。また、給付費等については
+      <span class="blank" id="f3b" onclick="selB('f3','f3b')">　　　</span>
+      %相当額を補助する。
+    </div>
+    <div class="chips" id="f3-ch">
+      <div class="chp" onclick="fillB('f3','f3a',this,'全額')">全額</div>
+      <div class="chp" onclick="fillB('f3','f3a',this,'2分の1')">2分の1</div>
+      <div class="chp" onclick="fillB('f3','f3b',this,'16.4')">16.4</div>
+      <div class="chp" onclick="fillB('f3','f3b',this,'20')">20</div>
+    </div>
+    <button class="chk-btn" id="f3-btn" onclick="chkF('f3')">答え合わせ</button>
+    <div class="ans-box" id="f3-ans">
+      <div class="ans-hd" id="f3-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：全額 ／ 16.4%</div>
+      <div style="background:#fff3cd;border-radius:6px;padding:8px 12px;font-size:11px;color:#633806;margin:8px 0;">
+        ⚠️ 給付費の国庫補助率は「<strong>16.4%</strong>」。「20%」は誤り。事務費は「全額」補助。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F4 -->
+<div class="card" id="cf4">
+  <div class="card-hd"><div class="q-num tn">F4</div><div><div class="src-tag t">穴埋め ／ 保険料率（法第160条）</div><div class="q-type">難易度：★★★</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">保険料率に関する空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      協会けんぽの一般保険料率は
+      <span class="blank" id="f4a" onclick="selB('f4','f4a')">　　　　　</span>
+      から
+      <span class="blank" id="f4b" onclick="selB('f4','f4b')">　　　　　</span>
+      の範囲内で
+      <span class="blank" id="f4c" onclick="selB('f4','f4c')">　　　　</span>
+      ごとに設定。健保組合の一般保険料率も同じ範囲（
+      <span class="blank" id="f4d" onclick="selB('f4','f4d')">　　　　　</span>
+      〜130/1000）。
+    </div>
+    <div class="chips" id="f4-ch">
+      <div class="chp" onclick="fillB('f4','f4a',this,'30/1000')">30/1000</div>
+      <div class="chp" onclick="fillB('f4','f4b',this,'130/1000')">130/1000</div>
+      <div class="chp" onclick="fillB('f4','f4c',this,'都道府県')">都道府県</div>
+      <div class="chp" onclick="fillB('f4','f4d',this,'30/1000')">30/1000</div>
+    </div>
+    <button class="chk-btn" id="f4-btn" onclick="chkF('f4')">答え合わせ</button>
+    <div class="ans-box" id="f4-ans">
+      <div class="ans-hd" id="f4-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：30/1000〜130/1000 ／ 都道府県ごと</div>
+      <div style="background:#d4f0f0;border-radius:6px;padding:8px 12px;font-size:11px;color:#085041;margin:8px 0;">
+        💡 協会けんぽも健保組合も<strong>30/1000〜130/1000の同じ範囲</strong>。協会は都道府県ごとに異なる。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F5 -->
+<div class="card" id="cf5">
+  <div class="card-hd"><div class="q-num tn">F5</div><div><div class="src-tag t">穴埋め ／ 健保組合の合併・解散（法第26条）</div><div class="q-type">難易度：★★☆</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">健保組合の解散・合併に関する空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      健保組合が任意解散するには
+      <span class="blank" id="f5a" onclick="selB('f5','f5a')">　　　　</span>
+      の議決と厚生労働大臣の
+      <span class="blank" id="f5b" onclick="selB('f5','f5b')">　　</span>
+      が必要。財政悪化等の場合、厚生労働大臣は
+      <span class="blank" id="f5c" onclick="selB('f5','f5c')">　　　　　　</span>
+      ことができる。
+    </div>
+    <div class="chips" id="f5-ch">
+      <div class="chp" onclick="fillB('f5','f5a',this,'組合会')">組合会</div>
+      <div class="chp" onclick="fillB('f5','f5a',this,'理事会')">理事会</div>
+      <div class="chp" onclick="fillB('f5','f5b',this,'認可')">認可</div>
+      <div class="chp" onclick="fillB('f5','f5b',this,'届出')">届出</div>
+      <div class="chp" onclick="fillB('f5','f5c',this,'解散を命令する')">解散を命令する</div>
+      <div class="chp" onclick="fillB('f5','f5c',this,'合併を命令する')">合併を命令する</div>
+    </div>
+    <button class="chk-btn" id="f5-btn" onclick="chkF('f5')">答え合わせ</button>
+    <div class="ans-box" id="f5-ans">
+      <div class="ans-hd" id="f5-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：組合会 ／ 認可 ／ 解散を命令する</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /qwrap -->
+
+<div class="complete" id="complete-banner">
+  <div class="complete-in">
+    <div style="font-size:32px;margin-bottom:8px;">🎉</div>
+    <h2>Day 8 <em>完了！</em></h2>
+    <div class="complete-score" id="final-score">0</div>
+    <div class="complete-sub">10問中の正解数</div>
+    <div class="btn-row">
+      <span class="btn-back" onclick="location.href='index.html'" style="cursor:pointer;display:inline-block;">← 目次に戻る</span>
+      <span class="btn-next" onclick="location.href='day9.html'" style="cursor:pointer;display:inline-block;">Day 9 へ →</span>
+    </div>
+  </div>
+</div>
+
+<script>
+const DAY_META={day:'Day8',block:'Block8',unit:'健保組合・財政・保健事業',range:'法第11条〜第34条・第150条〜第161条',total:10};
+const correct_ans={q1:0,q2:1,q3:0,q4:0,q5:0};
+const done={};let score=0;let total=0;
+function answer(qid,idx){
+  if(done[qid])return;done[qid]=true;
+  const opts=document.querySelectorAll('#'+qid+'-opts .opt');
+  const ans=document.getElementById(qid+'-ans');
+  const ok=idx===correct_ans[qid];
+  opts.forEach((o,i)=>{if(i===correct_ans[qid])o.classList.add('correct');else if(i===idx&&!ok)o.classList.add('wrong');});
+  ans.className='ans-box show '+(ok?'ok':'ng');
+  const r=document.getElementById(qid+'-result');
+  if(r){r.textContent=ok?'⭕ 正解！':'❌ 不正解';r.style.color=ok?'var(--green)':'var(--red)';}
+  if(ok)score++;
+  document.getElementById('score').textContent=score;
+  updateProg();
+  setTimeout(()=>ans.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+}
+const defs={
+  f1:{f1a:'700',f1b:'3,000',f1c:'認可'},
+  f2:{f2a:'偶数',f2b:'同数',f2c:'3'},
+  f3:{f3a:'全額',f3b:'16.4'},
+  f4:{f4a:'30/1000',f4b:'130/1000',f4c:'都道府県',f4d:'30/1000'},
+  f5:{f5a:'組合会',f5b:'認可',f5c:'解散を命令する'},
+};
+const state={};
+let selTarget=null;
+function selB(fid,bid){
+  if(state[fid]&&state[fid].done)return;
+  document.querySelectorAll('[id^="'+fid+'"]').forEach(b=>{
+    if(b.classList.contains('blank'))b.classList.remove('sel');
+  });
+  document.getElementById(bid).classList.add('sel');
+  selTarget={fid,bid};
+}
+function fillB(fid,bid,chip,val){
+  if(state[fid]&&state[fid].done)return;
+  if(!selTarget||selTarget.bid!==bid)return;
+  document.getElementById(bid).textContent=val;
+  document.getElementById(bid).classList.remove('sel');
+  chip.classList.add('used');
+  selTarget=null;
+}
+function chkF(fid){
+  const ans=defs[fid];
+  let ok=true;
+  Object.keys(ans).forEach(bid=>{
+    const el=document.getElementById(bid);
+    const correct=ans[bid];
+    const given=(el.textContent||'').trim();
+    if(given===correct){el.classList.add('ok-fill');}
+    else{el.classList.add('ng-fill');ok=false;}
+  });
+  document.querySelectorAll('#'+fid+'-ch .chp').forEach(c=>{
+    const val=c.textContent.trim();
+    const isCorrect=Object.values(ans).includes(val);
+    c.classList.add(isCorrect?'ok-c':'ng-c');
+  });
+  const r=document.getElementById(fid+'-result');
+  if(r){r.textContent=ok?'⭕ 全問正解！':'❌ 不正解あり';r.style.color=ok?'var(--green)':'var(--red)';}
+  document.getElementById(fid+'-ans').className='ans-box show '+(ok?'ok':'ng');
+  document.getElementById(fid+'-btn').disabled=true;
+  if(!state[fid])state[fid]={};
+  state[fid].done=true;
+  if(ok)score++;
+  document.getElementById('score').textContent=score;
+  updateProg();
+}
+function updateProg(){
+  total=Object.keys(done).length+Object.values(state).filter(s=>s.done).length;
+  const pct=Math.round(total/10*100);
+  document.getElementById('prog').style.width=pct+'%';
+  document.getElementById('prog-lbl').textContent=total+' ／ 10 問 回答済み';
+  if(total>=10)setTimeout(showComplete,600);
+}
+function copyRecord(){
+  const text=DAY_META.day+'｜'+DAY_META.unit+'\n正解数：'+score+'/'+total+'\n'+new Date().toLocaleDateString('ja-JP');
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn=document.getElementById('copy-btn');
+    if(btn){btn.textContent='✅ コピー完了';btn.classList.add('copied');}
+  });
+  localStorage.setItem('syaroushi_'+DAY_META.day,JSON.stringify({score,total,date:new Date().toISOString()}));
+}
+function showComplete(){
+  document.getElementById('final-score').textContent=score+'/'+total;
+  const b=document.getElementById('complete-banner');
+  b.style.display='block';
+  setTimeout(()=>b.scrollIntoView({behavior:'smooth',block:'start'}),200);
+}
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:.08});
+document.querySelectorAll('.card').forEach(c=>io.observe(c));
+</script>
+
+</div><!-- /panel-quiz -->
+
+<!-- ========== 連想図 ========== -->
+<div id="panel-mindmap" class="tab-panel">
+<div style="max-width:760px;margin:0 auto;padding:20px 20px 60px;">
+  <div style="background:#ede9fe;border:1px solid #c4b5fd;border-radius:10px;padding:12px 16px;font-size:13px;color:#4c1d95;margin-bottom:24px;line-height:1.7;">
+    🗺 <strong>連想図</strong>：Day8の全論点を「設立→組合会→財政→保健事業」の流れで整理。数字を体系的に把握。
+  </div>
+
+  <!-- STEP1 設立要件 -->
+  <div style="text-align:center;margin-bottom:8px;">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:#1a6b3c;color:white;border-radius:20px;padding:6px 20px;font-size:12px;font-weight:700;">STEP 1 &nbsp;健保組合の設立要件</div>
+  </div>
+  <div style="background:white;border:2px solid #1a6b3c;border-radius:12px;padding:18px 20px;margin-bottom:20px;">
+    <div style="font-size:13px;font-weight:700;color:#1a6b3c;margin-bottom:14px;">🏢 単独設立 vs 共同設立</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;">
+      <div style="background:#e8f5ee;border:2px solid #2d6a4f;border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:11px;font-weight:700;color:#2d6a4f;margin-bottom:6px;">単独設立</div>
+        <div style="font-size:22px;font-weight:900;color:#1a6b3c;">700人以上</div>
+        <div style="font-size:11px;color:#6b7280;margin-top:6px;">1事業主・厚生労働大臣認可</div>
+      </div>
+      <div style="background:#fef9e7;border:2px solid #c9930a;border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:11px;font-weight:700;color:#c9930a;margin-bottom:6px;">共同設立</div>
+        <div style="font-size:22px;font-weight:900;color:#c9930a;">3,000人以上</div>
+        <div style="font-size:11px;color:#6b7280;margin-top:6px;">同種同業・2事業主以上</div>
+      </div>
+    </div>
+    <div style="background:#fee2e2;border:1px solid #fca5a5;border-radius:8px;padding:10px 14px;font-size:12px;color:#991b1b;">
+      🚨 <strong>解散に人数要件はない</strong>。組合会議決＋厚生労働大臣の認可、または解散命令のみ。
+    </div>
+  </div>
+
+  <!-- STEP2 組合会 -->
+  <div style="text-align:center;margin-bottom:8px;">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:#c9930a;color:white;border-radius:20px;padding:6px 20px;font-size:12px;font-weight:700;">STEP 2 &nbsp;組合会の構成「偶同数3年」</div>
+  </div>
+  <div style="background:white;border:2px solid #c9930a;border-radius:12px;padding:18px 20px;margin-bottom:20px;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;">
+      <div style="background:#fef9e7;border:2px solid #c9930a;border-radius:10px;padding:12px;text-align:center;">
+        <div style="font-size:11px;color:#6b7280;margin-bottom:4px;">定数</div>
+        <div style="font-size:18px;font-weight:900;color:#c9930a;">偶数</div>
+      </div>
+      <div style="background:#fef9e7;border:2px solid #c9930a;border-radius:10px;padding:12px;text-align:center;">
+        <div style="font-size:11px;color:#6b7280;margin-bottom:4px;">構成比</div>
+        <div style="font-size:18px;font-weight:900;color:#c9930a;">同数</div>
+        <div style="font-size:10px;color:#6b7280;">事業主側＝被保険者側</div>
+      </div>
+      <div style="background:#fef9e7;border:2px solid #c9930a;border-radius:10px;padding:12px;text-align:center;">
+        <div style="font-size:11px;color:#6b7280;margin-bottom:4px;">任期</div>
+        <div style="font-size:18px;font-weight:900;color:#c9930a;">3年</div>
+      </div>
+    </div>
+    <div style="background:#d4f0f0;border-radius:6px;padding:8px 12px;font-size:11px;color:#085041;">
+      💡 可否同数の場合は<strong>議長が決裁</strong>（議長は通常1票を持たない）。
+    </div>
+  </div>
+
+  <!-- STEP3 財政・国庫補助 -->
+  <div style="text-align:center;margin-bottom:8px;">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:#c84b31;color:white;border-radius:20px;padding:6px 20px;font-size:12px;font-weight:700;">STEP 3 &nbsp;財政・国庫補助・保険料率</div>
+  </div>
+  <div style="background:white;border:2px solid #c84b31;border-radius:12px;padding:18px 20px;margin-bottom:20px;">
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <tr style="background:#fee2e2;">
+          <th style="padding:8px 12px;text-align:left;border-bottom:2px solid #c84b31;font-weight:700;">項目</th>
+          <th style="padding:8px 12px;text-align:center;border-bottom:2px solid #c84b31;font-weight:700;">数字・内容</th>
+          <th style="padding:8px 12px;text-align:center;border-bottom:2px solid #c84b31;font-weight:700;">よくある誤り</th>
+        </tr>
+        <tr style="border-bottom:1px solid #f0ece4;">
+          <td style="padding:8px 12px;font-weight:600;">国庫補助率</td>
+          <td style="padding:8px 12px;text-align:center;font-weight:900;color:#c84b31;">16.4%</td>
+          <td style="padding:8px 12px;text-align:center;font-size:11px;color:#6b7280;">20%・13%</td>
+        </tr>
+        <tr style="border-bottom:1px solid #f0ece4;background:#fafaf8;">
+          <td style="padding:8px 12px;font-weight:600;">準備金</td>
+          <td style="padding:8px 12px;text-align:center;font-weight:900;color:#c84b31;">1ヵ月分の給付費</td>
+          <td style="padding:8px 12px;text-align:center;font-size:11px;color:#6b7280;">3ヵ月分</td>
+        </tr>
+        <tr style="border-bottom:1px solid #f0ece4;">
+          <td style="padding:8px 12px;font-weight:600;">一般保険料率</td>
+          <td style="padding:8px 12px;text-align:center;font-weight:900;color:#c84b31;">30/1000〜130/1000</td>
+          <td style="padding:8px 12px;text-align:center;font-size:11px;color:#6b7280;">20〜150/1000</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 12px;font-weight:600;">国庫補助の対象</td>
+          <td style="padding:8px 12px;text-align:center;font-weight:700;">協会けんぽのみ</td>
+          <td style="padding:8px 12px;text-align:center;font-size:11px;color:#6b7280;">健保組合にも補助</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- STEP4 保健事業 -->
+  <div style="text-align:center;margin-bottom:8px;">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:#2a7f7f;color:white;border-radius:20px;padding:6px 20px;font-size:12px;font-weight:700;">STEP 4 &nbsp;保健事業・福祉事業</div>
+  </div>
+  <div style="background:white;border:2px solid #2a7f7f;border-radius:12px;padding:18px 20px;margin-bottom:20px;">
+    <div style="font-size:13px;font-weight:700;color:#2a7f7f;margin-bottom:14px;">🏥 任意か義務かの整理</div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="background:#e8f4f4;border-left:4px solid #2a7f7f;border-radius:0 8px 8px 0;padding:10px 14px;">
+        <div style="font-size:12px;font-weight:700;color:#2a7f7f;">保健事業・福祉事業 → <strong>任意（努力義務）</strong></div>
+        <div style="font-size:11px;color:#6b7280;margin-top:2px;">健診の拡充、保健指導、疾病予防など。行わなくても違法にはならない。</div>
+      </div>
+      <div style="background:#fee2e2;border-left:4px solid #c84b31;border-radius:0 8px 8px 0;padding:10px 14px;">
+        <div style="font-size:12px;font-weight:700;color:#c84b31;">特定健診・特定保健指導 → <strong>義務的実施</strong></div>
+        <div style="font-size:11px;color:#6b7280;margin-top:2px;">40〜74歳対象。メタボリックシンドローム対策。実施計画の策定も義務。</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;background:#fff3cd;border:1px solid #fde68a;border-radius:8px;padding:8px 12px;font-size:11px;color:#633806;">
+      ⚠️「保健事業はすべて義務」は誤り。<strong>特定健診・保健指導のみ義務</strong>、それ以外は任意。
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ========== フラッシュカード ========== -->
+<div id="panel-flash" class="tab-panel">
+<div class="fc-wrap">
+  <div class="fc-meta">
+    <div class="fc-counter" id="fc-counter">1<span> / 15</span></div>
+    <button class="fc-nav-btn shuffle" onclick="fcShuffle()" style="max-width:120px;padding:8px 16px;font-size:12px;">🔀 シャッフル</button>
+  </div>
+  <div class="fc-gauge-wrap">
+    <div class="fc-gauge-labels">
+      <span class="fc-gauge-label-ng">❌ <span id="fc-ng-count">0</span></span>
+      <span class="fc-gauge-label-mid" id="fc-remaining">残り — 枚</span>
+      <span class="fc-gauge-label-ok"><span id="fc-ok-count">0</span> ✅</span>
+    </div>
+    <div class="fc-gauge-track">
+      <div class="fc-gauge-ng" id="fc-gauge-ng"></div>
+      <div class="fc-gauge-mid-line"></div>
+      <div class="fc-gauge-ok" id="fc-gauge-ok"></div>
+    </div>
+    <div class="fc-gauge-counts">
+      <span class="fc-gauge-count-ng" id="fc-ng-label">不正解</span>
+      <span class="fc-gauge-count-ok" id="fc-ok-label">正解</span>
+    </div>
+  </div>
+  <div class="fc-carousel" id="fc-carousel">
+    <!-- 前のカード -->
+    <div class="fc-slot prev" id="fc-slot-prev">
+      <div class="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd"><span class="fc-front-tag" id="fc-prev-tag">—</span><span style="font-size:11px;color:var(--gray);" id="fc-prev-cat"></span></div>
+          <div class="fc-front-body"><div class="fc-q" id="fc-prev-q" style="font-size:13px;opacity:.7;"></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- 現在のカード -->
+    <div class="fc-slot curr" id="fc-slot-curr" onclick="fcFlip()">
+      <div class="fc-inner" id="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-tag">—</span>
+            <span style="font-size:11px;color:var(--gray);" id="fc-cat"></span>
+          </div>
+          <div class="fc-front-body"><div class="fc-q" id="fc-q"></div></div>
+          <div class="fc-tap-hint">タップして答えを確認 ↑</div>
+          <div class="fc-ox">
+            <button class="fc-ox-btn x" onclick="event.stopPropagation();fcChoose(false)">× 誤り</button>
+            <button class="fc-ox-btn o" onclick="event.stopPropagation();fcChoose(true)">○ 正しい</button>
+          </div>
+        </div>
+        <div class="fc-face fc-back-face">
+          <div class="fc-back-hd">
+            <span class="fc-verdict" id="fc-verdict">○ 正しい</span>
+            <span id="fc-user-ans" style="font-size:13px;margin-left:8px;"></span>
+          </div>
+          <div class="fc-back-body">
+            <div class="fc-answer" id="fc-answer"></div>
+            <div class="fc-reason" id="fc-reason"></div>
+            <div class="fc-lawref" id="fc-lawref">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 次のカード -->
+    <div class="fc-slot next" id="fc-slot-next">
+      <div class="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd"><span class="fc-front-tag" id="fc-next-tag">—</span><span style="font-size:11px;color:var(--gray);" id="fc-next-cat"></span></div>
+          <div class="fc-front-body"><div class="fc-q" id="fc-next-q" style="font-size:13px;opacity:.7;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fc-nav" id="fc-nav" style="display:none;">
+    <button class="fc-nav-btn again" onclick="fcNext(false)">😅 もう一度</button>
+    <button class="fc-nav-btn got"   onclick="fcNext(true)">✅ わかった！</button>
+  </div>
+  <div class="fc-result" id="fc-result">
+    <div style="font-size:36px;margin-bottom:8px;" id="fc-emoji">🎉</div>
+    <h3>フラッシュカード完了！</h3>
+    <div class="fc-result-score" id="fc-result-score">—</div>
+    <div class="fc-result-sub" id="fc-result-sub">—</div>
+    <button class="fc-restart-btn" onclick="fcRestart()">🔁 もう一周する</button>
+  </div>
+</div>
+</div><!-- /panel-flash -->
+
+<!-- ========== スパイダーマップ ========== -->
+<div id="panel-spider" class="tab-panel">
+<div class="spider-wrap">
+  <div style="background:#ede9fe;border:1px solid #c4b5fd;border-radius:10px;padding:12px 16px;font-size:13px;color:#4c1d95;margin-bottom:20px;line-height:1.7;">
+    🕸️ <strong>記憶マップ</strong>：第2階層をタップで枝の展開・解説を切り替え。第3階層タップでリーフのみ開閉。
+  </div>
+  <div id="sp-root" style="width:100%;"></div>
+  <div id="spider-detail" style="display:none;margin-top:16px;background:white;border:2px solid #1a1a2e;border-radius:14px;overflow:hidden;">
+    <div id="spider-detail-hd" style="padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+      <span id="spider-detail-title" style="font-weight:700;font-size:15px;color:white;"></span>
+      <button onclick="closeSpiderDetail()" style="border:none;background:none;font-size:22px;cursor:pointer;color:rgba(255,255,255,.8);line-height:1;padding:0 4px;">x</button>
+    </div>
+    <div id="spider-detail-body" style="padding:16px 18px 20px;"></div>
+  </div>
+</div>
+</div><!-- /panel-spider -->
+
+<!-- 完了バナー -->
+<div class="complete" id="complete-banner">
+  <div class="complete-in">
+    <h2>Day 8 <em>完了！</em></h2>
+    <div class="complete-score" id="final-score">0</div>
+    <div class="complete-sub">10問中の正解数</div>
+    <div class="btn-row">
+      <span class="btn-back" onclick="location.href='index.html'" style="cursor:pointer;display:inline-block;">← 目次に戻る</span>
+      <button class="btn-copy" id="copy-btn2" onclick="copyRecord()" style="font-size:13px;padding:8px 18px;">📋 記録をコピー</button>
+      <span class="btn-next" onclick="location.href='day9.html'" style="cursor:pointer;display:inline-block;">Day 9 へ →</span>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────
+// フラッシュカード データ（15枚）
+// ─────────────────────────────────────
+const FC_CARDS = [
+  {tag:'Q01', cat:'設立要件', correct:true,
+   q:'健保組合の単独設立には、常時700人以上の被保険者を使用する事業主が厚生労働大臣の認可を受けることが必要である。',
+   answer:'○ 正しい',
+   reason:'単独設立：<strong>700人以上の被保険者＋厚生労働大臣の認可</strong>。「従業員数」ではなく「被保険者数」に注意。',
+   law:'法第11条'},
+  {tag:'Q02', cat:'解散要件', correct:false,
+   q:'健保組合は被保険者数が500人を下回った場合に厚生労働大臣の認可を受けて解散できる。',
+   answer:'× 誤り',
+   reason:'解散に<strong>被保険者数の要件はない</strong>。解散は組合会の議決＋厚生労働大臣の認可、または解散命令による。人数要件は設立のみ。',
+   law:'法第26条・第27条'},
+  {tag:'Q03', cat:'準備金', correct:true,
+   q:'全国健康保険協会は、毎事業年度末において1ヵ月分の保険給付に相当する額以上の準備金を積み立てなければならない。',
+   answer:'○ 正しい',
+   reason:'準備金の基準は<strong>1ヵ月分の保険給付費</strong>。「3ヵ月分」は誤り。財政安定のための法定積立。',
+   law:'法第161条'},
+  {tag:'Q04', cat:'組合会', correct:true,
+   q:'健保組合の組合会議員の定数は偶数でなければならず、事業主側と被保険者側が同数で構成される。',
+   answer:'○ 正しい',
+   reason:'組合会の構成：<strong>偶数かつ同数</strong>（事業主側＝被保険者側）。「偶同数」で覚える。議員任期は3年。',
+   law:'法第17条・第20条'},
+  {tag:'Q05', cat:'保健事業', correct:true,
+   q:'健保組合は、保険給付のほかに任意で保健事業および福祉事業を行うことができる。',
+   answer:'○ 正しい',
+   reason:'保健事業は<strong>任意（努力義務）</strong>。特定健診・特定保健指導のみ義務。保健事業すべてが義務ではない点に注意。',
+   law:'法第150条'},
+  {tag:'Q06', cat:'設立要件', correct:false,
+   q:'共同設立の場合、同種同業の事業所の被保険者を合算して1,000人以上あれば設立できる。',
+   answer:'× 誤り',
+   reason:'共同設立の要件は<strong>3,000人以上</strong>（1,000人ではない）。単独700人・共同3,000人のセットで覚える。',
+   law:'法第11条'},
+  {tag:'Q07', cat:'組合会', correct:false,
+   q:'組合会議員の任期は2年である。',
+   answer:'× 誤り',
+   reason:'組合会議員の任期は<strong>3年</strong>（2年ではない）。「偶数・同数・3年」の3点セット。',
+   law:'法第20条'},
+  {tag:'Q08', cat:'国庫補助', correct:true,
+   q:'全国健康保険協会の保険給付に要する費用には、医療給付費の16.4%の国庫補助がある。',
+   answer:'○ 正しい',
+   reason:'協会けんぽへの国庫補助率は<strong>16.4%</strong>。健保組合には国庫補助はない（協会けんぽのみ）。',
+   law:'法第153条'},
+  {tag:'Q09', cat:'保険料率', correct:true,
+   q:'健保組合の一般保険料率は、1,000分の30から1,000分の130の範囲で組合が定める。',
+   answer:'○ 正しい',
+   reason:'健保組合の一般保険料率：<strong>30/1000〜130/1000</strong>。都道府県単位保険料率（協会けんぽ）は別途定められる。',
+   law:'法第160条'},
+  {tag:'Q10', cat:'解散', correct:false,
+   q:'健保組合の解散は、被保険者の4分の3以上の同意があれば、厚生労働大臣の認可なしに行うことができる。',
+   answer:'× 誤り',
+   reason:'解散には<strong>組合会の議決＋厚生労働大臣の認可</strong>が必要。「4分の3の同意」は任意適用事業所の加入・脱退の要件。',
+   law:'法第26条'},
+  {tag:'F01', cat:'設立要件', correct:true,
+   q:'健保組合の設立：単独（　）人以上、共同（　）人以上、厚生労働大臣の（　）が必要',
+   answer:'700人・3,000人・認可',
+   reason:'<strong>単独700・共同3,000・厚生労働大臣の認可</strong>。3点セットで確実に覚える。',
+   law:'法第11条'},
+  {tag:'F02', cat:'組合会', correct:true,
+   q:'組合会議員の定数は（　）で、事業主側と被保険者側の（　）が原則。任期は（　）年。',
+   answer:'偶数・同数・3年',
+   reason:'「<strong>偶同数3年</strong>」。奇数・不均等・2年はいずれも誤り。',
+   law:'法第17条・第20条'},
+  {tag:'F03', cat:'国庫補助', correct:true,
+   q:'協会けんぽへの国庫補助は医療給付費の（　）%。任継被保険者分は（　）負担。',
+   answer:'16.4%・全額',
+   reason:'<strong>協会けんぽ16.4%</strong>。任意継続被保険者は保険料を<strong>全額自己負担</strong>（事業主負担なし）。',
+   law:'法第153条・第38条'},
+  {tag:'F04', cat:'保険料率', correct:true,
+   q:'健保組合の一般保険料率の範囲：（　）/1000から（　）/1000。都道府県単位は（　）が定める。',
+   answer:'30/1000・130/1000・都道府県',
+   reason:'<strong>30〜130/1000</strong>の範囲。都道府県単位保険料率は<strong>都道府県</strong>（協会けんぽ）ごとに設定。',
+   law:'法第160条'},
+  {tag:'F05', cat:'解散', correct:true,
+   q:'健保組合の解散：（　）の議決＋厚生労働大臣の（　）。または厚生労働大臣が（　）。',
+   answer:'組合会・認可・解散を命令する',
+   reason:'解散の手続き：<strong>組合会議決＋認可</strong>、または<strong>厚生労働大臣の命令</strong>。人数要件なし。',
+   law:'法第26条・第27条'},
+];
+
+// ─────────────────────────────────────
+// フラッシュカード ロジック（day6と同一）
+// ─────────────────────────────────────
+let fcDeck=[];let fcIdx=0;let fcGot=0;let fcFlipped=false;let fcOk=0;let fcNg=0;
+
+function fcUpdateGauge(){
+  const total=fcDeck.length;const remaining=total-fcIdx;const half=50;
+  const okPct=Math.min(fcOk/total*100,half);const ngPct=Math.min(fcNg/total*100,half);
+  document.getElementById('fc-gauge-ok').style.width=okPct+'%';
+  document.getElementById('fc-gauge-ng').style.width=ngPct+'%';
+  document.getElementById('fc-ok-count').textContent=fcOk;
+  document.getElementById('fc-ng-count').textContent=fcNg;
+  document.getElementById('fc-remaining').textContent='残り '+remaining+' 枚';
+  document.getElementById('fc-counter').innerHTML=`${fcIdx+1}<span> / ${total}</span>`;
+}
+function fcSetSlot(slotId,tagId,catId,qId,cardData){
+  const slot=document.getElementById(slotId);
+  if(!cardData){slot.classList.add('hidden');return;}
+  slot.classList.remove('hidden');
+  document.getElementById(tagId).textContent=cardData.tag;
+  document.getElementById(catId).textContent=cardData.cat;
+  document.getElementById(qId).innerHTML=cardData.q;
+}
+function fcRender(){
+  const total=fcDeck.length;const curr=fcDeck[fcIdx];
+  const prev=fcIdx>0?fcDeck[fcIdx-1]:null;const next=fcIdx<total-1?fcDeck[fcIdx+1]:null;
+  fcSetSlot('fc-slot-prev','fc-prev-tag','fc-prev-cat','fc-prev-q',prev);
+  fcSetSlot('fc-slot-next','fc-next-tag','fc-next-cat','fc-next-q',next);
+  document.getElementById('fc-tag').textContent=curr.tag;
+  document.getElementById('fc-cat').textContent=curr.cat;
+  document.getElementById('fc-q').innerHTML=curr.q;
+  const verdict=document.getElementById('fc-verdict');
+  verdict.textContent=curr.correct?'○　正しい':'×　誤り';
+  verdict.className='fc-verdict '+(curr.correct?'ok':'ng');
+  document.getElementById('fc-answer').textContent=curr.answer;
+  document.getElementById('fc-reason').innerHTML=curr.reason.replace(/\n/g,'<br>');
+  document.getElementById('fc-lawref').textContent=curr.law;
+  const inner=document.getElementById('fc-inner');inner.classList.remove('flipped');fcFlipped=false;
+  document.getElementById('fc-nav').style.display='none';
+  const u=document.getElementById('fc-user-ans');if(u)u.textContent='';
+  fcUpdateGauge();
+}
+function fcInit(){
+  fcDeck=[...FC_CARDS];fcIdx=0;fcGot=0;fcOk=0;fcNg=0;fcFlipped=false;
+  document.getElementById('fc-result').style.display='none';
+  document.getElementById('fc-carousel').style.display='flex';
+  document.getElementById('fc-nav').style.display='none';
+  fcRender();
+}
+function fcShuffle(){
+  fcDeck=[...FC_CARDS].sort(()=>Math.random()-.5);fcIdx=0;fcGot=0;fcOk=0;fcNg=0;fcFlipped=false;
+  document.getElementById('fc-result').style.display='none';
+  document.getElementById('fc-carousel').style.display='flex';
+  document.getElementById('fc-nav').style.display='none';
+  fcRender();
+}
+function fcChoose(userSaidTrue){
+  if(fcFlipped)return;const curr=fcDeck[fcIdx];const isCorrect=(userSaidTrue===curr.correct);
+  const u=document.getElementById('fc-user-ans');
+  if(u){u.textContent=isCorrect?'✅ 正解！':'❌ 不正解';u.style.color=isCorrect?'var(--green)':'var(--red)';u.style.fontWeight='700';}
+  fcFlipped=true;document.getElementById('fc-inner').classList.add('flipped');
+  setTimeout(()=>{document.getElementById('fc-nav').style.display='flex';},280);
+}
+function fcFlip(){
+  const inner=document.getElementById('fc-inner');
+  if(!fcFlipped){fcFlipped=true;inner.classList.add('flipped');const u=document.getElementById('fc-user-ans');if(u)u.textContent='';
+    setTimeout(()=>{document.getElementById('fc-nav').style.display='flex';},280);
+  }else{fcFlipped=false;inner.classList.remove('flipped');document.getElementById('fc-nav').style.display='none';}
+}
+function fcNext(got){
+  if(got){fcGot++;fcOk++;}else{fcNg++;}
+  document.getElementById('fc-nav').style.display='none';
+  if(fcIdx+1>=fcDeck.length){
+    fcUpdateGauge();document.getElementById('fc-remaining').textContent='残り 0 枚';
+    document.getElementById('fc-carousel').style.display='none';
+    const result=document.getElementById('fc-result');result.style.display='block';
+    const pct=Math.round(fcOk/fcDeck.length*100);
+    document.getElementById('fc-result-score').textContent=`${fcOk} / ${fcDeck.length}`;
+    document.getElementById('fc-result-sub').textContent=`正答率 ${pct}% ― ${pct>=80?'バッチリ！次のDayへ進もう':pct>=60?'もう一周してみよう':'連想図を見直してから再挑戦！'}`;
+    document.getElementById('fc-emoji').textContent=pct>=80?'🏆':pct>=60?'✨':'📖';
+    document.getElementById('fc-counter').innerHTML=`${fcDeck.length}<span> / ${fcDeck.length}</span>`;
+    return;
+  }
+  fcIdx++;fcRender();
+}
+function fcRestart(){fcInit();}
+
+function switchTab(name,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+name).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(name==='flash'&&fcDeck.length===0)fcInit();
+  if(name==='spider')buildSpider();
+}
+
+document.addEventListener('DOMContentLoaded',function(){fcInit();});
+</script>
+
+<!-- ========== スパイダーマップ JS ========== -->
+<script>
+var spBranchOpen={};var spLeafOpen={};
+
+const SPIDER_DATA = [
+  { id:"setsu", label:"設立要件", sub:"法第11条\u301c34条",
+    color:"#1a6b3c", light:"#e8f5ee", border:"#2d6a4f", angle:218,
+    children:[
+      { label:"単独設立", sub:"700人以上", leaves:["常時700人以上","1事業主","厚生労働大臣認可"] },
+      { label:"共同設立", sub:"3,000人以上", leaves:["同種同業","合計3,000人以上","2事業主以上"] },
+      { label:"解散要件", sub:"人数不要", leaves:["人数要件なし","組合会の議決","命令による解散"] }
+    ],
+    detail:{
+      hdColor:"#1a6b3c",
+      items:[
+        {label:"単独設立の要件", val:"常時700人以上の被保険者＋厚生労働大臣の認可", note:"従業員数ではなく被保険者数"},
+        {label:"共同設立の要件", val:"同種同業かつ合計3,000人以上", note:"2以上の事業主で共同設立"},
+        {label:"解散の要件", val:"人数要件なし（組合会議決＋認可または命令）", note:"設立と解散で条件が異なる"}
+      ],
+      hikakke:"× 共同設立は1,000人以上\n× 解散にも700人の要件がある\n× 設立の認可は都道府県知事"
+    }
+  },
+  { id:"kumiai", label:"組合会", sub:"偶同数・3年",
+    color:"#c9930a", light:"#fef9e7", border:"#c9930a", angle:322,
+    children:[
+      { label:"議員定数", sub:"偶数・同数", leaves:["偶数で構成","事業主側＝被保険者側","奇数は不可"] },
+      { label:"任期", sub:"3年", leaves:["議員任期3年","再任可能","2年は誤り"] },
+      { label:"議決", sub:"多数決・議長決裁", leaves:["過半数出席","出席の過半数","可否同数は議長"] }
+    ],
+    detail:{
+      hdColor:"#c9930a",
+      items:[
+        {label:"議員定数の原則", val:"偶数かつ事業主側＝被保険者側（同数）", note:"「偶同数」で覚える"},
+        {label:"議員の任期", val:"3年（再任可）", note:"2年は誤り"},
+        {label:"可否同数の処理", val:"議長が決裁（議長は通常議決権なし）", note:""}
+      ],
+      hikakke:"× 議員定数は奇数でもよい\n× 任期は2年\n× 事業主側が多数"
+    }
+  },
+  { id:"zaisei", label:"財政・補助", sub:"16.4%・1か月",
+    color:"#c84b31", light:"#fee2e2", border:"#c84b31", angle:142,
+    children:[
+      { label:"国庫補助率", sub:"16.4%", leaves:["医療給付費の16.4%","協会けんぽのみ","健保組合は対象外"] },
+      { label:"準備金", sub:"1か月分", leaves:["1か月分の給付費","3か月は誤り","法定積立"] },
+      { label:"保険料率", sub:"30〜130/1000", leaves:["一般：30〜130/1000","組合が自主設定","都道府県単位も"] }
+    ],
+    detail:{
+      hdColor:"#c84b31",
+      items:[
+        {label:"国庫補助率", val:"医療給付費の16.4%（協会けんぽのみ）", note:"健保組合には国庫補助なし"},
+        {label:"準備金の基準", val:"1か月分の保険給付費", note:"3か月分は誤り"},
+        {label:"保険料率の範囲", val:"30/1000〜130/1000（一般）", note:""}
+      ],
+      hikakke:"× 国庫補助率は20%\n× 準備金は3か月分\n× 健保組合にも国庫補助あり"
+    }
+  },
+  { id:"hoken", label:"保健事業", sub:"任意・義務の区別",
+    color:"#2a7f7f", light:"#e8f4f4", border:"#2a7f7f", angle:38,
+    children:[
+      { label:"任意事業", sub:"努力義務", leaves:["健診の拡充","保健指導","疾病予防"] },
+      { label:"特定健診", sub:"義務的実施", leaves:["40〜74歳対象","メタボ対策","計画策定も義務"] },
+      { label:"直営施設", sub:"設置可能", leaves:["病院・診療所","薬局","介護施設等"] }
+    ],
+    detail:{
+      hdColor:"#2a7f7f",
+      items:[
+        {label:"保健事業の位置づけ", val:"原則任意（努力義務）", note:"特定健診・保健指導は義務"},
+        {label:"特定健診の対象", val:"40〜74歳の被保険者・被扶養者", note:"メタボリックシンドローム対策"},
+        {label:"直営施設", val:"病院・診療所・薬局・介護施設等の設置が可能", note:""}
+      ],
+      hikakke:"× 保健事業はすべて義務\n× 特定健診は任意\n× 直営施設は設置禁止"
+    }
+  }
+];
+
+function buildSpider(){
+  var root=document.getElementById("sp-root");
+  if(!root)return;
+  root.innerHTML="";
+  var W=760,H=720,CX=380,CY=360;
+  var R1=108,R2=222,R3=330,CS=20,LS=7;
+  var svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.setAttribute("viewBox","0 0 "+W+" "+H);
+  svg.setAttribute("xmlns","http://www.w3.org/2000/svg");
+  svg.setAttribute("font-family","'Noto Sans JP',sans-serif");
+  svg.style.display="block";svg.style.width="100%";svg.style.height="auto";
+  function mk(tag,attrs){
+    var el=document.createElementNS("http://www.w3.org/2000/svg",tag);
+    for(var k in attrs)el.setAttribute(k,attrs[k]);
+    return el;
+  }
+  function r(d){return d*Math.PI/180;}
+  function pt(dist,deg){return[CX+Math.cos(r(deg))*dist,CY+Math.sin(r(deg))*dist];}
+  // 描画順1: グリッド円
+  [R1+16,R2+14,R3+16].forEach(function(dist){
+    svg.appendChild(mk("circle",{cx:CX,cy:CY,r:dist,fill:"none",stroke:"#e4dfd6","stroke-width":"1","stroke-dasharray":"4,5"}));
+  });
+  // 描画順2〜6: 各枝
+  SPIDER_DATA.forEach(function(branch){
+    var ba=branch.angle;
+    var bpt=pt(R1,ba);var bx=bpt[0],by=bpt[1];
+    // 幹線
+    svg.appendChild(mk("line",{x1:CX,y1:CY,x2:bx,y2:by,stroke:branch.color,"stroke-width":"4.5","stroke-linecap":"round"}));
+    var og=document.createElementNS("http://www.w3.org/2000/svg","g");
+    og.id="sp-og-"+branch.id;
+    og.style.display=spBranchOpen[branch.id]?"":"none";
+    branch.children.forEach(function(child,ci){
+      var ca=ba+(ci-1)*CS;
+      var cpt=pt(R2,ca);var cx2=cpt[0],cy2=cpt[1];
+      var key=branch.id+"_"+ci;
+      if(spLeafOpen[key]===undefined)spLeafOpen[key]=true;
+      // 枝線
+      og.appendChild(mk("line",{x1:bx,y1:by,x2:cx2,y2:cy2,stroke:branch.color,"stroke-width":"2","stroke-linecap":"round"}));
+      // リーフgroup
+      var lg=document.createElementNS("http://www.w3.org/2000/svg","g");
+      lg.id="sp-lg-"+key;
+      lg.style.display=spLeafOpen[key]?"":"none";
+      var lc=child.leaves.length;
+      child.leaves.forEach(function(leaf,li){
+        var la=ca+(li-(lc-1)/2)*LS;
+        var lpt=pt(R3,la);var lx=lpt[0],ly=lpt[1];
+        lg.appendChild(mk("line",{x1:cx2,y1:cy2,x2:lx,y2:ly,stroke:branch.border,"stroke-width":"1.2","stroke-dasharray":"3,3","stroke-linecap":"round"}));
+        var gr=document.createElementNS("http://www.w3.org/2000/svg","g");
+        gr.appendChild(mk("rect",{x:lx-60,y:ly-13,width:120,height:26,rx:13,fill:"#faf8f3",stroke:branch.border,"stroke-width":"1.2"}));
+        var fs=leaf.length>10?"9.5":leaf.length>7?"10":"11";
+        var lt=mk("text",{x:lx,y:ly+5,"text-anchor":"middle","font-size":fs,"font-weight":"600",fill:branch.color});
+        lt.textContent=leaf;gr.appendChild(lt);lg.appendChild(gr);
+      });
+      og.appendChild(lg);
+      // 第2ノード
+      var gk=document.createElementNS("http://www.w3.org/2000/svg","g");
+      gk.style.cursor="pointer";
+      (function(k){gk.addEventListener("click",function(e){e.stopPropagation();spLeafOpen[k]=!spLeafOpen[k];var el=document.getElementById("sp-lg-"+k);if(el)el.style.display=spLeafOpen[k]?"":"none";});})(key);
+      gk.appendChild(mk("ellipse",{cx:cx2,cy:cy2,rx:"46",ry:"24",fill:branch.color}));
+      var kt=mk("text",{x:cx2,y:cy2-3,"text-anchor":"middle","font-size":"11","font-weight":"700",fill:"white"});
+      kt.textContent=child.label;gk.appendChild(kt);
+      var ks=mk("text",{x:cx2,y:cy2+11,"text-anchor":"middle","font-size":"8.5",fill:"rgba(255,255,255,.7)"});
+      ks.textContent=child.sub;gk.appendChild(ks);
+      og.appendChild(gk);
+    });
+    svg.appendChild(og);
+    // 第1ノード
+    var gn=document.createElementNS("http://www.w3.org/2000/svg","g");
+    gn.style.cursor="pointer";
+    (function(b){gn.addEventListener("click",function(){spBranchOpen[b.id]=!spBranchOpen[b.id];var el=document.getElementById("sp-og-"+b.id);if(el)el.style.display=spBranchOpen[b.id]?"":"none";if(spBranchOpen[b.id])openSpiderDetail(b,null);else closeSpiderDetail();});})(branch);
+    gn.appendChild(mk("ellipse",{cx:bx,cy:by,rx:"56",ry:"32",fill:branch.color}));
+    var tl=mk("text",{x:bx,y:by-5,"text-anchor":"middle","font-size":"14","font-weight":"700",fill:"white"});
+    tl.textContent=branch.label;gn.appendChild(tl);
+    var ts=mk("text",{x:bx,y:by+11,"text-anchor":"middle","font-size":"9.5",fill:"rgba(255,255,255,.65)"});
+    ts.textContent=branch.sub;gn.appendChild(ts);
+    svg.appendChild(gn);
+  });
+  // 中心ノード
+  var gc=document.createElementNS("http://www.w3.org/2000/svg","g");
+  gc.appendChild(mk("ellipse",{cx:CX,cy:CY,rx:"80",ry:"46",fill:"#22253a"}));
+  [["健保法Day8",-6,"12","#f0eee8"],["法第11条〜第34条",11,"9","rgba(240,238,232,.55)"]].forEach(function(t){
+    var ct=mk("text",{x:CX,y:CY+t[1],"text-anchor":"middle","font-size":t[2],"font-weight":"700",fill:t[3]});
+    ct.textContent=t[0];gc.appendChild(ct);
+  });
+  svg.appendChild(gc);
+  root.appendChild(svg);
+}
+
+function openSpiderDetail(branch,child){
+  var panel=document.getElementById("spider-detail");
+  var hd=document.getElementById("spider-detail-hd");
+  var title=document.getElementById("spider-detail-title");
+  var body=document.getElementById("spider-detail-body");
+  hd.style.background=branch.detail.hdColor;
+  title.textContent=branch.label+"  "+branch.sub;
+  var html="";
+  branch.detail.items.forEach(function(item){
+    html+="<div style='margin-bottom:14px;'>";
+    html+="<div style='font-size:11px;font-weight:700;color:#6b7280;margin-bottom:3px;'>"+item.label+"</div>";
+    html+="<div style='font-size:14px;font-weight:700;color:#1a1a2e;background:"+branch.light+";border:1.5px solid "+branch.border+";border-radius:8px;padding:8px 12px;'>"+item.val+"</div>";
+    if(item.note)html+="<div style='font-size:11px;color:#6b7280;margin-top:4px;padding-left:4px;'>&#x1F4A1; "+item.note+"</div>";
+    html+="</div>";
+  });
+  if(branch.detail.hikakke){
+    html+="<div style='background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 12px;font-size:11px;color:#A32D2D;line-height:2.1;'>";
+    html+="<div style='font-weight:700;margin-bottom:4px;'>&#x1F6A8; よくある引っかけ</div>";
+    html+=branch.detail.hikakke.split("\n").join("<br>");
+    html+="</div>";
+  }
+  body.innerHTML=html;
+  panel.style.display="block";
+}
+
+function closeSpiderDetail(){
+  document.getElementById("spider-detail").style.display="none";
+}
+</script>
+
+</body>
+</html>

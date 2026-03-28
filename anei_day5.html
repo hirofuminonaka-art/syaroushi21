@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day1｜目的・被保険者の種別・任意加入 ― 国民年金法ドリル</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1a2e; --paper:#faf8f3; --warm:#f5f0e8;
+  --red:#c84b31; --red-soft:#e8896b; --red-light:#fee2e2;
+  --teal:#2a7f7f; --teal-light:#e8f4f4;
+  --gold:#c9930a; --gold-light:#fef9e7;
+  --green:#2d6a4f; --green-light:#e8f5ee;
+  --gray:#6b7280; --border:#ddd8cc;
+  --purple:#7c3aed; --purple-light:#ede9fe;
+  --blue:#1d4ed8; --blue-light:#dbeafe;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
+.topbar{background:var(--ink);padding:10px 20px;display:flex;align-items:center;gap:12px;}
+.back-btn{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;cursor:pointer;}
+.back-btn:hover{color:white;}
+.topbar-title{color:rgba(255,255,255,.45);font-size:12px;margin-left:auto;}
+.tab-nav{background:var(--ink);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:100;}
+.tab-nav-in{max-width:820px;margin:0 auto;display:flex;}
+.tab-btn{flex:1;padding:12px 6px;font-size:12px;font-weight:700;color:rgba(255,255,255,.4);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;font-family:inherit;}
+.tab-btn:hover{color:rgba(255,255,255,.75);}
+.tab-btn.active{color:white;border-color:var(--red-soft);}
+.tab-btn.t2.active{border-color:#a78bfa;}
+.tab-btn.t3.active{border-color:var(--teal);}
+.tab-btn.t4.active{border-color:var(--gold);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+.hd{background:var(--ink);color:var(--paper);padding:36px 40px 28px;position:relative;overflow:hidden;}
+.hd::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px);}
+.hd-in{max-width:820px;margin:0 auto;position:relative;}
+.hd-eye{font-size:11px;letter-spacing:3px;color:var(--red-soft);margin-bottom:8px;font-weight:700;}
+.hd h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;line-height:1.3;margin-bottom:6px;}
+.hd h1 em{color:var(--red-soft);font-style:normal;}
+.hd-sub{font-size:13px;color:rgba(255,255,255,.5);font-weight:300;}
+.prog-wrap{margin-top:14px;background:rgba(255,255,255,.15);border-radius:20px;height:6px;overflow:hidden;}
+.prog-bar{height:6px;background:linear-gradient(90deg,var(--teal),var(--green));border-radius:20px;width:0%;transition:width .5s;}
+.prog-lbl{font-size:11px;color:rgba(255,255,255,.4);margin-top:4px;}
+.score-bar{max-width:820px;margin:0 auto;padding:0 20px;}
+.score-in{background:white;border:2px solid var(--ink);border-radius:12px;padding:12px 20px;display:flex;align-items:center;gap:16px;margin-top:20px;}
+.score-num{font-family:'DM Serif Display',serif;font-size:40px;color:var(--teal);line-height:1;}
+.score-lbl{font-size:11px;color:var(--gray);font-weight:700;letter-spacing:1px;}
+.copy-btn{margin-left:auto;background:var(--ink);color:white;border:none;border-radius:8px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.copy-btn:hover{opacity:.82;}
+.copy-btn.copied{background:var(--green);}
+.qwrap{max-width:820px;margin:24px auto 0;padding:0 20px 40px;display:flex;flex-direction:column;gap:20px;}
+.card{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;opacity:1;}
+.card-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.q-num{font-family:'DM Serif Display',serif;font-size:28px;color:var(--ink);line-height:1;min-width:36px;}
+.src-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;margin-bottom:3px;display:inline-block;}
+.q-type{font-size:11px;color:var(--gray);}
+.card-body{padding:16px 18px;}
+.quiz-q{font-size:14px;line-height:2;margin-bottom:14px;}
+.quiz-q mark{background:#fef3c7;padding:1px 3px;border-radius:3px;font-weight:700;}
+.opts-tf{display:flex;gap:10px;}
+.opt{flex:1;padding:10px;border:2px solid var(--border);border-radius:10px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s;background:white;}
+.opt:hover{border-color:var(--ink);}
+.opt.correct{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.opt.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.ans-box{display:none;margin-top:14px;border-radius:10px;padding:14px 16px;font-size:13px;}
+.ans-box.show{display:block;}
+.ans-box.ok{background:var(--green-light);border:1px solid #86efac;}
+.ans-box.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.ans-hd{font-weight:700;font-size:14px;margin-bottom:10px;}
+.why{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 13px;margin-bottom:10px;font-size:13px;line-height:1.85;}
+.why mark{background:#fed7aa;padding:1px 3px;border-radius:2px;font-weight:700;}
+.def-card{background:var(--teal-light);border:1.5px solid var(--teal);border-radius:8px;padding:10px 14px;margin-bottom:10px;font-size:12px;line-height:1.9;}
+.tip{background:var(--purple-light);border:1.5px solid #c4b5fd;border-radius:8px;padding:10px 13px;font-size:12px;line-height:1.9;margin-top:8px;}
+.law-tag{display:inline-block;background:var(--ink);color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:8px;}
+.blank-card-body{padding:16px 18px;}
+.blank-q{font-size:14px;line-height:2.8;margin-bottom:12px;}
+.blank{display:inline-block;min-width:60px;border-bottom:2.5px solid var(--ink);text-align:center;padding:0 4px;margin:0 2px;cursor:pointer;font-weight:700;transition:background .2s;border-radius:4px 4px 0 0;}
+.blank:hover{background:rgba(124,58,237,.08);}
+.blank.sel{background:var(--purple-light);border-color:var(--purple);}
+.blank.ok-fill{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.blank.ng-fill{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+.chp{border:2px solid var(--border);border-radius:20px;padding:5px 13px;cursor:pointer;font-size:13px;font-weight:600;background:white;transition:all .2s;}
+.chp:hover{border-color:var(--purple);}
+.chp.used{opacity:.3;pointer-events:none;}
+.chp.ok-c{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.chp.ng-c{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.chk-btn{background:var(--purple);color:white;border:none;border-radius:8px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit;}
+.chk-btn:hover{opacity:.82;}
+.chk-btn:disabled{opacity:.38;cursor:default;}
+.f-ans{display:none;margin-top:12px;border-radius:10px;padding:14px 16px;font-size:13px;}
+.f-ans.show{display:block;}
+.f-ans.ok{background:var(--green-light);border:1px solid #86efac;}
+.f-ans.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.complete-bar{display:none;max-width:820px;margin:0 auto;padding:0 20px 60px;}
+.complete-card{background:var(--ink);color:white;border-radius:16px;padding:28px;text-align:center;}
+.complete-card h2{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;margin-bottom:8px;}
+.complete-score{font-family:'DM Serif Display',serif;font-size:52px;color:#fde68a;line-height:1;margin-bottom:8px;}
+.copy-btn2{background:white;color:var(--ink);border:none;border-radius:8px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:12px;}
+.copy-btn2:hover{opacity:.82;}
+.mm-wrap{max-width:820px;margin:0 auto;padding:20px 20px 60px;}
+.mm-step{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;margin-bottom:20px;}
+.mm-step-hd{background:var(--ink);padding:12px 18px;display:flex;align-items:center;gap:10px;}
+.mm-step-num{font-family:'DM Serif Display',serif;font-size:28px;color:#fde68a;line-height:1;}
+.mm-step-title{font-size:14px;font-weight:700;color:white;}
+.mm-step-body{padding:16px 18px;}
+.mm-item{border-left:4px solid var(--teal);padding:8px 12px;margin-bottom:10px;background:var(--teal-light);border-radius:0 8px 8px 0;font-size:13px;line-height:1.8;}
+.mm-item mark{background:#fed7aa;padding:1px 3px;border-radius:2px;font-weight:700;}
+.mm-alert{border-left:4px solid var(--red);padding:8px 12px;background:var(--red-light);border-radius:0 8px 8px 0;font-size:13px;line-height:1.8;margin-bottom:10px;}
+.mm-gorof{background:var(--gold-light);border:1.5px solid var(--gold);border-radius:8px;padding:9px 13px;font-size:12px;line-height:1.8;margin-top:8px;}
+.hikakke-box{background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin-top:16px;}
+.hikakke-hd{background:var(--ink);padding:9px 16px;}
+.hikakke-hd span{font-size:12px;font-weight:700;color:#fde68a;}
+.hikakke-body{padding:12px 16px;display:flex;flex-direction:column;gap:8px;}
+.hikakke-row{border-left:4px solid var(--red);padding:7px 12px;background:#fff8f7;border-radius:0 6px 6px 0;font-size:12px;line-height:1.8;}
+.fc-wrap{max-width:740px;margin:20px auto 0;padding:0 20px 80px;}
+.fc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;font-size:12px;color:var(--gray);}
+.fc-counter{font-family:'DM Serif Display',serif;font-size:24px;color:var(--red);line-height:1;}
+.fc-counter span{font-size:12px;color:var(--gray);font-family:'Noto Sans JP',sans-serif;font-weight:400;}
+.fc-gauge-wrap{margin-bottom:20px;}
+.fc-gauge-labels{display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:5px;}
+.fc-gauge-label-ng{color:var(--red);}
+.fc-gauge-label-ok{color:var(--green);}
+.fc-gauge-label-mid{color:var(--gray);font-size:10px;font-weight:400;}
+.fc-gauge-track{position:relative;height:14px;background:var(--border);border-radius:20px;overflow:hidden;display:flex;}
+.fc-gauge-ng{height:100%;background:linear-gradient(90deg,#c84b31,#e8896b);border-radius:20px 0 0 20px;transition:width .5s;width:0%;}
+.fc-gauge-ok{height:100%;background:linear-gradient(90deg,#86efac,#2d6a4f);border-radius:0 20px 20px 0;transition:width .5s;width:0%;margin-left:auto;}
+.fc-gauge-mid-line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:white;transform:translateX(-50%);z-index:2;}
+.fc-carousel{position:relative;display:flex;align-items:center;justify-content:center;min-height:420px;overflow:hidden;margin-bottom:18px;}
+.fc-slot{position:absolute;width:72%;min-height:300px;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s,filter .35s ease;cursor:pointer;border-radius:16px;}
+.fc-slot.prev{transform:translateX(-82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.curr{transform:translateX(0) scale(1);opacity:1;filter:none;z-index:10;}
+.fc-slot.next{transform:translateX(82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.hidden{opacity:0;pointer-events:none;z-index:0;}
+.fc-inner{position:relative;width:100%;min-height:300px;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.4,0,.2,1);}
+.fc-inner.flipped{transform:rotateY(180deg);}
+.fc-face{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.11);}
+.fc-front-face{background:white;border:2px solid var(--ink);}
+.fc-back-face{background:white;border:2px solid var(--ink);transform:rotateY(180deg);}
+.fc-front-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:9px 14px;display:flex;align-items:center;gap:8px;}
+.fc-front-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;}
+.fc-front-body{flex:1;padding:16px 18px;display:flex;align-items:center;justify-content:center;}
+.fc-q{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;line-height:1.9;color:var(--ink);text-align:center;}
+.fc-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;}
+.fc-ox{display:flex;gap:8px;padding:0 14px 12px;}
+.fc-ox-btn{flex:1;padding:10px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-size:20px;font-weight:900;cursor:pointer;transition:all .15s;font-family:inherit;}
+.fc-ox-btn.o:hover{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.fc-ox-btn.x:hover{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.fc-back-hd{padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+.fc-verdict{font-size:12px;font-weight:700;padding:2px 10px;border-radius:20px;}
+.fc-verdict.ok{background:var(--green);color:white;}
+.fc-verdict.ng{background:var(--red);color:white;}
+.fc-back-body{flex:1;padding:12px 16px;overflow-y:auto;}
+.fc-answer{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ink);margin-bottom:8px;line-height:1.4;font-weight:700;}
+.fc-reason{font-size:12px;color:var(--ink);line-height:1.9;}
+.fc-reason mark{background:#fef3c7;padding:1px 4px;border-radius:3px;}
+.fc-nav{display:none;gap:10px;justify-content:center;padding:0 16px;}
+.fc-nav-btn{flex:1;max-width:160px;padding:11px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;text-align:center;}
+.fc-nav-btn:hover{border-color:var(--ink);}
+.fc-nav-btn.again{border-color:var(--red);color:var(--red);}
+.fc-nav-btn.again:hover{background:var(--red-light);}
+.fc-nav-btn.got{border-color:var(--green);color:var(--green);}
+.fc-nav-btn.got:hover{background:var(--green-light);}
+.fc-result{display:none;text-align:center;padding:24px;background:white;border:2px solid var(--ink);border-radius:14px;margin:0 20px;}
+.fc-result h3{font-family:'Noto Serif JP',serif;font-size:1.2rem;font-weight:900;margin-bottom:8px;}
+.fc-result-score{font-family:'DM Serif Display',serif;font-size:44px;color:var(--teal);line-height:1;margin:8px 0 4px;}
+.fc-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:12px;}
+.spider-wrap{max-width:820px;margin:0 auto;padding:20px 16px 60px;}
+svg text{font-family:'Noto Sans JP',sans-serif;}
+@media(max-width:600px){
+  .hd{padding:24px 16px 20px;}
+  .qwrap{padding:0 12px 40px;}
+  .fc-wrap{padding:0 12px 80px;}
+  .mm-wrap{padding:16px 12px 60px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="back-btn" onclick="location.href='index.html'">← 目次に戻る</span>
+  <span class="topbar-title">Day5 ／ 国民年金法 ― 機械・設備の安全基準</span>
+</div>
+
+<nav class="tab-nav">
+  <div class="tab-nav-in">
+    <button class="tab-btn active" onclick="switchTab('quiz',this)">📝 問題を解く</button>
+    <button class="tab-btn t3"     onclick="switchTab('mindmap',this)">🗺 連想図</button>
+    <button class="tab-btn t2"     onclick="switchTab('flash',this)">🃏 フラッシュカード</button>
+    <button class="tab-btn t4"     onclick="switchTab('spider',this)">🕸️ 記憶マップ</button>
+  </div>
+</nav>
+
+<!-- ════ PANEL-QUIZ ════ -->
+<div id="panel-quiz" class="tab-panel active">
+
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-eye">国民年金法 ／ Day 5</div>
+    <h1>目的・<em>被保険者の種別</em>・任意加入</h1>
+    <div class="hd-sub">○×式 5問 ＋ 穴埋め式 5問 ― 全10問　安衛法第20条・第41条・第42条・第45条</div>
+    <div class="prog-wrap"><div class="prog-bar" id="prog"></div></div>
+    <div class="prog-lbl" id="prog-lbl">0 ／ 10 問 回答済み</div>
+  </div>
+</div>
+
+<div class="score-bar">
+  <div class="score-in">
+    <div>
+      <div class="score-num" id="score">0</div>
+      <div class="score-lbl">正解数</div>
+    </div>
+    <div style="font-size:13px;color:var(--gray);line-height:1.6;">
+      <div id="score-sub">問題に答えると集計されます</div>
+    </div>
+    <button class="copy-btn" id="copy-btn" onclick="copyRecord()">📋 記録をコピー</button>
+  </div>
+</div>
+
+<!-- ○×式 5問 -->
+<div class="qwrap">
+<!-- Q1 -->
+<div class="card" id="cq1">
+  <div class="card-hd">
+    <div class="q-num">01</div>
+    <div><div class="src-tag">安衛法第41条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：特定機械等の製造許可</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">ボイラー等の特定機械等を製造する場合は、都道府県労働局長の許可を受けなければならない。</div>
+    <div class="opts-tf" id="q1-opts">
+      <div class="opt" onclick="answer('q1',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q1',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q1-ans">
+      <div class="ans-hd" id="q1-result"></div>
+      <div class="why">✅ <strong>正しい。</strong>特定機械等の製造には<mark>都道府県労働局長</mark>の許可が必要（労基署長ではない）。</div>
+      <div class="def-card"><strong>📖 特定機械等の製造許可</strong><br>特定機械等の製造には<mark>都道府県労働局長</mark>の許可が必要（労基署長ではない）。</div>
+      <svg viewBox="0 0 520 50" width="100%" style="margin:8px 0;border-radius:8px;"><rect width="520" height="50" rx="8" fill="#f5f0e8"/><rect x="10" y="8" width="500" height="34" rx="8" fill="#1d4ed8"/><text x="260" y="30" text-anchor="middle" font-size="10" font-weight="700" fill="white">特定機械等の製造許可</text></svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">特定機械等の製造許可：<mark>都道府県労働局長</mark></div></div></div></div>
+      <div class="tip">💡 特定機械等の製造許可：<mark>都道府県労働局長</mark></div>
+      <div class="law-tag">安衛法第41条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 ボイラーは爆発リスクがあるため製造段階から厳しく規制。</div>
+    </div>
+  </div>
+</div><!-- /card cq1 -->
+<!-- Q2 -->
+<div class="card" id="cq2">
+  <div class="card-hd">
+    <div class="q-num">02</div>
+    <div><div class="src-tag">安衛法第45条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：定期自主検査の記録保存</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">定期自主検査の結果は3年間保存しなければならない。</div>
+    <div class="opts-tf" id="q2-opts">
+      <div class="opt" onclick="answer('q2',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q2',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q2-ans">
+      <div class="ans-hd" id="q2-result"></div>
+      <div class="why">✅ <strong>正しい。</strong>定期自主検査の記録保存：<mark>3年間</mark>。健康診断結果（5年）・石綿（40年）との混同に注意。</div>
+      <div class="def-card"><strong>📖 定期自主検査の記録保存</strong><br>定期自主検査の記録保存：<mark>3年間</mark>。健康診断結果（5年）・石綿（40年）との混同に注意。</div>
+      <svg viewBox="0 0 520 50" width="100%" style="margin:8px 0;border-radius:8px;"><rect width="520" height="50" rx="8" fill="#f5f0e8"/><rect x="10" y="8" width="500" height="34" rx="8" fill="#1d4ed8"/><text x="260" y="30" text-anchor="middle" font-size="10" font-weight="700" fill="white">定期自主検査の記録保存</text></svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">定期自主検査の記録：<mark>3年間</mark>保存（健診5年・石綿40年と区別）</div></div></div></div>
+      <div class="tip">💡 定期自主検査の記録：<mark>3年間</mark>保存（健診5年・石綿40年と区別）</div>
+      <div class="law-tag">安衛法第45条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 「3年間」は作業環境測定の通常保存期間と同じ。健診の5年と混同しやすい。</div>
+    </div>
+  </div>
+</div><!-- /card cq2 -->
+<!-- Q3 -->
+<div class="card" id="cq3">
+  <div class="card-hd">
+    <div class="q-num">03</div>
+    <div><div class="src-tag">安衛法第42条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：型式検定</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">防じんマスクは型式検定に合格したものでなければ使用させてはならない。</div>
+    <div class="opts-tf" id="q3-opts">
+      <div class="opt" onclick="answer('q3',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q3',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q3-ans">
+      <div class="ans-hd" id="q3-result"></div>
+      <div class="why">✅ <strong>正しい。</strong>法第42条：防じんマスク・防毒マスク・安全帽等は国の<mark>型式検定合格品</mark>でなければ使用不可。</div>
+      <div class="def-card"><strong>📖 型式検定</strong><br>法第42条：防じんマスク・防毒マスク・安全帽等は国の<mark>型式検定合格品</mark>でなければ使用不可。</div>
+      <svg viewBox="0 0 520 50" width="100%" style="margin:8px 0;border-radius:8px;"><rect width="520" height="50" rx="8" fill="#f5f0e8"/><rect x="10" y="8" width="500" height="34" rx="8" fill="#1d4ed8"/><text x="260" y="30" text-anchor="middle" font-size="10" font-weight="700" fill="white">型式検定</text></svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">防じんマスク等：<mark>型式検定合格品</mark>のみ使用可</div></div></div></div>
+      <div class="tip">💡 防じんマスク等：<mark>型式検定合格品</mark>のみ使用可</div>
+      <div class="law-tag">安衛法第42条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 命を守る保護具の品質を国が型式検定で保証する仕組み。</div>
+    </div>
+  </div>
+</div><!-- /card cq3 -->
+<!-- Q4 -->
+<div class="card" id="cq4">
+  <div class="card-hd">
+    <div class="q-num">04</div>
+    <div><div class="src-tag">安衛法第20条 ／ ○×式</div><div class="q-type">難易度：★☆☆ ／ 単元：機械の危険防止措置</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">事業者は機械・設備から生ずる危険を防止するために必要な措置を講じなければならない。</div>
+    <div class="opts-tf" id="q4-opts">
+      <div class="opt" onclick="answer('q4',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q4',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q4-ans">
+      <div class="ans-hd" id="q4-result"></div>
+      <div class="why">✅ <strong>正しい。</strong>安衛法第20条：事業者は機械・設備等の<mark>危険防止措置義務</mark>。</div>
+      <div class="def-card"><strong>📖 機械の危険防止措置</strong><br>安衛法第20条：事業者は機械・設備等の<mark>危険防止措置義務</mark>。</div>
+      <svg viewBox="0 0 520 50" width="100%" style="margin:8px 0;border-radius:8px;"><rect width="520" height="50" rx="8" fill="#f5f0e8"/><rect x="10" y="8" width="500" height="34" rx="8" fill="#1d4ed8"/><text x="260" y="30" text-anchor="middle" font-size="10" font-weight="700" fill="white">機械の危険防止措置</text></svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">第20条：<mark>危険防止</mark>措置義務・第21条：<mark>健康障害防止</mark>措置義務</div></div></div></div>
+      <div class="tip">💡 第20条：<mark>危険防止</mark>措置義務・第21条：<mark>健康障害防止</mark>措置義務</div>
+      <div class="law-tag">安衛法第20条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 第20条（安全）と第21条（衛生）は安衛法の根幹条項。</div>
+    </div>
+  </div>
+</div><!-- /card cq4 -->
+<!-- Q5 -->
+<div class="card" id="cq5">
+  <div class="card-hd">
+    <div class="q-num">05</div>
+    <div><div class="src-tag">安衛法第45条 ／ ○×式</div><div class="q-type">難易度：★☆☆ ／ 単元：定期自主検査保存期間の誤り</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">定期自主検査の結果は1年間保存すれば足りる。</div>
+    <div class="opts-tf" id="q5-opts">
+      <div class="opt" onclick="answer('q5',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q5',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q5-ans">
+      <div class="ans-hd" id="q5-result"></div>
+      <div class="why">❌ <strong>誤り。</strong>定期自主検査の記録保存は<mark>3年間</mark>（1年間では不足）。</div>
+      <div class="def-card"><strong>📖 定期自主検査保存期間の誤り</strong><br>定期自主検査の記録保存は<mark>3年間</mark>（1年間では不足）。</div>
+      <svg viewBox="0 0 520 50" width="100%" style="margin:8px 0;border-radius:8px;"><rect width="520" height="50" rx="8" fill="#f5f0e8"/><rect x="10" y="8" width="500" height="34" rx="8" fill="#1d4ed8"/><text x="260" y="30" text-anchor="middle" font-size="10" font-weight="700" fill="white">定期自主検査保存期間の誤り</text></svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">定期自主検査：<mark>3年間</mark>保存（1年は不足）</div></div></div></div>
+      <div class="tip">💡 定期自主検査：<mark>3年間</mark>保存（1年は不足）</div>
+      <div class="law-tag">安衛法第45条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 各種保存期間：定期自主検査3年・健診5年・石綿40年。</div>
+    </div>
+  </div>
+</div><!-- /card cq5 -->
+</div><!-- /qwrap -->
+
+<!-- 穴埋め式 5問 -->
+<div class="qwrap">
+<!-- F6 -->
+<div class="card" id="cf1">
+  <div class="card-hd">
+    <div class="q-num">06</div>
+    <div><div class="src-tag">安衛法第41条 ／ 穴埋め式</div><div class="q-type">難易度：★★☆ ／ 単元：特定機械等の許可</div></div>
+  </div>
+  <div class="blank-card-body">
+    <div class="blank-q">特定機械等の製造許可：<span class="blank" id="f1a" onclick="selB('f1','f1a')">　　</span>労働局長の許可が必要。使用前に性能<span class="blank" id="f1b" onclick="selB('f1','f1b')">　　</span>を受ける。</div>
+    <div class="chips" id="f1-chips"><div class="chp" onclick="fillB('f1','f1a',this,'都道府県')">都道府県</div><div class="chp" onclick="fillB('f1','f1b',this,'検査')">検査</div><div class="chp" onclick="fillB('f1','f1c',this,'厚生労働')">厚生労働</div><div class="chp" onclick="fillB('f1','f1d',this,'承認')">承認</div></div>
+    <button class="chk-btn" id="chk-f1" onclick="chkF('f1')">答え合わせ</button>
+    <div class="f-ans" id="f1-ans">
+      <div class="ans-hd" id="f1-result"></div>
+      <div class="why">特定機械等：<mark>都道府県労働局長</mark>の製造許可＋使用前の性能<mark>検査</mark>が必要。</div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">特定機械等：<mark>都道府県労働局長</mark>の<mark>製造許可＋性能検査</mark></div></div></div></div>
+      <div class="tip">💡 特定機械等：<mark>都道府県労働局長</mark>の<mark>製造許可＋性能検査</mark></div>
+      <div class="law-tag">安衛法第41条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 ボイラーは爆発リスクがあるため製造から使用前まで二重チェックが必要。</div>
+    </div>
+  </div>
+</div><!-- /card cf1 -->
+<!-- F7 -->
+<div class="card" id="cf2">
+  <div class="card-hd">
+    <div class="q-num">07</div>
+    <div><div class="src-tag">安衛法第45条 ／ 穴埋め式</div><div class="q-type">難易度：★☆☆ ／ 単元：定期自主検査の保存期間</div></div>
+  </div>
+  <div class="blank-card-body">
+    <div class="blank-q">定期自主検査の記録保存：<span class="blank" id="f2a" onclick="selB('f2','f2a')">　　</span>年間（健診<span class="blank" id="f2b" onclick="selB('f2','f2b')">　　</span>年・石綿<span class="blank" id="f2c" onclick="selB('f2','f2c')">　　</span>年と区別）。</div>
+    <div class="chips" id="f2-chips"><div class="chp" onclick="fillB('f2','f2a',this,'3')">3</div><div class="chp" onclick="fillB('f2','f2b',this,'5')">5</div><div class="chp" onclick="fillB('f2','f2c',this,'40')">40</div><div class="chp" onclick="fillB('f2','f2d',this,'10')">10</div></div>
+    <button class="chk-btn" id="chk-f2" onclick="chkF('f2')">答え合わせ</button>
+    <div class="f-ans" id="f2-ans">
+      <div class="ans-hd" id="f2-result"></div>
+      <div class="why">定期自主検査：<mark>3年間</mark>保存。健診<mark>5年</mark>・石綿<mark>40年</mark>と区別して覚える。</div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">保存期間：定期自主検査<mark>3年</mark>・健診<mark>5年</mark>・石綿<mark>40年</mark></div></div></div></div>
+      <div class="tip">💡 保存期間：定期自主検査<mark>3年</mark>・健診<mark>5年</mark>・石綿<mark>40年</mark></div>
+      <div class="law-tag">安衛法第45条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 保存期間は潜伏期間に対応。石綿は中皮腫の潜伏期間40年。</div>
+    </div>
+  </div>
+</div><!-- /card cf2 -->
+<!-- F8 -->
+<div class="card" id="cf3">
+  <div class="card-hd">
+    <div class="q-num">08</div>
+    <div><div class="src-tag">安衛法第42条 ／ 穴埋め式</div><div class="q-type">難易度：★☆☆ ／ 単元：型式検定対象保護具</div></div>
+  </div>
+  <div class="blank-card-body">
+    <div class="blank-q">防じんマスク・防毒マスク等は国の<span class="blank" id="f3a" onclick="selB('f3','f3a')">　　</span>検定に合格した<span class="blank" id="f3b" onclick="selB('f3','f3b')">　　</span>品のみ使用可。</div>
+    <div class="chips" id="f3-chips"><div class="chp" onclick="fillB('f3','f3a',this,'型式')">型式</div><div class="chp" onclick="fillB('f3','f3b',this,'合格')">合格</div><div class="chp" onclick="fillB('f3','f3c',this,'性能')">性能</div><div class="chp" onclick="fillB('f3','f3d',this,'認定')">認定</div></div>
+    <button class="chk-btn" id="chk-f3" onclick="chkF('f3')">答え合わせ</button>
+    <div class="f-ans" id="f3-ans">
+      <div class="ans-hd" id="f3-result"></div>
+      <div class="why">防じん・防毒マスク等：国の<mark>型式検定</mark>に合格した<mark>合格品</mark>のみ使用可。</div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">保護具：<mark>型式検定合格品</mark>のみ使用可（国が品質保証）</div></div></div></div>
+      <div class="tip">💡 保護具：<mark>型式検定合格品</mark>のみ使用可（国が品質保証）</div>
+      <div class="law-tag">安衛法第42条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 命を守る保護具は品質保証が必須。型式検定合格マークが目印。</div>
+    </div>
+  </div>
+</div><!-- /card cf3 -->
+<!-- F9 -->
+<div class="card" id="cf4">
+  <div class="card-hd">
+    <div class="q-num">09</div>
+    <div><div class="src-tag">安衛法第20条 ／ 穴埋め式</div><div class="q-type">難易度：★☆☆ ／ 単元：事業者の一般的義務</div></div>
+  </div>
+  <div class="blank-card-body">
+    <div class="blank-q">安衛法第<span class="blank" id="f4a" onclick="selB('f4','f4a')">　　</span>条：機械・設備の<span class="blank" id="f4b" onclick="selB('f4','f4b')">　　</span>防止措置義務。第<span class="blank" id="f4c" onclick="selB('f4','f4c')">　　</span>条：健康障害防止措置義務。</div>
+    <div class="chips" id="f4-chips"><div class="chp" onclick="fillB('f4','f4a',this,'20')">20</div><div class="chp" onclick="fillB('f4','f4b',this,'危険')">危険</div><div class="chp" onclick="fillB('f4','f4c',this,'21')">21</div><div class="chp" onclick="fillB('f4','f4d',this,'22')">22</div></div>
+    <button class="chk-btn" id="chk-f4" onclick="chkF('f4')">答え合わせ</button>
+    <div class="f-ans" id="f4-ans">
+      <div class="ans-hd" id="f4-result"></div>
+      <div class="why">安衛法第<mark>20条</mark>：<mark>危険防止</mark>措置義務。第<mark>21条</mark>：健康障害防止措置義務。</div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">第<mark>20条</mark>：<mark>危険防止</mark>・第<mark>21条</mark>：健康障害防止</div></div></div></div>
+      <div class="tip">💡 第<mark>20条</mark>：<mark>危険防止</mark>・第<mark>21条</mark>：健康障害防止</div>
+      <div class="law-tag">安衛法第20条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 第20条（安全）と第21条（衛生）は安衛法の根幹条項として必ず押さえる。</div>
+    </div>
+  </div>
+</div><!-- /card cf4 -->
+<!-- F10 -->
+<div class="card" id="cf5">
+  <div class="card-hd">
+    <div class="q-num">10</div>
+    <div><div class="src-tag">安衛法第42条・59条 ／ 穴埋め式</div><div class="q-type">難易度：★★☆ ／ 単元：安全装置と特別教育</div></div>
+  </div>
+  <div class="blank-card-body">
+    <div class="blank-q">危険機械には<span class="blank" id="f5a" onclick="selB('f5','f5a')">　　</span>装置の設置が必要。操作者には<span class="blank" id="f5b" onclick="selB('f5','f5b')">　　</span>教育を実施しなければならない。</div>
+    <div class="chips" id="f5-chips"><div class="chp" onclick="fillB('f5','f5a',this,'安全')">安全</div><div class="chp" onclick="fillB('f5','f5b',this,'特別')">特別</div><div class="chp" onclick="fillB('f5','f5c',this,'防護')">防護</div><div class="chp" onclick="fillB('f5','f5d',this,'自主')">自主</div></div>
+    <button class="chk-btn" id="chk-f5" onclick="chkF('f5')">答え合わせ</button>
+    <div class="f-ans" id="f5-ans">
+      <div class="ans-hd" id="f5-result"></div>
+      <div class="why">危険機械：<mark>安全装置</mark>の設置義務＋操作者への<mark>特別教育</mark>実施義務。</div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">危険機械：<mark>安全装置</mark>＋操作者への<mark>特別教育</mark>がセット</div></div></div></div>
+      <div class="tip">💡 危険機械：<mark>安全装置</mark>＋操作者への<mark>特別教育</mark>がセット</div>
+      <div class="law-tag">安衛法第42条・59条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 設備側（安全装置）と人側（教育）を両輪で実施する安全管理の基本。</div>
+    </div>
+  </div>
+</div><!-- /card cf5 -->
+</div><!-- /qwrap -->
+
+<div class="complete-bar" id="complete-bar">
+  <div class="complete-card">
+    <h2>🎉 全問回答完了！</h2>
+    <div class="complete-score" id="complete-score">0 / 10</div>
+    <div style="color:rgba(255,255,255,.7);font-size:13px;" id="complete-msg"></div>
+    <button class="copy-btn2" id="copy-btn2" onclick="copyRecord()">📋 記録をコピー</button>
+  </div>
+</div>
+
+</div><!-- /panel-quiz -->
+
+<!-- ════ PANEL-MINDMAP ════ -->
+<div id="panel-mindmap" class="tab-panel">
+<div class="mm-wrap">
+  <div style="background:var(--teal-light);border:1px solid var(--teal);border-radius:10px;padding:12px 16px;font-size:13px;color:#1a4040;margin-bottom:24px;line-height:1.7;">
+    🗺 <strong>連想図</strong>：労働安全衛生法 Day5「機械・設備の安全基準」の重要論点を3STEPで整理。
+  </div>
+  <div class="mm-step">
+    <div class="mm-step-hd"><div class="mm-step-num">1</div><div class="mm-step-title">特定機械等——製造許可と性能検査</div></div>
+    <div class="mm-step-body">
+      <div class="mm-key">ボイラー等は都道府県労働局長の製造許可＋使用前の性能検査が必要</div>
+      <svg viewBox="0 0 540 50" width="100%" style="margin:12px 0;border-radius:10px;"><rect width="540" height="50" rx="10" fill="#f5f0e8"/><rect x="10" y="8" width="240" height="34" rx="8" fill="#c84b31"/><text x="130" y="30" text-anchor="middle" font-size="10" font-weight="700" fill="white">製造許可（都道府県労働局長）</text><rect x="280" y="8" width="250" height="34" rx="8" fill="#1d4ed8"/><text x="405" y="30" text-anchor="middle" font-size="10" font-weight="700" fill="white">使用前の性能検査</text></svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;font-size:12px;line-height:1.8;">特定機械等の許可権者：<mark>都道府県労働局長</mark>（労基署長ではない）</div><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;font-size:12px;line-height:1.8;">定期自主検査の記録保存：<mark>3年間</mark>（1年は誤り）</div></div></div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:10px 14px;font-size:12px;line-height:1.85;">🧠 ボイラーが最も厳しく規制される理由は「爆発すれば周囲の建物・人を吹き飛ばす」という壊滅的危険性。製造段階から使用前まで二重三重のチェックが入る。</div>
+    </div>
+  </div>
+  <div class="mm-step">
+    <div class="mm-step-hd"><div class="mm-step-num">2</div><div class="mm-step-title">型式検定——命を守る保護具は国が品質保証</div></div>
+    <div class="mm-step-body">
+      <div class="mm-key">防じんマスク・防毒マスク・安全帽等は型式検定合格品のみ使用可</div>
+      <svg viewBox="0 0 540 50" width="100%" style="margin:12px 0;border-radius:10px;"><rect width="540" height="50" rx="10" fill="#f5f0e8"/><rect x="10" y="8" width="160" height="34" rx="6" fill="#c84b31"/><text x="90" y="30" text-anchor="middle" font-size="10" font-weight="700" fill="white">防じんマスク</text><rect x="185" y="8" width="160" height="34" rx="6" fill="#c84b31"/><text x="265" y="30" text-anchor="middle" font-size="10" font-weight="700" fill="white">防毒マスク</text><rect x="360" y="8" width="170" height="34" rx="6" fill="#c84b31"/><text x="445" y="30" text-anchor="middle" font-size="10" font-weight="700" fill="white">安全帽（ヘルメット）</text></svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「安全帽は型式検定不要」→ <strong style="color:#2d6a4f;">○</strong> <mark>安全帽も型式検定対象</mark></div><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;font-size:12px;line-height:1.8;">型式検定合格品でなければ<mark>使用させてはならない</mark></div></div></div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:10px 14px;font-size:12px;line-height:1.85;">🧠 有毒ガスにさらされるのに性能不明のマスクを着けていては意味がない。国が型式検定で品質を保証し合格品のみ使用を認める仕組みは「最後の防衛ライン」の品質担保。</div>
+    </div>
+  </div>
+  <div class="mm-step">
+    <div class="mm-step-hd"><div class="mm-step-num">3</div><div class="mm-step-title">保存期間の整理——3年・5年・40年</div></div>
+    <div class="mm-step-body">
+      <div class="mm-key">定期自主検査→3年 ／ 健康診断結果→5年 ／ 石綿記録→40年</div>
+      <svg viewBox="0 0 540 50" width="100%" style="margin:12px 0;border-radius:10px;"><rect width="540" height="50" rx="10" fill="#f5f0e8"/><rect x="10" y="8" width="120" height="34" rx="6" fill="#1d4ed8"/><text x="70" y="24" text-anchor="middle" font-size="9" font-weight="700" fill="white">定期自主検査</text><text x="70" y="38" text-anchor="middle" font-size="9" fill="#bfdbfe">3年</text><rect x="145" y="8" width="120" height="34" rx="6" fill="#2d6a4f"/><text x="205" y="24" text-anchor="middle" font-size="9" font-weight="700" fill="white">健診結果</text><text x="205" y="38" text-anchor="middle" font-size="9" fill="#a7f3d0">5年</text><rect x="280" y="8" width="120" height="34" rx="6" fill="#c9930a"/><text x="340" y="24" text-anchor="middle" font-size="9" font-weight="700" fill="white">作業環境測定</text><text x="340" y="38" text-anchor="middle" font-size="9" fill="#fef9e7">3年</text><rect x="415" y="8" width="115" height="34" rx="6" fill="#c84b31"/><text x="472" y="24" text-anchor="middle" font-size="9" font-weight="700" fill="white">石綿記録</text><text x="472" y="38" text-anchor="middle" font-size="9" fill="#fde8e4">40年</text></svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;font-size:12px;line-height:1.8;">各種記録の保存期間：<mark>定期自主検査3年・健診5年・石綿40年</mark></div></div></div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:10px 14px;font-size:12px;line-height:1.85;">🧠 保存期間は「何年後に問題が発覚するか」に対応している。石綿は中皮腫の潜伏期間（30〜40年）に対応して40年。</div>
+    </div>
+  </div>
+</div>
+</div><!-- /panel-mindmap -->
+
+<!-- ════ PANEL-FLASH ════ -->
+<div id="panel-flash" class="tab-panel">
+<div class="fc-wrap">
+  <div class="fc-meta">
+    <div>
+      <div class="fc-counter" id="fc-counter">1<span> / 10</span></div>
+    </div>
+    <button class="fc-nav-btn shuffle" onclick="fcShuffle()" style="max-width:100px;padding:8px 12px;font-size:12px;">🔀 シャッフル</button>
+  </div>
+  <div class="fc-gauge-wrap">
+    <div class="fc-gauge-labels">
+      <span class="fc-gauge-label-ng">❌ <span id="fc-ng-count">0</span></span>
+      <span class="fc-gauge-label-mid" id="fc-remaining">残り 10 枚</span>
+      <span class="fc-gauge-label-ok"><span id="fc-ok-count">0</span> ✅</span>
+    </div>
+    <div class="fc-gauge-track">
+      <div class="fc-gauge-ng" id="fc-gauge-ng"></div>
+      <div class="fc-gauge-mid-line"></div>
+      <div class="fc-gauge-ok" id="fc-gauge-ok"></div>
+    </div>
+  </div>
+  <div class="fc-carousel" id="fc-carousel">
+    <div class="fc-slot prev" id="fc-slot-prev">
+      <div class="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-prev-tag">—</span>
+            <span style="font-size:11px;color:var(--gray);" id="fc-prev-cat"></span>
+          </div>
+          <div class="fc-front-body">
+            <div class="fc-q" id="fc-prev-q" style="font-size:13px;opacity:.7;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-slot curr" id="fc-slot-curr" onclick="fcFlip()">
+      <div class="fc-inner" id="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-tag">Q01</span>
+            <span style="font-size:11px;color:var(--gray);" id="fc-cat">目的条文</span>
+          </div>
+          <div class="fc-front-body">
+            <div class="fc-q" id="fc-q">—</div>
+          </div>
+          <div class="fc-ox">
+            <button class="fc-ox-btn o" onclick="fcChoose(true);event.stopPropagation();">○</button>
+            <button class="fc-ox-btn x" onclick="fcChoose(false);event.stopPropagation();">×</button>
+          </div>
+        </div>
+        <div class="fc-face fc-back-face">
+          <div class="fc-back-hd">
+            <span class="fc-verdict" id="fc-verdict">×　誤り</span>
+            <span id="fc-user-ans" style="font-size:12px;margin-left:auto;"></span>
+          </div>
+          <div class="fc-back-body">
+            <div class="fc-answer" id="fc-answer">—</div>
+            <div class="fc-reason" id="fc-reason">—</div>
+            <div class="fc-lawref" id="fc-lawref">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-slot next" id="fc-slot-next">
+      <div class="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-next-tag">—</span>
+            <span style="font-size:11px;color:var(--gray);" id="fc-next-cat"></span>
+          </div>
+          <div class="fc-front-body">
+            <div class="fc-q" id="fc-next-q" style="font-size:13px;opacity:.7;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fc-nav" id="fc-nav" style="display:none;">
+    <button class="fc-nav-btn again" onclick="fcNext(false)">😅 もう一度</button>
+    <button class="fc-nav-btn got"   onclick="fcNext(true)">✅ わかった！</button>
+  </div>
+  <div class="fc-result" id="fc-result">
+    <div style="font-size:36px;margin-bottom:8px;" id="fc-emoji">🎉</div>
+    <h3>フラッシュカード完了！</h3>
+    <div class="fc-result-score" id="fc-result-score">—</div>
+    <div class="fc-result-sub" id="fc-result-sub">—</div>
+    <button class="fc-restart-btn" onclick="fcRestart()">🔁 もう一周する</button>
+  </div>
+</div>
+</div><!-- /panel-flash -->
+
+<!-- ════ PANEL-SPIDER ════ -->
+<div id="panel-spider" class="tab-panel">
+<div class="spider-wrap">
+  <div style="background:var(--teal-light);border:1px solid var(--teal);border-radius:10px;padding:12px 16px;font-size:13px;color:#1a4040;margin-bottom:20px;line-height:1.7;">
+    🕸️ <strong>記憶マップ</strong>：枝をタップすると詳細解説と引っかけポイントが表示されます。
+  </div>
+  <div id="sp-root" style="width:100%;"></div>
+  <div id="spider-detail" style="display:none;margin-top:16px;background:white;border:2px solid #1a1a2e;border-radius:14px;overflow:hidden;">
+    <div id="spider-detail-hd" style="padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+      <span id="spider-detail-title" style="font-weight:700;font-size:15px;color:white;"></span>
+      <button onclick="closeSpiderDetail()" style="border:none;background:none;font-size:22px;cursor:pointer;color:rgba(255,255,255,.8);line-height:1;padding:0 4px;">×</button>
+    </div>
+    <div id="spider-detail-body" style="padding:16px 18px 20px;"></div>
+  </div>
+</div>
+</div><!-- /panel-spider -->
+
+<script>
+var DAY_META = {
+  day:'Day5', block:'国民年金法',
+  unit:'機械・設備の安全基準',
+  range:'安衛法第20条・第41条・第42条・第45条', total:10
+};
+
+function copyRecord() {
+  var saved = JSON.parse(localStorage.getItem('anei_day5') || '{}');
+  var c = saved.correct !== undefined ? saved.correct : (score || 0);
+  var t = saved.total || 10;
+  var dt = saved.ts ? new Date(saved.ts) : new Date();
+  var ds = dt.getFullYear()+'/'+String(dt.getMonth()+1).padStart(2,'0')+'/'+String(dt.getDate()).padStart(2,'0');
+  var row = [DAY_META.day,DAY_META.block,DAY_META.unit,DAY_META.range,t,ds,c,t>0?Math.round(c/t*100):0].join('\t');
+  navigator.clipboard.writeText(row).then(showCopied).catch(function(){
+    var ta=document.createElement('textarea'); ta.value=row;
+    ta.style.cssText='position:fixed;opacity:0;';
+    document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta); showCopied();
+  });
+}
+function showCopied() {
+  ['copy-btn','copy-btn2'].forEach(function(id){
+    var b=document.getElementById(id); if(!b) return;
+    b.textContent='✅ コピーしました！'; b.classList.add('copied');
+    setTimeout(function(){ b.textContent='📋 記録をコピー'; b.classList.remove('copied'); },2500);
+  });
+}
+
+var correct_ans = {q1:0, q2:0, q3:0, q4:0, q5:1};
+var done={}, score=0, total=0;
+
+function answer(qid,idx) {
+  if(done[qid]) return; done[qid]=true;
+  var opts=document.querySelectorAll('#'+qid+'-opts .opt');
+  var ans=document.getElementById(qid+'-ans');
+  var ok=idx===correct_ans[qid];
+  opts.forEach(function(o,i){
+    if(i===correct_ans[qid]) o.classList.add('correct');
+    else if(i===idx&&!ok) o.classList.add('wrong');
+  });
+  ans.className='ans-box show '+(ok?'ok':'ng');
+  var hd=document.getElementById(qid+'-result');
+  hd.textContent=ok?'⭕ 正解！':'❌ 不正解';
+  hd.style.color=ok?'var(--green)':'var(--red)';
+  if(ok) score++;
+  total++;
+  document.getElementById('score').textContent=score;
+  updateProg();
+  setTimeout(function(){ ans.scrollIntoView({behavior:'smooth',block:'nearest'}); },100);
+}
+
+var defs = {
+  f1:{f1a:'都道府県', f1b:'検査'},
+  f2:{f2a:'3', f2b:'5', f2c:'40'},
+  f3:{f3a:'型式', f3b:'合格'},
+  f4:{f4a:'20', f4b:'危険', f4c:'21'},
+  f5:{f5a:'安全', f5b:'特別'}
+};
+var state={f1:{}, f2:{}, f3:{}, f4:{}, f5:{}};
+var sel={f1:null, f2:null, f3:null, f4:null, f5:null};
+var fdone={};function selB(fid,bid) {
+  if(fdone[fid]) return;
+  if(state[fid][bid]!==undefined) {
+    var pv=state[fid][bid]; delete state[fid][bid];
+    document.getElementById(bid).textContent='　　';
+    document.querySelectorAll('#'+fid+'-chips .chp').forEach(function(c){
+      if(c.textContent===pv&&c.classList.contains('used')) c.classList.remove('used');
+    });
+  }
+  document.querySelectorAll('[id^="'+fid+'"][class*="blank"]').forEach(function(b){ b.classList.remove('sel'); });
+  sel[fid]=bid; document.getElementById(bid).classList.add('sel');
+}
+
+function fillB(fid,bid,chip,val) {
+  if(fdone[fid]) return;
+  var s = bid ? bid : sel[fid];
+  if(!s) {
+    var keys=Object.keys(defs[fid]);
+    var empty=null;
+    for(var i=0;i<keys.length;i++){ if(state[fid][keys[i]]===undefined){empty=keys[i];break;} }
+    if(!empty) return; s=empty;
+  }
+  if(state[fid][s]!==undefined) {
+    var pv=state[fid][s];
+    document.querySelectorAll('#'+fid+'-chips .chp').forEach(function(c){
+      if(c.textContent===pv&&c.classList.contains('used')) c.classList.remove('used');
+    });
+  }
+  document.getElementById(s).textContent=val;
+  document.getElementById(s).classList.remove('sel');
+  state[fid][s]=val; chip.classList.add('used'); sel[fid]=null;
+}
+
+function chkF(fid) {
+  if(fdone[fid]) return;
+  var d=defs[fid]; var keys=Object.keys(d);
+  if(!keys.every(function(k){ return state[fid][k]!==undefined; })) { alert('すべての空欄を埋めてください'); return; }
+  fdone[fid]=true; var allOk=true;
+  keys.forEach(function(k){
+    var el=document.getElementById(k); var ok=state[fid][k]===d[k];
+    el.classList.add(ok?'ok-fill':'ng-fill'); if(!ok) allOk=false;
+  });
+  document.querySelectorAll('#'+fid+'-chips .chp').forEach(function(c){
+    if(c.classList.contains('used')) {
+      var v=c.textContent;
+      c.classList.add(Object.values(d).indexOf(v)>=0?'ok-c':'ng-c');
+    }
+  });
+  document.getElementById('chk-'+fid).disabled=true;
+  var ans=document.getElementById(fid+'-ans');
+  ans.className='f-ans show '+(allOk?'ok':'ng');
+  var res=document.getElementById(fid+'-result');
+  res.textContent=allOk?'⭕ 全問正解！':'❌ 不正解あり';
+  res.style.color=allOk?'var(--green)':'var(--red)';
+  if(allOk) score++;
+  total++;
+  document.getElementById('score').textContent=score;
+  updateProg();
+  setTimeout(function(){ ans.scrollIntoView({behavior:'smooth',block:'nearest'}); },100);
+}
+
+function updateProg() {
+  var t=10; var pct=Math.round(total/t*100);
+  document.getElementById('prog').style.width=pct+'%';
+  document.getElementById('prog-lbl').textContent=total+' ／ '+t+' 問 回答済み';
+  var sub=document.getElementById('score-sub');
+  if(sub) sub.textContent=total+'問回答 / 正解率 '+(total>0?Math.round(score/total*100):0)+'%';
+  if(total===t) showComplete();
+}
+
+function showComplete() {
+  var bar=document.getElementById('complete-bar'); bar.style.display='block';
+  document.getElementById('complete-score').textContent=score+' / 10';
+  var pct=Math.round(score/10*100);
+  document.getElementById('complete-msg').textContent=
+    pct>=90?'🏆 完璧！':pct>=70?'✨ 合格圏内！':'📖 もう一周してみよう';
+  try { localStorage.setItem('anei_day5',JSON.stringify({correct:score,total:10,ts:Date.now()})); } catch(e){}
+  setTimeout(function(){ bar.scrollIntoView({behavior:'smooth',block:'start'}); },200);
+}
+
+var FC_CARDS = [
+  {tag:'安衛①',cat:'特定機械等',correct:true,
+   q:'ボイラー等の特定機械等は都道府県労働局長の製造許可と性能検査が必要である。',
+   answer:'○ 正しい',
+   reason:'特定機械等：<mark>都道府県労働局長</mark>の<mark>製造許可＋性能検査</mark>が必要。',
+   law:'安衛法第41条・42条'},
+  {tag:'安衛②',cat:'定期自主検査',correct:true,
+   q:'定期自主検査の結果は3年間記録・保存しなければならない。',
+   answer:'○ 正しい',
+   reason:'定期自主検査の記録：<mark>3年間</mark>保存（健診5年・石綿40年との混同に注意）。',
+   law:'安衛法第45条'},
+  {tag:'安衛③',cat:'型式検定',correct:true,
+   q:'防じんマスクは型式検定に合格したものでなければ使用させてはならない。',
+   answer:'○ 正しい',
+   reason:'防じんマスク等の保護具：<mark>型式検定合格品</mark>のみ使用可。',
+   law:'安衛法第42条'},
+  {tag:'安衛④',cat:'定期自主検査',correct:false,
+   q:'定期自主検査の結果の記録は1年間保存すれば足りる。',
+   answer:'× 誤り',
+   reason:'記録保存は<mark>3年間</mark>（1年は誤り）。',
+   law:'安衛法第45条'},
+  {tag:'安衛⑤',cat:'安全装置',correct:true,
+   q:'機械の危険な部分には覆い・囲い等の安全装置を設けなければならない。',
+   answer:'○ 正しい',
+   reason:'危険部分には<mark>安全装置（覆い・囲い等）</mark>の設置義務。',
+   law:'安衛法第20条'},
+  {tag:'安衛⑥',cat:'特定自主検査',correct:true,
+   q:'フォークリフト等は特定自主検査（1〜2年ごと）が義務付けられている。',
+   answer:'○ 正しい',
+   reason:'フォークリフト等：<mark>特定自主検査</mark>（1〜2年ごと）が義務。',
+   law:'安衛法第45条'},
+  {tag:'安衛⑦',cat:'事業者の義務',correct:true,
+   q:'事業者は機械から生ずる危険を防止するために必要な措置を講じなければならない。',
+   answer:'○ 正しい',
+   reason:'安衛法第20条：事業者の<mark>危険防止措置義務</mark>（機械・設備等）。',
+   law:'安衛法第20条'},
+  {tag:'安衛⑧',cat:'検定対象',correct:false,
+   q:'安全帽（ヘルメット）は型式検定の対象外である。',
+   answer:'× 誤り',
+   reason:'安全帽（ヘルメット）も<mark>型式検定対象</mark>（保護帽として国の検定が必要）。',
+   law:'安衛法第42条'},
+  {tag:'安衛⑨',cat:'安全管理',correct:true,
+   q:'危険な機械の安全対策は設備側の対策（安全装置）と人側の対策（教育）の両方が必要である。',
+   answer:'○ 正しい',
+   reason:'安全管理の両輪：<mark>設備（安全装置）＋人（教育・訓練）</mark>の組み合わせが基本。',
+   law:'安衛法第20条・59条'},
+  {tag:'安衛⑩',cat:'性能検査',correct:true,
+   q:'特定機械等の性能検査は登録検査機関が行う場合もある。',
+   answer:'○ 正しい',
+   reason:'性能検査：<mark>登録検査機関</mark>が実施する場合もある。',
+   law:'安衛法第41条'}
+];
+
+var fcDeck=[], fcIdx=0, fcGot=0, fcFlipped=false, fcOk=0, fcNg=0;
+
+function fcUpdateGauge() {
+  var total=fcDeck.length, remaining=total-fcIdx, half=50;
+  document.getElementById('fc-gauge-ok').style.width=Math.min(fcOk/total*100,half)+'%';
+  document.getElementById('fc-gauge-ng').style.width=Math.min(fcNg/total*100,half)+'%';
+  document.getElementById('fc-ok-count').textContent=fcOk;
+  document.getElementById('fc-ng-count').textContent=fcNg;
+  document.getElementById('fc-remaining').textContent='残り '+remaining+' 枚';
+  document.getElementById('fc-counter').innerHTML=(fcIdx+1)+'<span> / '+total+'</span>';
+}
+
+function fcSetSlot(slotId,tagId,catId,qId,cardData) {
+  var slot=document.getElementById(slotId);
+  if(!cardData){ slot.classList.add('hidden'); return; }
+  slot.classList.remove('hidden');
+  document.getElementById(tagId).textContent=cardData.tag;
+  document.getElementById(catId).textContent=cardData.cat;
+  document.getElementById(qId).innerHTML=cardData.q;
+}
+
+function fcRender() {
+  var total=fcDeck.length, curr=fcDeck[fcIdx];
+  var prev=fcIdx>0?fcDeck[fcIdx-1]:null;
+  var next=fcIdx<total-1?fcDeck[fcIdx+1]:null;
+  fcSetSlot('fc-slot-prev','fc-prev-tag','fc-prev-cat','fc-prev-q',prev);
+  fcSetSlot('fc-slot-next','fc-next-tag','fc-next-cat','fc-next-q',next);
+  document.getElementById('fc-tag').textContent=curr.tag;
+  document.getElementById('fc-cat').textContent=curr.cat;
+  document.getElementById('fc-q').innerHTML=curr.q;
+  var verdict=document.getElementById('fc-verdict');
+  if(curr.correct !== undefined){
+    verdict.textContent=curr.correct?'○　正しい':'×　誤り';
+    verdict.className='fc-verdict '+(curr.correct?'ok':'ng');
+  } else {
+    verdict.textContent='📖 答えを確認';
+    verdict.className='fc-verdict';
+  }
+  document.getElementById('fc-answer').innerHTML=curr.answer||'';
+  document.getElementById('fc-reason').innerHTML=curr.reason;
+  document.getElementById('fc-lawref').textContent=curr.law;
+  var inner=document.getElementById('fc-inner');
+  inner.classList.remove('flipped');
+  fcFlipped=false;
+  document.getElementById('fc-nav').style.display='none';
+  var ua=document.getElementById('fc-user-ans'); if(ua) ua.textContent='';
+  fcUpdateGauge();
+}
+
+function fcInit() {
+  fcDeck=FC_CARDS.slice();
+  for(var i=fcDeck.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=fcDeck[i];fcDeck[i]=fcDeck[j];fcDeck[j]=tmp;}
+  fcIdx=0;fcGot=0;fcOk=0;fcNg=0;fcFlipped=false;
+  document.getElementById('fc-result').style.display='none';
+  document.getElementById('fc-carousel').style.display='flex';
+  document.getElementById('fc-nav').style.display='none';
+  fcRender();
+}
+
+function fcShuffle() {
+  fcDeck=FC_CARDS.slice();
+  for(var i=fcDeck.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=fcDeck[i];fcDeck[i]=fcDeck[j];fcDeck[j]=tmp;}
+  fcIdx=0;fcGot=0;fcOk=0;fcNg=0;fcFlipped=false;
+  document.getElementById('fc-result').style.display='none';
+  document.getElementById('fc-carousel').style.display='flex';
+  document.getElementById('fc-nav').style.display='none';
+  fcRender();
+}
+
+function fcChoose(userSaidTrue) {
+  if(fcFlipped) return;
+  var curr=fcDeck[fcIdx];
+  var isCorrect=(curr.correct !== undefined)?(userSaidTrue===curr.correct):true;
+  if(userSaidTrue){fcGot++;fcOk++;}else{fcNg++;}
+  var ua=document.getElementById('fc-user-ans');
+  if(ua){ua.textContent=userSaidTrue?'○ わかる！':'× 要復習';ua.style.color=userSaidTrue?'var(--green)':'var(--red)';ua.style.fontWeight='700';}
+  var again=document.querySelector('.fc-nav-btn.again');
+  var got=document.querySelector('.fc-nav-btn.got');
+  if(again&&got){again.style.display='block';again.textContent='😅 もう一度';got.style.display='block';got.textContent='✅ わかった！';}
+  fcFlipped=true;
+  document.getElementById('fc-inner').classList.add('flipped');
+  setTimeout(function(){ document.getElementById('fc-nav').style.display='flex'; },280);
+}
+
+function fcFlip() {
+  var inner=document.getElementById('fc-inner');
+  if(!fcFlipped){
+    fcFlipped=true; inner.classList.add('flipped');
+    var ua=document.getElementById('fc-user-ans');
+    if(ua){ua.textContent='';ua.style.color='var(--gray)';}
+    var again=document.querySelector('.fc-nav-btn.again');
+    var got=document.querySelector('.fc-nav-btn.got');
+    if(again&&got){again.style.display='block';again.textContent='😅 もう一度';got.style.display='block';got.textContent='✅ わかった！';}
+    setTimeout(function(){ document.getElementById('fc-nav').style.display='flex'; },280);
+  } else {
+    fcFlipped=false; inner.classList.remove('flipped');
+    document.getElementById('fc-nav').style.display='none';
+  }
+}
+
+function fcNext(got) {
+  if(got){fcGot++;fcOk++;}else{fcNg++;}
+  document.getElementById('fc-nav').style.display='none';
+  if(fcIdx+1>=fcDeck.length){
+    fcUpdateGauge();
+    document.getElementById('fc-remaining').textContent='残り 0 枚';
+    document.getElementById('fc-carousel').style.display='none';
+    document.getElementById('fc-result').style.display='block';
+    var pct=Math.round(fcOk/fcDeck.length*100);
+    document.getElementById('fc-result-score').textContent=fcOk+' / '+fcDeck.length;
+    document.getElementById('fc-result-sub').textContent='正答率 '+pct+'% ― '+(pct>=80?'バッチリ！次のDayへ進もう':pct>=60?'もう一周してみよう':'連想図を見直してから再挑戦！');
+    document.getElementById('fc-emoji').textContent=pct>=80?'🏆':pct>=60?'✨':'📖';
+    document.getElementById('fc-counter').innerHTML=fcDeck.length+'<span> / '+fcDeck.length+'</span>';
+    return;
+  }
+  fcIdx++; fcRender();
+}
+
+function fcRestart(){ fcInit(); }
+
+function switchTab(name,btn) {
+  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById('panel-'+name).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(name==='flash'&&fcDeck.length===0) fcInit();
+  if(name==='spider') buildSpider();
+}
+
+var SPIDER_DATA = [
+  { id:"b1", label:"特定機械等の規制", sub:"安衛法第41条・42条",
+    color:"#1d4ed8", light:"#dbeafe", border:"#60a5fa", angle:218,
+    children:[
+      { label:"製造許可", sub:"都道府県労働局長", leaves:["都道府県労働局長の製造許可", "使用前の性能検査"] },
+      { label:"種類", sub:"ボイラー等", leaves:["ボイラー・第一種圧力容器", "クレーン・リフト等"] }
+    ],
+    detail:{
+      hdColor:"#1d4ed8",
+      items:[
+        {label:"特定機械等",val:"都道府県労働局長の製造許可＋性能検査が必要",note:""},
+        {label:"種類",val:"ボイラー・第一種圧力容器・クレーン等",note:""}
+      ],
+      hikakke:"× 「労基署長の許可」→ ○ 都道府県労働局長"
+    }
+  },
+  { id:"b2", label:"型式検定", sub:"安衛法第42条",
+    color:"#c84b31", light:"#fee2e2", border:"#f87171", angle:322,
+    children:[
+      { label:"対象保護具", sub:"合格品のみ", leaves:["防じんマスク・防毒マスク", "安全帽（ヘルメット）等"] },
+      { label:"検定の趣旨", sub:"品質保証", leaves:["国が品質を保証", "合格品以外の使用禁止"] }
+    ],
+    detail:{
+      hdColor:"#c84b31",
+      items:[
+        {label:"型式検定",val:"防じん・防毒マスク・安全帽等（合格品のみ使用可）",note:""},
+        {label:"趣旨",val:"命を守る保護具の品質を国が保証",note:""}
+      ],
+      hikakke:"× 「安全帽は型式検定不要」→ ○ 安全帽も型式検定対象"
+    }
+  },
+  { id:"b3", label:"定期自主検査", sub:"安衛法第45条",
+    color:"#2d6a4f", light:"#e8f5ee", border:"#4ade80", angle:142,
+    children:[
+      { label:"保存期間", sub:"3年間", leaves:["定期自主検査の結果：3年間保存", "健診（5年）・石綿（40年）との区別"] },
+      { label:"特定自主検査", sub:"フォークリフト等", leaves:["フォークリフト等：1〜2年ごと", "有資格者による検査"] }
+    ],
+    detail:{
+      hdColor:"#2d6a4f",
+      items:[
+        {label:"記録保存",val:"定期自主検査の結果：3年間保存",note:""},
+        {label:"特定自主検査",val:"フォークリフト等：1〜2年ごとに有資格者が実施",note:""}
+      ],
+      hikakke:"× 「定期自主検査の記録は1年保存」→ ○ 3年間"
+    }
+  },
+  { id:"b4", label:"事業者の一般的義務", sub:"安衛法第20条・21条",
+    color:"#7c3aed", light:"#ede9fe", border:"#a78bfa", angle:38,
+    children:[
+      { label:"第20条", sub:"危険防止", leaves:["機械・設備等の危険防止", "必要な措置を講じる義務"] },
+      { label:"第21条", sub:"健康障害防止", leaves:["有害物・放射線等による障害防止", "健康障害防止措置義務"] }
+    ],
+    detail:{
+      hdColor:"#7c3aed",
+      items:[
+        {label:"第20条",val:"機械・設備等の危険防止措置義務",note:""},
+        {label:"第21条",val:"有害物等による健康障害防止措置義務",note:""}
+      ],
+      hikakke:"× 「第20条は健康障害防止」→ ○ 第20条は危険防止・第21条が健康障害防止"
+    }
+  }
+];
+var spBranchOpen = {b1:false, b2:false, b3:false, b4:false};
+var spLeafOpen   = {};
+function buildSpider() {
+  var root=document.getElementById("sp-root");
+  if(!root) return;
+  root.innerHTML="";
+  var W=760,H=720,CX=380,CY=360,R1=108,R2=222,R3=330,CS=20,LS=7;
+  var svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.setAttribute("viewBox","0 0 "+W+" "+H);
+  svg.setAttribute("xmlns","http://www.w3.org/2000/svg");
+  svg.setAttribute("font-family","'Noto Sans JP',sans-serif");
+  svg.style.display="block"; svg.style.width="100%"; svg.style.height="auto";
+  function mk(tag,attrs){ var el=document.createElementNS("http://www.w3.org/2000/svg",tag); for(var k in attrs) el.setAttribute(k,attrs[k]); return el; }
+  function r(d){ return d*Math.PI/180; }
+  function pt(dist,deg){ return [CX+Math.cos(r(deg))*dist, CY+Math.sin(r(deg))*dist]; }
+  [R1+16,R2+14,R3+16].forEach(function(dist){
+    svg.appendChild(mk("circle",{cx:CX,cy:CY,r:dist,fill:"none",stroke:"#e4dfd6","stroke-width":"1","stroke-dasharray":"4,5"}));
+  });
+  SPIDER_DATA.forEach(function(branch){
+    var ba=branch.angle;
+    var bpt=pt(R1,ba); var bx=bpt[0],by=bpt[1];
+    svg.appendChild(mk("line",{x1:CX,y1:CY,x2:bx,y2:by,stroke:branch.color,"stroke-width":"4.5","stroke-linecap":"round"}));
+    var og=document.createElementNS("http://www.w3.org/2000/svg","g");
+    og.id="sp-og-"+branch.id;
+    og.style.display=spBranchOpen[branch.id]?"":"none";
+    branch.children.forEach(function(child,ci){
+      var ca=ba+(ci-1)*CS;
+      var cpt=pt(R2,ca); var cx2=cpt[0],cy2=cpt[1];
+      var key=branch.id+"_"+ci;
+      if(spLeafOpen[key]===undefined) spLeafOpen[key]=true;
+      og.appendChild(mk("line",{x1:bx,y1:by,x2:cx2,y2:cy2,stroke:branch.color,"stroke-width":"2","stroke-linecap":"round"}));
+      var lg=document.createElementNS("http://www.w3.org/2000/svg","g");
+      lg.id="sp-lg-"+key; lg.style.display=spLeafOpen[key]?"":"none";
+      var lc=child.leaves.length;
+      child.leaves.forEach(function(leaf,li){
+        var la=ca+(li-(lc-1)/2)*LS;
+        var lpt=pt(R3,la); var lx=lpt[0],ly=lpt[1];
+        lg.appendChild(mk("line",{x1:cx2,y1:cy2,x2:lx,y2:ly,stroke:branch.border,"stroke-width":"1.2","stroke-dasharray":"3,3","stroke-linecap":"round"}));
+        var lw=120;
+        var gr=document.createElementNS("http://www.w3.org/2000/svg","g");
+        gr.appendChild(mk("rect",{x:lx-lw/2,y:ly-13,width:lw,height:26,rx:13,fill:"#faf8f3",stroke:branch.border,"stroke-width":"1.2"}));
+        var fs=leaf.length>10?"9.5":leaf.length>7?"10":"11";
+        var lt=mk("text",{x:lx,y:ly+5,"text-anchor":"middle","font-size":fs,"font-weight":"600",fill:branch.color});
+        lt.textContent=leaf; gr.appendChild(lt); lg.appendChild(gr);
+      });
+      og.appendChild(lg);
+      var gk=document.createElementNS("http://www.w3.org/2000/svg","g");
+      gk.style.cursor="pointer";
+      (function(k){ gk.addEventListener("click",function(e){ e.stopPropagation(); spLeafOpen[k]=!spLeafOpen[k]; var el=document.getElementById("sp-lg-"+k); if(el) el.style.display=spLeafOpen[k]?"":"none"; }); })(key);
+      gk.appendChild(mk("ellipse",{cx:cx2,cy:cy2,rx:"46",ry:"24",fill:branch.color}));
+      var kt=mk("text",{x:cx2,y:cy2-3,"text-anchor":"middle","font-size":"11","font-weight":"700",fill:"white"}); kt.textContent=child.label; gk.appendChild(kt);
+      var ks=mk("text",{x:cx2,y:cy2+11,"text-anchor":"middle","font-size":"8.5",fill:"rgba(255,255,255,.7)"}); ks.textContent=child.sub; gk.appendChild(ks);
+      og.appendChild(gk);
+    });
+    svg.appendChild(og);
+    var gn=document.createElementNS("http://www.w3.org/2000/svg","g");
+    gn.style.cursor="pointer";
+    (function(b){ gn.addEventListener("click",function(){ spBranchOpen[b.id]=!spBranchOpen[b.id]; var el=document.getElementById("sp-og-"+b.id); if(el) el.style.display=spBranchOpen[b.id]?"":"none"; if(spBranchOpen[b.id]){ openSpiderDetail(b,null); } else { closeSpiderDetail(); } }); })(branch);
+    gn.appendChild(mk("ellipse",{cx:bx,cy:by,rx:"56",ry:"32",fill:branch.color}));
+    var tl=mk("text",{x:bx,y:by-5,"text-anchor":"middle","font-size":"14","font-weight":"700",fill:"white"}); tl.textContent=branch.label; gn.appendChild(tl);
+    var ts=mk("text",{x:bx,y:by+11,"text-anchor":"middle","font-size":"9.5",fill:"rgba(255,255,255,.65)"}); ts.textContent=branch.sub; gn.appendChild(ts);
+    svg.appendChild(gn);
+  });
+  var gc=document.createElementNS("http://www.w3.org/2000/svg","g");
+  gc.appendChild(mk("ellipse",{cx:CX,cy:CY,rx:"80",ry:"46",fill:"#22253a"}));
+  var ctexts=[["厚生年金法",-6,"13","#f0eee8"],["目的・適用・資格",11,"9.5","rgba(240,238,232,.55)"]];
+  ctexts.forEach(function(t){ var ct=mk("text",{x:CX,y:CY+t[1],"text-anchor":"middle","font-size":t[2],"font-weight":"700",fill:t[3]}); ct.textContent=t[0]; gc.appendChild(ct); });
+  svg.appendChild(gc);
+  root.appendChild(svg);
+}
+
+function openSpiderDetail(branch,child) {
+  var panel=document.getElementById("spider-detail");
+  var hd=document.getElementById("spider-detail-hd");
+  var title=document.getElementById("spider-detail-title");
+  var body=document.getElementById("spider-detail-body");
+  hd.style.background=branch.detail.hdColor;
+  title.textContent=branch.label+"  "+branch.sub;
+  var html="";
+  branch.detail.items.forEach(function(item){
+    html+="<div style='margin-bottom:14px;'>";
+    html+="<div style='font-size:11px;font-weight:700;color:#6b7280;margin-bottom:3px;'>"+item.label+"</div>";
+    html+="<div style='font-size:14px;font-weight:700;color:#1a1a2e;background:"+branch.light+";border:1.5px solid "+branch.border+";border-radius:8px;padding:8px 12px;'>"+item.val+"</div>";
+    if(item.note) html+="<div style='font-size:11px;color:#6b7280;margin-top:4px;padding-left:4px;'>💡 "+item.note+"</div>";
+    html+="</div>";
+  });
+  if(branch.detail.hikakke){
+    html+="<div style='background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 12px;font-size:11px;color:#A32D2D;line-height:2.1;'>";
+    html+="<div style='font-weight:700;margin-bottom:4px;'>🚨 よくある引っかけ</div>";
+    html+=branch.detail.hikakke.split("\n").join("<br>");
+    html+="</div>";
+  }
+  body.innerHTML=html;
+  panel.style.display="block";
+}
+
+function closeSpiderDetail() {
+  document.getElementById("spider-detail").style.display="none";
+}
+
+// アーティファクト環境対応: グローバル関数をwindowに明示登録
+window.answer = answer;
+window.chkF = chkF;
+window.selB = selB;
+window.fillB = fillB;
+window.switchTab = switchTab;
+window.fcFlip = fcFlip;
+window.fcChoose = fcChoose;
+window.fcNext = fcNext;
+window.fcRestart = fcRestart;
+window.fcShuffle = fcShuffle;
+window.copyRecord = copyRecord;
+window.openSpiderDetail = openSpiderDetail;
+window.closeSpiderDetail = closeSpiderDetail;
+
+document.addEventListener("DOMContentLoaded", function(){ try{fcInit();}catch(e){} try{buildSpider();}catch(e){} });
+</script>
+</body>
+</html>

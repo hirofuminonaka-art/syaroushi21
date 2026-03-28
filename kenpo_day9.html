@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>健保Day9｜適用事業所・罰則・雑則 ― 健康保険法過去問ドリル</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1a2e;--paper:#faf8f3;--warm:#f5f0e8;--red:#c84b31;--red-soft:#e8896b;--red-light:#fee2e2;--teal:#2a7f7f;--teal-light:#e8f4f4;--gold:#c9930a;--gold-light:#fef9e7;--green:#2d6a4f;--green-light:#e8f5ee;--gray:#6b7280;--border:#ddd8cc;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
+.hd{background:var(--ink);color:var(--paper);padding:52px 40px 40px;position:relative;overflow:hidden;}
+.hd::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px);}
+.hd-in{max-width:820px;margin:0 auto;position:relative;}
+.hd-eye{font-size:11px;letter-spacing:4px;color:var(--red-soft);margin-bottom:12px;font-weight:700;}
+.hd h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hd h1 em{color:var(--red-soft);font-style:normal;}
+.hd-sub{font-size:14px;color:rgba(255,255,255,.55);font-weight:300;}
+.prog-wrap{margin-top:24px;background:rgba(255,255,255,.1);border-radius:20px;height:6px;}
+.prog-bar{background:var(--red-soft);height:6px;border-radius:20px;width:0%;transition:width .5s;}
+.prog-lbl{font-size:11px;color:rgba(255,255,255,.45);margin-top:6px;}
+.sec-div{max-width:820px;margin:40px auto 20px;padding:0 24px;}
+.sec-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border-radius:30px;font-size:12px;font-weight:700;}
+.pill-red{background:var(--red);color:white;}.pill-teal{background:var(--teal);color:white;}
+.sec-title{font-family:'Noto Serif JP',serif;font-size:1.25rem;font-weight:700;margin:10px 0 8px;}
+.sec-desc{font-size:13px;color:var(--gray);line-height:1.9;background:white;border:1px solid var(--border);border-radius:10px;padding:12px 16px;}
+.score-bar{max-width:820px;margin:0 auto 24px;padding:0 24px;}
+.score-in{background:white;border:1px solid var(--border);border-radius:12px;padding:14px 20px;display:flex;align-items:center;gap:16px;}
+.score-num{font-family:'DM Serif Display',serif;font-size:36px;color:var(--teal);line-height:1;}
+.qwrap{max-width:820px;margin:0 auto;padding:0 24px 60px;display:flex;flex-direction:column;gap:20px;}
+.card{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;}
+.card-hd{display:flex;align-items:center;gap:12px;padding:12px 20px;background:var(--warm);border-bottom:1px solid var(--border);}
+.q-num{font-family:'DM Serif Display',serif;font-size:30px;color:var(--red);line-height:1;}
+.q-num.tn{color:var(--teal);}
+.src-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;margin-bottom:3px;}
+.src-tag.t{background:var(--teal);}
+.q-type{font-size:11px;color:var(--gray);}
+.card-body{padding:20px 24px;}
+.quiz-q{font-size:15px;font-weight:600;line-height:1.8;margin-bottom:18px;}
+.quiz-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+.opts-tf{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.opt{border:2px solid var(--border);border-radius:10px;padding:12px 16px;cursor:pointer;font-size:20px;font-weight:900;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:10px;user-select:none;}
+.opt:hover{border-color:var(--ink);background:var(--warm);}
+.opt.correct{border-color:var(--green)!important;background:var(--green-light)!important;color:var(--green);}
+.opt.wrong{border-color:var(--red)!important;background:var(--red-light)!important;color:#991b1b;}
+.ans-box{display:none;border-radius:10px;padding:18px 20px;font-size:13px;margin-top:6px;}
+.ans-box.show{display:block;}
+.ans-box.ok{background:var(--green-light);border:1px solid #86efac;}
+.ans-box.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.ans-hd{font-weight:700;font-size:18px;margin-bottom:8px;}.ans-hd:empty{margin-bottom:0;}
+.why{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;}
+.tip{background:var(--green-light);border:2px solid var(--green);border-radius:8px;padding:12px 14px;font-size:13px;margin-top:12px;}
+.tip-title{font-weight:700;color:var(--green);margin-bottom:6px;}
+.tip-item{display:flex;gap:8px;margin-bottom:4px;}
+.tip-item:last-child{margin-bottom:0;}
+.hikkake{background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 14px;font-size:12px;color:#A32D2D;margin:10px 0;line-height:2;}
+.hikkake-title{font-weight:700;margin-bottom:4px;}
+.cmp-table{width:100%;border-collapse:collapse;font-size:12px;background:white;border-radius:8px;overflow:hidden;border:1px solid var(--border);}
+.cmp-table th{padding:8px 10px;background:var(--ink);color:white;font-weight:700;}
+.cmp-table th:first-child{text-align:left;}
+.cmp-table td{padding:8px 10px;border-bottom:1px solid #f0ece4;vertical-align:top;}
+.cmp-table tr:last-child td{border-bottom:none;}
+.cmp-table tr:nth-child(even) td{background:#fafaf8;}
+.tree-node{border-radius:8px;padding:10px 14px;font-size:12px;font-weight:600;text-align:center;}
+.tree-yes{background:var(--green-light);border:2px solid var(--green);color:var(--green);}
+.tree-no{background:var(--red-light);border:2px solid var(--red);color:#991b1b;}
+.tree-q{background:var(--gold-light);border:2px solid var(--gold);color:#633806;}
+.blank-sentence{font-size:15px;font-weight:500;line-height:2.6;margin-bottom:16px;}
+.blank{display:inline-block;min-width:72px;border-bottom:2px solid var(--ink);text-align:center;padding:0 6px;margin:0 3px;cursor:pointer;font-weight:700;transition:background .2s;border-radius:4px 4px 0 0;}
+.blank:hover{background:rgba(42,127,127,.08);}
+.blank.sel{background:#dbeafe;border-color:var(--teal);}
+.blank.ok-fill{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.blank.ng-fill{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.chp{border:2px solid var(--border);border-radius:20px;padding:5px 14px;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;}
+.chp:hover{border-color:var(--teal);background:var(--teal-light);}
+.chp.used{opacity:.35;pointer-events:none;}
+.chp.ok-c{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.chp.ng-c{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.chk-btn{background:var(--ink);color:white;border:none;border-radius:8px;padding:10px 24px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:12px;transition:opacity .2s;}
+.chk-btn:hover{opacity:.82;}.chk-btn:disabled{opacity:.4;cursor:default;}
+@media(max-width:600px){.hd{padding:36px 16px 28px;}.qwrap,.sec-div,.score-bar{padding-left:16px;padding-right:16px;}.card-body{padding:14px;}}
+.topbar{background:var(--ink);padding:10px 24px;display:flex;align-items:center;gap:12px;}
+.back-btn{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;cursor:pointer;}
+.topbar-title{color:rgba(255,255,255,.5);font-size:12px;margin-left:auto;}
+.tab-nav{background:var(--ink);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:100;}
+.tab-nav-in{max-width:820px;margin:0 auto;display:flex;}
+.tab-btn{flex:1;padding:13px 8px;font-size:13px;font-weight:700;color:rgba(255,255,255,.4);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;}
+.tab-btn.active{color:white;border-color:var(--red-soft);}
+.tab-btn.active.t2{border-color:#5ecece;}
+.tab-panel{display:none;}.tab-panel.active{display:block;}
+.complete{display:none;max-width:820px;margin:0 auto 40px;padding:0 24px;}
+.complete-in{background:var(--ink);color:white;border-radius:14px;padding:28px;text-align:center;}
+.complete h2{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;margin-bottom:6px;}
+.complete h2 em{color:var(--red-soft);font-style:normal;}
+.complete-score{font-size:48px;font-family:'DM Serif Display',serif;color:var(--red-soft);line-height:1;margin:10px 0 4px;}
+.complete-sub{font-size:14px;color:rgba(255,255,255,.55);margin-bottom:20px;}
+.btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-back{background:white;color:var(--ink);border:none;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;}
+.btn-next{background:var(--teal);color:white;border:none;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span class="back-btn" onclick="location.href='index.html'">← 目次に戻る</span>
+  <span class="topbar-title">健康保険法 ／ Day 9</span>
+</div>
+<nav class="tab-nav">
+  <div class="tab-nav-in">
+    <button class="tab-btn active" onclick="switchTab('quiz',this)">📝 問題</button>
+    <button class="tab-btn t2" onclick="switchTab('flash',this)">🃏 フラッシュカード</button>
+  </div>
+</nav>
+
+<div id="panel-quiz" class="tab-panel active">
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-eye">健康保険法 ／ Day 9</div>
+    <h1>適用事業所・罰則・雑則 ― <em>届出期限・罰金額を正確に</em></h1>
+    <div class="hd-sub">法第3条・第48条・第208条・第213条 ／ 全10問（○×5問＋穴埋め5問）</div>
+    <div class="prog-wrap"><div class="prog-bar" id="prog"></div></div>
+    <div class="prog-lbl" id="prog-lbl">0 ／ 10 問 回答済み</div>
+  </div>
+</div>
+<div class="score-bar" style="margin-top:24px;">
+  <div class="score-in">
+    <div class="score-num" id="score">0</div>
+    <div><div style="font-size:13px;font-weight:700;">正解数</div><div style="font-size:12px;color:var(--gray);">10問中</div></div>
+    <div style="margin-left:auto;font-size:12px;color:var(--gray);line-height:1.7;">足切り回避：<strong>4点以上</strong><br>75%目標：<strong>8点以上</strong></div>
+  </div>
+</div>
+
+<div class="sec-div">
+  <div><span class="sec-pill pill-red">① ○×式　5問</span></div>
+  <div class="sec-title">適用事業所・届出・罰則の数字を正誤で確認する</div>
+  <div class="sec-desc">5日以内・10日以内の混同、50万円・100万円の区別、法人と個人事業所の違い。数字の組合せで正誤が決まる問題が多い。</div>
+</div>
+
+<div class="qwrap">
+
+<!-- Q1 -->
+<div class="card" id="cq1">
+  <div class="card-hd"><div class="q-num">01</div><div><div class="src-tag">法第3条第3項 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：強制適用事業所</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">法人事業所は、使用する従業員数に<mark>かかわらず</mark>すべて強制適用事業所となる。</div>
+    <div class="opts-tf" id="q1-opts"><div class="opt" onclick="answer('q1',0)">○ 正しい</div><div class="opt" onclick="answer('q1',1)">× 誤り</div></div>
+    <div class="ans-box" id="q1-ans">
+      <div class="ans-hd" id="q1-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：○ 正しい｜法第3条第3項</div>
+      <div class="why">✔ 法人事業所は<strong>1人でも従業員がいれば強制適用</strong>。個人事業所は業種と従業員数で異なる。</div>
+
+      <!-- 判断ツリー -->
+      <div style="background:#f5f0e8;border-radius:10px;padding:14px 16px;margin:10px 0;">
+        <div style="font-size:11px;font-weight:700;color:var(--teal);margin-bottom:10px;">🌲 強制適用事業所かどうか？判断ツリー</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="tree-node tree-q">その事業所は法人か？</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="text-align:center;font-size:11px;color:var(--gray);">⬇ はい（法人）</div>
+              <div class="tree-node tree-yes">✅ 従業員数に<strong>かかわらず</strong><br>強制適用</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="text-align:center;font-size:11px;color:var(--gray);">⬇ いいえ（個人事業所）</div>
+              <div class="tree-node tree-q">特定業種※かつ5人以上？</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-left:50%;">
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="text-align:center;font-size:11px;color:var(--gray);">⬇ はい</div>
+              <div class="tree-node tree-yes">✅ 強制適用</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="text-align:center;font-size:11px;color:var(--gray);">⬇ いいえ</div>
+              <div class="tree-node" style="background:#f5f0e8;border:2px solid var(--border);color:var(--gray);">任意適用</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:8px;font-size:11px;color:var(--gray);">※特定業種：製造・土木・運輸・販売・金融・保険・保健衛生・接客娯楽・法務等</div>
+      </div>
+
+      <div class="hikkake">
+        <div class="hikkake-title">🚨 引っかけパターン</div>
+        × 「法人でも<strong>5人以上</strong>でないと強制適用にならない」→ ○ 法人は<strong>1人でも強制適用</strong><br>
+        × 「個人の農業・漁業・林業は5人以上なら強制適用」→ ○ これらは<strong>任意適用</strong>（特定業種外）
+      </div>
+
+      <div style="background:#1a1a2e;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:12px;color:rgba(255,255,255,.9);line-height:1.9;">
+        <div style="font-size:11px;font-weight:700;color:#e8896b;margin-bottom:4px;">🎯 試験で狙われるポイント</div>
+        「法人は従業員数にかかわらず強制適用」は択一式・選択式どちらでも頻出の核心条文。個人事業所の「5人以上・特定業種」との対比で出題される。「かかわらず」という語句が選択式の空欄になることも多い。
+      </div>
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 山田さんが合同会社を1人で設立した。法人登記が完了した翌日から健保の強制適用事業所——従業員が0人でも強制適用。「なぜ法人は1人でも？」——法人格があれば事業継続の可能性があり長期的な保険関係が成立するから。個人事業所は5人以上＋特定業種という条件があるのは、零細な個人事業に強制すると経営が立ち行かなくなるケースへの配慮。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="card" id="cq2">
+  <div class="card-hd"><div class="q-num">02</div><div><div class="src-tag">法第48条・施行規則第24条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：資格取得届の期限</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">事業主は、被保険者の資格取得に関する届出を、資格取得の日から<mark>10日以内</mark>に保険者に行わなければならない。</div>
+    <div class="opts-tf" id="q2-opts"><div class="opt" onclick="answer('q2',0)">○ 正しい</div><div class="opt" onclick="answer('q2',1)">× 誤り</div></div>
+    <div class="ans-box" id="q2-ans">
+      <div class="ans-hd" id="q2-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#c84b31;margin-bottom:10px;">正解：× 誤り｜法第48条・施行規則第24条</div>
+      <div class="why">⚠️ 資格取得の届出期限は資格取得の日から<strong>5日以内</strong>。10日以内ではない。</div>
+
+      <!-- 届出期限まとめ表 -->
+      <div style="margin:10px 0;overflow-x:auto;">
+        <table class="cmp-table">
+          <tr><th>届出の種類</th><th style="text-align:center;">期限</th></tr>
+          <tr><td>資格取得の届出</td><td style="text-align:center;font-weight:900;color:var(--red);">5日以内</td></tr>
+          <tr><td>資格喪失の届出</td><td style="text-align:center;font-weight:900;color:var(--red);">5日以内</td></tr>
+          <tr><td>被扶養者の届出</td><td style="text-align:center;font-weight:900;color:var(--red);">5日以内</td></tr>
+          <tr><td>賞与支払いの届出</td><td style="text-align:center;font-weight:900;color:var(--teal);">5日以内</td></tr>
+          <tr><td>定時決定（算定基礎届）</td><td style="text-align:center;font-weight:900;color:var(--gold);">7月10日まで</td></tr>
+        </table>
+      </div>
+
+      <div class="hikkake">
+        <div class="hikkake-title">🚨 引っかけパターン</div>
+        × 「資格取得届は<strong>10日以内</strong>」→ ○ <strong>5日以内</strong><br>
+        × 「被扶養者の届出は<strong>14日以内</strong>」→ ○ <strong>5日以内</strong>（全部5日で統一）
+      </div>
+
+      <div style="background:#1a1a2e;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:12px;color:rgba(255,255,255,.9);line-height:1.9;">
+        <div style="font-size:11px;font-weight:700;color:#e8896b;margin-bottom:4px;">🎯 試験で狙われるポイント</div>
+        届出期限「5日以内」は健保法で最も問われる数字の1つ。資格取得・喪失・被扶養者すべて「5日」で統一されているが、「10日」「14日」が誤り選択肢として毎回登場する。
+      </div>
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 鈴木さんが4月1日に入社した。事業主は5日以内——4月5日までに資格取得届を提出しなければならない。「なぜ5日？」——被保険者の資格は入社当日から発生する。記録をできるだけ早く保険者に知らせないと将来の給付に支障が出る可能性があるから。問題文の「10日以内」は誤り——「5日以内」が正しい答えで最頻出の引っかけ。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="card" id="cq3">
+  <div class="card-hd"><div class="q-num">03</div><div><div class="src-tag">法第208条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：届出義務違反の罰則</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">事業主が正当な理由なく被保険者の資格取得届を提出しない場合、<mark>6ヵ月以下の懲役</mark>または<mark>50万円以下の罰金</mark>に処せられる。</div>
+    <div class="opts-tf" id="q3-opts"><div class="opt" onclick="answer('q3',0)">○ 正しい</div><div class="opt" onclick="answer('q3',1)">× 誤り</div></div>
+    <div class="ans-box" id="q3-ans">
+      <div class="ans-hd" id="q3-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：○ 正しい｜法第208条</div>
+      <div class="why">✔ 届出義務違反の罰則（法208条）：<strong>6ヵ月以下の懲役または50万円以下の罰金</strong>。正確な記述。</div>
+
+      <!-- 罰則比較表 -->
+      <div style="margin:10px 0;overflow-x:auto;">
+        <table class="cmp-table">
+          <tr><th>違反行為</th><th style="text-align:center;">懲役</th><th style="text-align:center;">罰金</th><th style="text-align:center;">条文</th></tr>
+          <tr><td>届出義務違反（資格取得届等）</td><td style="text-align:center;font-weight:700;">6ヵ月以下</td><td style="text-align:center;font-weight:700;">50万円以下</td><td style="text-align:center;">法208条</td></tr>
+          <tr style="background:#fff8f7;"><td style="color:var(--red);font-weight:700;">不正受給（詐欺等）</td><td style="text-align:center;font-weight:900;color:var(--red);">3年以下</td><td style="text-align:center;font-weight:900;color:var(--red);">100万円以下</td><td style="text-align:center;">法213条</td></tr>
+        </table>
+      </div>
+      <div style="background:#d4f0f0;border-radius:6px;padding:8px 12px;font-size:11px;color:#085041;margin:8px 0;">
+        💡 <strong>「不正受給は3年・100万円」と「届出違反は6ヵ月・50万円」</strong>のセットで覚える。不正受給の方が重い罰則。
+      </div>
+
+      <div class="hikkake">
+        <div class="hikkake-title">🚨 引っかけパターン</div>
+        × 「届出義務違反は<strong>3年以下の懲役または100万円以下の罰金</strong>」→ ○ これは<strong>不正受給</strong>の罰則<br>
+        × 「不正受給は<strong>30万円以下</strong>の罰金」→ ○ 不正受給は<strong>100万円以下</strong>
+      </div>
+    </div>
+  </div>
+
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 中小企業の田中社長が資格取得届の提出を怠った。罰則は6ヵ月以下の懲役または50万円以下の罰金——「なぜ刑事罰？」——被保険者になれない従業員の将来の年金・医療が守られなくなるから行政罰では不十分。一方、保険給付を詐取した不正受給は3年以下の懲役または100万円以下の罰金——届出違反の倍以上重い。「届出違反6ヵ月50万・不正受給3年100万」の対比で覚える。</div>
+      </div>
+    </div>
+
+<!-- Q4 -->
+<div class="card" id="cq4">
+  <div class="card-hd"><div class="q-num">04</div><div><div class="src-tag">法第3条第1項ただし書き ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：被保険者の適用除外</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">後期高齢者医療の被保険者は、健康保険の被保険者とならない（適用除外）。</div>
+    <div class="opts-tf" id="q4-opts"><div class="opt" onclick="answer('q4',0)">○ 正しい</div><div class="opt" onclick="answer('q4',1)">× 誤り</div></div>
+    <div class="ans-box" id="q4-ans">
+      <div class="ans-hd" id="q4-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：○ 正しい｜法第3条第1項ただし書き</div>
+      <div class="why">✔ 後期高齢者医療の被保険者（75歳以上等）は健康保険の適用除外。後期高齢者医療制度が優先して適用される。</div>
+
+      <div style="margin:10px 0;overflow-x:auto;">
+        <table class="cmp-table">
+          <tr><th>適用除外となる者</th><th style="text-align:center;">理由</th></tr>
+          <tr><td>後期高齢者医療の被保険者（75歳以上等）</td><td style="text-align:center;">後期高齢者医療が優先</td></tr>
+          <tr><td>船員保険の被保険者</td><td style="text-align:center;">船員保険が優先</td></tr>
+          <tr><td>所在地が一定でない事業所の労働者</td><td style="text-align:center;">適用事業所に非該当</td></tr>
+          <tr><td>2ヵ月以内の期間を定めた季節的業務の従事者</td><td style="text-align:center;">短期なので除外</td></tr>
+          <tr><td>臨時的事業の事業所（6ヵ月以内）の労働者</td><td style="text-align:center;">短期事業所</td></tr>
+        </table>
+      </div>
+
+
+      <div style="background:#1a1a2e;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:12px;color:rgba(255,255,255,.9);line-height:1.9;">
+        <div style="font-size:11px;font-weight:700;color:#e8896b;margin-bottom:4px;">🎯 試験で狙われるポイント</div>
+        罰則の組合せ問題は択一式の定番。「届出違反：6ヵ月・50万」と「不正受給：3年・100万」を入れ替えた誤りが頻出。数字を逆に覚えていると確実に落とす。
+      </div>
+
+      <div style="background:#1a1a2e;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:12px;color:rgba(255,255,255,.9);line-height:1.9;">
+        <div style="font-size:11px;font-weight:700;color:#e8896b;margin-bottom:4px;">🎯 試験で狙われるポイント</div>
+        後期高齢者医療・船員保険の適用除外は毎年1問絡む。除外される理由（他の制度が優先）をセットで覚えると、見慣れない例外が出ても判断できる。
+      </div>
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 田中さんが75歳の誕生日を迎えた。その日から後期高齢者医療の被保険者になるため、健保の被保険者ではなくなる——当日喪失。「なぜ当日？」——後期高齢者医療が誕生日当日から始まるので健保と後期が空白になることも重複することもあってはいけない。「75歳当日喪失」は健保で唯一の当日喪失のケース——他は全て翌日喪失という原則の例外として必ず覚える。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q5 -->
+<div class="card" id="cq5">
+  <div class="card-hd"><div class="q-num">05</div><div><div class="src-tag">法第213条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：不正受給の罰則</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">詐欺その他不正の行為により保険給付を受けた者は、<mark>3年以下の懲役</mark>または<mark>30万円以下の罰金</mark>に処せられる。</div>
+    <div class="opts-tf" id="q5-opts"><div class="opt" onclick="answer('q5',0)">○ 正しい</div><div class="opt" onclick="answer('q5',1)">× 誤り</div></div>
+    <div class="ans-box" id="q5-ans">
+      <div class="ans-hd" id="q5-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#c84b31;margin-bottom:10px;">正解：× 誤り｜法第213条</div>
+      <div class="why">⚠️ 不正受給の罰則は3年以下の懲役または<strong>100万円以下の罰金</strong>。<strong>30万円ではなく100万円</strong>。</div>
+
+      <div style="margin:10px 0;background:#f5f0e8;border-radius:10px;padding:14px 16px;">
+        <div style="font-size:11px;font-weight:700;color:var(--teal);margin-bottom:10px;">📖 健保法の主な罰則（比較）</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div style="background:white;border:2px solid var(--teal);border-radius:8px;padding:12px;text-align:center;">
+            <div style="font-size:11px;color:var(--gray);margin-bottom:4px;">届出義務違反（法208条）</div>
+            <div style="font-size:14px;font-weight:700;">6ヵ月以下の懲役</div>
+            <div style="font-size:20px;font-weight:900;color:var(--teal);margin:4px 0;">50万円以下</div>
+            <div style="font-size:10px;color:var(--gray);">の罰金</div>
+          </div>
+          <div style="background:white;border:2px solid var(--red);border-radius:8px;padding:12px;text-align:center;">
+            <div style="font-size:11px;color:var(--gray);margin-bottom:4px;">不正受給（法213条）</div>
+            <div style="font-size:14px;font-weight:700;">3年以下の懲役</div>
+            <div style="font-size:20px;font-weight:900;color:var(--red);margin:4px 0;">100万円以下</div>
+            <div style="font-size:10px;color:var(--gray);">の罰金</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hikkake">
+        <div class="hikkake-title">🚨 最頻出の引っかけ</div>
+        × 「不正受給の罰金は<strong>30万円以下</strong>」→ ○ <strong>100万円以下</strong>（3倍以上の差）<br>
+        × 「不正受給の懲役は<strong>6ヵ月以下</strong>」→ ○ <strong>3年以下</strong>（届出違反との混同）
+      </div>
+
+      <div style="background:#1a1a2e;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:12px;color:rgba(255,255,255,.9);line-height:1.9;">
+        <div style="font-size:11px;font-weight:700;color:#e8896b;margin-bottom:4px;">🎯 試験で狙われるポイント</div>
+        不正受給の罰金「100万円」は毎年問われる。「30万円」という誤りが典型的な引っかけ。届出違反の「50万円」と混同しないように、「不正は桁が違う（100万）」と記憶する。
+      </div>
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 佐々木さんが架空の病気を装って保険給付を不正受給した。罰則は3年以下の懲役または100万円以下の罰金——届出違反（6ヵ月・50万円）の倍以上重い。「なぜ不正受給は重い？」——全被保険者が積み立てた財源から騙し取る行為は制度の根幹を揺るがす犯罪。「詐欺100万円・違反50万円」の差を意識して覚える。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /qwrap -->
+
+<div class="sec-div" style="margin-top:20px;">
+  <div><span class="sec-pill pill-teal">② 穴埋め式　5問</span></div>
+  <div class="sec-title">届出期限・罰則・適用事業所の数字・語句を定着させる</div>
+  <div class="sec-desc">5日以内・5人以上・6ヵ月・50万円・3年・100万円・4分の3・後期高齢者医療。選択式頻出数字を穴埋めで確認。</div>
+</div>
+
+<div class="qwrap">
+
+<!-- F1 -->
+<div class="card" id="cf1">
+  <div class="card-hd"><div class="q-num tn">F1</div><div><div class="src-tag t">穴埋め ／ 届出期限（法第48条）</div><div class="q-type">難易度：★★☆</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">届出期限に関する空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      資格取得の届出：資格取得の日から
+      <span class="blank" id="f1a" onclick="selB('f1','f1a')">　　</span>
+      日以内。資格喪失の届出：喪失の日から
+      <span class="blank" id="f1b" onclick="selB('f1','f1b')">　　</span>
+      日以内。被扶養者の届出：事実発生から
+      <span class="blank" id="f1c" onclick="selB('f1','f1c')">　　</span>
+      日以内。
+    </div>
+    <div class="chips" id="f1-ch">
+      <div class="chp" onclick="fillB('f1','f1a',this,'5')">5</div>
+      <div class="chp" onclick="fillB('f1','f1a',this,'10')">10</div>
+      <div class="chp" onclick="fillB('f1','f1b',this,'5')">5</div>
+      <div class="chp" onclick="fillB('f1','f1b',this,'10')">10</div>
+      <div class="chp" onclick="fillB('f1','f1c',this,'5')">5</div>
+      <div class="chp" onclick="fillB('f1','f1c',this,'14')">14</div>
+    </div>
+    <button class="chk-btn" id="f1-btn" onclick="chkF('f1')">答え合わせ</button>
+    <div class="ans-box" id="f1-ans">
+      <div class="ans-hd" id="f1-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：5日 ／ 5日 ／ 5日</div>
+      <div style="background:#d4f0f0;border-radius:6px;padding:8px 12px;font-size:11px;color:#085041;margin:8px 0;">
+        💡 健保の届出はすべて<strong>5日以内</strong>で統一。「10日」「14日」は誤りの選択肢として頻出。
+      </div>
+    </div>
+  </div>
+
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 健保の届出はほぼ全て「5日以内」——資格取得・喪失・変更。「なぜ5日？」——被保険者の資格は発生した日から即効果があるから、記録をできるだけ早く保険者に知らせる必要がある。「10日以内」「14日以内」は国民年金第1号等の別制度の数字——社会保険の世界では「5日以内」という数字を見たら健保と厚年の届出、と体に覚え込ませる。</div>
+      </div>
+    </div>
+
+<!-- F2 -->
+<div class="card" id="cf2">
+  <div class="card-hd"><div class="q-num tn">F2</div><div><div class="src-tag t">穴埋め ／ 強制適用事業所（法第3条）</div><div class="q-type">難易度：★★☆</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">強制適用事業所の要件に関する空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      法人事業所は従業員数に
+      <span class="blank" id="f2a" onclick="selB('f2','f2a')">　　　　　　</span>
+      強制適用。個人事業所は特定業種で従業員を常時
+      <span class="blank" id="f2b" onclick="selB('f2','f2b')">　　</span>
+      人以上使用する場合に強制適用。
+      <span class="blank" id="f2c" onclick="selB('f2','f2c')">　　</span>
+      人未満は任意適用。
+    </div>
+    <div class="chips" id="f2-ch">
+      <div class="chp" onclick="fillB('f2','f2a',this,'かかわらず')">かかわらず</div>
+      <div class="chp" onclick="fillB('f2','f2a',this,'応じて')">応じて</div>
+      <div class="chp" onclick="fillB('f2','f2b',this,'5')">5</div>
+      <div class="chp" onclick="fillB('f2','f2b',this,'10')">10</div>
+      <div class="chp" onclick="fillB('f2','f2c',this,'5')">5</div>
+      <div class="chp" onclick="fillB('f2','f2c',this,'10')">10</div>
+    </div>
+    <button class="chk-btn" id="f2-btn" onclick="chkF('f2')">答え合わせ</button>
+    <div class="ans-box" id="f2-ans">
+      <div class="ans-hd" id="f2-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：かかわらず ／ 5人以上 ／ 5人未満</div>
+    </div>
+  </div>
+
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 法人事業所は従業員数にかかわらず全て強制適用——1人でも強制。個人事業所は5人以上かつ特定16業種——「なぜ5人？」——零細な個人事業に強制加入させると経営が立ち行かなくなるケースがあるから。5人未満の個人事業所は任意適用——従業員の2分の1以上の同意と事業主の申請で加入可。法人は数字不問・個人は5人という非対称性を「法人格の違い」で説明できると忘れない。</div>
+      </div>
+    </div>
+
+<!-- F3 -->
+<div class="card" id="cf3">
+  <div class="card-hd"><div class="q-num tn">F3</div><div><div class="src-tag t">穴埋め ／ 罰則（法第208条・第213条）</div><div class="q-type">難易度：★★★</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">罰則規定に関する空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      届出義務違反（法208条）：
+      <span class="blank" id="f3a" onclick="selB('f3','f3a')">　　</span>
+      ヵ月以下の懲役または
+      <span class="blank" id="f3b" onclick="selB('f3','f3b')">　　</span>
+      万円以下の罰金。不正受給（法213条）：
+      <span class="blank" id="f3c" onclick="selB('f3','f3c')">　　</span>
+      年以下の懲役または
+      <span class="blank" id="f3d" onclick="selB('f3','f3d')">　　　</span>
+      万円以下の罰金。
+    </div>
+    <div class="chips" id="f3-ch">
+      <div class="chp" onclick="fillB('f3','f3a',this,'6')">6</div>
+      <div class="chp" onclick="fillB('f3','f3a',this,'3')">3</div>
+      <div class="chp" onclick="fillB('f3','f3b',this,'50')">50</div>
+      <div class="chp" onclick="fillB('f3','f3b',this,'100')">100</div>
+      <div class="chp" onclick="fillB('f3','f3c',this,'3')">3</div>
+      <div class="chp" onclick="fillB('f3','f3c',this,'6')">6</div>
+      <div class="chp" onclick="fillB('f3','f3d',this,'100')">100</div>
+      <div class="chp" onclick="fillB('f3','f3d',this,'30')">30</div>
+    </div>
+    <button class="chk-btn" id="f3-btn" onclick="chkF('f3')">答え合わせ</button>
+    <div class="ans-box" id="f3-ans">
+      <div class="ans-hd" id="f3-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：6ヵ月・50万円 ／ 3年・100万円</div>
+      <div style="background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:8px 12px;font-size:12px;color:#A32D2D;margin:8px 0;">
+        ⚠️ 組合せ間違いが多い。<br>
+        届出違反：<strong>6ヵ月・50万円</strong>（軽い）<br>
+        不正受給：<strong>3年・100万円</strong>（重い）
+      </div>
+    </div>
+  </div>
+
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 罰則の重さは「何を守るか」で決まる——届出違反（6ヵ月・50万円）は行政上のルール違反、不正受給（3年・100万円）は社会保険財源への詐欺行為。「なぜ不正受給の方が格段に重い？」——全被保険者が積み立てた財源から騙し取る行為は制度の根幹を揺るがす犯罪として刑法上の詐欺に近い悪質性がある。「軽い違反は6ヵ月50万円・重い詐欺は3年100万円」を対比で。</div>
+      </div>
+    </div>
+
+<!-- F4 -->
+<div class="card" id="cf4">
+  <div class="card-hd"><div class="q-num tn">F4</div><div><div class="src-tag t">穴埋め ／ 任意適用の脱退（法第31条）</div><div class="q-type">難易度：★★★</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">任意適用事業所の脱退に関する空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      任意適用事業所が適用取消しを申請するには、事業所に使用される被保険者の
+      <span class="blank" id="f4a" onclick="selB('f4','f4a')">　　　　</span>
+      以上の同意が必要。
+    </div>
+    <div class="chips" id="f4-ch">
+      <div class="chp" onclick="fillB('f4','f4a',this,'4分の3')">4分の3</div>
+      <div class="chp" onclick="fillB('f4','f4a',this,'2分の1')">2分の1</div>
+      <div class="chp" onclick="fillB('f4','f4a',this,'3分の2')">3分の2</div>
+    </div>
+    <button class="chk-btn" id="f4-btn" onclick="chkF('f4')">答え合わせ</button>
+    <div class="ans-box" id="f4-ans">
+      <div class="ans-hd" id="f4-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：4分の3以上</div>
+      <div style="background:#f5f0e8;border-radius:8px;padding:10px 12px;font-size:12px;margin:8px 0;">
+        <strong>4分の3は健保で頻出の数値</strong><br>
+        ・任意適用の加入申請：<mark>4分の3以上</mark>の同意が必要<br>
+        ・任意適用の脱退申請：<mark>4分の3以上</mark>の同意が必要<br>
+        ・パートの被保険者要件：所定労働時間・日数が<mark>4分の3以上</mark>
+      </div>
+    </div>
+  </div>
+
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 任意適用事業所の脱退には4分の3以上の同意が必要——「なぜ4分の3？」——過半数（2分の1）では少数の被保険者が保護を失うリスクが高い。4分の3というより高い同意率を求めることで、大多数が合意した場合にのみ脱退を認める設計。加入時の同意要件（2分の1以上）より脱退時の方が厳しいのは「保護の継続を優先する」という方向性の表れ。</div>
+      </div>
+    </div>
+
+<!-- F5 -->
+<div class="card" id="cf5">
+  <div class="card-hd"><div class="q-num tn">F5</div><div><div class="src-tag t">穴埋め ／ 健康保険の適用除外（法第3条）</div><div class="q-type">難易度：★★☆</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">健康保険の適用除外に関する空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      <span class="blank" id="f5a" onclick="selB('f5','f5a')">　　　　　　　　</span>
+      の被保険者および
+      <span class="blank" id="f5b" onclick="selB('f5','f5b')">　　　　　　</span>
+      の被保険者は健康保険の適用除外となる。また、所在地が一定でない事業所の労働者や
+      <span class="blank" id="f5c" onclick="selB('f5','f5c')">　　</span>
+      ヵ月以内の期間を定めた季節的業務の従事者も除外される。
+    </div>
+    <div class="chips" id="f5-ch">
+      <div class="chp" onclick="fillB('f5','f5a',this,'後期高齢者医療')">後期高齢者医療</div>
+      <div class="chp" onclick="fillB('f5','f5a',this,'国民健康保険')">国民健康保険</div>
+      <div class="chp" onclick="fillB('f5','f5b',this,'船員保険')">船員保険</div>
+      <div class="chp" onclick="fillB('f5','f5b',this,'介護保険')">介護保険</div>
+      <div class="chp" onclick="fillB('f5','f5c',this,'2')">2</div>
+      <div class="chp" onclick="fillB('f5','f5c',this,'3')">3</div>
+    </div>
+    <button class="chk-btn" id="f5-btn" onclick="chkF('f5')">答え合わせ</button>
+    <div class="ans-box" id="f5-ans">
+      <div class="ans-hd" id="f5-result"></div>
+      <div style="font-size:12px;font-weight:700;color:#2d6a4f;margin-bottom:10px;">正解：後期高齢者医療 ／ 船員保険 ／ 2ヵ月以内</div>
+    </div>
+  </div>
+
+      <div class="tip"><div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 後期高齢者医療・船員保険・共済組合の加入者は健保の適用除外——「なぜ除外？」——すでに別の医療保険制度が保護しているから重複して保険料を払わせる必要がない。日雇特例被保険者は「除外」ではなく「健保法内の別の章で規定」——健保法の中にいるが特殊な制度として独立。「除外＝他の制度に守られている」「日雇＝健保法内の別窓口」という整理で体系的に理解する。</div>
+      </div>
+    </div>
+
+</div><!-- /qwrap -->
+
+<div class="complete" id="complete-banner">
+  <div class="complete-in">
+    <div style="font-size:32px;margin-bottom:8px;">🎉</div>
+    <h2>Day 9 <em>完了！</em></h2>
+    <div class="complete-score" id="final-score">0</div>
+    <div class="complete-sub">10問中の正解数</div>
+    <div class="btn-row">
+      <span class="btn-back" onclick="location.href='index.html'" style="cursor:pointer;display:inline-block;">← 目次に戻る</span>
+      <span class="btn-next" onclick="location.href='day10.html'" style="cursor:pointer;display:inline-block;">Day 10 へ →</span>
+    </div>
+  </div>
+</div>
+</div><!-- /panel-quiz -->
+
+<div id="panel-flash" class="tab-panel">
+<div style="max-width:740px;margin:0 auto;padding:40px 20px;text-align:center;color:var(--gray);">
+  <div style="font-size:48px;margin-bottom:16px;">🃏</div>
+  <div style="font-size:16px;font-weight:700;margin-bottom:8px;">フラッシュカードは準備中です</div>
+  <div style="font-size:13px;">問題タブで○×・穴埋めを先に完成させてください</div>
+</div>
+</div>
+
+<script>
+const DAY_META={day:'Day9',block:'Block9',unit:'適用事業所・罰則・雑則',range:'法第3条・第48条・第208条・第213条',total:10};
+const correct_ans={q1:0,q2:1,q3:0,q4:0,q5:1};
+const done={};let score=0;let total=0;
+function answer(qid,idx){
+  if(done[qid])return;done[qid]=true;
+  const opts=document.querySelectorAll('#'+qid+'-opts .opt');
+  const ans=document.getElementById(qid+'-ans');
+  const ok=idx===correct_ans[qid];
+  opts.forEach((o,i)=>{if(i===correct_ans[qid])o.classList.add('correct');else if(i===idx&&!ok)o.classList.add('wrong');});
+  ans.className='ans-box show '+(ok?'ok':'ng');
+  const r=document.getElementById(qid+'-result');
+  if(r){r.textContent=ok?'⭕ 正解！':'❌ 不正解';r.style.color=ok?'var(--green)':'var(--red)';}
+  if(ok)score++;
+  document.getElementById('score').textContent=score;
+  updateProg();
+  setTimeout(()=>ans.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+}
+const defs={
+  f1:{f1a:'5',f1b:'5',f1c:'5'},
+  f2:{f2a:'かかわらず',f2b:'5',f2c:'5'},
+  f3:{f3a:'6',f3b:'50',f3c:'3',f3d:'100'},
+  f4:{f4a:'4分の3'},
+  f5:{f5a:'後期高齢者医療',f5b:'船員保険',f5c:'2'},
+};
+const state={f1:{},f2:{},f3:{},f4:{},f5:{}};
+const sel={f1:null,f2:null,f3:null,f4:null,f5:null};
+const fdone={};
+function selB(fid,bid){if(fdone[fid])return;if(sel[fid])document.getElementById(sel[fid]).classList.remove('sel');sel[fid]=bid;document.getElementById(bid).classList.add('sel');}
+function fillB(fid,bid,el,val){if(fdone[fid])return;if(sel[fid]!==bid)selB(fid,bid);const b=document.getElementById(bid);b.textContent=val;state[fid][bid]=val;el.classList.add('used');sel[fid]=null;b.classList.remove('sel');}
+function chkF(fid){
+  if(fdone[fid])return;
+  const d=defs[fid];const keys=Object.keys(d);
+  if(!keys.every(k=>state[fid][k]!==undefined)){alert('すべての空欄を埋めてください');return;}
+  fdone[fid]=true;let allOk=true;
+  keys.forEach(k=>{const el=document.getElementById(k);if(state[fid][k]===d[k])el.classList.add('ok-fill');else{el.classList.add('ng-fill');allOk=false;}});
+  document.querySelectorAll('#'+fid+'-ch .chp').forEach(c=>{if(c.classList.contains('used')){const v=c.textContent;c.classList.add(Object.values(d).includes(v)?'ok-c':'ng-c');}});
+  const ans=document.getElementById(fid+'-ans');
+  ans.className='ans-box show '+(allOk?'ok':'ng');
+  const r=document.getElementById(fid+'-result');
+  if(r){r.textContent=allOk?'⭕ 全問正解！':'❌ 不正解あり（赤い空欄を確認）';r.style.color=allOk?'var(--green)':'var(--red)';}
+  document.getElementById(fid+'-btn').disabled=true;
+  if(allOk)score++;
+  document.getElementById('score').textContent=score;
+  updateProg();
+  setTimeout(()=>ans.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+}
+function updateProg(){
+  total=Object.keys(done).length+Object.keys(fdone).length;
+  document.getElementById('prog').style.width=(total/10*100)+'%';
+  document.getElementById('prog-lbl').textContent=total+' ／ 10 問 回答済み';
+  if(total===10){setTimeout(()=>{const b=document.getElementById('complete-banner');b.style.display='block';document.getElementById('final-score').textContent=score;b.scrollIntoView({behavior:'smooth'});},600);}
+}
+function switchTab(name,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+name).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

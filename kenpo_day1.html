@@ -1,0 +1,2359 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day1｜総則・目的・保険者① ― 健保法過去問ドリル</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1a2e;--paper:#faf8f3;--warm:#f5f0e8;
+  --red:#c84b31;--red-soft:#e8896b;--red-light:#fee2e2;
+  --teal:#2a7f7f;--teal-light:#e8f4f4;
+  --gold:#c9930a;--gold-light:#fef9e7;
+  --green:#2d6a4f;--green-light:#e8f5ee;
+  --gray:#6b7280;--border:#ddd8cc;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
+
+.hd{background:var(--ink);color:var(--paper);padding:52px 40px 40px;position:relative;overflow:hidden;}
+.hd::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px);}
+.hd-in{max-width:820px;margin:0 auto;position:relative;}
+.hd-eye{font-size:11px;letter-spacing:4px;color:var(--red-soft);margin-bottom:12px;font-weight:700;}
+.hd h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hd h1 em{color:var(--red-soft);font-style:normal;}
+.hd-sub{font-size:14px;color:rgba(255,255,255,.55);font-weight:300;}
+.prog-wrap{margin-top:24px;background:rgba(255,255,255,.1);border-radius:20px;height:6px;}
+.prog-bar{background:var(--red-soft);height:6px;border-radius:20px;width:0%;transition:width .5s;}
+.prog-lbl{font-size:11px;color:rgba(255,255,255,.45);margin-top:6px;}
+
+.sec-div{max-width:820px;margin:40px auto 20px;padding:0 24px;}
+.sec-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border-radius:30px;font-size:12px;font-weight:700;}
+.pill-red{background:var(--red);color:white;}
+.pill-teal{background:var(--teal);color:white;}
+.sec-title{font-family:'Noto Serif JP',serif;font-size:1.25rem;font-weight:700;margin:10px 0 8px;}
+.sec-desc{font-size:13px;color:var(--gray);line-height:1.9;background:white;border:1px solid var(--border);border-radius:10px;padding:12px 16px;}
+
+.score-bar{max-width:820px;margin:0 auto 24px;padding:0 24px;}
+.score-in{background:white;border:1px solid var(--border);border-radius:12px;padding:14px 20px;display:flex;align-items:center;gap:16px;}
+.score-num{font-family:'DM Serif Display',serif;font-size:36px;color:var(--teal);line-height:1;}
+
+.qwrap{max-width:820px;margin:0 auto;padding:0 24px 60px;display:flex;flex-direction:column;gap:20px;}
+.card{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s;}
+.card.vis{opacity:1;transform:none;}
+.card-hd{display:flex;align-items:center;gap:12px;padding:12px 20px;background:var(--warm);border-bottom:1px solid var(--border);}
+.q-num{font-family:'DM Serif Display',serif;font-size:30px;color:var(--red);line-height:1;}
+.q-num.tn{color:var(--teal);}
+.src-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;margin-bottom:3px;}
+.src-tag.t{background:var(--teal);}
+.q-type{font-size:11px;color:var(--gray);}
+.card-body{padding:20px 24px;}
+.quiz-q{font-size:15px;font-weight:600;line-height:1.8;margin-bottom:18px;}
+.quiz-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+
+.opts-tf{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.opt{border:2px solid var(--border);border-radius:10px;padding:12px 16px;cursor:pointer;font-size:14px;font-weight:500;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:10px;user-select:none;font-size:20px;font-weight:900;}
+.opt:hover{border-color:var(--ink);background:var(--warm);}
+.opt.correct{border-color:var(--green)!important;background:var(--green-light)!important;color:var(--green);}
+.opt.wrong{border-color:var(--red)!important;background:var(--red-light)!important;color:#991b1b;}
+
+.ans-box{display:none;border-radius:10px;padding:18px 20px;font-size:13px;margin-top:6px;}
+.ans-box.show{display:block;}
+.ans-box.ok{background:var(--green-light);border:1px solid #86efac;}
+.ans-box.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.ans-hd{font-weight:700;font-size:14px;margin-bottom:12px;}
+.why{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;}
+.note{background:var(--gold-light);border:1px solid var(--gold);border-radius:8px;padding:10px 14px;font-size:13px;margin:10px 0;}
+.tip{background:var(--green-light);border:2px solid var(--green);border-radius:8px;padding:12px 14px;font-size:13px;margin-top:12px;}
+.tip-title{font-weight:700;color:var(--green);margin-bottom:6px;}
+.tip-item{display:flex;gap:8px;margin-bottom:4px;}
+.tip-item:last-child{margin-bottom:0;}
+
+/* SVG wrapper */
+.svg-wrap{margin:14px 0;overflow-x:auto;}
+.svg-wrap svg{display:block;max-width:100%;height:auto;}
+
+/* 穴埋め */
+.blank-sentence{font-size:15px;font-weight:500;line-height:2.6;margin-bottom:16px;}
+.blank{display:inline-block;min-width:72px;border-bottom:2px solid var(--ink);text-align:center;padding:0 6px;margin:0 3px;cursor:pointer;font-weight:700;transition:background .2s;border-radius:4px 4px 0 0;}
+.blank:hover{background:rgba(42,127,127,.08);}
+.blank.sel{background:#dbeafe;border-color:var(--teal);}
+.blank.ok-fill{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.blank.ng-fill{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.chp{border:2px solid var(--border);border-radius:20px;padding:5px 14px;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;}
+.chp:hover{border-color:var(--teal);background:var(--teal-light);}
+.chp.used{opacity:.35;pointer-events:none;}
+.chp.ok-c{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.chp.ng-c{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.chk-btn{background:var(--ink);color:white;border:none;border-radius:8px;padding:10px 24px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:12px;transition:opacity .2s;}
+.chk-btn:hover{opacity:.82;}
+.chk-btn:disabled{opacity:.4;cursor:default;}
+
+@media(max-width:600px){
+  .hd{padding:36px 16px 28px;}
+  .qwrap,.sec-div,.score-bar{padding-left:16px;padding-right:16px;}
+  .card-body{padding:14px;}
+}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--ink);padding:10px 24px;display:flex;align-items:center;gap:12px;}
+.back-btn{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;display:flex;align-items:center;gap:6px;transition:color .2s;}
+.back-btn:hover{color:white;}
+.topbar-title{color:rgba(255,255,255,.5);font-size:12px;margin-left:auto;}
+/* ── TAB NAV ── */
+.tab-nav{background:var(--ink);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:100;}
+.tab-nav-in{max-width:820px;margin:0 auto;display:flex;}
+.tab-btn{flex:1;padding:13px 8px;font-size:13px;font-weight:700;color:rgba(255,255,255,.4);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;}
+.tab-btn:hover{color:rgba(255,255,255,.75);}
+.tab-btn.active{color:white;border-color:var(--red-soft);}
+.tab-btn.active.t2{border-color:#5ecece;}
+.tab-btn.active.t3{border-color:#a78bfa;}
+.tab-btn.active.t4{border-color:#fbbf24;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+@media(max-width:600px){.tab-btn{font-size:11px;padding:11px 4px;}}
+
+/* ── FLASH CARDS ── */
+.fc-wrap{max-width:740px;margin:0 auto;padding:24px 0 80px;}
+.fc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:0 20px;font-size:12px;color:var(--gray);}
+.fc-counter{font-family:'DM Serif Display',serif;font-size:26px;color:var(--red);line-height:1;}
+.fc-counter span{font-size:13px;color:var(--gray);font-family:'Noto Sans JP',sans-serif;font-weight:400;}
+.fc-gauge-wrap{padding:0 20px;margin-bottom:24px;}
+.fc-gauge-labels{display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:6px;}
+.fc-gauge-label-ng{color:var(--red);}
+.fc-gauge-label-ok{color:var(--green);}
+.fc-gauge-label-mid{color:var(--gray);font-size:10px;font-weight:400;}
+.fc-gauge-track{position:relative;height:16px;background:var(--border);border-radius:20px;overflow:hidden;display:flex;}
+.fc-gauge-ng{height:100%;background:linear-gradient(90deg,#c84b31,#e8896b);border-radius:20px 0 0 20px;transition:width .5s cubic-bezier(.4,0,.2,1);width:0%;}
+.fc-gauge-ok{height:100%;background:linear-gradient(90deg,#86efac,#2d6a4f);border-radius:0 20px 20px 0;transition:width .5s cubic-bezier(.4,0,.2,1);width:0%;margin-left:auto;}
+.fc-gauge-mid-line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:white;transform:translateX(-50%);z-index:2;}
+.fc-carousel{position:relative;display:flex;align-items:center;justify-content:center;height:300px;overflow:hidden;margin-bottom:20px;}
+.fc-slot{position:absolute;width:72%;height:100%;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s cubic-bezier(.4,0,.2,1),filter .35s ease;cursor:pointer;border-radius:16px;}
+.fc-slot.prev{transform:translateX(-82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.curr{transform:translateX(0) scale(1);opacity:1;filter:none;z-index:10;}
+.fc-slot.next{transform:translateX(82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.hidden{opacity:0;pointer-events:none;z-index:0;}
+.fc-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.4,0,.2,1);}
+.fc-inner.flipped{transform:rotateY(180deg);}
+.fc-face{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.11);}
+.fc-front-face{background:white;border:2px solid var(--ink);}
+.fc-back-face{background:white;border:2px solid var(--ink);transform:rotateY(180deg);}
+.fc-front-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:8px;}
+.fc-front-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;}
+.fc-front-body{flex:1;padding:18px 20px;display:flex;align-items:center;justify-content:center;}
+.fc-q{font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;line-height:1.9;color:var(--ink);text-align:center;}
+.fc-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+.fc-back-hd{padding:12px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+.fc-verdict{font-size:13px;font-weight:700;padding:3px 12px;border-radius:20px;}
+.fc-verdict.ok{background:var(--green);color:white;}
+.fc-verdict.ng{background:var(--red);color:white;}
+.fc-back-body{flex:1;padding:14px 18px;overflow-y:auto;}
+.fc-answer{font-family:'DM Serif Display',serif;font-size:20px;color:var(--ink);margin-bottom:10px;line-height:1.4;font-weight:700;}
+.fc-reason{font-size:13px;color:var(--ink);line-height:1.9;}
+.fc-reason strong{color:var(--ink);}
+.fc-reason mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+.fc-lawref{display:inline-block;margin-top:8px;font-size:11px;color:var(--teal);font-family:'DM Serif Display',serif;background:var(--teal-light);border:1px solid var(--teal);padding:2px 10px;border-radius:4px;}
+.fc-ox{display:flex;gap:10px;padding:0 16px 14px;}
+.fc-ox-btn{flex:1;padding:11px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-size:20px;font-weight:900;cursor:pointer;transition:all .15s;font-family:inherit;}
+.fc-ox-btn:hover{transform:translateY(-2px);}
+.fc-ox-btn.o:hover{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.fc-ox-btn.x:hover{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.fc-nav{display:flex;gap:10px;justify-content:center;padding:0 20px;}
+.fc-nav-btn{flex:1;max-width:160px;padding:12px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-family:inherit;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;transition:all .2s;text-align:center;}
+.fc-nav-btn:hover{border-color:var(--ink);}
+.fc-nav-btn.again{border-color:var(--red);color:var(--red);}
+.fc-nav-btn.again:hover{background:var(--red-light);}
+.fc-nav-btn.got{border-color:var(--green);color:var(--green);}
+.fc-nav-btn.got:hover{background:var(--green-light);}
+.fc-nav-btn.shuffle{background:var(--ink);color:white;border-color:var(--ink);}
+.fc-result{display:none;text-align:center;padding:32px 20px;background:white;border:2px solid var(--ink);border-radius:16px;margin:0 20px;}
+.fc-result h3{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;margin-bottom:8px;}
+.fc-result-score{font-family:'DM Serif Display',serif;font-size:52px;color:var(--red);line-height:1;margin:8px 0 4px;}
+.fc-result-sub{font-size:13px;color:var(--gray);margin-bottom:20px;}
+.fc-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:12px 28px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.fc-restart-btn:hover{opacity:.82;}
+
+/* ── スパイダーマップ ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.spider-wrap{max-width:820px;margin:0 auto;padding:20px 16px 60px;}
+.sp-node{cursor:pointer;transition:filter .15s;}
+.sp-node:hover{filter:brightness(1.1);}
+.sp-branch{cursor:pointer;transition:opacity .15s;}
+.sp-branch:hover{opacity:.75;}
+#spider-detail{animation:fadeUp .25s ease;}
+
+/* ── MIND MAP ── */
+.mm-wrap{max-width:820px;margin:0 auto;padding:20px 24px 60px;}
+.mm-intro{background:#ede9fe;border:1px solid #c4b5fd;border-radius:12px;padding:14px 18px;font-size:13px;color:#4c1d95;margin-bottom:20px;line-height:1.8;}
+.mm-section{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;margin-bottom:20px;}
+.mm-sec-hd{background:var(--ink);padding:12px 20px;display:flex;align-items:center;gap:10px;}
+.mm-sec-hd-txt{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;color:white;}
+.mm-sec-body{padding:20px;}
+.mm-svg-wrap{overflow-x:auto;border-radius:8px;background:var(--warm);padding:12px;}
+.num-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px;}
+@media(max-width:600px){.num-grid{grid-template-columns:1fr 1fr;}.tab-btn{font-size:11px;padding:11px 4px;}}
+/* COMPLETE */
+.complete{display:none;max-width:820px;margin:0 auto 40px;padding:0 24px;}
+.complete-in{background:var(--ink);color:white;border-radius:14px;padding:28px;text-align:center;}
+.complete h2{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;margin-bottom:6px;}
+.complete h2 em{color:var(--red-soft);font-style:normal;}
+.complete-score{font-size:48px;font-family:'DM Serif Display',serif;color:var(--red-soft);line-height:1;margin:10px 0 4px;}
+.complete-sub{font-size:14px;color:rgba(255,255,255,.55);margin-bottom:20px;}
+.btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-back{background:white;color:var(--ink);border:none;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;}
+.btn-next{background:var(--teal);color:white;border:none;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;}
+.btn-copy{background:var(--gold);color:white;border:none;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;}
+.btn-copy:hover{opacity:.85;}
+.btn-copy.copied{background:var(--green);}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span class="back-btn" onclick="location.href='index.html'" style="cursor:pointer;">← 目次に戻る</span>
+  <span class="topbar-title">Block 1 ／ Day 1</span>
+</div>
+
+<nav class="tab-nav">
+  <div class="tab-nav-in">
+    <button class="tab-btn active"  onclick="switchTab('quiz',this)">📝 問題を解く</button>
+    <button class="tab-btn t3"      onclick="switchTab('mindmap',this)">🗺 連想図</button>
+    <button class="tab-btn t2"      onclick="switchTab('flash',this)">🃏 フラッシュカード</button>
+    <button class="tab-btn t4"      onclick="switchTab('spider',this)">🕸️ 記憶マップ</button>
+  </div>
+</nav>
+<div id="panel-quiz" class="tab-panel active">
+
+
+<!-- HEADER -->
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-eye">健康保険法 ／ Block 1 ／ Day 1</div>
+    <h1>総則・目的・<em>保険者</em></h1>
+    <div class="hd-sub">○×式 5問 ＋ 穴埋め式 5問 ― 全10問　図解で理解を深める</div>
+    <div class="prog-wrap"><div class="prog-bar" id="prog"></div></div>
+    <div class="prog-lbl" id="prog-lbl">0 ／ 10 問 回答済み</div>
+  </div>
+</div>
+
+<!-- SCORE -->
+<div class="score-bar" style="margin-top:28px;">
+  <div class="score-in">
+    <div class="score-num" id="score">0</div>
+    <div>
+      <div style="font-weight:700;font-size:14px;">正解数</div>
+      <div style="font-size:12px;color:var(--gray);">10問中 ／ 選択肢・語句をタップして答え合わせ</div>
+    </div>
+  </div>
+</div>
+
+<!-- コピーボタン（常時表示） -->
+<div style="max-width:820px;margin:0 auto 8px;padding:0 24px;text-align:right;">
+  <button class="btn-copy" id="copy-btn" onclick="copyRecord()" style="font-size:13px;padding:8px 18px;">
+    📋 記録をコピー
+  </button>
+</div>
+
+<!-- ===== ① ○×式 ===== -->
+<div class="sec-div">
+  <div><span class="sec-pill pill-red">① ○×式　5問</span></div>
+  <div class="sec-title">正誤判断で条文の「引っかけポイント」を叩き込む</div>
+  <div class="sec-desc">目的・沿革・基本理念・保険者の業務分担。試験で繰り返し狙われる論点を○×形式で確認。解説の図解で「なぜそうなるのか」まで理解する。</div>
+</div>
+
+<div class="qwrap">
+
+<!-- Q1 -->
+<div class="card" id="cq1">
+  <div class="card-hd">
+    <div class="q-num">01</div>
+    <div>
+      <div class="src-tag">平成21年 問1A ／ ○×式</div>
+      <div class="q-type">難易度：★☆☆ ／ 単元：沿革</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">健康保険法は、<mark>大正11年に制定され、同時に施行された</mark>日本で最初の社会保険に関する法律である。</div>
+    <div class="opts-tf" id="q1-opts">
+      <div class="opt" onclick="answer('q1',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q1',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q1-ans">
+      <div class="ans-hd">❌ 誤り（×）｜法附則第1条</div>
+      <div class="why">⚠️ <strong>「制定と同時に施行」が誤り。</strong>制定（大正11年）と施行（昭和2年）は<strong>5年も違う。</strong></div>
+
+      <!-- 図解：年表タイムライン -->
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <!-- 背景 -->
+          <rect width="680" height="180" rx="10" fill="#f5f0e8"/>
+          <!-- タイトル -->
+          <text x="24" y="30" font-size="13" font-weight="700" fill="#1a1a2e">📅 健康保険法 制定・施行の年表</text>
+          <!-- タイムライン軸 -->
+          <line x1="60" y1="90" x2="620" y2="90" stroke="#ddd8cc" stroke-width="3"/>
+          <!-- 大正11年 -->
+          <circle cx="130" cy="90" r="12" fill="#c84b31"/>
+          <text x="130" y="95" text-anchor="middle" font-size="11" font-weight="700" fill="white">制定</text>
+          <rect x="70" y="108" width="120" height="36" rx="6" fill="#1a1a2e"/>
+          <text x="130" y="124" text-anchor="middle" font-size="12" font-weight="700" fill="white">大正11年（1922年）</text>
+          <text x="130" y="138" text-anchor="middle" font-size="11" fill="#e8896b">公布・制定</text>
+          <!-- 矢印 -->
+          <line x1="200" y1="90" x2="310" y2="90" stroke="#c84b31" stroke-width="2" stroke-dasharray="6,4"/>
+          <!-- 関東大震災 -->
+          <circle cx="310" cy="90" r="10" fill="#c9930a"/>
+          <text x="310" y="94" text-anchor="middle" font-size="10" fill="white">震災</text>
+          <rect x="250" y="108" width="120" height="36" rx="6" fill="#c9930a"/>
+          <text x="310" y="124" text-anchor="middle" font-size="12" font-weight="700" fill="white">大正12年（1923年）</text>
+          <text x="310" y="138" text-anchor="middle" font-size="11" fill="white">関東大震災→施行延期</text>
+          <!-- 矢印 -->
+          <line x1="380" y1="90" x2="490" y2="90" stroke="#2d6a4f" stroke-width="2" stroke-dasharray="6,4"/>
+          <!-- 昭和2年 -->
+          <circle cx="510" cy="90" r="12" fill="#2d6a4f"/>
+          <text x="510" y="95" text-anchor="middle" font-size="11" font-weight="700" fill="white">施行</text>
+          <rect x="450" y="108" width="120" height="36" rx="6" fill="#2d6a4f"/>
+          <text x="510" y="124" text-anchor="middle" font-size="12" font-weight="700" fill="white">昭和2年（1927年）</text>
+          <text x="510" y="138" text-anchor="middle" font-size="11" fill="#86efac">施行（5年後！）</text>
+          <!-- ブレース -->
+          <path d="M 130 62 Q 130 50 320 50 Q 510 50 510 62" stroke="#c84b31" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/>
+          <text x="320" y="44" text-anchor="middle" font-size="12" font-weight="700" fill="#c84b31">← 5年の差 →</text>
+        </svg>
+      </div>
+
+      <div class="note">💡 「<strong>日本最初の社会保険法</strong>」は○。誤りは「<strong>制定と同時に施行</strong>」という部分だけ。</div>
+      <div class="tip">
+        <div class="tip-title">🧠 覚えるコツ</div>
+        <div class="tip-item">📌 語呂：「健保で<strong>いい（11）</strong>にゃー<strong>（昭和2）</strong>」→ 大正11年制定・昭和2年施行</div>
+        <div class="tip-item">📌 関東大震災（大正12年）が施行を5年遅らせた。背景ごと覚えると忘れない。</div>
+        <div class="tip-item">📌 「同時に施行」「制定と同時に」が出たら即×。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="card" id="cq2">
+  <div class="card-hd">
+    <div class="q-num">02</div>
+    <div>
+      <div class="src-tag">平成21年 問1C ／ ○×式</div>
+      <div class="q-type">難易度：★★☆ ／ 単元：基本的理念（法第2条）</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">健康保険制度は、高齢化の進展・疾病構造の変化・社会経済情勢の変化等に対応し、他の医療保険制度等と併せて<mark>5年ごとに</mark>検討が加えられることになっている。</div>
+    <div class="opts-tf" id="q2-opts">
+      <div class="opt" onclick="answer('q2',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q2',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q2-ans">
+      <div class="ans-hd">❌ 誤り（×）｜法第2条（基本的理念）</div>
+      <div class="why">⚠️ <strong>「5年ごと」が誤り。</strong>正しくは<strong>「常に」</strong>検討が加えられる。</div>
+
+      <!-- 図解：条文の構造と3つの目的 -->
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="680" height="240" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="30" font-size="13" font-weight="700" fill="#1a1a2e">📜 法第2条（基本的理念）の構造</text>
+          <!-- 前半テキスト -->
+          <rect x="20" y="44" width="640" height="40" rx="6" fill="#e8e2d8"/>
+          <text x="340" y="60" text-anchor="middle" font-size="12" fill="#3a3a4a">健康保険制度は、医療保険制度の基本をなすものであることにかんがみ……</text>
+          <text x="340" y="76" text-anchor="middle" font-size="12" fill="#3a3a4a">その在り方に関して</text>
+          <!-- 「常に」強調 -->
+          <rect x="258" y="88" width="60" height="28" rx="6" fill="#c84b31"/>
+          <text x="288" y="107" text-anchor="middle" font-size="15" font-weight="900" fill="white">常に</text>
+          <text x="328" y="107" font-size="12" fill="#1a1a2e">検討が加えられ、その結果に基づき……</text>
+          <!-- 3つの目的 -->
+          <text x="340" y="136" text-anchor="middle" font-size="12" font-weight="700" fill="#2a7f7f">総合的に図るもの（3つ）</text>
+          <!-- ① -->
+          <rect x="30" y="146" width="190" height="44" rx="8" fill="#2a7f7f"/>
+          <text x="125" y="164" text-anchor="middle" font-size="12" font-weight="700" fill="white">① 運営の効率化</text>
+          <text x="125" y="180" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">保険者の運営を効率よく</text>
+          <!-- ② -->
+          <rect x="245" y="146" width="190" height="44" rx="8" fill="#2a7f7f"/>
+          <text x="340" y="164" text-anchor="middle" font-size="12" font-weight="700" fill="white">② 給付・費用の適正化</text>
+          <text x="340" y="180" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">給付内容と費用負担を適正に</text>
+          <!-- ③ -->
+          <rect x="460" y="146" width="190" height="44" rx="8" fill="#2a7f7f"/>
+          <text x="555" y="164" text-anchor="middle" font-size="12" font-weight="700" fill="white">③ 医療の質の向上</text>
+          <text x="555" y="180" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">国民が受ける医療の質を上げる</text>
+          <!-- 混同注意 -->
+          <rect x="20" y="202" width="640" height="28" rx="6" fill="#fef3c7" stroke="#c9930a" stroke-width="1.5"/>
+          <text x="340" y="220" text-anchor="middle" font-size="12" fill="#7c4f00">⚠️ 「5年ごと」は国民健康保険法（法第4条）の見直し規定。健保法は「常に」。混同注意！</text>
+        </svg>
+      </div>
+
+      <div style="background:white;border:2px solid var(--ink,#1a1a2e);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;">
+          <div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div>
+        </div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+      <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「<strong>5年ごとに</strong>検討が加えられる」→「常に」が正解</div>
+      </div>
+      <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「<strong>社会保険制度</strong>の基本をなす」→「医療保険制度」が正解</div>
+      </div>
+      <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「運営の効率化・<strong>広域化</strong>・質の向上」→「適正化」が正解</div>
+      </div>
+      <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 「医療保険の運営の<strong>効率化</strong>・給付費用の負担の<strong>適正化</strong>・医療の<strong>質の向上</strong>」</div>
+      </div>
+        </div>
+      </div>
+      <!-- 健保法 vs 国保法 比較表 -->
+      <div style="margin:12px 0;">
+        <div style="font-size:12px;font-weight:700;color:#1a1a2e;margin-bottom:6px;">⚡ 混同NG！健保法 vs 国保法の検討頻度</div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <thead>
+            <tr style="background:#1a1a2e;color:white;">
+              <th style="padding:8px 12px;text-align:left;border-radius:6px 0 0 0;">法律</th>
+              <th style="padding:8px 12px;text-align:center;">検討頻度</th>
+              <th style="padding:8px 12px;text-align:left;border-radius:0 6px 0 0;">条文の位置づけ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#e8f5ee;border-bottom:1px solid #ddd8cc;">
+              <td style="padding:8px 12px;font-weight:700;color:#2d6a4f;">健康保険法（第2条）</td>
+              <td style="padding:8px 12px;text-align:center;font-weight:900;color:#c84b31;font-size:15px;">常に</td>
+              <td style="padding:8px 12px;color:#1a1a2e;">医療保険制度の基本をなす</td>
+            </tr>
+            <tr style="background:#fef9e7;border-bottom:1px solid #ddd8cc;">
+              <td style="padding:8px 12px;font-weight:700;color:#c9930a;">国民健康保険法</td>
+              <td style="padding:8px 12px;text-align:center;font-weight:900;color:#c9930a;font-size:15px;">5年ごと</td>
+              <td style="padding:8px 12px;color:#1a1a2e;">国保制度の基本的事項</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="font-size:11px;color:#6b7280;margin-top:4px;">💡 「5年ごと」という数字が出たら国保法を疑う。健保法に数字は出てこない。</div>
+      </div>
+      <div class="tip">
+        <div class="tip-title">🧠 記憶フック</div>
+        <div class="tip-item">📌 健保法第2条＝「<strong>常に</strong>」。期間の数字（5年・3年）が入ったら全部×。</div>
+        <div class="tip-item">📌 3つの目的：<strong>効率・適正・質</strong>でセット暗記。順番も問われる（運営の効率化→給付費用の適正化→質の向上）。</div>
+        <div class="tip-item">📌 語呂：「<strong>こう（効率）・てき（適正）・しつ（質）</strong>」= 3つの目的を頭文字で</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="card" id="cq3">
+  <div class="card-hd">
+    <div class="q-num">03</div>
+    <div>
+      <div class="src-tag">平成21年 問1B ／ ○×式</div>
+      <div class="q-type">難易度：★★☆ ／ 単元：目的条文（法第1条）</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">健康保険法は業務外の事由による疾病等に関して保険給付を行うが、業務上か業務外か判定が未決定の期間は、<mark>一応業務外の傷病として健康保険から給付を行い</mark>、最終的に業務上と認定された場合にはさかのぼって給付相当額の返還が行われる。</div>
+    <div class="opts-tf" id="q3-opts">
+      <div class="opt" onclick="answer('q3',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q3',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q3-ans">
+      <div class="ans-hd">❌ 誤り（×）｜法第1条・昭和28年保文発2014号</div>
+      <div class="why">⚠️ 未決定期間は「業務外→健保」ではなく<strong>「業務上（労災）として扱う」</strong>。方向が真逆。</div>
+
+      <!-- 図解：業務上・外の振り分けフロー -->
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="680" height="260" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="28" font-size="13" font-weight="700" fill="#1a1a2e">🔄 業務上・外が未確定の場合の取扱い</text>
+
+          <!-- ケガ発生 -->
+          <rect x="260" y="40" width="160" height="44" rx="8" fill="#1a1a2e"/>
+          <text x="340" y="58" text-anchor="middle" font-size="13" font-weight="700" fill="white">ケガ・疾病が発生</text>
+          <text x="340" y="74" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.7)">業務上？業務外？未確定</text>
+
+          <!-- 下矢印 -->
+          <line x1="340" y1="84" x2="340" y2="104" stroke="#1a1a2e" stroke-width="2"/>
+          <polygon points="340,108 334,100 346,100" fill="#1a1a2e"/>
+
+          <!-- 未決定期間の扱い -->
+          <rect x="220" y="110" width="240" height="40" rx="8" fill="#c84b31"/>
+          <text x="340" y="126" text-anchor="middle" font-size="12" font-weight="700" fill="white">未決定期間：労災（業務上）として先行</text>
+          <text x="340" y="141" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">労働者を手厚く守る ＝ 自己負担ゼロ</text>
+
+          <!-- 分岐矢印 -->
+          <line x1="340" y1="150" x2="340" y2="165" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="180" y1="165" x2="500" y2="165" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="180" y1="165" x2="180" y2="180" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="500" y1="165" x2="500" y2="180" stroke="#1a1a2e" stroke-width="2"/>
+          <polygon points="180,184 174,176 186,176" fill="#1a1a2e"/>
+          <polygon points="500,184 494,176 506,176" fill="#1a1a2e"/>
+
+          <!-- 業務上確定 -->
+          <rect x="80" y="186" width="200" height="50" rx="8" fill="#2d6a4f"/>
+          <text x="180" y="207" text-anchor="middle" font-size="12" font-weight="700" fill="white">最終的に業務上と判定</text>
+          <text x="180" y="224" text-anchor="middle" font-size="11" fill="#86efac">→ 労災のまま確定 ✅</text>
+
+          <!-- 業務外確定 -->
+          <rect x="400" y="186" width="200" height="50" rx="8" fill="#2a7f7f"/>
+          <text x="500" y="207" text-anchor="middle" font-size="12" font-weight="700" fill="white">最終的に業務外と判定</text>
+          <text x="500" y="224" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">→ 健保に切替え ✅</text>
+
+          <!-- ×マーク（問題文の誤り） -->
+          <rect x="80" y="240" width="500" height="14" rx="4" fill="rgba(200,75,49,0.15)"/>
+          <text x="340" y="251" text-anchor="middle" font-size="10" fill="#c84b31">❌ 問題文：「業務外として健保から給付→返還」は完全に逆の方向</text>
+        </svg>
+      </div>
+
+      <div style="background:white;border:2px solid var(--ink,#1a1a2e);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;">
+          <div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div>
+        </div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+      <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「一応<strong>業務外として健保から給付</strong>→最終的に業務上と認定されたら返還」</div>
+      </div>
+      <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 「一応<strong>業務上（労災）として扱う</strong>」← 昭和28年保文発2014号</div>
+      </div>
+        </div>
+      </div>
+      <!-- 健保 vs 労災 比較表 -->
+      <div style="margin:12px 0;">
+        <div style="font-size:12px;font-weight:700;color:#1a1a2e;margin-bottom:6px;">⚡ 健保 vs 労災の核心比較</div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <thead>
+            <tr style="background:#1a1a2e;color:white;">
+              <th style="padding:8px 10px;text-align:left;">項目</th>
+              <th style="padding:8px 10px;text-align:center;">健康保険</th>
+              <th style="padding:8px 10px;text-align:center;">労災保険</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:white;border-bottom:1px solid #ddd8cc;">
+              <td style="padding:8px 10px;font-weight:700;color:#1a1a2e;">対象事由</td>
+              <td style="padding:8px 10px;text-align:center;color:#2a7f7f;font-weight:700;">業務外の傷病</td>
+              <td style="padding:8px 10px;text-align:center;color:#c84b31;font-weight:700;">業務上・通勤の傷病</td>
+            </tr>
+            <tr style="background:#f9f9f9;border-bottom:1px solid #ddd8cc;">
+              <td style="padding:8px 10px;font-weight:700;color:#1a1a2e;">自己負担</td>
+              <td style="padding:8px 10px;text-align:center;">3割負担あり</td>
+              <td style="padding:8px 10px;text-align:center;font-weight:700;color:#2d6a4f;">原則ゼロ</td>
+            </tr>
+            <tr style="background:white;border-bottom:1px solid #ddd8cc;">
+              <td style="padding:8px 10px;font-weight:700;color:#1a1a2e;">根拠法</td>
+              <td style="padding:8px 10px;text-align:center;">健康保険法</td>
+              <td style="padding:8px 10px;text-align:center;">労働者災害補償保険法</td>
+            </tr>
+            <tr style="background:#fee2e2;border-bottom:1px solid #fca5a5;">
+              <td style="padding:8px 10px;font-weight:700;color:#991b1b;">未確定期間</td>
+              <td style="padding:8px 10px;text-align:center;color:#991b1b;">使わない</td>
+              <td style="padding:8px 10px;text-align:center;font-weight:700;color:#991b1b;">← 先行して適用</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="font-size:11px;color:#6b7280;margin-top:4px;">💡 なぜ労災を先行？→ 自己負担ゼロの労災で守るのが労働者に有利なため。</div>
+      </div>
+      <div class="note">💡 <strong>なぜ労災を先行させる？</strong>業務上傷病は自己負担ゼロが原則。「とりあえず健保（3割負担）」では労働者に不利益が生じる。疑わしければ手厚い方で守る。</div>
+      <div class="tip">
+        <div class="tip-title">🧠 記憶フック</div>
+        <div class="tip-item">📌 未決定期間：<strong>業務上（労災）として先行</strong>。健保ではない。</div>
+        <div class="tip-item">📌 「業務外→健保から給付→返還」が出たら×。<strong>方向が真逆</strong>。</div>
+        <div class="tip-item">📌 語呂：「迷ったら<strong>ろうさい（労災）</strong>で守る。自己負担ゼロが正義」</div>
+        <div class="tip-item">📌 根拠：昭和28年保文発2014号（通達レベルの知識も出題される）</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q4 -->
+<div class="card" id="cq4">
+  <div class="card-hd">
+    <div class="q-num">04</div>
+    <div>
+      <div class="src-tag">平成22年 問1A ／ ○×式</div>
+      <div class="q-type">難易度：★★☆ ／ 単元：保険者と厚生労働大臣の業務分担</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">全国健康保険協会が管掌する健康保険の事業に関する業務のうち、<mark>被保険者の資格の取得及び喪失の確認、標準報酬月額及び標準賞与額の決定並びに保険料の徴収（任意継続被保険者に係るものを除く。）並びにこれらに附帯する業務は、厚生労働大臣が行う。</mark></div>
+    <div class="opts-tf" id="q4-opts">
+      <div class="opt" onclick="answer('q4',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q4',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q4-ans">
+      <div class="ans-hd">✅ 正しい（○）｜法第5条第2項</div>
+
+      <!-- 図解：業務分担の全体マップ -->
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 230" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="680" height="230" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="28" font-size="13" font-weight="700" fill="#1a1a2e">🏢 協会けんぽ管掌の健保：業務分担マップ（法第5条第2項）</text>
+
+          <!-- 厚生労働大臣エリア -->
+          <rect x="20" y="40" width="300" height="170" rx="10" fill="#1a1a2e"/>
+          <text x="170" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="white">🏛 厚生労働大臣が行う</text>
+          <rect x="34" y="70" width="272" height="30" rx="6" fill="rgba(255,255,255,0.12)"/>
+          <text x="170" y="90" text-anchor="middle" font-size="12" fill="white">① 資格の取得・喪失の確認</text>
+          <rect x="34" y="106" width="272" height="30" rx="6" fill="rgba(255,255,255,0.12)"/>
+          <text x="170" y="126" text-anchor="middle" font-size="12" fill="white">② 標準報酬月額・標準賞与額の決定</text>
+          <rect x="34" y="142" width="272" height="30" rx="6" fill="rgba(201,147,10,0.4)" stroke="#c9930a" stroke-width="1.5"/>
+          <text x="170" y="158" text-anchor="middle" font-size="12" font-weight="700" fill="#fde68a">③ 保険料の徴収（任意継続を除く）</text>
+          <text x="170" y="175" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.6)">← ここが試験のポイント！</text>
+          <rect x="34" y="183" width="272" height="20" rx="6" fill="rgba(255,255,255,0.08)"/>
+          <text x="170" y="197" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.7)">④ これらの附帯業務</text>
+
+          <!-- 協会けんぽエリア -->
+          <rect x="360" y="40" width="300" height="170" rx="10" fill="#2a7f7f"/>
+          <text x="510" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="white">🏥 協会けんぽが行う</text>
+          <rect x="374" y="70" width="272" height="30" rx="6" fill="rgba(255,255,255,0.15)"/>
+          <text x="510" y="90" text-anchor="middle" font-size="12" fill="white">保険給付に関する業務</text>
+          <rect x="374" y="106" width="272" height="30" rx="6" fill="rgba(255,255,255,0.15)"/>
+          <text x="510" y="126" text-anchor="middle" font-size="12" fill="white">保健事業・福祉事業</text>
+          <rect x="374" y="142" width="272" height="30" rx="6" fill="rgba(255,255,255,0.3)" stroke="white" stroke-width="1.5"/>
+          <text x="510" y="158" text-anchor="middle" font-size="12" font-weight="700" fill="#1a1a2e">任意継続の保険料徴収</text>
+          <text x="510" y="175" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.8)">← 大臣ではなく協会！</text>
+          <rect x="374" y="183" width="272" height="20" rx="6" fill="rgba(255,255,255,0.1)"/>
+          <text x="510" y="197" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.7)">その他の事業運営</text>
+        </svg>
+      </div>
+
+      <div style="background:white;border:2px solid var(--ink,#1a1a2e);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;">
+          <div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div>
+        </div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+      <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「任意継続被保険者の保険料は<strong>厚生労働大臣</strong>が徴収する」</div>
+      </div>
+      <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「保険給付に関する業務は<strong>厚生労働大臣</strong>が行う」</div>
+      </div>
+      <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 「資格確認・標準報酬決定・保険料徴収（任意継続除く）は<strong>大臣</strong>」</div>
+      </div>
+      <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 「任意継続の保険料のみ<strong>協会けんぽ</strong>が徴収」</div>
+      </div>
+        </div>
+      </div>
+      <!-- 業務分担完全比較表 -->
+      <div style="margin:12px 0;">
+        <div style="font-size:12px;font-weight:700;color:#1a1a2e;margin-bottom:6px;">⚡ 業務分担 完全マトリクス（法第5条第2項）</div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <thead>
+            <tr style="background:#1a1a2e;color:white;">
+              <th style="padding:8px 10px;text-align:left;">業務内容</th>
+              <th style="padding:8px 10px;text-align:center;">厚生労働大臣</th>
+              <th style="padding:8px 10px;text-align:center;">協会けんぽ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:white;border-bottom:1px solid #ddd8cc;">
+              <td style="padding:8px 10px;color:#1a1a2e;">① 資格の取得・喪失の確認</td>
+              <td style="padding:8px 10px;text-align:center;font-size:16px;">✅</td>
+              <td style="padding:8px 10px;text-align:center;color:#9ca3af;">—</td>
+            </tr>
+            <tr style="background:#f9f9f9;border-bottom:1px solid #ddd8cc;">
+              <td style="padding:8px 10px;color:#1a1a2e;">② 標準報酬月額・標準賞与額の決定</td>
+              <td style="padding:8px 10px;text-align:center;font-size:16px;">✅</td>
+              <td style="padding:8px 10px;text-align:center;color:#9ca3af;">—</td>
+            </tr>
+            <tr style="background:white;border-bottom:1px solid #ddd8cc;">
+              <td style="padding:8px 10px;color:#1a1a2e;">③ 保険料の徴収（<strong>任意継続除く</strong>）</td>
+              <td style="padding:8px 10px;text-align:center;font-size:16px;">✅</td>
+              <td style="padding:8px 10px;text-align:center;color:#9ca3af;">—</td>
+            </tr>
+            <tr style="background:#fee2e2;border-bottom:1px solid #fca5a5;">
+              <td style="padding:8px 10px;color:#991b1b;font-weight:700;">⚡ 任意継続被保険者の保険料徴収</td>
+              <td style="padding:8px 10px;text-align:center;color:#9ca3af;">—</td>
+              <td style="padding:8px 10px;text-align:center;font-size:16px;color:#c84b31;">✅ 例外！</td>
+            </tr>
+            <tr style="background:#f9f9f9;border-bottom:1px solid #ddd8cc;">
+              <td style="padding:8px 10px;color:#1a1a2e;">④ 保険給付に関する業務</td>
+              <td style="padding:8px 10px;text-align:center;color:#9ca3af;">—</td>
+              <td style="padding:8px 10px;text-align:center;font-size:16px;">✅</td>
+            </tr>
+            <tr style="background:white;">
+              <td style="padding:8px 10px;color:#1a1a2e;">⑤ 保健事業・福祉事業</td>
+              <td style="padding:8px 10px;text-align:center;color:#9ca3af;">—</td>
+              <td style="padding:8px 10px;text-align:center;font-size:16px;">✅</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note">💡 <strong>任意継続被保険者の保険料徴収は協会が担当</strong>（大臣ではない）。「任意継続を除く」という文言がポイント。</div>
+      <div class="tip">
+        <div class="tip-title">🧠 記憶フック</div>
+        <div class="tip-item">📌 <strong>大臣＝資格・標準・保険料（任継除く）</strong>←まとめて「形式的な管理業務」</div>
+        <div class="tip-item">📌 <strong>協会＝給付・保健事業・任継の保険料</strong>←「実質的な保険サービス」</div>
+        <div class="tip-item">📌 「<strong>任意継続だけが逆</strong>」と覚える。理由：退職後は事業主経由でなく協会に直接払うから。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q5 -->
+<div class="card" id="cq5">
+  <div class="card-hd">
+    <div class="q-num">05</div>
+    <div>
+      <div class="src-tag">平成23年 問2B ／ ○×式</div>
+      <div class="q-type">難易度：★★★ ／ 単元：目的条文の例外（小規模法人役員）</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">健康保険法は業務外の事由による疾病等に関して保険給付を行うこととされているが、<mark>被保険者が5人未満である小規模な適用事業所に所属する法人の代表者</mark>であって、一般の従業員と著しく異ならないような労務に従事している者については、業務上の事由による疾病等であっても、健康保険による保険給付の対象となる。ただし、<mark>傷病手当金は支給されない</mark>。</div>
+    <div class="opts-tf" id="q5-opts">
+      <div class="opt" onclick="answer('q5',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q5',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q5-ans">
+      <div class="ans-hd">✅ 正しい（○）｜平成15年7月1日保発701002号</div>
+
+      <!-- 図解：小規模法人代表者の特例 -->
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="680" height="250" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="28" font-size="13" font-weight="700" fill="#1a1a2e">🏭 小規模法人代表者の特例（暫定措置）</text>
+
+          <!-- 条件ボックス -->
+          <text x="24" y="50" font-size="12" font-weight="700" fill="#1a1a2e">【適用条件：すべて満たす必要あり】</text>
+          <rect x="20" y="58" width="200" height="50" rx="8" fill="#2a7f7f"/>
+          <text x="120" y="79" text-anchor="middle" font-size="12" font-weight="700" fill="white">被保険者5人未満</text>
+          <text x="120" y="97" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">小規模な適用事業所</text>
+          <rect x="240" y="58" width="200" height="50" rx="8" fill="#2a7f7f"/>
+          <text x="340" y="79" text-anchor="middle" font-size="12" font-weight="700" fill="white">法人の代表者</text>
+          <text x="340" y="97" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">（社長・役員など）</text>
+          <rect x="460" y="58" width="200" height="50" rx="8" fill="#2a7f7f"/>
+          <text x="560" y="79" text-anchor="middle" font-size="12" font-weight="700" fill="white">一般従業員と</text>
+          <text x="560" y="97" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">著しく異ならない労務</text>
+
+          <!-- ↓ 結果 -->
+          <line x1="340" y1="108" x2="340" y2="126" stroke="#1a1a2e" stroke-width="2"/>
+          <polygon points="340,130 334,122 346,122" fill="#1a1a2e"/>
+          <rect x="160" y="132" width="360" height="40" rx="8" fill="#1a1a2e"/>
+          <text x="340" y="150" text-anchor="middle" font-size="13" font-weight="700" fill="white">業務上の傷病でも健保の給付対象 ✅</text>
+          <text x="340" y="165" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.7)">（原則は業務上→労災のみ。これは暫定措置）</text>
+
+          <!-- ただし書き -->
+          <rect x="60" y="186" width="256" height="50" rx="8" fill="#c84b31"/>
+          <text x="188" y="207" text-anchor="middle" font-size="13" font-weight="700" fill="white">❌ 傷病手当金は支給されない</text>
+          <text x="188" y="226" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">休業補償は労災の領域のため</text>
+          <rect x="364" y="186" width="256" height="50" rx="8" fill="#2d6a4f"/>
+          <text x="492" y="207" text-anchor="middle" font-size="13" font-weight="700" fill="white">✅ その他の給付はOK</text>
+          <text x="492" y="226" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">療養の給付・入院時食事療養費など</text>
+        </svg>
+      </div>
+
+      <div style="background:white;border:2px solid var(--ink,#1a1a2e);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;">
+          <div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div>
+        </div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+      <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「被保険者<strong>10人未満</strong>の小規模事業所の代表者」→ 5人未満が正解</div>
+      </div>
+      <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「業務上の傷病について<strong>傷病手当金も支給される</strong>」→ 傷病手当金は支給されない</div>
+      </div>
+      <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 「業務上の傷病でも<strong>健保給付の対象</strong>（ただし傷病手当金を除く）」</div>
+      </div>
+        </div>
+      </div>
+      <!-- 3条件の確認チェック -->
+      <div style="margin:12px 0;background:#f5f0e8;border-radius:10px;padding:14px 16px;">
+        <div style="font-size:12px;font-weight:700;color:#1a1a2e;margin-bottom:10px;">✅ 特例適用の3条件（全部満たす必要あり）</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;background:white;border-radius:8px;padding:8px 12px;">
+            <div style="width:24px;height:24px;border-radius:50%;background:#2a7f7f;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:700;color:white;">1</div>
+            <div style="font-size:13px;color:#1a1a2e;">被保険者が<strong>5人未満</strong>の適用事業所</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;background:white;border-radius:8px;padding:8px 12px;">
+            <div style="width:24px;height:24px;border-radius:50%;background:#2a7f7f;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:700;color:white;">2</div>
+            <div style="font-size:13px;color:#1a1a2e;"><strong>法人の代表者</strong>（社長・役員など）</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;background:white;border-radius:8px;padding:8px 12px;">
+            <div style="width:24px;height:24px;border-radius:50%;background:#2a7f7f;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:700;color:white;">3</div>
+            <div style="font-size:13px;color:#1a1a2e;">一般の従業員と<strong>著しく異ならない</strong>労務に従事</div>
+          </div>
+        </div>
+        <div style="margin-top:10px;padding:8px 12px;background:#fee2e2;border-radius:8px;font-size:12px;color:#991b1b;font-weight:700;">
+          ⚠️ 例外：<strong>傷病手当金は支給されない</strong>（業務上傷病の休業補償は労災の領域のため）
+        </div>
+      </div>
+      <div class="tip">
+        <div class="tip-title">🧠 記憶フック</div>
+        <div class="tip-item">📌 <strong>「5人未満のボス」</strong>＝業務上も健保OK（暫定措置・平成15年通達）</div>
+        <div class="tip-item">📌 ただし<strong>傷病手当金だけは支給されない</strong>。給付がまるごとOKではない。</div>
+        <div class="tip-item">📌 語呂：「5人未満のボス、業務上も健保OK。でも<strong>傷手（きずて）はナシ</strong>」</div>
+        <div class="tip-item">📌 「<strong>5人</strong>」という数字が命。10人・3人は誤り。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /qwrap -->
+
+<!-- ===== ② 穴埋め式 ===== -->
+<div class="sec-div">
+  <div><span class="sec-pill pill-teal">② 穴埋め式　5問</span></div>
+  <div class="sec-title">条文の「核心ワード」を自分の手で埋める</div>
+  <div class="sec-desc">空欄をクリックして選択状態（青線）にしてから、語句チップをクリックして埋めてください。全部埋めたら「答え合わせ」ボタンを押す。</div>
+</div>
+
+<div class="qwrap">
+
+<!-- F1 -->
+<div class="card" id="cf1">
+  <div class="card-hd">
+    <div class="q-num tn">F1</div>
+    <div>
+      <div class="src-tag t">穴埋め ／ 目的条文（法第1条）</div>
+      <div class="q-type">難易度：★★☆ ／ 最頻出の条文</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">健康保険法の目的条文（法第1条）の空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      この法律は、<span class="blank" id="f1a" onclick="selB('f1','f1a')">　　　　</span>又はその被扶養者の
+      <span class="blank" id="f1b" onclick="selB('f1','f1b')">　　　　</span>以外の疾病、負傷若しくは死亡又は出産に関して
+      <span class="blank" id="f1c" onclick="selB('f1','f1c')">　　　　</span>を行い、もって
+      <span class="blank" id="f1d" onclick="selB('f1','f1d')">　　　　　　　　　　　　</span>に寄与することを目的とする。
+    </div>
+    <div class="chips" id="f1-ch">
+      <div class="chp" onclick="fillB('f1','f1a',this,'労働者')">労働者</div>
+      <div class="chp" onclick="fillB('f1','f1a',this,'被保険者')">被保険者</div>
+      <div class="chp" onclick="fillB('f1','f1b',this,'業務災害')">業務災害</div>
+      <div class="chp" onclick="fillB('f1','f1b',this,'通勤災害')">通勤災害</div>
+      <div class="chp" onclick="fillB('f1','f1c',this,'保険給付')">保険給付</div>
+      <div class="chp" onclick="fillB('f1','f1c',this,'援護措置')">援護措置</div>
+      <div class="chp" onclick="fillB('f1','f1d',this,'国民の生活の安定と福祉の向上')">国民の生活の安定と福祉の向上</div>
+      <div class="chp" onclick="fillB('f1','f1d',this,'社会保障及び国民保健の向上')">社会保障及び国民保健の向上</div>
+    </div>
+    <button class="chk-btn" id="f1-btn" onclick="chkF('f1')">答え合わせ</button>
+    <div class="ans-box" id="f1-ans">
+      <div class="ans-hd">✅ 正解：労働者 ／ 業務災害 ／ 保険給付 ／ 国民の生活の安定と福祉の向上</div>
+
+      <!-- 図解：法第1条の構造 -->
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="680" height="200" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="28" font-size="13" font-weight="700" fill="#1a1a2e">📜 法第1条（目的）の解剖</text>
+          <!-- 主語 -->
+          <rect x="20" y="40" width="140" height="50" rx="8" fill="#c84b31"/>
+          <text x="90" y="61" text-anchor="middle" font-size="12" font-weight="700" fill="white">主語</text>
+          <text x="90" y="80" text-anchor="middle" font-size="14" font-weight="900" fill="#fde68a">労働者</text>
+          <!-- 対象外 -->
+          <rect x="180" y="40" width="170" height="50" rx="8" fill="rgba(255,255,255,0.1)" stroke="#c84b31" stroke-width="2"/>
+          <text x="265" y="61" text-anchor="middle" font-size="12" font-weight="700" fill="#e8896b">健保の対象外</text>
+          <text x="265" y="80" text-anchor="middle" font-size="13" font-weight="700" fill="white">業務災害（→労災）</text>
+          <!-- 手段 -->
+          <rect x="370" y="40" width="140" height="50" rx="8" fill="#2a7f7f"/>
+          <text x="440" y="61" text-anchor="middle" font-size="12" font-weight="700" fill="white">手段</text>
+          <text x="440" y="80" text-anchor="middle" font-size="14" font-weight="900" fill="#86efac">保険給付</text>
+          <!-- 目的 -->
+          <rect x="530" y="40" width="130" height="50" rx="8" fill="#2d6a4f"/>
+          <text x="595" y="55" text-anchor="middle" font-size="11" font-weight="700" fill="white">大目的</text>
+          <text x="595" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#86efac">国民の生活の</text>
+          <text x="595" y="84" text-anchor="middle" font-size="11" font-weight="700" fill="#86efac">安定と福祉の向上</text>
+          <!-- 混同注意 -->
+          <rect x="20" y="108" width="640" height="80" rx="8" fill="rgba(255,255,255,0.06)"/>
+          <text x="24" y="128" font-size="12" font-weight="700" fill="#fde68a">⚠️ 引っかけポイント</text>
+          <text x="24" y="148" font-size="12" fill="rgba(255,255,255,0.8)">主語：「<tspan fill="#fde68a" font-weight="700">労働者</tspan>」（被保険者ではない）← 選択式で狙われる！</text>
+          <text x="24" y="166" font-size="12" fill="rgba(255,255,255,0.8)">業務外のみ：「<tspan fill="#fde68a" font-weight="700">業務災害以外</tspan>」← 業務上は労災。健保とのすみ分けの核心。</text>
+          <text x="24" y="184" font-size="12" fill="rgba(255,255,255,0.8)">大目的：「<tspan fill="#86efac" font-weight="700">国民の生活の安定と福祉の向上</tspan>」← 厚年・国年と共通フレーズ。</text>
+        </svg>
+      </div>
+
+      <div class="tip">
+        <div class="tip-title">🧠 覚えるコツ</div>
+        <div class="tip-item">📌 主語は「<strong>労働者</strong>」。「被保険者」とする問題は×。</div>
+        <div class="tip-item">📌 「業務災害<strong>以外</strong>」← 以外という2文字が命。業務上は労災の領域。</div>
+        <div class="tip-item">📌 大目的「<strong>国民の生活の安定と福祉の向上</strong>」← 厚年・国年と同一。セットで暗記。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F2 -->
+<div class="card" id="cf2">
+  <div class="card-hd">
+    <div class="q-num tn">F2</div>
+    <div>
+      <div class="src-tag t">穴埋め ／ 基本的理念（法第2条）</div>
+      <div class="q-type">難易度：★★★ ／ 選択式頻出</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">法第2条（基本的理念）の空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      健康保険制度については、これが
+      <span class="blank" id="f2a" onclick="selB('f2','f2a')">　　　　　　　</span>
+      の基本をなすものであることにかんがみ……その在り方に関して
+      <span class="blank" id="f2b" onclick="selB('f2','f2b')">　　</span>
+      検討が加えられ、その結果に基づき、医療保険の運営の
+      <span class="blank" id="f2c" onclick="selB('f2','f2c')">　　　</span>
+      、給付の内容及び費用の負担の
+      <span class="blank" id="f2d" onclick="selB('f2','f2d')">　　　</span>
+      並びに国民が受ける医療の
+      <span class="blank" id="f2e" onclick="selB('f2','f2e')">　　　　</span>
+      を総合的に図りつつ、実施されなければならない。
+    </div>
+    <div class="chips" id="f2-ch">
+      <div class="chp" onclick="fillB('f2','f2a',this,'医療保険制度')">医療保険制度</div>
+      <div class="chp" onclick="fillB('f2','f2a',this,'社会保険制度')">社会保険制度</div>
+      <div class="chp" onclick="fillB('f2','f2b',this,'常に')">常に</div>
+      <div class="chp" onclick="fillB('f2','f2b',this,'5年ごとに')">5年ごとに</div>
+      <div class="chp" onclick="fillB('f2','f2c',this,'効率化')">効率化</div>
+      <div class="chp" onclick="fillB('f2','f2c',this,'広域化')">広域化</div>
+      <div class="chp" onclick="fillB('f2','f2d',this,'適正化')">適正化</div>
+      <div class="chp" onclick="fillB('f2','f2d',this,'標準化')">標準化</div>
+      <div class="chp" onclick="fillB('f2','f2e',this,'質の向上')">質の向上</div>
+      <div class="chp" onclick="fillB('f2','f2e',this,'量の拡大')">量の拡大</div>
+    </div>
+    <button class="chk-btn" id="f2-btn" onclick="chkF('f2')">答え合わせ</button>
+    <div class="ans-box" id="f2-ans">
+      <div class="ans-hd">✅ 正解：医療保険制度 ／ 常に ／ 効率化 ／ 適正化 ／ 質の向上</div>
+
+      <!-- 図解：3つの目的ピラミッド -->
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="680" height="200" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="26" font-size="13" font-weight="700" fill="#1a1a2e">🎯 法第2条で「総合的に図る」3つのこと</text>
+          <rect x="30" y="38" width="190" height="130" rx="10" fill="#1a1a2e"/>
+          <text x="125" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="#fde68a">① 効率化</text>
+          <text x="125" y="80" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.7)">医療保険の運営の</text>
+          <text x="125" y="95" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.7)">効率化</text>
+          <line x1="30" y1="110" x2="220" y2="110" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <text x="125" y="130" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.5)">保険者が無駄なく</text>
+          <text x="125" y="145" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.5)">運営できるように</text>
+          <rect x="245" y="38" width="190" height="130" rx="10" fill="#2a7f7f"/>
+          <text x="340" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="#fde68a">② 適正化</text>
+          <text x="340" y="80" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.9)">給付の内容及び</text>
+          <text x="340" y="95" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.9)">費用の負担の適正化</text>
+          <line x1="245" y1="110" x2="435" y2="110" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <text x="340" y="130" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)">給付と負担のバランスを</text>
+          <text x="340" y="145" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)">適切に保つ</text>
+          <rect x="460" y="38" width="190" height="130" rx="10" fill="#2d6a4f"/>
+          <text x="555" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="#fde68a">③ 質の向上</text>
+          <text x="555" y="80" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.9)">国民が受ける</text>
+          <text x="555" y="95" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.9)">医療の質の向上</text>
+          <line x1="460" y1="110" x2="650" y2="110" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <text x="555" y="130" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)">医療の中身・水準を</text>
+          <text x="555" y="145" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)">高める</text>
+          <text x="340" y="185" text-anchor="middle" font-size="11" fill="var(--gray)">「<tspan font-weight="700">効率・適正・質</tspan>」でセット暗記。この3つが試験で抜かれる。</text>
+        </svg>
+      </div>
+
+      <div class="tip">
+        <div class="tip-title">🧠 覚えるコツ</div>
+        <div class="tip-item">📌 「<strong>常に</strong>」← 期間の数字が入ったら全部×</div>
+        <div class="tip-item">📌 3つの目的：<strong>効率・適正・質</strong>でセット暗記</div>
+        <div class="tip-item">📌 「医療保険制度の基本をなす」← 健保が公的医療保険の中心という位置づけ</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F3 -->
+<div class="card" id="cf3">
+  <div class="card-hd">
+    <div class="q-num tn">F3</div>
+    <div>
+      <div class="src-tag t">穴埋め ／ 保険者（法第4条・第5条）</div>
+      <div class="q-type">難易度：★★☆ ／ 単元：保険者の種類と管掌</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">保険者に関する条文（法第4条・第5条）の空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      健康保険（日雇特例被保険者の保険を除く。）の保険者は、
+      <span class="blank" id="f3a" onclick="selB('f3','f3a')">　　　　　　　</span>
+      及び
+      <span class="blank" id="f3b" onclick="selB('f3','f3b')">　　　　　　</span>
+      とする。（法第4条）<br>
+      全国健康保険協会は、健康保険組合の
+      <span class="blank" id="f3c" onclick="selB('f3','f3c')">　　　</span>
+      でない被保険者（日雇特例被保険者を除く。）の保険を管掌する。（法第5条第1項）
+    </div>
+    <div class="chips" id="f3-ch">
+      <div class="chp" onclick="fillB('f3','f3a',this,'全国健康保険協会')">全国健康保険協会</div>
+      <div class="chp" onclick="fillB('f3','f3a',this,'厚生労働大臣')">厚生労働大臣</div>
+      <div class="chp" onclick="fillB('f3','f3b',this,'健康保険組合')">健康保険組合</div>
+      <div class="chp" onclick="fillB('f3','f3b',this,'共済組合')">共済組合</div>
+      <div class="chp" onclick="fillB('f3','f3c',this,'組合員')">組合員</div>
+      <div class="chp" onclick="fillB('f3','f3c',this,'被保険者')">被保険者</div>
+    </div>
+    <button class="chk-btn" id="f3-btn" onclick="chkF('f3')">答え合わせ</button>
+    <div class="ans-box" id="f3-ans">
+      <div class="ans-hd">✅ 正解：全国健康保険協会 ／ 健康保険組合 ／ 組合員</div>
+
+      <!-- 図解：保険者マップ -->
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="680" height="220" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="28" font-size="13" font-weight="700" fill="#1a1a2e">🏢 保険者と管掌の全体マップ（法第4・5条）</text>
+
+          <!-- 健保法の保険者 全体枠 -->
+          <rect x="20" y="40" width="640" height="40" rx="8" fill="#1a1a2e"/>
+          <text x="340" y="65" text-anchor="middle" font-size="13" font-weight="700" fill="white">健康保険の保険者（2種類のみ）</text>
+
+          <!-- 協会けんぽ -->
+          <rect x="20" y="96" width="300" height="110" rx="10" fill="#2a7f7f"/>
+          <text x="170" y="120" text-anchor="middle" font-size="13" font-weight="700" fill="white">🏥 全国健康保険協会</text>
+          <text x="170" y="138" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.7)">（協会けんぽ）</text>
+          <rect x="34" y="146" width="272" height="30" rx="6" fill="rgba(255,255,255,0.15)"/>
+          <text x="170" y="161" text-anchor="middle" font-size="11" fill="white">管掌対象：組合員で</text>
+          <text x="170" y="176" text-anchor="middle" font-size="11" fill="white"><tspan font-weight="700" fill="#fde68a">ない</tspan>被保険者（日雇除く）</text>
+          <text x="170" y="196" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.6)">＝組合に入っていない人は全員ここ</text>
+
+          <!-- 健保組合 -->
+          <rect x="360" y="96" width="300" height="110" rx="10" fill="#c9930a"/>
+          <text x="510" y="120" text-anchor="middle" font-size="13" font-weight="700" fill="white">🏭 健康保険組合</text>
+          <text x="510" y="138" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.7)">（大企業・業界団体など）</text>
+          <rect x="374" y="146" width="272" height="30" rx="6" fill="rgba(255,255,255,0.15)"/>
+          <text x="510" y="161" text-anchor="middle" font-size="11" fill="white">管掌対象：その組合の</text>
+          <text x="510" y="176" text-anchor="middle" font-size="11" fill="white"><tspan font-weight="700" fill="#fde68a">組合員</tspan>である被保険者</text>
+          <text x="510" y="196" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.6)">設立要件：単独700人以上 or 共同3,000人以上</text>
+        </svg>
+      </div>
+
+      <div style="background:white;border:2px solid var(--ink,#1a1a2e);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;">
+          <div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div>
+        </div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+      <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「保険者は協会けんぽ・健保組合・<strong>共済組合</strong>の3種類」→ 共済は健保の保険者ではない</div>
+      </div>
+      <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「協会けんぽは健保組合の<strong>被保険者でない</strong>者を管掌」→「組合員でない」が正しい</div>
+      </div>
+      <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 「保険者は<strong>2種類のみ</strong>：全国健康保険協会 and 健康保険組合（法第4条）」</div>
+      </div>
+        </div>
+      </div>
+      <!-- 保険者の完全比較表 -->
+      <div style="margin:12px 0;">
+        <div style="font-size:12px;font-weight:700;color:#1a1a2e;margin-bottom:6px;">⚡ 紛らわしい組織を整理</div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <thead>
+            <tr style="background:#1a1a2e;color:white;">
+              <th style="padding:8px 10px;text-align:left;">組織</th>
+              <th style="padding:8px 10px;text-align:center;">健保の保険者？</th>
+              <th style="padding:8px 10px;text-align:left;">対象者・備考</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#e8f5ee;border-bottom:1px solid #ddd8cc;">
+              <td style="padding:8px 10px;font-weight:700;color:#2a7f7f;">全国健康保険協会</td>
+              <td style="padding:8px 10px;text-align:center;font-size:16px;">✅</td>
+              <td style="padding:8px 10px;">組合員でない被保険者（中小企業等）</td>
+            </tr>
+            <tr style="background:#fef9e7;border-bottom:1px solid #ddd8cc;">
+              <td style="padding:8px 10px;font-weight:700;color:#c9930a;">健康保険組合</td>
+              <td style="padding:8px 10px;text-align:center;font-size:16px;">✅</td>
+              <td style="padding:8px 10px;">組合員（大企業・業界単位）</td>
+            </tr>
+            <tr style="background:#fee2e2;border-bottom:1px solid #fca5a5;">
+              <td style="padding:8px 10px;font-weight:700;color:#991b1b;">共済組合</td>
+              <td style="padding:8px 10px;text-align:center;color:#991b1b;font-weight:700;">❌ 別制度</td>
+              <td style="padding:8px 10px;color:#991b1b;">公務員・教職員が対象。健保法とは無関係</td>
+            </tr>
+            <tr style="background:#fee2e2;">
+              <td style="padding:8px 10px;font-weight:700;color:#991b1b;">厚生労働大臣</td>
+              <td style="padding:8px 10px;text-align:center;color:#991b1b;font-weight:700;">❌ 保険者外</td>
+              <td style="padding:8px 10px;color:#991b1b;">業務の一部を行うが保険者ではない</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note">⚠️ 「厚生労働大臣」「共済組合」は<strong>健保法の保険者ではない</strong>。これらが選択肢に出たら×。</div>
+      <div class="tip">
+        <div class="tip-title">🧠 記憶フック</div>
+        <div class="tip-item">📌 保険者は<strong>2種類のみ</strong>：協会けんぽ and 健保組合</div>
+        <div class="tip-item">📌 「<strong>組合員でない</strong>→協会けんぽ」の逆読みで整理。</div>
+        <div class="tip-item">📌 共済＝公務員、健保＝民間。<strong>ジャンルが違う</strong>と覚える。</div>
+        <div class="tip-item">📌 大臣は「管理者」であって「保険者」ではない。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F4 -->
+<div class="card" id="cf4">
+  <div class="card-hd">
+    <div class="q-num tn">F4</div>
+    <div>
+      <div class="src-tag t">穴埋め ／ 厚生労働大臣の業務（法第5条第2項）</div>
+      <div class="q-type">難易度：★★★ ／ 単元：業務分担の詳細</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">協会けんぽ管掌の健保における業務分担（法第5条第2項）の空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      全国健康保険協会が管掌する健康保険の事業に関する業務のうち、被保険者の資格の取得及び喪失の確認、
+      <span class="blank" id="f4a" onclick="selB('f4','f4a')">　　　　　　　</span>
+      及び
+      <span class="blank" id="f4b" onclick="selB('f4','f4b')">　　　　　</span>
+      の決定並びに保険料の徴収（
+      <span class="blank" id="f4c" onclick="selB('f4','f4c')">　　　　　　　　</span>
+      に係るものを除く。）並びにこれらに附帯する業務は、
+      <span class="blank" id="f4d" onclick="selB('f4','f4d')">　　　　　　</span>
+      が行う。
+    </div>
+    <div class="chips" id="f4-ch">
+      <div class="chp" onclick="fillB('f4','f4a',this,'標準報酬月額')">標準報酬月額</div>
+      <div class="chp" onclick="fillB('f4','f4a',this,'一般保険料率')">一般保険料率</div>
+      <div class="chp" onclick="fillB('f4','f4b',this,'標準賞与額')">標準賞与額</div>
+      <div class="chp" onclick="fillB('f4','f4b',this,'介護保険料率')">介護保険料率</div>
+      <div class="chp" onclick="fillB('f4','f4c',this,'任意継続被保険者')">任意継続被保険者</div>
+      <div class="chp" onclick="fillB('f4','f4c',this,'日雇特例被保険者')">日雇特例被保険者</div>
+      <div class="chp" onclick="fillB('f4','f4d',this,'厚生労働大臣')">厚生労働大臣</div>
+      <div class="chp" onclick="fillB('f4','f4d',this,'全国健康保険協会')">全国健康保険協会</div>
+    </div>
+    <button class="chk-btn" id="f4-btn" onclick="chkF('f4')">答え合わせ</button>
+    <div class="ans-box" id="f4-ans">
+      <div class="ans-hd">✅ 正解：標準報酬月額 ／ 標準賞与額 ／ 任意継続被保険者 ／ 厚生労働大臣</div>
+
+      <!-- 図解：業務分担フロー -->
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 210" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="680" height="210" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="26" font-size="13" font-weight="700" fill="#1a1a2e">🔑 最頻出の引っかけポイント：任意継続の保険料はどちらが徴収する？</text>
+
+          <!-- 保険料徴収の分岐 -->
+          <rect x="220" y="40" width="240" height="40" rx="8" fill="#1a1a2e"/>
+          <text x="340" y="65" text-anchor="middle" font-size="13" font-weight="700" fill="white">保険料の徴収</text>
+
+          <line x1="280" y1="80" x2="180" y2="106" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="400" y1="80" x2="500" y2="106" stroke="#1a1a2e" stroke-width="2"/>
+          <polygon points="180,110 174,102 186,102" fill="#1a1a2e"/>
+          <polygon points="500,110 494,102 506,102" fill="#1a1a2e"/>
+
+          <!-- 通常の被保険者 -->
+          <rect x="60" y="112" width="240" height="60" rx="8" fill="#1a1a2e"/>
+          <text x="180" y="134" text-anchor="middle" font-size="12" font-weight="700" fill="white">通常の被保険者</text>
+          <text x="180" y="152" text-anchor="middle" font-size="12" fill="white">→ <tspan fill="#fde68a" font-weight="700">厚生労働大臣</tspan>が徴収</text>
+          <text x="180" y="168" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.6)">年金事務所経由で一元的に</text>
+
+          <!-- 任意継続 -->
+          <rect x="380" y="112" width="240" height="60" rx="8" fill="#c84b31"/>
+          <text x="500" y="134" text-anchor="middle" font-size="12" font-weight="700" fill="white">任意継続被保険者</text>
+          <text x="500" y="152" text-anchor="middle" font-size="12" fill="white">→ <tspan fill="#fde68a" font-weight="700">協会けんぽ</tspan>が徴収</text>
+          <text x="500" y="168" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">← ここが例外！大臣ではない</text>
+
+          <!-- まとめ -->
+          <rect x="20" y="186" width="640" height="18" rx="6" fill="rgba(42,127,127,0.15)"/>
+          <text x="340" y="199" text-anchor="middle" font-size="11" fill="#2a7f7f" font-weight="700">「任意継続被保険者に係るものを除く」＝この部分だけ協会が担当する。試験最頻出の引っかけ。</text>
+        </svg>
+      </div>
+
+      <div class="tip">
+        <div class="tip-title">🧠 覚えるコツ</div>
+        <div class="tip-item">📌 <strong>任意継続の保険料＝協会が徴収</strong>（大臣ではない）← 超頻出の例外</div>
+        <div class="tip-item">📌 標準報酬月額・標準賞与額の決定→どちらも大臣</div>
+        <div class="tip-item">📌 語呂：「<strong>資格・標準・保険料は大臣、任継は協会、給付も協会</strong>」</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F5 -->
+<div class="card" id="cf5">
+  <div class="card-hd">
+    <div class="q-num tn">F5</div>
+    <div>
+      <div class="src-tag t">穴埋め ／ 保険者の選択（法第7条）</div>
+      <div class="q-type">難易度：★★★ ／ 単元：2以上の事業所の場合</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">被保険者が同時に2以上の事業所に使用される場合における保険者選択の手続きに関する空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      被保険者が同時に2以上の事業所に使用される場合において保険者が2以上あるときは、保険を管掌する保険者を選択しなければならない。同時に2以上の事業所に使用されるに至った日から
+      <span class="blank" id="f5a" onclick="selB('f5','f5a')">　　</span>
+      日以内に届書を、全国健康保険協会を選択しようとするときは
+      <span class="blank" id="f5b" onclick="selB('f5','f5b')">　　　　　　</span>
+      に、健康保険組合を選択しようとするときは
+      <span class="blank" id="f5c" onclick="selB('f5','f5c')">　　　　　　</span>
+      に提出することによって行う。
+    </div>
+    <div class="chips" id="f5-ch">
+      <div class="chp" onclick="fillB('f5','f5a',this,'10')">10</div>
+      <div class="chp" onclick="fillB('f5','f5a',this,'5')">5</div>
+      <div class="chp" onclick="fillB('f5','f5a',this,'14')">14</div>
+      <div class="chp" onclick="fillB('f5','f5b',this,'厚生労働大臣')">厚生労働大臣</div>
+      <div class="chp" onclick="fillB('f5','f5b',this,'全国健康保険協会')">全国健康保険協会</div>
+      <div class="chp" onclick="fillB('f5','f5c',this,'健康保険組合')">健康保険組合</div>
+      <div class="chp" onclick="fillB('f5','f5c',this,'厚生労働大臣')">厚生労働大臣</div>
+    </div>
+    <button class="chk-btn" id="f5-btn" onclick="chkF('f5')">答え合わせ</button>
+    <div class="ans-box" id="f5-ans">
+      <div class="ans-hd">✅ 正解：10日 ／ 厚生労働大臣 ／ 健康保険組合</div>
+
+      <!-- 図解：選択手続き図 -->
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="680" height="220" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="28" font-size="13" font-weight="700" fill="#1a1a2e">📋 2以上の事業所：保険者選択の手続き図</text>
+
+          <!-- 発端 -->
+          <rect x="220" y="40" width="240" height="44" rx="8" fill="#1a1a2e"/>
+          <text x="340" y="58" text-anchor="middle" font-size="12" font-weight="700" fill="white">2以上の事業所に使用されるに至った日</text>
+          <text x="340" y="75" text-anchor="middle" font-size="22" font-weight="900" fill="#c84b31">10日以内</text>
+
+          <!-- 選択肢 -->
+          <line x1="280" y1="88" x2="170" y2="110" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="400" y1="88" x2="510" y2="110" stroke="#1a1a2e" stroke-width="2"/>
+          <polygon points="170,114 164,106 176,106" fill="#1a1a2e"/>
+          <polygon points="510,114 504,106 516,106" fill="#1a1a2e"/>
+
+          <!-- 協会を選択 -->
+          <rect x="30" y="116" width="280" height="82" rx="8" fill="#2a7f7f"/>
+          <text x="170" y="138" text-anchor="middle" font-size="13" font-weight="700" fill="white">協会けんぽを選択する場合</text>
+          <line x1="170" y1="145" x2="170" y2="155" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <text x="170" y="160" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.8)">届書の提出先：</text>
+          <rect x="70" y="164" width="200" height="28" rx="6" fill="rgba(255,255,255,0.25)"/>
+          <text x="170" y="182" text-anchor="middle" font-size="14" font-weight="900" fill="#fde68a">厚生労働大臣</text>
+
+          <!-- 組合を選択 -->
+          <rect x="370" y="116" width="280" height="82" rx="8" fill="#c9930a"/>
+          <text x="510" y="138" text-anchor="middle" font-size="13" font-weight="700" fill="white">健保組合を選択する場合</text>
+          <line x1="510" y1="145" x2="510" y2="155" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <text x="510" y="160" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.8)">届書の提出先：</text>
+          <rect x="410" y="164" width="200" height="28" rx="6" fill="rgba(255,255,255,0.25)"/>
+          <text x="510" y="182" text-anchor="middle" font-size="14" font-weight="900" fill="#fde68a">健康保険組合</text>
+
+          <!-- 注意 -->
+          <rect x="20" y="203" width="640" height="14" rx="4" fill="rgba(200,75,49,0.15)"/>
+          <text x="340" y="213" text-anchor="middle" font-size="10" fill="#c84b31">⚠️ 協会を選ぶのに「協会に届出」は×！資格確認は大臣の業務なので大臣に届け出る（法第5条第2項との整合）</text>
+        </svg>
+      </div>
+
+      <div style="background:white;border:2px solid var(--ink,#1a1a2e);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;">
+          <div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div>
+        </div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+      <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「<strong>5日以内</strong>に届け出なければならない」→ 10日以内が正解</div>
+      </div>
+      <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「協会けんぽを選択→届出先は<strong>全国健康保険協会</strong>」→ 大臣が正解</div>
+      </div>
+      <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 「協会を選ぶなら→<strong>厚生労働大臣</strong>へ届出（資格確認は大臣の業務のため）」</div>
+      </div>
+      <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 「組合を選ぶなら→<strong>健康保険組合</strong>へ届出」</div>
+      </div>
+        </div>
+      </div>
+      <!-- 届出先の比較表 -->
+      <div style="margin:12px 0;">
+        <div style="font-size:12px;font-weight:700;color:#1a1a2e;margin-bottom:6px;">⚡ 保険者選択の届出先まとめ</div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <thead>
+            <tr style="background:#1a1a2e;color:white;">
+              <th style="padding:8px 10px;text-align:left;">選択する保険者</th>
+              <th style="padding:8px 10px;text-align:center;">届出先</th>
+              <th style="padding:8px 10px;text-align:left;">理由</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#e8f4f4;border-bottom:1px solid #ddd8cc;">
+              <td style="padding:8px 10px;font-weight:700;color:#2a7f7f;">全国健康保険協会</td>
+              <td style="padding:8px 10px;text-align:center;font-weight:700;color:#1a1a2e;">厚生労働大臣</td>
+              <td style="padding:8px 10px;color:#6b7280;">資格確認は大臣業務（法第5条第2項）</td>
+            </tr>
+            <tr style="background:#fef9e7;border-bottom:1px solid #ddd8cc;">
+              <td style="padding:8px 10px;font-weight:700;color:#c9930a;">健康保険組合</td>
+              <td style="padding:8px 10px;text-align:center;font-weight:700;color:#c9930a;">健康保険組合</td>
+              <td style="padding:8px 10px;color:#6b7280;">組合が自ら管掌するため</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="font-size:11px;color:#c84b31;margin-top:6px;font-weight:700;">⚠️ 「協会を選ぶのに協会へ届ける」は直感と逆。最頻出の引っかけ。</div>
+      </div>
+      <div class="tip">
+        <div class="tip-title">🧠 記憶フック</div>
+        <div class="tip-item">📌 期限：<strong>10日以内</strong>（5日・14日は×）</div>
+        <div class="tip-item">📌 協会選択→<strong>大臣</strong>へ、組合選択→<strong>組合</strong>へ（直感と逆！）</div>
+        <div class="tip-item">📌 理屈：資格確認は大臣の仕事。だから「協会けんぽに入る手続き」でも大臣に届ける。</div>
+        <div class="tip-item">📌 語呂：「<strong>とおか（10日）で選択、協会ならたいじん（大臣）へ</strong>」</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /qwrap -->
+
+<script>
+
+
+// ── Day メタ情報 ──
+const DAY_META = {
+  day: 'Day1',
+  block: 'Block1',
+  unit: '総則・目的・保険者①',
+  range: '法第1条〜第7条',
+  total: 10,
+};
+
+// ── クリップボードコピー ──
+function copyRecord(){
+  const saved = JSON.parse(localStorage.getItem('kenpo_day1.html') || '{}');
+  const correct = saved.correct ?? score ?? 0;
+  const total   = saved.total   ?? DAY_META.total;
+  const dt      = saved.ts ? new Date(saved.ts) : new Date();
+  const dateStr = dt.getFullYear() + '/' + String(dt.getMonth()+1).padStart(2,'0') + '/' + String(dt.getDate()).padStart(2,'0');
+  const rate    = total > 0 ? Math.round(correct/total*100) : 0;
+
+  // タブ区切り（Excelにそのまま貼り付けできる形式）
+  const row = [
+    DAY_META.day,
+    DAY_META.block,
+    DAY_META.unit,
+    DAY_META.range,
+    total,
+    dateStr,
+    correct,
+    rate,
+  ].join('\t');
+
+  navigator.clipboard.writeText(row).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = '✅ コピーしました！';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '📋 記録をコピー';
+      btn.classList.remove('copied');
+    }, 2500);
+  }).catch(() => {
+    // clipboard APIが使えない場合のフォールバック
+    const ta = document.createElement('textarea');
+    ta.value = row;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = '✅ コピーしました！';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '📋 記録をコピー';
+      btn.classList.remove('copied');
+    }, 2500);
+  });
+}
+
+// ── ○× ──
+const correct={q1:1,q2:1,q3:1,q4:0,q5:0};
+const done={};let score=0;let total=0;
+
+function answer(qid,idx){
+  if(done[qid])return;
+  done[qid]=true;
+  const opts=document.querySelectorAll('#'+qid+'-opts .opt');
+  const ans=document.getElementById(qid+'-ans');
+  const ok=idx===correct[qid];
+  opts.forEach((o,i)=>{
+    if(i===correct[qid])o.classList.add('correct');
+    else if(i===idx&&!ok)o.classList.add('wrong');
+  });
+  ans.className='ans-box show '+(ok?'ok':'ng');
+  if(ok)score++;
+  document.getElementById('score').textContent=score;
+  updateProg();
+  setTimeout(()=>ans.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+}
+
+// ── 穴埋め ──
+const defs={
+  f1:{f1a:'労働者',f1b:'業務災害',f1c:'保険給付',f1d:'国民の生活の安定と福祉の向上'},
+  f2:{f2a:'医療保険制度',f2b:'常に',f2c:'効率化',f2d:'適正化',f2e:'質の向上'},
+  f3:{f3a:'全国健康保険協会',f3b:'健康保険組合',f3c:'組合員'},
+  f4:{f4a:'標準報酬月額',f4b:'標準賞与額',f4c:'任意継続被保険者',f4d:'厚生労働大臣'},
+  f5:{f5a:'10',f5b:'厚生労働大臣',f5c:'健康保険組合'},
+};
+const state={f1:{},f2:{},f3:{},f4:{},f5:{}};
+const sel={f1:null,f2:null,f3:null,f4:null,f5:null};
+const fdone={};
+
+function selB(fid,bid){
+  if(fdone[fid])return;
+  if(state[fid][bid]!==undefined)return;
+  document.querySelectorAll('#c'+fid+' .blank').forEach(b=>b.classList.remove('sel'));
+  sel[fid]=bid;
+  document.getElementById(bid).classList.add('sel');
+}
+
+function fillB(fid,bid,chip,val){
+  if(fdone[fid])return;
+  const s=sel[fid];
+  if(!s)return;
+  document.getElementById(s).textContent=val;
+  document.getElementById(s).classList.remove('sel');
+  state[fid][s]=val;
+  chip.classList.add('used');
+  sel[fid]=null;
+}
+
+function chkF(fid){
+  if(fdone[fid])return;
+  const d=defs[fid];
+  const keys=Object.keys(d);
+  if(!keys.every(k=>state[fid][k]!==undefined)){alert('すべての空欄を埋めてください');return;}
+  fdone[fid]=true;
+  let allOk=true;
+  keys.forEach(k=>{
+    const el=document.getElementById(k);
+    if(state[fid][k]===d[k])el.classList.add('ok-fill');
+    else{el.classList.add('ng-fill');allOk=false;}
+  });
+  document.querySelectorAll('#'+fid+'-ch .chp').forEach(c=>{
+    if(c.classList.contains('used')){
+      const v=c.textContent;
+      c.classList.add(Object.values(d).includes(v)?'ok-c':'ng-c');
+    }
+  });
+  const ans=document.getElementById(fid+'-ans');
+  ans.className='ans-box show ok';
+  document.getElementById(fid+'-btn').disabled=true;
+  if(allOk)score++;
+  document.getElementById('score').textContent=score;
+  updateProg();
+  setTimeout(()=>ans.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+}
+
+function updateProg(){
+  total=Object.keys(done).length+Object.keys(fdone).length;
+  document.getElementById('prog').style.width=(total/10*100)+'%';
+  document.getElementById('prog-lbl').textContent=total+' ／ 10 問 回答済み';
+  if(total>=10) showComplete();
+}
+
+function showComplete(){
+  localStorage.setItem('kenpo_day1.html', JSON.stringify({
+    done:true, correct:score, total:10, ts:Date.now()
+  }));
+  document.getElementById('final-score').textContent=score;
+  const b=document.getElementById('complete-banner');
+  b.style.display='block';
+  setTimeout(()=>b.scrollIntoView({behavior:'smooth',block:'start'}),200);
+}
+
+// スクロールアニメ
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:.08});
+document.querySelectorAll('.card').forEach(c=>io.observe(c));
+
+// ── フラッシュカードデータ ──
+const FC_DATA = [
+  // 沿革
+  {tag:'Q01',cat:'沿革',q:'健康保険法は大正11年に制定され、同年に施行された。',ans:'×　誤り',correct:false,
+   reason:'大正11年（1922年）に制定されたが、施行は関東大震災による延期を経て昭和2年（1927年）。制定と施行の間に5年の差がある。',law:'法附則第1条'},
+  {tag:'Q02',cat:'沿革',q:'健康保険法は日本で最初の社会保険に関する法律である。',ans:'○　正しい',correct:true,
+   reason:'健康保険法（大正11年制定）は日本初の社会保険法。施行は昭和2年だが、「最初の社会保険法」という点は正しい。',law:'法附則'},
+  {tag:'Q03',cat:'目的条文',q:'健康保険法の目的は、被保険者やその被扶養者の業務上の傷病等に関して保険給付を行うことである。',ans:'×　誤り',correct:false,
+   reason:'健康保険法は「業務外」の傷病・出産・死亡に対して保険給付を行う。業務上は労災保険の領域。',law:'法第1条'},
+  {tag:'Q04',cat:'目的条文',q:'健康保険法の目的規定の主語は「労働者」である（「被保険者」ではない）。',ans:'○　正しい',correct:true,
+   reason:'法第1条は「労働者の業務外の事由による疾病・負傷・死亡・出産及びその被扶養者の疾病・負傷・死亡・出産に関して保険給付を行い」と規定。主語は「労働者」。',law:'法第1条'},
+  {tag:'Q05',cat:'目的条文',q:'業務上か業務外か未確定の期間は、健康保険から先行して給付し、後に返還させる。',ans:'×　誤り',correct:false,
+   reason:'正しくは労災（業務上）として先行して扱う。健保から先行給付して返還させるのは誤り。労働者保護の観点から自己負担ゼロの労災を優先。',law:'法第1条'},
+  // 基本的理念
+  {tag:'Q06',cat:'基本的理念',q:'健康保険制度は5年ごとに検討が加えられることになっている。',ans:'×　誤り',correct:false,
+   reason:'法第2条は「常に」検討を加えることを規定。「5年ごと」は国民健康保険法の規定であり、健保法との混同に注意。',law:'法第2条'},
+  {tag:'Q07',cat:'基本的理念',q:'基本的理念（法第2条）は「社会保険制度の基本」をなすものとして位置づけられている。',ans:'×　誤り',correct:false,
+   reason:'正しくは「医療保険制度の基本」。「社会保険制度の基本」ではなく「医療保険制度の基本」であることに注意。',law:'法第2条'},
+  {tag:'Q08',cat:'基本的理念',q:'基本的理念（法第2条）が定める3つの目的は「効率化・適正化・医療の質の向上」である。',ans:'○　正しい',correct:true,
+   reason:'法第2条は①運営の効率化、②給付・費用の適正化、③医療の質の向上の3つを掲げる。この3セットを正確に暗記する。',law:'法第2条'},
+  // 保険者
+  {tag:'Q09',cat:'保険者',q:'健康保険の保険者は全国健康保険協会・健康保険組合・共済組合の3種類である。',ans:'×　誤り',correct:false,
+   reason:'保険者は①全国健康保険協会（協会けんぽ）と②健康保険組合の2種類のみ。共済組合は健保とは別の制度で保険者ではない。',law:'法第4条'},
+  {tag:'Q10',cat:'保険者',q:'全国健康保険協会が管掌する健保では、被保険者の資格の取得・喪失の確認および標準報酬月額の決定は厚生労働大臣が行う。',ans:'○　正しい',correct:true,
+   reason:'法第5条第2項により、資格確認・標準報酬決定・保険料徴収（任意継続除く）は厚生労働大臣が担当。これが頻出の業務分担問題の核心。',law:'法第5条第2項'},
+  {tag:'Q11',cat:'保険者',q:'任意継続被保険者の保険料は厚生労働大臣が徴収する。',ans:'×　誤り',correct:false,
+   reason:'任意継続被保険者の保険料は例外として全国健康保険協会（協会けんぽ）が徴収する。「任意継続を除く」という文言が最重要ポイント。',law:'法第5条第2項'},
+  {tag:'Q12',cat:'保険者',q:'健康保険組合を設立するには、単独の場合700人以上の常時使用被保険者が必要である。',ans:'○　正しい',correct:true,
+   reason:'単独設立は常時700人以上、共同設立は合算3000人以上（各事業所300人以上）が必要。700という数字を正確に覚える。',law:'法第11条'},
+  {tag:'Q13',cat:'保険者',q:'2以上の事業所に同時に使用される場合、協会けんぽを選択するときの届出先は全国健康保険協会である。',ans:'×　誤り',correct:false,
+   reason:'協会けんぽを選択する場合の届出先は厚生労働大臣（年金事務所）。「協会を選ぶのに協会へ届ける」は直感と逆になる頻出引っかけ。',law:'法第7条'},
+  {tag:'Q14',cat:'保険者',q:'2以上の事業所に同時に使用される場合、保険者選択の届出は10日以内に行わなければならない。',ans:'○　正しい',correct:true,
+   reason:'2以上の事業所に使用されるに至った日から10日以内。「5日以内」「14日以内」は誤り。10日という数字を確実に押さえる。',law:'法第7条'},
+  // 小規模法人役員
+  {tag:'Q15',cat:'目的条文（特例）',q:'被保険者数5人未満の小規模適用事業所に所属する法人の代表者で、一般従業員と著しく異ならない労務に従事する者は、業務上の傷病でも健保の給付対象となる。',ans:'○　正しい',correct:true,
+   reason:'平成15年7月1日保発701002号による暫定措置。条件①5人未満②法人代表者③一般従業員と著しく異ならない労務、の3つを全て満たすことが必要。',law:'平成15年通達'},
+  {tag:'Q16',cat:'目的条文（特例）',q:'小規模法人代表者の特例では、業務上の傷病に対して傷病手当金が支給される。',ans:'×　誤り',correct:false,
+   reason:'小規模法人代表者の特例で健保給付の対象になるが、傷病手当金は支給されない。この例外規定（傷病手当金は出ない）がセットで出題される。',law:'平成15年通達'},
+  // まとめ系
+  {tag:'Q17',cat:'目的条文',q:'健康保険法の給付手段は「保険給付」であり「援護措置」ではない。',ans:'○　正しい',correct:true,
+   reason:'法第1条の目的規定では「保険給付を行い」と明記。「援護措置」という選択肢が現れたら即×。',law:'法第1条'},
+  {tag:'Q18',cat:'目的条文',q:'健康保険法の目的として「国民の生活の安定と福祉の向上」が規定されている。',ans:'○　正しい',correct:true,
+   reason:'法第1条の末尾に「国民の生活の安定と福祉の向上に寄与することを目的とする」と規定。「社会保障及び国民保健の向上」との混同に注意。',law:'法第1条'},
+  {tag:'Q19',cat:'基本的理念',q:'基本的理念（法第2条）は「被保険者及び被扶養者」を対象として規定されている。',ans:'×　誤り',correct:false,
+   reason:'法第2条の基本的理念は医療保険制度全般の理念規定であり、特定の被保険者・被扶養者を主語としない。主語は医療保険制度（国・保険者）。',law:'法第2条'},
+  {tag:'Q20',cat:'保険者',q:'健康保険組合は独自の給付の上乗せ（付加給付）を行うことができる。',ans:'○　正しい',correct:true,
+   reason:'健康保険組合は法定給付に加えて付加給付を独自に設定できる。協会けんぽにはこの制度がなく、これが両者の主な相違点の一つ。',law:'法第53条'}
+];
+
+// ── スパイダーマップデータ ──
+const SPIDER_DATA = [
+  { id:"enkaku", label:"沿革", sub:"法附則・法1条",
+    color:"#26215C", light:"#EEEDFE", border:"#7F77DD", angle:218,
+    children:[
+      { label:"制定", sub:"大正11年・1922",  leaves:["日本初の社会保険法","公布のみ、施行は後"] },
+      { label:"施行",  sub:"昭和2年・1927",  leaves:["制定から5年後","関東大震災で延期"] },
+      { label:"語呂",  sub:"覚え方",          leaves:["いい（11）にゃー（昭和2）","制定≠施行"] }
+    ],
+    detail:{
+      hdColor:"#26215C",
+      items:[
+        {label:"制定年", val:"大正11年（1922年）", note:"日本最初の社会保険法。"},
+        {label:"施行年", val:"昭和2年（1927年）", note:"関東大震災（大正12年）で施行延期。制定から5年後。"},
+        {label:"語呂",   val:"「健保でいい（11）にゃー（昭2）」", note:"制定と施行の年をセットで暗記。"}
+      ],
+      hikakke:"× 「制定と同時に施行」→ ○ 制定（大正11年）≠ 施行（昭和2年）\n× 「大正12年に制定」→ ○ 制定は大正11年"
+    }
+  },
+  { id:"mokuteki", label:"目的条文", sub:"法第1条",
+    color:"#085041", light:"#E1F5EE", border:"#1D9E75", angle:322,
+    children:[
+      { label:"主語",    sub:"労働者",           leaves:["「被保険者」は×","法文どおりが正解"] },
+      { label:"対象外",  sub:"業務災害は労災",   leaves:["健保は業務外","業務上は労働者災害補償"] },
+      { label:"未確定",  sub:"先行は労災",       leaves:["健保先行は×","自己負担ゼロ優先"] }
+    ],
+    detail:{
+      hdColor:"#085041",
+      items:[
+        {label:"主語",     val:"労働者（「被保険者」ではない）", note:"法文は「労働者」が主語。"},
+        {label:"保険給付", val:"業務外の傷病・出産・死亡", note:"業務上は労災保険の範囲。"},
+        {label:"未決定期間", val:"労災（業務上）として先行", note:"健保先行→返還は方向が逆で誤り。"}
+      ],
+      hikakke:"× 「被保険者」→ ○「労働者」\n× 「業務上も対象」→ ○ 業務外のみ\n× 「健保から先行給付→返還」→ ○ 労災で先行"
+    }
+  },
+  { id:"rinen", label:"基本的理念", sub:"法第2条",
+    color:"#412402", light:"#FAEEDA", border:"#BA7517", angle:142,
+    children:[
+      { label:"頻度",  sub:"常に検討",  leaves:["「5年ごと」は国保法","健保は「常に」"] },
+      { label:"3目的", sub:"セット暗記",leaves:["①効率化","②適正化","③質の向上"] },
+      { label:"位置づけ",sub:"医療保険制度",leaves:["「社会保険制度」は×","「医療保険制度の基本」"] }
+    ],
+    detail:{
+      hdColor:"#412402",
+      items:[
+        {label:"検討頻度", val:"「常に」検討", note:"「5年ごと」は国民健康保険法との混同に注意。"},
+        {label:"3つの目的", val:"①運営の効率化　②給付・費用の適正化　③医療の質の向上", note:"この3セット完全暗記。"},
+        {label:"位置づけ", val:"医療保険制度の基本", note:"「社会保険制度の基本」は×。"}
+      ],
+      hikakke:"× 「5年ごとに検討」→ ○「常に」（「5年ごと」は国保法）\n× 「社会保険制度の基本」→ ○「医療保険制度の基本」"
+    }
+  },
+  { id:"hokensha", label:"保険者", sub:"法第4・5・7条",
+    color:"#4A1B0C", light:"#FAECE7", border:"#D85A30", angle:38,
+    children:[
+      { label:"2種類",    sub:"協会・組合のみ",  leaves:["共済は含まない","厚生労働大臣も×"] },
+      { label:"業務分担", sub:"大臣vs協会",      leaves:["大臣：資格・標準・保険料","協会：給付・任継保険料"] },
+      { label:"保険者選択",sub:"10日ルール",     leaves:["2以上の事業所","10日以内に届出","協会→大臣に届出"] }
+    ],
+    detail:{
+      hdColor:"#4A1B0C",
+      items:[
+        {label:"保険者の種類", val:"全国健康保険協会（協会けんぽ） and 健康保険組合", note:"共済組合・厚生労働大臣は保険者ではない。"},
+        {label:"大臣の業務",   val:"資格確認・標準報酬決定・保険料徴収（任意継続除く）", note:"任意継続だけが例外で協会が徴収。"},
+        {label:"保険者選択",   val:"2以上の事業所に至った日から10日以内", note:"協会選択→大臣へ届出（協会ではない！）"}
+      ],
+      hikakke:"× 「共済組合が保険者」→ ○ 保険者は協会と組合の2つのみ\n× 「任意継続保険料は大臣徴収」→ ○ 協会が徴収\n× 「協会選択→協会へ届出」→ ○ 厚生労働大臣へ届出"
+    }
+  }
+];
+
+// ── FC 変数 ──
+var fcDeck=[], fcIdx=0, fcOk=0, fcNg=0, fcFlipped=false, fcChosen=false;
+
+function fcInit(){
+  fcDeck=[...FC_DATA].map((c,i)=>({...c,_origIdx:i}));
+  fcIdx=0; fcOk=0; fcNg=0; fcFlipped=false; fcChosen=false;
+  fcRender();
+  document.getElementById('fc-result').style.display='none';
+  document.getElementById('fc-nav').style.display='none';
+}
+
+function fcRender(){
+  var total=fcDeck.length;
+  document.getElementById('fc-counter').innerHTML=(fcIdx+1)+'<span> / '+total+'</span>';
+  document.getElementById('fc-ng-count').textContent=fcNg;
+  document.getElementById('fc-ok-count').textContent=fcOk;
+  var done=fcOk+fcNg;
+  document.getElementById('fc-remaining').textContent='残り '+(total-done)+' 枚';
+  var pct=total>0?done/total*100:0;
+  document.getElementById('fc-gauge-ng').style.width=(total>0?fcNg/total*100:0)+'%';
+  document.getElementById('fc-gauge-ok').style.width=(total>0?fcOk/total*100:0)+'%';
+
+  var cur=fcDeck[fcIdx];
+  if(!cur) return;
+  document.getElementById('fc-tag').textContent=cur.tag;
+  document.getElementById('fc-cat').textContent=cur.cat;
+  document.getElementById('fc-q').textContent=cur.q;
+  document.getElementById('fc-answer').textContent=cur.ans;
+  document.getElementById('fc-reason').textContent=cur.reason;
+  document.getElementById('fc-lawref').textContent=cur.law;
+
+  var prev=fcDeck[fcIdx-1];
+  document.getElementById('fc-prev-tag').textContent=prev?prev.tag:'—';
+  document.getElementById('fc-prev-cat').textContent=prev?prev.cat:'';
+  document.getElementById('fc-prev-q').textContent=prev?prev.q:'';
+
+  var next=fcDeck[fcIdx+1];
+  document.getElementById('fc-next-tag').textContent=next?next.tag:'—';
+  document.getElementById('fc-next-cat').textContent=next?next.cat:'';
+  document.getElementById('fc-next-q').textContent=next?next.q:'';
+
+  var inn=document.getElementById('fc-inner');
+  inn.classList.remove('flipped');
+  fcFlipped=false; fcChosen=false;
+  document.getElementById('fc-nav').style.display='none';
+
+  var vd=document.getElementById('fc-verdict');
+  vd.textContent=cur.correct?'○　正しい':'×　誤り';
+  vd.className='fc-verdict '+(cur.correct?'ok':'ng');
+  document.getElementById('fc-user-ans').textContent='';
+}
+
+function fcFlip(){
+  if(fcFlipped)return;
+  document.getElementById('fc-inner').classList.add('flipped');
+  fcFlipped=true;
+  const userAnsEl=document.getElementById('fc-user-ans');
+  if(userAnsEl){
+    userAnsEl.textContent='（○×で回答してください）';
+    userAnsEl.style.color='var(--gray)';
+  }
+  const againBtn=document.querySelector('.fc-nav-btn.again');
+  const gotBtn=document.querySelector('.fc-nav-btn.got');
+  if(againBtn&&gotBtn){
+    againBtn.style.display='block';
+    againBtn.textContent='😅 もう一度';
+    gotBtn.style.display='block';
+    gotBtn.textContent='✅ わかった！';
+  }
+  document.getElementById('fc-nav').style.display='flex';
+}
+
+function fcChoose(userSaysTrue){
+  if(!fcFlipped){
+    document.getElementById('fc-inner').classList.add('flipped');
+    fcFlipped=true;
+  }
+  fcShowResult(userSaysTrue);
+}
+
+function fcShowResult(userSaysTrue){
+  if(fcChosen)return;
+  fcChosen=true;
+  var cur=fcDeck[fcIdx];
+  var correct=(userSaysTrue===cur.correct);
+
+  // 正誤判定と同時に苦手を自動登録・解除
+  if(correct){
+    fcOk++;
+    if(typeof fcWeakSet!=='undefined') fcWeakSet.delete(fcIdx);
+  } else {
+    fcNg++;
+    if(typeof fcWeakSet==='undefined') window.fcWeakSet=new Set();
+    fcWeakSet.add(fcIdx);
+  }
+
+  var ua=document.getElementById('fc-user-ans');
+  ua.textContent=correct?'✅ 正解！':'❌ 不正解 → 苦手に追加';
+  ua.style.color=correct?'var(--green)':'var(--red)';
+  ua.style.fontWeight='700';
+
+  document.getElementById('fc-ng-count').textContent=fcNg;
+  document.getElementById('fc-ok-count').textContent=fcOk;
+  var total=fcDeck.length; var done=fcOk+fcNg;
+  document.getElementById('fc-remaining').textContent='残り '+(total-done)+' 枚';
+  document.getElementById('fc-gauge-ng').style.width=(total>0?fcNg/total*100:0)+'%';
+  document.getElementById('fc-gauge-ok').style.width=(total>0?fcOk/total*100:0)+'%';
+
+  const againBtn=document.querySelector('.fc-nav-btn.again');
+  const gotBtn=document.querySelector('.fc-nav-btn.got');
+  if(againBtn&&gotBtn){
+    if(correct){
+      againBtn.style.display='none';
+      gotBtn.style.display='block';
+      gotBtn.textContent='次へ →';
+    } else {
+      againBtn.style.display='block';
+      againBtn.textContent='次へ →';
+      gotBtn.style.display='none';
+    }
+  }
+  document.getElementById('fc-nav').style.display='flex';
+}
+
+function fcNext(keep){
+  const againBtn=document.querySelector('.fc-nav-btn.again');
+  const gotBtn=document.querySelector('.fc-nav-btn.got');
+  if(againBtn&&gotBtn){
+    againBtn.style.display='block';
+    againBtn.textContent='😅 もう一度';
+    gotBtn.style.display='block';
+    gotBtn.textContent='✅ わかった！';
+  }
+
+  if(!keep){
+    var cur=fcDeck.splice(fcIdx,1)[0];
+    if(fcNg>0) fcNg--;
+    fcDeck.push(cur);
+    if(fcIdx>=fcDeck.length) fcIdx=fcDeck.length-1;
+  } else {
+    fcIdx++;
+  }
+  if(fcIdx>=fcDeck.length){fcShowFCResult();return;}
+  fcRender();
+}
+
+function fcShowFCResult(){
+  var total=FC_DATA.length;
+  var emoji=fcOk>=total*0.8?'🎉':fcOk>=total*0.5?'😊':'💪';
+  document.getElementById('fc-emoji').textContent=emoji;
+  document.getElementById('fc-result-score').textContent=fcOk+' / '+total;
+  document.getElementById('fc-result-sub').textContent='正解率 '+Math.round(fcOk/total*100)+'%';
+  document.getElementById('fc-carousel').style.display='none';
+  document.getElementById('fc-nav').style.display='none';
+  document.getElementById('fc-result').style.display='block';
+}
+
+function fcRestart(){
+  document.getElementById('fc-carousel').style.display='';
+  fcInit();
+}
+
+function fcShuffle(){
+  for(var i=fcDeck.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));[fcDeck[i],fcDeck[j]]=[fcDeck[j],fcDeck[i]];}
+  fcIdx=0; fcOk=0; fcNg=0;
+  document.getElementById('fc-carousel').style.display='';
+  document.getElementById('fc-result').style.display='none';
+  fcRender();
+}
+
+// ── スパイダーマップ ──
+var spBranchOpen={enkaku:false,mokuteki:false,rinen:false,hokensha:false};
+var spLeafOpen={};
+
+function buildSpider(){
+  var root=document.getElementById('sp-root');
+  if(!root) return;
+  root.innerHTML='';
+
+  var W=760,H=720,CX=380,CY=360;
+  var R1=108,R2=222,R3=330,CS=20,LS=7;
+
+  var svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  svg.setAttribute('xmlns','http://www.w3.org/2000/svg');
+  svg.setAttribute('font-family',"'Noto Sans JP',sans-serif");
+  svg.style.display='block'; svg.style.width='100%'; svg.style.height='auto';
+
+  function mk(tag,attrs){
+    var el=document.createElementNS('http://www.w3.org/2000/svg',tag);
+    for(var k in attrs) el.setAttribute(k,attrs[k]);
+    return el;
+  }
+  function r(d){return d*Math.PI/180;}
+  function pt(dist,deg){return[CX+Math.cos(r(deg))*dist,CY+Math.sin(r(deg))*dist];}
+
+  // パス1: グリッド円
+  [R1+16,R2+14,R3+16].forEach(function(dist){
+    svg.appendChild(mk('circle',{cx:CX,cy:CY,r:dist,fill:'none',stroke:'#e4dfd6','stroke-width':'1','stroke-dasharray':'4,5'}));
+  });
+
+  // パス2: 全幹線・枝線
+  SPIDER_DATA.forEach(function(branch){
+    var ba=branch.angle;
+    var bpt=pt(R1,ba); var bx=bpt[0],by=bpt[1];
+    svg.appendChild(mk('line',{x1:CX,y1:CY,x2:bx,y2:by,stroke:branch.color,'stroke-width':'4.5','stroke-linecap':'round'}));
+    if(spBranchOpen[branch.id]){
+      branch.children.forEach(function(child,ci){
+        var ca=ba+(ci-1)*CS;
+        var cpt=pt(R2,ca); var cx2=cpt[0],cy2=cpt[1];
+        svg.appendChild(mk('line',{x1:bx,y1:by,x2:cx2,y2:cy2,stroke:branch.color,'stroke-width':'2','stroke-linecap':'round'}));
+        var lkey=branch.id+'-'+ci;
+        var lc=child.leaves.length;
+        if(spLeafOpen[lkey]){
+          child.leaves.forEach(function(leaf,li){
+            var la=ca+(li-(lc-1)/2)*LS;
+            var lpt=pt(R3,la); var lx=lpt[0],ly=lpt[1];
+            svg.appendChild(mk('line',{x1:cx2,y1:cy2,x2:lx,y2:ly,stroke:branch.border,'stroke-width':'1.2','stroke-dasharray':'3,3','stroke-linecap':'round'}));
+          });
+        }
+      });
+    }
+  });
+
+  // パス3: リーフ
+  SPIDER_DATA.forEach(function(branch){
+    if(!spBranchOpen[branch.id]) return;
+    var ba=branch.angle;
+    branch.children.forEach(function(child,ci){
+      var ca=ba+(ci-1)*CS;
+      var lkey=branch.id+'-'+ci;
+      if(!spLeafOpen[lkey]) return;
+      var lc=child.leaves.length;
+      child.leaves.forEach(function(leaf,li){
+        var la=ca+(li-(lc-1)/2)*LS;
+        var lpt=pt(R3,la); var lx=lpt[0],ly=lpt[1];
+        var gr=document.createElementNS('http://www.w3.org/2000/svg','g');
+        var lw=120;
+        gr.appendChild(mk('rect',{x:lx-lw/2,y:ly-13,width:lw,height:26,rx:13,fill:'#faf8f3',stroke:branch.border,'stroke-width':'1.2'}));
+        var fs=leaf.length>10?'9.5':leaf.length>7?'10':'11';
+        var lt=mk('text',{x:lx,y:ly+5,'text-anchor':'middle','font-size':fs,'font-weight':'600',fill:branch.color});
+        lt.textContent=leaf;
+        gr.appendChild(lt);
+        svg.appendChild(gr);
+      });
+    });
+  });
+
+  // パス4: 第2ノード
+  SPIDER_DATA.forEach(function(branch){
+    if(!spBranchOpen[branch.id]) return;
+    var ba=branch.angle;
+    branch.children.forEach(function(child,ci){
+      var ca=ba+(ci-1)*CS;
+      var cpt=pt(R2,ca); var cx2=cpt[0],cy2=cpt[1];
+      var lkey=branch.id+'-'+ci;
+      var gk=document.createElementNS('http://www.w3.org/2000/svg','g');
+      gk.style.cursor='pointer';
+      (function(k){gk.addEventListener('click',function(e){e.stopPropagation();spLeafOpen[k]=!spLeafOpen[k];buildSpider();});})(lkey);
+      gk.appendChild(mk('ellipse',{cx:cx2,cy:cy2,rx:'46',ry:'24',fill:branch.color}));
+      var kt=mk('text',{x:cx2,y:cy2-3,'text-anchor':'middle','font-size':'11','font-weight':'700',fill:'white'});
+      kt.textContent=child.label;
+      gk.appendChild(kt);
+      var ks=mk('text',{x:cx2,y:cy2+11,'text-anchor':'middle','font-size':'8.5',fill:'rgba(255,255,255,.7)'});
+      ks.textContent=child.sub;
+      gk.appendChild(ks);
+      svg.appendChild(gk);
+    });
+  });
+
+  // パス5: 第1ノード
+  SPIDER_DATA.forEach(function(branch){
+    var ba=branch.angle;
+    var bpt=pt(R1,ba); var bx=bpt[0],by=bpt[1];
+    var gn=document.createElementNS('http://www.w3.org/2000/svg','g');
+    gn.style.cursor='pointer';
+    (function(b){gn.addEventListener('click',function(){
+      spBranchOpen[b.id]=!spBranchOpen[b.id];
+      if(!spBranchOpen[b.id]){ var k=b.id+'-0';spLeafOpen[k]=false;k=b.id+'-1';spLeafOpen[k]=false;k=b.id+'-2';spLeafOpen[k]=false; }
+      buildSpider();
+      showSpiderDetail(b);
+    });})(branch);
+    gn.appendChild(mk('ellipse',{cx:bx,cy:by,rx:'56',ry:'32',fill:branch.color}));
+    var tl=mk('text',{x:bx,y:by-5,'text-anchor':'middle','font-size':'14','font-weight':'700',fill:'white'});
+    tl.textContent=branch.label; gn.appendChild(tl);
+    var ts=mk('text',{x:bx,y:by+11,'text-anchor':'middle','font-size':'9.5',fill:'rgba(255,255,255,.65)'});
+    ts.textContent=branch.sub; gn.appendChild(ts);
+    svg.appendChild(gn);
+  });
+
+  // パス6: 中心ノード（最前面）
+  var gc=document.createElementNS('http://www.w3.org/2000/svg','g');
+  gc.appendChild(mk('ellipse',{cx:CX,cy:CY,rx:'80',ry:'46',fill:'#22253a'}));
+  var ct=mk('text',{x:CX,y:CY-6,'text-anchor':'middle','font-size':'15','font-weight':'700',fill:'white'});
+  ct.textContent='健保法'; gc.appendChild(ct);
+  var ct2=mk('text',{x:CX,y:CY+14,'text-anchor':'middle','font-size':'12',fill:'rgba(255,255,255,.6)'});
+  ct2.textContent='Block1'; gc.appendChild(ct2);
+  svg.appendChild(gc);
+
+  root.appendChild(svg);
+}
+
+function toggleBranch(bid){
+  spBranchOpen[bid]=!spBranchOpen[bid];
+  spLeafOpen={};
+  buildSpider();
+}
+
+function toggleLeaf(lkey){
+  spLeafOpen[lkey]=!spLeafOpen[lkey];
+  buildSpider();
+}
+
+function showSpiderDetail(branch){
+  var hd=document.getElementById('spider-detail-hd');
+  hd.style.background=branch.detail.hdColor;
+  document.getElementById('spider-detail-title').textContent=branch.label+' ― '+branch.sub;
+  var body=document.getElementById('spider-detail-body');
+  var html='<div style="display:flex;flex-direction:column;gap:10px;">';
+  branch.detail.items.forEach(function(item){
+    html+='<div style="display:flex;gap:12px;align-items:flex-start;">';
+    html+='<div style="min-width:110px;font-size:11px;font-weight:700;color:'+branch.detail.hdColor+';padding-top:2px;">'+item.label+'</div>';
+    html+='<div style="flex:1;font-size:13px;color:#1a1a2e;line-height:1.7;">'+item.val;
+    if(item.note) html+='<div style="font-size:11px;color:#6b7280;margin-top:2px;">'+item.note+'</div>';
+    html+='</div></div>';
+  });
+  if(branch.detail.hikakke){
+    html+='<div style="background:#fee2e2;border:1px solid #fca5a5;border-radius:8px;padding:10px 14px;font-size:12px;color:#991b1b;line-height:2.0;margin-top:4px;white-space:pre-line;">🚨 引っかけ\n'+branch.detail.hikakke+'</div>';
+  }
+  html+='</div>';
+  body.innerHTML=html;
+  var det=document.getElementById('spider-detail');
+  det.style.display='block';
+  det.style.animation='none';
+  setTimeout(function(){det.style.animation='';det.style.animation='fadeUp .25s ease';},10);
+}
+
+function closeSpiderDetail(){
+  document.getElementById('spider-detail').style.display='none';
+}
+
+// ── タブ切替（上書き） ──
+function switchTab(name,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+name).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(name==='flash'&&fcDeck.length===0) fcInit();
+  if(name==='spider') buildSpider();
+}
+
+// ── 初期化 ──
+document.addEventListener('DOMContentLoaded',function(){
+  fcInit();
+});
+</script>
+
+</div><!-- /panel-quiz -->
+
+
+
+<!-- ======== TAB 3: 連想図 ======== -->
+<div id="panel-mindmap" class="tab-panel">
+<div style="max-width:760px;margin:0 auto;padding:20px 20px 60px;">
+
+  <!-- 説明 -->
+  <div style="background:#ede9fe;border:1px solid #c4b5fd;border-radius:10px;padding:12px 16px;font-size:13px;color:#4c1d95;margin-bottom:24px;line-height:1.7;">
+    🗺 <strong>連想図</strong>：Day1の全論点を「沿革 → 目的 → 基本理念 → 保険者」の流れで1枚に整理。赤帯が引っかけポイント。
+  </div>
+
+  <!-- ━━━━━━━━━━━━━━━ STEP 1 沿革 ━━━━━━━━━━━━━━━ -->
+  <div style="text-align:center;margin-bottom:8px;">
+    <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#EEEDFE;border:1.5px solid #7F77DD;font-size:15px;font-weight:700;color:#26215C;">1</div>
+    <div style="font-size:16px;font-weight:700;color:#1a1a2e;margin-top:6px;">沿革</div>
+    <div style="font-size:12px;color:#6b7280;margin-top:2px;">健保法は日本最初の社会保険法。制定と施行は別の年。</div>
+  </div>
+
+  <!-- タイムライン3ボックス -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px;">
+    <div style="background:#EEEDFE;border:1.5px solid #7F77DD;border-radius:10px;padding:14px 10px;text-align:center;">
+      <div style="font-size:13px;font-weight:700;color:#26215C;margin-bottom:4px;">大正11年（1922）</div>
+      <div style="font-size:12px;color:#3C3489;">制定・公布</div>
+      <div style="font-size:11px;color:#534AB7;margin-top:4px;">日本最初の社会保険法</div>
+    </div>
+    <div style="background:#FAEEDA;border:1.5px solid #BA7517;border-radius:10px;padding:14px 10px;text-align:center;">
+      <div style="font-size:13px;font-weight:700;color:#412402;margin-bottom:4px;">大正12年（1923）</div>
+      <div style="font-size:12px;color:#633806;">関東大震災</div>
+      <div style="font-size:11px;color:#854F0B;margin-top:4px;">→ 施行延期</div>
+    </div>
+    <div style="background:#E1F5EE;border:1.5px solid #1D9E75;border-radius:10px;padding:14px 10px;text-align:center;">
+      <div style="font-size:13px;font-weight:700;color:#04342C;margin-bottom:4px;">昭和2年（1927）</div>
+      <div style="font-size:12px;color:#085041;">施行</div>
+      <div style="font-size:11px;color:#0F6E56;margin-top:4px;">制定から5年後</div>
+    </div>
+  </div>
+  <!-- 引っかけ帯 -->
+  <div style="background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 14px;font-size:12px;color:#A32D2D;margin-bottom:6px;">
+    × 「制定と同時に施行」→ ○ 制定（大正11年）≠ 施行（昭和2年）、5年の差がある
+  </div>
+  <div style="text-align:center;font-size:12px;color:#6b7280;margin-bottom:20px;">
+    語呂：健保で「いい（11）にゃー（昭和2）」
+  </div>
+
+  <!-- 矢印 -->
+  <div style="text-align:center;color:#B4B2A9;font-size:20px;line-height:1;margin-bottom:16px;">↓</div>
+
+  <!-- ━━━━━━━━━━━━━━━ STEP 2 目的条文 ━━━━━━━━━━━━━━━ -->
+  <div style="text-align:center;margin-bottom:8px;">
+    <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#E1F5EE;border:1.5px solid #1D9E75;font-size:15px;font-weight:700;color:#04342C;">2</div>
+    <div style="font-size:16px;font-weight:700;color:#1a1a2e;margin-top:6px;">目的条文（法第1条）</div>
+    <div style="font-size:12px;color:#6b7280;margin-top:2px;">「誰を・何から・何で・何のために守るか」の4要素</div>
+  </div>
+
+  <!-- 4ボックス横並び -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:10px;align-items:stretch;">
+    <div style="background:#E1F5EE;border:1.5px solid #1D9E75;border-radius:10px;padding:12px 8px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;color:#04342C;margin-bottom:6px;">主語</div>
+      <div style="font-size:13px;font-weight:700;color:#085041;">労働者</div>
+      <div style="font-size:11px;color:#0F6E56;margin-top:4px;">「被保険者」は×</div>
+    </div>
+    <div style="background:#E1F5EE;border:1.5px solid #1D9E75;border-radius:10px;padding:12px 8px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;color:#04342C;margin-bottom:6px;">対象外</div>
+      <div style="font-size:13px;font-weight:700;color:#085041;">業務災害</div>
+      <div style="font-size:11px;color:#0F6E56;margin-top:4px;">→ 労災保険の領域</div>
+    </div>
+    <div style="background:#E1F5EE;border:1.5px solid #1D9E75;border-radius:10px;padding:12px 8px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;color:#04342C;margin-bottom:6px;">手段</div>
+      <div style="font-size:13px;font-weight:700;color:#085041;">保険給付</div>
+      <div style="font-size:11px;color:#0F6E56;margin-top:4px;">「援護措置」は×</div>
+    </div>
+    <div style="background:#E1F5EE;border:1.5px solid #1D9E75;border-radius:10px;padding:12px 8px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;color:#04342C;margin-bottom:6px;">目的</div>
+      <div style="font-size:12px;font-weight:700;color:#085041;line-height:1.5;">国民の生活の安定と福祉の向上</div>
+    </div>
+  </div>
+  <!-- 引っかけ帯 -->
+  <div style="background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 14px;font-size:12px;color:#A32D2D;margin-bottom:8px;line-height:1.7;">
+    × 「被保険者」× 「通勤災害」× 「援護措置」× 「社会保障及び国民保健の向上」はすべて誤り
+  </div>
+  <!-- 補足：未確定期間 -->
+  <div style="background:#E1F5EE;border:1px solid #5DCAA5;border-radius:8px;padding:10px 14px;font-size:12px;color:#085041;margin-bottom:20px;line-height:1.8;">
+    📌 <strong>業務上・外が未確定の期間</strong>は「労災（業務上）として先行して扱う」<br>
+    × 「業務外として健保から給付→後に返還」→ ○ 労災として先行。方向が真逆。
+  </div>
+
+  <!-- 矢印 -->
+  <div style="text-align:center;color:#B4B2A9;font-size:20px;line-height:1;margin-bottom:16px;">↓</div>
+
+  <!-- ━━━━━━━━━━━━━━━ STEP 3 基本的理念 ━━━━━━━━━━━━━━━ -->
+  <div style="text-align:center;margin-bottom:8px;">
+    <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#FAEEDA;border:1.5px solid #BA7517;font-size:15px;font-weight:700;color:#412402;">3</div>
+    <div style="font-size:16px;font-weight:700;color:#1a1a2e;margin-top:6px;">基本的理念（法第2条）</div>
+    <div style="font-size:12px;color:#6b7280;margin-top:2px;">医療保険制度の基本をなす。「常に」検討し3つを図る。</div>
+  </div>
+
+  <!-- 3ボックス横並び -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px;">
+    <div style="background:#FAEEDA;border:1.5px solid #BA7517;border-radius:10px;padding:14px 10px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;color:#412402;margin-bottom:6px;">検討頻度</div>
+      <div style="font-size:14px;font-weight:700;color:#633806;">「常に」</div>
+      <div style="font-size:11px;color:#854F0B;margin-top:6px;line-height:1.6;">期間の限定なし<br>「5年ごと」は国保法</div>
+    </div>
+    <div style="background:#FAEEDA;border:1.5px solid #BA7517;border-radius:10px;padding:14px 10px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;color:#412402;margin-bottom:6px;">3つの目的</div>
+      <div style="font-size:12px;color:#633806;line-height:1.9;text-align:left;padding-left:4px;">
+        ① 運営の効率化<br>
+        ② 給付・費用の適正化<br>
+        ③ 医療の質の向上
+      </div>
+    </div>
+    <div style="background:#FAEEDA;border:1.5px solid #BA7517;border-radius:10px;padding:14px 10px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;color:#412402;margin-bottom:6px;">位置づけ</div>
+      <div style="font-size:13px;font-weight:700;color:#633806;line-height:1.5;">医療保険制度の基本</div>
+      <div style="font-size:11px;color:#854F0B;margin-top:6px;">「社会保険制度」は×</div>
+    </div>
+  </div>
+  <!-- 引っかけ帯 -->
+  <div style="background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 14px;font-size:12px;color:#A32D2D;margin-bottom:20px;line-height:1.7;">
+    × 「5年ごとに検討」→ ○「常に」（「5年ごと」は国民健康保険法）<br>
+    × 「社会保険制度の基本」→ ○「医療保険制度の基本」
+  </div>
+
+  <!-- 矢印 -->
+  <div style="text-align:center;color:#B4B2A9;font-size:20px;line-height:1;margin-bottom:16px;">↓</div>
+
+  <!-- ━━━━━━━━━━━━━━━ STEP 4 保険者と業務分担 ━━━━━━━━━━━━━━━ -->
+  <div style="text-align:center;margin-bottom:8px;">
+    <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#FAECE7;border:1.5px solid #D85A30;font-size:15px;font-weight:700;color:#4A1B0C;">4</div>
+    <div style="font-size:16px;font-weight:700;color:#1a1a2e;margin-top:6px;">保険者と業務分担（法第4・5条・第7条）</div>
+    <div style="font-size:12px;color:#6b7280;margin-top:2px;">保険者は2種類のみ。業務分担と10日ルールが頻出。</div>
+  </div>
+
+  <!-- 2ボックス横並び -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:10px;">
+    <div style="background:#FAECE7;border:1.5px solid #D85A30;border-radius:10px;padding:14px 14px;">
+      <div style="font-size:13px;font-weight:700;color:#4A1B0C;margin-bottom:8px;text-align:center;">全国健康保険協会（協会けんぽ）</div>
+      <div style="font-size:12px;color:#712B13;line-height:1.9;">
+        ・組合員<strong>でない</strong>被保険者を管掌<br>
+        ・大臣：資格・標準報酬・保険料徴収<br>
+        ・<strong>任意継続の保険料は協会が徴収</strong>
+      </div>
+    </div>
+    <div style="background:#FAECE7;border:1.5px solid #D85A30;border-radius:10px;padding:14px 14px;">
+      <div style="font-size:13px;font-weight:700;color:#4A1B0C;margin-bottom:8px;text-align:center;">健康保険組合</div>
+      <div style="font-size:12px;color:#712B13;line-height:1.9;">
+        ・組合員を管掌<br>
+        ・単独700人以上で設立可能<br>
+        ・2以上の事業所 → <strong>10日以内</strong>に保険者選択
+      </div>
+    </div>
+  </div>
+  <!-- 引っかけ帯 -->
+  <div style="background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 14px;font-size:12px;color:#A32D2D;line-height:1.7;">
+    × 「厚生労働大臣・共済組合」は保険者ではない<br>
+    × 任意継続の保険料 → 大臣ではなく<strong>協会</strong>が徴収<br>
+    × 協会を選択する場合の届出先 → 協会ではなく<strong>厚生労働大臣</strong>
+  </div>
+
+  <!-- 矢印 -->
+  <div style="text-align:center;color:#B4B2A9;font-size:20px;line-height:1;margin:20px 0 16px;">↓</div>
+
+  <!-- ━━━━━━━━━━━━━━━ Day1 総まとめ比較表 ━━━━━━━━━━━━━━━ -->
+  <div style="text-align:center;margin-bottom:12px;">
+    <div style="font-size:16px;font-weight:700;color:#1a1a2e;">📊 Day1 最重要 まとめ比較表</div>
+    <div style="font-size:12px;color:#6b7280;margin-top:4px;">試験直前にここを見れば全論点が一目でわかる</div>
+  </div>
+
+  <!-- 比較表①：健保法の主要な数字・キーワード -->
+  <div style="margin-bottom:16px;">
+    <div style="background:#1a1a2e;border-radius:8px 8px 0 0;padding:8px 14px;font-size:12px;font-weight:700;color:white;">① 数字・年号の確認（すべて試験で狙われる）</div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <tbody>
+        <tr style="background:white;border-bottom:1px solid #ddd8cc;">
+          <td style="padding:9px 12px;font-weight:700;color:#26215C;width:35%;">制定年</td>
+          <td style="padding:9px 12px;font-weight:900;color:#26215C;font-size:14px;">大正11年（1922）</td>
+          <td style="padding:9px 12px;font-size:11px;color:#6b7280;">日本最初の社会保険法</td>
+        </tr>
+        <tr style="background:#f9f9f9;border-bottom:1px solid #ddd8cc;">
+          <td style="padding:9px 12px;font-weight:700;color:#26215C;">施行年</td>
+          <td style="padding:9px 12px;font-weight:900;color:#26215C;font-size:14px;">昭和2年（1927）</td>
+          <td style="padding:9px 12px;font-size:11px;color:#6b7280;">関東大震災（大正12年）で延期</td>
+        </tr>
+        <tr style="background:white;border-bottom:1px solid #ddd8cc;">
+          <td style="padding:9px 12px;font-weight:700;color:#085041;">検討頻度（法2条）</td>
+          <td style="padding:9px 12px;font-weight:900;color:#c84b31;font-size:14px;">「常に」</td>
+          <td style="padding:9px 12px;font-size:11px;color:#6b7280;">「5年ごと」は国保法</td>
+        </tr>
+        <tr style="background:#f9f9f9;border-bottom:1px solid #ddd8cc;">
+          <td style="padding:9px 12px;font-weight:700;color:#412402;">保険者選択期限（法7条）</td>
+          <td style="padding:9px 12px;font-weight:900;color:#c84b31;font-size:14px;">10日以内</td>
+          <td style="padding:9px 12px;font-size:11px;color:#6b7280;">2以上の事業所に使用された日から</td>
+        </tr>
+        <tr style="background:white;">
+          <td style="padding:9px 12px;font-weight:700;color:#4A1B0C;">組合設立要件</td>
+          <td style="padding:9px 12px;font-weight:900;color:#c84b31;font-size:14px;">単独700人 / 共同3,000人</td>
+          <td style="padding:9px 12px;font-size:11px;color:#6b7280;">小規模法人代表者特例は5人未満</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 比較表②：○× 即判定チャート -->
+  <div style="margin-bottom:16px;">
+    <div style="background:#c84b31;border-radius:8px 8px 0 0;padding:8px 14px;font-size:12px;font-weight:700;color:white;">② 試験で出たら即判定！引っかけパターン10選</div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <thead>
+        <tr style="background:#fee2e2;">
+          <th style="padding:7px 10px;text-align:left;width:8%;color:#991b1b;">判定</th>
+          <th style="padding:7px 10px;text-align:left;color:#991b1b;">問題文のパターン</th>
+          <th style="padding:7px 10px;text-align:left;color:#991b1b;">正しくは</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:white;border-bottom:1px solid #fca5a5;">
+          <td style="padding:7px 10px;font-weight:900;color:#c84b31;">×</td>
+          <td style="padding:7px 10px;">大正11年に制定され<strong>同時に施行</strong></td>
+          <td style="padding:7px 10px;color:#2d6a4f;">施行は昭和2年（5年後）</td>
+        </tr>
+        <tr style="background:#f9f9f9;border-bottom:1px solid #fca5a5;">
+          <td style="padding:7px 10px;font-weight:900;color:#c84b31;">×</td>
+          <td style="padding:7px 10px;"><strong>被保険者</strong>の業務外の疾病に関して給付</td>
+          <td style="padding:7px 10px;color:#2d6a4f;">主語は「労働者」</td>
+        </tr>
+        <tr style="background:white;border-bottom:1px solid #fca5a5;">
+          <td style="padding:7px 10px;font-weight:900;color:#c84b31;">×</td>
+          <td style="padding:7px 10px;">業務上か外か未確定期間は<strong>健保から先行給付</strong></td>
+          <td style="padding:7px 10px;color:#2d6a4f;">労災（業務上）として先行</td>
+        </tr>
+        <tr style="background:#f9f9f9;border-bottom:1px solid #fca5a5;">
+          <td style="padding:7px 10px;font-weight:900;color:#c84b31;">×</td>
+          <td style="padding:7px 10px;"><strong>5年ごとに</strong>検討が加えられる</td>
+          <td style="padding:7px 10px;color:#2d6a4f;">「常に」（5年ごとは国保法）</td>
+        </tr>
+        <tr style="background:white;border-bottom:1px solid #fca5a5;">
+          <td style="padding:7px 10px;font-weight:900;color:#c84b31;">×</td>
+          <td style="padding:7px 10px;"><strong>社会保険制度</strong>の基本をなす</td>
+          <td style="padding:7px 10px;color:#2d6a4f;">「医療保険制度」の基本</td>
+        </tr>
+        <tr style="background:#f9f9f9;border-bottom:1px solid #fca5a5;">
+          <td style="padding:7px 10px;font-weight:900;color:#c84b31;">×</td>
+          <td style="padding:7px 10px;">保険者は<strong>共済組合</strong>を含む3種類</td>
+          <td style="padding:7px 10px;color:#2d6a4f;">2種類のみ（協会・組合）</td>
+        </tr>
+        <tr style="background:white;border-bottom:1px solid #fca5a5;">
+          <td style="padding:7px 10px;font-weight:900;color:#c84b31;">×</td>
+          <td style="padding:7px 10px;">任意継続の保険料は<strong>厚生労働大臣</strong>が徴収</td>
+          <td style="padding:7px 10px;color:#2d6a4f;">協会けんぽが徴収（例外！）</td>
+        </tr>
+        <tr style="background:#f9f9f9;border-bottom:1px solid #fca5a5;">
+          <td style="padding:7px 10px;font-weight:900;color:#c84b31;">×</td>
+          <td style="padding:7px 10px;">協会を選択→届出先は<strong>全国健康保険協会</strong></td>
+          <td style="padding:7px 10px;color:#2d6a4f;">厚生労働大臣へ届出</td>
+        </tr>
+        <tr style="background:white;border-bottom:1px solid #fca5a5;">
+          <td style="padding:7px 10px;font-weight:900;color:#c84b31;">×</td>
+          <td style="padding:7px 10px;">保険者選択は<strong>14日以内</strong></td>
+          <td style="padding:7px 10px;color:#2d6a4f;">10日以内</td>
+        </tr>
+        <tr style="background:#f9f9f9;">
+          <td style="padding:7px 10px;font-weight:900;color:#c84b31;">×</td>
+          <td style="padding:7px 10px;">小規模法人代表者は業務上でも<strong>傷病手当金あり</strong></td>
+          <td style="padding:7px 10px;color:#2d6a4f;">傷病手当金は支給されない</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 語呂まとめ -->
+  <div style="background:#1a1a2e;border-radius:10px;padding:16px 18px;">
+    <div style="font-size:13px;font-weight:700;color:#fde68a;margin-bottom:12px;">🎵 語呂・記憶フック まとめ</div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <span style="flex-shrink:0;font-size:18px;">📌</span>
+        <div style="font-size:12px;color:white;line-height:1.7;"><strong style="color:#86efac;">「健保でいい（11）にゃー（昭和2）」</strong><br>→ 大正<strong>11</strong>年制定・<strong>昭和2</strong>年施行</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <span style="flex-shrink:0;font-size:18px;">📌</span>
+        <div style="font-size:12px;color:white;line-height:1.7;"><strong style="color:#86efac;">「こう（効率）・てき（適正）・しつ（質）」</strong><br>→ 法第2条の3つの目的</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <span style="flex-shrink:0;font-size:18px;">📌</span>
+        <div style="font-size:12px;color:white;line-height:1.7;"><strong style="color:#86efac;">「迷ったらろうさい（労災）で守る」</strong><br>→ 未確定期間は業務上として労災先行</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <span style="flex-shrink:0;font-size:18px;">📌</span>
+        <div style="font-size:12px;color:white;line-height:1.7;"><strong style="color:#86efac;">「資格・標準・保険料は大臣、任継は協会」</strong><br>→ 業務分担の核心（任継だけ逆！）</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <span style="flex-shrink:0;font-size:18px;">📌</span>
+        <div style="font-size:12px;color:white;line-height:1.7;"><strong style="color:#86efac;">「とおか（10日）で選択、協会ならたいじん（大臣）へ」</strong><br>→ 保険者選択の期限と届出先</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <span style="flex-shrink:0;font-size:18px;">📌</span>
+        <div style="font-size:12px;color:white;line-height:1.7;"><strong style="color:#86efac;">「5人未満のボス、業務上も健保OK。でも傷手（きずて）はナシ」</strong><br>→ 小規模法人代表者の特例</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div><!-- /panel-mindmap -->
+
+
+<!-- ======== フラッシュカード パネル ======== -->
+<div id="panel-flash" class="tab-panel">
+<div class="fc-wrap">
+  <div class="fc-meta">
+    <div>
+      <div class="fc-counter" id="fc-counter">1<span> / 20</span></div>
+    </div>
+    <button class="fc-nav-btn shuffle" onclick="fcShuffle()" style="max-width:100px;padding:8px 12px;font-size:12px;">🔀 シャッフル</button>
+  </div>
+  <div class="fc-gauge-wrap">
+    <div class="fc-gauge-labels">
+      <span class="fc-gauge-label-ng">❌ <span id="fc-ng-count">0</span></span>
+      <span class="fc-gauge-label-mid" id="fc-remaining">残り 20 枚</span>
+      <span class="fc-gauge-label-ok"><span id="fc-ok-count">0</span> ✅</span>
+    </div>
+    <div class="fc-gauge-track">
+      <div class="fc-gauge-ng" id="fc-gauge-ng"></div>
+      <div class="fc-gauge-mid-line"></div>
+      <div class="fc-gauge-ok" id="fc-gauge-ok"></div>
+    </div>
+  </div>
+  <div class="fc-carousel" id="fc-carousel">
+    <div class="fc-slot prev" id="fc-slot-prev">
+      <div class="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-prev-tag">—</span>
+            <span style="font-size:11px;color:var(--gray);" id="fc-prev-cat"></span>
+          </div>
+          <div class="fc-front-body">
+            <div class="fc-q" id="fc-prev-q" style="font-size:13px;opacity:.7;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-slot curr" id="fc-slot-curr" onclick="fcFlip()">
+      <div class="fc-inner" id="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-tag">Q01</span>
+            <span style="font-size:11px;color:var(--gray);" id="fc-cat">沿革</span>
+          </div>
+          <div class="fc-front-body">
+            <div class="fc-q" id="fc-q">—</div>
+          </div>
+          <div class="fc-ox">
+            <button class="fc-ox-btn o" onclick="fcChoose(true);event.stopPropagation();">○</button>
+            <button class="fc-ox-btn x" onclick="fcChoose(false);event.stopPropagation();">×</button>
+          </div>
+        </div>
+        <div class="fc-face fc-back-face">
+          <div class="fc-back-hd">
+            <span class="fc-verdict" id="fc-verdict">×　誤り</span>
+            <span id="fc-user-ans" style="font-size:12px;margin-left:auto;"></span>
+          </div>
+          <div class="fc-back-body">
+            <div class="fc-answer" id="fc-answer">—</div>
+            <div class="fc-reason" id="fc-reason">—</div>
+            <div class="fc-lawref" id="fc-lawref">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-slot next" id="fc-slot-next">
+      <div class="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-next-tag">—</span>
+            <span style="font-size:11px;color:var(--gray);" id="fc-next-cat"></span>
+          </div>
+          <div class="fc-front-body">
+            <div class="fc-q" id="fc-next-q" style="font-size:13px;opacity:.7;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fc-nav" id="fc-nav" style="display:none;">
+    <button class="fc-nav-btn again" onclick="fcNext(false)">😅 もう一度</button>
+    <button class="fc-nav-btn got"   onclick="fcNext(true)">✅ わかった！</button>
+  </div>
+  <div class="fc-result" id="fc-result">
+    <div style="font-size:36px;margin-bottom:8px;" id="fc-emoji">🎉</div>
+    <h3>フラッシュカード完了！</h3>
+    <div class="fc-result-score" id="fc-result-score">—</div>
+    <div class="fc-result-sub" id="fc-result-sub">—</div>
+    <button class="fc-restart-btn" onclick="fcRestart()">🔁 もう一周する</button>
+  </div>
+</div>
+</div><!-- /panel-flash -->
+
+<!-- ======== スパイダーマップ パネル ======== -->
+<div id="panel-spider" class="tab-panel">
+<div class="spider-wrap">
+  <div style="background:#ede9fe;border:1px solid #c4b5fd;border-radius:10px;padding:12px 16px;font-size:13px;color:#4c1d95;margin-bottom:20px;line-height:1.7;">
+    🕸️ <strong>記憶マップ</strong>：第2階層をタップで枝の展開・解説を切り替え。第3階層タップでリーフのみ開閉。
+  </div>
+  <div id="sp-root" style="width:100%;"></div>
+  <div id="spider-detail" style="display:none;margin-top:16px;background:white;border:2px solid #1a1a2e;border-radius:14px;overflow:hidden;">
+    <div id="spider-detail-hd" style="padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+      <span id="spider-detail-title" style="font-weight:700;font-size:15px;color:white;"></span>
+      <button onclick="closeSpiderDetail()" style="border:none;background:none;font-size:22px;cursor:pointer;color:rgba(255,255,255,.8);line-height:1;padding:0 4px;">x</button>
+    </div>
+    <div id="spider-detail-body" style="padding:16px 18px 20px;"></div>
+  </div>
+</div>
+</div><!-- /panel-spider -->
+
+<!-- COMPLETE BANNER -->
+<div class="complete" id="complete-banner">
+  <div class="complete-in">
+    <h2>Day 1 <em>完了！</em></h2>
+    <div class="complete-score" id="final-score">0</div>
+    <div class="complete-sub">10問中の正解数</div>
+    <div class="btn-row">
+      <span class="btn-back" onclick="location.href='index.html'" style="cursor:pointer;display:inline-block;">← 目次に戻る</span>
+      <button class="btn-copy" id="copy-btn" onclick="copyRecord()">📋 記録をコピー</button>
+      <span class="btn-next" onclick="location.href='day2.html'" style="cursor:pointer;display:inline-block;">Day 2 へ →</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

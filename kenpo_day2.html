@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day2｜被保険者① ― 健保法過去問ドリル</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1a2e;--paper:#faf8f3;--warm:#f5f0e8;
+  --red:#c84b31;--red-soft:#e8896b;--red-light:#fee2e2;
+  --teal:#2a7f7f;--teal-light:#e8f4f4;
+  --gold:#c9930a;--gold-light:#fef9e7;
+  --green:#2d6a4f;--green-light:#e8f5ee;
+  --gray:#6b7280;--border:#ddd8cc;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
+
+.hd{background:var(--ink);color:var(--paper);padding:52px 40px 40px;position:relative;overflow:hidden;}
+.hd::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px);}
+.hd-in{max-width:820px;margin:0 auto;position:relative;}
+.hd-eye{font-size:11px;letter-spacing:4px;color:var(--red-soft);margin-bottom:12px;font-weight:700;}
+.hd h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hd h1 em{color:var(--red-soft);font-style:normal;}
+.hd-sub{font-size:14px;color:rgba(255,255,255,.55);font-weight:300;}
+.prog-wrap{margin-top:24px;background:rgba(255,255,255,.1);border-radius:20px;height:6px;}
+.prog-bar{background:var(--red-soft);height:6px;border-radius:20px;width:0%;transition:width .5s;}
+.prog-lbl{font-size:11px;color:rgba(255,255,255,.45);margin-top:6px;}
+
+.sec-div{max-width:820px;margin:40px auto 20px;padding:0 24px;}
+.sec-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border-radius:30px;font-size:12px;font-weight:700;}
+.pill-red{background:var(--red);color:white;}
+.pill-teal{background:var(--teal);color:white;}
+.sec-title{font-family:'Noto Serif JP',serif;font-size:1.25rem;font-weight:700;margin:10px 0 8px;}
+.sec-desc{font-size:13px;color:var(--gray);line-height:1.9;background:white;border:1px solid var(--border);border-radius:10px;padding:12px 16px;}
+
+.score-bar{max-width:820px;margin:0 auto 24px;padding:0 24px;}
+.score-in{background:white;border:1px solid var(--border);border-radius:12px;padding:14px 20px;display:flex;align-items:center;gap:16px;}
+.score-num{font-family:'DM Serif Display',serif;font-size:36px;color:var(--teal);line-height:1;}
+
+.qwrap{max-width:820px;margin:0 auto;padding:0 24px 60px;display:flex;flex-direction:column;gap:20px;}
+.card{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;opacity:1;}
+.card-hd{display:flex;align-items:center;gap:12px;padding:12px 20px;background:var(--warm);border-bottom:1px solid var(--border);}
+.q-num{font-family:'DM Serif Display',serif;font-size:30px;color:var(--red);line-height:1;}
+.q-num.tn{color:var(--teal);}
+.src-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;margin-bottom:3px;}
+.src-tag.t{background:var(--teal);}
+.q-type{font-size:11px;color:var(--gray);}
+.card-body{padding:20px 24px;}
+.quiz-q{font-size:15px;font-weight:600;line-height:1.8;margin-bottom:18px;}
+.quiz-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+
+.opts-tf{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.opt{border:2px solid var(--border);border-radius:10px;padding:12px 16px;cursor:pointer;font-size:20px;font-weight:900;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:10px;user-select:none;}
+.opt:hover{border-color:var(--ink);background:var(--warm);}
+.opt.correct{border-color:var(--green)!important;background:var(--green-light)!important;color:var(--green);}
+.opt.wrong{border-color:var(--red)!important;background:var(--red-light)!important;color:#991b1b;}
+
+.ans-box{display:none;border-radius:10px;padding:18px 20px;font-size:13px;margin-top:6px;}
+.ans-box.show{display:block;}
+.ans-box.ok{background:var(--green-light);border:1px solid #86efac;}
+.ans-box.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.ans-hd{font-weight:700;font-size:14px;margin-bottom:12px;}
+.why{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:14px;font-size:13px;}
+.note{background:var(--gold-light);border:1px solid var(--gold);border-radius:8px;padding:10px 14px;font-size:13px;margin:10px 0;}
+.tip{background:var(--green-light);border:2px solid var(--green);border-radius:8px;padding:12px 14px;font-size:13px;margin-top:12px;}
+.tip-title{font-weight:700;color:var(--green);margin-bottom:6px;}
+.tip-item{display:flex;gap:8px;margin-bottom:4px;}
+.tip-item:last-child{margin-bottom:0;}
+
+.svg-wrap{margin:14px 0;overflow-x:auto;}
+.svg-wrap svg{display:block;max-width:100%;height:auto;}
+
+.blank-sentence{font-size:15px;font-weight:500;line-height:2.6;margin-bottom:16px;}
+.blank{display:inline-block;min-width:72px;border-bottom:2px solid var(--ink);text-align:center;padding:0 6px;margin:0 3px;cursor:pointer;font-weight:700;transition:background .2s;border-radius:4px 4px 0 0;}
+.blank:hover{background:rgba(42,127,127,.08);}
+.blank.sel{background:#dbeafe;border-color:var(--teal);}
+.blank.ok-fill{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.blank.ng-fill{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.chp{border:2px solid var(--border);border-radius:20px;padding:5px 14px;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;}
+.chp:hover{border-color:var(--teal);background:var(--teal-light);}
+.chp.used{opacity:.35;pointer-events:none;}
+.chp.ok-c{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.chp.ng-c{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.chk-btn{background:var(--ink);color:white;border:none;border-radius:8px;padding:10px 24px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:12px;transition:opacity .2s;}
+.chk-btn:hover{opacity:.82;}
+.chk-btn:disabled{opacity:.4;cursor:default;}
+
+@media(max-width:600px){
+  .hd{padding:36px 16px 28px;}
+  .qwrap,.sec-div,.score-bar{padding-left:16px;padding-right:16px;}
+  .card-body{padding:14px;}
+}
+
+.topbar{background:var(--ink);padding:10px 24px;display:flex;align-items:center;gap:12px;}
+.back-btn{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;display:flex;align-items:center;gap:6px;transition:color .2s;cursor:pointer;}
+.back-btn:hover{color:white;}
+.topbar-title{color:rgba(255,255,255,.5);font-size:12px;margin-left:auto;}
+.tab-nav{background:var(--ink);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:100;}
+.tab-nav-in{max-width:820px;margin:0 auto;display:flex;}
+.tab-btn{flex:1;padding:13px 8px;font-size:13px;font-weight:700;color:rgba(255,255,255,.4);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;}
+.tab-btn:hover{color:rgba(255,255,255,.75);}
+.tab-btn.active{color:white;border-color:var(--red-soft);}
+.tab-btn.active.t3{border-color:#a78bfa;}
+.tab-btn.active.t2{border-color:#5ecece;}
+.tab-btn.active.t4{border-color:#fbbf24;}
+
+/* ── スパイダーマップ ── */
+.spider-wrap{max-width:820px;margin:0 auto;padding:20px 16px 60px;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+@media(max-width:600px){.tab-btn{font-size:11px;padding:11px 4px;}}
+
+/* ── FLASH CARDS ── */
+.fc-wrap{max-width:740px;margin:0 auto;padding:24px 0 80px;}
+.fc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:0 20px;font-size:12px;color:var(--gray);}
+.fc-counter{font-family:'DM Serif Display',serif;font-size:26px;color:var(--red);line-height:1;}
+.fc-counter span{font-size:13px;color:var(--gray);font-family:'Noto Sans JP',sans-serif;font-weight:400;}
+
+/* ── ゲームゲージ ── */
+.fc-gauge-wrap{padding:0 20px;margin-bottom:24px;}
+.fc-gauge-labels{display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:6px;}
+.fc-gauge-label-ng{color:var(--red);}
+.fc-gauge-label-ok{color:var(--green);}
+.fc-gauge-label-mid{color:var(--gray);font-size:10px;font-weight:400;}
+.fc-gauge-track{
+  position:relative;
+  height:16px;
+  background:var(--border);
+  border-radius:20px;
+  overflow:hidden;
+  display:flex;
+}
+.fc-gauge-ng{
+  height:100%;
+  background:linear-gradient(90deg,#c84b31,#e8896b);
+  border-radius:20px 0 0 20px;
+  transition:width .5s cubic-bezier(.4,0,.2,1);
+  width:0%;
+}
+.fc-gauge-ok{
+  height:100%;
+  background:linear-gradient(90deg,#86efac,#2d6a4f);
+  border-radius:0 20px 20px 0;
+  transition:width .5s cubic-bezier(.4,0,.2,1);
+  width:0%;
+  margin-left:auto;
+}
+.fc-gauge-mid-line{
+  position:absolute;
+  left:50%;
+  top:0;bottom:0;
+  width:2px;
+  background:white;
+  transform:translateX(-50%);
+  z-index:2;
+}
+.fc-gauge-counts{
+  display:flex;
+  justify-content:space-between;
+  font-size:11px;
+  margin-top:4px;
+  padding:0 2px;
+}
+.fc-gauge-count-ng{color:var(--red);font-weight:700;font-family:'DM Serif Display',serif;font-size:14px;}
+.fc-gauge-count-ok{color:var(--green);font-weight:700;font-family:'DM Serif Display',serif;font-size:14px;}
+.fc-gauge-remaining{color:var(--gray);font-size:10px;text-align:center;margin-top:2px;}
+
+/* ── カルーセルトラック ── */
+.fc-carousel{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:300px;
+  overflow:hidden;
+  margin-bottom:20px;
+}
+
+/* 個別カードスロット */
+.fc-slot{
+  position:absolute;
+  width:72%;
+  height:100%;
+  transition:transform .35s cubic-bezier(.4,0,.2,1),
+             opacity   .35s cubic-bezier(.4,0,.2,1),
+             filter    .35s ease;
+  cursor:pointer;
+  border-radius:16px;
+}
+/* 前のカード（左） */
+.fc-slot.prev{
+  transform:translateX(-82%) scale(.88);
+  opacity:.35;
+  filter:blur(1.5px);
+  pointer-events:none;
+  z-index:1;
+}
+/* 現在のカード（中央） */
+.fc-slot.curr{
+  transform:translateX(0) scale(1);
+  opacity:1;
+  filter:none;
+  z-index:10;
+}
+/* 次のカード（右） */
+.fc-slot.next{
+  transform:translateX(82%) scale(.88);
+  opacity:.35;
+  filter:blur(1.5px);
+  pointer-events:none;
+  z-index:1;
+}
+/* それ以外は非表示 */
+.fc-slot.hidden{
+  opacity:0;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* フリップ */
+.fc-inner{
+  position:relative;
+  width:100%;
+  height:100%;
+  transform-style:preserve-3d;
+  transition:transform .45s cubic-bezier(.4,0,.2,1);
+}
+.fc-inner.flipped{transform:rotateY(180deg);}
+
+.fc-face{
+  position:absolute;inset:0;
+  border-radius:16px;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  display:flex;flex-direction:column;
+  overflow:hidden;
+  box-shadow:0 6px 24px rgba(0,0,0,.11);
+}
+.fc-front-face{background:white;border:2px solid var(--ink);}
+.fc-back-face{background:white;border:2px solid var(--ink);transform:rotateY(180deg);}
+
+/* 表ヘッダー */
+.fc-front-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:8px;}
+.fc-front-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;}
+.fc-front-body{flex:1;padding:18px 20px;display:flex;align-items:center;justify-content:center;}
+.fc-q{font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;line-height:1.9;color:var(--ink);text-align:center;}
+.fc-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+.fc-tap-hint{text-align:center;padding:0 16px 12px;font-size:11px;color:var(--gray);}
+
+/* 裏ヘッダー */
+.fc-back-hd{padding:12px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+.fc-verdict{font-size:13px;font-weight:700;padding:3px 12px;border-radius:20px;}
+.fc-verdict.ok{background:var(--green);color:white;}
+.fc-verdict.ng{background:var(--red);color:white;}
+.fc-back-body{flex:1;padding:14px 18px;overflow-y:auto;}
+.fc-answer{font-family:'DM Serif Display',serif;font-size:20px;color:var(--ink);margin-bottom:10px;line-height:1.4;font-weight:700;}
+.fc-reason{font-size:13px;color:var(--ink);line-height:1.9;}
+.fc-reason strong{color:var(--ink);}
+.fc-reason mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+.fc-lawref{display:inline-block;margin-top:8px;font-size:11px;color:var(--teal);font-family:'DM Serif Display',serif;background:var(--teal-light);border:1px solid var(--teal);padding:2px 10px;border-radius:4px;}
+
+/* ○×ボタン（表面） */
+.fc-ox{display:flex;gap:10px;padding:0 16px 14px;}
+.fc-ox-btn{flex:1;padding:11px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-size:20px;font-weight:900;cursor:pointer;transition:all .15s;font-family:inherit;}
+.fc-ox-btn:hover{transform:translateY(-2px);}
+.fc-ox-btn.o:hover{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.fc-ox-btn.x:hover{border-color:var(--red);background:var(--red-light);color:var(--red);}
+
+/* ナビ */
+.fc-nav{display:flex;gap:10px;justify-content:center;padding:0 20px;}
+.fc-nav-btn{flex:1;max-width:160px;padding:12px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-family:inherit;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;transition:all .2s;text-align:center;}
+.fc-nav-btn:hover{border-color:var(--ink);}
+.fc-nav-btn.again{border-color:var(--red);color:var(--red);}
+.fc-nav-btn.again:hover{background:var(--red-light);}
+.fc-nav-btn.got{border-color:var(--green);color:var(--green);}
+.fc-nav-btn.got:hover{background:var(--green-light);}
+.fc-nav-btn.shuffle{background:var(--ink);color:white;border-color:var(--ink);}
+
+.fc-result{display:none;text-align:center;padding:32px 20px;background:white;border:2px solid var(--ink);border-radius:16px;margin:0 20px;}
+.fc-result h3{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;margin-bottom:8px;}
+.fc-result-score{font-family:'DM Serif Display',serif;font-size:52px;color:var(--red);line-height:1;margin:8px 0 4px;}
+.fc-result-sub{font-size:13px;color:var(--gray);margin-bottom:20px;}
+.fc-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:12px 28px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.fc-restart-btn:hover{opacity:.82;}
+
+/* ── スパイダーマップ ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.spider-wrap{max-width:820px;margin:0 auto;padding:20px 16px 60px;}
+.sp-node{cursor:pointer;transition:filter .15s;}
+.sp-node:hover{filter:brightness(1.1);}
+.sp-branch{cursor:pointer;transition:opacity .15s;}
+.sp-branch:hover{opacity:.75;}
+#spider-detail{animation:fadeUp .25s ease;}
+
+.complete{display:none;max-width:820px;margin:0 auto 40px;padding:0 24px;}
+.complete-in{background:var(--ink);color:white;border-radius:14px;padding:28px;text-align:center;}
+.complete h2{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;margin-bottom:6px;}
+.complete h2 em{color:var(--red-soft);font-style:normal;}
+.complete-score{font-size:48px;font-family:'DM Serif Display',serif;color:var(--red-soft);line-height:1;margin:10px 0 4px;}
+.complete-sub{font-size:14px;color:rgba(255,255,255,.55);margin-bottom:20px;}
+.btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-back{background:white;color:var(--ink);border:none;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;}
+.btn-next{background:var(--teal);color:white;border:none;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;}
+.btn-copy{background:var(--gold);color:white;border:none;border-radius:10px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;}
+.btn-copy:hover{opacity:.85;}
+.btn-copy.copied{background:var(--green);}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="back-btn" onclick="location.href='index.html'">← 目次に戻る</span>
+  <span class="topbar-title">Block 2 ／ Day 2</span>
+</div>
+
+<nav class="tab-nav">
+  <div class="tab-nav-in">
+    <button class="tab-btn active" onclick="switchTab('quiz',this)">📝 問題を解く</button>
+    <button class="tab-btn t3"     onclick="switchTab('mindmap',this)">🗺 連想図</button>
+    <button class="tab-btn t2"     onclick="switchTab('flash',this)">🃏 フラッシュカード</button>
+    <button class="tab-btn t4"     onclick="switchTab('spider',this)">🕸️ 記憶マップ</button>
+  </div>
+</nav>
+
+<div id="panel-quiz" class="tab-panel active">
+
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-eye">健康保険法 ／ Block 2 ／ Day 2</div>
+    <h1>被保険者・被扶養者・<em>資格得喪</em></h1>
+    <div class="hd-sub">○×式 5問 ＋ 穴埋め式 5問 ― 全10問　図解で理解を深める</div>
+    <div class="prog-wrap"><div class="prog-bar" id="prog"></div></div>
+    <div class="prog-lbl" id="prog-lbl">0 ／ 10 問 回答済み</div>
+  </div>
+</div>
+
+<div class="score-bar" style="margin-top:28px;">
+  <div class="score-in">
+    <div class="score-num" id="score">0</div>
+    <div>
+      <div style="font-weight:700;font-size:14px;">正解数</div>
+      <div style="font-size:12px;color:var(--gray);">10問中 ／ 選択肢・語句をタップして答え合わせ</div>
+    </div>
+  </div>
+</div>
+
+<div style="max-width:820px;margin:0 auto 8px;padding:0 24px;text-align:right;">
+  <button class="btn-copy" id="copy-btn" onclick="copyRecord()" style="font-size:13px;padding:8px 18px;">📋 記録をコピー</button>
+</div>
+
+<div class="sec-div">
+  <div><span class="sec-pill pill-red">① ○×式　5問</span></div>
+  <div class="sec-title">正誤判断で「資格取得・喪失・被扶養者」の引っかけを叩き込む</div>
+  <div class="sec-desc">被保険者の資格取得日・任意継続の要件・被扶養者の同居要件・適用除外・75歳到達時の喪失日。試験で繰り返し狙われる論点を○×形式で確認する。</div>
+</div>
+
+<div class="qwrap">
+
+<!-- Q1 -->
+<div class="card" id="cq1">
+  <div class="card-hd">
+    <div class="q-num">01</div>
+    <div>
+      <div class="src-tag">法第35条 ／ ○×式</div>
+      <div class="q-type">難易度：★★☆ ／ 単元：資格取得の時期</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">被保険者の資格は、適用事業所に使用されるに至った日の<mark>翌日</mark>から取得する。</div>
+    <div class="opts-tf" id="q1-opts">
+      <div class="opt" onclick="answer('q1',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q1',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q1-ans">
+      <div class="ans-hd">❌ 誤り（×）｜法第35条</div>
+      <div class="why">⚠️ <strong>「翌日から」が誤り。</strong>正しくは「使用されるに至った日（当日）」から資格を取得する。</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="680" height="180" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="28" font-size="13" font-weight="700" fill="#1a1a2e">📅 資格取得日 vs 資格喪失日 ― 当日・翌日の使い分け</text>
+          <rect x="20" y="44" width="300" height="110" rx="10" fill="#2d6a4f"/>
+          <text x="170" y="72" text-anchor="middle" font-size="13" font-weight="700" fill="white">資格取得（法第35条）</text>
+          <rect x="40" y="82" width="260" height="34" rx="6" fill="rgba(255,255,255,0.15)"/>
+          <text x="170" y="104" text-anchor="middle" font-size="15" font-weight="900" fill="#fde68a">使用されるに至った日（当日）</text>
+          <text x="170" y="140" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.75)">例）4月1日入社 → 4月1日取得</text>
+          <rect x="360" y="44" width="300" height="110" rx="10" fill="#c84b31"/>
+          <text x="510" y="72" text-anchor="middle" font-size="13" font-weight="700" fill="white">資格喪失（法第36条）</text>
+          <rect x="380" y="82" width="260" height="34" rx="6" fill="rgba(255,255,255,0.15)"/>
+          <text x="510" y="104" text-anchor="middle" font-size="15" font-weight="900" fill="#fde68a">退職・死亡の翌日</text>
+          <text x="510" y="140" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.75)">例）3月31日退職 → 4月1日喪失</text>
+        </svg>
+      </div>
+      <div class="note">💡 「取得は当日・喪失は翌日」これだけ覚えれば完璧。ただし75歳到達（後期高齢者移行）のみ当日喪失という例外あり。</div>
+
+      <!-- 試験ではこう問われる -->
+      <div style="background:white;border:2px solid var(--ink,#1a1a2e);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;">
+          <div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div>
+        </div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「使用されるに至った日の<strong>翌日</strong>から取得」→ <strong style="color:#2d6a4f;">○</strong> <strong>当日</strong>取得</div>
+          </div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong> 「退職した日（当日）に資格喪失」→ <strong style="color:#2d6a4f;">○</strong> 退職した日の<strong>翌日</strong>に喪失</div>
+          </div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;">
+            <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 取得は「当日」、喪失は「翌日」。方向が逆になる引っかけが最頻出。</div>
+          </div>
+        </div>
+      </div>
+
+            <div class="tip">
+        <div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 鈴木さんは4月1日入社。その日から被保険者（取得＝当日）——入社した瞬間から業務上のケガリスクがあるから即日保護が必要。3月31日退職なら喪失は4月1日（翌日）——退職日当日の医療費も健保でカバーするため。「取得は当日・喪失は翌日」という非対称性は、どちらも「被保険者をギリギリまで守る」という同じ思想から来ている。この非対称性が試験の最頻出論点。</div>
+      </div>
+</div>
+
+<!-- Q2 -->
+<div class="card" id="cq2">
+  <div class="card-hd">
+    <div class="q-num">02</div>
+    <div>
+      <div class="src-tag">法第37条 ／ ○×式</div>
+      <div class="q-type">難易度：★★☆ ／ 単元：任意継続被保険者の要件</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">任意継続被保険者になるためには、資格喪失日の前日まで<mark>継続して2ヵ月以上</mark>の被保険者期間が必要であり、資格喪失日から<mark>20日以内</mark>に申請しなければならない。</div>
+    <div class="opts-tf" id="q2-opts">
+      <div class="opt" onclick="answer('q2',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q2',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q2-ans">
+      <div class="ans-hd">✅ 正しい（○）｜法第37条第1項</div>
+      <div class="why">✔ <strong>2ヵ月以上の継続期間</strong>と<strong>20日以内の申請</strong>、どちらも正確な記述。</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="680" height="200" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="28" font-size="13" font-weight="700" fill="#1a1a2e">📋 任意継続被保険者の要件まとめ</text>
+          <rect x="20" y="42" width="300" height="140" rx="10" fill="#2a7f7f"/>
+          <text x="170" y="68" text-anchor="middle" font-size="12" font-weight="700" fill="white">【要件①】在職中の期間</text>
+          <rect x="40" y="78" width="260" height="36" rx="6" fill="rgba(255,255,255,.2)"/>
+          <text x="170" y="102" text-anchor="middle" font-size="16" font-weight="900" fill="#fde68a">継続して2ヵ月以上</text>
+          <text x="170" y="130" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">「継続して」がポイント。</text>
+          <text x="170" y="146" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">通算2ヵ月は不可。</text>
+          <text x="170" y="164" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">日雇特例期間は算入不可。</text>
+          <rect x="360" y="42" width="300" height="140" rx="10" fill="#c9930a"/>
+          <text x="510" y="68" text-anchor="middle" font-size="12" font-weight="700" fill="white">【要件②】申請期限</text>
+          <rect x="380" y="78" width="260" height="36" rx="6" fill="rgba(255,255,255,.2)"/>
+          <text x="510" y="102" text-anchor="middle" font-size="16" font-weight="900" fill="#fde68a">資格喪失日から20日以内</text>
+          <text x="510" y="130" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.85)">正当な理由がある場合は</text>
+          <text x="510" y="146" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.85)">超えても可（厚生労働省令）。</text>
+          <text x="510" y="164" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.85)">申請先：全国健康保険協会。</text>
+        </svg>
+      </div>
+            <div class="tip">
+        <div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 田中さんは会社を辞めて独立するが、しばらく国保より健保の方が保険料が安い。任意継続を選ぶには「喪失前日まで継続2ヵ月以上」が必要——「通算2ヵ月」ではなく連続2ヵ月。そして退職後20日以内に申請しなければ権利を失う。「なぜ20日？」——短い期間で決断を迫ることで、健保か国保かを素早く選ばせ、制度の空白を防ぐ設計。20日を過ぎたら一切認められない厳格なルール。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="card" id="cq3">
+  <div class="card-hd">
+    <div class="q-num">03</div>
+    <div>
+      <div class="src-tag">法第3条第7項 ／ ○×式</div>
+      <div class="q-type">難易度：★★★ ／ 単元：被扶養者の同居要件</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">被保険者の兄弟姉妹は、被保険者と<mark>別居していても</mark>被扶養者として認定される。</div>
+    <div class="opts-tf" id="q3-opts">
+      <div class="opt" onclick="answer('q3',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q3',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q3-ans">
+      <div class="ans-hd">✅ 正しい（○）｜法第3条第7項</div>
+      <div class="why">✔ <strong>兄弟姉妹は同居不要グループ</strong>に含まれる。別居でも被扶養者認定が可能。</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 230" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="680" height="230" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="26" font-size="13" font-weight="700" fill="#1a1a2e">🏠 被扶養者の範囲と同居要件（法第3条第7項）</text>
+          <rect x="20" y="38" width="300" height="176" rx="10" fill="#2d6a4f"/>
+          <text x="170" y="62" text-anchor="middle" font-size="12" font-weight="700" fill="white">【別居でもOK】</text>
+          <rect x="36" y="72" width="268" height="20" rx="4" fill="rgba(255,255,255,.12)"/>
+          <text x="170" y="86" text-anchor="middle" font-size="12" fill="#fde68a">① 直系尊属（父母・祖父母等）</text>
+          <rect x="36" y="96" width="268" height="20" rx="4" fill="rgba(255,255,255,.12)"/>
+          <text x="170" y="110" text-anchor="middle" font-size="12" fill="#fde68a">② 配偶者（内縁含む）</text>
+          <rect x="36" y="120" width="268" height="20" rx="4" fill="rgba(255,255,255,.12)"/>
+          <text x="170" y="134" text-anchor="middle" font-size="12" fill="#fde68a">③ 子・孫</text>
+          <rect x="36" y="144" width="268" height="20" rx="4" fill="rgba(255,255,255,.25)"/>
+          <text x="170" y="158" text-anchor="middle" font-size="13" font-weight="900" fill="white">④ 兄弟姉妹 ← 試験頻出！</text>
+          <text x="170" y="198" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">収入要件を満たせば</text>
+          <text x="170" y="212" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">別居でも被扶養者に認定可。</text>
+          <rect x="360" y="38" width="300" height="176" rx="10" fill="#c84b31"/>
+          <text x="510" y="62" text-anchor="middle" font-size="12" font-weight="700" fill="white">【同居が必要】</text>
+          <rect x="376" y="72" width="268" height="34" rx="4" fill="rgba(255,255,255,.15)"/>
+          <text x="510" y="88" text-anchor="middle" font-size="12" fill="white">上記以外の三親等内の親族</text>
+          <text x="510" y="103" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">（叔父・叔母・甥・姪 等）</text>
+          <rect x="376" y="114" width="268" height="34" rx="4" fill="rgba(255,255,255,.15)"/>
+          <text x="510" y="130" text-anchor="middle" font-size="12" fill="white">内縁の配偶者の父母・子</text>
+          <text x="510" y="145" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">（内縁配偶者の死後も可）</text>
+          <text x="510" y="192" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.8)">これらは<tspan fill="#fde68a" font-weight="700">同居</tspan>が必須要件。</text>
+          <text x="510" y="208" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.8)">別居では認定不可。</text>
+        </svg>
+      </div>
+            <div class="tip">
+        <div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 佐藤さんは遠方に住む弟を被扶養者にしたい。兄弟姉妹は別居でも認定できる——「なぜ？」——親・子・兄弟姉妹は法律上の扶養義務者だから。一方、叔父・叔母・いとこは三親等を超えるので同居が必要。「別居でも認定できる5グループ（直系尊属・配偶者・子・孫・兄弟姉妹）」は扶養義務を負うグループと重なる。義務がある関係だから距離に関係なく保護する設計。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q4 -->
+<div class="card" id="cq4">
+  <div class="card-hd">
+    <div class="q-num">04</div>
+    <div>
+      <div class="src-tag">法第3条第1項 ／ ○×式</div>
+      <div class="q-type">難易度：★☆☆ ／ 単元：適用除外</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">適用事業所に使用される者は、<mark>国籍・年齢・雇用形態にかかわらずすべて</mark>健康保険の被保険者となる。</div>
+    <div class="opts-tf" id="q4-opts">
+      <div class="opt" onclick="answer('q4',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q4',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q4-ans">
+      <div class="ans-hd">❌ 誤り（×）｜法第3条第1項各号</div>
+      <div class="why">⚠️ <strong>「すべて」が誤り。</strong>適用除外者が存在する。「なぜ除外されるのか」を理解すると丸暗記しなくても思い出せる。</div>
+
+      <!-- 4類型の詳細解説 -->
+      <div style="display:flex;flex-direction:column;gap:10px;margin:12px 0;">
+
+        <div style="background:#fff0ee;border:2px solid #c84b31;border-radius:10px;padding:12px 16px;">
+          <div style="font-size:13px;font-weight:700;color:#c84b31;margin-bottom:4px;">🚢 ① 船員保険の被保険者</div>
+          <div style="font-size:13px;line-height:1.9;color:#1a1a2e;">
+            船員（船舶に乗り込む人）は、<strong>船員保険法</strong>という独自の制度に入る。<br>
+            船員は海上・外洋での勤務で傷病リスクが特殊なため、健康保険とは<strong>別建ての保険</strong>が用意されている。<br>
+            → 船員保険の被保険者は健保の被保険者に<strong>なれない</strong>。
+          </div>
+        </div>
+
+        <div style="background:#fef9ec;border:2px solid #c9930a;border-radius:10px;padding:12px 16px;">
+          <div style="font-size:13px;font-weight:700;color:#c9930a;margin-bottom:4px;">🏛️ ② 共済組合の組合員</div>
+          <div style="font-size:13px;line-height:1.9;color:#1a1a2e;">
+            国家公務員・地方公務員・私立学校教職員は、それぞれの<strong>共済組合</strong>（国共済・地共済・私学共済）に加入する。<br>
+            「共済」は公務員専用の医療保険＋年金の一体制度。健保とは<strong>完全に別の根拠法</strong>が存在する。<br>
+            → 共済組合の組合員は健保の被保険者に<strong>なれない</strong>。
+          </div>
+          <div style="background:#fff3cd;border-left:3px solid #c9930a;border-radius:0 6px 6px 0;padding:6px 10px;margin-top:8px;font-size:12px;color:#412402;">
+            ⚠️ 引っかけ：「健康保険組合の組合員」は<strong>健保の被保険者（組合員）</strong>。共済組合≠健保組合。
+          </div>
+        </div>
+
+        <div style="background:#e8f4f4;border:2px solid #2a7f7f;border-radius:10px;padding:12px 16px;">
+          <div style="font-size:13px;font-weight:700;color:#2a7f7f;margin-bottom:4px;">👴 ③ 後期高齢者医療の被保険者</div>
+          <div style="font-size:13px;line-height:1.9;color:#1a1a2e;">
+            <strong>75歳以上</strong>（または65歳以上で一定の障害がある人）は、後期高齢者医療制度に強制加入する。<br>
+            後期高齢者医療は都道府県単位の<strong>広域連合</strong>が運営する独立した制度。<br>
+            → 後期高齢者医療の被保険者は健保の被保険者に<strong>なれない</strong>（75歳誕生日当日に健保を喪失）。
+          </div>
+          <div style="background:#fff3cd;border-left:3px solid #2a7f7f;border-radius:0 6px 6px 0;padding:6px 10px;margin-top:8px;font-size:12px;color:#04342C;">
+            ⚠️ 引っかけ：後期高齢者医療への移行時の健保喪失は<strong>翌日ではなく当日</strong>（Q5・F3の論点と連動）。
+          </div>
+        </div>
+
+        <div style="background:#f0eeff;border:2px solid #5b3e9e;border-radius:10px;padding:12px 16px;">
+          <div style="font-size:13px;font-weight:700;color:#5b3e9e;margin-bottom:4px;">📅 ④ 臨時的事業に使用される者（2ヵ月以内の雇用見込み）</div>
+          <div style="font-size:13px;line-height:1.9;color:#1a1a2e;">
+            「<strong>臨時的事業</strong>の事業所に使用され、かつ<strong>2ヵ月以内</strong>の期間を定めて使用される見込みの者」は適用除外。<br>
+            ただし、<strong>所定期間を超えて継続して使用</strong>されるに至った場合はその時点から被保険者となる。<br>
+            この類型は「期間工・アルバイト」とは別で、<strong>事業所自体が臨時</strong>のもの（お祭りの屋台、季節限定工場など）が対象。
+          </div>
+          <div style="background:#fff3cd;border-left:3px solid #5b3e9e;border-radius:0 6px 6px 0;padding:6px 10px;margin-top:8px;font-size:12px;color:#26215C;">
+            ⚠️ 引っかけ：「2ヵ月を超えても除外のまま」は×。<strong>超えた時点で被保険者資格を取得する</strong>。<br>
+            ⚠️ 日雇特例被保険者（日々雇用・1ヵ月以内の期間を定めた雇用）とは<strong>別の類型</strong>なので混同しない。
+          </div>
+        </div>
+
+      </div>
+
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 130" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="680" height="130" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="26" font-size="13" font-weight="700" fill="#1a1a2e">💡 「除外される理由」で整理する ― 別の制度が守っているから健保は不要</text>
+          <rect x="20" y="38" width="148" height="76" rx="8" fill="#c84b31"/>
+          <text x="94" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="white">船員保険</text>
+          <text x="94" y="80" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.75)">船員保険法</text>
+          <text x="94" y="96" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.75)">が保護</text>
+          <rect x="180" y="38" width="148" height="76" rx="8" fill="#c9930a"/>
+          <text x="254" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="white">共済組合</text>
+          <text x="254" y="80" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.85)">国共済・地共済</text>
+          <text x="254" y="96" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.85)">私学共済が保護</text>
+          <rect x="340" y="38" width="148" height="76" rx="8" fill="#2a7f7f"/>
+          <text x="414" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="white">後期高齢者医療</text>
+          <text x="414" y="80" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.7)">広域連合が</text>
+          <text x="414" y="96" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.7)">75歳以上を保護</text>
+          <rect x="500" y="38" width="160" height="76" rx="8" fill="#5b3e9e"/>
+          <text x="580" y="55" text-anchor="middle" font-size="11" font-weight="700" fill="white">臨時的事業</text>
+          <text x="580" y="73" text-anchor="middle" font-size="11" font-weight="700" fill="white">2ヵ月以内</text>
+          <text x="580" y="91" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.7)">超えたら取得</text>
+          <text x="580" y="107" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.7)">（例外あり）</text>
+        </svg>
+      </div>
+
+            <div class="tip">
+        <div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 外国人技術者のジョンさんが日本の工場で働き始めた。国籍・年齢・雇用形態を問わず、適用事業所で使用されれば健保の被保険者になる——「なぜ国籍不問？」——日本の土地で働く以上、ケガや病気のリスクは同じ。ただし船員保険・共済組合・後期高齢者医療など別の医療保険制度がすでに保護している人は除外。「別の制度が守っているから重複して入れない」というロジックで適用除外を整理。</div>
+      </div>
+    </div><!-- /card-body -->
+  </div><!-- /card cq4 -->
+
+<!-- Q5 -->
+<div class="card" id="cq5">
+  <div class="card-hd">
+    <div class="q-num">05</div>
+    <div>
+      <div class="src-tag">法第36条 ／ ○×式</div>
+      <div class="q-type">難易度：★★☆ ／ 単元：資格喪失の時期</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">被保険者が75歳に到達して後期高齢者医療の被保険者となった場合、健康保険の資格喪失日は<mark>75歳の誕生日の翌日</mark>である。</div>
+    <div class="opts-tf" id="q5-opts">
+      <div class="opt" onclick="answer('q5',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q5',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q5-ans">
+      <div class="ans-hd">❌ 誤り（×）｜法第36条第4号</div>
+      <div class="why">⚠️ <strong>「翌日」が誤り。</strong>後期高齢者医療への移行は誕生日当日（その日）に資格喪失する。</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 190" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="680" height="190" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="28" font-size="13" font-weight="700" fill="#1a1a2e">⚡ 資格喪失日 ― 「翌日」と「当日」の例外</text>
+          <rect x="20" y="42" width="300" height="132" rx="10" fill="#1a1a2e"/>
+          <text x="170" y="64" text-anchor="middle" font-size="12" font-weight="700" fill="white">【原則】喪失日 ＝ 翌日</text>
+          <rect x="36" y="74" width="268" height="22" rx="4" fill="rgba(255,255,255,.1)"/>
+          <text x="170" y="89" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.8)">退職・解雇（使用関係の消滅）</text>
+          <rect x="36" y="100" width="268" height="22" rx="4" fill="rgba(255,255,255,.1)"/>
+          <text x="170" y="115" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.8)">死亡</text>
+          <rect x="36" y="126" width="268" height="22" rx="4" fill="rgba(255,255,255,.1)"/>
+          <text x="170" y="141" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.8)">適用除外となる他制度に加入</text>
+          <text x="170" y="166" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.5)">→ 上記すべて「翌日」喪失</text>
+          <rect x="360" y="42" width="300" height="132" rx="10" fill="#c84b31"/>
+          <text x="510" y="64" text-anchor="middle" font-size="12" font-weight="700" fill="white">【例外】喪失日 ＝ 当日</text>
+          <rect x="376" y="74" width="268" height="50" rx="4" fill="rgba(255,255,255,.2)"/>
+          <text x="510" y="92" text-anchor="middle" font-size="13" font-weight="900" fill="#fde68a">75歳の誕生日（当日）</text>
+          <text x="510" y="108" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.8)">後期高齢者医療へ移行</text>
+          <text x="510" y="140" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">誕生日当日に後期高齢者医療の</text>
+          <text x="510" y="155" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">資格を「取得」するため、</text>
+          <text x="510" y="170" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">同日に健保資格が「喪失」する。</text>
+        </svg>
+      </div>
+            <div class="tip">
+        <div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 山田さん（75歳の誕生日）は今日から後期高齢者医療に移る。健保の喪失は誕生日当日——退職・死亡の「翌日喪失」とは違う例外。「なぜ誕生日当日？」——後期高齢者医療が誕生日当日から始まるので、健保を辞めた日と後期が始まる日が同じでなければ空白日ができる。空白の一日も保護が途切れないようにした設計。この「当日喪失」の例外だけを覚えれば、他は全て翌日喪失と確信できる。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /qwrap -->
+
+<div class="sec-div">
+  <div><span class="sec-pill pill-teal">② 穴埋め式　5問</span></div>
+  <div class="sec-title">条文の「核心ワード」を自分の手で埋める</div>
+  <div class="sec-desc">空欄をクリックして選択状態（青線）にしてから、語句チップをクリックして埋めてください。全部埋めたら「答え合わせ」ボタンを押す。</div>
+</div>
+
+<div class="qwrap">
+
+<!-- F1 -->
+<div class="card" id="cf1">
+  <div class="card-hd">
+    <div class="q-num tn">F1</div>
+    <div>
+      <div class="src-tag t">穴埋め ／ 任意継続の期間・保険料徴収（法第37条）</div>
+      <div class="q-type">難易度：★☆☆ ／ 最頻出の数字</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">任意継続に関する条文（法第37条）の空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      任意継続被保険者は、資格取得日から起算して
+      <span class="blank" id="f1a" onclick="selB('f1','f1a')">　　</span>
+      年を超えたとき、資格を喪失する。また、任意継続被保険者の保険料は
+      <span class="blank" id="f1b" onclick="selB('f1','f1b')">　　　　　　</span>
+      ではなく
+      <span class="blank" id="f1c" onclick="selB('f1','f1c')">　　　　　　　</span>
+      が徴収する。
+    </div>
+    <div class="chips" id="f1-ch">
+      <div class="chp" onclick="fillB('f1','f1a',this,'2')">2</div>
+      <div class="chp" onclick="fillB('f1','f1a',this,'3')">3</div>
+      <div class="chp" onclick="fillB('f1','f1b',this,'厚生労働大臣')">厚生労働大臣</div>
+      <div class="chp" onclick="fillB('f1','f1b',this,'健康保険組合')">健康保険組合</div>
+      <div class="chp" onclick="fillB('f1','f1c',this,'全国健康保険協会')">全国健康保険協会</div>
+      <div class="chp" onclick="fillB('f1','f1c',this,'都道府県知事')">都道府県知事</div>
+    </div>
+    <button class="chk-btn" id="f1-btn" onclick="chkF('f1')">答え合わせ</button>
+    <div class="ans-box" id="f1-ans">
+      <div class="ans-hd">✅ 正解：2年 ／ 厚生労働大臣ではなく ／ 全国健康保険協会</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="680" height="180" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="28" font-size="13" font-weight="700" fill="#1a1a2e">📋 任意継続被保険者の全体像</text>
+          <rect x="20" y="42" width="300" height="120" rx="10" fill="#1a1a2e"/>
+          <text x="170" y="64" text-anchor="middle" font-size="12" font-weight="700" fill="white">一般被保険者（在職中）</text>
+          <text x="170" y="92" text-anchor="middle" font-size="12" fill="rgba(255,255,255,.7)">保険料：事業主と折半</text>
+          <text x="170" y="112" text-anchor="middle" font-size="12" fill="rgba(255,255,255,.7)">徴収者：厚生労働大臣</text>
+          <text x="170" y="150" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.5)">（年金事務所経由）</text>
+          <rect x="360" y="42" width="300" height="120" rx="10" fill="#2a7f7f"/>
+          <text x="510" y="64" text-anchor="middle" font-size="12" font-weight="700" fill="white">任意継続被保険者（退職後）</text>
+          <rect x="376" y="74" width="268" height="22" rx="4" fill="rgba(255,255,255,.15)"/>
+          <text x="510" y="89" text-anchor="middle" font-size="12" fill="#fde68a">期間：最長2年</text>
+          <text x="510" y="112" text-anchor="middle" font-size="12" fill="rgba(255,255,255,.8)">保険料：全額自己負担</text>
+          <text x="510" y="132" text-anchor="middle" font-size="13" font-weight="700" fill="#fde68a">徴収者：協会けんぽ</text>
+          <text x="510" y="154" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.6)">← Day1でも出た超頻出！</text>
+        </svg>
+      </div>
+            <div class="tip">
+        <div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 田中さんは退職後に任意継続を選んだ。加入できる期間は最長2年——「なぜ2年？」——独立や再就職の準備期間として現実的な長さ。保険料は退職時の標準報酬月額と全国平均報酬月額のどちらか低い方が上限で、事業主負担分は自分で払う必要がある。「退職前より保険料が上がる場合もある」——それでも国保より安いケースがあるから任意継続を選ぶ価値がある。2年・20日・2ヵ月の「2」が揃う論点として整理。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F2 -->
+<div class="card" id="cf2">
+  <div class="card-hd">
+    <div class="q-num tn">F2</div>
+    <div>
+      <div class="src-tag t">穴埋め ／ 被扶養者の年収要件（法第3条第7項）</div>
+      <div class="q-type">難易度：★★☆ ／ 選択式頻出</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">被扶養者の収入要件に関する空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      被扶養者として認定されるためには、年間収入が
+      <span class="blank" id="f2a" onclick="selB('f2','f2a')">　　　</span>
+      万円未満であること（60歳以上または一定の障害者は
+      <span class="blank" id="f2b" onclick="selB('f2','f2b')">　　　</span>
+      万円未満）が必要であり、同居の場合は被保険者の年収の
+      <span class="blank" id="f2c" onclick="selB('f2','f2c')">　　　</span>
+      未満であることも要件となる。
+    </div>
+    <div class="chips" id="f2-ch">
+      <div class="chp" onclick="fillB('f2','f2a',this,'130')">130</div>
+      <div class="chp" onclick="fillB('f2','f2a',this,'103')">103</div>
+      <div class="chp" onclick="fillB('f2','f2b',this,'180')">180</div>
+      <div class="chp" onclick="fillB('f2','f2b',this,'160')">160</div>
+      <div class="chp" onclick="fillB('f2','f2c',this,'1/2')">1/2</div>
+      <div class="chp" onclick="fillB('f2','f2c',this,'2/3')">2/3</div>
+    </div>
+    <button class="chk-btn" id="f2-btn" onclick="chkF('f2')">答え合わせ</button>
+    <div class="ans-box" id="f2-ans">
+      <div class="ans-hd">✅ 正解：130万円未満 ／ 180万円未満 ／ 1/2未満</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 210" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="680" height="210" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="28" font-size="13" font-weight="700" fill="#1a1a2e">💰 被扶養者の収入要件まとめ</text>
+          <rect x="20" y="42" width="300" height="150" rx="10" fill="#2a7f7f"/>
+          <text x="170" y="68" text-anchor="middle" font-size="12" font-weight="700" fill="white">原則</text>
+          <rect x="36" y="78" width="268" height="42" rx="6" fill="rgba(255,255,255,.2)"/>
+          <text x="170" y="96" text-anchor="middle" font-size="18" font-weight="900" fill="#fde68a">年収 130万円未満</text>
+          <text x="170" y="113" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">（月収 約10.8万円未満が目安）</text>
+          <text x="170" y="140" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.8)">同居の場合：</text>
+          <rect x="36" y="148" width="268" height="24" rx="4" fill="rgba(255,255,255,.15)"/>
+          <text x="170" y="164" text-anchor="middle" font-size="13" font-weight="700" fill="white">被保険者年収の 1/2 未満</text>
+          <text x="170" y="186" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.5)">両方を満たすことが必要。</text>
+          <rect x="360" y="42" width="300" height="150" rx="10" fill="#c9930a"/>
+          <text x="510" y="68" text-anchor="middle" font-size="12" font-weight="700" fill="white">特例（60歳以上 or 一定障害）</text>
+          <rect x="376" y="78" width="268" height="42" rx="6" fill="rgba(255,255,255,.2)"/>
+          <text x="510" y="96" text-anchor="middle" font-size="18" font-weight="900" fill="#fde68a">年収 180万円未満</text>
+          <text x="510" y="113" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">（月収 約15万円未満が目安）</text>
+          <text x="510" y="140" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.85)">老齢・障害年金収入も</text>
+          <text x="510" y="158" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.85)">年収に含めて判定する。</text>
+          <text x="510" y="186" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.6)">同居の場合は同様に1/2未満。</text>
+        </svg>
+      </div>
+            <div class="tip">
+        <div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 佐藤さんの妻はパートで働いている。年収が130万円未満なら被扶養者として認定される——「なぜ130万？」——年金・健保の保険料が発生するラインが130万円に設定されているから。同居していれば収入が被保険者の1/2未満も要件。別居なら仕送り額より少ない必要がある。「103万円」は所得税の扶養控除ライン——健保の130万円と混同しやすいが全く別の制度。社労士試験では常に「130万円・180万円（60歳以上・障害者）・1/2」の3点セット。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F3 -->
+<div class="card" id="cf3">
+  <div class="card-hd">
+    <div class="q-num tn">F3</div>
+    <div>
+      <div class="src-tag t">穴埋め ／ 資格喪失日（法第36条）</div>
+      <div class="q-type">難易度：★★☆ ／ 単元：退職・死亡・75歳到達</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">資格喪失の時期（法第36条）について、空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      使用関係が消滅した場合（退職・解雇）の資格喪失日は
+      <span class="blank" id="f3a" onclick="selB('f3','f3a')">　　　　　　　　</span>
+      であり、死亡した場合の喪失日は
+      <span class="blank" id="f3b" onclick="selB('f3','f3b')">　　　　　　　　</span>
+      である。一方、75歳に達した場合の喪失日は
+      <span class="blank" id="f3c" onclick="selB('f3','f3c')">　　　　　　</span>
+      である。
+    </div>
+    <div class="chips" id="f3-ch">
+      <div class="chp" onclick="fillB('f3','f3a',this,'消滅した日の翌日')">消滅した日の翌日</div>
+      <div class="chp" onclick="fillB('f3','f3a',this,'消滅した日')">消滅した日</div>
+      <div class="chp" onclick="fillB('f3','f3b',this,'死亡した日の翌日')">死亡した日の翌日</div>
+      <div class="chp" onclick="fillB('f3','f3b',this,'死亡した日')">死亡した日</div>
+      <div class="chp" onclick="fillB('f3','f3c',this,'75歳の誕生日')">75歳の誕生日</div>
+      <div class="chp" onclick="fillB('f3','f3c',this,'75歳の誕生日の翌日')">75歳の誕生日の翌日</div>
+    </div>
+    <button class="chk-btn" id="f3-btn" onclick="chkF('f3')">答え合わせ</button>
+    <div class="ans-box" id="f3-ans">
+      <div class="ans-hd">✅ 正解：消滅した日の翌日 ／ 死亡した日の翌日 ／ 75歳の誕生日</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="680" height="180" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="28" font-size="13" font-weight="700" fill="#1a1a2e">📅 資格喪失日の一覧表（法第36条）</text>
+          <rect x="20" y="42" width="640" height="34" rx="6" fill="#1a1a2e"/>
+          <text x="200" y="63" text-anchor="middle" font-size="11" font-weight="700" fill="#fde68a">喪失事由</text>
+          <text x="530" y="63" text-anchor="middle" font-size="11" font-weight="700" fill="#fde68a">喪失日</text>
+          <rect x="20" y="80" width="640" height="28" rx="0" fill="rgba(42,127,127,.12)"/>
+          <text x="200" y="99" text-anchor="middle" font-size="12" fill="#1a1a2e">退職・解雇（使用関係消滅）</text>
+          <text x="530" y="99" text-anchor="middle" font-size="13" font-weight="700" fill="#c84b31">消滅した日の翌日</text>
+          <rect x="20" y="110" width="640" height="28" rx="0" fill="rgba(42,127,127,.06)"/>
+          <text x="200" y="129" text-anchor="middle" font-size="12" fill="#1a1a2e">死亡</text>
+          <text x="530" y="129" text-anchor="middle" font-size="13" font-weight="700" fill="#c84b31">死亡した日の翌日</text>
+          <rect x="20" y="140" width="640" height="28" rx="6" fill="rgba(201,147,10,.15)"/>
+          <text x="200" y="159" text-anchor="middle" font-size="12" fill="#1a1a2e">75歳到達（後期高齢者移行）</text>
+          <text x="530" y="159" text-anchor="middle" font-size="13" font-weight="700" fill="#c9930a">75歳の誕生日（当日！）</text>
+        </svg>
+      </div>
+            <div class="tip">
+        <div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 鈴木さんが3月31日に退職した。喪失日は4月1日（翌日）——退職当日まで健保で守られるから。一方、75歳の誕生日を迎えた田中さんの喪失はその誕生日当日——後期高齢者医療が誕生日から始まるから空白日を作れない。「なぜ退職だけ翌日で75歳は当日？」——退職後は保険のない空白が1日あっても大きな問題はないが、高齢者の保護は1日も途切れさせてはいけない、という優先度の違いが制度設計に表れている。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F4 -->
+<div class="card" id="cf4">
+  <div class="card-hd">
+    <div class="q-num tn">F4</div>
+    <div>
+      <div class="src-tag t">穴埋め ／ 適用除外者（法第3条第1項）</div>
+      <div class="q-type">難易度：★★☆ ／ 単元：船員保険・共済組合・日雇特例</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">健康保険の適用除外に関する条文の空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      適用事業所に使用される者であっても、
+      <span class="blank" id="f4a" onclick="selB('f4','f4a')">　　　　</span>
+      の被保険者、
+      <span class="blank" id="f4b" onclick="selB('f4','f4b')">　　　　</span>
+      の組合員その他政令で定める者は適用除外となる。
+      また、日雇労働者は除外ではなく
+      <span class="blank" id="f4c" onclick="selB('f4','f4c')">　　　　　　　</span>
+      として健保法内に別途規定される。
+    </div>
+    <div class="chips" id="f4-ch">
+      <div class="chp" onclick="fillB('f4','f4a',this,'船員保険')">船員保険</div>
+      <div class="chp" onclick="fillB('f4','f4a',this,'国民健康保険')">国民健康保険</div>
+      <div class="chp" onclick="fillB('f4','f4b',this,'共済組合')">共済組合</div>
+      <div class="chp" onclick="fillB('f4','f4b',this,'健康保険組合')">健康保険組合</div>
+      <div class="chp" onclick="fillB('f4','f4c',this,'日雇特例被保険者')">日雇特例被保険者</div>
+      <div class="chp" onclick="fillB('f4','f4c',this,'任意継続被保険者')">任意継続被保険者</div>
+    </div>
+    <button class="chk-btn" id="f4-btn" onclick="chkF('f4')">答え合わせ</button>
+    <div class="ans-box" id="f4-ans">
+      <div class="ans-hd">✅ 正解：船員保険 ／ 共済組合 ／ 日雇特例被保険者</div>
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 190" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="680" height="190" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="28" font-size="13" font-weight="700" fill="#1a1a2e">🗂 適用除外 vs 日雇特例被保険者 ― 違いを整理</text>
+          <rect x="20" y="42" width="300" height="136" rx="10" fill="#c84b31"/>
+          <text x="170" y="66" text-anchor="middle" font-size="12" font-weight="700" fill="white">【適用除外】健保の対象外</text>
+          <text x="170" y="90" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.85)">・船員保険の被保険者</text>
+          <text x="170" y="108" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.85)">・共済組合の組合員</text>
+          <text x="170" y="126" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.85)">・後期高齢者医療の被保険者</text>
+          <text x="170" y="144" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">→ 別制度が適用されるため除外</text>
+          <text x="170" y="162" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.5)">健保法の被保険者とはならない</text>
+          <rect x="360" y="42" width="300" height="136" rx="10" fill="#2a7f7f"/>
+          <text x="510" y="66" text-anchor="middle" font-size="12" font-weight="700" fill="white">【日雇特例被保険者】別規定</text>
+          <rect x="376" y="76" width="268" height="30" rx="4" fill="rgba(255,255,255,.15)"/>
+          <text x="510" y="95" text-anchor="middle" font-size="13" font-weight="700" fill="#fde68a">健保法の対象（除外ではない）</text>
+          <text x="510" y="120" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.8)">・健保法第7章に別途規定</text>
+          <text x="510" y="138" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.8)">・日雇特例被保険者手帳を使用</text>
+          <text x="510" y="156" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.7)">→ 同じ健保法の枠内の別制度</text>
+        </svg>
+      </div>
+            <div class="tip">
+        <div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 長年お世話になった木村医師（70歳）は、後期高齢者医療に入るため健保の適用除外になった。船員は船員保険、公務員は共済組合と、それぞれ別の医療保険制度が用意されている——「なぜ健保に入れないの？」——重複して保険料を払わせないため。日雇特例被保険者は完全な除外ではなく、健保法の中で別の章（第7章）が用意されている特殊なケース。「除外＝別の制度に守られている」というロジックが一貫している。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F5 -->
+<div class="card" id="cf5">
+  <div class="card-hd">
+    <div class="q-num tn">F5</div>
+    <div>
+      <div class="src-tag t">穴埋め ／ 被扶養者の定義（法第3条第7項）</div>
+      <div class="q-type">難易度：★★★ ／ 単元：三親等・生計維持・同居</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">被扶養者の認定に関する空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      被扶養者とは、被保険者の
+      <span class="blank" id="f5a" onclick="selB('f5','f5a')">　　　　</span>
+      以内の親族で、主として被保険者により
+      <span class="blank" id="f5b" onclick="selB('f5','f5b')">　　　</span>
+      を維持するものをいう。直系尊属・配偶者・子・孫・兄弟姉妹以外の三親等内の親族については、被保険者と
+      <span class="blank" id="f5c" onclick="selB('f5','f5c')">　　</span>
+      していることが必要とされる。
+    </div>
+    <div class="chips" id="f5-ch">
+      <div class="chp" onclick="fillB('f5','f5a',this,'三親等')">三親等</div>
+      <div class="chp" onclick="fillB('f5','f5a',this,'二親等')">二親等</div>
+      <div class="chp" onclick="fillB('f5','f5b',this,'生計')">生計</div>
+      <div class="chp" onclick="fillB('f5','f5b',this,'家計')">家計</div>
+      <div class="chp" onclick="fillB('f5','f5c',this,'同居')">同居</div>
+      <div class="chp" onclick="fillB('f5','f5c',this,'別居')">別居</div>
+    </div>
+    <button class="chk-btn" id="f5-btn" onclick="chkF('f5')">答え合わせ</button>
+    <div class="ans-box" id="f5-ans">
+      <div class="ans-hd">✅ 正解：三親等 ／ 生計 ／ 同居</div>
+
+      <!-- 親等とは？ -->
+      <div class="why">📌 <strong>そもそも「親等」って何？</strong><br>
+      親等（しんとう）とは、<strong>自分から何ステップ離れているか</strong>を数える単位です。親子間で1ステップ＝1親等。数が小さいほど近い関係、大きいほど遠い関係です。</div>
+
+      <div class="svg-wrap">
+        <svg viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif">
+          <rect width="680" height="340" rx="10" fill="#f5f0e8"/>
+          <text x="24" y="26" font-size="13" font-weight="700" fill="#1a1a2e">🌲 親等の数え方と被扶養者の範囲（法第3条第7項）</text>
+          <text x="24" y="46" font-size="11" fill="#6b7280">「自分（被保険者）から何ステップ？」で親等を数える。ステップごとに1親等ずつ増える。</text>
+
+          <!-- 被保険者 -->
+          <rect x="284" y="60" width="112" height="36" rx="10" fill="#1a1a2e"/>
+          <text x="340" y="83" text-anchor="middle" font-size="13" font-weight="700" fill="white">被保険者（自分）</text>
+
+          <!-- 0親等 -->
+          <text x="10" y="82" font-size="10" fill="#c84b31" font-weight="700">0親等</text>
+
+          <!-- ──── 1親等 ──── -->
+          <!-- 配偶者は特別（親等に含めない扱いだが被扶養者に入る） -->
+          <line x1="340" y1="96" x2="340" y2="110" stroke="#2d6a4f" stroke-width="2"/>
+          <!-- 上：父母 -->
+          <line x1="200" y1="110" x2="480" y2="110" stroke="#2d6a4f" stroke-width="1.5"/>
+          <line x1="200" y1="110" x2="200" y2="124" stroke="#2d6a4f" stroke-width="1.5"/>
+          <line x1="480" y1="110" x2="480" y2="124" stroke="#2d6a4f" stroke-width="1.5"/>
+          <rect x="130" y="124" width="140" height="30" rx="8" fill="#2d6a4f"/>
+          <text x="200" y="141" text-anchor="middle" font-size="12" font-weight="700" fill="white">父母（直系尊属）</text>
+          <rect x="410" y="124" width="140" height="30" rx="8" fill="#2d6a4f"/>
+          <text x="480" y="141" text-anchor="middle" font-size="12" font-weight="700" fill="white">子</text>
+          <!-- 配偶者（横に配置） -->
+          <line x1="396" y1="78" x2="540" y2="78" stroke="#2d6a4f" stroke-width="1.5" stroke-dasharray="4,2"/>
+          <rect x="540" y="62" width="120" height="30" rx="8" fill="#2d6a4f"/>
+          <text x="600" y="81" text-anchor="middle" font-size="12" font-weight="700" fill="white">配偶者</text>
+          <text x="600" y="100" text-anchor="middle" font-size="9" fill="#2d6a4f">（親等カウント外・別居OK）</text>
+          <text x="10" y="142" font-size="10" fill="#2d6a4f" font-weight="700">1親等</text>
+
+          <!-- ──── 2親等 ──── -->
+          <line x1="200" y1="154" x2="200" y2="170" stroke="#2a7f7f" stroke-width="1.5"/>
+          <line x1="480" y1="154" x2="480" y2="180" stroke="#2a7f7f" stroke-width="1.5"/>
+          <!-- 祖父母 -->
+          <rect x="100" y="170" width="120" height="30" rx="8" fill="#2a7f7f"/>
+          <text x="160" y="189" text-anchor="middle" font-size="11" font-weight="700" fill="white">祖父母</text>
+          <!-- 兄弟姉妹 -->
+          <line x1="200" y1="154" x2="340" y2="154" stroke="#2a7f7f" stroke-width="1.5"/>
+          <line x1="340" y1="154" x2="340" y2="170" stroke="#2a7f7f" stroke-width="1.5"/>
+          <rect x="256" y="170" width="140" height="30" rx="8" fill="#2a7f7f"/>
+          <text x="326" y="189" text-anchor="middle" font-size="12" font-weight="700" fill="white">兄弟姉妹</text>
+          <!-- 孫 -->
+          <rect x="410" y="180" width="140" height="30" rx="8" fill="#2a7f7f"/>
+          <text x="480" y="199" text-anchor="middle" font-size="12" font-weight="700" fill="white">孫</text>
+          <text x="10" y="190" font-size="10" fill="#2a7f7f" font-weight="700">2親等</text>
+          <text x="326" y="212" text-anchor="middle" font-size="9" fill="#2a7f7f">（別居OK）</text>
+
+          <!-- ──── 3親等 ──── -->
+          <line x1="160" y1="200" x2="160" y2="220" stroke="#c9930a" stroke-width="1.5"/>
+          <line x1="326" y1="200" x2="326" y2="240" stroke="#c9930a" stroke-width="1.5"/>
+          <line x1="480" y1="210" x2="480" y2="240" stroke="#c9930a" stroke-width="1.5"/>
+          <!-- 曾祖父母 -->
+          <rect x="80" y="220" width="120" height="28" rx="8" fill="#c9930a"/>
+          <text x="140" y="238" text-anchor="middle" font-size="11" font-weight="700" fill="white">曾祖父母</text>
+          <!-- 叔父叔母 -->
+          <rect x="256" y="240" width="140" height="28" rx="8" fill="#c9930a"/>
+          <text x="326" y="258" text-anchor="middle" font-size="12" font-weight="700" fill="white">叔父・叔母・甥・姪</text>
+          <!-- ひ孫 -->
+          <rect x="410" y="240" width="140" height="28" rx="8" fill="#c9930a"/>
+          <text x="480" y="258" text-anchor="middle" font-size="12" font-weight="700" fill="white">ひ孫</text>
+          <text x="10" y="258" font-size="10" fill="#c9930a" font-weight="700">3親等</text>
+
+          <!-- 同居必要の注記 -->
+          <rect x="60" y="278" width="560" height="22" rx="6" fill="rgba(201,147,10,0.15)" stroke="#c9930a" stroke-width="1"/>
+          <text x="340" y="293" text-anchor="middle" font-size="11" font-weight="700" fill="#c9930a">⚠️ 3親等のうち「叔父・叔母・甥・姪・ひ孫・曾祖父母」は同居が必要条件</text>
+
+          <!-- 凡例 -->
+          <rect x="20" y="308" width="16" height="10" rx="2" fill="#2d6a4f"/>
+          <text x="42" y="318" font-size="10" fill="#1a1a2e">1親等（別居OK）</text>
+          <rect x="160" y="308" width="16" height="10" rx="2" fill="#2a7f7f"/>
+          <text x="182" y="318" font-size="10" fill="#1a1a2e">2親等（別居OK）</text>
+          <rect x="320" y="308" width="16" height="10" rx="2" fill="#c9930a"/>
+          <text x="342" y="318" font-size="10" fill="#1a1a2e">3親等（一部同居必要）</text>
+          <rect x="510" y="308" width="16" height="10" rx="2" fill="#c84b31"/>
+          <text x="532" y="318" font-size="10" fill="#1a1a2e">4親等以上 → 対象外</text>
+        </svg>
+      </div>
+
+      <!-- 親等の数え方ルール -->
+      <div class="note">
+        <strong>📐 親等の数え方ルール</strong><br>
+        ① 自分と直接つながっている親・子は <strong>1親等</strong><br>
+        ② その親・子のさらに親・子（祖父母・孫）は <strong>2親等</strong><br>
+        ③ 兄弟姉妹は「親を1回経由して戻る」ので <strong>2親等</strong>（上1＋下1）<br>
+        ④ 叔父・叔母は「祖父母→親→自分→兄弟経由」ではなく「親→祖父母→叔父」で <strong>3親等</strong><br>
+        ⑤ 配偶者は親等ゼロの特別扱い（法律上の規定）
+      </div>
+
+            <div class="tip">
+        <div class="tip-title">🧠 なぜこの数字？ストーリーで覚える</div>
+        <div class="tip-item">🧠 佐々木さんが父の弟（叔父）を被扶養者にしたいと申請してきた。叔父は三親等の親族——同居していれば被扶養者になれる。「なぜ三親等まで？」——民法の扶養義務の範囲（直系血族・兄弟姉妹は無条件、三親等内の親族は家庭裁判所の審判で義務が課される場合あり）に概ね対応している。四親等のいとこは対象外——社会保険はあくまで一定範囲の家族を保護する制度であり、際限なく広げるわけにはいかない。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /qwrap -->
+</div>
+</div>
+
+</div><!-- /panel-quiz -->
+
+<!-- 連想図 -->
+<div id="panel-mindmap" class="tab-panel">
+<div style="max-width:760px;margin:0 auto;padding:20px 20px 60px;">
+
+  <div style="background:#ede9fe;border:1px solid #c4b5fd;border-radius:10px;padding:12px 16px;font-size:13px;color:#4c1d95;margin-bottom:24px;line-height:1.7;">
+    🗺 <strong>連想図</strong>：Day2の全論点を「資格取得 → 資格喪失 → 被扶養者 → 任意継続」の流れで整理。赤帯が引っかけポイント。
+  </div>
+
+  <!-- ━━━━━━━━━━━━ STEP 1 資格取得 ━━━━━━━━━━━━ -->
+  <div style="text-align:center;margin-bottom:8px;">
+    <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#EEEDFE;border:1.5px solid #7F77DD;font-size:15px;font-weight:700;color:#26215C;">1</div>
+    <div style="font-size:16px;font-weight:700;color:#1a1a2e;margin-top:6px;">資格取得（法第35条）</div>
+    <div style="font-size:12px;color:#6b7280;margin-top:2px;">使用されるに至った日（当日）に取得。「翌日」は喪失の話。</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+    <div style="background:#E1F5EE;border:1.5px solid #1D9E75;border-radius:10px;padding:14px;text-align:center;">
+      <div style="font-size:13px;font-weight:700;color:#04342C;margin-bottom:4px;">資格取得日</div>
+      <div style="font-size:16px;font-weight:900;color:#085041;">使用されるに至った日</div>
+      <div style="font-size:11px;color:#0F6E56;margin-top:6px;">当日！翌日ではない</div>
+      <div style="margin-top:8px;font-size:11px;color:#04342C;background:rgba(45,106,79,.1);border-radius:6px;padding:6px;">例）4月1日入社 → <strong>4月1日</strong>に資格取得</div>
+    </div>
+    <div style="background:#FAEEDA;border:1.5px solid #BA7517;border-radius:10px;padding:14px;">
+      <div style="font-size:13px;font-weight:700;color:#412402;margin-bottom:6px;">適用除外4類型</div>
+      <div style="font-size:12px;color:#633806;line-height:2.0;">
+        🚢 ① <strong>船員保険の被保険者</strong><br>
+        🏛️ ② <strong>共済組合の組合員</strong><br>
+        👴 ③ <strong>後期高齢者医療の被保険者</strong><br>
+        📅 ④ <strong>臨時的事業・2ヵ月以内雇用見込み</strong>
+      </div>
+      <div style="margin-top:8px;font-size:10px;color:#854F0B;">→ 別の制度が保護しているため健保は不要</div>
+    </div>
+  </div>
+
+  <!-- 4類型の詳細（白背景・左ボーダー） -->
+  <div style="background:white;border:2px solid var(--ink,#1a1a2e);border-radius:12px;overflow:hidden;margin-bottom:10px;">
+    <div style="background:#1a1a2e;padding:10px 16px;">
+      <div style="font-size:12px;font-weight:700;color:#fde68a;">「除外される理由」で整理 ― 別の制度がすでに守っているから</div>
+    </div>
+    <div style="padding:14px 16px;display:flex;flex-direction:column;gap:10px;">
+      <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;font-weight:700;color:#c84b31;margin-bottom:3px;">🚢 ① 船員保険の被保険者</div>
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;">海上・外洋での特殊リスクに対応した<strong>船員専用の制度</strong>（船員保険法）が別にある。<br>→「入れない」のではなく「<strong>別制度がすでに守っているから不要</strong>」</div>
+      </div>
+      <div style="border-left:4px solid #c9930a;padding:8px 12px;background:#fffcf0;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;font-weight:700;color:#c9930a;margin-bottom:3px;">🏛️ ② 共済組合の組合員</div>
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;">国家公務員→<strong>国共済</strong> ／ 地方公務員→<strong>地共済</strong> ／ 私立学校教職員→<strong>私学共済</strong><br>→「<strong>共済組合</strong>（公務員専用）」≠「<strong>健康保険組合</strong>（民間大企業）」。全くの別物！</div>
+      </div>
+      <div style="border-left:4px solid #2a7f7f;padding:8px 12px;background:#f0fafa;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;font-weight:700;color:#2a7f7f;margin-bottom:3px;">👴 ③ 後期高齢者医療の被保険者</div>
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong>75歳以上</strong>（65歳以上で一定障害も）は都道府県<strong>広域連合</strong>が運営する別制度へ強制移行。<br>→ 誕生日<strong>当日</strong>に健保喪失（翌日ではない！）← STEP2と直結</div>
+      </div>
+      <div style="border-left:4px solid #5b3e9e;padding:8px 12px;background:#f8f6ff;border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;font-weight:700;color:#5b3e9e;margin-bottom:3px;">📅 ④ 臨時的事業の事業所・2ヵ月以内雇用見込み</div>
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong>事業所自体が臨時</strong>（お祭り・季節工場など）かつ<strong>2ヵ月以内の雇用見込み</strong>が両方必要。<br>→ 2ヵ月を超えて継続使用 → <strong>その時点で被保険者資格を取得</strong>（除外のままではない）</div>
+        <div style="margin-top:6px;background:#f0eeff;border-radius:6px;padding:6px 10px;font-size:11px;color:#5b3e9e;">
+          💡 <strong>臨時的事業 vs 日雇特例の違い</strong><br>
+          臨時的事業 →「<strong>事業所</strong>が臨時」。健保の<strong>適用除外</strong>（健保法の外）<br>
+          日雇特例　 →「<strong>雇用形態</strong>が日々・短期」。健保法<strong>第7章</strong>で規定される被保険者（健保法の内）
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP1 引っかけ帯 -->
+  <div style="background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 14px;font-size:12px;color:#A32D2D;margin-bottom:6px;line-height:1.9;">
+    <strong>🚨 よくある引っかけ</strong><br>
+    × 「翌日から資格取得」→ ○ 当日取得<br>
+    × 「健保組合の組合員は適用除外」→ ○ 健保の被保険者（除外ではない）<br>
+    × 「日雇労働者は適用除外」→ ○ 日雇特例被保険者として健保法内に規定<br>
+    × 「臨時2ヵ月超えても除外のまま」→ ○ 超えた時点で被保険者資格を取得
+  </div>
+  <div style="text-align:center;font-size:11px;color:#6b7280;margin-bottom:20px;">語呂：「入社の日から守られる」→ 取得は当日</div>
+
+  <div style="text-align:center;color:#B4B2A9;font-size:20px;line-height:1;margin-bottom:16px;">↓</div>
+
+  <!-- ━━━━━━━━━━━━ STEP 2 資格喪失 ━━━━━━━━━━━━ -->
+  <div style="text-align:center;margin-bottom:8px;">
+    <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#E1F5EE;border:1.5px solid #1D9E75;font-size:15px;font-weight:700;color:#04342C;">2</div>
+    <div style="font-size:16px;font-weight:700;color:#1a1a2e;margin-top:6px;">資格喪失（法第36条）</div>
+    <div style="font-size:12px;color:#6b7280;margin-top:2px;">退職・死亡は翌日。75歳到達だけ当日（誕生日）。</div>
+  </div>
+
+  <!-- 喪失日一覧（白カード） -->
+  <div style="background:white;border:2px solid #1a1a2e;border-radius:12px;overflow:hidden;margin-bottom:10px;">
+    <div style="background:#1a1a2e;padding:10px 16px;">
+      <div style="font-size:12px;font-weight:700;color:#fde68a;">📅 喪失事由と喪失日の対応表（法第36条）</div>
+    </div>
+    <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div style="background:#FAECE7;border:1.5px solid #D85A30;border-radius:8px;padding:10px 12px;text-align:center;">
+          <div style="font-size:11px;color:#c84b31;font-weight:700;margin-bottom:3px;">退職・解雇</div>
+          <div style="font-size:15px;font-weight:900;color:#712B13;">翌日喪失</div>
+          <div style="font-size:10px;color:#9B3B1B;margin-top:3px;">使用関係消滅の翌日</div>
+          <div style="margin-top:6px;font-size:10px;color:#4A1B0C;background:rgba(200,75,49,.1);border-radius:4px;padding:4px;">例）3月31日退職 → 4月1日喪失</div>
+        </div>
+        <div style="background:#FAECE7;border:1.5px solid #D85A30;border-radius:8px;padding:10px 12px;text-align:center;">
+          <div style="font-size:11px;color:#c84b31;font-weight:700;margin-bottom:3px;">死亡</div>
+          <div style="font-size:15px;font-weight:900;color:#712B13;">翌日喪失</div>
+          <div style="font-size:10px;color:#9B3B1B;margin-top:3px;">死亡した日の翌日</div>
+          <div style="margin-top:6px;font-size:10px;color:#4A1B0C;background:rgba(200,75,49,.1);border-radius:4px;padding:4px;">例）4月5日死亡 → 4月6日喪失</div>
+        </div>
+      </div>
+      <div style="background:#FAEEDA;border:2px solid #c9930a;border-radius:8px;padding:10px 14px;">
+        <div style="font-size:11px;color:#c9930a;font-weight:700;margin-bottom:3px;">⚡ 例外：75歳到達（後期高齢者移行）</div>
+        <div style="font-size:15px;font-weight:900;color:#412402;text-align:center;margin:4px 0;">当日喪失（誕生日）</div>
+        <div style="font-size:11px;color:#633806;line-height:1.8;">後期高齢者医療の資格を取得するのが誕生日当日のため、同日に健保資格が喪失。空白日ゼロ。<br><span style="font-size:10px;">例）8月10日が75歳誕生日 → 8月10日に健保喪失・後期高齢者医療開始</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP2 引っかけ帯 -->
+  <div style="background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 14px;font-size:12px;color:#A32D2D;margin-bottom:6px;line-height:1.9;">
+    <strong>🚨 よくある引っかけ</strong><br>
+    × 「退職した当日に資格喪失」→ ○ 退職した日の翌日に喪失<br>
+    × 「死亡した当日に資格喪失」→ ○ 死亡した日の翌日に喪失<br>
+    × 「75歳誕生日の翌日に喪失」→ ○ 誕生日当日に喪失（例外！）<br>
+    × 「後期高齢者医療は80歳以上が対象」→ ○ 75歳以上（65歳以上で一定障害も）<br>
+    × 「3月31日退職なら3月31日喪失」→ ○ 4月1日喪失（翌日）
+  </div>
+  <div style="text-align:center;font-size:11px;color:#6b7280;margin-bottom:20px;">語呂：「辞めた翌日から保護なし。75歳は誕生日から後期高齢者」</div>
+
+  <div style="text-align:center;color:#B4B2A9;font-size:20px;line-height:1;margin-bottom:16px;">↓</div>
+
+  <!-- ━━━━━━━━━━━━ STEP 3 被扶養者 ━━━━━━━━━━━━ -->
+  <div style="text-align:center;margin-bottom:8px;">
+    <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#FAEEDA;border:1.5px solid #BA7517;font-size:15px;font-weight:700;color:#412402;">3</div>
+    <div style="font-size:16px;font-weight:700;color:#1a1a2e;margin-top:6px;">被扶養者の認定（法第3条第7項）</div>
+    <div style="font-size:12px;color:#6b7280;margin-top:2px;">三親等・主として生計維持・収入要件・同居要件。4点セット。</div>
+  </div>
+
+  <!-- 親等とは？ -->
+  <div style="background:white;border:2px solid #1a1a2e;border-radius:12px;overflow:hidden;margin-bottom:10px;">
+    <div style="background:#1a1a2e;padding:10px 16px;">
+      <div style="font-size:12px;font-weight:700;color:#fde68a;">📐 「親等」とは？― 自分から何ステップ離れているかを数える単位</div>
+    </div>
+    <div style="padding:14px 16px;">
+      <div style="font-size:12px;color:#1a1a2e;line-height:1.8;margin-bottom:12px;">
+        親子間が1ステップ＝1親等。数が小さいほど近い関係。配偶者は親等カウントの外（特別扱い）。
+      </div>
+
+      <!-- 読み方カード -->
+      <div style="background:#f5f0e8;border-radius:8px;padding:12px 14px;margin-bottom:12px;">
+        <div style="font-size:11px;font-weight:700;color:#6b7280;margin-bottom:8px;letter-spacing:1px;">📖 読み方と意味</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;">
+          <div style="background:white;border-radius:6px;padding:8px 10px;border:1px solid #ddd8cc;">
+            <ruby style="font-size:14px;font-weight:700;color:#c84b31;">叔父<rt style="font-size:9px;color:#6b7280;">おじ</rt></ruby>
+            <div style="color:#6b7280;font-size:11px;margin-top:2px;">親の兄弟（男性）</div>
+          </div>
+          <div style="background:white;border-radius:6px;padding:8px 10px;border:1px solid #ddd8cc;">
+            <ruby style="font-size:14px;font-weight:700;color:#c84b31;">叔母<rt style="font-size:9px;color:#6b7280;">おば</rt></ruby>
+            <div style="color:#6b7280;font-size:11px;margin-top:2px;">親の兄弟（女性）</div>
+          </div>
+          <div style="background:white;border-radius:6px;padding:8px 10px;border:1px solid #ddd8cc;">
+            <ruby style="font-size:14px;font-weight:700;color:#2a7f7f;">甥<rt style="font-size:9px;color:#6b7280;">おい</rt></ruby>
+            <div style="color:#6b7280;font-size:11px;margin-top:2px;">兄弟姉妹の子（男性）</div>
+          </div>
+          <div style="background:white;border-radius:6px;padding:8px 10px;border:1px solid #ddd8cc;">
+            <ruby style="font-size:14px;font-weight:700;color:#2a7f7f;">姪<rt style="font-size:9px;color:#6b7280;">めい</rt></ruby>
+            <div style="color:#6b7280;font-size:11px;margin-top:2px;">兄弟姉妹の子（女性）</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 家系図SVG -->
+      <div style="overflow-x:auto;margin-bottom:10px;">
+        <svg viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans JP',sans-serif" style="display:block;width:100%;height:auto;">
+          <rect width="680" height="340" rx="10" fill="#faf8f3"/>
+
+          <!-- タイトル -->
+          <text x="340" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#6b7280">家系図で見る「どこに位置するか」</text>
+
+          <!-- ======== 祖父母（2親等） ======== -->
+          <rect x="220" y="36" width="160" height="32" rx="8" fill="#e8f4f4" stroke="#2a7f7f" stroke-width="1.5"/>
+          <text x="300" y="57" text-anchor="middle" font-size="12" font-weight="700" fill="#2a7f7f">祖父母（2親等）</text>
+
+          <!-- 祖父母→親 -->
+          <line x1="260" y1="68" x2="190" y2="104" stroke="#2a7f7f" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <!-- 祖父母→叔父叔母 -->
+          <line x1="370" y1="68" x2="490" y2="104" stroke="#c84b31" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+          <!-- ======== 親（1親等）＋叔父叔母（3親等） ======== -->
+          <rect x="110" y="104" width="160" height="32" rx="8" fill="#E1F5EE" stroke="#1D9E75" stroke-width="1.5"/>
+          <text x="190" y="125" text-anchor="middle" font-size="12" font-weight="700" fill="#2d6a4f">父・母（1親等）</text>
+
+          <!-- 叔父・叔母（右カラム） -->
+          <rect x="418" y="100" width="168" height="52" rx="8" fill="#fee2e2" stroke="#c84b31" stroke-width="2"/>
+          <text x="502" y="118" text-anchor="middle" font-size="12" font-weight="700" fill="#c84b31">叔父（おじ）・叔母（おば）</text>
+          <text x="502" y="134" text-anchor="middle" font-size="10" fill="#9B3B1B">3親等</text>
+          <text x="502" y="147" text-anchor="middle" font-size="10" fill="#c84b31" font-weight="700">← 同居必要</text>
+
+          <!-- 親→自分 -->
+          <line x1="190" y1="136" x2="190" y2="172" stroke="#1D9E75" stroke-width="2"/>
+          <!-- 親→兄弟姉妹 -->
+          <line x1="190" y1="136" x2="340" y2="172" stroke="#2a7f7f" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+          <!-- ======== 自分＋配偶者＋兄弟姉妹（2親等） ======== -->
+          <!-- 配偶者 -->
+          <rect x="22" y="180" width="60" height="28" rx="6" fill="#FAEEDA" stroke="#BA7517" stroke-width="1.5"/>
+          <text x="52" y="198" text-anchor="middle" font-size="10" font-weight="700" fill="#412402">配偶者</text>
+          <line x1="100" y1="194" x2="82" y2="194" stroke="#BA7517" stroke-width="1.5" stroke-dasharray="3,2"/>
+          <text x="52" y="218" text-anchor="middle" font-size="9" fill="#c9930a">※親等外</text>
+
+          <!-- 自分 -->
+          <rect x="100" y="172" width="180" height="40" rx="10" fill="#1a1a2e"/>
+          <text x="190" y="188" text-anchor="middle" font-size="13" font-weight="700" fill="white">自分（被保険者）</text>
+          <text x="190" y="204" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.6)">← 基準点（0）</text>
+
+          <!-- 兄弟姉妹 -->
+          <rect x="306" y="172" width="150" height="32" rx="8" fill="#e8f4f4" stroke="#2a7f7f" stroke-width="1.5"/>
+          <text x="381" y="193" text-anchor="middle" font-size="12" font-weight="700" fill="#2a7f7f">兄弟姉妹（2親等）</text>
+
+          <!-- 自分→子 -->
+          <line x1="190" y1="212" x2="190" y2="252" stroke="#1D9E75" stroke-width="2"/>
+          <!-- 兄弟姉妹→甥姪 -->
+          <line x1="381" y1="204" x2="490" y2="244" stroke="#c84b31" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+          <!-- ======== 子（1親等）＋甥・姪（3親等） ======== -->
+          <!-- 子 -->
+          <rect x="110" y="252" width="160" height="32" rx="8" fill="#E1F5EE" stroke="#1D9E75" stroke-width="1.5"/>
+          <text x="190" y="273" text-anchor="middle" font-size="12" font-weight="700" fill="#2d6a4f">子（1親等）</text>
+
+          <!-- 甥・姪（右カラム） -->
+          <rect x="418" y="244" width="168" height="52" rx="8" fill="#fee2e2" stroke="#c84b31" stroke-width="2"/>
+          <text x="502" y="262" text-anchor="middle" font-size="12" font-weight="700" fill="#c84b31">甥（おい）・姪（めい）</text>
+          <text x="502" y="278" text-anchor="middle" font-size="10" fill="#9B3B1B">3親等</text>
+          <text x="502" y="291" text-anchor="middle" font-size="10" fill="#c84b31" font-weight="700">← 同居必要</text>
+
+          <!-- 凡例（下段） -->
+          <rect x="16" y="312" width="10" height="10" rx="2" fill="#E1F5EE" stroke="#1D9E75" stroke-width="1.5"/>
+          <text x="30" y="321" font-size="10" fill="#6b7280">同居不要</text>
+          <rect x="100" y="312" width="10" height="10" rx="2" fill="#fee2e2" stroke="#c84b31" stroke-width="1.5"/>
+          <text x="114" y="321" font-size="10" fill="#6b7280">同居必要</text>
+          <rect x="200" y="312" width="10" height="10" rx="2" fill="#1a1a2e"/>
+          <text x="214" y="321" font-size="10" fill="#6b7280">被保険者（自分）</text>
+        </svg>
+      </div>
+
+      <!-- 親等の数え方 -->
+      <div style="background:#f5f0e8;border-radius:8px;padding:10px 12px;font-size:11px;color:#6b7280;line-height:2.0;">
+        ＊<ruby>叔父<rt>おじ</rt></ruby>・<ruby>叔母<rt>おば</rt></ruby>が3親等：自分→親（1）→祖父母（2）→叔父（3）<br>
+        ＊<ruby>甥<rt>おい</rt></ruby>・<ruby>姪<rt>めい</rt></ruby>が3親等：自分→兄弟（2）→甥（3）<br>
+        ＊<strong style="color:#c84b31;">どちらも3親等で同居が必要</strong>。兄弟姉妹（2親等・同居不要）と混同しない。
+      </div>
+
+      <!-- 親等グリッド -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-top:10px;">
+        <div style="background:#E1F5EE;border:1.5px solid #1D9E75;border-radius:8px;padding:10px 6px;text-align:center;">
+          <div style="font-size:10px;color:#2d6a4f;font-weight:700;margin-bottom:4px;">1親等</div>
+          <div style="font-size:12px;color:#04342C;font-weight:700;">父母・子</div>
+          <div style="font-size:10px;color:#6b7280;margin-top:4px;">同居不要</div>
+        </div>
+        <div style="background:#e8f4f4;border:1.5px solid #2a7f7f;border-radius:8px;padding:10px 6px;text-align:center;">
+          <div style="font-size:10px;color:#2a7f7f;font-weight:700;margin-bottom:4px;">2親等</div>
+          <div style="font-size:12px;color:#1a1a2e;font-weight:700;">祖父母・孫<br>兄弟姉妹</div>
+          <div style="font-size:10px;color:#6b7280;margin-top:4px;">同居不要</div>
+        </div>
+        <div style="background:#FAEEDA;border:1.5px solid #BA7517;border-radius:8px;padding:10px 6px;text-align:center;">
+          <div style="font-size:10px;color:#c9930a;font-weight:700;margin-bottom:4px;">3親等</div>
+          <div style="font-size:12px;color:#412402;font-weight:700;"><ruby>叔父<rt style="font-size:8px;">おじ</rt></ruby>・<ruby>叔母<rt style="font-size:8px;">おば</rt></ruby><br><ruby>甥<rt style="font-size:8px;">おい</rt></ruby>・<ruby>姪<rt style="font-size:8px;">めい</rt></ruby></div>
+          <div style="font-size:10px;color:#c84b31;margin-top:4px;font-weight:700;">同居必要</div>
+        </div>
+        <div style="background:#fee2e2;border:1.5px solid #c84b31;border-radius:8px;padding:10px 6px;text-align:center;">
+          <div style="font-size:10px;color:#c84b31;font-weight:700;margin-bottom:4px;">4親等以上</div>
+          <div style="font-size:12px;color:#991b1b;font-weight:700;">いとこ等</div>
+          <div style="font-size:10px;color:#c84b31;margin-top:4px;font-weight:700;">対象外</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 同居要件・収入要件 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+    <div style="background:#E1F5EE;border:1.5px solid #1D9E75;border-radius:10px;padding:14px;">
+      <div style="font-size:13px;font-weight:700;color:#04342C;margin-bottom:8px;">✅ 同居不要グループ</div>
+      <div style="font-size:12px;color:#085041;line-height:2.0;">
+        ① 直系尊属（父母・祖父母等）<br>
+        ② 配偶者（内縁含む）<br>
+        ③ 子・孫<br>
+        ④ <strong>兄弟姉妹</strong>← 試験頻出！別居でもOK
+      </div>
+    </div>
+    <div style="background:#FAECE7;border:1.5px solid #D85A30;border-radius:10px;padding:14px;">
+      <div style="font-size:13px;font-weight:700;color:#4A1B0C;margin-bottom:8px;">⚠️ 同居必要グループ</div>
+      <div style="font-size:12px;color:#712B13;line-height:2.0;">
+        上記以外の三親等内<br>（叔父・叔母・甥・姪等）<br>
+        内縁の配偶者の父母・子<br>
+        → <strong>別居では認定不可</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 収入要件表（白カード） -->
+  <div style="background:white;border:1px solid #ddd8cc;border-radius:10px;overflow:hidden;margin-bottom:10px;">
+    <div style="background:#f5f0e8;padding:8px 14px;border-bottom:1px solid #ddd8cc;">
+      <div style="font-size:12px;font-weight:700;color:#1a1a2e;">💰 収入要件の早見表</div>
+    </div>
+    <div style="padding:0;">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;font-size:11px;">
+        <div style="padding:8px 10px;background:#f5f0e8;font-weight:700;color:#6b7280;border-bottom:1px solid #ddd8cc;">対象者</div>
+        <div style="padding:8px 10px;background:#f5f0e8;font-weight:700;color:#6b7280;border-bottom:1px solid #ddd8cc;text-align:center;">年収要件</div>
+        <div style="padding:8px 10px;background:#f5f0e8;font-weight:700;color:#6b7280;border-bottom:1px solid #ddd8cc;text-align:center;">同居の場合の追加要件</div>
+        <div style="padding:8px 10px;color:#1a1a2e;border-bottom:1px solid #f0ece4;">原則（75歳未満）</div>
+        <div style="padding:8px 10px;text-align:center;font-weight:700;color:#c84b31;border-bottom:1px solid #f0ece4;">130万円未満</div>
+        <div style="padding:8px 10px;text-align:center;color:#6b7280;border-bottom:1px solid #f0ece4;">被保険者年収の1/2未満</div>
+        <div style="padding:8px 10px;color:#1a1a2e;">60歳以上 or 一定障害</div>
+        <div style="padding:8px 10px;text-align:center;font-weight:700;color:#c9930a;">180万円未満</div>
+        <div style="padding:8px 10px;text-align:center;color:#6b7280;">同上（1/2未満）</div>
+      </div>
+      <div style="padding:6px 10px;font-size:10px;color:#9099b5;border-top:1px solid #f0ece4;">※別居の場合は年収要件のみ。1/2要件は同居時のみ適用。</div>
+    </div>
+  </div>
+
+  <!-- STEP3 引っかけ帯 -->
+  <div style="background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 14px;font-size:12px;color:#A32D2D;margin-bottom:6px;line-height:1.9;">
+    <strong>🚨 よくある引っかけ</strong><br>
+    × 「兄弟姉妹は同居が必要」→ ○ 同居不要（別居でも認定可）<br>
+    × 「叔父は別居でも被扶養者になれる」→ ○ 叔父（その他3親等）は同居必要<br>
+    × 「いとこ（4親等）は同居すれば認定可」→ ○ 4親等以上は同居しても対象外<br>
+    × 「年収103万円未満が要件」→ ○ 健保は130万円未満（103万は所得税の話）<br>
+    × 「60歳以上も130万円未満」→ ○ 60歳以上・障害者は180万円未満<br>
+    × 「1/2要件は別居でも適用」→ ○ 1/2要件は同居の場合のみ<br>
+    × 「主として家計を維持」→ ○ 主として<strong>生計</strong>を維持（条文の言葉）
+  </div>
+
+  <div style="text-align:center;color:#B4B2A9;font-size:20px;line-height:1;margin:20px 0 16px;">↓</div>
+
+  <!-- ━━━━━━━━━━━━ STEP 4 任意継続 ━━━━━━━━━━━━ -->
+  <div style="text-align:center;margin-bottom:8px;">
+    <div style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#FAECE7;border:1.5px solid #D85A30;font-size:15px;font-weight:700;color:#4A1B0C;">4</div>
+    <div style="font-size:16px;font-weight:700;color:#1a1a2e;margin-top:6px;">任意継続被保険者（法第37条）</div>
+    <div style="font-size:12px;color:#6b7280;margin-top:2px;">要件・期間・保険料の3点が頻出。Day1 F4と直結する最重要論点。</div>
+  </div>
+
+  <!-- 任継まとめ（白カード） -->
+  <div style="background:white;border:2px solid #1a1a2e;border-radius:12px;overflow:hidden;margin-bottom:10px;">
+    <div style="background:#1a1a2e;padding:10px 16px;">
+      <div style="font-size:12px;font-weight:700;color:#fde68a;">📋 任意継続被保険者の全要件まとめ</div>
+    </div>
+    <div style="padding:14px 16px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+        <div style="background:#e8f4f4;border:1.5px solid #2a7f7f;border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#2a7f7f;font-weight:700;margin-bottom:3px;">要件①　在職期間</div>
+          <div style="font-size:14px;font-weight:900;color:#1a1a2e;">継続して2ヵ月以上</div>
+          <div style="font-size:10px;color:#6b7280;margin-top:3px;">「通算」は不可。連続が必須。</div>
+        </div>
+        <div style="background:#FAEEDA;border:1.5px solid #BA7517;border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#c9930a;font-weight:700;margin-bottom:3px;">要件②　申請期限</div>
+          <div style="font-size:14px;font-weight:900;color:#1a1a2e;">喪失日から20日以内</div>
+          <div style="font-size:10px;color:#6b7280;margin-top:3px;">正当な理由があれば延長可。</div>
+        </div>
+        <div style="background:#EEEDFE;border:1.5px solid #7F77DD;border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#5b3e9e;font-weight:700;margin-bottom:3px;">加入できる期間</div>
+          <div style="font-size:14px;font-weight:900;color:#1a1a2e;">取得日から最長2年</div>
+          <div style="font-size:10px;color:#6b7280;margin-top:3px;">2年経過で強制喪失。</div>
+        </div>
+        <div style="background:#fee2e2;border:1.5px solid #c84b31;border-radius:8px;padding:10px;">
+          <div style="font-size:10px;color:#c84b31;font-weight:700;margin-bottom:3px;">保険料の徴収者</div>
+          <div style="font-size:14px;font-weight:900;color:#c84b31;">全国健康保険協会</div>
+          <div style="font-size:10px;color:#6b7280;margin-top:3px;">大臣ではない！Day1 F4と連動。</div>
+        </div>
+      </div>
+      <div style="background:#f5f0e8;border-radius:8px;padding:10px 12px;font-size:11px;color:#1a1a2e;line-height:1.8;">
+        💡 <strong>保険料額の算定：低い方を使う</strong><br>
+        ① 退職時の標準報酬月額　vs　② 全被保険者の平均標準報酬月額<br>
+        → <strong>①と②のうち低い方</strong>で算定。全額自己負担（事業主負担なし）。
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP4 引っかけ帯 -->
+  <div style="background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 14px;font-size:12px;color:#A32D2D;margin-bottom:10px;line-height:1.9;">
+    <strong>🚨 よくある引っかけ</strong><br>
+    × 「通算して2ヵ月以上でOK」→ ○ <strong>継続して</strong>2ヵ月以上（途切れたらアウト）<br>
+    × 「喪失日から30日以内に申請」→ ○ <strong>20日以内</strong><br>
+    × 「最長3年加入できる」→ ○ 最長<strong>2年</strong><br>
+    × 「保険料は厚生労働大臣が徴収」→ ○ <strong>全国健康保険協会</strong>が徴収（超頻出！）<br>
+    × 「保険料は事業主と折半」→ ○ <strong>全額自己負担</strong>（事業主負担なし）<br>
+    × 「退職時の標準報酬月額で算定する」→ ○ 退職時 or 全平均の<strong>低い方</strong><br>
+    × 「任意継続は途中でやめられない」→ ○ 申出により喪失可能（翌月1日に喪失）
+  </div>
+
+  <!-- Day2 最重要 TOP5 -->
+  <div style="background:white;border:2px solid #c84b31;border-radius:12px;overflow:hidden;">
+    <div style="background:#c84b31;padding:10px 16px;">
+      <div style="font-size:12px;font-weight:700;color:white;">⚡ Day2 最重要引っかけ TOP 5</div>
+    </div>
+    <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;align-items:flex-start;gap:10px;background:#fff8f7;border:1px solid #fca5a5;border-radius:8px;padding:8px 12px;">
+        <span style="font-size:16px;font-weight:900;color:#c84b31;flex-shrink:0;line-height:1.4;">1</span>
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.7;"><strong>資格取得は当日、喪失は翌日</strong>（75歳移行のみ当日喪失という例外あり）</div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;background:#fff8f7;border:1px solid #fca5a5;border-radius:8px;padding:8px 12px;">
+        <span style="font-size:16px;font-weight:900;color:#c84b31;flex-shrink:0;line-height:1.4;">2</span>
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.7;"><strong>任意継続の保険料は協会が徴収</strong>（大臣ではない）← Day1 F4と連動</div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;background:#fff8f7;border:1px solid #fca5a5;border-radius:8px;padding:8px 12px;">
+        <span style="font-size:16px;font-weight:900;color:#c84b31;flex-shrink:0;line-height:1.4;">3</span>
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.7;"><strong>兄弟姉妹は同居不要</strong>（叔父・甥など「その他の三親等」は同居必要）</div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;background:#fff8f7;border:1px solid #fca5a5;border-radius:8px;padding:8px 12px;">
+        <span style="font-size:16px;font-weight:900;color:#c84b31;flex-shrink:0;line-height:1.4;">4</span>
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.7;"><strong>共済組合≠健康保険組合</strong>（共済は公務員専用、健保組合は民間大企業）</div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;background:#fff8f7;border:1px solid #fca5a5;border-radius:8px;padding:8px 12px;">
+        <span style="font-size:16px;font-weight:900;color:#c84b31;flex-shrink:0;line-height:1.4;">5</span>
+        <div style="font-size:12px;color:#1a1a2e;line-height:1.7;"><strong>被扶養者の収入要件は130万円未満</strong>（103万円は所得税の扶養控除で健保とは別物）</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+</div><!-- /panel-mindmap -->
+
+<!-- ======== フラッシュカード パネル ======== -->
+<div id="panel-flash" class="tab-panel">
+<div class="fc-wrap">
+  <div class="fc-meta">
+    <div>
+      <div class="fc-counter" id="fc-counter">1<span> / 20</span></div>
+    </div>
+    <button class="fc-nav-btn shuffle" onclick="fcShuffle()" style="max-width:100px;padding:8px 12px;font-size:12px;">🔀 シャッフル</button>
+  </div>
+  <div class="fc-gauge-wrap">
+    <div class="fc-gauge-labels">
+      <span class="fc-gauge-label-ng">❌ <span id="fc-ng-count">0</span></span>
+      <span class="fc-gauge-label-mid" id="fc-remaining">残り 20 枚</span>
+      <span class="fc-gauge-label-ok"><span id="fc-ok-count">0</span> ✅</span>
+    </div>
+    <div class="fc-gauge-track">
+      <div class="fc-gauge-ng" id="fc-gauge-ng"></div>
+      <div class="fc-gauge-mid-line"></div>
+      <div class="fc-gauge-ok" id="fc-gauge-ok"></div>
+    </div>
+  </div>
+  <div class="fc-carousel" id="fc-carousel">
+    <div class="fc-slot prev" id="fc-slot-prev">
+      <div class="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-prev-tag">—</span>
+            <span style="font-size:11px;color:var(--gray);" id="fc-prev-cat"></span>
+          </div>
+          <div class="fc-front-body">
+            <div class="fc-q" id="fc-prev-q" style="font-size:13px;opacity:.7;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-slot curr" id="fc-slot-curr" onclick="fcFlip()">
+      <div class="fc-inner" id="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-tag">Q01</span>
+            <span style="font-size:11px;color:var(--gray);" id="fc-cat">資格取得の時期</span>
+          </div>
+          <div class="fc-front-body">
+            <div class="fc-q" id="fc-q">—</div>
+          </div>
+          <div class="fc-ox">
+            <button class="fc-ox-btn o" onclick="fcChoose(true);event.stopPropagation();">○</button>
+            <button class="fc-ox-btn x" onclick="fcChoose(false);event.stopPropagation();">×</button>
+          </div>
+        </div>
+        <div class="fc-face fc-back-face">
+          <div class="fc-back-hd">
+            <span class="fc-verdict" id="fc-verdict">×　誤り</span>
+            <span id="fc-user-ans" style="font-size:12px;margin-left:auto;"></span>
+          </div>
+          <div class="fc-back-body">
+            <div class="fc-answer" id="fc-answer">—</div>
+            <div class="fc-reason" id="fc-reason">—</div>
+            <div class="fc-lawref" id="fc-lawref">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-slot next" id="fc-slot-next">
+      <div class="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-next-tag">—</span>
+            <span style="font-size:11px;color:var(--gray);" id="fc-next-cat"></span>
+          </div>
+          <div class="fc-front-body">
+            <div class="fc-q" id="fc-next-q" style="font-size:13px;opacity:.7;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fc-nav" id="fc-nav" style="display:none;">
+    <button class="fc-nav-btn again" onclick="fcNext(false)">😅 もう一度</button>
+    <button class="fc-nav-btn got"   onclick="fcNext(true)">✅ わかった！</button>
+  </div>
+  <div class="fc-result" id="fc-result">
+    <div style="font-size:36px;margin-bottom:8px;" id="fc-emoji">🎉</div>
+    <h3>フラッシュカード完了！</h3>
+    <div class="fc-result-score" id="fc-result-score">—</div>
+    <div class="fc-result-sub" id="fc-result-sub">—</div>
+    <button class="fc-restart-btn" onclick="fcRestart()">🔁 もう一周する</button>
+  </div>
+</div>
+</div>
+
+</div><!-- /panel-flash -->
+
+<!-- ======== スパイダーマップ パネル ======== -->
+<!-- ======== スパイダーマップ パネル ======== -->
+<div id="panel-spider" class="tab-panel">
+<div class="spider-wrap">
+  <div style="background:#ede9fe;border:1px solid #c4b5fd;border-radius:10px;padding:12px 16px;font-size:13px;color:#4c1d95;margin-bottom:20px;line-height:1.7;">
+    🕸️ <strong>記憶マップ</strong>：第2階層をタップで枝の展開・解説を切り替え。第3階層タップでリーフのみ開閉。
+  </div>
+  <div id="sp-root" style="width:100%;"></div>
+  <div id="spider-detail" style="display:none;margin-top:16px;background:white;border:2px solid #1a1a2e;border-radius:14px;overflow:hidden;">
+    <div id="spider-detail-hd" style="padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+      <span id="spider-detail-title" style="font-weight:700;font-size:15px;color:white;"></span>
+      <button onclick="closeSpiderDetail()" style="border:none;background:none;font-size:22px;cursor:pointer;color:rgba(255,255,255,.8);line-height:1;padding:0 4px;">x</button>
+    </div>
+    <div id="spider-detail-body" style="padding:16px 18px 20px;"></div>
+  </div>
+</div>
+</div>
+
+</div><!-- /panel-spider -->
+
+
+<script>
+// ═══════════════════════════════════════════════════════
+// 1. DAY_META・採点・穴埋め・フラッシュカード・switchTab
+// ═══════════════════════════════════════════════════════
+const DAY_META = {day:'Day2',block:'Block2',unit:'被保険者・被扶養者・資格得喪①',range:'法第3条・第35条〜第48条',total:10};
+
+function copyRecord(){
+  const saved=JSON.parse(localStorage.getItem('kenpo_day2.html')||'{}');
+  const c=saved.correct??score??0;const t=saved.total??10;
+  const dt=saved.ts?new Date(saved.ts):new Date();
+  const ds=dt.getFullYear()+'/'+String(dt.getMonth()+1).padStart(2,'0')+'/'+String(dt.getDate()).padStart(2,'0');
+  const row=[DAY_META.day,DAY_META.block,DAY_META.unit,DAY_META.range,t,ds,c,t>0?Math.round(c/t*100):0].join('\t');
+  navigator.clipboard.writeText(row).then(showCopied).catch(()=>{
+    const ta=document.createElement('textarea');ta.value=row;ta.style.cssText='position:fixed;opacity:0;';
+    document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showCopied();
+  });
+}
+function showCopied(){
+  ['copy-btn','copy-btn2'].forEach(id=>{const b=document.getElementById(id);if(!b)return;b.textContent='✅ コピーしました！';b.classList.add('copied');setTimeout(()=>{b.textContent='📋 記録をコピー';b.classList.remove('copied');},2500);});
+}
+const correct_ans={q1:1,q2:0,q3:0,q4:1,q5:1};
+const done={};let score=0;let total=0;
+
+function answer(qid,idx){
+  if(done[qid])return;done[qid]=true;
+  const opts=document.querySelectorAll('#'+qid+'-opts .opt');
+  const ans=document.getElementById(qid+'-ans');
+  const ok=idx===correct_ans[qid];
+  opts.forEach((o,i)=>{if(i===correct_ans[qid])o.classList.add('correct');else if(i===idx&&!ok)o.classList.add('wrong');});
+  ans.className='ans-box show '+(ok?'ok':'ng');
+  if(ok)score++;
+  document.getElementById('score').textContent=score;
+  updateProg();
+  setTimeout(()=>ans.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+}
+
+const defs={
+  f1:{f1a:'2',f1b:'厚生労働大臣',f1c:'全国健康保険協会'},
+  f2:{f2a:'130',f2b:'180',f2c:'1/2'},
+  f3:{f3a:'消滅した日の翌日',f3b:'死亡した日の翌日',f3c:'75歳の誕生日'},
+  f4:{f4a:'船員保険',f4b:'共済組合',f4c:'日雇特例被保険者'},
+  f5:{f5a:'三親等',f5b:'生計',f5c:'同居'},
+};
+const state={f1:{},f2:{},f3:{},f4:{},f5:{}};
+const sel={f1:null,f2:null,f3:null,f4:null,f5:null};
+const fdone={};
+
+function selB(fid,bid){
+  if(fdone[fid])return;
+  // すでに値が入っている空欄をクリックしたら値を取り出してチップを戻す
+  if(state[fid][bid]!==undefined){
+    const prevVal=state[fid][bid];
+    delete state[fid][bid];
+    document.getElementById(bid).textContent='　　';
+    // 対応するチップのusedを外す
+    document.querySelectorAll('#'+fid+'-ch .chp').forEach(c=>{
+      if(c.textContent===prevVal && c.classList.contains('used'))c.classList.remove('used');
+    });
+  }
+  document.querySelectorAll('#c'+fid+' .blank').forEach(b=>b.classList.remove('sel'));
+  sel[fid]=bid;document.getElementById(bid).classList.add('sel');
+}
+function fillB(fid,bid,chip,val){
+  if(fdone[fid])return;
+  const s=sel[fid];
+  if(!s){
+    // 空欄を選ばずにチップを押した場合：未入力の最初の空欄に自動で入れる
+    const keys=Object.keys(defs[fid]);
+    const empty=keys.find(k=>state[fid][k]===undefined);
+    if(!empty)return;
+    document.getElementById(empty).textContent=val;
+    document.getElementById(empty).classList.remove('sel');
+    state[fid][empty]=val;chip.classList.add('used');
+    return;
+  }
+  // すでにその空欄に値があれば古いチップを戻す
+  if(state[fid][s]!==undefined){
+    const prevVal=state[fid][s];
+    document.querySelectorAll('#'+fid+'-ch .chp').forEach(c=>{
+      if(c.textContent===prevVal && c.classList.contains('used'))c.classList.remove('used');
+    });
+  }
+  document.getElementById(s).textContent=val;
+  document.getElementById(s).classList.remove('sel');
+  state[fid][s]=val;chip.classList.add('used');sel[fid]=null;
+}
+function chkF(fid){
+  if(fdone[fid])return;
+  const d=defs[fid];const keys=Object.keys(d);
+  if(!keys.every(k=>state[fid][k]!==undefined)){alert('すべての空欄を埋めてください');return;}
+  fdone[fid]=true;let allOk=true;
+  keys.forEach(k=>{const el=document.getElementById(k);if(state[fid][k]===d[k])el.classList.add('ok-fill');else{el.classList.add('ng-fill');allOk=false;}});
+  document.querySelectorAll('#'+fid+'-ch .chp').forEach(c=>{if(c.classList.contains('used')){const v=c.textContent;c.classList.add(Object.values(d).includes(v)?'ok-c':'ng-c');}});
+  const ans=document.getElementById(fid+'-ans');ans.className='ans-box show ok';
+  document.getElementById(fid+'-btn').disabled=true;
+  if(allOk)score++;document.getElementById('score').textContent=score;
+  updateProg();setTimeout(()=>ans.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+}
+function updateProg(){
+  total=Object.keys(done).length+Object.keys(fdone).length;
+  document.getElementById('prog').style.width=(total/10*100)+'%';
+  document.getElementById('prog-lbl').textContent=total+' ／ 10 問 回答済み';
+  if(total>=10)showComplete();
+}
+function showComplete(){
+  localStorage.setItem('kenpo_day2.html',JSON.stringify({done:true,correct:score,total:10,ts:Date.now()}));
+  document.getElementById('final-score').textContent=score;
+  const b=document.getElementById('complete-banner');b.style.display='block';
+  setTimeout(()=>b.scrollIntoView({behavior:'smooth',block:'start'}),200);
+}
+
+// ─────────────────────────────────────────────
+// フラッシュカード データ（20枚）
+// ─────────────────────────────────────────────
+const FC_CARDS = [
+  // ── 資格取得 ──
+  {tag:'Q01', cat:'資格取得の時期', correct:false,
+   q:'被保険者の資格は、適用事業所に使用されるに至った日の<mark>翌日</mark>から取得する。',
+   answer:'× 誤り',
+   reason:'資格取得は使用されるに至った日（<mark>当日</mark>）から。「翌日から」は資格喪失の原則と混同した引っかけ。',
+   law:'法第35条'},
+
+  {tag:'引っかけ', cat:'取得 vs 喪失', correct:true,
+   q:'4月1日に入社した場合、被保険者の資格取得日は<mark>4月1日</mark>である。',
+   answer:'○ 正しい',
+   reason:'資格取得は使用されるに至った日（<mark>当日</mark>）から。4月1日入社→<mark>4月1日</mark>に資格取得。',
+   law:'法第35条'},
+
+  // ── 適用除外 ──
+  {tag:'Q04', cat:'適用除外', correct:false,
+   q:'<mark>健康保険組合</mark>の組合員は、健康保険の適用除外者に該当する。',
+   answer:'× 誤り',
+   reason:'<mark>共済組合</mark>の組合員が適用除外。健康保険組合の組合員はその組合の<mark>被保険者</mark>（除外ではない）。共済組合（公務員専用）≠健康保険組合（民間大企業）。',
+   law:'法第3条第1項'},
+
+  {tag:'適用除外', cat:'4類型', correct:false,
+   q:'日雇労働者は健康保険の<mark>適用除外者</mark>に該当する。',
+   answer:'× 誤り',
+   reason:'日雇労働者は適用除外ではなく、健保法第7章に<mark>日雇特例被保険者</mark>として別途規定される。健保法の内側にいる。',
+   law:'法第3条第1項・第124条'},
+
+  {tag:'適用除外', cat:'臨時的事業', correct:false,
+   q:'臨時的事業の事業所に使用され、2ヵ月以内の期間を定めて雇用される者が、所定期間を超えて継続して使用された場合も、<mark>適用除外のまま</mark>である。',
+   answer:'× 誤り',
+   reason:'所定期間を<mark>超えた時点で被保険者資格を取得</mark>する。「2ヵ月以内」の要件を満たさなくなったため、除外理由がなくなる。',
+   law:'法第3条第1項第2号'},
+
+  {tag:'適用除外', cat:'臨時 vs 日雇', correct:true,
+   q:'「臨時的事業の適用除外」は<mark>事業所自体が臨時</mark>であることが要件であり、「日雇特例被保険者」とは根本的に異なる類型である。',
+   answer:'○ 正しい',
+   reason:'臨時的事業は「<mark>事業所が臨時</mark>」で健保法の<mark>外</mark>（適用除外）。日雇特例は「<mark>雇用形態が日々・短期</mark>」で健保法の<mark>内</mark>（第7章で規定）。位置づけが全く異なる。',
+   law:'法第3条第1項第2号・第124条'},
+
+  // ── 資格喪失 ──
+  {tag:'Q05', cat:'資格喪失の時期', correct:false,
+   q:'75歳に到達して後期高齢者医療の被保険者となった場合、健康保険の資格喪失日は<mark>誕生日の翌日</mark>である。',
+   answer:'× 誤り',
+   reason:'75歳到達は例外で誕生日<mark>当日</mark>に喪失。その日から後期高齢者医療が始まるため空白日ゼロ。退職・死亡の翌日喪失と混同しない。',
+   law:'法第36条第4号'},
+
+  {tag:'F3', cat:'資格喪失の時期', correct:false,
+   q:'3月31日に退職した場合、健康保険の資格喪失日は<mark>3月31日</mark>である。',
+   answer:'× 誤り',
+   reason:'退職（使用関係消滅）の場合は消滅した日の<mark>翌日</mark>に喪失。3月31日退職→<mark>4月1日</mark>に資格喪失。',
+   law:'法第36条第1号'},
+
+  {tag:'引っかけ', cat:'資格喪失の時期', correct:false,
+   q:'被保険者が死亡した場合、資格喪失日は死亡した<mark>当日</mark>である。',
+   answer:'× 誤り',
+   reason:'死亡の場合も<mark>翌日</mark>に喪失する（死亡した日の翌日）。当日喪失の例外は75歳到達のみ。',
+   law:'法第36条第3号'},
+
+  // ── 任意継続 ──
+  {tag:'Q02', cat:'任意継続の要件', correct:false,
+   q:'任意継続被保険者になるためには、資格喪失前に<mark>通算して2ヵ月以上</mark>の被保険者期間が必要である。',
+   answer:'× 誤り',
+   reason:'「通算」ではなく「<mark>継続して</mark>」2ヵ月以上が必要。途切れた期間を合計してもカウント不可。',
+   law:'法第37条第1項'},
+
+  {tag:'F1', cat:'任意継続の保険料', correct:false,
+   q:'任意継続被保険者の保険料は<mark>厚生労働大臣</mark>が徴収する。',
+   answer:'× 誤り',
+   reason:'任意継続被保険者の保険料は<mark>全国健康保険協会（協会けんぽ）</mark>が徴収する。一般被保険者の保険料を大臣が徴収するのと逆。超頻出論点。',
+   law:'法第5条第2項・第37条'},
+
+  {tag:'任意継続', cat:'保険料の算定', correct:false,
+   q:'任意継続被保険者の保険料は、<mark>退職時の標準報酬月額</mark>で算定する。',
+   answer:'× 誤り',
+   reason:'退職時の標準報酬月額 <mark>または</mark> 全被保険者の平均標準報酬月額の、<mark>低い方</mark>で算定する。高い方ではなく低い方がポイント。',
+   law:'法第47条'},
+
+  {tag:'任意継続', cat:'申請期限と期間', correct:false,
+   q:'任意継続被保険者の申請は資格喪失日から<mark>30日以内</mark>に行わなければならない。',
+   answer:'× 誤り',
+   reason:'申請期限は資格喪失日から<mark>20日以内</mark>。30日ではない。正当な理由がある場合は延長可（厚生労働省令）。',
+   law:'法第37条第1項'},
+
+  // ── 被扶養者 ──
+  {tag:'Q03', cat:'被扶養者の同居要件', correct:true,
+   q:'被保険者の兄弟姉妹は、<mark>別居していても</mark>被扶養者として認定される。',
+   answer:'○ 正しい',
+   reason:'兄弟姉妹は同居不要グループ（直系尊属・配偶者・子・孫・兄弟姉妹）に含まれる。同居が必要なのは「その他の三親等内の親族」（叔父・甥など）。',
+   law:'法第3条第7項'},
+
+  {tag:'引っかけ', cat:'被扶養者の同居要件', correct:false,
+   q:'被保険者の叔父は、<mark>別居していても</mark>被扶養者として認定される。',
+   answer:'× 誤り',
+   reason:'叔父は「その他の三親等内の親族」に該当し、<mark>同居が必要</mark>。別居では認定不可。兄弟姉妹（別居OK）との混同が頻出引っかけ。',
+   law:'法第3条第7項'},
+
+  {tag:'F2', cat:'被扶養者の収入要件', correct:false,
+   q:'被扶養者の年収要件は、原則として年間収入が<mark>103万円未満</mark>であることである。',
+   answer:'× 誤り',
+   reason:'健康保険の被扶養者の収入要件は<mark>130万円未満</mark>（60歳以上・一定障害者は180万円未満）。103万円は所得税の扶養控除ラインで健保とは別物。',
+   law:'法第3条第7項'},
+
+  {tag:'F2', cat:'被扶養者の収入要件', correct:false,
+   q:'同居している場合の被扶養者の収入要件は、年収130万円未満かつ被保険者の年収の<mark>2分の1以上</mark>であること。',
+   answer:'× 誤り',
+   reason:'同居の場合は年収130万円未満かつ被保険者年収の<mark>1/2未満</mark>。「以上」ではなく「未満」。',
+   law:'法第3条第7項'},
+
+  // ── 親等 ──
+  {tag:'F5', cat:'三親等・生計維持', correct:false,
+   q:'被扶養者の範囲は被保険者の<mark>二親等</mark>以内の親族である。',
+   answer:'× 誤り',
+   reason:'被扶養者の対象範囲は<mark>三親等以内</mark>の親族。四親等以上（いとこなど）は同居しても認定されない。',
+   law:'法第3条第7項'},
+
+  {tag:'F5', cat:'三親等・生計維持', correct:false,
+   q:'被扶養者の要件として、被保険者により主として<mark>家計</mark>を維持することが必要である。',
+   answer:'× 誤り',
+   reason:'条文の正確な言葉は「主として被保険者により<mark>生計</mark>を維持する」。「家計」は誤り。条文の言葉をそのまま覚えることが重要。',
+   law:'法第3条第7項'},
+
+  {tag:'引っかけ', cat:'いとこは何親等？', correct:false,
+   q:'いとこ（従兄弟）は被保険者の三親等以内に該当するため、同居すれば被扶養者に認定できる。',
+   answer:'× 誤り',
+   reason:'いとこは<mark>4親等</mark>（自分→親→祖父母→叔父→いとこの4ステップ）で三親等以内に該当しない。<mark>同居しても認定不可</mark>。',
+   law:'法第3条第7項'},
+];
+
+// ─────────────────────────────────────────────
+// フラッシュカード ロジック
+// ─────────────────────────────────────────────
+let fcDeck = [];
+let fcIdx = 0;
+let fcGot = 0;
+let fcFlipped = false;
+let fcOk = 0;
+let fcNg = 0;
+
+function fcUpdateGauge() {
+  const total = fcDeck.length;
+  const remaining = total - fcIdx;
+  const half = 50;
+  const okPct = Math.min(fcOk / total * 100, half);
+  const ngPct = Math.min(fcNg / total * 100, half);
+  document.getElementById('fc-gauge-ok').style.width = okPct + '%';
+  document.getElementById('fc-gauge-ng').style.width = ngPct + '%';
+  document.getElementById('fc-ok-count').textContent = fcOk;
+  document.getElementById('fc-ng-count').textContent = fcNg;
+  document.getElementById('fc-remaining').textContent = '残り ' + remaining + ' 枚';
+  document.getElementById('fc-counter').innerHTML = `${fcIdx + 1}<span> / ${total}</span>`;
+}
+
+function fcSetSlot(slotId, tagId, catId, qId, cardData) {
+  const slot = document.getElementById(slotId);
+  if (!cardData) { slot.classList.add('hidden'); return; }
+  slot.classList.remove('hidden');
+  document.getElementById(tagId).textContent = cardData.tag;
+  document.getElementById(catId).textContent  = cardData.cat;
+  document.getElementById(qId).innerHTML      = cardData.q;
+}
+
+function fcRender() {
+  const total = fcDeck.length;
+  const curr  = fcDeck[fcIdx];
+  const prev  = fcIdx > 0         ? fcDeck[fcIdx - 1] : null;
+  const next  = fcIdx < total - 1 ? fcDeck[fcIdx + 1] : null;
+
+  fcSetSlot('fc-slot-prev', 'fc-prev-tag', 'fc-prev-cat', 'fc-prev-q', prev);
+  fcSetSlot('fc-slot-next', 'fc-next-tag', 'fc-next-cat', 'fc-next-q', next);
+
+  document.getElementById('fc-tag').textContent  = curr.tag;
+  document.getElementById('fc-cat').textContent  = curr.cat;
+  document.getElementById('fc-q').innerHTML      = curr.q;
+
+  const verdict = document.getElementById('fc-verdict');
+  verdict.textContent = curr.correct ? '○　正しい' : '×　誤り';
+  verdict.className   = 'fc-verdict ' + (curr.correct ? 'ok' : 'ng');
+  document.getElementById('fc-answer').textContent = curr.answer;
+  document.getElementById('fc-reason').innerHTML   = curr.reason;
+  document.getElementById('fc-lawref').textContent = curr.law;
+
+  const inner = document.getElementById('fc-inner');
+  inner.classList.remove('flipped');
+  fcFlipped = false;
+  document.getElementById('fc-nav').style.display = 'none';
+  const userAnsEl = document.getElementById('fc-user-ans');
+  if (userAnsEl) userAnsEl.textContent = '';
+
+  fcUpdateGauge();
+}
+
+function fcInit() {
+  fcDeck = [...FC_CARDS];
+  fcIdx = 0; fcGot = 0; fcOk = 0; fcNg = 0; fcFlipped = false;
+  document.getElementById('fc-result').style.display   = 'none';
+  document.getElementById('fc-carousel').style.display = 'flex';
+  document.getElementById('fc-nav').style.display      = 'none';
+  fcRender();
+}
+
+function fcShuffle() {
+  fcDeck = [...FC_CARDS].sort(() => Math.random() - 0.5);
+  fcIdx = 0; fcGot = 0; fcOk = 0; fcNg = 0; fcFlipped = false;
+  document.getElementById('fc-result').style.display   = 'none';
+  document.getElementById('fc-carousel').style.display = 'flex';
+  document.getElementById('fc-nav').style.display      = 'none';
+  fcRender();
+}
+
+function fcChoose(userSaidTrue) {
+  if (fcFlipped) return;
+  const curr = fcDeck[fcIdx];
+  const isCorrect = (userSaidTrue === curr.correct);
+
+  // 正誤判定と同時に苦手を自動登録・解除
+  if (isCorrect) {
+    fcGot++; fcOk++;
+    if (typeof fcWeakSet !== 'undefined') fcWeakSet.delete(fcIdx);
+  } else {
+    fcNg++;
+    if (typeof fcWeakSet === 'undefined') window.fcWeakSet = new Set();
+    fcWeakSet.add(fcIdx);
+  }
+
+  const userAnsEl = document.getElementById('fc-user-ans');
+  if (userAnsEl) {
+    userAnsEl.textContent = isCorrect ? '✅ 正解！' : '❌ 不正解 → 苦手に追加';
+    userAnsEl.style.color = isCorrect ? 'var(--green)' : 'var(--red)';
+    userAnsEl.style.fontWeight = '700';
+  }
+
+  const againBtn = document.querySelector('.fc-nav-btn.again');
+  const gotBtn   = document.querySelector('.fc-nav-btn.got');
+  if (againBtn && gotBtn) {
+    if (isCorrect) {
+      againBtn.style.display = 'none';
+      gotBtn.style.display   = 'block';
+      gotBtn.textContent     = '次へ →';
+    } else {
+      againBtn.style.display = 'block';
+      againBtn.textContent   = '次へ →';
+      gotBtn.style.display   = 'none';
+    }
+  }
+
+  fcFlipped = true;
+  document.getElementById('fc-inner').classList.add('flipped');
+  setTimeout(() => {
+    document.getElementById('fc-nav').style.display = 'flex';
+  }, 280);
+}
+
+function fcFlip() {
+  const inner = document.getElementById('fc-inner');
+  if (!fcFlipped) {
+    fcFlipped = true;
+    inner.classList.add('flipped');
+    const userAnsEl = document.getElementById('fc-user-ans');
+    if (userAnsEl) {
+      userAnsEl.textContent = '（○×で回答してください）';
+      userAnsEl.style.color = 'var(--gray)';
+    }
+    const againBtn = document.querySelector('.fc-nav-btn.again');
+    const gotBtn   = document.querySelector('.fc-nav-btn.got');
+    if (againBtn && gotBtn) {
+      againBtn.style.display = 'block';
+      againBtn.textContent   = '😅 もう一度';
+      gotBtn.style.display   = 'block';
+      gotBtn.textContent     = '✅ わかった！';
+    }
+    setTimeout(() => {
+      document.getElementById('fc-nav').style.display = 'flex';
+    }, 280);
+  } else {
+    fcFlipped = false;
+    inner.classList.remove('flipped');
+    document.getElementById('fc-nav').style.display = 'none';
+  }
+}
+
+function fcNext(got) {
+  if (got) { fcGot++; fcOk++; } else { fcNg++; }
+  document.getElementById('fc-nav').style.display = 'none';
+
+  if (fcIdx + 1 >= fcDeck.length) {
+    // ゲージを最終状態に
+    fcUpdateGauge();
+    document.getElementById('fc-remaining').textContent = '残り 0 枚';
+    document.getElementById('fc-carousel').style.display = 'none';
+    const result = document.getElementById('fc-result');
+    result.style.display = 'block';
+    const pct = Math.round(fcOk / fcDeck.length * 100);
+    document.getElementById('fc-result-score').textContent = `${fcOk} / ${fcDeck.length}`;
+    document.getElementById('fc-result-sub').textContent   = `正答率 ${pct}% ― ${pct >= 80 ? 'バッチリ！次のDayへ進もう' : pct >= 60 ? 'もう一周してみよう' : '連想図を見直してから再挑戦！'}`;
+    document.getElementById('fc-emoji').textContent        = pct >= 80 ? '🏆' : pct >= 60 ? '✨' : '📖';
+    document.getElementById('fc-counter').innerHTML        = `${fcDeck.length}<span> / ${fcDeck.length}</span>`;
+    return;
+  }
+
+  fcIdx++;
+  fcRender();
+}
+
+function fcRestart() { fcInit(); }
+
+// フラッシュカード初期化（タブ切り替え時）
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (name === 'flash' && fcDeck.length === 0) fcInit();
+  if (name === 'spider') buildSpider();
+}
+
+// fcInit() is called via DOMContentLoaded after all DOM is ready
+
+// ═══════════════════════════════════════════════════════
+// 2. SPIDER_DATA + buildSpider + openSpiderDetail
+// ═══════════════════════════════════════════════════════
+const SPIDER_DATA = [
+  { id:"get",  label:"資格取得", sub:"法第35条",
+    color:"#3a6b52", light:"#eaf4ee", border:"#6aab84", angle:218,
+    children:[
+      { label:"取得日",   sub:"当日",        leaves:["入社した日から","「翌日」は×"] },
+      { label:"適用除外", sub:"4類型",       leaves:["①船員保険","②共済組合","③後期高齢者","④臨時2ヵ月"] },
+      { label:"日雇特例", sub:"第7章で規定", leaves:["除外ではない","健保法の内側"] }
+    ],
+    detail:{
+      hdColor:"#3a6b52",
+      items:[
+        {label:"資格取得日", val:"使用されるに至った日（当日）", note:"「翌日から」は×。"},
+        {label:"適用除外4類型", val:"①船員保険 ②共済組合 ③後期高齢者医療 ④臨時2ヵ月以内", note:"2ヵ月超えたら取得。"},
+        {label:"日雇特例被保険者", val:"健保法第7章で規定（適用除外ではない）", note:"健保法の内側にいる別制度。"}
+      ],
+      hikakke:"× 「翌日から取得」→ ○ 当日取得\n× 「日雇労働者は適用除外」→ ○ 日雇特例被保険者として第7章で規定"
+    }
+  },
+  { id:"lose", label:"資格喪失", sub:"法第36条",
+    color:"#8f3a2a", light:"#f9ecea", border:"#c47a6a", angle:322,
+    children:[
+      { label:"退職・解雇", sub:"翌日喪失", leaves:["消滅の翌日","月末→翌月1日"] },
+      { label:"死亡",       sub:"翌日喪失", leaves:["死亡日の翌日","空白1日あり"] },
+      { label:"75歳到達",   sub:"当日喪失", leaves:["誕生日当日","後期高齢者へ即移行","「翌日」は×（例外）"] }
+    ],
+    detail:{
+      hdColor:"#8f3a2a",
+      items:[
+        {label:"退職・解雇", val:"消滅した日の翌日に喪失", note:"3月31日退職→4月1日喪失。"},
+        {label:"死亡", val:"死亡した日の翌日に喪失", note:""},
+        {label:"75歳到達", val:"誕生日当日に喪失（例外！）", note:"後期高齢者医療が当日から始まるため空白日ゼロ。"}
+      ],
+      hikakke:"× 「退職当日に喪失」→ ○ 翌日喪失\n× 「75歳の翌日に喪失」→ ○ 誕生日当日（例外）"
+    }
+  },
+  { id:"dep",  label:"被扶養者", sub:"法第3条第7項",
+    color:"#7a5c1e", light:"#f7f0e0", border:"#b8972a", angle:142,
+    children:[
+      { label:"対象範囲", sub:"三親等以内",    leaves:["四親等↑は対象外","いとこは×"] },
+      { label:"同居要件", sub:"グループで判断", leaves:["不要：直配子孫兄弟","必要：叔父・甥・姪"] },
+      { label:"収入要件", sub:"130万円未満",   leaves:["60歳↑は180万円","同居→1/2未満も必要","103万は所得税（別物）"] }
+    ],
+    detail:{
+      hdColor:"#7a5c1e",
+      items:[
+        {label:"対象範囲", val:"三親等以内の親族（四親等以上は対象外）", note:"いとこ（4親等）は対象外。"},
+        {label:"同居不要グループ", val:"直系尊属・配偶者・子・孫・兄弟姉妹", note:"叔父・甥など「その他3親等」は同居必要。"},
+        {label:"収入要件", val:"130万円未満（60歳以上・障害者は180万円未満）", note:"同居の場合は1/2未満も必要。"},
+        {label:"生計維持要件", val:"主として被保険者により生計を維持すること", note:"「家計」は×。"}
+      ],
+      hikakke:"× 「兄弟姉妹は同居必要」→ ○ 同居不要\n× 「収入要件は103万円未満」→ ○ 130万円未満"
+    }
+  },
+  { id:"cont", label:"任意継続", sub:"法第37条",
+    color:"#2a6060", light:"#e5f2f2", border:"#5a9ea0", angle:38,
+    children:[
+      { label:"加入要件",   sub:"2ヵ月継続",   leaves:["継続して2ヵ月以上","「通算」は×"] },
+      { label:"申請・期間", sub:"20日・2年",   leaves:["喪失から20日以内","「30日」は×","最長2年で強制喪失"] },
+      { label:"保険料",     sub:"全額自己負担", leaves:["協会けんぽが徴収","大臣ではない！"] }
+    ],
+    detail:{
+      hdColor:"#2a6060",
+      items:[
+        {label:"要件", val:"継続して2ヵ月以上の被保険者期間", note:"「通算」は×。連続が必須。"},
+        {label:"申請期限", val:"資格喪失日から20日以内", note:"「30日以内」は×。"},
+        {label:"加入期間", val:"取得日から最長2年", note:"保険料は全額自己負担。"},
+        {label:"保険料徴収", val:"全国健康保険協会（協会けんぽ）", note:"厚生労働大臣ではない。超頻出。"}
+      ],
+      hikakke:"× 「通算して2ヵ月以上」→ ○ 継続して2ヵ月以上\n× 「喪失から30日以内」→ ○ 20日以内\n× 「保険料は厚生労働大臣が徴収」→ ○ 全国健康保険協会"
+    }
+  }
+];
+
+// 折りたたみ管理
+var spBranchOpen = {get:false,lose:false,dep:false,cont:false};
+var spLeafOpen   = {};
+
+function buildSpider(){
+  var root = document.getElementById("sp-root");
+  if(!root) return;
+  root.innerHTML = "";
+
+  var W=760, H=720, CX=380, CY=360;
+  var R1=108, R2=222, R3=330, CS=20, LS=7;
+
+  var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.setAttribute("viewBox","0 0 "+W+" "+H);
+  svg.setAttribute("xmlns","http://www.w3.org/2000/svg");
+  svg.setAttribute("font-family","'Noto Sans JP',sans-serif");
+  svg.style.display="block";
+  svg.style.width="100%";
+  svg.style.height="auto";
+
+  function mk(tag,attrs){
+    var el=document.createElementNS("http://www.w3.org/2000/svg",tag);
+    for(var k in attrs) el.setAttribute(k,attrs[k]);
+    return el;
+  }
+  function r(d){return d*Math.PI/180;}
+  function pt(dist,deg){return[CX+Math.cos(r(deg))*dist, CY+Math.sin(r(deg))*dist];}
+
+  // グリッド円
+  [R1+16,R2+14,R3+16].forEach(function(dist){
+    svg.appendChild(mk("circle",{cx:CX,cy:CY,r:dist,fill:"none",stroke:"#e4dfd6","stroke-width":"1","stroke-dasharray":"4,5"}));
+  });
+
+  SPIDER_DATA.forEach(function(branch){
+    var ba=branch.angle;
+    var bpt=pt(R1,ba); var bx=bpt[0],by=bpt[1];
+
+    // 幹線
+    svg.appendChild(mk("line",{x1:CX,y1:CY,x2:bx,y2:by,stroke:branch.color,"stroke-width":"4.5","stroke-linecap":"round"}));
+
+    // outerGroup（第2階層全体の show/hide）
+    var og = document.createElementNS("http://www.w3.org/2000/svg","g");
+    og.id = "sp-og-"+branch.id;
+    og.style.display = spBranchOpen[branch.id] ? "" : "none";
+
+    branch.children.forEach(function(child,ci){
+      var ca = ba + (ci - 1)*CS;
+      var cpt=pt(R2,ca); var cx2=cpt[0],cy2=cpt[1];
+      var key = branch.id+"_"+ci;
+      if(spLeafOpen[key]===undefined) spLeafOpen[key]=true;
+
+      // 第2→第3の枝線
+      og.appendChild(mk("line",{x1:bx,y1:by,x2:cx2,y2:cy2,stroke:branch.color,"stroke-width":"2","stroke-linecap":"round"}));
+
+      // leafGroup
+      var lg = document.createElementNS("http://www.w3.org/2000/svg","g");
+      lg.id = "sp-lg-"+key;
+      lg.style.display = spLeafOpen[key] ? "" : "none";
+
+      var lc=child.leaves.length;
+      child.leaves.forEach(function(leaf,li){
+        var la = ca + (li-(lc-1)/2)*LS;
+        var lpt=pt(R3,la); var lx=lpt[0],ly=lpt[1];
+        lg.appendChild(mk("line",{x1:cx2,y1:cy2,x2:lx,y2:ly,stroke:branch.border,"stroke-width":"1.2","stroke-dasharray":"3,3","stroke-linecap":"round"}));
+        var lw=120;
+        var gr=document.createElementNS("http://www.w3.org/2000/svg","g");
+        gr.appendChild(mk("rect",{x:lx-lw/2,y:ly-13,width:lw,height:26,rx:13,fill:"#faf8f3",stroke:branch.border,"stroke-width":"1.2"}));
+        var fs=leaf.length>10?"9.5":leaf.length>7?"10":"11";
+        var lt=mk("text",{x:lx,y:ly+5,"text-anchor":"middle","font-size":fs,"font-weight":"600",fill:branch.color});
+        lt.textContent=leaf;
+        gr.appendChild(lt);
+        lg.appendChild(gr);
+      });
+      og.appendChild(lg);
+
+      // 第3ノード（楕円）← ogの中・lgの後
+      var gk=document.createElementNS("http://www.w3.org/2000/svg","g");
+      gk.style.cursor="pointer";
+      (function(k,l){
+        gk.addEventListener("click",function(e){
+          e.stopPropagation();
+          spLeafOpen[k]=!spLeafOpen[k];
+          var el=document.getElementById("sp-lg-"+k);
+          if(el) el.style.display=spLeafOpen[k]?"":"none";
+        });
+      })(key,lg);
+      gk.appendChild(mk("ellipse",{cx:cx2,cy:cy2,rx:"46",ry:"24",fill:branch.color}));
+      var kt=mk("text",{x:cx2,y:cy2-3,"text-anchor":"middle","font-size":"11","font-weight":"700",fill:"white"});
+      kt.textContent=child.label; gk.appendChild(kt);
+      var ks=mk("text",{x:cx2,y:cy2+11,"text-anchor":"middle","font-size":"8.5",fill:"rgba(255,255,255,.7)"});
+      ks.textContent=child.sub; gk.appendChild(ks);
+      og.appendChild(gk);
+    });
+    svg.appendChild(og);
+
+    // 第2ノード（大楕円）
+    var gn=document.createElementNS("http://www.w3.org/2000/svg","g");
+    gn.style.cursor="pointer";
+    (function(b){
+      gn.addEventListener("click",function(){
+        spBranchOpen[b.id]=!spBranchOpen[b.id];
+        var el=document.getElementById("sp-og-"+b.id);
+        if(el) el.style.display=spBranchOpen[b.id]?"":"none";
+        if(spBranchOpen[b.id]){ openSpiderDetail(b,null); }
+        else { closeSpiderDetail(); }
+      });
+    })(branch);
+    gn.appendChild(mk("ellipse",{cx:bx,cy:by,rx:"56",ry:"32",fill:branch.color}));
+    var tl=mk("text",{x:bx,y:by-5,"text-anchor":"middle","font-size":"14","font-weight":"700",fill:"white"});
+    tl.textContent=branch.label; gn.appendChild(tl);
+    var ts=mk("text",{x:bx,y:by+11,"text-anchor":"middle","font-size":"9.5",fill:"rgba(255,255,255,.65)"});
+    ts.textContent=branch.sub; gn.appendChild(ts);
+    svg.appendChild(gn);
+  });
+
+  // 中心ノード
+  var gc=document.createElementNS("http://www.w3.org/2000/svg","g");
+  gc.appendChild(mk("ellipse",{cx:CX,cy:CY,rx:"80",ry:"46",fill:"#22253a"}));
+  var texts=[["被保険者・被扶養者",-6,"13","#f0eee8"],["法第3条・第35〜48条",11,"9.5","rgba(240,238,232,.55)"]];
+  texts.forEach(function(t){
+    var ct=mk("text",{x:CX,y:CY+t[1],"text-anchor":"middle","font-size":t[2],"font-weight":"700",fill:t[3]});
+    ct.textContent=t[0]; gc.appendChild(ct);
+  });
+  svg.appendChild(gc);
+  root.appendChild(svg);
+}
+
+function openSpiderDetail(branch, child){
+  var panel=document.getElementById("spider-detail");
+  var hd=document.getElementById("spider-detail-hd");
+  var title=document.getElementById("spider-detail-title");
+  var body=document.getElementById("spider-detail-body");
+  hd.style.background=branch.detail.hdColor;
+  title.textContent=branch.label+"  "+branch.sub;
+  var html="";
+  branch.detail.items.forEach(function(item){
+    html+="<div style='margin-bottom:14px;'>";
+    html+="<div style='font-size:11px;font-weight:700;color:#6b7280;margin-bottom:3px;'>"+item.label+"</div>";
+    html+="<div style='font-size:14px;font-weight:700;color:#1a1a2e;background:"+branch.light+";border:1.5px solid "+branch.border+";border-radius:8px;padding:8px 12px;'>"+item.val+"</div>";
+    if(item.note) html+="<div style='font-size:11px;color:#6b7280;margin-top:4px;padding-left:4px;'>💡 "+item.note+"</div>";
+    html+="</div>";
+  });
+  if(branch.detail.hikakke){
+    html+="<div style='background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 12px;font-size:11px;color:#A32D2D;line-height:2.1;'>";
+    html+="<div style='font-weight:700;margin-bottom:4px;'>🚨 よくある引っかけ</div>";
+    html+=branch.detail.hikakke.split("\n").join("<br>");
+    html+="</div>";
+  }
+  body.innerHTML=html;
+  panel.style.display="block";
+}
+
+function closeSpiderDetail(){
+  document.getElementById("spider-detail").style.display="none";
+}
+
+// ═══════════════════════════════════════════════════════
+// 3. DOMContentLoaded
+// ═══════════════════════════════════════════════════════
+document.addEventListener("DOMContentLoaded", function() { fcInit(); });
+</script>
+</body>
+</html>

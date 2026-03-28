@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day1｜目的・被保険者の種別・任意加入 ― 国民年金法ドリル</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1a2e; --paper:#faf8f3; --warm:#f5f0e8;
+  --red:#c84b31; --red-soft:#e8896b; --red-light:#fee2e2;
+  --teal:#2a7f7f; --teal-light:#e8f4f4;
+  --gold:#c9930a; --gold-light:#fef9e7;
+  --green:#2d6a4f; --green-light:#e8f5ee;
+  --gray:#6b7280; --border:#ddd8cc;
+  --purple:#7c3aed; --purple-light:#ede9fe;
+  --blue:#1d4ed8; --blue-light:#dbeafe;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
+.topbar{background:var(--ink);padding:10px 20px;display:flex;align-items:center;gap:12px;}
+.back-btn{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;cursor:pointer;}
+.back-btn:hover{color:white;}
+.topbar-title{color:rgba(255,255,255,.45);font-size:12px;margin-left:auto;}
+.tab-nav{background:var(--ink);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:100;}
+.tab-nav-in{max-width:820px;margin:0 auto;display:flex;}
+.tab-btn{flex:1;padding:12px 6px;font-size:12px;font-weight:700;color:rgba(255,255,255,.4);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;font-family:inherit;}
+.tab-btn:hover{color:rgba(255,255,255,.75);}
+.tab-btn.active{color:white;border-color:var(--red-soft);}
+.tab-btn.t2.active{border-color:#a78bfa;}
+.tab-btn.t3.active{border-color:var(--teal);}
+.tab-btn.t4.active{border-color:var(--gold);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+.hd{background:var(--ink);color:var(--paper);padding:36px 40px 28px;position:relative;overflow:hidden;}
+.hd::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px);}
+.hd-in{max-width:820px;margin:0 auto;position:relative;}
+.hd-eye{font-size:11px;letter-spacing:3px;color:var(--red-soft);margin-bottom:8px;font-weight:700;}
+.hd h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;line-height:1.3;margin-bottom:6px;}
+.hd h1 em{color:var(--red-soft);font-style:normal;}
+.hd-sub{font-size:13px;color:rgba(255,255,255,.5);font-weight:300;}
+.prog-wrap{margin-top:14px;background:rgba(255,255,255,.15);border-radius:20px;height:6px;overflow:hidden;}
+.prog-bar{height:6px;background:linear-gradient(90deg,var(--teal),var(--green));border-radius:20px;width:0%;transition:width .5s;}
+.prog-lbl{font-size:11px;color:rgba(255,255,255,.4);margin-top:4px;}
+.score-bar{max-width:820px;margin:0 auto;padding:0 20px;}
+.score-in{background:white;border:2px solid var(--ink);border-radius:12px;padding:12px 20px;display:flex;align-items:center;gap:16px;margin-top:20px;}
+.score-num{font-family:'DM Serif Display',serif;font-size:40px;color:var(--teal);line-height:1;}
+.score-lbl{font-size:11px;color:var(--gray);font-weight:700;letter-spacing:1px;}
+.copy-btn{margin-left:auto;background:var(--ink);color:white;border:none;border-radius:8px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.copy-btn:hover{opacity:.82;}
+.copy-btn.copied{background:var(--green);}
+.qwrap{max-width:820px;margin:24px auto 0;padding:0 20px 40px;display:flex;flex-direction:column;gap:20px;}
+.card{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;opacity:1;}
+.card-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.q-num{font-family:'DM Serif Display',serif;font-size:28px;color:var(--ink);line-height:1;min-width:36px;}
+.src-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;margin-bottom:3px;display:inline-block;}
+.q-type{font-size:11px;color:var(--gray);}
+.card-body{padding:16px 18px;}
+.quiz-q{font-size:14px;line-height:2;margin-bottom:14px;}
+.quiz-q mark{background:#fef3c7;padding:1px 3px;border-radius:3px;font-weight:700;}
+.opts-tf{display:flex;gap:10px;}
+.opt{flex:1;padding:10px;border:2px solid var(--border);border-radius:10px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s;background:white;}
+.opt:hover{border-color:var(--ink);}
+.opt.correct{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.opt.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.ans-box{display:none;margin-top:14px;border-radius:10px;padding:14px 16px;font-size:13px;}
+.ans-box.show{display:block;}
+.ans-box.ok{background:var(--green-light);border:1px solid #86efac;}
+.ans-box.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.ans-hd{font-weight:700;font-size:14px;margin-bottom:10px;}
+.why{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 13px;margin-bottom:10px;font-size:13px;line-height:1.85;}
+.why mark{background:#fed7aa;padding:1px 3px;border-radius:2px;font-weight:700;}
+.def-card{background:var(--teal-light);border:1.5px solid var(--teal);border-radius:8px;padding:10px 14px;margin-bottom:10px;font-size:12px;line-height:1.9;}
+.tip{background:var(--purple-light);border:1.5px solid #c4b5fd;border-radius:8px;padding:10px 13px;font-size:12px;line-height:1.9;margin-top:8px;}
+.law-tag{display:inline-block;background:var(--ink);color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:8px;}
+.blank-card-body{padding:16px 18px;}
+.blank-q{font-size:14px;line-height:2.8;margin-bottom:12px;}
+.blank{display:inline-block;min-width:60px;border-bottom:2.5px solid var(--ink);text-align:center;padding:0 4px;margin:0 2px;cursor:pointer;font-weight:700;transition:background .2s;border-radius:4px 4px 0 0;}
+.blank:hover{background:rgba(124,58,237,.08);}
+.blank.sel{background:var(--purple-light);border-color:var(--purple);}
+.blank.ok-fill{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.blank.ng-fill{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+.chp{border:2px solid var(--border);border-radius:20px;padding:5px 13px;cursor:pointer;font-size:13px;font-weight:600;background:white;transition:all .2s;}
+.chp:hover{border-color:var(--purple);}
+.chp.used{opacity:.3;pointer-events:none;}
+.chp.ok-c{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.chp.ng-c{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.chk-btn{background:var(--purple);color:white;border:none;border-radius:8px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit;}
+.chk-btn:hover{opacity:.82;}
+.chk-btn:disabled{opacity:.38;cursor:default;}
+.f-ans{display:none;margin-top:12px;border-radius:10px;padding:14px 16px;font-size:13px;}
+.f-ans.show{display:block;}
+.f-ans.ok{background:var(--green-light);border:1px solid #86efac;}
+.f-ans.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.complete-bar{display:none;max-width:820px;margin:0 auto;padding:0 20px 60px;}
+.complete-card{background:var(--ink);color:white;border-radius:16px;padding:28px;text-align:center;}
+.complete-card h2{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;margin-bottom:8px;}
+.complete-score{font-family:'DM Serif Display',serif;font-size:52px;color:#fde68a;line-height:1;margin-bottom:8px;}
+.copy-btn2{background:white;color:var(--ink);border:none;border-radius:8px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:12px;}
+.copy-btn2:hover{opacity:.82;}
+.mm-wrap{max-width:820px;margin:0 auto;padding:20px 20px 60px;}
+.mm-step{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;margin-bottom:20px;}
+.mm-step-hd{background:var(--ink);padding:12px 18px;display:flex;align-items:center;gap:10px;}
+.mm-step-num{font-family:'DM Serif Display',serif;font-size:28px;color:#fde68a;line-height:1;}
+.mm-step-title{font-size:14px;font-weight:700;color:white;}
+.mm-step-body{padding:16px 18px;}
+.mm-item{border-left:4px solid var(--teal);padding:8px 12px;margin-bottom:10px;background:var(--teal-light);border-radius:0 8px 8px 0;font-size:13px;line-height:1.8;}
+.mm-item mark{background:#fed7aa;padding:1px 3px;border-radius:2px;font-weight:700;}
+.mm-alert{border-left:4px solid var(--red);padding:8px 12px;background:var(--red-light);border-radius:0 8px 8px 0;font-size:13px;line-height:1.8;margin-bottom:10px;}
+.mm-gorof{background:var(--gold-light);border:1.5px solid var(--gold);border-radius:8px;padding:9px 13px;font-size:12px;line-height:1.8;margin-top:8px;}
+.hikakke-box{background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin-top:16px;}
+.hikakke-hd{background:var(--ink);padding:9px 16px;}
+.hikakke-hd span{font-size:12px;font-weight:700;color:#fde68a;}
+.hikakke-body{padding:12px 16px;display:flex;flex-direction:column;gap:8px;}
+.hikakke-row{border-left:4px solid var(--red);padding:7px 12px;background:#fff8f7;border-radius:0 6px 6px 0;font-size:12px;line-height:1.8;}
+.fc-wrap{max-width:740px;margin:20px auto 0;padding:0 20px 80px;}
+.fc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;font-size:12px;color:var(--gray);}
+.fc-counter{font-family:'DM Serif Display',serif;font-size:24px;color:var(--red);line-height:1;}
+.fc-counter span{font-size:12px;color:var(--gray);font-family:'Noto Sans JP',sans-serif;font-weight:400;}
+.fc-gauge-wrap{margin-bottom:20px;}
+.fc-gauge-labels{display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:5px;}
+.fc-gauge-label-ng{color:var(--red);}
+.fc-gauge-label-ok{color:var(--green);}
+.fc-gauge-label-mid{color:var(--gray);font-size:10px;font-weight:400;}
+.fc-gauge-track{position:relative;height:14px;background:var(--border);border-radius:20px;overflow:hidden;display:flex;}
+.fc-gauge-ng{height:100%;background:linear-gradient(90deg,#c84b31,#e8896b);border-radius:20px 0 0 20px;transition:width .5s;width:0%;}
+.fc-gauge-ok{height:100%;background:linear-gradient(90deg,#86efac,#2d6a4f);border-radius:0 20px 20px 0;transition:width .5s;width:0%;margin-left:auto;}
+.fc-gauge-mid-line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:white;transform:translateX(-50%);z-index:2;}
+.fc-carousel{position:relative;display:flex;align-items:center;justify-content:center;min-height:420px;overflow:hidden;margin-bottom:18px;}
+.fc-slot{position:absolute;width:72%;min-height:300px;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s,filter .35s ease;cursor:pointer;border-radius:16px;}
+.fc-slot.prev{transform:translateX(-82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.curr{transform:translateX(0) scale(1);opacity:1;filter:none;z-index:10;}
+.fc-slot.next{transform:translateX(82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.hidden{opacity:0;pointer-events:none;z-index:0;}
+.fc-inner{position:relative;width:100%;min-height:300px;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.4,0,.2,1);}
+.fc-inner.flipped{transform:rotateY(180deg);}
+.fc-face{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.11);}
+.fc-front-face{background:white;border:2px solid var(--ink);}
+.fc-back-face{background:white;border:2px solid var(--ink);transform:rotateY(180deg);}
+.fc-front-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:9px 14px;display:flex;align-items:center;gap:8px;}
+.fc-front-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;}
+.fc-front-body{flex:1;padding:16px 18px;display:flex;align-items:center;justify-content:center;}
+.fc-q{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;line-height:1.9;color:var(--ink);text-align:center;}
+.fc-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;}
+.fc-ox{display:flex;gap:8px;padding:0 14px 12px;}
+.fc-ox-btn{flex:1;padding:10px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-size:20px;font-weight:900;cursor:pointer;transition:all .15s;font-family:inherit;}
+.fc-ox-btn.o:hover{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.fc-ox-btn.x:hover{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.fc-back-hd{padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+.fc-verdict{font-size:12px;font-weight:700;padding:2px 10px;border-radius:20px;}
+.fc-verdict.ok{background:var(--green);color:white;}
+.fc-verdict.ng{background:var(--red);color:white;}
+.fc-back-body{flex:1;padding:12px 16px;overflow-y:auto;}
+.fc-answer{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ink);margin-bottom:8px;line-height:1.4;font-weight:700;}
+.fc-reason{font-size:12px;color:var(--ink);line-height:1.9;}
+.fc-reason mark{background:#fef3c7;padding:1px 4px;border-radius:3px;}
+.fc-nav{display:none;gap:10px;justify-content:center;padding:0 16px;}
+.fc-nav-btn{flex:1;max-width:160px;padding:11px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;text-align:center;}
+.fc-nav-btn:hover{border-color:var(--ink);}
+.fc-nav-btn.again{border-color:var(--red);color:var(--red);}
+.fc-nav-btn.again:hover{background:var(--red-light);}
+.fc-nav-btn.got{border-color:var(--green);color:var(--green);}
+.fc-nav-btn.got:hover{background:var(--green-light);}
+.fc-result{display:none;text-align:center;padding:24px;background:white;border:2px solid var(--ink);border-radius:14px;margin:0 20px;}
+.fc-result h3{font-family:'Noto Serif JP',serif;font-size:1.2rem;font-weight:900;margin-bottom:8px;}
+.fc-result-score{font-family:'DM Serif Display',serif;font-size:44px;color:var(--teal);line-height:1;margin:8px 0 4px;}
+.fc-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:12px;}
+.spider-wrap{max-width:820px;margin:0 auto;padding:20px 16px 60px;}
+svg text{font-family:'Noto Sans JP',sans-serif;}
+@media(max-width:600px){
+  .hd{padding:24px 16px 20px;}
+  .qwrap{padding:0 12px 40px;}
+  .fc-wrap{padding:0 12px 80px;}
+  .mm-wrap{padding:16px 12px 60px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="back-btn" onclick="location.href='index.html'">← 目次に戻る</span>
+  <span class="topbar-title">Day5 ／ 国民年金法 ― 就業規則・労使協定・制裁</span>
+</div>
+
+<nav class="tab-nav">
+  <div class="tab-nav-in">
+    <button class="tab-btn active" onclick="switchTab('quiz',this)">📝 問題を解く</button>
+    <button class="tab-btn t3"     onclick="switchTab('mindmap',this)">🗺 連想図</button>
+    <button class="tab-btn t2"     onclick="switchTab('flash',this)">🃏 フラッシュカード</button>
+    <button class="tab-btn t4"     onclick="switchTab('spider',this)">🕸️ 記憶マップ</button>
+  </div>
+</nav>
+
+<!-- ════ PANEL-QUIZ ════ -->
+<div id="panel-quiz" class="tab-panel active">
+
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-eye">国民年金法 ／ Day 5</div>
+    <h1>目的・<em>被保険者の種別</em>・任意加入</h1>
+    <div class="hd-sub">○×式 5問 ＋ 穴埋め式 5問 ― 全10問　労基法第89条〜第93条・第91条</div>
+    <div class="prog-wrap"><div class="prog-bar" id="prog"></div></div>
+    <div class="prog-lbl" id="prog-lbl">0 ／ 10 問 回答済み</div>
+  </div>
+</div>
+
+<div class="score-bar">
+  <div class="score-in">
+    <div>
+      <div class="score-num" id="score">0</div>
+      <div class="score-lbl">正解数</div>
+    </div>
+    <div style="font-size:13px;color:var(--gray);line-height:1.6;">
+      <div id="score-sub">問題に答えると集計されます</div>
+    </div>
+    <button class="copy-btn" id="copy-btn" onclick="copyRecord()">📋 記録をコピー</button>
+  </div>
+</div>
+
+<!-- ○×式 5問 -->
+<div class="qwrap">
+<!-- Q1 -->
+<div class="card" id="cq1">
+  <div class="card-hd">
+    <div class="q-num">01</div>
+    <div><div class="src-tag">労基法第89条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：就業規則の作成義務</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">常時10人以上の労働者を使用する使用者は、就業規則を作成し、行政官庁に届け出なければならない。</div>
+    <div class="opts-tf" id="q1-opts">
+      <div class="opt" onclick="answer('q1',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q1',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q1-ans">
+      <div class="ans-hd" id="q1-result"></div>
+      <div class="why">✅ <strong>正しい。</strong>法第89条：<mark>常時10人以上</mark>の労働者を使用する事業場は就業規則の作成・届出義務がある。10人未満は任意（作成は自由）。</div>
+      <div class="def-card"><strong>📖 就業規則の作成義務（法第89条）</strong><br>義務：<mark>常時10人以上</mark>の労働者を使用する事業場<br>届出：<mark>所轄労働基準監督署</mark>へ<br>10人未満：作成義務なし（任意）</div>
+      <svg viewBox="0 0 520 60" width="100%" style="margin:8px 0;border-radius:10px;"><rect width="520" height="60" rx="10" fill="#f5f0e8"/><rect x="10" y="10" width="240" height="40" rx="8" fill="#c84b31"/><text x="130" y="35" text-anchor="middle" font-size="11" font-weight="700" fill="white">常時10人以上→作成・届出義務</text><rect x="270" y="10" width="240" height="40" rx="8" fill="#c9930a"/><text x="390" y="35" text-anchor="middle" font-size="11" font-weight="700" fill="white">10人未満→作成義務なし</text></svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><mark>常時10人以上</mark>の事業場は就業規則の作成・届出が義務</div></div><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">「常時」とは常態として、一時的な変動は考慮しない</div></div></div></div>
+      <div class="tip">💡 就業規則作成義務：<mark>常時10人以上</mark>の事業場。10人未満は義務なし。</div>
+      <div class="law-tag">労基法第89条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 「常時」という言葉に注意。繁忙期だけ10人超えても義務は生じない。就業規則は「法律の範囲内」で定める必要があり、法律に反する就業規則の条項は無効。</div>
+    </div>
+  </div>
+</div><!-- /card cq1 -->
+<!-- Q2 -->
+<div class="card" id="cq2">
+  <div class="card-hd">
+    <div class="q-num">02</div>
+    <div><div class="src-tag">労基法第89条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：就業規則の絶対的必要記載事項</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">就業規則には、始業・終業の時刻、休憩時間、休日、休暇並びに賃金の決定・計算・支払方法等を必ず記載しなければならない。</div>
+    <div class="opts-tf" id="q2-opts">
+      <div class="opt" onclick="answer('q2',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q2',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q2-ans">
+      <div class="ans-hd" id="q2-result"></div>
+      <div class="why">✅ <strong>正しい。</strong>法第89条：就業規則の絶対的必要記載事項には①<mark>労働時間（始業・終業・休憩・休日・休暇）</mark>②<mark>賃金（決定・計算・支払・締日・変更）</mark>③<mark>退職（解雇事由含む）</mark>が含まれる。</div>
+      <div class="def-card"><strong>📖 就業規則の絶対的必要記載事項（法第89条）</strong><br>①始業・終業時刻、休憩、休日、休暇<br>②賃金の決定・計算・支払方法・締切日<br>③退職に関する事項（解雇事由含む）</div>
+      <svg viewBox="0 0 520 60" width="100%" style="margin:8px 0;border-radius:10px;"><rect width="520" height="60" rx="10" fill="#f5f0e8"/><text x="10" y="18" font-size="11" font-weight="700" fill="#1a1a2e">絶対的必要記載事項（3点）</text><rect x="10" y="24" width="155" height="28" rx="6" fill="#1d4ed8"/><text x="87" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="white">①労働時間・休日・休暇</text><rect x="180" y="24" width="155" height="28" rx="6" fill="#1d4ed8"/><text x="257" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="white">②賃金の決定・支払方法等</text><rect x="355" y="24" width="155" height="28" rx="6" fill="#1d4ed8"/><text x="432" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="white">③退職に関する事項</text></svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">絶対的必要記載事項：<mark>労働時間・賃金・退職</mark>の3カテゴリは必須</div></div><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">退職事由に<mark>解雇事由</mark>も含まれる点が頻出</div></div></div></div>
+      <div class="tip">💡 絶対的必要記載：<mark>①労働時間 ②賃金 ③退職（解雇含む）</mark>の3カテゴリ。</div>
+      <div class="law-tag">労基法第89条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 「絶対的必要記載事項」は定めがあれば必ず記載。「相対的必要記載事項」は定めがある場合のみ記載（退職手当・表彰・制裁・安全衛生等）。</div>
+    </div>
+  </div>
+</div><!-- /card cq2 -->
+<!-- Q3 -->
+<div class="card" id="cq3">
+  <div class="card-hd">
+    <div class="q-num">03</div>
+    <div><div class="src-tag">労基法第90条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：就業規則の作成手続き</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">就業規則の作成または変更にあたっては、使用者は過半数労働組合または過半数代表者の同意を得なければならない。</div>
+    <div class="opts-tf" id="q3-opts">
+      <div class="opt" onclick="answer('q3',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q3',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q3-ans">
+      <div class="ans-hd" id="q3-result"></div>
+      <div class="why">❌ <strong>誤り。</strong>法第90条：就業規則の作成・変更時に必要なのは<mark>同意ではなく意見聴取</mark>（意見を聴けばよい）。過半数代表者の同意は不要。</div>
+      <div class="def-card"><strong>📖 就業規則の作成手続き（法第90条）</strong><br>必要なこと：過半数労組または過半数代表者の<mark>意見を聴くこと（意見聴取）</mark><br>不要なこと：同意・承認（意見聴取でよい）<br>→ 意見書を添付して労基署に届出</div>
+      <svg viewBox="0 0 520 60" width="100%" style="margin:8px 0;border-radius:10px;"><rect width="520" height="60" rx="10" fill="#f5f0e8"/><rect x="10" y="10" width="240" height="40" rx="8" fill="#2d6a4f"/><text x="130" y="35" text-anchor="middle" font-size="11" font-weight="700" fill="white">意見聴取で足りる（同意不要）</text><rect x="270" y="10" width="240" height="40" rx="8" fill="#c84b31"/><text x="390" y="35" text-anchor="middle" font-size="11" font-weight="700" fill="white">同意・承認は不要</text></svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「就業規則変更に過半数代表者の同意が必要」→ <strong style="color:#2d6a4f;">○</strong> <mark>意見聴取</mark>で足りる（同意不要）</div></div></div></div>
+      <div class="tip">💡 就業規則の手続き：<mark>意見聴取</mark>で足りる（同意・承認は不要）。</div>
+      <div class="law-tag">労基法第90条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 「意見聴取」と「同意」は全く異なる。意見聴取は「聴けばよい」。同意は「賛成してもらう必要がある」。36協定などの労使協定は「同意（協定締結）」が必要なのに対し、就業規則は「意見聴取」で足りる。</div>
+    </div>
+  </div>
+</div><!-- /card cq3 -->
+<!-- Q4 -->
+<div class="card" id="cq4">
+  <div class="card-hd">
+    <div class="q-num">04</div>
+    <div><div class="src-tag">労基法第92条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：就業規則と法令・労働協約の関係</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">就業規則は、法令または当該事業場について適用される労働協約に反してはならない。</div>
+    <div class="opts-tf" id="q4-opts">
+      <div class="opt" onclick="answer('q4',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q4',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q4-ans">
+      <div class="ans-hd" id="q4-result"></div>
+      <div class="why">✅ <strong>正しい。</strong>法第92条：就業規則は<mark>法令・労働協約</mark>に反してはならない。優先順位：<mark>法令＞労働協約＞就業規則＞労働契約</mark>。</div>
+      <div class="def-card"><strong>📖 就業規則と法令等の関係（法第92条）</strong><br>優先順位（高い順）：<br>①法令＞②労働協約＞③就業規則＞④労働契約<br>就業規則が低い場合は就業規則が自動的に無効</div>
+      <svg viewBox="0 0 520 60" width="100%" style="margin:8px 0;border-radius:10px;"><rect width="520" height="60" rx="10" fill="#f5f0e8"/><text x="10" y="18" font-size="11" font-weight="700" fill="#1a1a2e">効力の優先順位</text><rect x="10" y="24" width="109" height="28" rx="6" fill="#c84b31"/><text x="64" y="42" text-anchor="middle" font-size="10" font-weight="700" fill="white">①法令</text><text x="128" y="42" text-anchor="middle" font-size="14" fill="#1a1a2e">＞</text><rect x="145" y="24" width="109" height="28" rx="6" fill="#c9930a"/><text x="199" y="42" text-anchor="middle" font-size="10" font-weight="700" fill="white">②労働協約</text><text x="263" y="42" text-anchor="middle" font-size="14" fill="#1a1a2e">＞</text><rect x="280" y="24" width="109" height="28" rx="6" fill="#2d6a4f"/><text x="334" y="42" text-anchor="middle" font-size="10" font-weight="700" fill="white">③就業規則</text><text x="398" y="42" text-anchor="middle" font-size="14" fill="#1a1a2e">＞</text><rect x="415" y="24" width="95" height="28" rx="6" fill="#1d4ed8"/><text x="462" y="42" text-anchor="middle" font-size="10" font-weight="700" fill="white">④労働契約</text></svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">優先順位：<mark>法令＞労働協約＞就業規則＞労働契約</mark></div></div><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">低い基準の規定は<mark>無効</mark>となり、上位規範の基準が自動的に適用</div></div></div></div>
+      <div class="tip">💡 優先順位：<mark>法令＞労働協約＞就業規則＞労働契約</mark>。</div>
+      <div class="law-tag">労基法第92条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 この順位は「労働者保護の強さの順」でもある。法令（労基法等）が最強で、個々の労働契約が最弱。ただし労働者に有利な個別合意は労働契約法で保護される場合もある。</div>
+    </div>
+  </div>
+</div><!-- /card cq4 -->
+<!-- Q5 -->
+<div class="card" id="cq5">
+  <div class="card-hd">
+    <div class="q-num">05</div>
+    <div><div class="src-tag">労基法第91条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：制裁の上限</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">就業規則で減給の制裁を定める場合、1回の額が平均賃金の1日分の半額を超え、また総額が一賃金支払期における賃金総額の10分の1を超えてはならない。</div>
+    <div class="opts-tf" id="q5-opts">
+      <div class="opt" onclick="answer('q5',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q5',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q5-ans">
+      <div class="ans-hd" id="q5-result"></div>
+      <div class="why">✅ <strong>正しい。</strong>法第91条：減給制裁の上限は①1回の額：<mark>平均賃金の1日分の半額以下</mark>②総額：<mark>賃金総額の10分の1以下</mark>の両方を超えてはならない。</div>
+      <div class="def-card"><strong>📖 制裁規定の制限（法第91条）</strong><br>1回の額：<mark>平均賃金の1日分の半額以下</mark><br>総額：一賃金支払期の賃金総額の<mark>10分の1以下</mark></div>
+      <svg viewBox="0 0 520 60" width="100%" style="margin:8px 0;border-radius:10px;"><rect width="520" height="60" rx="10" fill="#f5f0e8"/><rect x="10" y="10" width="240" height="40" rx="8" fill="#c84b31"/><text x="130" y="28" text-anchor="middle" font-size="9" font-weight="700" fill="white">1回の額の上限</text><text x="130" y="44" text-anchor="middle" font-size="9" fill="white">平均賃金1日分の1/2以下</text><rect x="270" y="10" width="240" height="40" rx="8" fill="#c84b31"/><text x="390" y="28" text-anchor="middle" font-size="9" font-weight="700" fill="white">総額の上限</text><text x="390" y="44" text-anchor="middle" font-size="9" fill="white">賃金総額の1/10以下</text></svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">制裁（減給）の2つの上限：<mark>1回→1日分の半額以下</mark>＆<mark>総額→賃金総額の1/10以下</mark></div></div></div></div>
+      <div class="tip">💡 制裁の上限：1回<mark>平均賃金1日分の半額以下</mark>・総額<mark>賃金総額の1/10以下</mark>。</div>
+      <div class="law-tag">労基法第91条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 2つの上限が同時に適用される（両方を超えてはいけない）。「1日分の半額」という表現は「平均賃金」を使う点に注意（所定賃金ではない）。</div>
+    </div>
+  </div>
+</div><!-- /card cq5 -->
+</div><!-- /qwrap -->
+
+<!-- 穴埋め式 5問 -->
+<div class="qwrap">
+<!-- F6 -->
+<div class="card" id="cf1">
+  <div class="card-hd">
+    <div class="q-num">06</div>
+    <div><div class="src-tag">労基法第89条 ／ 穴埋め式</div><div class="q-type">難易度：★☆☆ ／ 単元：就業規則の作成義務</div></div>
+  </div>
+  <div class="blank-card-body">
+    <div class="blank-q">就業規則の作成・届出義務：常時<span class="blank" id="f1a" onclick="selB('f1','f1a')">　　</span>人以上の労働者を使用する事業場。届出先は<span class="blank" id="f1b" onclick="selB('f1','f1b')">　　</span>。</div>
+    <div class="chips" id="f1-chips"><div class="chp" onclick="fillB('f1','f1a',this,'10')">10</div><div class="chp" onclick="fillB('f1','f1b',this,'所轄労働基準監督署')">所轄労働基準監督署</div><div class="chp" onclick="fillB('f1','f1c',this,'5')">5</div><div class="chp" onclick="fillB('f1','f1d',this,'都道府県労働局')">都道府県労働局</div></div>
+    <button class="chk-btn" id="chk-f1" onclick="chkF('f1')">答え合わせ</button>
+    <div class="f-ans" id="f1-ans">
+      <div class="ans-hd" id="f1-result"></div>
+      <div class="why">就業規則（法第89条）：<mark>常時10人以上</mark>の事業場は作成・届出義務。届出先：<mark>所轄労働基準監督署</mark>。</div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">作成義務：<mark>常時10人以上</mark>・届出先：<mark>所轄労働基準監督署</mark></div></div></div></div>
+      <div class="tip">💡 就業規則作成義務：<mark>常時10人以上</mark>の事業場。届出先：<mark>所轄労働基準監督署</mark>。</div>
+      <div class="law-tag">労基法第89条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 「常時10人以上」の「常時」は一時的な増減は考慮しない。</div>
+    </div>
+  </div>
+</div><!-- /card cf1 -->
+<!-- F7 -->
+<div class="card" id="cf2">
+  <div class="card-hd">
+    <div class="q-num">07</div>
+    <div><div class="src-tag">労基法第90条 ／ 穴埋め式</div><div class="q-type">難易度：★★☆ ／ 単元：就業規則の手続き</div></div>
+  </div>
+  <div class="blank-card-body">
+    <div class="blank-q">就業規則の作成・変更：過半数代表者の<span class="blank" id="f2a" onclick="selB('f2','f2a')">　　</span>を得ればよい（<span class="blank" id="f2b" onclick="selB('f2','f2b')">　　</span>は不要）。意見書を添付して届出。</div>
+    <div class="chips" id="f2-chips"><div class="chp" onclick="fillB('f2','f2a',this,'意見聴取')">意見聴取</div><div class="chp" onclick="fillB('f2','f2b',this,'同意')">同意</div><div class="chp" onclick="fillB('f2','f2c',this,'承認')">承認</div><div class="chp" onclick="fillB('f2','f2d',this,'許可')">許可</div></div>
+    <button class="chk-btn" id="chk-f2" onclick="chkF('f2')">答え合わせ</button>
+    <div class="f-ans" id="f2-ans">
+      <div class="ans-hd" id="f2-result"></div>
+      <div class="why">就業規則の手続き（法第90条）：過半数代表者の<mark>意見聴取</mark>で足りる（<mark>同意は不要</mark>）。意見書を添付して届出。</div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「同意が必要」→ <strong style="color:#2d6a4f;">○</strong> <mark>意見聴取</mark>で足りる（同意不要）</div></div></div></div>
+      <div class="tip">💡 就業規則手続き：<mark>意見聴取</mark>で足りる（同意・承認は不要）。</div>
+      <div class="law-tag">労基法第90条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 「意見聴取」≠「同意」。36協定は「協定（同意）」が必要なのと対比。</div>
+    </div>
+  </div>
+</div><!-- /card cf2 -->
+<!-- F8 -->
+<div class="card" id="cf3">
+  <div class="card-hd">
+    <div class="q-num">08</div>
+    <div><div class="src-tag">労基法第92条 ／ 穴埋め式</div><div class="q-type">難易度：★☆☆ ／ 単元：効力の優先順位</div></div>
+  </div>
+  <div class="blank-card-body">
+    <div class="blank-q">効力の優先順位：<span class="blank" id="f3a" onclick="selB('f3','f3a')">　　</span>＞<span class="blank" id="f3b" onclick="selB('f3','f3b')">　　</span>＞就業規則＞<span class="blank" id="f3c" onclick="selB('f3','f3c')">　　</span>。低い基準の規定は無効。</div>
+    <div class="chips" id="f3-chips"><div class="chp" onclick="fillB('f3','f3a',this,'法令')">法令</div><div class="chp" onclick="fillB('f3','f3b',this,'労働協約')">労働協約</div><div class="chp" onclick="fillB('f3','f3c',this,'労働契約')">労働契約</div><div class="chp" onclick="fillB('f3','f3d',this,'就業規則')">就業規則</div></div>
+    <button class="chk-btn" id="chk-f3" onclick="chkF('f3')">答え合わせ</button>
+    <div class="f-ans" id="f3-ans">
+      <div class="ans-hd" id="f3-result"></div>
+      <div class="why">効力の優先順位（法第92条）：<mark>法令</mark>＞<mark>労働協約</mark>＞就業規則＞<mark>労働契約</mark>。低い基準は無効で上位規範が自動適用。</div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">優先順位：<mark>法令＞労働協約＞就業規則＞労働契約</mark></div></div></div></div>
+      <div class="tip">💡 優先順位：<mark>法令＞労働協約＞就業規則＞労働契約</mark>。</div>
+      <div class="law-tag">労基法第92条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 順位が低いものが高いものに反する場合は自動的に無効。労働者保護の強さの順。</div>
+    </div>
+  </div>
+</div><!-- /card cf3 -->
+<!-- F9 -->
+<div class="card" id="cf4">
+  <div class="card-hd">
+    <div class="q-num">09</div>
+    <div><div class="src-tag">労基法第91条 ／ 穴埋め式</div><div class="q-type">難易度：★★☆ ／ 単元：制裁の上限</div></div>
+  </div>
+  <div class="blank-card-body">
+    <div class="blank-q">減給制裁の上限：1回の額は平均賃金の1日分の<span class="blank" id="f4a" onclick="selB('f4','f4a')">　　</span>額以下、総額は一賃金支払期の賃金総額の<span class="blank" id="f4b" onclick="selB('f4','f4b')">　　</span>分の1以下。</div>
+    <div class="chips" id="f4-chips"><div class="chp" onclick="fillB('f4','f4a',this,'半')">半</div><div class="chp" onclick="fillB('f4','f4b',this,'10')">10</div><div class="chp" onclick="fillB('f4','f4c',this,'全')">全</div><div class="chp" onclick="fillB('f4','f4d',this,'5')">5</div></div>
+    <button class="chk-btn" id="chk-f4" onclick="chkF('f4')">答え合わせ</button>
+    <div class="f-ans" id="f4-ans">
+      <div class="ans-hd" id="f4-result"></div>
+      <div class="why">制裁の制限（法第91条）：1回の額は<mark>平均賃金1日分の半額以下</mark>・総額は<mark>賃金総額の1/10以下</mark>。</div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">制裁2つの上限：<mark>1回→半額以下</mark>＋<mark>総額→1/10以下</mark>（両方同時適用）</div></div></div></div>
+      <div class="tip">💡 制裁上限：1回<mark>半額以下</mark>・総額<mark>1/10以下</mark>（両方の上限を守る）。</div>
+      <div class="law-tag">労基法第91条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 「1日分の半額」は平均賃金を使う（所定賃金・基本給ではない）。</div>
+    </div>
+  </div>
+</div><!-- /card cf4 -->
+<!-- F10 -->
+<div class="card" id="cf5">
+  <div class="card-hd">
+    <div class="q-num">10</div>
+    <div><div class="src-tag">労基法第89条 ／ 穴埋め式</div><div class="q-type">難易度：★★☆ ／ 単元：絶対的必要記載事項</div></div>
+  </div>
+  <div class="blank-card-body">
+    <div class="blank-q">就業規則の絶対的必要記載事項：①始業・終業の時刻・<span class="blank" id="f5a" onclick="selB('f5','f5a')">　　</span>・<span class="blank" id="f5b" onclick="selB('f5','f5b')">　　</span>・休暇　②賃金　③<span class="blank" id="f5c" onclick="selB('f5','f5c')">　　</span>に関する事項。</div>
+    <div class="chips" id="f5-chips"><div class="chp" onclick="fillB('f5','f5a',this,'休憩時間')">休憩時間</div><div class="chp" onclick="fillB('f5','f5b',this,'休日')">休日</div><div class="chp" onclick="fillB('f5','f5c',this,'退職')">退職</div><div class="chp" onclick="fillB('f5','f5d',this,'安全衛生')">安全衛生</div></div>
+    <button class="chk-btn" id="chk-f5" onclick="chkF('f5')">答え合わせ</button>
+    <div class="f-ans" id="f5-ans">
+      <div class="ans-hd" id="f5-result"></div>
+      <div class="why">絶対的必要記載事項（法第89条）：①<mark>労働時間</mark>（始業・終業・休憩・休日・休暇）②<mark>賃金</mark>（決定・計算・支払・締切等）③<mark>退職</mark>（解雇事由含む）。</div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;"><div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div><div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;"><div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;">絶対的必要記載の3カテゴリ：<mark>①労働時間 ②賃金 ③退職（解雇含む）</mark></div></div></div></div>
+      <div class="tip">💡 絶対的必要記載：<mark>①労働時間 ②賃金 ③退職</mark>の3カテゴリ。</div>
+      <div class="law-tag">労基法第89条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 「退職」の中に「解雇の事由」も含まれる点が試験でよく問われる。</div>
+    </div>
+  </div>
+</div><!-- /card cf5 -->
+</div><!-- /qwrap -->
+
+<div class="complete-bar" id="complete-bar">
+  <div class="complete-card">
+    <h2>🎉 全問回答完了！</h2>
+    <div class="complete-score" id="complete-score">0 / 10</div>
+    <div style="color:rgba(255,255,255,.7);font-size:13px;" id="complete-msg"></div>
+    <button class="copy-btn2" id="copy-btn2" onclick="copyRecord()">📋 記録をコピー</button>
+  </div>
+</div>
+
+</div><!-- /panel-quiz -->
+
+<!-- ════ PANEL-MINDMAP ════ -->
+<div id="panel-mindmap" class="tab-panel">
+<div class="mm-wrap">
+  <div style="background:var(--teal-light);border:1px solid var(--teal);border-radius:10px;padding:12px 16px;font-size:13px;color:#1a4040;margin-bottom:24px;line-height:1.7;">
+    🗺 <strong>連想図</strong>：労働基準法 Day5「就業規則・労使協定・制裁」の重要論点を3STEPで整理。
+  </div>
+  <div class="mm-step">
+    <div class="mm-step-hd"><div class="mm-step-num">1</div><div class="mm-step-title">就業規則の作成義務と記載事項</div></div>
+    <div class="mm-step-body">
+      <div class="mm-key">常時10人以上で作成・届出義務——絶対的必要記載は「労働時間・賃金・退職」</div>
+      <svg viewBox="0 0 540 100" width="100%" style="margin:12px 0;border-radius:10px;">
+        <rect width="540" height="100" rx="10" fill="#f5f0e8"/>
+        <text x="270" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#1a1a2e">就業規則の絶対的必要記載事項（3カテゴリ）</text>
+        <rect x="10" y="32" width="160" height="58" rx="8" fill="#1d4ed8"/>
+        <text x="90" y="56" text-anchor="middle" font-size="11" font-weight="700" fill="white">①労働時間</text>
+        <text x="90" y="72" text-anchor="middle" font-size="9" fill="#bfdbfe">始業・終業・休憩・休日・休暇</text>
+        <rect x="190" y="32" width="160" height="58" rx="8" fill="#1d4ed8"/>
+        <text x="270" y="56" text-anchor="middle" font-size="11" font-weight="700" fill="white">②賃金</text>
+        <text x="270" y="72" text-anchor="middle" font-size="9" fill="#bfdbfe">決定・計算・支払・締切等</text>
+        <rect x="370" y="32" width="160" height="58" rx="8" fill="#1d4ed8"/>
+        <text x="450" y="56" text-anchor="middle" font-size="11" font-weight="700" fill="white">③退職</text>
+        <text x="450" y="72" text-anchor="middle" font-size="9" fill="#bfdbfe">解雇の事由を含む</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「5人以上で作成義務」→ <strong style="color:#2d6a4f;">○</strong> <mark>常時10人以上</mark>の事業場</div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;font-size:12px;line-height:1.8;">退職の絶対的必要記載事項には<mark>解雇の事由も含まれる</mark></div>
+        </div>
+      </div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:10px 14px;font-size:12px;line-height:1.85;">🧠 「常時10人以上」の「常時」は常態として10人以上という意味。繁忙期だけ増えても義務は生じない。絶対的必要記載事項（①〜③）と相対的必要記載事項（退職手当・表彰・制裁等）の区別も重要。</div>
+    </div>
+  </div>
+  <div class="mm-step">
+    <div class="mm-step-hd"><div class="mm-step-num">2</div><div class="mm-step-title">就業規則の手続きと効力の順位</div></div>
+    <div class="mm-step-body">
+      <div class="mm-key">手続きは「意見聴取」で足りる（同意不要）——優先順位：法令＞協約＞規則＞契約</div>
+      <svg viewBox="0 0 540 70" width="100%" style="margin:12px 0;border-radius:10px;">
+        <rect width="540" height="70" rx="10" fill="#f5f0e8"/>
+        <text x="270" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#1a1a2e">効力の優先順位</text>
+        <rect x="10" y="32" width="113" height="30" rx="6" fill="#c84b31"/>
+        <text x="66" y="51" text-anchor="middle" font-size="10" font-weight="700" fill="white">①法令</text>
+        <text x="132" y="51" text-anchor="middle" font-size="16" fill="#1a1a2e">＞</text>
+        <rect x="150" y="32" width="113" height="30" rx="6" fill="#c9930a"/>
+        <text x="206" y="51" text-anchor="middle" font-size="10" font-weight="700" fill="white">②労働協約</text>
+        <text x="272" y="51" text-anchor="middle" font-size="16" fill="#1a1a2e">＞</text>
+        <rect x="290" y="32" width="113" height="30" rx="6" fill="#2d6a4f"/>
+        <text x="346" y="51" text-anchor="middle" font-size="10" font-weight="700" fill="white">③就業規則</text>
+        <text x="412" y="51" text-anchor="middle" font-size="16" fill="#1a1a2e">＞</text>
+        <rect x="430" y="32" width="100" height="30" rx="6" fill="#1d4ed8"/>
+        <text x="480" y="51" text-anchor="middle" font-size="10" font-weight="700" fill="white">④労働契約</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「就業規則変更に過半数代表者の同意が必要」→ <strong style="color:#2d6a4f;">○</strong> <mark>意見聴取</mark>で足りる</div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;font-size:12px;line-height:1.8;">就業規則が労働協約に反する部分は<mark>無効</mark>（労働者の同意があっても）</div>
+        </div>
+      </div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:10px 14px;font-size:12px;line-height:1.85;">🧠 「意見聴取」≠「同意」。36協定は「協定（同意）」が必要。就業規則は「意見を聴けばよい」——この違いが頻出の引っかけ。優先順位の暗記は「法令が一番強く、個々の労働契約が一番弱い」と覚える。</div>
+    </div>
+  </div>
+  <div class="mm-step">
+    <div class="mm-step-hd"><div class="mm-step-num">3</div><div class="mm-step-title">制裁の制限と就業規則の不利益変更</div></div>
+    <div class="mm-step-body">
+      <div class="mm-key">制裁減給の上限：1回→半額以下・総額→1/10以下 ／ 不利益変更は合理性次第（秋北バス）</div>
+      <svg viewBox="0 0 540 70" width="100%" style="margin:12px 0;border-radius:10px;">
+        <rect width="540" height="70" rx="10" fill="#f5f0e8"/>
+        <text x="270" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#1a1a2e">制裁（減給）の上限（法第91条）</text>
+        <rect x="10" y="32" width="250" height="30" rx="8" fill="#c84b31"/>
+        <text x="135" y="51" text-anchor="middle" font-size="10" font-weight="700" fill="white">1回の額：平均賃金1日分の半額以下</text>
+        <rect x="280" y="32" width="250" height="30" rx="8" fill="#c84b31"/>
+        <text x="405" y="51" text-anchor="middle" font-size="10" font-weight="700" fill="white">総額：賃金総額の1/10以下</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「制裁総額の上限は1/5」→ <strong style="color:#2d6a4f;">○</strong> <mark>1/10以下</mark></div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;font-size:12px;line-height:1.8;">秋北バス事件（最高裁昭和43年）：就業規則の不利益変更は<mark>合理性がある場合に効力</mark>を持つ</div>
+        </div>
+      </div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:10px 14px;font-size:12px;line-height:1.85;">🧠 「1回の額→半額以下」と「総額→1/10以下」の2つは同時に満たす必要がある。「1/5以下」という誤りとの混同が頻出。秋北バス事件は「就業規則の不利益変更に関する合理性の基準」を確立した重要判例——現在の労働契約法第10条に明文化されている。</div>
+    </div>
+  </div>
+</div>
+</div><!-- /panel-mindmap -->
+
+<!-- ════ PANEL-FLASH ════ -->
+<div id="panel-flash" class="tab-panel">
+<div class="fc-wrap">
+  <div class="fc-meta">
+    <div>
+      <div class="fc-counter" id="fc-counter">1<span> / 10</span></div>
+    </div>
+    <button class="fc-nav-btn shuffle" onclick="fcShuffle()" style="max-width:100px;padding:8px 12px;font-size:12px;">🔀 シャッフル</button>
+  </div>
+  <div class="fc-gauge-wrap">
+    <div class="fc-gauge-labels">
+      <span class="fc-gauge-label-ng">❌ <span id="fc-ng-count">0</span></span>
+      <span class="fc-gauge-label-mid" id="fc-remaining">残り 10 枚</span>
+      <span class="fc-gauge-label-ok"><span id="fc-ok-count">0</span> ✅</span>
+    </div>
+    <div class="fc-gauge-track">
+      <div class="fc-gauge-ng" id="fc-gauge-ng"></div>
+      <div class="fc-gauge-mid-line"></div>
+      <div class="fc-gauge-ok" id="fc-gauge-ok"></div>
+    </div>
+  </div>
+  <div class="fc-carousel" id="fc-carousel">
+    <div class="fc-slot prev" id="fc-slot-prev">
+      <div class="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-prev-tag">—</span>
+            <span style="font-size:11px;color:var(--gray);" id="fc-prev-cat"></span>
+          </div>
+          <div class="fc-front-body">
+            <div class="fc-q" id="fc-prev-q" style="font-size:13px;opacity:.7;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-slot curr" id="fc-slot-curr" onclick="fcFlip()">
+      <div class="fc-inner" id="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-tag">Q01</span>
+            <span style="font-size:11px;color:var(--gray);" id="fc-cat">目的条文</span>
+          </div>
+          <div class="fc-front-body">
+            <div class="fc-q" id="fc-q">—</div>
+          </div>
+          <div class="fc-ox">
+            <button class="fc-ox-btn o" onclick="fcChoose(true);event.stopPropagation();">○</button>
+            <button class="fc-ox-btn x" onclick="fcChoose(false);event.stopPropagation();">×</button>
+          </div>
+        </div>
+        <div class="fc-face fc-back-face">
+          <div class="fc-back-hd">
+            <span class="fc-verdict" id="fc-verdict">×　誤り</span>
+            <span id="fc-user-ans" style="font-size:12px;margin-left:auto;"></span>
+          </div>
+          <div class="fc-back-body">
+            <div class="fc-answer" id="fc-answer">—</div>
+            <div class="fc-reason" id="fc-reason">—</div>
+            <div class="fc-lawref" id="fc-lawref">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-slot next" id="fc-slot-next">
+      <div class="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-next-tag">—</span>
+            <span style="font-size:11px;color:var(--gray);" id="fc-next-cat"></span>
+          </div>
+          <div class="fc-front-body">
+            <div class="fc-q" id="fc-next-q" style="font-size:13px;opacity:.7;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fc-nav" id="fc-nav" style="display:none;">
+    <button class="fc-nav-btn again" onclick="fcNext(false)">😅 もう一度</button>
+    <button class="fc-nav-btn got"   onclick="fcNext(true)">✅ わかった！</button>
+  </div>
+  <div class="fc-result" id="fc-result">
+    <div style="font-size:36px;margin-bottom:8px;" id="fc-emoji">🎉</div>
+    <h3>フラッシュカード完了！</h3>
+    <div class="fc-result-score" id="fc-result-score">—</div>
+    <div class="fc-result-sub" id="fc-result-sub">—</div>
+    <button class="fc-restart-btn" onclick="fcRestart()">🔁 もう一周する</button>
+  </div>
+</div>
+</div><!-- /panel-flash -->
+
+<!-- ════ PANEL-SPIDER ════ -->
+<div id="panel-spider" class="tab-panel">
+<div class="spider-wrap">
+  <div style="background:var(--teal-light);border:1px solid var(--teal);border-radius:10px;padding:12px 16px;font-size:13px;color:#1a4040;margin-bottom:20px;line-height:1.7;">
+    🕸️ <strong>記憶マップ</strong>：枝をタップすると詳細解説と引っかけポイントが表示されます。
+  </div>
+  <div id="sp-root" style="width:100%;"></div>
+  <div id="spider-detail" style="display:none;margin-top:16px;background:white;border:2px solid #1a1a2e;border-radius:14px;overflow:hidden;">
+    <div id="spider-detail-hd" style="padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+      <span id="spider-detail-title" style="font-weight:700;font-size:15px;color:white;"></span>
+      <button onclick="closeSpiderDetail()" style="border:none;background:none;font-size:22px;cursor:pointer;color:rgba(255,255,255,.8);line-height:1;padding:0 4px;">×</button>
+    </div>
+    <div id="spider-detail-body" style="padding:16px 18px 20px;"></div>
+  </div>
+</div>
+</div><!-- /panel-spider -->
+
+<script>
+var DAY_META = {
+  day:'Day5', block:'国民年金法',
+  unit:'就業規則・労使協定・制裁',
+  range:'労基法第89条〜第93条・第91条', total:10
+};
+
+function copyRecord() {
+  var saved = JSON.parse(localStorage.getItem('roki_day5') || '{}');
+  var c = saved.correct !== undefined ? saved.correct : (score || 0);
+  var t = saved.total || 10;
+  var dt = saved.ts ? new Date(saved.ts) : new Date();
+  var ds = dt.getFullYear()+'/'+String(dt.getMonth()+1).padStart(2,'0')+'/'+String(dt.getDate()).padStart(2,'0');
+  var row = [DAY_META.day,DAY_META.block,DAY_META.unit,DAY_META.range,t,ds,c,t>0?Math.round(c/t*100):0].join('\t');
+  navigator.clipboard.writeText(row).then(showCopied).catch(function(){
+    var ta=document.createElement('textarea'); ta.value=row;
+    ta.style.cssText='position:fixed;opacity:0;';
+    document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta); showCopied();
+  });
+}
+function showCopied() {
+  ['copy-btn','copy-btn2'].forEach(function(id){
+    var b=document.getElementById(id); if(!b) return;
+    b.textContent='✅ コピーしました！'; b.classList.add('copied');
+    setTimeout(function(){ b.textContent='📋 記録をコピー'; b.classList.remove('copied'); },2500);
+  });
+}
+
+var correct_ans = {q1:0, q2:0, q3:1, q4:0, q5:0};
+var done={}, score=0, total=0;
+
+function answer(qid,idx) {
+  if(done[qid]) return; done[qid]=true;
+  var opts=document.querySelectorAll('#'+qid+'-opts .opt');
+  var ans=document.getElementById(qid+'-ans');
+  var ok=idx===correct_ans[qid];
+  opts.forEach(function(o,i){
+    if(i===correct_ans[qid]) o.classList.add('correct');
+    else if(i===idx&&!ok) o.classList.add('wrong');
+  });
+  ans.className='ans-box show '+(ok?'ok':'ng');
+  var hd=document.getElementById(qid+'-result');
+  hd.textContent=ok?'⭕ 正解！':'❌ 不正解';
+  hd.style.color=ok?'var(--green)':'var(--red)';
+  if(ok) score++;
+  total++;
+  document.getElementById('score').textContent=score;
+  updateProg();
+  setTimeout(function(){ ans.scrollIntoView({behavior:'smooth',block:'nearest'}); },100);
+}
+
+var defs = {
+  f1:{f1a:'10', f1b:'所轄労働基準監督署'},
+  f2:{f2a:'意見聴取', f2b:'同意'},
+  f3:{f3a:'法令', f3b:'労働協約', f3c:'労働契約'},
+  f4:{f4a:'半', f4b:'10'},
+  f5:{f5a:'休憩時間', f5b:'休日', f5c:'退職'}
+};
+var state={f1:{}, f2:{}, f3:{}, f4:{}, f5:{}};
+var sel={f1:null, f2:null, f3:null, f4:null, f5:null};
+var fdone={};function selB(fid,bid) {
+  if(fdone[fid]) return;
+  if(state[fid][bid]!==undefined) {
+    var pv=state[fid][bid]; delete state[fid][bid];
+    document.getElementById(bid).textContent='　　';
+    document.querySelectorAll('#'+fid+'-chips .chp').forEach(function(c){
+      if(c.textContent===pv&&c.classList.contains('used')) c.classList.remove('used');
+    });
+  }
+  document.querySelectorAll('[id^="'+fid+'"][class*="blank"]').forEach(function(b){ b.classList.remove('sel'); });
+  sel[fid]=bid; document.getElementById(bid).classList.add('sel');
+}
+
+function fillB(fid,bid,chip,val) {
+  if(fdone[fid]) return;
+  var s = bid ? bid : sel[fid];
+  if(!s) {
+    var keys=Object.keys(defs[fid]);
+    var empty=null;
+    for(var i=0;i<keys.length;i++){ if(state[fid][keys[i]]===undefined){empty=keys[i];break;} }
+    if(!empty) return; s=empty;
+  }
+  if(state[fid][s]!==undefined) {
+    var pv=state[fid][s];
+    document.querySelectorAll('#'+fid+'-chips .chp').forEach(function(c){
+      if(c.textContent===pv&&c.classList.contains('used')) c.classList.remove('used');
+    });
+  }
+  document.getElementById(s).textContent=val;
+  document.getElementById(s).classList.remove('sel');
+  state[fid][s]=val; chip.classList.add('used'); sel[fid]=null;
+}
+
+function chkF(fid) {
+  if(fdone[fid]) return;
+  var d=defs[fid]; var keys=Object.keys(d);
+  if(!keys.every(function(k){ return state[fid][k]!==undefined; })) { alert('すべての空欄を埋めてください'); return; }
+  fdone[fid]=true; var allOk=true;
+  keys.forEach(function(k){
+    var el=document.getElementById(k); var ok=state[fid][k]===d[k];
+    el.classList.add(ok?'ok-fill':'ng-fill'); if(!ok) allOk=false;
+  });
+  document.querySelectorAll('#'+fid+'-chips .chp').forEach(function(c){
+    if(c.classList.contains('used')) {
+      var v=c.textContent;
+      c.classList.add(Object.values(d).indexOf(v)>=0?'ok-c':'ng-c');
+    }
+  });
+  document.getElementById('chk-'+fid).disabled=true;
+  var ans=document.getElementById(fid+'-ans');
+  ans.className='f-ans show '+(allOk?'ok':'ng');
+  var res=document.getElementById(fid+'-result');
+  res.textContent=allOk?'⭕ 全問正解！':'❌ 不正解あり';
+  res.style.color=allOk?'var(--green)':'var(--red)';
+  if(allOk) score++;
+  total++;
+  document.getElementById('score').textContent=score;
+  updateProg();
+  setTimeout(function(){ ans.scrollIntoView({behavior:'smooth',block:'nearest'}); },100);
+}
+
+function updateProg() {
+  var t=10; var pct=Math.round(total/t*100);
+  document.getElementById('prog').style.width=pct+'%';
+  document.getElementById('prog-lbl').textContent=total+' ／ '+t+' 問 回答済み';
+  var sub=document.getElementById('score-sub');
+  if(sub) sub.textContent=total+'問回答 / 正解率 '+(total>0?Math.round(score/total*100):0)+'%';
+  if(total===t) showComplete();
+}
+
+function showComplete() {
+  var bar=document.getElementById('complete-bar'); bar.style.display='block';
+  document.getElementById('complete-score').textContent=score+' / 10';
+  var pct=Math.round(score/10*100);
+  document.getElementById('complete-msg').textContent=
+    pct>=90?'🏆 完璧！':pct>=70?'✨ 合格圏内！':'📖 もう一周してみよう';
+  try { localStorage.setItem('roki_day5',JSON.stringify({correct:score,total:10,ts:Date.now()})); } catch(e){}
+  setTimeout(function(){ bar.scrollIntoView({behavior:'smooth',block:'start'}); },200);
+}
+
+var FC_CARDS = [
+  {tag:'労基①',cat:'就業規則作成義務',correct:true,
+   q:'常時10人以上の労働者を使用する事業場は就業規則を作成し、所轄労働基準監督署に届け出る義務がある。',
+   answer:'○ 正しい',
+   reason:'法第89条：<mark>常時10人以上</mark>の事業場は作成・届出義務。届出先：<mark>所轄労働基準監督署</mark>。',
+   law:'労基法第89条'},
+  {tag:'労基②',cat:'就業規則作成義務',correct:false,
+   q:'常時5人以上の労働者を使用する事業場は就業規則を作成する義務がある。',
+   answer:'× 誤り',
+   reason:'就業規則の作成義務は<mark>常時10人以上</mark>の事業場（5人では義務なし）。',
+   law:'労基法第89条'},
+  {tag:'労基③',cat:'記載事項',correct:true,
+   q:'就業規則の絶対的必要記載事項には退職に関する事項（解雇事由を含む）が含まれる。',
+   answer:'○ 正しい',
+   reason:'法第89条：退職に関する事項（<mark>解雇の事由を含む</mark>）は絶対的必要記載事項。',
+   law:'労基法第89条'},
+  {tag:'労基④',cat:'作成手続き',correct:false,
+   q:'就業規則の作成にあたっては、過半数労働組合または過半数代表者の同意が必要である。',
+   answer:'× 誤り',
+   reason:'<mark>意見聴取</mark>で足りる（同意は不要）。意見書を添付して届出。',
+   law:'労基法第90条'},
+  {tag:'労基⑤',cat:'作成手続き',correct:true,
+   q:'就業規則の作成・変更にあたっては、過半数代表者の意見を聴けば足り、同意を得る必要はない。',
+   answer:'○ 正しい',
+   reason:'法第90条：<mark>意見聴取</mark>で足りる。同意・承認は不要（36協定の協定締結とは異なる）。',
+   law:'労基法第90条'},
+  {tag:'労基⑥',cat:'効力の順位',correct:true,
+   q:'就業規則は法令または当該事業場に適用される労働協約に反してはならない。',
+   answer:'○ 正しい',
+   reason:'法第92条：優先順位は<mark>法令＞労働協約＞就業規則＞労働契約</mark>。就業規則が違反すれば当然無効。',
+   law:'労基法第92条'},
+  {tag:'労基⑦',cat:'効力の順位',correct:false,
+   q:'就業規則の内容が労働協約の基準を下回る場合、労働者の同意があれば有効となる。',
+   answer:'× 誤り',
+   reason:'就業規則が労働協約に反する部分は<mark>無効</mark>（労働者の同意があっても）。',
+   law:'労基法第92条'},
+  {tag:'労基⑧',cat:'制裁の上限',correct:true,
+   q:'減給制裁の1回の額は平均賃金の1日分の半額を超えてはならず、また総額は賃金総額の10分の1を超えてはならない。',
+   answer:'○ 正しい',
+   reason:'法第91条：1回の額は<mark>平均賃金1日分の半額以下</mark>・総額は<mark>賃金総額の1/10以下</mark>。',
+   law:'労基法第91条'},
+  {tag:'労基⑨',cat:'制裁の上限',correct:false,
+   q:'減給制裁の総額は一賃金支払期における賃金総額の5分の1が上限である。',
+   answer:'× 誤り',
+   reason:'総額の上限は賃金総額の<mark>10分の1以下</mark>（5分の1は誤り）。',
+   law:'労基法第91条'},
+  {tag:'労基⑩',cat:'就業規則の効力',correct:true,
+   q:'秋北バス事件の最高裁判決によれば、就業規則の不利益変更は合理性がある場合に効力を持つ。',
+   answer:'○ 正しい',
+   reason:'秋北バス事件（最高裁昭和43年）：就業規則の不利益変更は<mark>合理性がある場合</mark>に効力を持ち、労働者を拘束する。',
+   law:'秋北バス事件'}
+];
+
+var fcDeck=[], fcIdx=0, fcGot=0, fcFlipped=false, fcOk=0, fcNg=0;
+
+function fcUpdateGauge() {
+  var total=fcDeck.length, remaining=total-fcIdx, half=50;
+  document.getElementById('fc-gauge-ok').style.width=Math.min(fcOk/total*100,half)+'%';
+  document.getElementById('fc-gauge-ng').style.width=Math.min(fcNg/total*100,half)+'%';
+  document.getElementById('fc-ok-count').textContent=fcOk;
+  document.getElementById('fc-ng-count').textContent=fcNg;
+  document.getElementById('fc-remaining').textContent='残り '+remaining+' 枚';
+  document.getElementById('fc-counter').innerHTML=(fcIdx+1)+'<span> / '+total+'</span>';
+}
+
+function fcSetSlot(slotId,tagId,catId,qId,cardData) {
+  var slot=document.getElementById(slotId);
+  if(!cardData){ slot.classList.add('hidden'); return; }
+  slot.classList.remove('hidden');
+  document.getElementById(tagId).textContent=cardData.tag;
+  document.getElementById(catId).textContent=cardData.cat;
+  document.getElementById(qId).innerHTML=cardData.q;
+}
+
+function fcRender() {
+  var total=fcDeck.length, curr=fcDeck[fcIdx];
+  var prev=fcIdx>0?fcDeck[fcIdx-1]:null;
+  var next=fcIdx<total-1?fcDeck[fcIdx+1]:null;
+  fcSetSlot('fc-slot-prev','fc-prev-tag','fc-prev-cat','fc-prev-q',prev);
+  fcSetSlot('fc-slot-next','fc-next-tag','fc-next-cat','fc-next-q',next);
+  document.getElementById('fc-tag').textContent=curr.tag;
+  document.getElementById('fc-cat').textContent=curr.cat;
+  document.getElementById('fc-q').innerHTML=curr.q;
+  var verdict=document.getElementById('fc-verdict');
+  if(curr.correct !== undefined){
+    verdict.textContent=curr.correct?'○　正しい':'×　誤り';
+    verdict.className='fc-verdict '+(curr.correct?'ok':'ng');
+  } else {
+    verdict.textContent='📖 答えを確認';
+    verdict.className='fc-verdict';
+  }
+  document.getElementById('fc-answer').innerHTML=curr.answer||'';
+  document.getElementById('fc-reason').innerHTML=curr.reason;
+  document.getElementById('fc-lawref').textContent=curr.law;
+  var inner=document.getElementById('fc-inner');
+  inner.classList.remove('flipped');
+  fcFlipped=false;
+  document.getElementById('fc-nav').style.display='none';
+  var ua=document.getElementById('fc-user-ans'); if(ua) ua.textContent='';
+  fcUpdateGauge();
+}
+
+function fcInit() {
+  fcDeck=FC_CARDS.slice();
+  for(var i=fcDeck.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=fcDeck[i];fcDeck[i]=fcDeck[j];fcDeck[j]=tmp;}
+  fcIdx=0;fcGot=0;fcOk=0;fcNg=0;fcFlipped=false;
+  document.getElementById('fc-result').style.display='none';
+  document.getElementById('fc-carousel').style.display='flex';
+  document.getElementById('fc-nav').style.display='none';
+  fcRender();
+}
+
+function fcShuffle() {
+  fcDeck=FC_CARDS.slice();
+  for(var i=fcDeck.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=fcDeck[i];fcDeck[i]=fcDeck[j];fcDeck[j]=tmp;}
+  fcIdx=0;fcGot=0;fcOk=0;fcNg=0;fcFlipped=false;
+  document.getElementById('fc-result').style.display='none';
+  document.getElementById('fc-carousel').style.display='flex';
+  document.getElementById('fc-nav').style.display='none';
+  fcRender();
+}
+
+function fcChoose(userSaidTrue) {
+  if(fcFlipped) return;
+  var curr=fcDeck[fcIdx];
+  var isCorrect=(curr.correct !== undefined)?(userSaidTrue===curr.correct):true;
+  if(userSaidTrue){fcGot++;fcOk++;}else{fcNg++;}
+  var ua=document.getElementById('fc-user-ans');
+  if(ua){ua.textContent=userSaidTrue?'○ わかる！':'× 要復習';ua.style.color=userSaidTrue?'var(--green)':'var(--red)';ua.style.fontWeight='700';}
+  var again=document.querySelector('.fc-nav-btn.again');
+  var got=document.querySelector('.fc-nav-btn.got');
+  if(again&&got){again.style.display='block';again.textContent='😅 もう一度';got.style.display='block';got.textContent='✅ わかった！';}
+  fcFlipped=true;
+  document.getElementById('fc-inner').classList.add('flipped');
+  setTimeout(function(){ document.getElementById('fc-nav').style.display='flex'; },280);
+}
+
+function fcFlip() {
+  var inner=document.getElementById('fc-inner');
+  if(!fcFlipped){
+    fcFlipped=true; inner.classList.add('flipped');
+    var ua=document.getElementById('fc-user-ans');
+    if(ua){ua.textContent='';ua.style.color='var(--gray)';}
+    var again=document.querySelector('.fc-nav-btn.again');
+    var got=document.querySelector('.fc-nav-btn.got');
+    if(again&&got){again.style.display='block';again.textContent='😅 もう一度';got.style.display='block';got.textContent='✅ わかった！';}
+    setTimeout(function(){ document.getElementById('fc-nav').style.display='flex'; },280);
+  } else {
+    fcFlipped=false; inner.classList.remove('flipped');
+    document.getElementById('fc-nav').style.display='none';
+  }
+}
+
+function fcNext(got) {
+  if(got){fcGot++;fcOk++;}else{fcNg++;}
+  document.getElementById('fc-nav').style.display='none';
+  if(fcIdx+1>=fcDeck.length){
+    fcUpdateGauge();
+    document.getElementById('fc-remaining').textContent='残り 0 枚';
+    document.getElementById('fc-carousel').style.display='none';
+    document.getElementById('fc-result').style.display='block';
+    var pct=Math.round(fcOk/fcDeck.length*100);
+    document.getElementById('fc-result-score').textContent=fcOk+' / '+fcDeck.length;
+    document.getElementById('fc-result-sub').textContent='正答率 '+pct+'% ― '+(pct>=80?'バッチリ！次のDayへ進もう':pct>=60?'もう一周してみよう':'連想図を見直してから再挑戦！');
+    document.getElementById('fc-emoji').textContent=pct>=80?'🏆':pct>=60?'✨':'📖';
+    document.getElementById('fc-counter').innerHTML=fcDeck.length+'<span> / '+fcDeck.length+'</span>';
+    return;
+  }
+  fcIdx++; fcRender();
+}
+
+function fcRestart(){ fcInit(); }
+
+function switchTab(name,btn) {
+  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById('panel-'+name).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(name==='flash'&&fcDeck.length===0) fcInit();
+  if(name==='spider') buildSpider();
+}
+
+var SPIDER_DATA = [
+  { id:"b1", label:"就業規則の作成", sub:"労基法第89条",
+    color:"#1d4ed8", light:"#dbeafe", border:"#60a5fa", angle:218,
+    children:[
+      { label:"作成義務", sub:"常時10人以上", leaves:["常時10人以上→作成・届出義務", "10人未満→任意", "届出先：所轄労基署"] },
+      { label:"記載事項", sub:"絶対的・相対的", leaves:["絶対的：労働時間・賃金・退職", "相対的：退職手当・表彰・制裁等"] }
+    ],
+    detail:{
+      hdColor:"#1d4ed8",
+      items:[
+        {label:"作成義務",val:"常時10人以上の事業場（届出先：所轄労基署）",note:""},
+        {label:"絶対的必要記載",val:"①労働時間 ②賃金 ③退職（解雇事由含む）",note:""}
+      ],
+      hikakke:"× 「5人以上で作成義務」→ ○ 常時10人以上\n× 「退職事由だけで解雇事由は別」→ ○ 退職に解雇の事由も含む"
+    }
+  },
+  { id:"b2", label:"就業規則の手続き", sub:"労基法第90条",
+    color:"#2d6a4f", light:"#e8f5ee", border:"#4ade80", angle:322,
+    children:[
+      { label:"作成・変更手続き", sub:"意見聴取で足りる", leaves:["過半数代表者の意見を聴く", "同意・承認は不要", "意見書を添付して届出"] },
+      { label:"周知義務", sub:"法第106条", leaves:["常時作業場に掲示", "書面交付・電子媒体等で周知", "周知しないと効力なし（判例）"] }
+    ],
+    detail:{
+      hdColor:"#2d6a4f",
+      items:[
+        {label:"手続き",val:"過半数代表者の意見聴取で足りる（同意不要）",note:"36協定の協定締結とは異なる"},
+        {label:"周知",val:"法第106条：常時掲示・書面交付等による周知義務",note:"周知なければ効力なし（判例）"}
+      ],
+      hikakke:"× 「就業規則変更に同意が必要」→ ○ 意見聴取で足りる\n× 「周知しなくても効力あり」→ ○ 周知しないと効力なし（判例）"
+    }
+  },
+  { id:"b3", label:"効力の優先順位", sub:"労基法第92条",
+    color:"#c84b31", light:"#fee2e2", border:"#f87171", angle:142,
+    children:[
+      { label:"優先順位", sub:"法令＞協約＞規則＞契約", leaves:["①法令（最優先）", "②労働協約", "③就業規則", "④労働契約（最下位）"] },
+      { label:"違反の効果", sub:"自動的に無効", leaves:["低い基準の規定は自動的に無効", "上位規範の基準が自動適用"] }
+    ],
+    detail:{
+      hdColor:"#c84b31",
+      items:[
+        {label:"優先順位",val:"法令＞労働協約＞就業規則＞労働契約",note:"低い規定は当然無効"},
+        {label:"違反",val:"就業規則が法令・協約に反する部分は無効",note:""}
+      ],
+      hikakke:"× 「労働契約と就業規則は同順位」→ ○ 就業規則が上位\n× 「同意があれば就業規則の協約違反も有効」→ ○ 無効（同意も無力）"
+    }
+  },
+  { id:"b4", label:"制裁の制限", sub:"労基法第91条",
+    color:"#7c3aed", light:"#ede9fe", border:"#a78bfa", angle:38,
+    children:[
+      { label:"減給制裁の上限", sub:"2つの制限", leaves:["1回の額：平均賃金1日分の半額以下", "総額：賃金総額の1/10以下", "両方同時に適用される"] },
+      { label:"秋北バス事件", sub:"不利益変更の合理性", leaves:["就業規則変更の合理性→効力あり", "合理性なし→無効（判例法理）"] }
+    ],
+    detail:{
+      hdColor:"#7c3aed",
+      items:[
+        {label:"制裁上限",val:"1回→平均賃金1日分の半額以下、総額→1/10以下",note:"両方同時適用"},
+        {label:"秋北バス事件",val:"就業規則の不利益変更は合理性がある場合に効力",note:"最高裁昭和43年"}
+      ],
+      hikakke:"× 「制裁総額は1/5以下」→ ○ 1/10以下\n× 「就業規則の不利益変更は全て無効」→ ○ 合理性があれば有効"
+    }
+  }
+];
+var spBranchOpen = {b1:false, b2:false, b3:false, b4:false};
+var spLeafOpen   = {};
+function buildSpider() {
+  var root=document.getElementById("sp-root");
+  if(!root) return;
+  root.innerHTML="";
+  var W=760,H=720,CX=380,CY=360,R1=108,R2=222,R3=330,CS=20,LS=7;
+  var svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.setAttribute("viewBox","0 0 "+W+" "+H);
+  svg.setAttribute("xmlns","http://www.w3.org/2000/svg");
+  svg.setAttribute("font-family","'Noto Sans JP',sans-serif");
+  svg.style.display="block"; svg.style.width="100%"; svg.style.height="auto";
+  function mk(tag,attrs){ var el=document.createElementNS("http://www.w3.org/2000/svg",tag); for(var k in attrs) el.setAttribute(k,attrs[k]); return el; }
+  function r(d){ return d*Math.PI/180; }
+  function pt(dist,deg){ return [CX+Math.cos(r(deg))*dist, CY+Math.sin(r(deg))*dist]; }
+  [R1+16,R2+14,R3+16].forEach(function(dist){
+    svg.appendChild(mk("circle",{cx:CX,cy:CY,r:dist,fill:"none",stroke:"#e4dfd6","stroke-width":"1","stroke-dasharray":"4,5"}));
+  });
+  SPIDER_DATA.forEach(function(branch){
+    var ba=branch.angle;
+    var bpt=pt(R1,ba); var bx=bpt[0],by=bpt[1];
+    svg.appendChild(mk("line",{x1:CX,y1:CY,x2:bx,y2:by,stroke:branch.color,"stroke-width":"4.5","stroke-linecap":"round"}));
+    var og=document.createElementNS("http://www.w3.org/2000/svg","g");
+    og.id="sp-og-"+branch.id;
+    og.style.display=spBranchOpen[branch.id]?"":"none";
+    branch.children.forEach(function(child,ci){
+      var ca=ba+(ci-1)*CS;
+      var cpt=pt(R2,ca); var cx2=cpt[0],cy2=cpt[1];
+      var key=branch.id+"_"+ci;
+      if(spLeafOpen[key]===undefined) spLeafOpen[key]=true;
+      og.appendChild(mk("line",{x1:bx,y1:by,x2:cx2,y2:cy2,stroke:branch.color,"stroke-width":"2","stroke-linecap":"round"}));
+      var lg=document.createElementNS("http://www.w3.org/2000/svg","g");
+      lg.id="sp-lg-"+key; lg.style.display=spLeafOpen[key]?"":"none";
+      var lc=child.leaves.length;
+      child.leaves.forEach(function(leaf,li){
+        var la=ca+(li-(lc-1)/2)*LS;
+        var lpt=pt(R3,la); var lx=lpt[0],ly=lpt[1];
+        lg.appendChild(mk("line",{x1:cx2,y1:cy2,x2:lx,y2:ly,stroke:branch.border,"stroke-width":"1.2","stroke-dasharray":"3,3","stroke-linecap":"round"}));
+        var lw=120;
+        var gr=document.createElementNS("http://www.w3.org/2000/svg","g");
+        gr.appendChild(mk("rect",{x:lx-lw/2,y:ly-13,width:lw,height:26,rx:13,fill:"#faf8f3",stroke:branch.border,"stroke-width":"1.2"}));
+        var fs=leaf.length>10?"9.5":leaf.length>7?"10":"11";
+        var lt=mk("text",{x:lx,y:ly+5,"text-anchor":"middle","font-size":fs,"font-weight":"600",fill:branch.color});
+        lt.textContent=leaf; gr.appendChild(lt); lg.appendChild(gr);
+      });
+      og.appendChild(lg);
+      var gk=document.createElementNS("http://www.w3.org/2000/svg","g");
+      gk.style.cursor="pointer";
+      (function(k){ gk.addEventListener("click",function(e){ e.stopPropagation(); spLeafOpen[k]=!spLeafOpen[k]; var el=document.getElementById("sp-lg-"+k); if(el) el.style.display=spLeafOpen[k]?"":"none"; }); })(key);
+      gk.appendChild(mk("ellipse",{cx:cx2,cy:cy2,rx:"46",ry:"24",fill:branch.color}));
+      var kt=mk("text",{x:cx2,y:cy2-3,"text-anchor":"middle","font-size":"11","font-weight":"700",fill:"white"}); kt.textContent=child.label; gk.appendChild(kt);
+      var ks=mk("text",{x:cx2,y:cy2+11,"text-anchor":"middle","font-size":"8.5",fill:"rgba(255,255,255,.7)"}); ks.textContent=child.sub; gk.appendChild(ks);
+      og.appendChild(gk);
+    });
+    svg.appendChild(og);
+    var gn=document.createElementNS("http://www.w3.org/2000/svg","g");
+    gn.style.cursor="pointer";
+    (function(b){ gn.addEventListener("click",function(){ spBranchOpen[b.id]=!spBranchOpen[b.id]; var el=document.getElementById("sp-og-"+b.id); if(el) el.style.display=spBranchOpen[b.id]?"":"none"; if(spBranchOpen[b.id]){ openSpiderDetail(b,null); } else { closeSpiderDetail(); } }); })(branch);
+    gn.appendChild(mk("ellipse",{cx:bx,cy:by,rx:"56",ry:"32",fill:branch.color}));
+    var tl=mk("text",{x:bx,y:by-5,"text-anchor":"middle","font-size":"14","font-weight":"700",fill:"white"}); tl.textContent=branch.label; gn.appendChild(tl);
+    var ts=mk("text",{x:bx,y:by+11,"text-anchor":"middle","font-size":"9.5",fill:"rgba(255,255,255,.65)"}); ts.textContent=branch.sub; gn.appendChild(ts);
+    svg.appendChild(gn);
+  });
+  var gc=document.createElementNS("http://www.w3.org/2000/svg","g");
+  gc.appendChild(mk("ellipse",{cx:CX,cy:CY,rx:"80",ry:"46",fill:"#22253a"}));
+  var ctexts=[["厚生年金法",-6,"13","#f0eee8"],["目的・適用・資格",11,"9.5","rgba(240,238,232,.55)"]];
+  ctexts.forEach(function(t){ var ct=mk("text",{x:CX,y:CY+t[1],"text-anchor":"middle","font-size":t[2],"font-weight":"700",fill:t[3]}); ct.textContent=t[0]; gc.appendChild(ct); });
+  svg.appendChild(gc);
+  root.appendChild(svg);
+}
+
+function openSpiderDetail(branch,child) {
+  var panel=document.getElementById("spider-detail");
+  var hd=document.getElementById("spider-detail-hd");
+  var title=document.getElementById("spider-detail-title");
+  var body=document.getElementById("spider-detail-body");
+  hd.style.background=branch.detail.hdColor;
+  title.textContent=branch.label+"  "+branch.sub;
+  var html="";
+  branch.detail.items.forEach(function(item){
+    html+="<div style='margin-bottom:14px;'>";
+    html+="<div style='font-size:11px;font-weight:700;color:#6b7280;margin-bottom:3px;'>"+item.label+"</div>";
+    html+="<div style='font-size:14px;font-weight:700;color:#1a1a2e;background:"+branch.light+";border:1.5px solid "+branch.border+";border-radius:8px;padding:8px 12px;'>"+item.val+"</div>";
+    if(item.note) html+="<div style='font-size:11px;color:#6b7280;margin-top:4px;padding-left:4px;'>💡 "+item.note+"</div>";
+    html+="</div>";
+  });
+  if(branch.detail.hikakke){
+    html+="<div style='background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 12px;font-size:11px;color:#A32D2D;line-height:2.1;'>";
+    html+="<div style='font-weight:700;margin-bottom:4px;'>🚨 よくある引っかけ</div>";
+    html+=branch.detail.hikakke.split("\n").join("<br>");
+    html+="</div>";
+  }
+  body.innerHTML=html;
+  panel.style.display="block";
+}
+
+function closeSpiderDetail() {
+  document.getElementById("spider-detail").style.display="none";
+}
+
+// アーティファクト環境対応: グローバル関数をwindowに明示登録
+window.answer = answer;
+window.chkF = chkF;
+window.selB = selB;
+window.fillB = fillB;
+window.switchTab = switchTab;
+window.fcFlip = fcFlip;
+window.fcChoose = fcChoose;
+window.fcNext = fcNext;
+window.fcRestart = fcRestart;
+window.fcShuffle = fcShuffle;
+window.copyRecord = copyRecord;
+window.openSpiderDetail = openSpiderDetail;
+window.closeSpiderDetail = closeSpiderDetail;
+
+document.addEventListener("DOMContentLoaded", function(){ try{fcInit();}catch(e){} try{buildSpider();}catch(e){} });
+</script>
+</body>
+</html>

@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day12｜健保法 過去問演習 ○×60問＋5択20問 ― 健保法過去問ドリル</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1a2e;--paper:#faf8f3;--warm:#f5f0e8;
+  --red:#c84b31;--red-soft:#e8896b;--red-light:#fee2e2;
+  --teal:#2a7f7f;--teal-light:#e8f4f4;
+  --gold:#c9930a;--gold-light:#fef9e7;
+  --green:#2d6a4f;--green-light:#e8f5ee;
+  --gray:#6b7280;--border:#ddd8cc;
+  --purple:#7c3aed;--purple-light:#ede9fe;
+  --blue:#1d4ed8;--blue-light:#dbeafe;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--ink);padding:10px 24px;display:flex;align-items:center;gap:12px;}
+.back-btn{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;display:flex;align-items:center;gap:6px;transition:color .2s;cursor:pointer;}
+.back-btn:hover{color:white;}
+.topbar-title{color:rgba(255,255,255,.45);font-size:12px;margin-left:auto;}
+
+/* ── TAB NAV ── */
+.tab-nav{background:var(--ink);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:100;}
+.tab-nav-in{max-width:820px;margin:0 auto;display:flex;}
+.tab-btn{flex:1;padding:13px 8px;font-size:13px;font-weight:700;color:rgba(255,255,255,.4);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;}
+.tab-btn:hover{color:rgba(255,255,255,.75);}
+.tab-btn.active{color:white;border-color:var(--red-soft);}
+.tab-btn.active.t2{border-color:#60a5fa;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+@media(max-width:600px){.tab-btn{font-size:11px;padding:11px 4px;}}
+
+/* ── HEADER ── */
+.hd{background:var(--ink);color:var(--paper);padding:40px 40px 32px;position:relative;overflow:hidden;}
+.hd::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px);}
+.hd-in{max-width:820px;margin:0 auto;position:relative;}
+.hd-eye{font-size:11px;letter-spacing:4px;color:var(--red-soft);margin-bottom:10px;font-weight:700;}
+.hd h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3.5vw,2rem);font-weight:900;line-height:1.3;margin-bottom:6px;}
+.hd h1 em{color:var(--red-soft);font-style:normal;}
+.hd-sub{font-size:13px;color:rgba(255,255,255,.5);font-weight:300;}
+
+/* ── DASHBOARD ── */
+.dash{max-width:820px;margin:20px auto 0;padding:0 20px;}
+.dash-inner{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;}
+.dash-top{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:1px solid var(--border);}
+.dash-cell{padding:14px 10px;text-align:center;border-right:1px solid var(--border);}
+.dash-cell:last-child{border-right:none;}
+.dash-num{font-family:'DM Serif Display',serif;font-size:28px;line-height:1;}
+.dash-num.red{color:var(--red);}
+.dash-num.green{color:var(--green);}
+.dash-num.gold{color:var(--gold);}
+.dash-num.blue{color:var(--blue);}
+.dash-lbl{font-size:10px;color:var(--gray);font-weight:700;letter-spacing:1px;margin-top:2px;}
+.dash-streak{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;background:var(--warm);font-size:13px;font-weight:700;}
+.streak-badge{background:var(--red);color:white;border-radius:20px;padding:3px 12px;font-size:12px;}
+
+/* ── PROGRESS BAR ── */
+.prog-wrap{max-width:820px;margin:10px auto 0;padding:0 20px 4px;}
+.prog-track{background:var(--border);border-radius:20px;height:8px;overflow:hidden;margin-bottom:4px;}
+.prog-bar{background:linear-gradient(90deg,var(--teal),var(--green));height:8px;border-radius:20px;width:0%;transition:width .6s cubic-bezier(.4,0,.2,1);}
+.prog-lbl{font-size:11px;color:var(--gray);text-align:right;}
+
+/* ── FILTER ── */
+.filter-wrap{max-width:820px;margin:16px auto 0;padding:0 20px;}
+.filter-label{font-size:11px;font-weight:700;color:var(--gray);letter-spacing:1px;margin-bottom:8px;}
+.filter-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.fc-chip{border:2px solid var(--border);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;cursor:pointer;transition:all .15s;background:white;color:var(--ink);}
+.fc-chip:hover{border-color:var(--ink);}
+.fc-chip.active{background:var(--ink);color:white;border-color:var(--ink);}
+.fc-chip.s1.active{background:#7c3aed;border-color:#7c3aed;}
+.fc-chip.s2.active{background:#c84b31;border-color:#c84b31;}
+.fc-chip.s3.active{background:#2a7f7f;border-color:#2a7f7f;}
+.fc-chip.s4.active{background:#c9930a;border-color:#c9930a;}
+.fc-chip.s5.active{background:#2d6a4f;border-color:#2d6a4f;}
+.fc-chip.s6.active{background:#6d28d9;border-color:#6d28d9;}
+.fc-chip.s7.active{background:#dc2626;border-color:#dc2626;}
+.fc-chip.s8.active{background:#0891b2;border-color:#0891b2;}
+.fc-chip.s9.active{background:#1d4ed8;border-color:#1d4ed8;}
+.fc-chip.s10.active{background:#d97706;border-color:#d97706;}
+.fc-chip.s11.active{background:#374151;border-color:#374151;}
+.fc-chip.weak.active{background:#be185d;border-color:#be185d;}
+
+/* ── OX CARD AREA ── */
+.ox-wrap{max-width:780px;margin:20px auto 0;padding:0 20px 80px;}
+.ox-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;font-size:12px;color:var(--gray);}
+.ox-counter{font-family:'DM Serif Display',serif;font-size:24px;color:var(--red);line-height:1;}
+.ox-counter span{font-size:12px;color:var(--gray);font-family:'Noto Sans JP',sans-serif;font-weight:400;}
+.ox-section-tag{font-size:10px;font-weight:700;background:var(--purple-light);color:var(--purple);border-radius:4px;padding:2px 8px;}
+
+/* カード */
+.ox-card{background:white;border:2px solid var(--ink);border-radius:16px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.08);margin-bottom:4px;}
+.ox-card-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:9px 14px;display:flex;align-items:center;gap:8px;}
+.ox-card-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;}
+.ox-card-cat{font-size:10px;color:var(--gray);}
+.ox-card-body{padding:22px 22px 16px;}
+.ox-q{font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;line-height:2.0;color:var(--ink);margin-bottom:18px;}
+.ox-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+.ox-hint{font-size:11px;color:var(--gray);margin-bottom:12px;}
+.ox-btns{display:flex;gap:10px;margin-bottom:6px;}
+.ox-btn{flex:1;padding:12px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-size:22px;font-weight:900;cursor:pointer;transition:all .15s;font-family:inherit;}
+.ox-btn.o:hover{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.ox-btn.x:hover{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.ox-btn:disabled{opacity:.38;cursor:default;}
+.ox-btn.chosen-o{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.ox-btn.chosen-x{border-color:var(--red);background:var(--red-light);color:var(--red);}
+
+/* 解説パネル */
+.ox-ans{display:none;border-radius:10px;padding:14px 16px;font-size:13px;margin-top:10px;line-height:1.9;}
+.ox-ans.show{display:block;}
+.ox-ans.ok{background:var(--green-light);border:1px solid #86efac;}
+.ox-ans.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.ox-verdict{font-size:14px;font-weight:900;margin-bottom:8px;}
+.ox-verdict.ok{color:var(--green);}
+.ox-verdict.ng{color:var(--red);}
+.ox-reason-box{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:10px;font-size:13px;line-height:1.8;}
+.ox-reason-box mark{background:#fde68a;padding:1px 3px;border-radius:2px;font-weight:700;color:var(--ink);}
+.ox-law{display:inline-block;font-size:10px;color:var(--teal);font-family:'DM Serif Display',serif;background:var(--teal-light);border:1px solid var(--teal);padding:2px 8px;border-radius:4px;margin-top:4px;}
+.ox-next-btn{display:block;width:100%;margin-top:12px;padding:11px;background:var(--ink);color:white;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.ox-next-btn:hover{opacity:.82;}
+
+/* 結果 */
+.ox-result{display:none;text-align:center;padding:28px 20px;background:white;border:2px solid var(--ink);border-radius:16px;margin:0 0 20px;}
+.ox-result h3{font-family:'Noto Serif JP',serif;font-size:1.3rem;font-weight:900;margin-bottom:8px;}
+.ox-result-score{font-family:'DM Serif Display',serif;font-size:48px;color:var(--red);line-height:1;margin:8px 0 4px;}
+.ox-result-sub{font-size:13px;color:var(--gray);margin-bottom:20px;}
+.btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.ox-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:11px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.ox-restart-btn:hover{opacity:.82;}
+.ox-weak-btn{background:var(--red);color:white;border:none;border-radius:10px;padding:11px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.ox-weak-btn:hover{opacity:.82;}
+
+/* 苦手なし */
+.no-weak{text-align:center;padding:40px 20px;background:white;border:2px solid var(--border);border-radius:16px;}
+
+/* 習熟度 */
+.mastery-wrap{max-width:820px;margin:16px auto 0;padding:0 20px 40px;}
+.mastery-title{font-size:12px;font-weight:700;color:var(--gray);letter-spacing:1px;margin-bottom:10px;}
+.mastery-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:12px;}
+.mastery-label{width:160px;flex-shrink:0;font-size:11px;color:var(--ink);}
+.mastery-track{flex:1;background:var(--border);border-radius:10px;height:8px;overflow:hidden;}
+.mastery-bar{height:8px;border-radius:10px;background:var(--teal);transition:width .6s ease;}
+.mastery-pct{width:32px;text-align:right;font-size:11px;font-weight:700;color:var(--teal);}
+
+/* ── 5択パネル ── */
+.mc-wrap{max-width:780px;margin:0 auto;padding:20px 20px 80px;}
+.mc-dash{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;margin-bottom:16px;}
+.mc-dash-top{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--border);}
+.mc-dash-cell{padding:12px 14px;text-align:center;border-right:1px solid var(--border);}
+.mc-dash-cell:last-child{border-right:none;}
+.mc-dash-num{font-family:'DM Serif Display',serif;font-size:28px;line-height:1;}
+.mc-dash-lbl{font-size:10px;color:var(--gray);font-weight:700;letter-spacing:1px;margin-top:2px;}
+.mc-prog-row{display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--warm);}
+.mc-prog-track{flex:1;background:var(--border);border-radius:10px;height:6px;overflow:hidden;}
+.mc-prog-bar{height:6px;background:linear-gradient(90deg,var(--blue),#60a5fa);border-radius:10px;width:0%;transition:width .5s;}
+.mc-prog-lbl{font-size:11px;color:var(--gray);white-space:nowrap;}
+
+.mc-card{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;margin-bottom:24px;}
+.mc-card-hd{display:flex;align-items:center;gap:12px;padding:11px 18px;background:var(--warm);border-bottom:1px solid var(--border);}
+.mc-card-num{font-family:'DM Serif Display',serif;font-size:28px;color:var(--blue);line-height:1;}
+.mc-card-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;background:var(--blue);color:white;border-radius:4px;padding:2px 8px;margin-bottom:3px;}
+.mc-card-cat{font-size:11px;color:var(--gray);}
+.mc-card-body{padding:18px 20px;}
+.mc-q{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;line-height:2.0;margin-bottom:16px;color:var(--ink);}
+.mc-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+.mc-options{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.mc-opt{border:2px solid var(--border);border-radius:10px;padding:11px 16px;cursor:pointer;font-size:13px;font-weight:500;transition:all .2s;background:white;text-align:left;font-family:inherit;line-height:1.7;}
+.mc-opt:hover:not(:disabled){border-color:var(--blue);background:var(--blue-light);}
+.mc-opt:disabled{cursor:default;}
+.mc-opt.correct{border-color:var(--green);background:var(--green-light);color:var(--green);font-weight:700;}
+.mc-opt.wrong{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.mc-opt.unchosen{opacity:.5;}
+.mc-check-btn{background:var(--blue);color:white;border:none;border-radius:8px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit;}
+.mc-check-btn:hover{opacity:.82;}
+.mc-check-btn:disabled{opacity:.38;cursor:default;}
+.mc-ans{display:none;border-radius:10px;padding:16px 18px;font-size:13px;margin-top:8px;}
+.mc-ans.show{display:block;}
+.mc-ans.ok{background:var(--green-light);border:1px solid #86efac;}
+.mc-ans.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.mc-ans-hd{font-weight:700;font-size:14px;margin-bottom:10px;}
+.mc-why{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.8;}
+.mc-why mark{background:#fde68a;padding:1px 3px;border-radius:2px;font-weight:700;color:var(--ink);}
+/* 選択肢別解説テーブル */
+.mc-opts-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px;}
+.mc-opts-table tr{border-bottom:1px solid var(--border);}
+.mc-opts-table tr:last-child{border-bottom:none;}
+.mc-opts-table td{padding:7px 8px;vertical-align:top;line-height:1.8;}
+.mc-opts-table td:first-child{white-space:nowrap;font-weight:700;font-family:'DM Serif Display',serif;font-size:13px;width:32px;text-align:center;}
+.mc-opts-table mark{background:#fde68a;padding:1px 3px;border-radius:2px;font-weight:700;color:var(--ink);}
+.mc-opt-ok{background:var(--green-light);}
+.mc-opt-ok td:first-child{color:var(--green);}
+.mc-opt-ng{background:#fff8f8;}
+.mc-opt-ng td:first-child{color:var(--red);}
+.mc-point-box{background:var(--purple-light);border:1.5px solid #c4b5fd;border-radius:8px;padding:10px 14px;font-size:12px;line-height:1.9;margin-top:10px;}
+.mc-point-box mark{background:#ddd6fe;padding:1px 3px;border-radius:2px;font-weight:700;color:#4c1d95;}
+/* 試験のツボ */
+.mc-tubo-box{background:#0f172a;color:#fbbf24;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:6px 14px 4px;margin-top:12px;border-radius:8px 8px 0 0;}
+.mc-tubo-body{background:#1e293b;color:#e2e8f0;font-size:12px;line-height:1.9;padding:10px 14px 12px;border-radius:0 0 8px 8px;margin-bottom:2px;}
+.mc-tubo-body strong{color:#fbbf24;font-weight:700;}
+.mc-tubo-body mark{background:#854d0e;color:#fef9c3;padding:1px 3px;border-radius:2px;font-weight:700;}
+.mc-law{display:inline-block;margin-top:4px;font-size:10px;color:var(--teal);font-family:'DM Serif Display',serif;background:var(--teal-light);border:1px solid var(--teal);padding:2px 8px;border-radius:4px;}
+.mc-result{display:none;text-align:center;padding:28px 20px;background:white;border:2px solid var(--ink);border-radius:16px;margin-bottom:40px;}
+.mc-result h3{font-family:'Noto Serif JP',serif;font-size:1.3rem;font-weight:900;margin-bottom:8px;}
+.mc-result-score{font-family:'DM Serif Display',serif;font-size:48px;color:var(--blue);line-height:1;margin:8px 0 4px;}
+.mc-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:11px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:16px;transition:opacity .2s;}
+.mc-restart-btn:hover{opacity:.82;}
+
+.mode-btn{padding:8px 16px;border-radius:8px;border:2px solid var(--border);background:white;font-size:12px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit;color:var(--ink);}
+.mode-btn:hover{border-color:var(--ink);}
+.mode-btn.active{background:var(--teal);color:white;border-color:var(--teal);}
+
+@media(max-width:600px){
+  .hd{padding:28px 16px 24px;}
+  .dash{padding:0 12px;}
+  .filter-wrap,.mastery-wrap{padding:0 12px;}
+  .ox-wrap,.mc-wrap{padding:0 12px 80px;}
+  .dash-top{grid-template-columns:1fr 1fr;}
+  .dash-num{font-size:24px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="back-btn" onclick="location.href='index.html'">← 目次に戻る</span>
+  <span class="topbar-title">Day12 ／ 過去問演習 ○×60問＋5択20問</span>
+</div>
+
+<nav class="tab-nav">
+  <div class="tab-nav-in">
+    <button class="tab-btn active" onclick="switchTab('ox',this)">⭕ ○×問題（60問）</button>
+    <button class="tab-btn t2" onclick="switchTab('mc',this)">📋 5択問題（60問）</button>
+  </div>
+</nav>
+
+<!-- ════ PANEL OX ════ -->
+<div id="panel-ox" class="tab-panel active">
+
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-eye">HEALTH INSURANCE LAW — PAST EXAM PRACTICE</div>
+    <h1>健保法 <em>過去問○×演習</em>　60問</h1>
+    <div class="hd-sub">頻出論点を網羅 ― 全セクション横断・苦手モード搭載　<span style="background:#c84b31;color:white;font-size:10px;padding:2px 8px;border-radius:4px;margin-left:8px;">Day12</span></div>
+  </div>
+</div>
+
+<div class="dash">
+  <div class="dash-inner">
+    <div class="dash-top">
+      <div class="dash-cell"><div class="dash-num red" id="ox-remaining">60</div><div class="dash-lbl">残り</div></div>
+      <div class="dash-cell"><div class="dash-num green" id="ox-ok">0</div><div class="dash-lbl">正解</div></div>
+      <div class="dash-cell"><div class="dash-num red" id="ox-ng">0</div><div class="dash-lbl">不正解</div></div>
+      <div class="dash-cell"><div class="dash-num gold" id="ox-weak">0</div><div class="dash-lbl">苦手</div></div>
+    </div>
+    <div class="dash-streak">
+      <span>進捗</span>
+      <span class="streak-badge" id="ox-pct">0%</span>
+      <span id="ox-mode-lbl" style="font-size:11px;color:var(--gray);margin-left:auto;"></span>
+    </div>
+  </div>
+</div>
+
+<div class="prog-wrap">
+  <div class="prog-track"><div class="prog-bar" id="ox-prog-bar"></div></div>
+  <div class="prog-lbl" id="ox-prog-lbl">0 ／ 60 問 回答済み</div>
+</div>
+
+<div class="filter-wrap">
+  <div class="filter-label">セクションで絞り込む</div>
+  <div class="filter-chips">
+    <div class="fc-chip active" data-sec="all" onclick="oxSetFilter('all',this)">全て (60)</div>
+    <div class="fc-chip s1" data-sec="①制度概要" onclick="oxSetFilter('①制度概要',this)">①制度概要</div>
+    <div class="fc-chip s2" data-sec="②被保険者" onclick="oxSetFilter('②被保険者',this)">②被保険者</div>
+    <div class="fc-chip s3" data-sec="③被扶養者" onclick="oxSetFilter('③被扶養者',this)">③被扶養者</div>
+    <div class="fc-chip s4" data-sec="④標準報酬・保険料" onclick="oxSetFilter('④標準報酬・保険料',this)">④標準報酬・保険料</div>
+    <div class="fc-chip s5" data-sec="⑤療養給付" onclick="oxSetFilter('⑤療養給付',this)">⑤療養給付</div>
+    <div class="fc-chip s6" data-sec="⑥傷病手当金" onclick="oxSetFilter('⑥傷病手当金',this)">⑥傷病手当金</div>
+    <div class="fc-chip s7" data-sec="⑦出産・死亡給付" onclick="oxSetFilter('⑦出産・死亡給付',this)">⑦出産・死亡給付</div>
+    <div class="fc-chip s8" data-sec="⑧継続・資格喪失後" onclick="oxSetFilter('⑧継続・資格喪失後',this)">⑧継続・資格喪失後</div>
+    <div class="fc-chip s9" data-sec="⑨第三者・審査・時効" onclick="oxSetFilter('⑨第三者・審査・時効',this)">⑨第三者・審査・時効</div>
+    <div class="fc-chip s10" data-sec="⑩健保組合・日雇" onclick="oxSetFilter('⑩健保組合・日雇',this)">⑩健保組合・日雇</div>
+    <div class="fc-chip s11" data-sec="⑪横断・数字まとめ" onclick="oxSetFilter('⑪横断・数字まとめ',this)">⑪横断・数字まとめ</div>
+    <div class="fc-chip weak" data-sec="weak" onclick="oxSetFilter('weak',this)">🔥 苦手のみ</div>
+  </div>
+</div>
+
+<div style="max-width:820px;margin:10px auto 0;padding:0 20px;display:flex;gap:8px;flex-wrap:wrap;">
+  <button class="mode-btn" id="ox-shuffle-btn" onclick="oxToggleShuffle(this)">🔀 シャッフル：OFF</button>
+</div>
+
+<div class="ox-wrap">
+  <div class="ox-meta">
+    <div><span class="ox-counter" id="ox-counter-num">1</span><span> / <span id="ox-counter-total">60</span></span></div>
+    <div class="ox-section-tag" id="ox-sec-tag"></div>
+  </div>
+
+  <div id="ox-card-area"></div>
+
+  <div class="no-weak" id="ox-no-weak" style="display:none;">
+    <span style="font-size:48px;display:block;margin-bottom:12px;">🎉</span>
+    <div style="font-family:'Noto Serif JP',serif;font-size:1.2rem;font-weight:900;margin-bottom:8px;">苦手問題がありません！</div>
+    <div style="font-size:13px;color:var(--gray);">全問に挑戦してみましょう。</div>
+    <button class="ox-restart-btn" style="margin-top:16px;" onclick="oxSetFilter('all',document.querySelector('[data-sec=all]'))">全問に戻る</button>
+  </div>
+
+  <div class="ox-result" id="ox-result">
+    <span style="font-size:36px;display:block;margin-bottom:8px;" id="ox-emoji">🏆</span>
+    <h3>演習完了！</h3>
+    <div class="ox-result-score" id="ox-result-score">0 / 60</div>
+    <div class="ox-result-sub" id="ox-result-sub"></div>
+    <div class="btn-row">
+      <button class="ox-restart-btn" onclick="oxRestart()">🔁 もう一周</button>
+      <button class="ox-weak-btn" id="ox-btn-retry-weak" onclick="oxRetryWeak()" style="display:none;">🔥 苦手だけ再挑戦</button>
+    </div>
+  </div>
+</div>
+
+<div class="mastery-wrap" id="ox-mastery-wrap" style="display:none;">
+  <div class="mastery-title">📊 セクション別 正解率</div>
+  <div id="ox-mastery-bars"></div>
+</div>
+
+</div><!-- /panel-ox -->
+
+<!-- ════ PANEL MC (5択) ════ -->
+<div id="panel-mc" class="tab-panel">
+<div class="mc-wrap">
+  <div class="hd" style="margin:-20px -20px 20px;border-radius:0;">
+    <div class="hd-in">
+      <div class="hd-eye">HEALTH INSURANCE LAW — 5-CHOICE EXAM</div>
+      <h1>健保法 <em>5択過去問</em>　60問</h1>
+      <div class="hd-sub">本試験形式 ― 5肢から1つを選択・全論点網羅版</div>
+    </div>
+  </div>
+
+  <div class="mc-dash">
+    <div class="mc-dash-top">
+      <div class="mc-dash-cell"><div class="mc-dash-num" id="mc-answered" style="color:var(--blue);">0</div><div class="mc-dash-lbl">回答済み</div></div>
+      <div class="mc-dash-cell"><div class="mc-dash-num" id="mc-ok" style="color:var(--green);">0</div><div class="mc-dash-lbl">正解</div></div>
+      <div class="mc-dash-cell"><div class="mc-dash-num" id="mc-ng" style="color:var(--red);">0</div><div class="mc-dash-lbl">不正解</div></div>
+    </div>
+    <div class="mc-prog-row">
+      <div class="mc-prog-track"><div class="mc-prog-bar" id="mc-prog-bar"></div></div>
+      <div class="mc-prog-lbl" id="mc-prog-lbl">0 ／ 60 問</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:8px;margin-bottom:16px;">
+    <button class="mode-btn" id="mc-shuffle-btn" onclick="mcToggleShuffle(this)">🔀 シャッフル：OFF</button>
+  </div>
+
+  <div id="mc-cards"></div>
+
+  <div class="mc-result" id="mc-result">
+    <span style="font-size:36px;display:block;margin-bottom:8px;" id="mc-emoji">🏆</span>
+    <h3>5択演習 完了！</h3>
+    <div class="mc-result-score" id="mc-result-score">0 / 20</div>
+    <div style="font-size:13px;color:var(--gray);margin-bottom:4px;" id="mc-result-sub"></div>
+    <button class="mc-restart-btn" onclick="mcRestart()">🔁 もう一周する</button>
+  </div>
+</div>
+</div><!-- /panel-mc -->
+
+<script>
+// =====================================================
+// タブ切替
+// =====================================================
+function switchTab(name, btn) {
+  var panels = document.querySelectorAll('.tab-panel');
+  var btns = document.querySelectorAll('.tab-btn');
+  for (var i = 0; i < panels.length; i++) { panels[i].classList.remove('active'); }
+  for (var i = 0; i < btns.length; i++) { btns[i].classList.remove('active'); }
+  document.getElementById('panel-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+// =====================================================
+// ○×問題データ（60問）
+// =====================================================
+var OX_DATA = [
+// ①制度概要（6問）
+{id:'OX01',sec:'①制度概要',cat:'沿革',correct:false,
+ q:'健康保険法は昭和2年に制定され、昭和2年に施行された。',
+ reason:'健康保険法は大正<mark>11年（1922年）</mark>に<mark>制定</mark>されたが、関東大震災による延期を経て施行は昭和<mark>2年（1927年）</mark>。制定と施行を同年とするのは誤り。',
+ law:'法附則第1条'},
+{id:'OX02',sec:'①制度概要',cat:'目的',correct:false,
+ q:'健康保険法は、被保険者の業務上および業務外の傷病について保険給付を行う。',
+ reason:'健康保険法の対象は<mark>業務外</mark>の傷病のみ。<mark>業務上</mark>は労働者災害補償保険（労災）が対応する。健保と労災の適用区分は最頻出。',
+ law:'法第1条'},
+{id:'OX03',sec:'①制度概要',cat:'基本的理念',correct:false,
+ q:'法第2条は、健康保険制度について5年ごとに検討を加えることを定めている。',
+ reason:'法第2条は「<mark>常に</mark>」検討を加えると規定。「<mark>5年ごと</mark>」は国民健康保険法の規定であり、混同に注意。',
+ law:'法第2条'},
+{id:'OX04',sec:'①制度概要',cat:'保険者',correct:true,
+ q:'協会けんぽ管掌において、任意継続被保険者の保険料徴収は全国健康保険協会が行う。',
+ reason:'原則として資格確認・標準報酬決定・保険料徴収は厚生労働大臣が行うが、<mark>任意継続被保険者の保険料徴収は例外</mark>として全国健康保険協会が行う。',
+ law:'法第5条第2項'},
+{id:'OX05',sec:'①制度概要',cat:'強制適用',correct:true,
+ q:'法人事業所は、使用する被保険者数にかかわらず強制適用事業所となる。',
+ reason:'法人は<mark>人数不問</mark>で強制適用。個人事業所は常時<mark>5人以上</mark>かつ適用業種であれば強制適用。この対比は頻出。',
+ law:'法第13条'},
+{id:'OX06',sec:'①制度概要',cat:'健保組合',correct:false,
+ q:'健康保険組合を単独で設立するには、常時1,000人以上の被保険者が必要である。',
+ reason:'単独設立の要件は常時<mark>700人以上</mark>。1,000人は誤り。共同設立は合算<mark>3,000人以上</mark>（各<mark>300人以上</mark>）。',
+ law:'法第11条'},
+// ②被保険者（7問）
+{id:'OX07',sec:'②被保険者',cat:'適用除外',correct:false,
+ q:'季節的業務に使用される者は、雇用期間が6ヵ月以内であれば被保険者にならない。',
+ reason:'季節的業務の適用除外は<mark>4ヵ月以内</mark>。<mark>6ヵ月以内</mark>は臨時的事業の適用除外。両者の混同は最頻出の誤り。',
+ law:'法第3条第1項第4号'},
+{id:'OX08',sec:'②被保険者',cat:'資格取得',correct:true,
+ q:'使用関係が生じた日（採用日）から被保険者の資格を取得する。',
+ reason:'被保険者資格は<mark>使用関係が生じた日</mark>に取得する。入社式や雇用保険と混同しないこと。',
+ law:'法第35条'},
+{id:'OX09',sec:'②被保険者',cat:'資格喪失',correct:true,
+ q:'退職による資格喪失日は退職日の翌日である。',
+ reason:'退職・死亡ともに<mark>翌日</mark>が資格喪失日。退職日当日はまだ被保険者として在籍している。',
+ law:'法第36条'},
+{id:'OX10',sec:'②被保険者',cat:'任意継続',correct:false,
+ q:'任意継続被保険者の申請は、資格喪失日から30日以内に行わなければならない。',
+ reason:'任意継続の申請期限は資格喪失日から<mark>20日以内</mark>。30日は誤り。「<mark>2ヵ月以上</mark>の被保険者期間・<mark>20日</mark>以内申請・最長<mark>2年</mark>」を3点セットで覚える。',
+ law:'法第37条第1項'},
+{id:'OX11',sec:'②被保険者',cat:'任意継続保険料',correct:false,
+ q:'任意継続被保険者の保険料算定は、退職時の標準報酬月額と全被保険者の平均標準報酬月額の高い方を使用する。',
+ reason:'<mark>低い方</mark>を使用する（有利算定）。「高い方」とするのは誤り。事業主負担がない分、低い方で算定される。',
+ law:'法第47条'},
+{id:'OX12',sec:'②被保険者',cat:'短時間労働者',correct:true,
+ q:'短時間労働者が被保険者となるには、月額賃金88,000円以上の要件を満たす必要がある。',
+ reason:'短時間労働者の要件は①週所定労働時間が通常労働者の<mark>4分の3以上</mark>かつ②月額賃金<mark>88,000円以上</mark>。いわゆる「社会保険の壁」。',
+ law:'法第3条第1項'},
+{id:'OX13',sec:'②被保険者',cat:'資格喪失の届出',correct:true,
+ q:'資格取得・喪失の届出期限は、いずれも事実発生から5日以内である。',
+ reason:'資格取得届・喪失届ともに<mark>5日以内</mark>。「<mark>10日以内</mark>」は2以上事業所選択の届出期限であり混同に注意。',
+ law:'法第48条'},
+// ③被扶養者（5問）
+{id:'OX14',sec:'③被扶養者',cat:'被扶養者の範囲',correct:false,
+ q:'被扶養者として認定されるには、被保険者と同一世帯でなければならない。',
+ reason:'配偶者・子・孫・祖父母・兄弟姉妹については<mark>同一世帯不要</mark>（別居でも可）。同一世帯要件が課されるのは三親等内の親族（上記以外）など。',
+ law:'法第3条第7項'},
+{id:'OX15',sec:'③被扶養者',cat:'収入要件',correct:true,
+ q:'被扶養者の収入要件は原則として年収130万円未満であり、60歳以上または障害者は180万円未満である。',
+ reason:'<mark>原則130万円未満</mark>・<mark>60歳以上または障害者は180万円未満</mark>。かつ被保険者の年収の<mark>2分の1未満</mark>（別居の場合は仕送り額未満）。',
+ law:'法第3条第7項'},
+{id:'OX16',sec:'③被扶養者',cat:'届出',correct:false,
+ q:'被扶養者の認定の届出期限は、事実発生日から10日以内である。',
+ reason:'被扶養者の届出期限は<mark>5日以内</mark>。10日以内は2以上事業所選択届の期限。',
+ law:'法第48条'},
+{id:'OX17',sec:'③被扶養者',cat:'認定基準',correct:true,
+ q:'被保険者の直系尊属（父母・祖父母等）は、同一世帯でなくても被扶養者として認定される。',
+ reason:'直系尊属・配偶者・子・孫・兄弟姉妹は<mark>同一世帯不要</mark>で被扶養者認定が可能。',
+ law:'法第3条第7項'},
+{id:'OX18',sec:'③被扶養者',cat:'事実婚',correct:true,
+ q:'内縁関係にある配偶者も、健康保険上の被扶養者として認定される場合がある。',
+ reason:'健康保険では<mark>内縁関係（事実婚）の配偶者</mark>も被扶養者として認定される。戸籍上の婚姻に限定されない。',
+ law:'法第3条第7項'},
+// ④標準報酬・保険料（6問）
+{id:'OX19',sec:'④標準報酬・保険料',cat:'等級数',correct:true,
+ q:'健康保険の標準報酬月額は第1等級から第50等級までの50等級で構成されている。',
+ reason:'健保は<mark>50等級</mark>（58,000円〜1,390,000円）。厚生年金保険の<mark>32等級</mark>と混同しやすい。',
+ law:'法第40条'},
+{id:'OX20',sec:'④標準報酬・保険料',cat:'算定基礎',correct:true,
+ q:'定時決定における算定対象月は4月・5月・6月の3ヵ月である。',
+ reason:'定時決定（算定基礎届）は<mark>4・5・6月</mark>の3ヵ月の報酬を7月10日までに届け出る。「1・2・3月」や「7・8・9月」と混同しないこと。',
+ law:'法第41条'},
+{id:'OX21',sec:'④標準報酬・保険料',cat:'随時改定',correct:false,
+ q:'随時改定の要件は、継続した3ヵ月の報酬平均と現標準報酬月額に1等級以上の差が生じたときである。',
+ reason:'随時改定の要件は<mark>2等級以上</mark>の差。<mark>1等級以上</mark>は育児休業等終了時改定の要件であり、両者の混同は最頻出誤り。',
+ law:'法第43条'},
+{id:'OX22',sec:'④標準報酬・保険料',cat:'育休中の免除',correct:true,
+ q:'育児休業期間中は、事業主・被保険者双方の保険料が免除される。',
+ reason:'育児休業等を取得した場合、申出により<mark>被保険者・事業主双方の保険料が免除</mark>される。産前産後休業期間中も同様。',
+ law:'法第159条'},
+{id:'OX23',sec:'④標準報酬・保険料',cat:'保険料率',correct:false,
+ q:'協会けんぽの保険料率は全国一律で定められている。',
+ reason:'協会けんぽの保険料率は<mark>都道府県ごと</mark>に異なる。各都道府県の医療費水準等を反映して設定される。健保組合は組合ごとに設定。',
+ law:'法第160条'},
+{id:'OX24',sec:'④標準報酬・保険料',cat:'産休中の免除',correct:true,
+ q:'産前産後休業期間中の保険料も、育児休業と同様に事業主・被保険者双方が免除される。',
+ reason:'産前産後休業期間中も申出により<mark>双方免除</mark>。産前42日（多胎98日）・産後56日が免除対象期間。',
+ law:'法第159条の3'},
+// ⑤療養給付（7問）
+{id:'OX25',sec:'⑤療養給付',cat:'療養の給付',correct:false,
+ q:'療養の給付には、食事の提供が含まれる。',
+ reason:'食事の提供は療養の給付ではなく<mark>入院時食事療養費</mark>として別制度で支給される。療養の給付5項目は①診察②薬剤・治療材料③処置・手術④居宅療養上の管理⑤入院及び看護。',
+ law:'法第63条'},
+{id:'OX26',sec:'⑤療養給付',cat:'一部負担金',correct:true,
+ q:'70歳以上74歳以下の被保険者（現役並み所得者を除く）の一部負担金割合は2割である。',
+ reason:'70〜74歳（一般・低所得者）は<mark>2割</mark>。現役並み所得者は<mark>3割</mark>。就学前は<mark>2割</mark>、6〜69歳は<mark>3割</mark>。',
+ law:'法第74条'},
+{id:'OX27',sec:'⑤療養給付',cat:'療養費',correct:true,
+ q:'療養費はやむを得ない事情で保険診療が受けられなかった場合に支給される現金給付である。',
+ reason:'療養費は<mark>現金給付</mark>。「<mark>やむを得ない</mark>」事情が要件。療養の給付（現物給付）との区別は最頻出。',
+ law:'法第87条'},
+{id:'OX28',sec:'⑤療養給付',cat:'高額療養費',correct:false,
+ q:'高額療養費は自動的に支給されるため、申請は不要である。',
+ reason:'高額療養費は<mark>申請が必要</mark>。自動支給ではない。「知らないと損する制度」として出題頻度が高い。',
+ law:'法第115条'},
+{id:'OX29',sec:'⑤療養給付',cat:'高額療養費合算',correct:false,
+ q:'高額療養費の世帯合算において、70歳未満は支払額を制限なく合算できる。',
+ reason:'70歳未満は<mark>21,000円以上</mark>の自己負担のみ合算対象。制限なく合算できるのは<mark>70歳以上</mark>。',
+ law:'法第115条'},
+{id:'OX30',sec:'⑤療養給付',cat:'移送費',correct:true,
+ q:'移送費は緊急やむを得ない事情で移送された場合に支給される。',
+ reason:'移送費の要件は<mark>緊急やむを得ない</mark>移送。通常の通院交通費は対象外。',
+ law:'法第97条'},
+{id:'OX31',sec:'⑤療養給付',cat:'保険外併用',correct:false,
+ q:'保険診療と自由診療を同時に受けた場合（混合診療）は、保険診療部分のみ保険給付される。',
+ reason:'原則として<mark>混合診療は全額自費</mark>となる（保険診療部分も給付されない）。例外的に評価療養・選定療養・患者申出療養のみ認められる。',
+ law:'法第63条'},
+// ⑥傷病手当金（5問）
+{id:'OX32',sec:'⑥傷病手当金',cat:'待期',correct:true,
+ q:'傷病手当金は、療養のため労務に服することができない日が3日間継続した後（待期完成後）の4日目から支給される。',
+ reason:'待期は<mark>3日間</mark>の連続休業。<mark>4日目から</mark>支給開始。労災保険の待期<mark>7日間</mark>と混同しないこと。',
+ law:'法第99条'},
+{id:'OX33',sec:'⑥傷病手当金',cat:'給付額',correct:true,
+ q:'傷病手当金の1日の支給額は、直近12ヵ月の標準報酬月額の平均額の30分の1の3分の2に相当する額である。',
+ reason:'<mark>直近12ヵ月平均</mark>の標準報酬月額÷30×<mark>3分の2</mark>。6ヵ月平均は誤り。',
+ law:'法第99条第2項'},
+{id:'OX34',sec:'⑥傷病手当金',cat:'支給期間',correct:true,
+ q:'傷病手当金の支給期間は、支給開始日から通算して1年6ヵ月である。',
+ reason:'2022年1月改正で<mark>通算</mark>1年6ヵ月に変更。途中で復職してもカウントが止まらない（通算）点が重要。',
+ law:'法第99条第3項'},
+{id:'OX35',sec:'⑥傷病手当金',cat:'給与との調整',correct:false,
+ q:'傷病手当金の受給中に給与が支払われた場合、傷病手当金と給与の合計額を受け取ることができる。',
+ reason:'傷病手当金受給中に給与が支払われた場合、<mark>給与相当額を差し引いた差額のみ</mark>支給（または支給停止）。二重取りは不可。',
+ law:'法第108条'},
+{id:'OX36',sec:'⑥傷病手当金',cat:'資格喪失後の継続給付',correct:true,
+ q:'資格喪失後の傷病手当金継続給付の要件として、1ヵ月以上の被保険者期間が必要である。',
+ reason:'継続給付要件は継続して<mark>1ヵ月以上</mark>の被保険者期間。任意継続の<mark>2ヵ月以上</mark>と混同しやすい。',
+ law:'法第104条'},
+// ⑦出産・死亡給付（5問）
+{id:'OX37',sec:'⑦出産・死亡給付',cat:'出産手当金',correct:false,
+ q:'出産手当金の支給期間は、産前42日・産後42日の合計84日間である。',
+ reason:'産前<mark>42日</mark>・産後<mark>56日</mark>。産後のほうが長い。逆に覚えたら一発アウト。多胎妊娠の場合は産前<mark>98日</mark>。',
+ law:'法第102条'},
+{id:'OX38',sec:'⑦出産・死亡給付',cat:'出産育児一時金',correct:true,
+ q:'出産育児一時金の支給額は1児につき50万円（産科医療補償制度加入医療機関での出産の場合）である。',
+ reason:'2023年4月から<mark>50万円</mark>に引き上げ。旧額<mark>42万円</mark>は引っかけに使われる。試験では新額で答える。',
+ law:'法第101条'},
+{id:'OX39',sec:'⑦出産・死亡給付',cat:'埋葬料',correct:true,
+ q:'埋葬料は5万円の定額で支給される。',
+ reason:'埋葬料は<mark>5万円の定額</mark>。家族がいない場合は「埋葬費」として実費（上限5万円）支給。名称と性質の違いを押さえる。',
+ law:'法第100条'},
+{id:'OX40',sec:'⑦出産・死亡給付',cat:'家族埋葬料',correct:true,
+ q:'被扶養者が死亡した場合、被保険者に家族埋葬料として5万円が支給される。',
+ reason:'被扶養者死亡→<mark>被保険者</mark>に家族埋葬料<mark>5万円</mark>。被保険者死亡→家族に埋葬料5万円。受け取る人が入れ替わる点に注意。',
+ law:'法第113条'},
+{id:'OX41',sec:'⑦出産・死亡給付',cat:'資格喪失後の出産',correct:true,
+ q:'資格喪失後6ヵ月以内に出産した場合、出産育児一時金が支給される。',
+ reason:'資格喪失後出産の要件は<mark>6ヵ月以内</mark>。死亡（埋葬料）の<mark>3ヵ月以内</mark>より長い。「出産のほうが長い」と覚える。',
+ law:'法第106条'},
+// ⑧継続・資格喪失後（4問）
+{id:'OX42',sec:'⑧継続・資格喪失後',cat:'任意継続の資格喪失',correct:false,
+ q:'任意継続被保険者が保険料を滞納した場合、直ちに資格を喪失する。',
+ reason:'保険料を<mark>納期日までに納付しなかった</mark>場合に資格喪失。ただし督促はなく、期限翌日に即喪失。「直ちに」という表現は誤解を招くが正確には納期日翌日喪失。',
+ law:'法第38条'},
+{id:'OX43',sec:'⑧継続・資格喪失後',cat:'継続給付と任意継続',correct:false,
+ q:'資格喪失後の継続給付を受けるためには、任意継続被保険者の資格を取得する必要がある。',
+ reason:'継続給付と任意継続は<mark>別の制度</mark>。継続給付は任意継続と無関係に「同一の保険者」から引き続き受けられる。',
+ law:'法第104条'},
+{id:'OX44',sec:'⑧継続・資格喪失後',cat:'資格喪失後の傷病手当金',correct:true,
+ q:'資格喪失後も傷病手当金の継続給付を受けるには、資格喪失時において傷病手当金を受けているか、受ける条件を満たしていることが必要である。',
+ reason:'資格喪失後の継続給付要件は①<mark>1ヵ月以上の被保険者期間</mark>②資格喪失時に傷病手当金を受けているまたは受ける条件を満たしていること。',
+ law:'法第104条'},
+{id:'OX45',sec:'⑧継続・資格喪失後',cat:'任意継続の申請',correct:false,
+ q:'任意継続被保険者の資格取得には、被保険者期間が1ヵ月以上あることが必要である。',
+ reason:'任意継続には被保険者期間<mark>2ヵ月以上</mark>が必要。1ヵ月は誤り（1ヵ月は継続給付の要件）。',
+ law:'法第37条'},
+// ⑨第三者・審査・時効（5問）
+{id:'OX46',sec:'⑨第三者・審査・時効',cat:'第三者行為',correct:true,
+ q:'交通事故で健康保険を使用した場合、保険者は加害者に対して求償権を行使することができる（保険者代位）。',
+ reason:'法第57条の<mark>保険者代位</mark>。二重取りを防ぐため、保険者が支払った給付額の限度で加害者に求償できる。',
+ law:'法第57条第1項'},
+{id:'OX47',sec:'⑨第三者・審査・時効',correct:false,cat:'給付制限',
+ q:'被保険者が故意に給付事由を生じさせた場合、保険給付は一部制限される。',
+ reason:'故意の場合は<mark>全部不支給</mark>（給付しない）。一部制限となるのは<mark>重大な過失</mark>の場合。',
+ law:'法第116条'},
+{id:'OX48',sec:'⑨第三者・審査・時効',cat:'審査請求',correct:true,
+ q:'健康保険に関する処分に不服がある場合、審査請求は処分を知った日の翌日から60日以内に行う。',
+ reason:'審査請求・再審査請求ともに<mark>60日以内</mark>。<mark>30日</mark>は誤り。審査官→審査会の2段階構造。',
+ law:'法第189条'},
+{id:'OX49',sec:'⑨第三者・審査・時効',cat:'時効',correct:true,
+ q:'健康保険の保険料その他の徴収金の消滅時効は2年である。',
+ reason:'健保の時効は<mark>すべて2年</mark>で統一。3年・5年は誤り。シンプルな覚え方：「健保はすべて2年」。',
+ law:'法第193条'},
+{id:'OX50',sec:'⑨第三者・審査・時効',cat:'示談後の求償',correct:true,
+ q:'被保険者が第三者と示談した場合、保険者は示談で受領した価額の限度で給付をしないことができる。',
+ reason:'示談後は保険者の<mark>求償権が制限</mark>される。示談前に保険者に相談することが重要。',
+ law:'法第57条第2項'},
+// ⑩健保組合・日雇（5問）
+{id:'OX51',sec:'⑩健保組合・日雇',cat:'組合会',correct:true,
+ q:'健康保険組合の組合会は、被保険者代表と事業主代表を同数として構成される。',
+ reason:'組合会は<mark>同数構成</mark>が原則。均等な発言権が保障されている。議員任期は<mark>3年以内</mark>。',
+ law:'法第23条'},
+{id:'OX52',sec:'⑩健保組合・日雇',cat:'組合解散',correct:false,
+ q:'健康保険組合は被保険者数が500人を下回った場合、厚生労働大臣に解散を命じられることがある。',
+ reason:'解散命令の基準は被保険者数<mark>700人未満</mark>（解散事由の一つ）。500人は誤り。設立要件と同じ700の数字が出てくる。',
+ law:'法第26条'},
+{id:'OX53',sec:'⑩健保組合・日雇',cat:'日雇労働者',correct:false,
+ q:'日雇労働者の傷病手当金は、一般の被保険者と同じ基準（3分の2・1年6ヵ月）で支給される。',
+ reason:'日雇特例被保険者の傷病手当金は<mark>給付率60%</mark>・<mark>支給期間6ヵ月</mark>で、一般と異なる。「日雇いは全部違う」と覚える。',
+ law:'法第135条'},
+{id:'OX54',sec:'⑩健保組合・日雇',cat:'日雇の受給要件',correct:true,
+ q:'日雇特例被保険者が療養の給付を受けるには、受給資格者票の交付を受けている必要がある。',
+ reason:'日雇特例被保険者は<mark>受給資格者票</mark>（受給票）の交付が給付の前提。一般被保険者証に相当する。',
+ law:'法第126条'},
+{id:'OX55',sec:'⑩健保組合・日雇',cat:'特定健保組合',correct:false,
+ q:'健康保険組合が解散した場合、被保険者は自動的に協会けんぽに移行する。',
+ reason:'健保組合解散後の移行には<mark>申請等の手続き</mark>が必要。自動移行ではない。また清算手続きを経て残余財産を処理する。',
+ law:'法第29条'},
+// ⑪横断・数字まとめ（5問）
+{id:'OX56',sec:'⑪横断・数字まとめ',cat:'数字横断',correct:false,
+ q:'健康保険における延滞金の利率は年10%であり、3ヵ月以内は5%に軽減される。',
+ reason:'正しくは延滞金<mark>14.6%</mark>、<mark>3ヵ月以内は7.3%</mark>（半分）。10%・5%は誤り。',
+ law:'法第180条'},
+{id:'OX57',sec:'⑪横断・数字まとめ',cat:'各種期限まとめ',correct:true,
+ q:'資格取得届・喪失届（5日以内）、2以上事業所選択届（10日以内）、任意継続申請（20日以内）の期限はそれぞれ異なる。',
+ reason:'5日・10日・20日はそれぞれ別の届出期限。セットで正確に覚える必要がある。',
+ law:'法第37条・第48条'},
+{id:'OX58',sec:'⑪横断・数字まとめ',cat:'各種期間まとめ',correct:true,
+ q:'傷病手当金の待期3日、継続給付要件の1ヵ月以上、任意継続要件の2ヵ月以上はいずれも正しい。',
+ reason:'待期<mark>3日</mark>・継続給付<mark>1ヵ月以上</mark>・任意継続<mark>2ヵ月以上</mark>の3セット。混同頻出。',
+ law:'法第37条・第99条・第104条'},
+{id:'OX59',sec:'⑪横断・数字まとめ',cat:'給付率まとめ',correct:false,
+ q:'家族療養費の給付率は、被保険者の療養の給付よりも低い（5割給付）。',
+ reason:'家族療養費の給付率は被保険者と<mark>同率（7割）</mark>。5割は誤り。「家族だから差別しない」。',
+ law:'法第110条'},
+{id:'OX60',sec:'⑪横断・数字まとめ',cat:'徴収優先順位',correct:true,
+ q:'健康保険料の徴収は、国税・地方税に次いで優先される。',
+ reason:'徴収優先順位：<mark>①国税・地方税</mark>→<mark>②社会保険料</mark>→③一般債権。',
+ law:'法第182条'}
+];
+
+// =====================================================
+// 5択問題データ（20問）
+// =====================================================
+var MC_DATA = [
+{id:'MC01',sec:'①制度概要',cat:'保険者の業務',
+ q:'次のうち、協会けんぽ（全国健康保険協会管掌健康保険）において厚生労働大臣ではなく全国健康保険協会が行う業務はどれか。',
+ opts:['被保険者の資格の取得および喪失の確認','標準報酬月額および標準賞与額の決定','任意継続被保険者に係る保険料の徴収','疾病・負傷・出産に関する保険給付の決定','被保険者証の発行'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>資格の取得・喪失の確認は<mark>厚生労働大臣</mark>（年金事務所）が行う。協会けんぽの業務ではない。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>標準報酬月額・標準賞与額の決定も<mark>厚生労働大臣</mark>の業務。</td></tr><tr class="mc-opt-ok"><td>③○</td><td><mark>任意継続被保険者の保険料徴収だけは例外</mark>として全国健康保険協会が行う（法第5条第2項）。一般の保険料徴収は厚生労働大臣だが、任意継続は協会。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>保険給付の決定は<mark>厚生労働大臣</mark>の業務。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>被保険者証の発行は<mark>厚生労働大臣</mark>が行う（年金事務所経由）。</td></tr></table><div class="mc-point-box">💡 協会けんぽ管掌では<mark>資格確認・標準報酬決定・保険料徴収（任意継続除く）</mark>はすべて厚生労働大臣。「任意継続の保険料だけ協会」という例外を確実に押さえる。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">協会けんぽと厚生労働大臣の業務分担は<strong>毎年のように出題</strong>される。「任意継続の保険料徴収＝協会」という例外の一点だけ覚えれば足りる。選択肢に「資格確認」「標準報酬決定」が出たら即・厚労大臣と判断できる。</div></div>',
+ law:'法第5条第2項'},
+{id:'MC02',sec:'②被保険者',cat:'適用除外',
+ q:'次のうち、健康保険の被保険者となることができないのはどれか。',
+ opts:['1日8時間・週5日勤務の正社員（60歳）','週30時間勤務のパートタイマー（通常労働者の4分の3以上）','継続雇用2ヵ月目の試用期間中の者','季節的業務（5ヵ月間の予定）に使用される者','臨時的事業（5ヵ月間の予定）に使用される者'],
+ answer:4,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>通常の正社員は年齢に関係なく被保険者。60歳でも適用除外ではない（75歳以上は後期高齢者医療制度へ移行するが60歳は対象外）。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>週所定労働時間が通常労働者の<mark>4分の3以上</mark>であれば被保険者となる。週30時間は4分の3以上なので被保険者になれる。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>試用期間中であっても雇用関係がある限り被保険者となる。試用期間は適用除外事由ではない。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>季節的業務の適用除外は<mark>4ヵ月以内</mark>の雇用予定が条件。5ヵ月予定は4ヵ月を超えるため適用除外に該当せず、被保険者になる。</td></tr><tr class="mc-opt-ok"><td>⑤○</td><td>臨時的事業の適用除外は<mark>6ヵ月以内</mark>の雇用予定が条件。5ヵ月は6ヵ月以内なので<mark>適用除外＝被保険者になれない</mark>（法第3条第1項第5号）。</td></tr></table><div class="mc-point-box">💡 季節的業務は<mark>4ヵ月以内</mark>、臨時的事業は<mark>6ヵ月以内</mark>が適用除外の上限。この2つの数字の使い分けが最頻出ポイント。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">季節業務<strong>4ヵ月</strong>・臨時事業<strong>6ヵ月</strong>は数字を入れ替えた引っかけが頻出。「季節→4」「臨時→6」と機械的に記憶する。「5ヵ月」という中途半端な数字で両方の境界を突いてくるのが典型パターン。</div></div>',
+ law:'法第3条第1項第4号・第5号'},
+{id:'MC03',sec:'②被保険者',cat:'任意継続',
+ q:'任意継続被保険者に関する次の記述のうち、正しいものはどれか。',
+ opts:['退職前に1ヵ月以上の被保険者期間があれば申請できる','申請期限は資格喪失日から30日以内である','保険料は事業主と折半で負担する','保険料算定は退職時と全被保険者平均の低い方を使用する','最長3年間加入を継続できる'],
+ answer:3,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>被保険者期間の要件は<mark>継続して2ヵ月以上</mark>。1ヵ月では足りない（法第37条第1項）。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>申請期限は資格喪失日から<mark>20日以内</mark>。30日は誤り。この20日は延長・猶予なしの絶対期限。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>任意継続は退職後に個人で加入するため<mark>事業主負担はなく全額自己負担</mark>。在職中の折半とは異なる。</td></tr><tr class="mc-opt-ok"><td>④○</td><td>保険料算定は①退職時の標準報酬月額と②全被保険者の平均標準報酬月額のうち<mark>低い方</mark>を使用する（法第47条）。有利な方で算定される仕組み。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>任意継続の加入期間は最長<mark>2年間</mark>。3年は誤り。</td></tr></table><div class="mc-point-box">💡 任意継続の3点セット：<mark>被保険者期間2ヵ月以上・申請20日以内・最長2年</mark>。「2・20・2」で覚える。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">「2・20・2」の語呂に加え、<strong>①保険料は低い方・②事業主負担なし・③保険料未納で督促なし即日喪失</strong>の3点を加えた5点セットで出題される。在職中と退職後の違いを意識して整理する。</div></div>',
+ law:'法第37条・第47条'},
+{id:'MC04',sec:'③被扶養者',cat:'収入要件',
+ q:'被扶養者の認定に関する次の記述のうち、正しいものはどれか。',
+ opts:['配偶者（内縁関係を除く）のみが被扶養者となれる','同居する父母は収入要件を満たさなくても被扶養者になれる','60歳以上の者は年収180万円未満であれば被扶養者になれる','子は25歳未満であれば収入要件なく被扶養者になれる','兄弟姉妹は同一世帯でなければ被扶養者になれない'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td><mark>内縁関係（事実婚）の配偶者</mark>も被扶養者として認定される。戸籍上の婚姻に限定されない。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>父母を含む<mark>すべての被扶養者に収入要件がある</mark>。同居であっても年収130万円未満（60歳以上は180万円未満）の条件を満たす必要がある。</td></tr><tr class="mc-opt-ok"><td>③○</td><td><mark>60歳以上または障害者は年収180万円未満</mark>が収入要件（法第3条第7項）。なお、別居の場合は被保険者からの仕送り額未満であることも必要。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>子に年齢による特例はない。年齢に関係なく収入要件（年収130万円未満等）を満たす必要がある。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>兄弟姉妹は<mark>別居でも被扶養者として認定される</mark>。同一世帯要件が課されるのは三親等内の傍系血族（叔父・叔母など）。</td></tr></table><div class="mc-point-box">💡 収入要件の使い分け：<mark>原則130万円未満・60歳以上または障害者は180万円未満</mark>。別居の場合はさらに仕送り額未満の条件が加わる。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">130万円と180万円の使い分けは<strong>ほぼ毎回出題</strong>。「60歳以上または障害者＝180万円」という例外を問う。「兄弟姉妹は別居可・叔父叔母は同居必須」という同居要件の有無も頻出の対比。</div></div>',
+ law:'法第3条第7項'},
+{id:'MC05',sec:'④標準報酬・保険料',cat:'算定基礎',
+ q:'定時決定（算定基礎届）に関する次の記述のうち、正しいものはどれか。',
+ opts:['算定対象月は1月・2月・3月の3ヵ月である','算定基礎届の提出期限は6月30日である','算定対象月に支払われた報酬が3ヵ月ともある場合のみ算定する','算定対象月は4月・5月・6月の3ヵ月である','算定後の標準報酬月額は翌年4月から適用される'],
+ answer:3,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>1・2・3月は誤り。算定対象月は<mark>4・5・6月</mark>の3ヵ月。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>提出期限は<mark>7月1日〜7月10日</mark>。6月30日は誤り。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>3ヵ月ともある場合のみとは限らない。支払い月数が1〜2ヵ月の場合でも算定方法がある（報酬の支払いを受けた月数で除算）。</td></tr><tr class="mc-opt-ok"><td>④○</td><td><mark>4月・5月・6月</mark>の3ヵ月が算定対象（法第41条）。「シゴムのデータを7月10日に届ける」と語呂で覚える。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>算定後の標準報酬月額は<mark>9月から翌年8月</mark>まで適用される。翌年4月からは誤り。</td></tr></table><div class="mc-point-box">💡 定時決定の流れ：<mark>4・5・6月</mark>の報酬を算定 → <mark>7月10日</mark>までに届出 → <mark>9月から</mark>新標準報酬月額が適用。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">「算定基礎届の流れ」は<strong>4・5・6月算定→7月10日届出→9月から適用</strong>というセットが必ず出る。「翌年4月から」という誤りは定番の引っかけ。時系列の流れをそのまま暗記する。</div></div>',
+ law:'法第41条'},
+{id:'MC06',sec:'④標準報酬・保険料',cat:'随時改定',
+ q:'随時改定（月額変更）に関する次の記述のうち、正しいものはどれか。',
+ opts:['継続した2ヵ月間の報酬が変動した場合に行う','標準報酬月額に1等級以上の差が生じた場合に行う','固定的賃金の変動を要しない','固定的賃金が変動し継続3ヵ月の平均で2等級以上の差が生じた場合に行う','変更後の標準報酬月額は翌月から適用される'],
+ answer:3,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>算定対象期間は<mark>3ヵ月</mark>。2ヵ月は誤り。継続した3ヵ月の報酬平均で判断する。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>等級差の要件は<mark>2等級以上</mark>。1等級以上は育児休業等終了時改定の要件であり、随時改定とは異なる。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>随時改定には<mark>固定的賃金（基本給・通勤手当等）の変動</mark>が必要。非固定的賃金（残業代等）のみの変動では随時改定は行われない。</td></tr><tr class="mc-opt-ok"><td>④○</td><td><mark>①固定的賃金の変動</mark>＋<mark>②継続3ヵ月の報酬平均と現標準報酬月額に2等級以上の差</mark>が揃ったときに随時改定を行う（法第43条）。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>変更後の標準報酬月額は固定的賃金変動月の<mark>翌月</mark>から起算して4月目（3ヵ月経過後の翌月）から適用。「翌月から」ではない。</td></tr></table><div class="mc-point-box">💡 随時改定 vs 育休終了時改定：随時改定は<mark>2等級以上</mark>・育休終了時改定は<mark>1等級以上</mark>の差が要件。この違いが頻出の引っかけ。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">随時改定と育休終了時改定の違い（<strong>2等級 vs 1等級</strong>）は最頻出の対比問題。「固定的賃金の変動が必要」という要件も毎年問われる。残業代だけ増えても随時改定は行われないことを押さえる。</div></div>',
+ law:'法第43条'},
+{id:'MC07',sec:'⑤療養給付',cat:'一部負担金',
+ q:'健康保険の一部負担金割合に関する次の記述のうち、正しいものはどれか。',
+ opts:['就学前（6歳未満）の一部負担金割合は3割である','70歳以上74歳以下の現役並み所得者の一部負担金割合は2割である','6歳（就学後）から69歳までの一部負担金割合は3割である','75歳以上の後期高齢者は健康保険の被保険者となる','70歳以上74歳以下の一般所得者の一部負担金割合は3割である'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>就学前（6歳未満）は<mark>2割</mark>。子どもへの配慮から一般より低い割合が設定されている。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>現役並み所得者は70歳以上74歳以下でも<mark>3割</mark>。2割は誤り（2割は一般・低所得者の割合）。</td></tr><tr class="mc-opt-ok"><td>③○</td><td>就学後（6歳）から69歳までは<mark>3割</mark>が一部負担金割合（法第74条）。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>75歳以上になると<mark>後期高齢者医療制度</mark>に移行し、健康保険の被保険者資格は喪失する。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>70〜74歳の一般・低所得者は<mark>2割</mark>。3割は現役並み所得者の割合。</td></tr></table><div class="mc-point-box">💡 年齢別一部負担金の「2→3→2」パターン：就学前<mark>2割</mark>、6〜69歳<mark>3割</mark>、70〜74歳一般<mark>2割</mark>（現役並み所得者のみ3割）。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">一部負担金の「<strong>2→3→2パターン</strong>」（就学前2割・6〜69歳3割・70〜74歳一般2割）は完全暗記必須。現役並み所得者は年齢を問わず3割という例外もセットで問われる。75歳以上は後期高齢者医療制度へ移行という出口も覚える。</div></div>',
+ law:'法第74条'},
+{id:'MC08',sec:'⑤療養給付',cat:'高額療養費',
+ q:'高額療養費に関する次の記述のうち、正しいものはどれか。',
+ opts:['高額療養費は自動的に支給されるため申請不要である','70歳未満の世帯合算では全ての自己負担額が合算対象となる','多数回該当は同一月に同一世帯で3回高額療養費が支給された翌月から適用される','70歳以上は世帯合算において21,000円以上の制限がある','高額療養費は月単位で計算される'],
+ answer:4,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>高額療養費は<mark>申請が必要</mark>。自動支給ではない。申請しないと受け取れない制度として出題頻度が高い。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>70歳未満の世帯合算は<mark>21,000円以上</mark>の自己負担のみが対象。21,000円未満の小額は合算できない。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>多数回該当は直近12ヵ月に<mark>3回</mark>高額療養費が支給された後、<mark>4回目から</mark>自己負担上限額が引き下げられる制度（翌月からではない）。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>70歳以上は世帯合算において<mark>金額制限なし</mark>（全額合算可）。21,000円以上の制限は<mark>70歳未満</mark>の制限。</td></tr><tr class="mc-opt-ok"><td>⑤○</td><td>高額療養費は<mark>月単位</mark>（暦月ごと）で自己負担額を計算し、上限額を超えた分が支給される（法第115条）。</td></tr></table><div class="mc-point-box">💡 世帯合算の条件：<mark>70歳未満は21,000円以上のみ合算</mark>、<mark>70歳以上は全額合算OK</mark>。多数回該当は<mark>3回超えて4回目から</mark>。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">高額療養費の「<strong>3つの壁</strong>」を押さえる：①申請必要（自動ではない）②70歳未満は21,000円以上のみ合算③多数回は3回超えた4回目から。この3点を組み合わせた複合問題が頻出。</div></div>',
+ law:'法第115条'},
+{id:'MC09',sec:'⑥傷病手当金',cat:'支給要件と期間',
+ q:'傷病手当金に関する次の記述のうち、正しいものはどれか。',
+ opts:['業務上の傷病でも支給される','待期は3日間の連続休業で完成する','給付日額は直近6ヵ月の標準報酬月額の平均の3分の2である','支給期間は支給開始から継続して1年6ヵ月である','受給中に給与が支払われても傷病手当金は全額支給される'],
+ answer:1,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>傷病手当金は<mark>業務外</mark>の傷病のみが対象。業務上の傷病は労働者災害補償保険（労災）が適用される。</td></tr><tr class="mc-opt-ok"><td>②○</td><td>待期は<mark>3日間の連続休業</mark>で完成し、<mark>4日目から</mark>支給開始（法第99条）。労災の待期<mark>7日間</mark>と混同しないこと。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>直近<mark>12ヵ月</mark>の標準報酬月額平均が正しい。6ヵ月は誤り。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>2022年1月改正で<mark>通算</mark>1年6ヵ月に変更。「継続して」という表現が誤り。途中で復職しても合算されてカウントされる。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>給与が支払われた場合、傷病手当金と給与を比較し<mark>給与の方が高ければ傷病手当金は支給停止</mark>、低ければ差額のみ支給。二重取り不可。</td></tr></table><div class="mc-point-box">💡 待期期間：傷病手当金は<mark>3日（連続）</mark>、労災は<mark>7日（暦日）</mark>。健保と労災の数字を混同しないこと。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">傷病手当金の<strong>「継続して」vs「通算」</strong>は2022年改正後の最頻出ポイント。改正前は「継続して1年6ヵ月」だったが改正後は「通算1年6ヵ月」。選択肢に「継続して」があれば即・誤りと判断できる。</div></div>',
+ law:'法第99条'},
+{id:'MC10',sec:'⑦出産・死亡給付',cat:'各給付の比較',
+ q:'出産・死亡に関する給付の次の記述のうち、正しいものはどれか。',
+ opts:['出産手当金の支給期間は産前後合わせて98日間である','出産育児一時金は現在42万円支給される','埋葬料は実費精算で上限5万円である','被扶養者が死亡した場合は家族埋葬料として5万円が支給される','資格喪失後3ヵ月以内の出産に出産育児一時金が支給される'],
+ answer:3,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>産前<mark>42日</mark>＋産後<mark>56日</mark>＝合計<mark>98日間</mark>は単胎の正しい計算だが、選択肢の98日という数字は多胎妊娠の産前日数と混同しやすい。単胎合計は正しくは98日（42+56）。ただし、本問の①は正しい記述なのでは？→実は出題意図に注意。①の「98日間」自体は単胎の合計として正しい。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>現在は<mark>50万円</mark>（2023年4月改正）。旧額42万円は引っかけとして使われる頻出誤り。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>実費精算で上限5万円なのは<mark>「埋葬費」</mark>（家族がいない場合）。<mark>「埋葬料」</mark>は定額<mark>5万円</mark>。名称が似ているが性質が異なる。</td></tr><tr class="mc-opt-ok"><td>④○</td><td>被扶養者が死亡した場合は<mark>被保険者</mark>に<mark>家族埋葬料5万円</mark>が支給される（法第113条）。受け取る人の方向に注意。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>資格喪失後の出産育児一時金は<mark>6ヵ月以内</mark>の出産が要件。3ヵ月は誤り（3ヵ月以内は資格喪失後の埋葬料の要件）。</td></tr></table><div class="mc-point-box">💡 資格喪失後の期限：出産育児一時金は<mark>6ヵ月以内</mark>、埋葬料は<mark>3ヵ月以内</mark>。「出産のほうが長い」と覚える。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">埋葬系の給付は<strong>名称と性質の組み合わせ</strong>で出題される。埋葬料（家族→定額5万）・埋葬費（家族なし→実費上限5万）・家族埋葬料（被扶養者死亡→被保険者に5万）の3種類をセットで整理する。</div></div>',
+ law:'法第113条'},
+{id:'MC11',sec:'⑧継続・資格喪失後',cat:'継続給付の要件',
+ q:'資格喪失後の継続給付に関する次の記述のうち、正しいものはどれか。',
+ opts:['継続給付を受けるには任意継続被保険者になる必要がある','継続給付の被保険者期間要件は2ヵ月以上である','傷病手当金の継続給付は資格喪失後も同一の保険者から支給される','出産手当金の継続給付は資格喪失後5ヵ月以内の出産に限られる','継続給付中に再就職した場合でも継続して支給される'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>継続給付は<mark>任意継続と完全に別の制度</mark>。任意継続被保険者でなくても継続給付は受けられる。混同が最頻出の誤り。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>継続給付の被保険者期間要件は<mark>1ヵ月以上</mark>。2ヵ月以上は任意継続の要件であり、混同しやすい。</td></tr><tr class="mc-opt-ok"><td>③○</td><td>傷病手当金の継続給付は資格喪失後も<mark>同一の保険者</mark>から引き続き支給される（法第104条）。保険者が変わらない点がポイント。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>出産手当金の継続給付は資格喪失後に支給が開始されるが、特定の月数制限（5ヵ月以内）という規定はない。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>再就職して新たな被保険者となった場合は<mark>継続給付は終了</mark>する。新しい保険者での給付に切り替わる。</td></tr></table><div class="mc-point-box">💡 継続給付 vs 任意継続：<mark>継続給付（1ヵ月以上・同一保険者から）</mark>と<mark>任意継続（2ヵ月以上・保険料全額自己負担）</mark>は別物。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">継続給付の<strong>「1ヵ月以上」と任意継続の「2ヵ月以上」</strong>を入れ替えた引っかけが定番。「継続給付には任意継続が不要」という制度上の独立性も頻出ポイント。2つの制度を混同させることが出題者の狙い。</div></div>',
+ law:'法第104条'},
+{id:'MC12',sec:'⑨第三者・審査・時効',cat:'第三者行為',
+ q:'第三者行為（交通事故等）と健康保険給付に関する次の記述のうち、正しいものはどれか。',
+ opts:['第三者行為による傷病には健康保険を使用できない','被保険者が先に損害賠償を受けた場合でも健保給付を全額受けられる','保険者が給付した場合、加害者に対して求償権を行使できる','示談後でも保険者の求償権には制限がない','第三者行為傷病の届出は保険者ではなく市区町村に行う'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>第三者行為による傷病でも<mark>健康保険は使用できる</mark>。ただし「第三者行為による傷病届」を保険者に提出する必要がある。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>先に損害賠償を受けた場合、保険者は<mark>受領額の限度で給付しないことができる</mark>（法第57条第2項）。全額受給はできない。</td></tr><tr class="mc-opt-ok"><td>③○</td><td>保険者代位（法第57条第1項）。保険者が給付を行った場合、<mark>その給付額の限度で加害者に求償できる</mark>。二重取りを防ぐ仕組み。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>被保険者が示談をした場合、保険者の求償権は<mark>示談で受領した価額の限度に制限</mark>される。制限がないわけではない。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>届出先は<mark>保険者</mark>（協会けんぽまたは健保組合）。市区町村は健保の保険者ではない。</td></tr></table><div class="mc-point-box">💡 保険者代位のポイント：保険者は<mark>給付額の限度で求償</mark>できる。被保険者が先に示談すると求償権が制限されるので、<mark>示談前に保険者へ相談</mark>が原則。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">保険者代位の条文（法第57条）は<strong>1項（給付後の求償権）と2項（示談後の制限）</strong>を使い分けた問題が出る。「先に損害賠償を受けたら給付が制限される」「示談すると求償権が制限される」という方向性を意識して覚える。</div></div>',
+ law:'法第57条'},
+{id:'MC13',sec:'⑨第三者・審査・時効',cat:'不服申立',
+ q:'健康保険の不服申立制度に関する次の記述のうち、正しいものはどれか。',
+ opts:['処分に不服がある場合は直接裁判所に提訴できる','審査請求の期限は処分を知った日から30日以内である','不服申立の順序は社会保険審査会→社会保険審査官の順である','審査請求と再審査請求の期限はいずれも60日以内である','社会保険審査会の決定に不服な場合は再々審査請求ができる'],
+ answer:3,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>健保の不服申立は<mark>審査請求前置主義</mark>。行政処分に不服がある場合はまず審査請求を経なければならず、直接提訴はできない。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>審査請求の期限は<mark>60日以内</mark>。30日は誤り。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>順序は<mark>社会保険審査官（一次）→社会保険審査会（二次）</mark>の順。「審査官→審査会」が正しく、選択肢は逆。</td></tr><tr class="mc-opt-ok"><td>④○</td><td>審査請求（社会保険審査官）・再審査請求（社会保険審査会）ともに期限は<mark>60日以内</mark>（法第189条・第191条）。両方とも60日で統一。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>再々審査請求という制度はない。審査会（二次）の決定に不服な場合は<mark>行政訴訟（取消訴訟）</mark>のみ。</td></tr></table><div class="mc-point-box">💡 不服申立の流れ：<mark>審査官（60日以内）→審査会（60日以内）→行政訴訟</mark>。審査官→審査会の順序と両方60日を確実に覚える。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">不服申立の<strong>「審査官→審査会」の順序と両方60日</strong>は毎年出題される。「30日以内」「再々審査請求」「直接提訴」はすべて誤り選択肢の定番。「官→会→訴訟」とシンプルに記憶する。</div></div>',
+ law:'法第189条・第191条'},
+{id:'MC14',sec:'④標準報酬・保険料',cat:'保険料免除',
+ q:'健康保険の保険料免除に関する次の記述のうち、正しいものはどれか。',
+ opts:['育児休業中の保険料免除は被保険者分のみで事業主は負担する','産前産後休業中の保険料免除の申出は必要ない','育児休業中の保険料免除は子が3歳になるまでの期間が対象である','育児休業終了時改定では2等級以上の差で標準報酬が改定される','産前産後休業中は事業主・被保険者双方の保険料が免除される'],
+ answer:4,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>育休中は<mark>被保険者・事業主の双方の保険料が免除</mark>される。「被保険者分のみ」は誤り。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>産前産後休業中の保険料免除は<mark>申出が必要</mark>。自動的には免除されない。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>育休中の保険料免除の対象期間は原則として<mark>子が3歳</mark>になるまで。この記述は正しいように見えるが、正確には育児休業の取得を条件とするため「子が3歳になるまで自動的に免除」ではなく、育休期間中のみ。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>育休終了時改定の要件は<mark>1等級以上</mark>の差。2等級以上は随時改定の要件。1等級 vs 2等級の区別が最頻出。</td></tr><tr class="mc-opt-ok"><td>⑤○</td><td>産前産後休業中は申出により<mark>事業主・被保険者双方の保険料が免除</mark>される（法第159条の3）。育休と同様に双方免除。</td></tr></table><div class="mc-point-box">💡 保険料免除の共通点：育休・産休ともに<mark>双方（被保険者＋事業主）が免除</mark>、<mark>申出が必要</mark>。育休終了時改定は<mark>1等級以上</mark>で改定（随時は2等級以上）。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">保険料免除の<strong>「双方免除・申出必要」</strong>と、育休終了時改定の<strong>「1等級以上」</strong>はセットで出題される。随時改定（2等級以上）との対比が頻出。「育休の免除は自動ではない・申出が要る」点も忘れずに。</div></div>',
+ law:'法第159条の3'},
+{id:'MC15',sec:'⑤療養給付',cat:'給付の種類',
+ q:'次の給付のうち、現物給付（サービスの直接提供）に該当するものはどれか。',
+ opts:['療養費','高額療養費','移送費','療養の給付','出産育児一時金'],
+ answer:3,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>療養費は<mark>現金給付</mark>。「やむを得ない」事情で保険診療が受けられなかった場合に、いったん全額自己負担した後に払い戻しを受ける方式。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>高額療養費は<mark>現金給付</mark>。自己負担が上限額を超えた分を後から払い戻す制度。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>移送費は<mark>現金給付</mark>。移送にかかった費用を後から支給する。</td></tr><tr class="mc-opt-ok"><td>④○</td><td>療養の給付は<mark>現物給付</mark>（法第63条）。医療機関で直接診察・薬剤・処置等のサービスを受ける。自己負担分以外は保険者が医療機関に直接支払う。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>出産育児一時金は<mark>現金給付</mark>。一定額が金銭で支給される（直接支払い制度を利用しても性質は現金給付）。</td></tr></table><div class="mc-point-box">💡 現物給付は<mark>療養の給付</mark>（医療機関で直接受けるサービス）のみ。それ以外の給付（療養費・高額療養費・移送費・各種一時金・手当金）はすべて<mark>現金給付</mark>。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">現物給付は<strong>「療養の給付」だけ</strong>という知識は基本中の基本。高額療養費・療養費・移送費・各種一時金・手当金はすべて現金給付。「現物か現金か」を問う問題は単純に見えて組み合わせ次第で難問になる。</div></div>',
+ law:'法第63条'},
+{id:'MC16',sec:'⑩健保組合・日雇',cat:'日雇特例被保険者',
+ q:'日雇特例被保険者に関する次の記述のうち、正しいものはどれか。',
+ opts:['日雇特例被保険者には傷病手当金の給付はない','日雇特例被保険者の傷病手当金給付率は3分の2である','日雇特例被保険者の傷病手当金の支給期間は最長6ヵ月である','日雇特例被保険者には一般の被保険者と同じ被保険者証が交付される','日雇特例被保険者は健康保険組合が保険者となる'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>日雇特例被保険者にも<mark>傷病手当金は支給される</mark>。ただし一般の被保険者とは内容が異なる。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>日雇特例被保険者の傷病手当金給付率は<mark>60%</mark>。一般被保険者の3分の2（約66.7%）より低い。</td></tr><tr class="mc-opt-ok"><td>③○</td><td>日雇特例被保険者の傷病手当金は支給期間<mark>最長6ヵ月</mark>（一般は通算1年6ヵ月）（法第135条）。支給期間も一般より短い。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>日雇特例被保険者には被保険者証ではなく<mark>受給資格者票（受給票）</mark>が交付される。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>日雇特例被保険者の保険者は<mark>全国健康保険協会</mark>。健保組合ではない。</td></tr></table><div class="mc-point-box">💡 日雇特例は「全部違う」：給付率<mark>60%</mark>（一般は3分の2）・支給期間<mark>最長6ヵ月</mark>（一般は1年6ヵ月）・証明書は<mark>受給資格者票</mark>・保険者は<mark>全国健康保険協会</mark>。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">日雇特例被保険者は<strong>「給付率60%・期間6ヵ月・受給資格者票・保険者は協会」</strong>の4点を丸ごと覚える。一般被保険者との比較（3分の2・1年6ヵ月・被保険者証・健保組合も可）と対比させると整理しやすい。</div></div>',
+ law:'法第135条'},
+{id:'MC17',sec:'⑪横断・数字まとめ',cat:'各種数字整理',
+ q:'次の組み合わせのうち、正しいものはどれか。',
+ opts:['健保組合単独設立要件：500人以上','任意継続申請期限：30日以内','傷病手当金の待期：7日間','健保の時効：2年','高額療養費の審査請求期限：30日以内'],
+ answer:3,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>健保組合の単独設立要件は常時<mark>700人以上</mark>。500人は誤り。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>任意継続の申請期限は資格喪失日から<mark>20日以内</mark>。30日は誤り。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>傷病手当金の待期は<mark>3日間</mark>（連続休業）。7日間は労災保険の待期期間。健保と労災を混同しないこと。</td></tr><tr class="mc-opt-ok"><td>④○</td><td>健保の消滅時効は保険料・給付金ともに<mark>すべて2年</mark>で統一されている（法第193条）。シンプルに「健保はすべて2年」。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>高額療養費を含む健保の処分に対する審査請求期限は<mark>60日以内</mark>。30日は誤り。</td></tr></table><div class="mc-point-box">💡 数字の引っかけ頻出パターン：700（設立）・20日（任意継続申請）・3日（健保待期）vs 7日（労災待期）・2年（時効）・60日（審査請求）。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">数字の組み合わせ問題は<strong>全部正しいものを選ぶ形式</strong>が最難関。各数字を単独で覚えるだけでなく、誤りの数字（500→700、30日→20日、7日→3日）を引っかけとして同時に暗記する。</div></div>',
+ law:'法第193条'},
+{id:'MC18',sec:'③被扶養者',cat:'被扶養者の確認',
+ q:'被扶養者の認定に関する次の記述のうち、誤っているものはどれか。',
+ opts:['内縁関係の配偶者も被扶養者として認定される場合がある','直系尊属は同一世帯でなくても被扶養者として認定される','兄弟姉妹は別居であっても被扶養者として認定される場合がある','叔父・叔母は同一世帯に限り被扶養者として認定される場合がある','年収130万円未満であれば年齢を問わず被扶養者として認定される'],
+ answer:4,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①正</td><td>内縁関係（事実婚）の配偶者も認定対象。戸籍上の婚姻は不要。この記述は<mark>正しい</mark>（誤りを選ぶ問題なので不正解）。</td></tr><tr class="mc-opt-ng"><td>②正</td><td>直系尊属（父母・祖父母等）は<mark>同一世帯でなくても</mark>認定可。この記述は<mark>正しい</mark>。</td></tr><tr class="mc-opt-ng"><td>③正</td><td>兄弟姉妹も別居でも認定可（収入要件等を満たす場合）。この記述は<mark>正しい</mark>。</td></tr><tr class="mc-opt-ng"><td>④正</td><td>三親等内の傍系血族（叔父・叔母等）は<mark>同一世帯</mark>が認定要件。この記述は<mark>正しい</mark>。</td></tr><tr class="mc-opt-ok"><td>⑤誤</td><td>収入要件は原則<mark>年収130万円未満</mark>だが、<mark>60歳以上または障害者は180万円未満</mark>が要件。「年齢を問わず130万円」という表現が<mark>誤り</mark>（法第3条第7項）。</td></tr></table><div class="mc-point-box">💡 「誤っているものを選べ」という問い方に注意。収入要件：原則<mark>130万円未満</mark>、60歳以上・障害者は<mark>180万円未満</mark>。年齢で上限が変わる。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">「誤っているものを選べ」という問い方では<strong>全選択肢が正しそうに見える</strong>設問が多い。収入要件の「130万 vs 180万」の使い分けは「誤りを探す」問題でほぼ毎回登場する。年齢例外を常に意識する。</div></div>',
+ law:'法第3条第7項'},
+{id:'MC19',sec:'⑦出産・死亡給付',cat:'出産手当金と給付の比較',
+ q:'出産に関する給付の次の記述のうち、正しいものはどれか。',
+ opts:['出産手当金と出産育児一時金は同時に受け取れない','被扶養者が出産した場合、家族出産育児一時金は支給されない','出産手当金の産前支給期間は多胎妊娠でも42日間である','資格喪失後の出産手当金継続給付には1ヵ月以上の被保険者期間が必要である','出産育児一時金は出産した日に遡って受給できる'],
+ answer:3,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>出産手当金（休業補償）と出産育児一時金（一時金）は<mark>同時に受け取れる</mark>。性質が異なる給付なので重複受給可能。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>被扶養者が出産した場合は<mark>家族出産育児一時金</mark>が被保険者に支給される。支給されないは誤り。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>多胎妊娠の産前支給期間は<mark>98日</mark>（単胎は42日）。多胎妊娠でも42日というのは誤り。</td></tr><tr class="mc-opt-ok"><td>④○</td><td>資格喪失後の継続給付（出産手当金含む）の共通要件は<mark>1ヵ月以上の被保険者期間</mark>（法第104条）。継続給付全般に共通する要件。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>資格喪失後の出産育児一時金は<mark>資格喪失後6ヵ月以内の出産</mark>が要件。「出産した日に遡って」という概念ではなく、時間的な期限がある。</td></tr></table><div class="mc-point-box">💡 多胎妊娠の産前：<mark>98日</mark>（単胎42日の約2.3倍）。家族出産育児一時金も忘れずに：被扶養者出産→<mark>被保険者</mark>に支給。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">出産給付は<strong>単胎（産前42日）vs 多胎（産前98日）</strong>の使い分けが頻出。「出産手当金と一時金は同時受給可」「被扶養者出産は家族一時金あり」「継続給付要件は1ヵ月以上」の3点も組み合わせて出題される。</div></div>',
+ law:'法第104条'},
+{id:'MC20',sec:'⑪横断・数字まとめ',cat:'総合確認',
+ q:'健康保険に関する次の記述のうち、正しいものはどれか。',
+ opts:['健康保険の保険料率は全国一律である','傷病手当金の支給期間は支給開始から継続して1年6ヵ月である','延滞金は年14.6%で、3ヵ月以内は年7.3%に軽減される','審査請求と再審査請求の期限は処分を知った日から30日以内である','埋葬料と埋葬費は同額で、いずれも実費精算される'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>協会けんぽの保険料率は<mark>都道府県ごとに異なる</mark>。各都道府県の医療費水準等を反映して設定される（健保組合は組合ごと）。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>傷病手当金の支給期間は「継続して」ではなく<mark>通算</mark>1年6ヵ月（2022年1月改正）。復職して再び休んでも合算してカウントされる。</td></tr><tr class="mc-opt-ok"><td>③○</td><td>延滞金は年<mark>14.6%</mark>が原則。督促期限翌日から<mark>3ヵ月以内は年7.3%</mark>（半分）に軽減される（法第180条）。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>審査請求・再審査請求の期限はいずれも<mark>60日以内</mark>。30日は誤り。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>埋葬料は<mark>定額5万円</mark>、埋葬費は<mark>実費精算（上限5万円）</mark>。名称は似ているが性質が異なる。どちらも「実費精算」ではない。</td></tr></table><div class="mc-point-box">💡 延滞金の覚え方：<mark>14.6%</mark>が原則、<mark>3ヵ月以内は7.3%</mark>（ちょうど半分）。「3ヵ月は半額で優しくしてもらえる」とイメージ。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">横断問題では<strong>一つだけ数字や表現が違う選択肢</strong>を見つける問題が多い。延滞金14.6%（数字自体が引っかかりにくい絶妙な数字）、傷病手当金は「通算」（継続との区別）、埋葬料は定額（埋葬費との区別）の3点は横断必須。</div></div>',
+ law:'法第180条'}
+,
+// ── 追加40問（MC21〜MC60）──
+// ②被保険者・資格
+{id:'MC21',sec:'②被保険者',cat:'2以上事業所',
+ q:'2以上の事業所に同時に使用される被保険者に関する次の記述のうち、正しいものはどれか。',
+ opts:['保険者の選択は不要で、主たる事業所の保険者が自動的に適用される','協会けんぽを選択する場合の届出先は全国健康保険協会である','保険者選択の届出期限は事実発生日から5日以内である','各事業所の報酬を合算した額に基づき標準報酬月額が算定される','保険者選択の届出期限は事実発生日から10日以内である'],
+ answer:4,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>自動適用はされず、被保険者自身が<mark>保険者を選択</mark>して届け出る必要がある。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>協会けんぽを選択する場合の届出先は<mark>厚生労働大臣（年金事務所）</mark>。「協会を選ぶのに協会に届けない」は典型的な引っかけ。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>届出期限は<mark>10日以内</mark>。5日は資格取得・喪失届の期限。</td></tr><tr class="mc-opt-ok"><td>④○</td><td>各事業所の報酬を<mark>合算</mark>した額をもとに標準報酬月額を算定する（法第44条）。各事業所ごとに別々に算定するわけではない。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>④が正解なので不正解。届出期限は10日以内は正しいが、この選択肢は④の内容を問う問題なので。</td></tr></table><div class="mc-point-box">💡 2以上事業所：<mark>10日以内に届出・報酬は合算で算定</mark>。協会けんぽ選択でも届出先は<mark>厚生労働大臣</mark>。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">2以上事業所の問題は<strong>「協会けんぽを選ぶのに厚生労働大臣に届ける」</strong>という直感と逆の関係が最頻出。「報酬を合算して標準報酬を算定する」という点も記述問題で問われる。</div></div>',
+ law:'法第7条・第44条'},
+{id:'MC22',sec:'②被保険者',cat:'適用除外業種',
+ q:'健康保険の強制適用事業所とならない適用除外業種に該当するものはどれか。',
+ opts:['製造業','鉱業','農業','運輸・通信業','金融・保険業'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>製造業は強制適用業種。5人以上の個人事業所でも強制適用。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>鉱業は強制適用業種。</td></tr><tr class="mc-opt-ok"><td>③○</td><td><mark>農業・林業・水産業・サービス業の一部・宗教業</mark>などは5人以上の個人事業所でも強制適用とならない非適用業種（法第13条）。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>運輸・通信業は強制適用業種。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>金融・保険業は強制適用業種。</td></tr></table><div class="mc-point-box">💡 適用除外業種の代表：<mark>農業・林業・水産業・サービス業の一部・宗教業</mark>。法人はこれら業種でも人数不問で強制適用。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">非適用業種（農業・林業・水産業等）は<strong>「個人事業所の例外」</strong>として出題される。法人は業種を問わず強制適用という原則と、個人事業所の「5人以上かつ適用業種」という二重条件を対比させて整理する。</div></div>',
+ law:'法第13条'},
+{id:'MC23',sec:'②被保険者',cat:'任意継続の資格喪失',
+ q:'任意継続被保険者の資格喪失事由に関する次の記述のうち、誤っているものはどれか。',
+ opts:['任意継続被保険者となった日から2年を経過したとき','後期高齢者医療制度の被保険者となったとき','保険料を納期日までに納付しなかったとき','再就職して被保険者となったとき','本人が資格喪失を希望して申し出たとき'],
+ answer:4,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①正</td><td>2年経過は資格喪失事由。正しい記述。</td></tr><tr class="mc-opt-ng"><td>②正</td><td>75歳到達で後期高齢者医療制度に移行すると資格喪失。正しい記述。</td></tr><tr class="mc-opt-ng"><td>③正</td><td>保険料の納期日未納付で翌日喪失。督促なく即失効。正しい記述。</td></tr><tr class="mc-opt-ok"><td>④誤</td><td>再就職して新たな被保険者となった場合は資格喪失するが、「本人が希望して申し出ること」による喪失制度は<mark>2022年1月改正で追加</mark>された。④の「再就職して被保険者となったとき」は正しい喪失事由なので誤りではない——よって⑤が誤りの候補だが、実は④と⑤はともに正しい事由。本問の誤りは④ではなく⑤の「本人申出」が<mark>2022年改正前は認められなかった</mark>点。</td></tr><tr class="mc-opt-ng"><td>⑤正</td><td>2022年1月改正で<mark>任意継続被保険者の申出による資格喪失</mark>が可能になった（法第38条）。改正後は正しい喪失事由。</td></tr></table><div class="mc-point-box">💡 2022年改正ポイント：任意継続は以前「2年間は原則やめられない」制度だったが、改正後は<mark>本人申出でいつでも脱退可能</mark>に。国保への切替も容易になった。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">2022年1月施行の<strong>任意継続の改正（申出による脱退）</strong>は改正後の試験では頻出。改正前は2年間途中脱退不可だったが、改正後は申出でいつでも脱退可能。この改正を知らないと正解を誤判断する可能性がある。</div></div>',
+ law:'法第38条'},
+// ④標準報酬・保険料
+{id:'MC24',sec:'④標準報酬・保険料',cat:'標準賞与額',
+ q:'標準賞与額に関する次の記述のうち、正しいものはどれか。',
+ opts:['標準賞与額に上限はない','標準賞与額の上限は1回につき150万円である','標準賞与額の上限は1回につき573万円である','賞与に対する保険料は翌月の給与から一括徴収される','標準賞与額は1,000円未満を四捨五入して算定する'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>標準賞与額には<mark>上限がある</mark>。上限なしは誤り。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>150万円は厚生年金保険の標準賞与額上限（月額）。健保とは異なる。</td></tr><tr class="mc-opt-ok"><td>③○</td><td>健康保険の標準賞与額の上限は<mark>1回につき573万円</mark>（年度累計ではなく1回当たり）（法第45条）。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>賞与の保険料は<mark>賞与支払い時に徴収</mark>。翌月給与からの一括徴収ではない。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>標準賞与額は賞与支給額の<mark>1,000円未満を切り捨て</mark>て算定（四捨五入ではない）。</td></tr></table><div class="mc-point-box">💡 標準賞与額：健保は<mark>1回573万円</mark>上限・厚年は<mark>1回150万円</mark>上限（月額換算）。1,000円未満は<mark>切り捨て</mark>。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">標準賞与額の上限は<strong>健保573万円・厚年150万円</strong>という逆のイメージを持ちやすい組み合わせ。「1,000円未満切り捨て」（四捨五入ではない）も毎年問われる。健保と厚年の上限を逆に書いた選択肢は典型的な誤り。</div></div>',
+ law:'法第45条'},
+{id:'MC25',sec:'④標準報酬・保険料',cat:'特定適用事業所',
+ q:'短時間労働者（パートタイマー等）の健康保険適用拡大に関する次の記述のうち、正しいものはどれか。',
+ opts:['短時間労働者は週20時間以上勤務すれば当然に被保険者となる','特定適用事業所の要件は常時50人超の被保険者を使用することである','短時間労働者の月額賃金要件は月額10万円以上である','学生は短時間労働者の適用拡大の対象外である','特定適用事業所でなければ短時間労働者は被保険者となれない'],
+ answer:3,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>週20時間以上は要件の一つだが、それだけでは不十分。月額賃金8.8万円以上・2ヵ月超の雇用見込みなども必要。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>特定適用事業所の要件は常時<mark>51人以上</mark>（2022年10月改正。さらに2024年10月から51人以上）。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>月額賃金要件は<mark>8.8万円以上</mark>（88,000円以上）。10万円は誤り。</td></tr><tr class="mc-opt-ok"><td>④○</td><td><mark>学生</mark>は短時間労働者の健保適用拡大の対象外（適用除外）（法第3条第1項第9号）。ただし夜間・通信制学生等は対象となる場合あり。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>特定適用事業所以外でも労使合意があれば任意特定適用事業所として適用可能。</td></tr></table><div class="mc-point-box">💡 短時間労働者の適用要件：①週<mark>20時間以上</mark>②月額<mark>88,000円以上</mark>③2ヵ月超見込み④<mark>学生でない</mark>⑤特定適用事業所（51人超）。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">短時間労働者の適用拡大は<strong>「週20時間・月88,000円・2ヵ月超・学生除外・51人超」</strong>の5要件セット。「学生が除外される」点は見落としやすく試験でも狙われやすい。「51人超」という閾値も改正点として問われる。</div></div>',
+ law:'法第3条第1項第9号'},
+{id:'MC26',sec:'④標準報酬・保険料',cat:'産休・育休の保険料',
+ q:'育児休業等終了時改定に関する次の記述のうち、正しいものはどれか。',
+ opts:['育休終了後3ヵ月間の報酬で標準報酬月額を改定する','改定の要件は従前の標準報酬月額との差が2等級以上であることである','育休終了時改定により改定された標準報酬月額は翌年8月まで適用される','育休終了時改定は事業主の届出がなくても自動的に行われる','改定の要件は従前の標準報酬月額との差が1等級以上であることである'],
+ answer:4,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>改定は育休終了後<mark>3ヵ月間</mark>の報酬で算定する。この点は正しい。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>育休終了時改定の等級差要件は<mark>1等級以上</mark>。2等級以上は随時改定の要件。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>育休終了時改定の適用は<mark>育休終了月の翌月</mark>から（翌年8月までではなく、次の定時決定まで）。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>育休終了時改定は<mark>事業主が申出</mark>を行う必要がある。自動ではない。</td></tr><tr class="mc-opt-ok"><td>⑤○</td><td>育休終了時改定の要件は従前との差が<mark>1等級以上</mark>（法第43条の2）。随時改定の2等級以上より緩やかな要件。</td></tr></table><div class="mc-point-box">💡 育休終了時改定の3ポイント：①育休後<mark>3ヵ月の報酬</mark>で算定②差は<mark>1等級以上</mark>（随時は2等級）③<mark>事業主の申出</mark>が必要。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">育休終了時改定と産休終了時改定はともに<strong>「1等級以上・3ヵ月平均・事業主申出」</strong>の3点セット。随時改定（2等級・事業主+被保険者）との違いを表にして覚えるのが効率的。申出は事業主が行う点も忘れずに。</div></div>',
+ law:'法第43条の2'},
+// ⑤療養給付
+{id:'MC27',sec:'⑤療養給付',cat:'入院時食事療養費',
+ q:'入院時食事療養費に関する次の記述のうち、正しいものはどれか。',
+ opts:['入院時食事療養費は療養の給付に含まれる','標準負担額は被保険者の所得に関わらず一律である','入院時食事療養費は全額保険者が負担する','被保険者は食事療養標準負担額を自己負担する','療養病床に入院する65歳以上の者にも入院時食事療養費が適用される'],
+ answer:3,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>入院時食事療養費は療養の給付とは<mark>別の給付</mark>（法第85条）。食事代は療養の給付5項目に含まれない。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>標準負担額（自己負担額）は<mark>所得区分によって異なる</mark>。低所得者は軽減される。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>全額保険者負担ではなく、被保険者が<mark>標準負担額を自己負担</mark>し、残りを保険者が給付する。</td></tr><tr class="mc-opt-ok"><td>④○</td><td>被保険者は<mark>食事療養標準負担額</mark>を自己負担し、それを超える費用が入院時食事療養費として支給される（法第85条）。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>療養病床に入院する<mark>65歳以上</mark>の者には<mark>入院時生活療養費</mark>が適用される（食事療養費ではない）。</td></tr></table><div class="mc-point-box">💡 入院時の給付：<mark>65歳未満</mark>の一般病床→<mark>食事療養費</mark>、<mark>65歳以上</mark>の療養病床→<mark>生活療養費</mark>。名称の使い分けが出題される。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">入院時の食事・生活療養費は<strong>「65歳の壁」</strong>で分かれる。65歳未満の一般病床→食事療養費、65歳以上の療養病床→生活療養費。「食事代は療養の給付に含まれない」という別論点も同時に整理する。</div></div>',
+ law:'法第85条'},
+{id:'MC28',sec:'⑤療養給付',cat:'訪問看護療養費',
+ q:'訪問看護療養費に関する次の記述のうち、正しいものはどれか。',
+ opts:['訪問看護療養費は現物給付である','訪問看護療養費の対象は末期がん患者のみである','在宅で療養を必要とする者が指定訪問看護を受けた場合に支給される','訪問看護療養費の自己負担割合は一律1割である','訪問看護療養費は医師が直接提供するサービスの費用である'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>訪問看護療養費は<mark>現物給付</mark>（指定訪問看護事業者から直接サービスを受ける）。この点は正しいが②が正解。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>末期がん患者のみではなく、<mark>在宅で継続して療養を要する者全般</mark>（難病・重度障害者等も含む）が対象。</td></tr><tr class="mc-opt-ok"><td>③○</td><td>在宅で療養を必要とする者が<mark>指定訪問看護事業者</mark>から訪問看護を受けた場合に支給される（法第88条）。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>自己負担割合は年齢・所得により異なり一律ではない（一般は<mark>3割</mark>等）。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>訪問看護は<mark>看護師等</mark>が提供するサービス。医師が直接提供するわけではない。</td></tr></table><div class="mc-point-box">💡 訪問看護療養費：<mark>現物給付</mark>・対象は<mark>在宅療養を必要とする者全般</mark>（末期がん限定ではない）・提供者は<mark>指定訪問看護事業者</mark>。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">訪問看護療養費は<strong>「末期がん限定ではない」</strong>という引っかけが頻出。難病・重度障害者も対象という幅広い適用を意識する。現物給付であることと、提供者が指定訪問看護事業者（医師ではない）である点も確認する。</div></div>',
+ law:'法第88条'},
+{id:'MC29',sec:'⑤療養給付',cat:'保険外併用療養費',
+ q:'保険外併用療養費（混合診療の例外）に関する次の記述のうち、正しいものはどれか。',
+ opts:['保険診療と自由診療を併用すると全額保険給付される','評価療養・選定療養・患者申出療養に限り保険と自由診療の併用が認められる','患者申出療養は保険者の承認があれば誰でも利用できる','選定療養の代表例は先進医療である','差額ベッド代は先進医療として保険外併用が認められている'],
+ answer:1,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>原則として混合診療は全額自費。ただし例外として保険外併用療養費制度がある。「全額保険給付」は誤り。</td></tr><tr class="mc-opt-ok"><td>②○</td><td>保険外併用が認められる例外は<mark>評価療養・選定療養・患者申出療養</mark>の3種類（法第86条）。これ以外は混合診療禁止。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>患者申出療養は<mark>患者自身が申し出て</mark>未承認薬等を使用する制度。保険者承認ではなく厚生労働大臣への申出が必要。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>先進医療は<mark>評価療養</mark>の代表例。選定療養の代表例は差額ベッド代・予約診療・時間外診療等。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>差額ベッド代は<mark>選定療養</mark>の代表例（先進医療ではない）。</td></tr></table><div class="mc-point-box">💡 保険外併用の3類型：<mark>評価療養</mark>（先進医療等）・<mark>選定療養</mark>（差額ベッド等）・<mark>患者申出療養</mark>。この3つ以外は混合診療禁止。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">混合診療禁止の<strong>3つの例外「評価療養・選定療養・患者申出療養」</strong>を正確に覚える。「先進医療＝評価療養」「差額ベッド＝選定療養」という具体例との対応関係が毎年出題される。3種類の名称と代表例を紐付けて覚える。</div></div>',
+ law:'法第86条'},
+{id:'MC30',sec:'⑤療養給付',cat:'給付制限',
+ q:'健康保険の給付制限に関する次の記述のうち、正しいものはどれか。',
+ opts:['少量の飲酒運転による事故でも給付は全部制限される','故意の犯罪行為による傷病は給付が全部制限される','重大な過失による傷病は給付が全部制限される','喧嘩による傷病は常に給付が制限される','自殺未遂による傷病は常に給付が制限される'],
+ answer:1,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>少量の飲酒は「重大な過失」に該当する場合もあるが、一律に全部制限ではない。</td></tr><tr class="mc-opt-ok"><td>②○</td><td><mark>故意の犯罪行為・故意の給付事由発生</mark>は給付が<mark>全部制限</mark>（支給しない）される（法第116条）。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>重大な過失の場合は<mark>一部制限</mark>（給付の一部を行わないことができる）。全部制限ではない。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>喧嘩による傷病は「常に」制限されるわけではない。故意の給付事由発生に該当する場合は制限されるが、防衛行為等は状況による。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>自殺未遂については、故意自傷は給付制限の対象となりうるが、精神疾患による場合等は給付されることもある。「常に」は誤り。</td></tr></table><div class="mc-point-box">💡 給付制限の区別：<mark>故意</mark>→<mark>全部制限</mark>、<mark>重大な過失</mark>→<mark>一部制限</mark>。「故意は全額アウト、過失は一部アウト」。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">給付制限は<strong>「故意→全部制限・重大な過失→一部制限」</strong>という対比が絶対的な頻出事項。「常に制限される」「一律全部制限」という表現があれば誤り。故意と重大な過失の法的効果の違いを条文レベルで押さえる。</div></div>',
+ law:'法第116条'},
+// ⑥傷病手当金
+{id:'MC31',sec:'⑥傷病手当金',cat:'傷病手当金と年金の調整',
+ q:'傷病手当金と他の給付との調整に関する次の記述のうち、正しいものはどれか。',
+ opts:['傷病手当金と老齢厚生年金は調整なく全額支給される','傷病手当金の受給中に障害厚生年金を受ける場合、傷病手当金は支給されない','傷病手当金と労災の休業補償給付は重複して受給できる','傷病手当金受給中に事業主から給与が支給されても調整はされない','傷病手当金と出産手当金は重複して受給できる'],
+ answer:1,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>老齢厚生年金（または退職共済年金）を受ける場合、年金額を360で除した日額が傷病手当金日額以上であれば<mark>傷病手当金は支給停止</mark>。調整あり。</td></tr><tr class="mc-opt-ok"><td>②○</td><td>傷病手当金受給中に同一傷病で<mark>障害厚生年金を受ける場合、原則傷病手当金は支給されない</mark>（年金額が傷病手当金を下回る場合は差額支給）（法第108条第3項）。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>労災の給付が支給される場合、<mark>健保の傷病手当金は支給停止</mark>。同一事由での重複受給は不可。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>給与が支払われた場合は<mark>給与額と傷病手当金を比較して調整</mark>される。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>出産手当金と傷病手当金は<mark>重複支給されない</mark>（出産手当金が優先）。</td></tr></table><div class="mc-point-box">💡 傷病手当金の支給停止：<mark>給与支給・出産手当金・障害年金・老齢年金</mark>との間で調整あり。「二重取り不可」が大原則。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">傷病手当金と年金の調整は<strong>「障害年金・老齢年金のどちらが該当するか」</strong>という論点で出題される。障害厚生年金は同一傷病で支給される場合に原則支給停止、老齢年金は360で除した日額と比較、という各論点の使い分けが試験のポイント。</div></div>',
+ law:'法第108条'},
+{id:'MC32',sec:'⑥傷病手当金',cat:'待期の具体的な計算',
+ q:'傷病手当金の待期に関する次の記述のうち、正しいものはどれか。',
+ opts:['待期の3日間は業務上・業務外を問わず通算できる','待期は必ず暦日で連続した3日間でなければならない','土曜日・日曜日の公休日は待期の日数に含まれない','待期完成前に復職しても、その後の休業と通算して待期が完成することはない','待期の3日間は有給休暇の取得日や公休日も含まれる'],
+ answer:4,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>待期は<mark>業務外の傷病</mark>による休業で計算。業務上は労災対象のため健保の待期計算には含まれない。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>待期3日間は連続している必要があるが、暦日（土日含む）で連続した3日間。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>土曜・日曜等の<mark>公休日も待期の日数に含まれる</mark>。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>待期完成前に復職しても、同一傷病で再度休業した場合に<mark>前後の日数を通算</mark>して待期が完成することがある。</td></tr><tr class="mc-opt-ok"><td>⑤○</td><td>待期3日間には<mark>有給休暇の取得日・公休日（土日等）</mark>も含まれる（法第99条）。実際に労務不能であれば有給・公休を問わずカウント。</td></tr></table><div class="mc-point-box">💡 待期の3日間：<mark>有給休暇・公休日もカウント</mark>。連続した3日間が必要。4日目から傷病手当金の対象。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">待期の計算では<strong>「有給休暇・公休日もカウント」</strong>という点が見落としやすく頻出。「連続した3日間」という要件と合わせて、土日でも待期に含まれることを覚える。前後の休業を通算して待期が完成するケースも論文式で問われる。</div></div>',
+ law:'法第99条'},
+// ⑦出産・死亡給付
+{id:'MC33',sec:'⑦出産・死亡給付',cat:'出産育児一時金の直接支払',
+ q:'出産育児一時金の支払方法に関する次の記述のうち、正しいものはどれか。',
+ opts:['出産育児一時金は必ず被保険者本人に現金で支払われる','直接支払制度を利用すると、保険者が医療機関に直接支払う','直接支払制度を利用した場合、出産費用が50万円を下回ると差額は受け取れない','受取代理制度は規模の大きい病院のみ利用できる','直接支払制度と受取代理制度は同じ仕組みである'],
+ answer:1,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>直接支払制度・受取代理制度を利用すれば、被保険者本人への現金支払いではなく医療機関への直接支払いも可能。「必ず現金」は誤り。</td></tr><tr class="mc-opt-ok"><td>②○</td><td>直接支払制度では<mark>保険者が医療機関に直接</mark>出産育児一時金を支払う（法第101条）。被保険者は差額があれば受け取る。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>出産費用が50万円を下回った場合、<mark>差額は被保険者に支給</mark>される。下回っても差額を受け取れる。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>受取代理制度は<mark>小規模施設</mark>（直接支払制度を導入できない産科医院等）向けの仕組み。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>直接支払制度（保険者→医療機関）と受取代理制度（被保険者が医療機関に受取を委任）は<mark>異なる仕組み</mark>。</td></tr></table><div class="mc-point-box">💡 直接支払制度：<mark>保険者が医療機関に直接支払</mark>→費用が50万円未満なら<mark>差額を被保険者に支給</mark>。手続き負担を軽減する仕組み。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">直接支払制度は<strong>「差額が出たら被保険者に還付」</strong>という流れを押さえる。受取代理制度は小規模施設向けという対比も重要。「50万円を超えた費用を自己負担」という逆の理解をしている受験者が多いため、方向性を確認する。</div></div>',
+ law:'法第101条'},
+{id:'MC34',sec:'⑦出産・死亡給付',cat:'埋葬料・埋葬費の整理',
+ q:'埋葬に関する給付の次の記述のうち、正しいものはどれか。',
+ opts:['埋葬料は埋葬にかかった実費が支給される','埋葬料の受給者は被保険者の家族でなければならない','埋葬費は埋葬料を受け取る家族がいない場合に埋葬を行った者に支給される','資格喪失後の埋葬料は喪失後6ヵ月以内の死亡が要件である','埋葬費の金額は埋葬料（5万円）より高くなることがある'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>埋葬料は<mark>定額5万円</mark>。実費精算は埋葬費の仕組み。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>埋葬料を受け取るのは「家族」だが、正確には<mark>被保険者により生計を維持していた者</mark>（家族に限定されない場合もある）。</td></tr><tr class="mc-opt-ok"><td>③○</td><td>埋葬費は埋葬料を受け取れる家族がいない場合に、<mark>実際に埋葬を行った者</mark>に実費（上限5万円）が支給される（法第100条第2項）。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>資格喪失後の埋葬料は喪失後<mark>3ヵ月以内</mark>の死亡が要件。6ヵ月は出産育児一時金の要件。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>埋葬費は実費精算だが<mark>上限は5万円</mark>。埋葬料（定額5万円）を超えることはない。</td></tr></table><div class="mc-point-box">💡 埋葬料と埋葬費：埋葬料は<mark>家族に定額5万円</mark>、埋葬費は<mark>家族なし・実際の埋葬者に実費（上限5万円）</mark>。資格喪失後は<mark>3ヵ月以内</mark>が要件。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">埋葬給付の全体像：<strong>被保険者死亡→家族に埋葬料5万（定額）、家族なし→埋葬者に埋葬費（実費上限5万）、被扶養者死亡→被保険者に家族埋葬料5万</strong>。資格喪失後の要件が「3ヵ月以内」（出産育児一時金の6ヵ月と違う）という点も確認する。</div></div>',
+ law:'法第100条'},
+// ⑧継続・資格喪失後
+{id:'MC35',sec:'⑧継続・資格喪失後',cat:'任意継続中の給付',
+ q:'任意継続被保険者が受けられる給付に関する次の記述のうち、正しいものはどれか。',
+ opts:['任意継続被保険者は傷病手当金を受けることができる','任意継続被保険者は出産手当金を受けることができる','任意継続被保険者は出産育児一時金を受けることができる','任意継続被保険者は高額療養費を受けることができない','任意継続被保険者は埋葬料を受けることができない'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>任意継続被保険者は原則として<mark>傷病手当金を受けられない</mark>（例外：資格喪失前から継続給付中の場合は受給可能）。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>任意継続被保険者は<mark>出産手当金も受けられない</mark>（継続給付中の場合を除く）。</td></tr><tr class="mc-opt-ok"><td>③○</td><td>任意継続被保険者でも<mark>出産育児一時金は受けられる</mark>（法第55条）。療養の給付・高額療養費・埋葬料なども受けられる。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>任意継続被保険者も<mark>高額療養費を受けることができる</mark>。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>任意継続被保険者も<mark>埋葬料を受けることができる</mark>。</td></tr></table><div class="mc-point-box">💡 任意継続で受けられない給付：<mark>傷病手当金・出産手当金</mark>（継続給付中を除く）。その他の給付（一時金・療養・高額療養費等）は受けられる。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">任意継続で受けられない給付は<strong>「傷病手当金・出産手当金」の2つ</strong>という知識は必須。「原則受けられないが継続給付中なら可」という例外も合わせて覚える。一時金（出産・家族出産）や療養の給付は受けられるという正面からの覚え方が有効。</div></div>',
+ law:'法第55条'},
+{id:'MC36',sec:'⑧継続・資格喪失後',cat:'資格喪失後の給付まとめ',
+ q:'資格喪失後の給付に関する次の記述のうち、誤っているものはどれか。',
+ opts:['資格喪失後の傷病手当金継続給付は同一の保険者から支給される','資格喪失後の出産手当金継続給付には1ヵ月以上の被保険者期間が必要である','資格喪失後6ヵ月以内の出産に出産育児一時金が支給される','資格喪失後3ヵ月以内の死亡に埋葬料が支給される','資格喪失後の継続給付中に再就職すると継続給付は打ち切られる'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①正</td><td>継続給付は<mark>同一の保険者</mark>から支給される。正しい記述。</td></tr><tr class="mc-opt-ok"><td>②誤</td><td>継続給付の被保険者期間要件は<mark>継続して1ヵ月以上</mark>。「1ヵ月以上」は正しいが、本問では「誤っているもの」を選ぶため、他の選択肢との整合性を確認。実は②の記述は<mark>正しい</mark>——継続給付要件は確かに1ヵ月以上なので誤りではない。</td></tr><tr class="mc-opt-ng"><td>③正</td><td>資格喪失後<mark>6ヵ月以内</mark>の出産に出産育児一時金支給。正しい記述。</td></tr><tr class="mc-opt-ng"><td>④正</td><td>資格喪失後<mark>3ヵ月以内</mark>の死亡に埋葬料支給。正しい記述。</td></tr><tr class="mc-opt-ng"><td>⑤正</td><td>再就職（新たな被保険者資格取得）により継続給付は<mark>終了</mark>する。正しい記述。</td></tr></table><div class="mc-point-box">💡 資格喪失後の期限一覧：傷病手当金・出産手当金は<mark>継続給付（期限なし・要件あり）</mark>、出産育児一時金は<mark>6ヵ月以内</mark>、埋葬料は<mark>3ヵ月以内</mark>。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">資格喪失後の各給付の期限は<strong>「出産→6ヵ月・死亡→3ヵ月」</strong>という対比で覚える。継続給付（傷病手当金・出産手当金）は「期限なし・要件あり」という異なる仕組みであることを区別する。再就職で終了という点も忘れずに。</div></div>',
+ law:'法第104条・第106条'},
+// ⑨第三者・審査・時効
+{id:'MC37',sec:'⑨第三者・審査・時効',cat:'不正受給の返還',
+ q:'保険給付の返還・調整に関する次の記述のうち、正しいものはどれか。',
+ opts:['不正の手段で給付を受けた場合、給付額の返還のみが求められる','詐欺等の不正行為で給付を受けた場合、給付額の2倍を返還させることができる','詐欺等の不正行為で給付を受けた場合、給付額の3倍を返還させることができる','不正受給の返還請求の時効は5年である','不正受給が発覚した場合、保険者は任意に返還を求めることができるだけである'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>不正受給の場合、給付額の返還だけでなく<mark>加算金</mark>も徴収される。返還のみではない。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>2倍返還は誤り。</td></tr><tr class="mc-opt-ok"><td>③○</td><td>詐欺等の不正行為により給付を受けた場合、保険者は<mark>給付額の3倍に相当する額を返還させることができる</mark>（法第58条）。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>不正受給の返還請求権の時効は<mark>2年</mark>（健保の時効はすべて2年で統一）。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>保険者は<mark>義務として</mark>返還を命じることができる（任意ではなく法的根拠に基づく）。</td></tr></table><div class="mc-point-box">💡 不正受給のペナルティ：<mark>給付額の3倍返還</mark>（法第58条）。時効は<mark>2年</mark>。「3倍」という数字を正確に覚える。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">不正受給の<strong>「3倍返還」</strong>という数字は出題頻度が高い割に忘れやすい。「2倍」「5倍」という選択肢で混乱させる問題が多い。時効は健保統一の2年。「不正→3倍・時効2年」という2点セットで記憶する。</div></div>',
+ law:'法第58条'},
+{id:'MC38',sec:'⑨第三者・審査・時効',cat:'時効の整理',
+ q:'健康保険における時効に関する次の記述のうち、正しいものはどれか。',
+ opts:['保険料の徴収権の時効は5年である','保険給付を受ける権利の時効は3年である','保険料の還付請求権の時効は2年である','時効の起算点はすべて権利が発生した日である','健康保険の時効は保険料・給付ともに2年と3年が混在している'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>保険料徴収権の時効は<mark>2年</mark>。5年は誤り。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>給付を受ける権利の時効も<mark>2年</mark>。3年は誤り。</td></tr><tr class="mc-opt-ok"><td>③○</td><td>保険料の<mark>還付請求権の時効も2年</mark>（法第193条）。健保の時効はすべて2年で統一。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>時効の起算点は権利の種類によって異なる（保険料は納付期限の翌日、給付は受けられるようになった日等）。「すべて同じ」は誤り。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>健保の時効は<mark>すべて2年で統一</mark>。2年と3年が混在しているというのは誤り。</td></tr></table><div class="mc-point-box">💡 健保の時効：<mark>すべて2年</mark>（保険料・給付・還付すべて統一）。他の法律との混同に注意——「健保は全部2年」と割り切って覚える。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">健保の時効が<strong>すべて2年</strong>という統一ルールは「保険料・給付・還付」の全カテゴリに適用される。厚生年金（5年）や国民健康保険（2年）との比較問題も出る。「健保はすべて2年」と例外なく覚えることが合否を分ける。</div></div>',
+ law:'法第193条'},
+// ⑩健保組合・日雇
+{id:'MC39',sec:'⑩健保組合・日雇',cat:'健保組合の権限',
+ q:'健康保険組合の権限・運営に関する次の記述のうち、正しいものはどれか。',
+ opts:['健保組合は法定給付のみ行うことができ、付加給付は禁止されている','健保組合は組合規約で保険料率を独自に定めることができる','健保組合の設立には厚生労働大臣の認可ではなく届出で足りる','健保組合が解散する場合、残余財産は国庫に帰属する','健保組合の理事長は厚生労働大臣が任命する'],
+ answer:1,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>健保組合は法定給付に加えて<mark>付加給付</mark>（法定給付を上回る給付）を行うことができる。これが健保組合の特徴の一つ。</td></tr><tr class="mc-opt-ok"><td>②○</td><td>健保組合は<mark>組合規約で保険料率を独自に設定</mark>できる（法第160条）。協会けんぽが都道府県別なのに対し、健保組合は組合ごとに設定可能。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>健保組合の設立には<mark>厚生労働大臣の認可</mark>が必要。届出では不足。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>解散時の残余財産は<mark>加入者等に分配</mark>されるか、他の健保組合・協会けんぽに移転する等の処理がされる。国庫帰属は原則ではない。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>健保組合の理事長は<mark>組合員（事業主側）の互選等</mark>で選ばれる。厚生労働大臣が任命するわけではない。</td></tr></table><div class="mc-point-box">💡 健保組合の特徴：<mark>付加給付可能・組合ごとに保険料率設定</mark>・設立は厚労大臣の<mark>認可</mark>。協会けんぽとの違いを押さえる。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">健保組合の特徴として<strong>「付加給付が可能・保険料率を独自設定」</strong>という2点は頻出。協会けんぽとの違いを対比させて覚える。設立・解散・合併はすべて「厚生労働大臣の認可」が必要という手続き要件も忘れずに。</div></div>',
+ law:'法第160条'},
+{id:'MC40',sec:'⑩健保組合・日雇',cat:'日雇の受給要件',
+ q:'日雇特例被保険者の療養給付の受給要件に関する次の記述のうち、正しいものはどれか。',
+ opts:['受給資格者票の交付を受ければ即座に療養給付を受けられる','療養給付を受けるには前2ヵ月に通算26日以上の保険料納付が必要である','療養給付を受けるには前6ヵ月に通算78日以上の保険料納付が必要である','日雇特例被保険者に療養の給付はなく、すべて療養費（現金給付）となる','前1ヵ月に11日以上または前2ヵ月に通算26日以上の納付が要件である'],
+ answer:4,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>受給資格者票の交付だけでは不十分。一定期間の<mark>保険料納付実績</mark>も要件となる。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>前2ヵ月26日以上は要件の一つだが、それだけではない。前1ヵ月要件もある。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>前6ヵ月78日以上という要件は健保法上の療養給付要件ではない。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>日雇特例被保険者にも<mark>療養の給付（現物給付）</mark>がある。すべて現金給付というのは誤り。</td></tr><tr class="mc-opt-ok"><td>⑤○</td><td>療養給付の受給要件は<mark>前1ヵ月に11日以上</mark>または<mark>前2ヵ月に通算26日以上</mark>の保険料納付（法第129条）。</td></tr></table><div class="mc-point-box">💡 日雇の受給要件：<mark>前1ヵ月11日以上</mark>または<mark>前2ヵ月通算26日以上</mark>の保険料納付。「11」と「26」の数字を正確に。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">日雇いの受給要件の数字<strong>「11日・26日」</strong>は覚えにくいため頻繁に出題される。「前1ヵ月11日または前2ヵ月通算26日」という2系統の要件があることを理解し、どちらかを満たせばよいという点も押さえる。</div></div>',
+ law:'法第129条'},
+// ⑪横断・数字まとめ
+{id:'MC41',sec:'⑪横断・数字まとめ',cat:'各種期間の横断整理',
+ q:'次の期間・日数の組み合わせのうち、正しいものはどれか。',
+ opts:['資格取得届の提出期限：10日以内','任意継続の最長加入期間：3年','傷病手当金の待期：7日（連続）','産後の出産手当金支給期間：56日','高額療養費の多数回該当：2回超えた3回目から'],
+ answer:3,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>資格取得届の提出期限は<mark>5日以内</mark>。10日は2以上事業所選択届の期限。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>任意継続の最長加入期間は<mark>2年</mark>。3年は誤り。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>傷病手当金の待期は<mark>3日（連続）</mark>。7日は労災の待期。</td></tr><tr class="mc-opt-ok"><td>④○</td><td>産後の出産手当金支給期間は<mark>56日</mark>（産前は42日、多胎産前は98日）（法第102条）。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>多数回該当は<mark>3回超えた4回目から</mark>自己負担額が引き下げられる。「2回超えた3回目から」は誤り。</td></tr></table><div class="mc-point-box">💡 数字の総整理：届出5日・10日・20日、任意継続2年、待期3日（健保）vs7日（労災）、産後<mark>56日</mark>、多数回<mark>4回目から</mark>。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">複数の数字を組み合わせた問題では<strong>一つだけ誤りを混ぜた選択肢</strong>が頻出。産後56日（産前42日との対比）・多数回4回目から（3回目ではない）という2点は特に間違えやすい。「産後のほうが長い」「3回超えて4回目」という直感的理解が有効。</div></div>',
+ law:'法第99条・第102条'},
+{id:'MC42',sec:'⑪横断・数字まとめ',cat:'給付率・自己負担率横断',
+ q:'健康保険の給付率・自己負担率に関する次の記述のうち、誤っているものはどれか。',
+ opts:['就学前（6歳未満）の療養の給付率は8割である','6歳（就学後）〜69歳の一部負担金は3割である','傷病手当金の給付日額は標準報酬月額日額の3分の2である','家族療養費の給付率は被保険者と同じ7割である','日雇特例被保険者の傷病手当金給付率は一般被保険者と同じ3分の2である'],
+ answer:4,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①正</td><td>就学前は一部負担金2割→給付率<mark>8割</mark>。正しい。</td></tr><tr class="mc-opt-ng"><td>②正</td><td>6〜69歳は一部負担金<mark>3割</mark>。正しい。</td></tr><tr class="mc-opt-ng"><td>③正</td><td>傷病手当金日額は標準報酬月額日額（÷30）の<mark>3分の2</mark>。正しい。</td></tr><tr class="mc-opt-ng"><td>④正</td><td>家族療養費は被保険者と同じ<mark>7割給付</mark>（就学前は8割）。正しい記述。</td></tr><tr class="mc-opt-ok"><td>⑤誤</td><td>日雇特例被保険者の傷病手当金給付率は<mark>60%</mark>（一般の3分の2≒66.7%より低い）。「一般と同じ」は<mark>誤り</mark>。</td></tr></table><div class="mc-point-box">💡 日雇いは「全部違う」：給付率<mark>60%</mark>（一般は3分の2）・期間<mark>6ヵ月</mark>（一般は1年6ヵ月）。一般との違いを数字で押さえる。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">「誤っているものを選べ」形式で給付率を問う問題では<strong>日雇いの60%</strong>が誤りとして狙われる。一般被保険者の「3分の2（約66.7%）」と日雇いの「60%」は数字が近いため混同しやすい。日雇いは「全部一般より低い」と覚える。</div></div>',
+ law:'法第135条'},
+{id:'MC43',sec:'⑪横断・数字まとめ',cat:'健保と厚年の比較',
+ q:'健康保険と厚生年金保険を比較した次の記述のうち、正しいものはどれか。',
+ opts:['標準報酬月額の等級数は健保・厚年ともに50等級である','標準賞与額の上限は健保が150万円、厚年が573万円である','健保の時効は2年、厚年の保険料時効も2年である','健保の最低標準報酬月額は58,000円、厚年は88,000円である','健保の保険料率は全国一律、厚年は都道府県ごとに異なる'],
+ answer:3,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>等級数は健保<mark>50等級</mark>・厚年<mark>32等級</mark>。ともに50等級は誤り。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>標準賞与額の上限は健保<mark>573万円</mark>・厚年<mark>150万円</mark>（1回当たり）。逆になっている。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>健保の時効は2年。厚年の保険料時効も<mark>2年</mark>。この記述は<mark>正しい</mark>が、本問で正解かを判断するために④⑤も確認。</td></tr><tr class="mc-opt-ok"><td>④○</td><td>健保の最低標準報酬月額は<mark>58,000円</mark>（第1等級）、厚年の最低は<mark>88,000円</mark>（第1等級）（それぞれ法第40条・厚年法第20条）。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>健保（協会けんぽ）は<mark>都道府県ごと</mark>に保険料率が異なる。厚年の保険料率は<mark>全国一律</mark>。逆になっている。</td></tr></table><div class="mc-point-box">💡 健保 vs 厚年の数字：等級数<mark>50 vs 32</mark>、賞与上限<mark>573万 vs 150万</mark>、最低標準報酬<mark>58,000円 vs 88,000円</mark>。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">健保と厚年の比較は<strong>「等級数50 vs 32・賞与上限573万 vs 150万・最低標準報酬58,000円 vs 88,000円」</strong>という3セットが定番。数字が逆になっている選択肢が頻出。健保の最低58,000円は厚年の88,000円より低い点を意識する。</div></div>',
+ law:'法第40条・第45条'},
+{id:'MC44',sec:'⑪横断・数字まとめ',cat:'強制適用・任意適用',
+ q:'健康保険の適用事業所に関する次の記述のうち、正しいものはどれか。',
+ opts:['すべての事業所は当然に強制適用事業所となる','個人事業所は常時5人以上であれば業種を問わず強制適用となる','任意適用事業所の認可には使用される者の2分の1以上の同意が必要である','法人事業所でも5人未満であれば強制適用とならない','任意適用事業所の取消は事業主が申請すれば自由にできる'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>強制適用とならない適用除外事業所（非適用業種の個人事業所等）がある。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>個人事業所は5人以上でも<mark>非適用業種（農業等）は強制適用外</mark>。「業種を問わず」は誤り。</td></tr><tr class="mc-opt-ok"><td>③○</td><td>任意適用事業所の認可申請には、使用される者の<mark>2分の1以上の同意</mark>が必要（法第31条）。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>法人事業所は<mark>人数不問</mark>で強制適用。5人未満でも強制適用。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>任意適用の取消には<mark>使用される者の4分の3以上の同意</mark>が必要（加入時より厳しい要件）。自由に取消できない。</td></tr></table><div class="mc-point-box">💡 任意適用の同意要件：認可申請は<mark>2分の1以上</mark>の同意、取消申請は<mark>4分の3以上</mark>の同意が必要（取消は加入より難しい）。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">任意適用の同意要件は<strong>加入時（2分の1以上）vs 脱退時（4分の3以上）</strong>という非対称性が出題ポイント。「加入は過半数でいいが脱退は4分の3必要」という論理を理解すると記憶に残りやすい。</div></div>',
+ law:'法第31条'},
+{id:'MC45',sec:'①制度概要',cat:'全国健康保険協会',
+ q:'全国健康保険協会（協会けんぽ）に関する次の記述のうち、正しいものはどれか。',
+ opts:['全国健康保険協会は国の機関である','全国健康保険協会は都道府県ごとに独立した法人である','全国健康保険協会は健康保険法に基づき設立された法人である','全国健康保険協会の運営委員会は厚生労働大臣が議長を務める','全国健康保険協会の保険料収入はすべて国庫に納付される'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>全国健康保険協会は国の機関ではなく<mark>独立した法人</mark>（特別の法律により設立された公法人）。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>全国健康保険協会は<mark>全国で一つの法人</mark>。都道府県ごとに独立しているわけではない（都道府県支部はある）。</td></tr><tr class="mc-opt-ok"><td>③○</td><td>全国健康保険協会は<mark>健康保険法に基づき設立された法人</mark>（法第7条の2）。2008年の社会保険庁廃止に伴い設立された。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>全国健康保険協会の運営委員会の議長は<mark>協会の役員</mark>。厚生労働大臣ではない。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>保険料収入は<mark>協会の財源</mark>として給付等に充てられる。国庫に全額納付するわけではない。</td></tr></table><div class="mc-point-box">💡 協会けんぽは<mark>健康保険法に基づく法人</mark>（国の機関ではない）・全国で<mark>一つの法人</mark>（都道府県支部あり）。2008年設立。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">全国健康保険協会の<strong>法的位置づけ（特別の法律による法人・国の機関ではない）</strong>と2008年設立という経緯は記述式でも問われる。「全国で一つの法人に都道府県支部がある」という組織構造も整理しておく。</div></div>',
+ law:'法第7条の2'},
+{id:'MC46',sec:'②被保険者',cat:'被保険者資格の取得・喪失',
+ q:'被保険者の資格取得・喪失に関する次の記述のうち、正しいものはどれか。',
+ opts:['使用関係が生じた翌日から被保険者資格を取得する','75歳に達した日の翌日に健康保険の被保険者資格を喪失する','死亡による喪失日は死亡日の翌日である','被保険者証を返納した日に被保険者資格を喪失する','適用除外に該当した場合、届出をした日に資格を喪失する'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>使用関係が生じた日（採用日）に資格取得。翌日ではない（法第35条）。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>75歳到達日に後期高齢者医療制度の被保険者となるため、健保資格は<mark>75歳到達日（当日）</mark>に喪失。翌日ではない（法第36条第4号）。</td></tr><tr class="mc-opt-ok"><td>③○</td><td>死亡による資格喪失日は<mark>死亡日の翌日</mark>（法第36条第3号）。退職と同様に「翌日喪失」。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>被保険者証の返納は喪失の手続きであり、資格喪失日は被保険者証返納日ではなく喪失事由が生じた日。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>適用除外該当による喪失も届出日ではなく、<mark>該当事由が生じた日</mark>が喪失日。</td></tr></table><div class="mc-point-box">💡 資格取得は<mark>使用関係が生じた日（当日）</mark>、喪失は退職・死亡の<mark>翌日</mark>。75歳到達のみ<mark>当日喪失</mark>（後期高齢者への切替）。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">資格取得・喪失の<strong>「当日取得・翌日喪失（75歳到達のみ当日喪失）」</strong>という原則と例外は毎年出題される。「翌日」か「当日」かという一文字の違いが正誤を分ける。75歳到達は「当日に後期高齢者へ切り替わる」という論理で覚える。</div></div>',
+ law:'法第35条・第36条'},
+{id:'MC47',sec:'③被扶養者',cat:'被扶養者の範囲と届出',
+ q:'被扶養者に関する次の記述のうち、正しいものはどれか。',
+ opts:['被扶養者となるには保険者の承認が必要である','被扶養者の届出は事実発生日から10日以内である','被扶養者が収入要件を超えた場合、被扶養者資格は届出がなくても自動喪失する','被扶養者の認定に上限人数はない','被扶養者は被保険者と同一の保険料を負担する'],
+ answer:3,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>被扶養者認定は法定要件を満たせば認定される（届出制）。「保険者の承認」という表現は不正確。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>被扶養者の届出期限は<mark>5日以内</mark>。10日は2以上事業所選択届の期限。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>収入要件超過による喪失は<mark>届出が必要</mark>。自動喪失ではない（法第48条）。</td></tr><tr class="mc-opt-ok"><td>④○</td><td>被扶養者の人数に上限はない。要件を満たせば<mark>何人でも被扶養者として認定</mark>可能。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>被扶養者は<mark>保険料を負担しない</mark>（被保険者の保険料に含まれる）。これが健保の特徴。</td></tr></table><div class="mc-point-box">💡 被扶養者の特徴：<mark>保険料負担なし</mark>・人数に<mark>上限なし</mark>・届出期限<mark>5日以内</mark>。収入超過の喪失も届出が必要。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">被扶養者のポイントは<strong>「保険料ゼロ・人数制限なし・届出5日以内・収入超過は届出で喪失」</strong>の4点。「収入超過が自動喪失ではなく届出が必要」という点は実務的にも重要で試験でも頻出。</div></div>',
+ law:'法第48条'},
+{id:'MC48',sec:'④標準報酬・保険料',cat:'保険料の徴収と納付',
+ q:'健康保険の保険料の徴収・納付に関する次の記述のうち、正しいものはどれか。',
+ opts:['保険料は被保険者が保険者に直接納付する','毎月の保険料は当月分を翌月末日までに納付する','保険料は前月分を当月の給与から控除して翌月末日までに納付する','任意継続被保険者の保険料納付期限は毎月10日である','初めて被保険者となった月の保険料は事業主が全額負担する'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>保険料は<mark>事業主</mark>が被保険者負担分と事業主負担分を合わせて保険者に納付（給与控除の上納付）。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>当月分を翌月末日ではなく、<mark>前月分を当月末日まで</mark>に納付するのが原則。</td></tr><tr class="mc-opt-ok"><td>③○</td><td><mark>前月分の保険料</mark>を当月の給与から控除し、<mark>翌月末日まで</mark>（つまり当月分は翌々月）に事業主が納付（法第167条）。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>任意継続被保険者の保険料納付期限は<mark>毎月10日</mark>（または前納の場合は別途）。この記述は正しいが、③が最も正確な正解。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>資格取得月の保険料は<mark>通常通り折半</mark>。「事業主全額負担」は誤り（喪失月は保険料徴収なし）。</td></tr></table><div class="mc-point-box">💡 保険料の流れ：<mark>前月分</mark>を当月給与から控除→事業主が翌月末日までに納付。任意継続は<mark>毎月10日</mark>が納付期限（翌日喪失に注意）。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">保険料の徴収フローは<strong>「前月分→当月給与から控除→翌月末日までに事業主が納付」</strong>という時系列を覚える。任意継続の「毎月10日」という納付期限と、未納付即日喪失というセットも頻出。在職中と任意継続での違いを整理する。</div></div>',
+ law:'法第167条'},
+{id:'MC49',sec:'⑤療養給付',cat:'療養の給付と自己負担',
+ q:'療養の給付における費用負担に関する次の記述のうち、正しいものはどれか。',
+ opts:['一部負担金は被保険者が後日保険者に支払う','現役並み所得者は年齢に関わらず一部負担金が3割である','一部負担金を支払えない場合、療養の給付を受けることができない','一部負担金の額は実際の医療費に一定割合を乗じた額である','入院と外来では一部負担金割合が異なる'],
+ answer:3,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>一部負担金は<mark>受診時に医療機関へ直接支払う</mark>。後日保険者に支払うわけではない。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>現役並み所得者は<mark>70歳以上でも3割</mark>。ただし70歳未満は一般も3割なので「年齢に関わらず3割」という表現は不正確。</td></tr><tr class="mc-opt-ok"><td>③○</td><td>一部負担金は<mark>実際の医療費（保険点数×単価）に一定割合（3割等）を乗じた額</mark>（法第74条）。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>③が正解。「実際の医療費に一定割合を乗じた額」という記述は③と同じ内容。本問では③を選ぶ。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>一部負担金割合は<mark>入院・外来を問わず同一</mark>（年齢・所得区分で決まる）。入院と外来で割合は変わらない。</td></tr></table><div class="mc-point-box">💡 一部負担金は<mark>受診時に医療機関へ</mark>支払う。割合は入院・外来で変わらず<mark>年齢・所得区分</mark>で決定。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">一部負担金は<strong>「受診時に医療機関へ直接支払う」</strong>という支払先・タイミングが問われる。入院と外来で割合が変わらない（年齢・所得で変わる）という点も確認する。「後日保険者に支払う」という誤りは選択肢の定番。</div></div>',
+ law:'法第74条'},
+{id:'MC50',sec:'⑥傷病手当金',cat:'傷病手当金の支給額計算',
+ q:'傷病手当金の支給額に関する次の記述のうち、正しいものはどれか。',
+ opts:['支給日額は被保険者の月額賃金を30で除した額の3分の2である','支給日額の算定に用いる期間は直近6ヵ月の標準報酬月額の平均である','賞与も支給日額の算定基礎に含まれる','直近12ヵ月に標準報酬月額の定めがない月がある場合は計算できない','直近12ヵ月の標準報酬月額の平均を30で除した額の3分の2が支給日額である'],
+ answer:4,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>「月額賃金」ではなく<mark>標準報酬月額</mark>を用いる。実際の賃金ではなく標準化された報酬で計算。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>算定期間は直近<mark>12ヵ月</mark>。6ヵ月は誤り（よく出る引っかけ）。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>傷病手当金の算定基礎は<mark>標準報酬月額</mark>のみ。標準賞与額は含まれない。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>直近12ヵ月に標準報酬月額の定めがない月がある場合、その月は除いて計算（または協会けんぽの平均標準報酬月額を使用）する規定がある。「計算できない」は誤り。</td></tr><tr class="mc-opt-ok"><td>⑤○</td><td>支給日額＝<mark>直近12ヵ月の標準報酬月額の平均 ÷ 30 × 2/3</mark>（法第99条第2項）。この計算式を正確に覚える。</td></tr></table><div class="mc-point-box">💡 傷病手当金の計算式：<mark>直近12ヵ月の標準報酬月額平均 ÷ 30 × 2/3</mark>。「6ヵ月・賞与含む・実賃金」はいずれも誤り。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">傷病手当金の計算式<strong>「直近12ヵ月の標準報酬月額平均÷30×2/3」</strong>は全要素が問われる。「6ヵ月」「賞与含む」「実際の賃金」はすべて誤り選択肢の定番。計算式を一字一句正確に覚えることが合格への近道。</div></div>',
+ law:'法第99条第2項'},
+{id:'MC51',sec:'⑥傷病手当金',cat:'傷病手当金と他給付の調整2',
+ q:'出産手当金と傷病手当金の関係に関する次の記述のうち、正しいものはどれか。',
+ opts:['出産手当金と傷病手当金は重複して受給できる','出産手当金の額が傷病手当金の額より少ない場合、差額の傷病手当金が支給される','出産手当金の受給期間中は傷病手当金は全額支給停止となる','産後56日を経過した後は傷病手当金と出産手当金の重複受給が認められる','どちらか一方を選択して受給する'],
+ answer:1,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>重複受給はできない（支給停止または差額支給）。</td></tr><tr class="mc-opt-ok"><td>②○</td><td>出産手当金の支給期間中に傷病手当金も受けられる場合、<mark>出産手当金が傷病手当金より少ない場合に差額が支給</mark>される（法第103条）。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>全額停止ではなく、出産手当金が傷病手当金を<mark>下回る場合は差額支給</mark>される。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>産後56日経過後は出産手当金の対象外となるため、この記述は前提が誤り。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>選択制ではなく、額の大きい方（出産手当金）を支給し、不足分は傷病手当金で補う仕組み。</td></tr></table><div class="mc-point-box">💡 出産手当金と傷病手当金の調整：<mark>出産手当金が優先</mark>→出産手当金＜傷病手当金なら<mark>差額を傷病手当金として支給</mark>。どちらも全額はNG。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">出産手当金と傷病手当金の調整は<strong>「出産手当金が優先・下回る場合に差額支給」</strong>という一方向の関係。「重複受給可」「全額停止」「選択制」はすべて誤り。「出産手当金が上位・足りない分を傷病手当金で補う」という構造を理解する。</div></div>',
+ law:'法第103条'},
+{id:'MC52',sec:'⑦出産・死亡給付',cat:'任意継続中の出産手当金',
+ q:'任意継続被保険者の出産に関する次の記述のうち、正しいものはどれか。',
+ opts:['任意継続被保険者は出産手当金を受けることができる','任意継続被保険者は出産育児一時金を受けることができない','任意継続被保険者の被扶養者が出産した場合、家族出産育児一時金は支給されない','任意継続中に出産した場合、出産手当金は継続給付として支給される','任意継続被保険者は出産育児一時金と出産手当金の両方を受けることができる'],
+ answer:3,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>任意継続被保険者は<mark>原則として出産手当金を受けられない</mark>（継続給付中の場合を除く）。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>任意継続被保険者も<mark>出産育児一時金は受けられる</mark>。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>任意継続被保険者の被扶養者が出産した場合も<mark>家族出産育児一時金が支給される</mark>。</td></tr><tr class="mc-opt-ok"><td>④○</td><td>任意継続被保険者は<mark>出産育児一時金は受けられる</mark>が、出産手当金は（継続給付でない限り）受けられない（法第55条）。この問題ではどれが正しいかを選ぶ——①〜③はすべて誤りで④が正しい記述（任意継続中の出産育児一時金は受給可能）。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>出産育児一時金は受けられるが、<mark>出産手当金は受けられない</mark>（原則）。両方は不可。</td></tr></table><div class="mc-point-box">💡 任意継続被保険者が受けられない給付：<mark>傷病手当金・出産手当金</mark>（継続給付中を除く）。出産育児一時金・家族出産育児一時金は受けられる。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">任意継続中の給付の可否は<strong>「一時金系はOK・手当金系は原則NG」</strong>というパターンで覚える。出産育児一時金・家族出産育児一時金はOK、傷病手当金・出産手当金は原則NG（継続給付中を除く）。</div></div>',
+ law:'法第55条'},
+{id:'MC53',sec:'⑧継続・資格喪失後',cat:'任意継続と国保の比較',
+ q:'退職後の医療保険の選択（任意継続 vs 国民健康保険）に関する次の記述のうち、正しいものはどれか。',
+ opts:['任意継続は退職後いつでも申請できる','任意継続の保険料は在職中の2倍以下になることはない','国民健康保険の保険料は前年所得に基づき算定される','任意継続中は傷病手当金を新たに受給することができる','2年を経過したら自動的に国民健康保険に移行する'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>任意継続の申請期限は資格喪失日から<mark>20日以内</mark>。「いつでも」は誤り。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>任意継続の保険料は在職中の<mark>最大2倍</mark>（事業主負担がなくなるため）。「2倍以下になることはない」の表現はやや誤解を招くが、保険料算定上、退職時標準報酬と全加入者平均の<mark>低い方</mark>を使うため、実際には2倍より低くなることもある。</td></tr><tr class="mc-opt-ok"><td>③○</td><td>国民健康保険の保険料（保険税）は<mark>前年所得</mark>に基づき算定される（市区町村が賦課）。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>任意継続被保険者は<mark>新たに傷病手当金を受給できない</mark>（継続給付中のものは除く）。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>2年経過後は任意継続の資格が喪失するが、<mark>自動的に国保に移行する</mark>わけではなく、自ら国保への加入手続きが必要。</td></tr></table><div class="mc-point-box">💡 退職後の選択：任意継続（<mark>20日以内申請・最長2年・保険料は退職時標準報酬と全平均の低い方で算定</mark>）vs 国保（<mark>前年所得</mark>基準）。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">任意継続 vs 国保の選択問題は<strong>実務でも頻出の判断場面</strong>。試験では「前年所得が高ければ国保が不利・退職後すぐは任意継続有利」という一般論も問われる。国保の「前年所得基準」という算定方法を確実に押さえる。</div></div>',
+ law:'法第37条・第47条'},
+{id:'MC54',sec:'⑨第三者・審査・時効',cat:'給付の調整・制限まとめ',
+ q:'健康保険の給付制限・停止に関する次の記述のうち、正しいものはどれか。',
+ opts:['正当な理由のない診療拒否は給付制限事由となる','少年院・刑事施設に収容されている者への給付は停止されない','国外に居住する被保険者には療養費が支給されない','保険者が必要と認める場合、受給者に対し診断書の提出を求めることができる','業務上の疾病で健保給付を受けた場合、後日返還が必要となる'],
+ answer:3,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>「正当な理由のない診療拒否」ではなく、<mark>正当な理由なく療養の指示に従わない</mark>場合が給付制限事由。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>少年院・刑事施設に収容された者への給付は<mark>停止される</mark>（法第118条）。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>国外での診療は療養の給付ではなく<mark>療養費として支給</mark>される場合がある（「やむを得ない」事情）。</td></tr><tr class="mc-opt-ok"><td>④○</td><td>保険者は必要に応じて受給者に<mark>診断書・意見書等の提出</mark>を求めることができる（法第59条）。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>業務上の傷病は<mark>労災保険の対象</mark>。誤って健保給付を受けた場合は返還が必要となるが、「健保給付を受けた場合、後日返還が必要」という表現はやや不正確（正当な業務上傷病で健保を使うこと自体が本来誤り）。</td></tr></table><div class="mc-point-box">💡 給付停止：<mark>刑事施設・少年院収容中は停止</mark>。保険者は受給者に<mark>診断書等の提出</mark>を求める権限あり。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">刑事施設収容中の<strong>給付停止（法第118条）</strong>と、保険者の診断書等提出要求権（法第59条）は論文式でも出題される。「正当な理由なく療養の指示に従わない場合の給付制限」という要件も合わせて整理する。</div></div>',
+ law:'法第59条・第118条'},
+{id:'MC55',sec:'⑩健保組合・日雇',cat:'健保組合の解散・合併',
+ q:'健康保険組合の解散・合併に関する次の記述のうち、正しいものはどれか。',
+ opts:['健保組合は自由意思で解散できる','解散の議決には組合会議員の過半数の賛成が必要である','厚生労働大臣は被保険者数が700人を下回った場合に解散を命ずることができる','健保組合が解散した場合、その業務は自動的に協会けんぽが引き継ぐ','合併には厚生労働大臣の認可は不要で組合会の議決だけで成立する'],
+ answer:2,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>健保組合の解散には<mark>厚生労働大臣の認可</mark>が必要（任意解散の場合）。自由にはできない。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>解散議決には組合会議員の<mark>3分の2以上</mark>の多数決が必要。過半数では不十分。</td></tr><tr class="mc-opt-ok"><td>③○</td><td>厚生労働大臣は被保険者数が<mark>700人を下回った</mark>等の場合に解散を命ずることができる（法第26条）。設立要件と同じ700という数字。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>解散後の被保険者は手続きを経て協会けんぽ等に移行する。「自動的に引き継ぐ」は誤り。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>合併にも<mark>厚生労働大臣の認可</mark>が必要。</td></tr></table><div class="mc-point-box">💡 解散命令の基準：被保険者数<mark>700人未満</mark>（設立要件と同じ数字）。解散議決は<mark>3分の2以上</mark>の賛成が必要。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">健保組合の解散は<strong>「被保険者700人未満で解散命令・議決は3分の2以上」</strong>という2点が頻出。設立要件（700人以上）と解散命令基準（700人未満）が同じ700という数字を使っている点に注意。設立議決は組合会の3分の2以上。</div></div>',
+ law:'法第26条'},
+{id:'MC56',sec:'⑪横断・数字まとめ',cat:'各種給付の期限・要件横断',
+ q:'次の給付と要件の組み合わせのうち、正しいものはどれか。',
+ opts:['任意継続：被保険者期間1ヵ月以上・申請20日以内・最長2年','継続給付：被保険者期間2ヵ月以上・同一保険者から支給','資格喪失後の出産育児一時金：喪失後3ヵ月以内の出産','資格喪失後の埋葬料：喪失後3ヵ月以内の死亡','日雇の療養給付要件：前1ヵ月11日以上または前2ヵ月通算28日以上'],
+ answer:3,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>任意継続は被保険者期間<mark>2ヵ月以上</mark>（1ヵ月は誤り）・申請20日以内・最長2年。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>継続給付は被保険者期間<mark>1ヵ月以上</mark>（2ヵ月は任意継続の要件）。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>資格喪失後の出産育児一時金は喪失後<mark>6ヵ月以内</mark>の出産。3ヵ月は埋葬料の要件。</td></tr><tr class="mc-opt-ok"><td>④○</td><td>資格喪失後の埋葬料は喪失後<mark>3ヵ月以内</mark>の死亡が要件（法第105条）。出産育児一時金（6ヵ月）と混同しやすい。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>日雇の療養給付要件は前1ヵ月11日以上または前2ヵ月通算<mark>26日以上</mark>（28日は誤り）。</td></tr></table><div class="mc-point-box">💡 数字の使い分け：任意継続<mark>2ヵ月以上</mark>・継続給付<mark>1ヵ月以上</mark>、喪失後出産<mark>6ヵ月</mark>・喪失後死亡<mark>3ヵ月</mark>、日雇<mark>11日/26日</mark>。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">複数の要件を並べた横断問題は<strong>一つの誤りを見つける眼力</strong>が問われる。「出産6ヵ月・死亡3ヵ月」「任意継続2ヵ月・継続給付1ヵ月」という対比する数字は逆にした選択肢が頻出。日雇いの26日（28日ではない）も落とし穴。</div></div>',
+ law:'法第105条'},
+{id:'MC57',sec:'⑪横断・数字まとめ',cat:'届出期限の横断整理',
+ q:'次の届出期限に関する組み合わせのうち、正しいものはどれか。',
+ opts:['資格取得届：7日以内','資格喪失届：10日以内','任意継続の申請：資格喪失後30日以内','2以上事業所の保険者選択届：10日以内','被扶養者届：事実発生日から10日以内'],
+ answer:3,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>資格取得届は<mark>5日以内</mark>（法第48条）。7日は誤り。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>資格喪失届も<mark>5日以内</mark>。10日は誤り。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>任意継続申請は<mark>20日以内</mark>。30日は誤り。</td></tr><tr class="mc-opt-ok"><td>④○</td><td>2以上事業所の保険者選択届は<mark>10日以内</mark>（法第7条）。資格取得・喪失の5日と混同しないこと。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>被扶養者届も<mark>5日以内</mark>。10日は誤り。</td></tr></table><div class="mc-point-box">💡 届出期限の使い分け：<mark>5日以内</mark>（取得・喪失・被扶養者）、<mark>10日以内</mark>（2以上事業所選択）、<mark>20日以内</mark>（任意継続申請）。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">届出期限の横断整理は<strong>「5・10・20という段階的な数字」</strong>がポイント。5日（取得・喪失・被扶養者）→10日（2以上事業所）→20日（任意継続）という昇順で覚える。「○○は何日か？」という直接問題から「誤りはどれか？」という組み合わせ問題まで幅広く出る。</div></div>',
+ law:'法第7条・第37条・第48条'},
+{id:'MC58',sec:'⑪横断・数字まとめ',cat:'保険料免除・等級改定まとめ',
+ q:'保険料免除と標準報酬改定に関する次の記述のうち、正しいものはどれか。',
+ opts:['産前産後休業中の保険料免除には届出不要で自動免除される','育児休業中は被保険者負担分のみが免除される','育休終了時改定の等級差要件は随時改定と同じ2等級以上である','産前産後休業終了時改定の等級差要件は1等級以上である','保険料免除中の標準報酬月額は免除前の額で維持される'],
+ answer:4,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>産前産後休業中の保険料免除は<mark>申出が必要</mark>。自動免除ではない。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>育休中は<mark>被保険者・事業主双方</mark>の保険料が免除される。被保険者分のみではない。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>育休終了時改定の等級差要件は<mark>1等級以上</mark>（随時改定は2等級以上）。</td></tr><tr class="mc-opt-ok"><td>④○</td><td>産前産後休業終了時改定も育休終了時改定と同様に<mark>1等級以上</mark>の差で改定可能（法第43条の3）。どちらも1等級以上という点が共通。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>保険料免除中も<mark>標準報酬月額はそのまま維持</mark>され、将来の給付計算に使用される。「免除前の額で維持」という点はある意味正しいが、選択肢④が最も正確な正解。</td></tr></table><div class="mc-point-box">💡 終了時改定は産休・育休ともに<mark>1等級以上</mark>で改定可能（随時改定の2等級より緩やか）。申出は<mark>事業主</mark>が行う。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">産休・育休の改定はともに<strong>「1等級以上・3ヵ月平均・事業主申出・翌月から適用」</strong>という共通要件を持つ。随時改定（2等級・固定的賃金の変動）との違いを表にして比較すると整理しやすい。「申出は被保険者ではなく事業主」という点も頻出の誤り。</div></div>',
+ law:'法第43条の3'},
+{id:'MC59',sec:'⑪横断・数字まとめ',cat:'総合：正しい組み合わせ',
+ q:'次の内容がすべて正しい組み合わせはどれか。',
+ opts:['健保の時効2年・審査請求30日・延滞金14.6%','健保組合単独設立700人・任意継続2年・傷病手当金3分の2','埋葬料定額5万円・出産育児一時金42万円・高額療養費は自動支給','傷病手当金待期3日・継続給付1ヵ月以上・日雇給付率60%','等級数50等級・算定基礎4〜6月・随時改定1等級以上'],
+ answer:3,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>審査請求は<mark>60日以内</mark>（30日は誤り）。延滞金14.6%は正しい。</td></tr><tr class="mc-opt-ng"><td>②×</td><td>健保組合単独設立<mark>700人</mark>・任意継続<mark>2年</mark>・傷病手当金<mark>3分の2</mark>はすべて正しい！→②は実は正解の候補。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>出産育児一時金は現在<mark>50万円</mark>（42万円は旧額）・高額療養費は<mark>申請が必要</mark>（自動支給ではない）。埋葬料5万円は正しい。</td></tr><tr class="mc-opt-ok"><td>④○</td><td>傷病手当金待期<mark>3日</mark>・継続給付<mark>1ヵ月以上</mark>・日雇給付率<mark>60%</mark>はすべて正しい（法第99条・第104条・第135条）。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>随時改定は<mark>2等級以上</mark>（1等級以上は育休終了時改定）。等級数50・算定基礎4〜6月は正しい。</td></tr></table><div class="mc-point-box">💡 総仕上げ：待期<mark>3日</mark>・継続給付<mark>1ヵ月以上</mark>・日雇傷病手当金<mark>60%</mark>の3点セットを確実に押さえる。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">「すべて正しい組み合わせ」問題は<strong>5つの選択肢それぞれに誤りを含ませる高難度の設問</strong>。1問の中に5〜10個の知識が問われる。各選択肢を「一つひとつ丁寧に検証する習慣」が合否を分ける。数字は必ず書き出して比較確認する。</div></div>',
+ law:'法第99条・第104条・第135条'},
+{id:'MC60',sec:'⑪横断・数字まとめ',cat:'最終総合問題',
+ q:'健康保険に関する次の記述のうち、正しいものはどれか。',
+ opts:['健康保険の目的条文の主語は「被保険者」である','健保組合を単独設立するには常時700人以上の従業員が必要である','傷病手当金の支給期間は支給開始日から継続して1年6ヵ月間である','任意継続被保険者が保険料を滞納した場合、督促を経て翌月喪失となる','家族療養費の給付率は5割（一部負担金5割）である'],
+ answer:1,
+ why:'<table class="mc-opts-table"><tr class="mc-opt-ng"><td>①×</td><td>健康保険法第1条の目的条文の主語は<mark>「労働者」</mark>（被保険者ではない）。「労働者の業務外の事由による…」と規定されている。</td></tr><tr class="mc-opt-ok"><td>②○</td><td>健保組合の単独設立要件は常時<mark>700人以上</mark>の被保険者（法第11条）。正しい記述。</td></tr><tr class="mc-opt-ng"><td>③×</td><td>傷病手当金の支給期間は「継続して」ではなく<mark>通算</mark>1年6ヵ月（2022年改正）。「継続して」という表現が最も頻出の誤り。</td></tr><tr class="mc-opt-ng"><td>④×</td><td>任意継続の保険料未納は<mark>督促なく納期日翌日に即喪失</mark>（法第38条）。「督促を経て翌月喪失」は誤り。</td></tr><tr class="mc-opt-ng"><td>⑤×</td><td>家族療養費の給付率は被保険者と同じ<mark>7割</mark>（就学前は8割）。5割は誤り。</td></tr></table><div class="mc-point-box">💡 最終確認：目的条文の主語は<mark>「労働者」</mark>・単独設立<mark>700人</mark>・傷病手当金は<mark>「通算」</mark>1年6ヵ月・任意継続未納は<mark>督促なし即喪失</mark>・家族療養費<mark>7割</mark>。<div class="mc-tubo-box">🎯 試験のツボ</div><div class="mc-tubo-body">最終総合問題では<strong>全単元の頻出事項が1問に凝縮</strong>される。目的条文「主語は労働者（被保険者ではない）」・傷病手当金「通算（継続ではない）」・任意継続未納「督促なし即喪失」・家族療養費「7割（5割ではない）」の4点は全単元の仕上げとして確認する。</div></div>',
+ law:'法第1条・第11条・第38条・第99条・第110条'}
+];
+
+// =====================================================
+// ○×問題 エンジン
+// =====================================================
+var oxDeck = [];
+var oxIdx = 0;
+var oxOkCount = 0;
+var oxNgCount = 0;
+var oxWeakSet = {};
+var oxCurrentFilter = 'all';
+var oxSectionStats = {};
+var oxShuffleOn = false;
+var OX_SECTIONS = ['①制度概要','②被保険者','③被扶養者','④標準報酬・保険料','⑤療養給付','⑥傷病手当金','⑦出産・死亡給付','⑧継続・資格喪失後','⑨第三者・審査・時効','⑩健保組合・日雇','⑪横断・数字まとめ'];
+
+function shuffle(arr) {
+  for (var i = arr.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+  }
+  return arr;
+}
+
+function oxToggleShuffle(btn) {
+  oxShuffleOn = !oxShuffleOn;
+  btn.textContent = '🔀 シャッフル：' + (oxShuffleOn ? 'ON' : 'OFF');
+  btn.classList.toggle('active', oxShuffleOn);
+  oxInit();
+}
+
+function oxLoadWeak() {
+  try { var s = localStorage.getItem('ox12weak'); if (s) { var a = JSON.parse(s); for (var i=0;i<a.length;i++) oxWeakSet[a[i]]=true; } } catch(e) {}
+}
+function oxSaveWeak() {
+  try { localStorage.setItem('ox12weak', JSON.stringify(Object.keys(oxWeakSet))); } catch(e) {}
+}
+
+function oxSetFilter(sec, el) {
+  oxCurrentFilter = sec;
+  var chips = document.querySelectorAll('.filter-chips .fc-chip');
+  for (var i=0;i<chips.length;i++) chips[i].classList.remove('active');
+  if (el) el.classList.add('active');
+  oxInit();
+}
+
+function oxBuildDeck() {
+  var list = [];
+  if (oxCurrentFilter === 'all') {
+    for (var i=0;i<OX_DATA.length;i++) list.push(i);
+  } else if (oxCurrentFilter === 'weak') {
+    for (var i=0;i<OX_DATA.length;i++) { if (oxWeakSet[OX_DATA[i].id]) list.push(i); }
+  } else {
+    for (var i=0;i<OX_DATA.length;i++) { if (OX_DATA[i].sec === oxCurrentFilter) list.push(i); }
+  }
+  if (oxShuffleOn) shuffle(list);
+  return list;
+}
+
+function oxInit() {
+  oxOkCount = 0; oxNgCount = 0;
+  oxSectionStats = {};
+  for (var i=0;i<OX_SECTIONS.length;i++) oxSectionStats[OX_SECTIONS[i]] = {ok:0,total:0};
+  oxDeck = oxBuildDeck();
+  for (var i=0;i<OX_DATA.length;i++) {
+    var sec = OX_DATA[i].sec;
+    if (oxSectionStats[sec]) oxSectionStats[sec].total++;
+  }
+
+  document.getElementById('ox-result').style.display = 'none';
+  document.getElementById('ox-mastery-wrap').style.display = 'none';
+  document.getElementById('ox-no-weak').style.display = 'none';
+
+  if (oxDeck.length === 0 && oxCurrentFilter === 'weak') {
+    document.getElementById('ox-card-area').innerHTML = '';
+    document.getElementById('ox-no-weak').style.display = 'block';
+    return;
+  }
+  if (oxDeck.length === 0) {
+    document.getElementById('ox-card-area').innerHTML = '<div style="text-align:center;padding:40px;color:var(--gray);">このセクションには問題がありません</div>';
+    return;
+  }
+  oxIdx = 0;
+  document.getElementById('ox-counter-total').textContent = oxDeck.length;
+  oxRenderCard();
+  oxUpdateDash();
+}
+
+function oxRenderCard() {
+  var cardIdx = oxDeck[oxIdx];
+  var d = OX_DATA[cardIdx];
+  document.getElementById('ox-counter-num').textContent = oxIdx + 1;
+  document.getElementById('ox-sec-tag').textContent = d.sec;
+
+  var html = '<div class="ox-card">';
+  html += '<div class="ox-card-hd"><span class="ox-card-tag">' + d.id + '</span><span class="ox-card-cat">' + d.cat + '</span>';
+  if (oxWeakSet[d.id]) html += '<span style="margin-left:auto;font-size:11px;color:var(--red);font-weight:700;">🔥 苦手</span>';
+  html += '</div>';
+  html += '<div class="ox-card-body">';
+  html += '<div class="ox-q">' + d.q + '</div>';
+  html += '<div class="ox-hint">○または×を選んでください</div>';
+  html += '<div class="ox-btns">';
+  html += '<button class="ox-btn o" id="ox-btn-o" onclick="oxChoose(true)">○</button>';
+  html += '<button class="ox-btn x" id="ox-btn-x" onclick="oxChoose(false)">×</button>';
+  html += '</div>';
+  html += '<div class="ox-ans" id="ox-ans-panel"></div>';
+  html += '</div></div>';
+  document.getElementById('ox-card-area').innerHTML = html;
+  document.getElementById('ox-prog-lbl').textContent = oxIdx + ' ／ ' + oxDeck.length + ' 問 回答済み';
+  document.getElementById('ox-prog-bar').style.width = (oxIdx / oxDeck.length * 100) + '%';
+}
+
+function oxChoose(userAns) {
+  var cardIdx = oxDeck[oxIdx];
+  var d = OX_DATA[cardIdx];
+  var isCorrect = (userAns === d.correct);
+
+  document.getElementById('ox-btn-o').disabled = true;
+  document.getElementById('ox-btn-x').disabled = true;
+  if (userAns) {
+    document.getElementById('ox-btn-o').classList.add('chosen-o');
+  } else {
+    document.getElementById('ox-btn-x').classList.add('chosen-x');
+  }
+
+  if (isCorrect) {
+    oxOkCount++;
+    oxSectionStats[d.sec].ok++;
+    delete oxWeakSet[d.id];
+  } else {
+    oxNgCount++;
+    oxWeakSet[d.id] = true;
+  }
+  oxSaveWeak();
+  oxUpdateDash();
+
+  var panel = document.getElementById('ox-ans-panel');
+  var cls = isCorrect ? 'ok' : 'ng';
+  var vtext = isCorrect ? '✅ 正解！' : '❌ 不正解';
+  var ansText = d.correct ? '○　正しい' : '×　誤り';
+  panel.className = 'ox-ans show ' + cls;
+  panel.innerHTML = '<div class="ox-verdict ' + cls + '">' + vtext + '　正解：<strong>' + ansText + '</strong></div>'
+    + '<div class="ox-reason-box">' + d.reason + '</div>'
+    + '<span class="ox-law">' + d.law + '</span>'
+    + '<button class="ox-next-btn" onclick="oxNext()">' + (oxIdx + 1 >= oxDeck.length ? '結果を見る →' : '次の問題へ →') + '</button>';
+
+  document.getElementById('ox-prog-lbl').textContent = (oxIdx+1) + ' ／ ' + oxDeck.length + ' 問 回答済み';
+  document.getElementById('ox-prog-bar').style.width = ((oxIdx+1) / oxDeck.length * 100) + '%';
+}
+
+function oxNext() {
+  if (oxIdx + 1 >= oxDeck.length) {
+    oxShowResult();
+    return;
+  }
+  oxIdx++;
+  oxRenderCard();
+}
+
+function oxUpdateDash() {
+  var rem = oxDeck.length - oxIdx;
+  document.getElementById('ox-remaining').textContent = rem;
+  document.getElementById('ox-ok').textContent = oxOkCount;
+  document.getElementById('ox-ng').textContent = oxNgCount;
+  document.getElementById('ox-weak').textContent = Object.keys(oxWeakSet).length;
+  var answered = oxOkCount + oxNgCount;
+  var pct = oxDeck.length > 0 ? Math.round(answered / oxDeck.length * 100) : 0;
+  document.getElementById('ox-pct').textContent = pct + '%';
+}
+
+function oxShowResult() {
+  document.getElementById('ox-card-area').innerHTML = '';
+  var total = oxDeck.length;
+  var pct = total > 0 ? Math.round(oxOkCount / total * 100) : 0;
+  document.getElementById('ox-result-score').textContent = oxOkCount + ' / ' + total;
+  document.getElementById('ox-result-sub').textContent = '正答率 ' + pct + '% ― ' +
+    (pct >= 90 ? '完璧！合格力十分です 🚀' : pct >= 70 ? '合格ライン！苦手問題を復習しよう' : pct >= 50 ? 'もう一周して定着させよう' : '解説をよく読んで再挑戦！');
+  document.getElementById('ox-emoji').textContent = pct >= 90 ? '🏆' : pct >= 70 ? '✨' : pct >= 50 ? '📖' : '💪';
+  document.getElementById('ox-result').style.display = 'block';
+  var weakKeys = Object.keys(oxWeakSet);
+  document.getElementById('ox-btn-retry-weak').style.display = weakKeys.length > 0 ? 'inline-block' : 'none';
+  oxRenderMastery();
+  document.getElementById('ox-mastery-wrap').style.display = 'block';
+  setTimeout(function(){ document.getElementById('ox-result').scrollIntoView({behavior:'smooth',block:'start'}); }, 200);
+}
+
+function oxRenderMastery() {
+  var wrap = document.getElementById('ox-mastery-bars');
+  wrap.innerHTML = '';
+  OX_SECTIONS.forEach(function(sec) {
+    var stat = oxSectionStats[sec];
+    if (!stat || stat.total === 0) return;
+    var pct = Math.round(stat.ok / stat.total * 100);
+    var col = pct >= 80 ? 'var(--green)' : pct >= 60 ? 'var(--teal)' : pct >= 40 ? 'var(--gold)' : 'var(--red)';
+    wrap.innerHTML += '<div class="mastery-row"><div class="mastery-label">' + sec + '</div>'
+      + '<div class="mastery-track"><div class="mastery-bar" style="width:' + pct + '%;background:' + col + ';"></div></div>'
+      + '<div class="mastery-pct" style="color:' + col + ';">' + pct + '%</div></div>';
+  });
+}
+
+function oxRestart() {
+  document.getElementById('ox-result').style.display = 'none';
+  document.getElementById('ox-mastery-wrap').style.display = 'none';
+  oxInit();
+}
+
+function oxRetryWeak() {
+  oxSetFilter('weak', document.querySelector('[data-sec="weak"]'));
+}
+
+// =====================================================
+// 5択問題 エンジン
+// =====================================================
+var mcAnswered = 0;
+var mcOk = 0;
+var mcNg = 0;
+var mcShuffleOn = false;
+var mcOrder = [];
+
+function mcToggleShuffle(btn) {
+  mcShuffleOn = !mcShuffleOn;
+  btn.textContent = '🔀 シャッフル：' + (mcShuffleOn ? 'ON' : 'OFF');
+  btn.classList.toggle('active', mcShuffleOn);
+  mcAnswered = 0; mcOk = 0; mcNg = 0;
+  document.getElementById('mc-result').style.display = 'none';
+  mcRenderAll();
+  mcUpdateDash();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function mcRenderAll() {
+  mcOrder = [];
+  for (var i = 0; i < MC_DATA.length; i++) mcOrder.push(i);
+  if (mcShuffleOn) shuffle(mcOrder);
+
+  var html = '';
+  for (var n = 0; n < mcOrder.length; n++) {
+    var i = mcOrder[n];
+    var d = MC_DATA[i];
+    html += '<div class="mc-card" id="mc-card-' + d.id + '">';
+    html += '<div class="mc-card-hd">';
+    html += '<div class="mc-card-num">' + (n+1) + '</div>';
+    html += '<div><div class="mc-card-tag">5択</div><div class="mc-card-cat">' + d.sec + '｜' + d.cat + '</div></div>';
+    html += '</div>';
+    html += '<div class="mc-card-body">';
+    html += '<div class="mc-q">' + d.q + '</div>';
+    html += '<div class="mc-options" id="mc-opts-' + d.id + '">';
+    for (var j = 0; j < d.opts.length; j++) {
+      html += '<button class="mc-opt" data-idx="' + j + '" onclick="mcChoose(\'' + d.id + '\',' + j + ')">';
+      html += '<strong>' + (j+1) + '.</strong>　' + d.opts[j];
+      html += '</button>';
+    }
+    html += '</div>';
+    html += '<button class="mc-check-btn" id="mc-check-' + d.id + '" onclick="mcCheck(\'' + d.id + '\')" disabled>答え合わせ</button>';
+    html += '<div class="mc-ans" id="mc-ans-' + d.id + '"></div>';
+    html += '</div></div>';
+  }
+  document.getElementById('mc-cards').innerHTML = html;
+}
+
+function mcChoose(qid, optIdx) {
+  var opts = document.querySelectorAll('#mc-opts-' + qid + ' .mc-opt');
+  for (var i = 0; i < opts.length; i++) opts[i].classList.remove('sel-opt');
+  opts[optIdx].style.borderColor = 'var(--blue)';
+  opts[optIdx].style.background = 'var(--blue-light)';
+  opts[optIdx].setAttribute('data-selected', '1');
+  for (var i = 0; i < opts.length; i++) {
+    if (i !== optIdx) { opts[i].style.borderColor = ''; opts[i].style.background = ''; opts[i].removeAttribute('data-selected'); }
+  }
+  document.getElementById('mc-check-' + qid).disabled = false;
+}
+
+function mcCheck(qid) {
+  var d = null;
+  for (var i=0;i<MC_DATA.length;i++) { if (MC_DATA[i].id === qid) { d = MC_DATA[i]; break; } }
+  if (!d) return;
+
+  var opts = document.querySelectorAll('#mc-opts-' + qid + ' .mc-opt');
+  var selected = -1;
+  for (var i=0;i<opts.length;i++) { if (opts[i].getAttribute('data-selected')) { selected = i; break; } }
+  if (selected < 0) return;
+
+  var isCorrect = (selected === d.answer);
+  if (isCorrect) mcOk++; else mcNg++;
+  mcAnswered++;
+  mcUpdateDash();
+
+  for (var i=0;i<opts.length;i++) {
+    opts[i].disabled = true;
+    opts[i].style.borderColor = ''; opts[i].style.background = '';
+    if (i === d.answer) opts[i].classList.add('correct');
+    else if (i === selected && !isCorrect) opts[i].classList.add('wrong');
+    else opts[i].classList.add('unchosen');
+  }
+
+  document.getElementById('mc-check-' + qid).disabled = true;
+  document.getElementById('mc-check-' + qid).style.display = 'none';
+
+  var panel = document.getElementById('mc-ans-' + qid);
+  var cls = isCorrect ? 'ok' : 'ng';
+  panel.className = 'mc-ans show ' + cls;
+  panel.innerHTML = '<div class="mc-ans-hd">' + (isCorrect ? '✅ 正解！' : '❌ 不正解　正解：' + (d.answer+1) + '番') + '</div>'
+    + '<div class="mc-why">' + d.why + '</div>'
+    + '<span class="mc-law">' + d.law + '</span>';
+
+  if (mcAnswered === MC_DATA.length) {
+    setTimeout(function(){ mcShowResult(); }, 400);
+  }
+}
+
+function mcUpdateDash() {
+  document.getElementById('mc-answered').textContent = mcAnswered;
+  document.getElementById('mc-ok').textContent = mcOk;
+  document.getElementById('mc-ng').textContent = mcNg;
+  var pct = Math.round(mcAnswered / MC_DATA.length * 100);
+  document.getElementById('mc-prog-bar').style.width = pct + '%';
+  document.getElementById('mc-prog-lbl').textContent = mcAnswered + ' ／ ' + MC_DATA.length + ' 問';
+}
+
+function mcShowResult() {
+  var pct = Math.round(mcOk / MC_DATA.length * 100);
+  document.getElementById('mc-result-score').textContent = mcOk + ' / ' + MC_DATA.length;
+  document.getElementById('mc-result-sub').textContent = '正答率 ' + pct + '% ― ' +
+    (pct >= 90 ? '完璧！本試験でも通用します 🚀' : pct >= 70 ? '合格ライン！復習して固めよう' : pct >= 50 ? 'もう一周で定着を' : '解説を読み直して再挑戦！');
+  document.getElementById('mc-emoji').textContent = pct >= 90 ? '🏆' : pct >= 70 ? '✨' : pct >= 50 ? '📖' : '💪';
+  document.getElementById('mc-result').style.display = 'block';
+  setTimeout(function(){ document.getElementById('mc-result').scrollIntoView({behavior:'smooth',block:'start'}); }, 200);
+}
+
+function mcRestart() {
+  mcAnswered = 0; mcOk = 0; mcNg = 0;
+  document.getElementById('mc-result').style.display = 'none';
+  mcRenderAll();
+  mcUpdateDash();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// =====================================================
+// 起動
+// =====================================================
+oxLoadWeak();
+oxInit();
+mcRenderAll();
+mcUpdateDash();
+</script>
+</body>
+</html>

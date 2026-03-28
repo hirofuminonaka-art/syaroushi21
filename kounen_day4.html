@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day4｜在職老齢年金・特別支給の老齢厚生年金 ― 厚生年金法過去問ドリル</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1a2e;--paper:#faf8f3;--warm:#f5f0e8;
+  --red:#c84b31;--red-soft:#e8896b;--red-light:#fee2e2;
+  --teal:#2a7f7f;--teal-light:#e8f4f4;
+  --gold:#c9930a;--gold-light:#fef9e7;
+  --green:#2d6a4f;--green-light:#e8f5ee;
+  --gray:#6b7280;--border:#ddd8cc;
+  --purple:#7c3aed;--purple-light:#ede9fe;
+  --blue:#1d4ed8;--blue-light:#dbeafe;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
+.topbar{background:var(--ink);padding:10px 20px;display:flex;align-items:center;gap:12px;}
+.back-btn{color:rgba(255,255,255,.7);font-size:13px;cursor:pointer;}
+.back-btn:hover{color:white;}
+.topbar-title{color:rgba(255,255,255,.45);font-size:12px;margin-left:auto;}
+.tab-nav{background:var(--ink);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:100;}
+.tab-nav-in{max-width:820px;margin:0 auto;display:flex;}
+.tab-btn{flex:1;padding:12px 6px;font-size:12px;font-weight:700;color:rgba(255,255,255,.4);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;font-family:inherit;}
+.tab-btn:hover{color:rgba(255,255,255,.75);}
+.tab-btn.active{color:white;border-color:var(--red-soft);}
+.tab-btn.t2.active{border-color:#a78bfa;}
+.tab-btn.t3.active{border-color:var(--teal);}
+.tab-btn.t4.active{border-color:var(--gold);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+.hd{background:var(--ink);color:var(--paper);padding:36px 40px 28px;position:relative;overflow:hidden;}
+.hd::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px);}
+.hd-in{max-width:820px;margin:0 auto;position:relative;}
+.hd-eye{font-size:11px;letter-spacing:3px;color:var(--red-soft);margin-bottom:8px;font-weight:700;}
+.hd h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;line-height:1.3;margin-bottom:6px;}
+.hd h1 em{color:var(--red-soft);font-style:normal;}
+.hd-sub{font-size:13px;color:rgba(255,255,255,.5);font-weight:300;}
+.prog-wrap{margin-top:14px;background:rgba(255,255,255,.15);border-radius:20px;height:6px;overflow:hidden;}
+.prog-bar{height:6px;background:linear-gradient(90deg,var(--teal),var(--green));border-radius:20px;width:0%;transition:width .5s;}
+.prog-lbl{font-size:11px;color:rgba(255,255,255,.4);margin-top:4px;}
+.score-bar{max-width:820px;margin:0 auto;padding:0 20px;}
+.score-in{background:white;border:2px solid var(--ink);border-radius:12px;padding:12px 20px;display:flex;align-items:center;gap:16px;margin-top:20px;}
+.score-num{font-family:'DM Serif Display',serif;font-size:40px;color:var(--teal);line-height:1;}
+.score-lbl{font-size:11px;color:var(--gray);font-weight:700;letter-spacing:1px;}
+.copy-btn{margin-left:auto;background:var(--ink);color:white;border:none;border-radius:8px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.copy-btn:hover{opacity:.82;}
+.copy-btn.copied{background:var(--green);}
+.qwrap{max-width:820px;margin:24px auto 0;padding:0 20px 40px;display:flex;flex-direction:column;gap:20px;}
+.card{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;opacity:1;}
+.card-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.q-num{font-family:'DM Serif Display',serif;font-size:28px;color:var(--ink);line-height:1;min-width:36px;}
+.src-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;margin-bottom:3px;display:inline-block;}
+.q-type{font-size:11px;color:var(--gray);}
+.card-body{padding:16px 18px;}
+.quiz-q{font-size:14px;line-height:2;margin-bottom:14px;}
+.quiz-q mark{background:#fef3c7;padding:1px 3px;border-radius:3px;font-weight:700;}
+.opts-tf{display:flex;gap:10px;}
+.opt{flex:1;padding:10px;border:2px solid var(--border);border-radius:10px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s;background:white;}
+.opt:hover{border-color:var(--ink);}
+.opt.correct{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.opt.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.ans-box{display:none;margin-top:14px;border-radius:10px;padding:14px 16px;font-size:13px;}
+.ans-box.show{display:block;}
+.ans-box.ok{background:var(--green-light);border:1px solid #86efac;}
+.ans-box.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.ans-hd{font-weight:700;font-size:14px;margin-bottom:10px;}
+.why{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 13px;margin-bottom:10px;font-size:13px;line-height:1.85;}
+.why mark{background:#fed7aa;padding:1px 3px;border-radius:2px;font-weight:700;}
+.def-card{background:var(--teal-light);border:1.5px solid var(--teal);border-radius:8px;padding:10px 14px;margin-bottom:10px;font-size:12px;line-height:1.9;}
+.tip{background:var(--purple-light);border:1.5px solid #c4b5fd;border-radius:8px;padding:10px 13px;font-size:12px;line-height:1.9;margin-top:8px;}
+.law-tag{display:inline-block;background:var(--ink);color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:8px;}
+.hook{background:var(--gold-light);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;}
+.blank-card-body{padding:16px 18px;}
+.blank-q{font-size:14px;line-height:2.8;margin-bottom:12px;}
+.blank{display:inline-block;min-width:60px;border-bottom:2.5px solid var(--ink);text-align:center;padding:0 4px;margin:0 2px;cursor:pointer;font-weight:700;transition:background .2s;border-radius:4px 4px 0 0;}
+.blank:hover{background:rgba(124,58,237,.08);}
+.blank.sel{background:var(--purple-light);border-color:var(--purple);}
+.blank.ok-fill{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.blank.ng-fill{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+.chp{border:2px solid var(--border);border-radius:20px;padding:5px 13px;cursor:pointer;font-size:13px;font-weight:600;background:white;transition:all .2s;}
+.chp:hover{border-color:var(--purple);}
+.chp.used{opacity:.3;pointer-events:none;}
+.chp.ok-c{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.chp.ng-c{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.chk-btn{background:var(--purple);color:white;border:none;border-radius:8px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit;}
+.chk-btn:hover{opacity:.82;}
+.chk-btn:disabled{opacity:.38;cursor:default;}
+.f-ans{display:none;margin-top:12px;border-radius:10px;padding:14px 16px;font-size:13px;}
+.f-ans.show{display:block;}
+.f-ans.ok{background:var(--green-light);border:1px solid #86efac;}
+.f-ans.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.complete-bar{display:none;max-width:820px;margin:0 auto;padding:0 20px 60px;}
+.complete-card{background:var(--ink);color:white;border-radius:16px;padding:28px;text-align:center;}
+.complete-card h2{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;margin-bottom:8px;}
+.complete-score{font-family:'DM Serif Display',serif;font-size:52px;color:#fde68a;line-height:1;margin-bottom:8px;}
+.copy-btn2{background:white;color:var(--ink);border:none;border-radius:8px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:12px;}
+.mm-wrap{max-width:820px;margin:0 auto;padding:20px 20px 60px;}
+.mm-step{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;margin-bottom:20px;}
+.mm-step-hd{background:var(--ink);padding:12px 18px;display:flex;align-items:center;gap:10px;}
+.mm-step-num{font-family:'DM Serif Display',serif;font-size:28px;color:#fde68a;line-height:1;}
+.mm-step-title{font-size:14px;font-weight:700;color:white;}
+.mm-step-body{padding:16px 18px;}
+.mm-item{border-left:4px solid var(--teal);padding:8px 12px;margin-bottom:10px;background:var(--teal-light);border-radius:0 8px 8px 0;font-size:13px;line-height:1.8;}
+.mm-item mark{background:#fed7aa;padding:1px 3px;border-radius:2px;font-weight:700;}
+.mm-alert{border-left:4px solid var(--red);padding:8px 12px;background:var(--red-light);border-radius:0 8px 8px 0;font-size:13px;line-height:1.8;margin-bottom:10px;}
+.mm-gorof{background:var(--gold-light);border:1.5px solid var(--gold);border-radius:8px;padding:9px 13px;font-size:12px;line-height:1.8;margin-top:8px;}
+.hikakke-box{background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin-top:16px;}
+.hikakke-hd{background:var(--ink);padding:9px 16px;}
+.hikakke-hd span{font-size:12px;font-weight:700;color:#fde68a;}
+.hikakke-body{padding:12px 16px;display:flex;flex-direction:column;gap:8px;}
+.hikakke-row{border-left:4px solid var(--red);padding:7px 12px;background:#fff8f7;border-radius:0 6px 6px 0;font-size:12px;line-height:1.8;}
+.fc-wrap{max-width:740px;margin:20px auto 0;padding:0 20px 80px;}
+.fc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.fc-counter{font-family:'DM Serif Display',serif;font-size:24px;color:var(--red);line-height:1;}
+.fc-counter span{font-size:12px;color:var(--gray);font-family:'Noto Sans JP',sans-serif;font-weight:400;}
+.fc-gauge-wrap{margin-bottom:20px;}
+.fc-gauge-labels{display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:5px;}
+.fc-gauge-label-ng{color:var(--red);}
+.fc-gauge-label-ok{color:var(--green);}
+.fc-gauge-label-mid{color:var(--gray);font-size:10px;font-weight:400;}
+.fc-gauge-track{position:relative;height:14px;background:var(--border);border-radius:20px;overflow:hidden;display:flex;}
+.fc-gauge-ng{height:100%;background:linear-gradient(90deg,#c84b31,#e8896b);border-radius:20px 0 0 20px;transition:width .5s;width:0%;}
+.fc-gauge-ok{height:100%;background:linear-gradient(90deg,#86efac,#2d6a4f);border-radius:0 20px 20px 0;transition:width .5s;width:0%;margin-left:auto;}
+.fc-gauge-mid-line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:white;transform:translateX(-50%);z-index:2;}
+.fc-carousel{position:relative;display:flex;align-items:center;justify-content:center;min-height:420px;overflow:hidden;margin-bottom:18px;}
+.fc-slot{position:absolute;width:72%;min-height:300px;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s,filter .35s ease;cursor:pointer;border-radius:16px;}
+.fc-slot.prev{transform:translateX(-82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.curr{transform:translateX(0) scale(1);opacity:1;filter:none;z-index:10;}
+.fc-slot.next{transform:translateX(82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.hidden{opacity:0;pointer-events:none;z-index:0;}
+.fc-inner{position:relative;width:100%;min-height:300px;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.4,0,.2,1);}
+.fc-inner.flipped{transform:rotateY(180deg);}
+.fc-face{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.11);}
+.fc-front-face{background:white;border:2px solid var(--ink);}
+.fc-back-face{background:white;border:2px solid var(--ink);transform:rotateY(180deg);}
+.fc-front-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:9px 14px;display:flex;align-items:center;gap:8px;}
+.fc-front-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;}
+.fc-front-body{flex:1;padding:16px 18px;display:flex;align-items:center;justify-content:center;}
+.fc-q{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;line-height:1.9;color:var(--ink);text-align:center;}
+.fc-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;}
+.fc-ox{display:flex;gap:8px;padding:0 14px 12px;}
+.fc-ox-btn{flex:1;padding:10px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-size:20px;font-weight:900;cursor:pointer;transition:all .15s;font-family:inherit;}
+.fc-ox-btn.o:hover{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.fc-ox-btn.x:hover{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.fc-back-hd{padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+.fc-verdict{font-size:12px;font-weight:700;padding:2px 10px;border-radius:20px;}
+.fc-verdict.ok{background:var(--green);color:white;}
+.fc-verdict.ng{background:var(--red);color:white;}
+.fc-back-body{flex:1;padding:12px 16px;overflow-y:auto;}
+.fc-answer{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ink);margin-bottom:8px;line-height:1.4;font-weight:700;}
+.fc-reason{font-size:12px;color:var(--ink);line-height:1.9;}
+.fc-reason mark{background:#fef3c7;padding:1px 4px;border-radius:3px;}
+.fc-nav{display:none;gap:10px;justify-content:center;padding:0 16px;}
+.fc-nav-btn{flex:1;max-width:160px;padding:11px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;text-align:center;}
+.fc-nav-btn.again{border-color:var(--red);color:var(--red);}
+.fc-nav-btn.again:hover{background:var(--red-light);}
+.fc-nav-btn.got{border-color:var(--green);color:var(--green);}
+.fc-nav-btn.got:hover{background:var(--green-light);}
+.fc-result{display:none;text-align:center;padding:24px;background:white;border:2px solid var(--ink);border-radius:14px;margin:0 20px;}
+.fc-result h3{font-family:'Noto Serif JP',serif;font-size:1.2rem;font-weight:900;margin-bottom:8px;}
+.fc-result-score{font-family:'DM Serif Display',serif;font-size:44px;color:var(--teal);line-height:1;margin:8px 0 4px;}
+.fc-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:12px;}
+.spider-wrap{max-width:820px;margin:0 auto;padding:20px 16px 60px;}
+svg text{font-family:'Noto Sans JP',sans-serif;}
+@media(max-width:600px){.hd{padding:24px 16px 20px;}.qwrap{padding:0 12px 40px;}.fc-wrap{padding:0 12px 80px;}.mm-wrap{padding:16px 12px 60px;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="back-btn" onclick="location.href='index.html'">← 目次に戻る</span>
+  <span class="topbar-title">Day4 ／ 厚生年金法 在職老齢年金・特別支給の老齢厚生年金</span>
+</div>
+
+<nav class="tab-nav">
+  <div class="tab-nav-in">
+    <button class="tab-btn active" onclick="switchTab('quiz',this)">📝 問題を解く</button>
+    <button class="tab-btn t3"     onclick="switchTab('mindmap',this)">🗺 連想図</button>
+    <button class="tab-btn t2"     onclick="switchTab('flash',this)">🃏 フラッシュカード</button>
+    <button class="tab-btn t4"     onclick="switchTab('spider',this)">🕸️ 記憶マップ</button>
+  </div>
+</nav>
+
+<div id="panel-quiz" class="tab-panel active">
+
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-eye">厚生年金法 ／ Day 4</div>
+    <h1>在職老齢年金・<em>特別支給の老齢厚生年金</em></h1>
+    <div class="hd-sub">○×式 5問 ＋ 穴埋め式 5問 ― 全10問　法第46条・附則第7条〜第12条</div>
+    <div class="prog-wrap"><div class="prog-bar" id="prog"></div></div>
+    <div class="prog-lbl" id="prog-lbl">0 ／ 10 問 回答済み</div>
+  </div>
+</div>
+
+<div class="score-bar">
+  <div class="score-in">
+    <div><div class="score-num" id="score">0</div><div class="score-lbl">正解数</div></div>
+    <div style="font-size:13px;color:var(--gray);"><div id="score-sub">問題に答えると集計されます</div></div>
+    <button class="copy-btn" id="copy-btn" onclick="copyRecord()">📋 記録をコピー</button>
+  </div>
+</div>
+
+<div class="qwrap">
+
+<!-- Q1 -->
+<div class="card" id="cq1">
+  <div class="card-hd">
+    <div class="q-num">01</div>
+    <div><div class="src-tag">法第46条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：在職老齢年金（65歳以上）</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">65歳以上の在職老齢年金は、基本月額と総報酬月額相当額の合計が<mark>50万円</mark>を超えると、超えた額の<mark>2分の1</mark>が支給停止となる。全額停止になることはない。</div>
+    <div class="opts-tf" id="q1-opts">
+      <div class="opt" onclick="answer('q1',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q1',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q1-ans">
+      <div class="ans-hd" id="q1-result"></div>
+      <div class="why">✅ <strong>正しい。</strong><strong>法第46条（在職老齢年金）</strong>：65歳以上で基本月額＋総報酬月額相当額が<mark>50万円超</mark>の場合、超過額の<mark>1/2</mark>が支給停止。全額停止は設計上なく、働き続けても必ず一定額は受け取れる。「なぜ1/2だけ？」——高齢者が「働いた分が全部年金から引かれる」と感じれば就労意欲が失われる。半分は確実に受け取れるようにして就労継続を促す設計。</div>
+      <div class="def-card">
+        <strong>📖 法第46条（在職老齢年金・65歳以上）</strong><br>
+        基準額：基本月額＋総報酬月額相当額 ＞ <mark>50万円</mark>（毎年度改定）<br>
+        停止額：（基本月額＋総報酬月額相当額 − 50万円）÷ <mark>2</mark><br>
+        全額停止：<mark>なし</mark>（超過額の半分だけ停止）<br>
+        総報酬月額相当額：標準報酬月額＋（直近1年間の標準賞与額 ÷ 12）<br><br>
+        <strong>【立法趣旨】</strong>高齢者雇用推進。働いても損しない設計で就労継続を促す。
+      </div>
+      <svg viewBox="0 0 520 130" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="520" height="130" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="22" font-size="11" font-weight="700" fill="#1a1a2e">在職老齢年金の計算式（65歳以上）</text>
+        <rect x="10" y="32" width="500" height="36" rx="7" fill="#1a1a2e"/>
+        <text x="260" y="48" font-size="11" font-weight="700" fill="#fde68a" text-anchor="middle">停止額 ＝（基本月額 ＋ 総報酬月額相当額 − 50万円）÷ 2</text>
+        <text x="260" y="63" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">合計 ≦ 50万円 → 全額支給　　合計 ＞ 50万円 → 超過の半分だけ停止</text>
+        <rect x="10" y="78" width="155" height="42" rx="7" fill="#2a7f7f"/>
+        <text x="87" y="96" font-size="10" font-weight="700" fill="white" text-anchor="middle">月収40万円＋年金15万円</text>
+        <text x="87" y="111" font-size="9" fill="#a7f3d0" text-anchor="middle">＝55万円（50万円超5万円）</text>
+        <text x="175" y="102" font-size="14" fill="#6b7280">→</text>
+        <rect x="190" y="78" width="155" height="42" rx="7" fill="#c9930a"/>
+        <text x="267" y="96" font-size="10" font-weight="700" fill="white" text-anchor="middle">停止額 = 5万円 ÷ 2</text>
+        <text x="267" y="111" font-size="9" fill="#fde68a" text-anchor="middle">＝2.5万円が停止</text>
+        <text x="355" y="102" font-size="14" fill="#6b7280">→</text>
+        <rect x="370" y="78" width="140" height="42" rx="7" fill="#2d6a4f"/>
+        <text x="440" y="96" font-size="10" font-weight="700" fill="white" text-anchor="middle">年金は月12.5万円</text>
+        <text x="440" y="111" font-size="9" fill="#a7f3d0" text-anchor="middle">全額停止にはならない</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「合計が50万円を超えると全額が支給停止」→ <strong style="color:#2d6a4f;">○</strong> 超過額の<strong>2分の1</strong>のみ停止。全額停止はない</div></div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「50万円は法定の固定額」→ <strong style="color:#2d6a4f;">○</strong> 毎年度改定される（賃金・物価変動に応じて）</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「50万円・超過の1/2・全額停止なし」の3点セット。基準額は毎年改定される点も頻出。</div>
+      <div class="law-tag">法第46条</div>
+      <div class="hook" style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 田中さん（67歳・再雇用・月収40万円）の老齢厚生年金は月15万円。合計55万円で50万円超の5万円のうち2.5万円が停止——手取りは月収40万円＋年金12.5万円＝52.5万円。「全額停止ではなく半分だけ」——働いても損しない仕組みが高齢者に就労継続の動機を与える。在職老齢年金の50万円ラインは、再雇用制度を扱う人事・社労士実務の基本知識。</div>
+    </div>
+  </div>
+</div><!-- /card cq1 -->
+
+<!-- Q2 -->
+<div class="card" id="cq2">
+  <div class="card-hd">
+    <div class="q-num">02</div>
+    <div><div class="src-tag">附則第7条・8条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：特別支給の老齢厚生年金・受給要件</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">特別支給の老齢厚生年金を受けるためには、①老齢基礎年金の受給資格期間<mark>10年以上</mark>、②厚年の被保険者期間<mark>1年以上</mark>、③<mark>60歳</mark>以上という3要件が必要である。</div>
+    <div class="opts-tf" id="q2-opts">
+      <div class="opt" onclick="answer('q2',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q2',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q2-ans">
+      <div class="ans-hd" id="q2-result"></div>
+      <div class="why">✅ <strong>正しい。</strong><strong>附則第8条（特別支給の老齢厚生年金）</strong>：①受給資格期間<mark>10年以上</mark>（国年法第26条準用）、②厚年の被保険者期間<mark>1年以上</mark>（原則老齢厚生年金の1ヵ月以上より長い）、③<mark>60歳</mark>到達。「なぜ1年以上？」——特別支給は経過措置として設けられた制度であり、短期加入者まで対象にするのは適切でないという判断から最低1年の加入を要件とした。</div>
+      <div class="def-card">
+        <strong>📖 附則第8条（特別支給の老齢厚生年金・受給要件）</strong><br>
+        ①受給資格期間：<mark>10年以上</mark>（国年と共通）<br>
+        ②厚年被保険者期間：<mark>1年以上</mark>（原則老厚の1ヵ月以上より長い）<br>
+        ③支給開始年齢：<mark>60歳</mark>以上（段階的に引き上げ中）<br>
+        対象者：昭和36年4月1日以前生まれの男性／昭和41年4月1日以前生まれの女性<br><br>
+        <strong>【立法趣旨】</strong>65歳支給への移行期間における経過措置。60歳台前半の収入を補完する橋渡し的制度。
+      </div>
+      <svg viewBox="0 0 520 160" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="520" height="160" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="20" font-size="11" font-weight="700" fill="#1a1a2e">原則老齢厚生年金 vs 特別支給の老齢厚生年金 比較</text>
+        <!-- ヘッダー行 -->
+        <rect x="10" y="28" width="150" height="24" rx="4" fill="#1a1a2e"/>
+        <text x="85" y="44" font-size="10" font-weight="700" fill="#fde68a" text-anchor="middle">比較項目</text>
+        <rect x="170" y="28" width="155" height="24" rx="4" fill="#2a7f7f"/>
+        <text x="247" y="44" font-size="10" font-weight="700" fill="white" text-anchor="middle">原則老齢厚生年金</text>
+        <rect x="335" y="28" width="175" height="24" rx="4" fill="#c84b31"/>
+        <text x="422" y="44" font-size="10" font-weight="700" fill="white" text-anchor="middle">特別支給の老齢厚生年金</text>
+        <!-- 支給開始年齢 -->
+        <rect x="10" y="56" width="150" height="24" rx="0" fill="#f0ede8"/>
+        <text x="85" y="72" font-size="10" font-weight="700" fill="#1a1a2e" text-anchor="middle">支給開始年齢</text>
+        <rect x="170" y="56" width="155" height="24" rx="0" fill="white"/>
+        <text x="247" y="72" font-size="11" font-weight="700" fill="#2a7f7f" text-anchor="middle">65歳〜</text>
+        <rect x="335" y="56" width="175" height="24" rx="0" fill="white"/>
+        <text x="422" y="72" font-size="11" font-weight="700" fill="#c84b31" text-anchor="middle">60歳〜（経過措置）</text>
+        <!-- 厚年期間要件 -->
+        <rect x="10" y="82" width="150" height="24" rx="0" fill="#f0ede8"/>
+        <text x="85" y="98" font-size="10" font-weight="700" fill="#1a1a2e" text-anchor="middle">厚年被保険者期間</text>
+        <rect x="170" y="82" width="155" height="24" rx="0" fill="white"/>
+        <text x="247" y="98" font-size="10" fill="#2a7f7f" text-anchor="middle">1ヵ月以上（最低要件）</text>
+        <rect x="335" y="82" width="175" height="24" rx="0" fill="#fee2e2"/>
+        <text x="422" y="98" font-size="10" font-weight="700" fill="#c84b31" text-anchor="middle">1年以上（より厳しい）</text>
+        <!-- 年金の構成 -->
+        <rect x="10" y="108" width="150" height="24" rx="0" fill="#f0ede8"/>
+        <text x="85" y="124" font-size="10" font-weight="700" fill="#1a1a2e" text-anchor="middle">年金の構成</text>
+        <rect x="170" y="108" width="155" height="24" rx="0" fill="white"/>
+        <text x="247" y="124" font-size="10" fill="#2a7f7f" text-anchor="middle">報酬比例部分のみ</text>
+        <rect x="335" y="108" width="175" height="24" rx="0" fill="white"/>
+        <text x="422" y="124" font-size="10" fill="#c84b31" text-anchor="middle">定額部分＋報酬比例部分</text>
+        <!-- 対象者 -->
+        <rect x="10" y="134" width="150" height="20" rx="0" fill="#f0ede8"/>
+        <text x="85" y="148" font-size="10" font-weight="700" fill="#1a1a2e" text-anchor="middle">対象者</text>
+        <rect x="170" y="134" width="155" height="20" rx="0" fill="white"/>
+        <text x="247" y="148" font-size="9" fill="#2a7f7f" text-anchor="middle">全員（65歳到達者）</text>
+        <rect x="335" y="134" width="175" height="20" rx="0" fill="white"/>
+        <text x="422" y="148" font-size="9" fill="#c84b31" text-anchor="middle">特定生年月日のみ（時限的）</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「特別支給の厚年被保険者期間要件は<strong>1ヵ月以上</strong>」→ <strong style="color:#2d6a4f;">○</strong> 特別支給は<strong>1年以上</strong>（原則より長い）</div></div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「特別支給は全ての人が60歳から受給できる」→ <strong style="color:#2d6a4f;">○</strong> 対象は特定の<strong>生年月日</strong>（段階的に縮小中）</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「10年・1年以上・60歳」の3要件。原則老厚の「1ヵ月以上」より長い点が最頻出。</div>
+      <div class="law-tag">附則第8条</div>
+      <div class="hook" style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 昭和30年生まれの鈴木さん（男性）は60歳から特別支給の老齢厚生年金をもらえる。でも平成生まれの人はもらえない——「なぜ？」——65歳支給への移行期間中に60歳代前半の収入を補う橋渡しとして作られた経過措置だから。制度が成熟するにつれ対象者がいなくなる時限的な制度。「厚年1年以上」という要件は原則の「1ヵ月以上」より厳しい——経過措置だから一定の加入実績を求めた。</div>
+    </div>
+  </div>
+</div><!-- /card cq2 -->
+
+<!-- Q3 -->
+<div class="card" id="cq3">
+  <div class="card-hd">
+    <div class="q-num">03</div>
+    <div><div class="src-tag">附則第9条の2 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：特別支給・定額部分の支給停止</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">特別支給の老齢厚生年金は、<mark>報酬比例部分</mark>と<mark>定額部分</mark>の2つから構成されるが、生年月日によって定額部分の支給開始年齢が異なり、段階的に<mark>65歳</mark>に引き上げられている。</div>
+    <div class="opts-tf" id="q3-opts">
+      <div class="opt" onclick="answer('q3',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q3',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q3-ans">
+      <div class="ans-hd" id="q3-result"></div>
+      <div class="why">✅ <strong>正しい。</strong><strong>附則第9条の2（特別支給・定額部分）</strong>：特別支給は報酬比例部分＋定額部分で構成。生年月日が新しいほど定額部分の支給開始年齢が引き上げられ、最終的に65歳から原則老齢厚生年金（報酬比例のみ）に一本化される。段階的引き上げは財政の持続可能性を保ちながら受給者への急激な影響を避けるためのソフトランディング政策。</div>
+      <div class="def-card">
+        <strong>📖 特別支給の老齢厚生年金の構成と段階的引き上げ</strong><br>
+        構成：<mark>報酬比例部分</mark>（賃金×被保険者期間に比例）＋<mark>定額部分</mark>（老齢基礎年金に相当する定額）<br><br>
+        <strong>【第1フェーズ：定額部分を先に引き上げ】</strong><br>
+        　昭和24年4月2日以降生まれの男性から定額部分の支給開始年齢を引き上げ<br>
+        　→ 最終的に昭和34年4月2日〜36年4月1日生まれで定額部分は65歳からに<br>
+        　→ この世代は60歳から<mark>報酬比例部分のみ</mark>の特別支給に<br><br>
+        <strong>【第2フェーズ：報酬比例部分も引き上げ】</strong><br>
+        　昭和36年4月2日以降生まれの男性から報酬比例部分も段階的に引き上げ<br>
+        　→ 昭和40年4月2日以降生まれは特別支給なし（65歳から原則老齢厚生年金のみ）<br><br>
+        <strong>女性は男性の5年後ろ</strong>（昭和41年4月1日以前生まれが対象）<br>
+        <strong>【立法趣旨】</strong>急に65歳に引き上げると生活が苦しくなる世代が出るため、生年月日ごとに1〜2歳ずつ段階的に引き上げるソフトランディング政策。
+      </div>
+      <svg viewBox="0 0 540 200" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="540" height="200" rx="10" fill="#1a1a2e"/>
+        <text x="24" y="22" font-size="11" font-weight="700" fill="#fde68a">特別支給の段階引き上げ：男性を例に（女性は5年ずらして読む）</text>
+        <!-- 軸ラベル -->
+        <text x="10" y="46" font-size="8.5" fill="rgba(255,255,255,.5)">生年月日</text>
+        <text x="130" y="46" font-size="8.5" fill="#7c3aed">■定額部分</text>
+        <text x="230" y="46" font-size="8.5" fill="#2a7f7f">■報酬比例</text>
+        <text x="330" y="46" font-size="8.5" fill="#6b7280">（開始年齢）</text>
+        <!-- 行1：古い世代 -->
+        <rect x="10" y="52" width="540" height="22" rx="0" fill="rgba(255,255,255,.05)"/>
+        <text x="14" y="67" font-size="8" fill="rgba(255,255,255,.6)">〜S24.4.1</text>
+        <rect x="130" y="54" width="110" height="16" rx="3" fill="#7c3aed"/>
+        <text x="185" y="65" font-size="8" fill="white" text-anchor="middle">定額部分 60歳〜</text>
+        <rect x="248" y="54" width="110" height="16" rx="3" fill="#2a7f7f"/>
+        <text x="303" y="65" font-size="8" fill="white" text-anchor="middle">報酬比例 60歳〜</text>
+        <!-- 行2 -->
+        <rect x="10" y="76" width="540" height="22" rx="0" fill="rgba(255,255,255,.03)"/>
+        <text x="14" y="91" font-size="8" fill="rgba(255,255,255,.6)">S24〜S28.4.1</text>
+        <rect x="155" y="78" width="85" height="16" rx="3" fill="#7c3aed" opacity=".7"/>
+        <text x="197" y="89" font-size="8" fill="white" text-anchor="middle">定額 61歳〜</text>
+        <rect x="248" y="78" width="110" height="16" rx="3" fill="#2a7f7f"/>
+        <text x="303" y="89" font-size="8" fill="white" text-anchor="middle">報酬比例 60歳〜</text>
+        <!-- 行3 -->
+        <rect x="10" y="100" width="540" height="22" rx="0" fill="rgba(255,255,255,.05)"/>
+        <text x="14" y="115" font-size="8" fill="rgba(255,255,255,.6)">S30〜S32.4.1</text>
+        <rect x="177" y="102" width="63" height="16" rx="3" fill="#7c3aed" opacity=".55"/>
+        <text x="208" y="113" font-size="8" fill="white" text-anchor="middle">定額 63歳〜</text>
+        <rect x="248" y="102" width="110" height="16" rx="3" fill="#2a7f7f"/>
+        <text x="303" y="113" font-size="8" fill="white" text-anchor="middle">報酬比例 60歳〜</text>
+        <!-- 行4：定額部分が65歳 -->
+        <rect x="10" y="124" width="540" height="22" rx="0" fill="rgba(255,255,255,.03)"/>
+        <text x="14" y="139" font-size="8" fill="rgba(255,255,255,.6)">S34〜S36.4.1</text>
+        <rect x="210" y="126" width="30" height="16" rx="3" fill="#7c3aed" opacity=".4"/>
+        <text x="225" y="137" font-size="7" fill="white" text-anchor="middle">65歳〜</text>
+        <rect x="248" y="126" width="110" height="16" rx="3" fill="#2a7f7f"/>
+        <text x="303" y="137" font-size="8" fill="white" text-anchor="middle">報酬比例 60歳〜</text>
+        <text x="370" y="137" font-size="8" fill="#fde68a">← 定額部分は消えた</text>
+        <!-- 行5：報酬比例だけ段階引き上げ -->
+        <rect x="10" y="148" width="540" height="22" rx="0" fill="rgba(255,255,255,.05)"/>
+        <text x="14" y="163" font-size="8" fill="rgba(255,255,255,.6)">S36〜S40.4.1</text>
+        <rect x="275" y="150" width="80" height="16" rx="3" fill="#2a7f7f" opacity=".7"/>
+        <text x="315" y="161" font-size="8" fill="white" text-anchor="middle">報酬比例 61〜64歳〜</text>
+        <text x="367" y="161" font-size="8" fill="#e8896b">← 報酬比例も引き上げ中</text>
+        <!-- 行6：特別支給なし -->
+        <rect x="10" y="172" width="540" height="22" rx="0" fill="rgba(255,255,255,.03)"/>
+        <text x="14" y="187" font-size="8" fill="rgba(255,255,255,.6)">S40.4.2以降</text>
+        <rect x="360" y="174" width="100" height="16" rx="3" fill="#2d6a4f"/>
+        <text x="410" y="185" font-size="8" fill="white" text-anchor="middle">65歳から原則老齢厚生年金</text>
+        <text x="130" y="185" font-size="9" font-weight="700" fill="#e8896b">特別支給なし</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「特別支給は報酬比例部分のみで構成される」→ <strong style="color:#2d6a4f;">○</strong> 報酬比例部分＋<strong>定額部分</strong>の2部構成（ただし段階的に定額部分が消える）</div></div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 最終的には65歳から報酬比例部分のみの原則老齢厚生年金に統一される。</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「報酬比例＋定額部分」で構成。定額部分が先に引き上げられ、最後は報酬比例だけになる。</div>
+      <div class="law-tag">附則第9条の2</div>
+      <div class="hook" style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 <strong>2フェーズで覚える</strong>——①定額部分を先に引き上げ（昭和24〜36年4月1日生まれ男性：定額部分が60→65歳に段階的引き上げ。この間、報酬比例部分は60歳のまま）②次に報酬比例部分も引き上げ（昭和36〜40年4月1日生まれ男性：定額部分はなくなり、報酬比例部分だけが61〜64歳に引き上げ）③昭和40年4月2日以降は特別支給なし（65歳から原則老齢厚生年金のみ）。女性はすべて5年後ろ（昭和41年4月1日まで対象）。「なぜ2フェーズ？」——一度に全部引き上げると年金が大幅に減る世代が出るから、定額部分と報酬比例部分を分けて段階的に調整するソフトランディング政策。</div>
+    </div>
+  </div>
+</div><!-- /card cq3 -->
+
+<!-- Q4 -->
+<div class="card" id="cq4">
+  <div class="card-hd">
+    <div class="q-num">04</div>
+    <div><div class="src-tag">附則第11条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：60歳台前半の在職老齢年金</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">60歳台前半（60〜64歳）の在職老齢年金では、基本月額と総報酬月額相当額の合計が<mark>50万円</mark>を超えると超過額の2分の1が支給停止となる。これは65歳以上の在職老齢年金と<mark>同じ基準</mark>である。</div>
+    <div class="opts-tf" id="q4-opts">
+      <div class="opt" onclick="answer('q4',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q4',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q4-ans">
+      <div class="ans-hd" id="q4-result"></div>
+      <div class="why">✅ <strong>正しい。</strong><strong>附則第11条（60歳台前半の在職老齢年金）</strong>：令和4年4月改正により、60〜64歳の在職老齢年金の基準額が<mark>28万円</mark>から<mark>50万円</mark>に引き上げられ、65歳以上と<mark>同じ基準（50万円）</mark>になった。改正前は28万円という低い基準だったため、少し働くだけで年金が大幅に削られるという問題があった。改正により60代前半の就労意欲を高める効果が期待される。</div>
+      <div class="def-card">
+        <strong>📖 附則第11条（60歳台前半の在職老齢年金）</strong><br>
+        基準額：<mark>50万円</mark>（令和4年4月改正で28万円→50万円に統一）<br>
+        停止額：（基本月額＋総報酬月額相当額 − 50万円）÷ 2<br>
+        <mark>65歳以上と同じ基準</mark>に統一（改正前は60歳台前半が28万円と厳しかった）<br><br>
+        <strong>【改正の趣旨】</strong>60歳台前半の就労促進。「少し働くだけで年金が減る」という問題を解消し、高齢者の積極的な就労を後押し。
+      </div>
+      <svg viewBox="0 0 520 90" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="520" height="90" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="20" font-size="11" font-weight="700" fill="#1a1a2e">在職老齢年金の基準額：改正前後の比較</text>
+        <rect x="10" y="30" width="245" height="50" rx="7" fill="#6b7280"/>
+        <text x="132" y="48" font-size="10" font-weight="700" fill="white" text-anchor="middle">【改正前（令和4年3月以前）】</text>
+        <text x="132" y="63" font-size="10" fill="#d1d5db" text-anchor="middle">60〜64歳：28万円　65歳以上：47万円</text>
+        <text x="132" y="75" font-size="9" fill="#9ca3af" text-anchor="middle">年齢によって基準が異なった</text>
+        <rect x="265" y="30" width="245" height="50" rx="7" fill="#2a7f7f"/>
+        <text x="387" y="48" font-size="10" font-weight="700" fill="white" text-anchor="middle">【改正後（令和4年4月以降）】</text>
+        <text x="387" y="63" font-size="10" fill="#a7f3d0" text-anchor="middle">60〜64歳・65歳以上：ともに50万円</text>
+        <text x="387" y="75" font-size="9" fill="#6ee7b7" text-anchor="middle">年齢を問わず同一基準に統一</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「60歳台前半の基準額は28万円」→ <strong style="color:#2d6a4f;">○</strong> 令和4年4月改正で<strong>50万円</strong>に引き上げ（65歳以上と統一）</div></div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 令和4年4月以降、60〜64歳と65歳以上で在職老齢年金の基準額は<strong>50万円</strong>に統一された。</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 令和4年4月改正で28万円→50万円に引き上げ・65歳以上と統一。改正前の28万円が最頻出の引っかけ。</div>
+      <div class="law-tag">附則第11条</div>
+      <div class="hook" style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 63歳の佐藤さんは月収26万円で再雇用中。改正前なら28万円の基準に近く少し稼ぐだけで年金が減っていた。令和4年4月改正後は50万円基準になり、月収26万円程度では年金が削られなくなった——「なぜ改正？」——28万円という低い基準が「働いたら損する」という心理的ブレーキになり、60代前半の就労を妨げていたから。高齢者雇用を推進するために65歳以上と同じ50万円に引き上げた。</div>
+    </div>
+  </div>
+</div><!-- /card cq4 -->
+
+<!-- Q5 -->
+<div class="card" id="cq5">
+  <div class="card-hd">
+    <div class="q-num">05</div>
+    <div><div class="src-tag">附則第11条の2 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：在職定時改定</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">令和4年4月から導入された在職定時改定により、65歳以上の在職中の被保険者は<mark>毎年10月</mark>に年金額が改定され、それまでの被保険者期間が年金額に反映される。</div>
+    <div class="opts-tf" id="q5-opts">
+      <div class="opt" onclick="answer('q5',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q5',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q5-ans">
+      <div class="ans-hd" id="q5-result"></div>
+      <div class="why">✅ <strong>正しい。</strong><strong>附則第11条の2（在職定時改定）</strong>：令和4年4月施行。65歳以上の在職被保険者は毎年<mark>10月</mark>（基準日：9月1日）に年金額が改定され、直近の被保険者期間が自動的に反映される。改正前は退職・70歳到達時のみ改定だったため、在職中は年金額が増えなかった。「なぜ10月？」——毎年9月1日を基準日として、保険料納付実績を反映した新しい年金額を10月分から適用するため。</div>
+      <div class="def-card">
+        <strong>📖 附則第11条の2（在職定時改定）令和4年4月施行</strong><br>
+        対象：65歳以上の在職被保険者<br>
+        改定時期：毎年<mark>10月</mark>（基準日：9月1日時点の被保険者期間を反映）<br>
+        改正前：退職時・70歳到達時のみ改定 → 在職中は年金額が増えなかった<br>
+        改正後：在職中でも毎年自動的に年金額が増加<br><br>
+        <strong>【立法趣旨】</strong>在職中でも保険料を払い続ける意欲を高め、高齢者の長期就労を促進する。
+      </div>
+      <svg viewBox="0 0 520 90" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="520" height="90" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="20" font-size="11" font-weight="700" fill="#1a1a2e">在職定時改定：改正前後の比較</text>
+        <rect x="10" y="30" width="245" height="50" rx="7" fill="#6b7280"/>
+        <text x="132" y="48" font-size="10" font-weight="700" fill="white" text-anchor="middle">【改正前】</text>
+        <text x="132" y="63" font-size="10" fill="#d1d5db" text-anchor="middle">退職・70歳到達時のみ改定</text>
+        <text x="132" y="75" font-size="9" fill="#9ca3af" text-anchor="middle">在職中は年金額が増えない</text>
+        <rect x="265" y="30" width="245" height="50" rx="7" fill="#2a7f7f"/>
+        <text x="387" y="48" font-size="10" font-weight="700" fill="white" text-anchor="middle">【令和4年4月改正後】</text>
+        <text x="387" y="63" font-size="10" fill="#a7f3d0" text-anchor="middle">毎年10月に自動改定</text>
+        <text x="387" y="75" font-size="9" fill="#6ee7b7" text-anchor="middle">在職中も毎年年金額が増加</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「在職定時改定は60歳以上が対象」→ <strong style="color:#2d6a4f;">○</strong> <strong>65歳以上</strong>の在職被保険者が対象</div></div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「在職定時改定は令和2年に施行」→ <strong style="color:#2d6a4f;">○</strong> <strong>令和4年4月</strong>施行</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 在職定時改定：65歳以上・毎年10月・令和4年4月施行の3点セット。改正前は退職時のみだった点が最頻出。</div>
+      <div class="law-tag">附則第11条の2</div>
+      <div class="hook" style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 68歳の山田さんは現役で働いている。改正前は退職するまで在職中に払った保険料が年金に反映されなかった——「頑張って働いても年金が増えない」という不満があった。令和4年4月から毎年10月に自動的に年金額が改定されるようになり、在職中の保険料がその年から年金に反映される。「なぜ10月？」——9月1日を基準日として処理するため10月から適用。長く働くほど年金が増える仕組みが65歳以上の就労促進につながる。</div>
+    </div>
+  </div>
+</div><!-- /card cq5 -->
+
+</div><!-- /qwrap -->
+
+<div class="qwrap">
+
+<!-- F1 -->
+<div class="card" id="cf1">
+  <div class="blank-card-body">
+    <div class="card-hd" style="margin:-16px -18px 16px;">
+      <div class="q-num">06</div>
+      <div><div class="src-tag">法第46条 ／ 穴埋め式</div><div class="q-type">難易度：★★☆ ／ 単元：在職老齢年金の計算</div></div>
+    </div>
+    <div class="blank-q">在職老齢年金（65歳以上）：基本月額＋総報酬月額相当額の合計が<span class="blank" id="f1a" onclick="selB('f1','f1a')">　　</span>万円超で発動。停止額＝（合計−<span class="blank" id="f1b" onclick="selB('f1','f1b')">　　</span>万円）÷<span class="blank" id="f1c" onclick="selB('f1','f1c')">　</span>。全額停止は<span class="blank" id="f1d" onclick="selB('f1','f1d')">　　</span>。基準額は毎年<span class="blank" id="f1e" onclick="selB('f1','f1e')">　　</span>される。</div>
+    <div class="chips" id="f1-chips">
+      <div class="chp" onclick="fillB('f1','f1a',this,'50')">50</div>
+      <div class="chp" onclick="fillB('f1','f1b',this,'50')">50</div>
+      <div class="chp" onclick="fillB('f1','f1c',this,'2')">2</div>
+      <div class="chp" onclick="fillB('f1','f1d',this,'なし')">なし</div>
+      <div class="chp" onclick="fillB('f1','f1e',this,'改定')">改定</div>
+    </div>
+    <button class="chk-btn" id="chk-f1" onclick="chkF('f1')">答え合わせ</button>
+    <div class="f-ans" id="f1-ans">
+      <div class="ans-hd" id="f1-result"></div>
+      <div class="why">基準額<mark>50万円</mark>超で（合計−50万円）÷<mark>2</mark>が停止。全額停止は<mark>なし</mark>。基準額は賃金・物価変動で毎年<mark>改定</mark>。「50万円は固定額」という引っかけに注意。</div>
+      <svg viewBox="0 0 400 60" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="60" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">在職老齢年金の公式</text>
+        <rect x="10" y="26" width="380" height="28" rx="5" fill="#1a1a2e"/>
+        <text x="200" y="41" font-size="10" font-weight="700" fill="#fde68a" text-anchor="middle">停止額＝（基本月額＋総報酬月額相当額−50万円）÷2</text>
+        <text x="200" y="52" font-size="8" fill="rgba(255,255,255,.5)" text-anchor="middle">合計≦50万円の場合は全額支給</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「50万円を超えた全額が停止」→ <strong style="color:#2d6a4f;">○</strong> 超過額の<strong>2分の1</strong>のみ停止</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「50・50・2・なし・改定」の5ワードをセットで。全額停止がないのが最重要ポイント。</div>
+      <div class="law-tag">法第46条</div>
+      <div class="hook" style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 「50万円は毎年改定」——令和6年度は50万円だが今後変わりうる。「法定の固定額」という引っかけが毎年出る。「停止額は超過の1/2」——全額停止は絶対にない。この「1/2」という優しい設計が「働き損ゼロ」の核心。65歳以上で月収と年金の合計が100万円あっても、50万円超の50万円の半分・25万円が停止されるだけで年金は75万円受け取れる計算。</div>
+    </div>
+  </div>
+</div><!-- /card cf1 -->
+
+<!-- F2 -->
+<div class="card" id="cf2">
+  <div class="blank-card-body">
+    <div class="card-hd" style="margin:-16px -18px 16px;">
+      <div class="q-num">07</div>
+      <div><div class="src-tag">附則第8条 ／ 穴埋め式</div><div class="q-type">難易度：★★☆ ／ 単元：特別支給の受給要件</div></div>
+    </div>
+    <div class="blank-q">特別支給の老齢厚生年金の受給要件：①受給資格期間<span class="blank" id="f2a" onclick="selB('f2','f2a')">　　</span>年以上、②厚年被保険者期間<span class="blank" id="f2b" onclick="selB('f2','f2b')">　</span>年以上（原則老厚の<span class="blank" id="f2c" onclick="selB('f2','f2c')">　</span>ヵ月以上より長い）、③<span class="blank" id="f2d" onclick="selB('f2','f2d')">　　</span>歳以上。</div>
+    <div class="chips" id="f2-chips">
+      <div class="chp" onclick="fillB('f2','f2a',this,'10')">10</div>
+      <div class="chp" onclick="fillB('f2','f2b',this,'1')">1</div>
+      <div class="chp" onclick="fillB('f2','f2c',this,'1')">1</div>
+      <div class="chp" onclick="fillB('f2','f2d',this,'60')">60</div>
+    </div>
+    <button class="chk-btn" id="chk-f2" onclick="chkF('f2')">答え合わせ</button>
+    <div class="f-ans" id="f2-ans">
+      <div class="ans-hd" id="f2-result"></div>
+      <div class="why">受給資格期間<mark>10年以上</mark>・厚年被保険者期間<mark>1年以上</mark>（原則老厚の<mark>1</mark>ヵ月以上より長い）・<mark>60</mark>歳以上の3要件。「1ヵ月以上」は原則老齢厚生年金の要件——特別支給は経過措置のため1年以上とより厳しい要件が設定されている。</div>
+      <svg viewBox="0 0 520 90" width="100%" style="margin:10px 0;border-radius:8px;">
+        <rect width="520" height="90" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">特別支給の受給要件3点まとめ</text>
+        <rect x="10" y="26" width="155" height="54" rx="6" fill="#2a7f7f"/>
+        <text x="87" y="46" font-size="10" font-weight="700" fill="white" text-anchor="middle">①受給資格期間</text>
+        <text x="87" y="61" font-size="11" font-weight="700" fill="#a7f3d0" text-anchor="middle">10年以上</text>
+        <text x="87" y="73" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">（国年と共通）</text>
+        <rect x="183" y="26" width="155" height="54" rx="6" fill="#c84b31"/>
+        <text x="260" y="40" font-size="10" font-weight="700" fill="white" text-anchor="middle">②厚年被保険者期間</text>
+        <text x="260" y="56" font-size="13" font-weight="700" fill="#fca5a5" text-anchor="middle">1年以上</text>
+        <text x="260" y="70" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">原則老厚の1ヵ月以上×12倍</text>
+        <rect x="356" y="26" width="155" height="54" rx="6" fill="#7c3aed"/>
+        <text x="433" y="46" font-size="10" font-weight="700" fill="white" text-anchor="middle">③支給開始年齢</text>
+        <text x="433" y="61" font-size="11" font-weight="700" fill="#ede9fe" text-anchor="middle">60歳以上</text>
+        <text x="433" y="73" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">（段階的引き上げ中）</text>
+      </svg>
+      <svg viewBox="0 0 400 60" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="60" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">原則老厚 vs 特別支給：被保険者期間要件の比較</text>
+        <rect x="10" y="26" width="185" height="28" rx="5" fill="#2a7f7f"/>
+        <text x="102" y="37" font-size="10" font-weight="700" fill="white" text-anchor="middle">原則老齢厚生年金</text>
+        <text x="102" y="50" font-size="9" fill="#a7f3d0" text-anchor="middle">厚年 1ヵ月以上（最低要件）</text>
+        <rect x="205" y="26" width="185" height="28" rx="5" fill="#c84b31"/>
+        <text x="297" y="37" font-size="10" font-weight="700" fill="white" text-anchor="middle">特別支給の老齢厚生年金</text>
+        <text x="297" y="50" font-size="9" fill="#fca5a5" text-anchor="middle">厚年 1年以上（より厳しい）</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「特別支給の厚年期間要件は<strong>1ヵ月</strong>以上」→ <strong style="color:#2d6a4f;">○</strong> <strong>1年</strong>以上（原則より厳しい）</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「10年・1年・1ヵ月・60歳」——原則の1ヵ月より特別支給は1年と厳しいのが最頻出。</div>
+      <div class="law-tag">附則第8条</div>
+      <div class="hook" style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 「原則老厚は1ヵ月・特別支給は1年」——どちらも「以上」という点では同じだが12倍の差がある。「なぜ特別支給の方が長い？」——経過措置として設けられた制度で、短期加入者まで対象にするのは財政上適切でないという判断から。特別支給は「長く厚年に入った人への橋渡し」という性格を持つ制度。</div>
+    </div>
+  </div>
+</div><!-- /card cf2 -->
+
+<!-- F3 -->
+<div class="card" id="cf3">
+  <div class="blank-card-body">
+    <div class="card-hd" style="margin:-16px -18px 16px;">
+      <div class="q-num">08</div>
+      <div><div class="src-tag">附則第11条 ／ 穴埋め式</div><div class="q-type">難易度：★★★ ／ 単元：60歳台前半の在職老齢年金・改正前後</div></div>
+    </div>
+    <div class="blank-q">60歳台前半の在職老齢年金は、令和4年4月改正前は基準額<span class="blank" id="f3a" onclick="selB('f3','f3a')">　　</span>万円だったが、改正後は<span class="blank" id="f3b" onclick="selB('f3','f3b')">　　</span>万円に引き上げられ、<span class="blank" id="f3c" onclick="selB('f3','f3c')">　　</span>歳以上と<span class="blank" id="f3d" onclick="selB('f3','f3d')">　　　　</span>された。</div>
+    <div class="chips" id="f3-chips">
+      <div class="chp" onclick="fillB('f3','f3a',this,'28')">28</div>
+      <div class="chp" onclick="fillB('f3','f3b',this,'50')">50</div>
+      <div class="chp" onclick="fillB('f3','f3c',this,'65')">65</div>
+      <div class="chp" onclick="fillB('f3','f3d',this,'同一基準に統一')">同一基準に統一</div>
+    </div>
+    <button class="chk-btn" id="chk-f3" onclick="chkF('f3')">答え合わせ</button>
+    <div class="f-ans" id="f3-ans">
+      <div class="ans-hd" id="f3-result"></div>
+      <div class="why">改正前<mark>28万円</mark>→改正後<mark>50万円</mark>。<mark>65</mark>歳以上と<mark>同一基準に統一</mark>。「なぜ引き上げ？」——28万円という低い基準が60代前半の就労意欲を削いでいたから。50万円に引き上げることで「少し働いただけで年金が減る」問題を解消した。</div>
+      <svg viewBox="0 0 400 70" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="70" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">60歳台前半の在職老齢年金：改正前後</text>
+        <rect x="10" y="26" width="180" height="36" rx="5" fill="#6b7280"/>
+        <text x="100" y="42" font-size="10" font-weight="700" fill="white" text-anchor="middle">改正前（〜令和4年3月）</text>
+        <text x="100" y="56" font-size="10" fill="#d1d5db" text-anchor="middle">基準額：28万円</text>
+        <rect x="210" y="26" width="180" height="36" rx="5" fill="#2a7f7f"/>
+        <text x="300" y="42" font-size="10" font-weight="700" fill="white" text-anchor="middle">改正後（令和4年4月〜）</text>
+        <text x="300" y="56" font-size="10" fill="#a7f3d0" text-anchor="middle">基準額：50万円（65歳以上と統一）</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「令和4年4月改正後も60歳台前半の基準は<strong>28万円</strong>」→ <strong style="color:#2d6a4f;">○</strong> <strong>50万円</strong>に改正済み</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「改正前28万円・改正後50万円・65歳以上と統一」の3点。28万円は改正前の旧基準。</div>
+      <div class="law-tag">附則第11条</div>
+      <div class="hook" style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 「28万円は令和4年改正で消えた数字」——試験では改正前の28万円を正しい答えとして出すひっかけが多い。「現在は50万円で65歳以上と統一」という改正後の姿を正確に押さえる。改正の背景は「60代前半に28万円という低い基準で年金を減らされた人が働く気を失っていた」という現実的な問題。改正で就労促進という政策目的を達成しようとした。</div>
+    </div>
+  </div>
+</div><!-- /card cf3 -->
+
+<!-- F4 -->
+<div class="card" id="cf4">
+  <div class="blank-card-body">
+    <div class="card-hd" style="margin:-16px -18px 16px;">
+      <div class="q-num">09</div>
+      <div><div class="src-tag">法第46条 ／ 穴埋め式</div><div class="q-type">難易度：★★★ ／ 単元：総報酬月額相当額の計算</div></div>
+    </div>
+    <div class="blank-q">総報酬月額相当額＝<span class="blank" id="f4a" onclick="selB('f4','f4a')">　　　　　　</span>月額＋（その月以前<span class="blank" id="f4b" onclick="selB('f4','f4b')">　</span>ヵ月の標準賞与額の合計÷<span class="blank" id="f4c" onclick="selB('f4','f4c')">　　</span>）。在職老齢年金では基本月額（老齢厚生年金の<span class="blank" id="f4d" onclick="selB('f4','f4d')">　　</span>）と合算して判定する。</div>
+    <div class="chips" id="f4-chips">
+      <div class="chp" onclick="fillB('f4','f4a',this,'標準報酬')">標準報酬</div>
+      <div class="chp" onclick="fillB('f4','f4b',this,'12')">12</div>
+      <div class="chp" onclick="fillB('f4','f4c',this,'12')">12</div>
+      <div class="chp" onclick="fillB('f4','f4d',this,'月額')">月額</div>
+    </div>
+    <button class="chk-btn" id="chk-f4" onclick="chkF('f4')">答え合わせ</button>
+    <div class="f-ans" id="f4-ans">
+      <div class="ans-hd" id="f4-result"></div>
+      <div class="why">総報酬月額相当額＝<mark>標準報酬</mark>月額＋（直近<mark>12</mark>ヵ月の標準賞与額÷<mark>12</mark>）。賞与を月換算して月収ベースで比較することで、賞与の多寡による不公平をなくす設計。基本月額は老齢厚生年金の<mark>月額</mark>（年額÷12）。</div>
+      <svg viewBox="0 0 400 70" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="70" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">総報酬月額相当額の計算式</text>
+        <rect x="10" y="26" width="380" height="36" rx="5" fill="#1a1a2e"/>
+        <text x="200" y="41" font-size="10" font-weight="700" fill="#fde68a" text-anchor="middle">総報酬月額相当額</text>
+        <text x="200" y="56" font-size="9" fill="white" text-anchor="middle">＝ 標準報酬月額 ＋（直近12ヵ月の標準賞与額 ÷ 12）</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「総報酬月額相当額には賞与は含まれない」→ <strong style="color:#2d6a4f;">○</strong> 直近<strong>12ヵ月の賞与÷12</strong>を加算</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「標準報酬月額＋直近12ヵ月の賞与÷12」——賞与を月換算して合算。12÷12の計算式として覚える。</div>
+      <div class="law-tag">法第46条</div>
+      <div class="hook" style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 田中さん（66歳）の月収30万円・年間ボーナス120万円。総報酬月額相当額＝30万円＋（120万円÷12）＝30万円＋10万円＝40万円。基本月額（年金の月額）15万円と合計すると55万円——50万円超の5万円の半分2.5万円が停止。「なぜ賞与も月換算？」——賞与の多い人と少ない人の不公平をなくすため。月給だけで判定すると賞与が多い人が有利になるから。</div>
+    </div>
+  </div>
+</div><!-- /card cf4 -->
+
+<!-- F5 -->
+<div class="card" id="cf5">
+  <div class="blank-card-body">
+    <div class="card-hd" style="margin:-16px -18px 16px;">
+      <div class="q-num">10</div>
+      <div><div class="src-tag">附則第11条の2 ／ 穴埋め式</div><div class="q-type">難易度：★★★ ／ 単元：在職定時改定</div></div>
+    </div>
+    <div class="blank-q">在職定時改定（令和4年4月施行）：対象は<span class="blank" id="f5a" onclick="selB('f5','f5a')">　　</span>歳以上の在職被保険者。毎年<span class="blank" id="f5b" onclick="selB('f5','f5b')">　　</span>月に年金額が改定（基準日：<span class="blank" id="f5c" onclick="selB('f5','f5c')">　</span>月1日）。改正前は<span class="blank" id="f5d" onclick="selB('f5','f5d')">　　</span>時のみ改定だった。</div>
+    <div class="chips" id="f5-chips">
+      <div class="chp" onclick="fillB('f5','f5a',this,'65')">65</div>
+      <div class="chp" onclick="fillB('f5','f5b',this,'10')">10</div>
+      <div class="chp" onclick="fillB('f5','f5c',this,'9')">9</div>
+      <div class="chp" onclick="fillB('f5','f5d',this,'退職')">退職</div>
+    </div>
+    <button class="chk-btn" id="chk-f5" onclick="chkF('f5')">答え合わせ</button>
+    <div class="f-ans" id="f5-ans">
+      <div class="ans-hd" id="f5-result"></div>
+      <div class="why">対象<mark>65</mark>歳以上。毎年<mark>10</mark>月に改定（基準日：<mark>9</mark>月1日）。改正前は<mark>退職</mark>時のみ改定——在職中は保険料を払い続けても年金額が増えなかった。令和4年4月施行で在職中も毎年増える仕組みに。</div>
+      <svg viewBox="0 0 400 70" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="70" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">在職定時改定のタイムライン</text>
+        <rect x="10" y="28" width="90" height="32" rx="5" fill="#2a7f7f"/>
+        <text x="55" y="42" font-size="9" font-weight="700" fill="white" text-anchor="middle">9月1日</text>
+        <text x="55" y="54" font-size="8" fill="#a7f3d0" text-anchor="middle">基準日</text>
+        <line x1="105" y1="44" x2="130" y2="44" stroke="#1a1a2e" stroke-width="1.5"/>
+        <polygon points="130,40 140,44 130,48" fill="#1a1a2e"/>
+        <rect x="145" y="28" width="90" height="32" rx="5" fill="#c9930a"/>
+        <text x="190" y="42" font-size="9" font-weight="700" fill="white" text-anchor="middle">10月分から</text>
+        <text x="190" y="54" font-size="8" fill="#fde68a" text-anchor="middle">新年金額を適用</text>
+        <line x1="240" y1="44" x2="265" y2="44" stroke="#1a1a2e" stroke-width="1.5"/>
+        <polygon points="265,40 275,44 265,48" fill="#1a1a2e"/>
+        <rect x="280" y="28" width="110" height="32" rx="5" fill="#2d6a4f"/>
+        <text x="335" y="42" font-size="9" font-weight="700" fill="white" text-anchor="middle">翌年も繰り返し</text>
+        <text x="335" y="54" font-size="8" fill="#a7f3d0" text-anchor="middle">在職中も毎年増加</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「在職定時改定の対象は60歳以上」→ <strong style="color:#2d6a4f;">○</strong> <strong>65歳以上</strong>のみ</div></div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「在職定時改定は毎年4月に改定」→ <strong style="color:#2d6a4f;">○</strong> 毎年<strong>10月</strong>（基準日9月1日）</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「65歳・10月・9月1日・退職時のみ→毎年」の4点セット。令和4年4月施行も必須。</div>
+      <div class="law-tag">附則第11条の2</div>
+      <div class="hook" style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 「在職中でも毎年10月に年金が増える」——令和4年4月から始まったこの制度で、65歳以降も働く人が「保険料を払い損」にならなくなった。基準日が9月1日で10月分から適用というタイムラインを覚えるには、「9月に確定して翌月10月から反映」という処理の流れで理解する。60歳以上ではなく65歳以上という限定は、65歳が原則の支給開始年齢だから65歳以降の在職期間分を反映させる制度。</div>
+    </div>
+  </div>
+</div><!-- /card cf5 -->
+
+</div><!-- /qwrap -->
+
+<div class="complete-bar" id="complete-bar">
+  <div class="complete-card">
+    <h2>🎉 全問回答完了！</h2>
+    <div class="complete-score" id="complete-score">0 / 10</div>
+    <div style="color:rgba(255,255,255,.7);font-size:13px;" id="complete-msg"></div>
+    <button class="copy-btn2" id="copy-btn2" onclick="copyRecord()">📋 記録をコピー</button>
+  </div>
+</div>
+
+</div><!-- /panel-quiz -->
+
+<!-- PANEL-MINDMAP -->
+<div id="panel-mindmap" class="tab-panel">
+<div class="mm-wrap">
+  <div style="background:var(--teal-light);border:1px solid var(--teal);border-radius:10px;padding:12px 16px;font-size:13px;color:#1a4040;margin-bottom:24px;line-height:1.7;">
+    🗺 <strong>連想図</strong>：厚生年金法 Day4「在職老齢年金・特別支給の老齢厚生年金」の重要論点を3STEPで整理。
+  </div>
+
+  <div class="mm-step">
+    <div class="mm-step-hd"><div class="mm-step-num">1</div><div class="mm-step-title">在職老齢年金（65歳以上）</div></div>
+    <div class="mm-step-body">
+      <div class="mm-item">📌 <strong>法第46条</strong>：基本月額＋総報酬月額相当額が<mark>50万円超</mark>→超過の<mark>1/2</mark>が停止。全額停止はない。</div>
+      <div class="mm-item">📌 <strong>総報酬月額相当額</strong>：標準報酬月額＋（直近12ヵ月の標準賞与額÷12）——賞与を月換算して不公平をなくす。</div>
+      <div class="mm-item">📌 <strong>基準額（50万円）は毎年改定</strong>——固定額ではない。令和4年に60歳台前半の28万円が50万円に引き上げられ65歳以上と統一。</div>
+      <div class="mm-alert">🚨 「全額停止になる」「50万円は固定」は最頻出の誤り。超過の1/2だけ停止・毎年改定が正しい。</div>
+      <div class="mm-gorof">🧠 田中さん（67歳）月収40万円＋年金15万円＝55万円。超過5万円の半分2.5万円が停止。手取りは40万円＋12.5万円＝52.5万円。「働き損ゼロ」の設計。</div>
+    </div>
+  </div>
+
+  <div class="mm-step">
+    <div class="mm-step-hd"><div class="mm-step-num">2</div><div class="mm-step-title">特別支給の老齢厚生年金</div></div>
+    <div class="mm-step-body">
+      <div class="mm-item">📌 <strong>受給要件（附則第8条）</strong>：①受給資格期間10年以上、②厚年被保険者期間<mark>1年以上</mark>（原則老厚の1ヵ月以上より長い）、③60歳以上。</div>
+      <div class="mm-item">📌 <strong>2フェーズで引き上げ</strong>：<br>
+        ◆第1フェーズ（〜昭和36年4月1日生まれ男性）：<mark>定額部分</mark>の支給開始年齢を60歳→65歳に段階引き上げ。報酬比例部分は60歳のまま。<br>
+        ◆第2フェーズ（昭和36年4月2日〜40年4月1日生まれ男性）：定額部分はなくなり、<mark>報酬比例部分</mark>だけを61〜64歳に段階引き上げ。</div>
+      <div class="mm-item">📌 <strong>昭和40年4月2日以降生まれの男性</strong>：特別支給なし→65歳から原則老齢厚生年金のみ。<strong>女性はすべて5年後ろ</strong>（昭和41年4月1日まで対象）。</div>
+      <div class="mm-alert">🚨 「厚年期間1ヵ月以上」は原則老厚の要件。特別支給は<mark>1年以上</mark>——混同が最頻出。</div>
+      <div class="mm-alert">🚨 定額部分が先・報酬比例部分が後——引き上げの順番を逆に覚えないこと。</div>
+      <div class="mm-gorof">🧠 昭和30年生まれ鈴木さん（男性）：60歳から報酬比例部分、63歳から定額部分も加わる（第1フェーズ）。昭和38年生まれ山田さん（男性）：定額部分はなく、62歳から報酬比例部分だけ（第2フェーズ）。昭和42年生まれは特別支給なし——65歳から原則老厚一本。</div>
+    </div>
+  </div>
+
+  <div class="mm-step">
+    <div class="mm-step-hd"><div class="mm-step-num">3</div><div class="mm-step-title">令和4年4月改正の2つのポイント</div></div>
+    <div class="mm-step-body">
+      <div class="mm-item">📌 <strong>①在職老齢年金の基準額統一</strong>：60歳台前半の基準額を<mark>28万円→50万円</mark>に引き上げ、65歳以上と同一基準に。60代前半の就労促進が目的。</div>
+      <div class="mm-item">📌 <strong>②在職定時改定（附則第11条の2）</strong>：65歳以上の在職被保険者は毎年<mark>10月</mark>（基準日：9月1日）に年金額を自動改定。改正前は退職時のみ——在職中も毎年増えるようになった。</div>
+      <div class="hikakke-box">
+        <div class="hikakke-hd"><span>🔥 Day4 最重要引っかけ TOP5</span></div>
+        <div class="hikakke-body">
+          <div class="hikakke-row">× 在職老齢年金で全額停止になる → ○ 超過額の<strong>1/2</strong>のみ停止。全額停止はない</div>
+          <div class="hikakke-row">× 基準額50万円は法定の固定額 → ○ 毎年度<strong>改定</strong>される</div>
+          <div class="hikakke-row">× 特別支給の厚年期間要件は1ヵ月以上 → ○ <strong>1年以上</strong>（原則より厳しい）</div>
+          <div class="hikakke-row">× 60歳台前半の基準額は今も28万円 → ○ 令和4年4月改正で<strong>50万円</strong>に引き上げ</div>
+          <div class="hikakke-row">× 在職定時改定の対象は60歳以上 → ○ <strong>65歳以上</strong>の在職被保険者のみ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mm-step" style="border-color:#1d4ed8;">
+    <div class="mm-step-hd" style="background:#1d4ed8;"><div class="mm-step-num" style="color:#bfdbfe;">⚖</div><div class="mm-step-title">在職老齢年金：60歳台前半 vs 65歳以上 比較表</div></div>
+    <div class="mm-step-body">
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:12px;min-width:460px;">
+          <thead>
+            <tr style="background:#1d4ed8;">
+              <th style="padding:8px 10px;color:white;text-align:left;border-bottom:2px solid #93c5fd;">論点</th>
+              <th style="padding:8px 10px;color:#bfdbfe;text-align:center;border-bottom:2px solid #93c5fd;">60〜64歳（60台前半）</th>
+              <th style="padding:8px 10px;color:#fde68a;text-align:center;border-bottom:2px solid #93c5fd;">65歳以上</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #e0e7ff;background:#f8faff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">根拠条文</td>
+              <td style="padding:8px 10px;text-align:center;">附則第11条</td>
+              <td style="padding:8px 10px;text-align:center;">法第46条</td>
+            </tr>
+            <tr style="border-bottom:1px solid #e0e7ff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">基準額（現在）</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#dcfce7;">50万円</mark>（R4改正後）</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#dcfce7;">50万円</mark></td>
+            </tr>
+            <tr style="border-bottom:1px solid #e0e7ff;background:#f8faff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">基準額（改正前）</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#fee2e2;">28万円</mark></td>
+              <td style="padding:8px 10px;text-align:center;">47万円（当時）</td>
+            </tr>
+            <tr style="border-bottom:1px solid #e0e7ff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">停止額</td>
+              <td style="padding:8px 10px;text-align:center;">超過額の1/2</td>
+              <td style="padding:8px 10px;text-align:center;">超過額の1/2</td>
+            </tr>
+            <tr style="background:#f8faff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">在職定時改定</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#fee2e2;">対象外</mark></td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#dcfce7;">対象（毎年10月）</mark></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div><!-- /panel-mindmap -->
+
+<!-- PANEL-FLASH -->
+<div id="panel-flash" class="tab-panel">
+<div class="fc-wrap">
+  <div class="fc-meta">
+    <div><div class="fc-counter" id="fc-counter">1<span> / 20</span></div></div>
+    <button class="fc-nav-btn shuffle" onclick="fcShuffle()" style="max-width:100px;padding:8px 12px;font-size:12px;">🔀 シャッフル</button>
+  </div>
+  <div class="fc-gauge-wrap">
+    <div class="fc-gauge-labels">
+      <span class="fc-gauge-label-ng">❌ <span id="fc-ng-count">0</span></span>
+      <span class="fc-gauge-label-mid" id="fc-remaining">残り 20 枚</span>
+      <span class="fc-gauge-label-ok"><span id="fc-ok-count">0</span> ✅</span>
+    </div>
+    <div class="fc-gauge-track">
+      <div class="fc-gauge-ng" id="fc-gauge-ng"></div>
+      <div class="fc-gauge-mid-line"></div>
+      <div class="fc-gauge-ok" id="fc-gauge-ok"></div>
+    </div>
+  </div>
+  <div class="fc-carousel" id="fc-carousel">
+    <div class="fc-slot prev" id="fc-slot-prev">
+      <div class="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd"><span class="fc-front-tag" id="fc-prev-tag">—</span><span style="font-size:11px;color:var(--gray);" id="fc-prev-cat"></span></div>
+          <div class="fc-front-body"><div class="fc-q" id="fc-prev-q" style="font-size:13px;opacity:.7;"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-slot curr" id="fc-slot-curr" onclick="fcFlip()">
+      <div class="fc-inner" id="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd"><span class="fc-front-tag" id="fc-tag">Q01</span><span style="font-size:11px;color:var(--gray);" id="fc-cat">在職老齢年金</span></div>
+          <div class="fc-front-body"><div class="fc-q" id="fc-q">—</div></div>
+          <div class="fc-ox">
+            <button class="fc-ox-btn o" onclick="fcChoose(true);event.stopPropagation();">○</button>
+            <button class="fc-ox-btn x" onclick="fcChoose(false);event.stopPropagation();">×</button>
+          </div>
+        </div>
+        <div class="fc-face fc-back-face">
+          <div class="fc-back-hd">
+            <span class="fc-verdict" id="fc-verdict">○　正しい</span>
+            <span id="fc-user-ans" style="font-size:12px;margin-left:auto;"></span>
+          </div>
+          <div class="fc-back-body">
+            <div class="fc-answer" id="fc-answer">—</div>
+            <div class="fc-reason" id="fc-reason">—</div>
+            <div class="fc-lawref" id="fc-lawref">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-slot next" id="fc-slot-next">
+      <div class="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd"><span class="fc-front-tag" id="fc-next-tag">—</span><span style="font-size:11px;color:var(--gray);" id="fc-next-cat"></span></div>
+          <div class="fc-front-body"><div class="fc-q" id="fc-next-q" style="font-size:13px;opacity:.7;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fc-nav" id="fc-nav" style="display:none;">
+    <button class="fc-nav-btn again" onclick="fcNext(false)">😅 もう一度</button>
+    <button class="fc-nav-btn got"   onclick="fcNext(true)">✅ わかった！</button>
+  </div>
+  <div class="fc-result" id="fc-result">
+    <div style="font-size:36px;margin-bottom:8px;" id="fc-emoji">🎉</div>
+    <h3>フラッシュカード完了！</h3>
+    <div class="fc-result-score" id="fc-result-score">—</div>
+    <div class="fc-result-sub" id="fc-result-sub">—</div>
+    <button class="fc-restart-btn" onclick="fcRestart()">🔁 もう一周する</button>
+  </div>
+</div>
+</div><!-- /panel-flash -->
+
+<!-- PANEL-SPIDER -->
+<div id="panel-spider" class="tab-panel">
+<div class="spider-wrap">
+  <div style="background:var(--teal-light);border:1px solid var(--teal);border-radius:10px;padding:12px 16px;font-size:13px;color:#1a4040;margin-bottom:20px;line-height:1.7;">
+    🕸️ <strong>記憶マップ</strong>：第2階層をタップで枝の展開・解説を切り替え。
+  </div>
+  <div id="sp-root" style="width:100%;"></div>
+  <div id="spider-detail" style="display:none;margin-top:16px;background:white;border:2px solid #1a1a2e;border-radius:14px;overflow:hidden;">
+    <div id="spider-detail-hd" style="padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+      <span id="spider-detail-title" style="font-weight:700;font-size:15px;color:white;"></span>
+      <button onclick="closeSpiderDetail()" style="border:none;background:none;font-size:22px;cursor:pointer;color:rgba(255,255,255,.8);line-height:1;padding:0 4px;">×</button>
+    </div>
+    <div id="spider-detail-body" style="padding:16px 18px 20px;"></div>
+  </div>
+</div>
+</div><!-- /panel-spider -->
+
+<script>
+var DAY_META={
+  day:'Day4',block:'厚生年金法',
+  unit:'在職老齢年金・特別支給の老齢厚生年金',
+  range:'法第46条・附則第7条〜第12条',total:10
+};
+
+function copyRecord(){
+  var saved=JSON.parse(localStorage.getItem('kounen_day4')||'{}');
+  var cv=saved.correct!==undefined?saved.correct:(score||0);
+  var t=saved.total||10;
+  var dt=saved.ts?new Date(saved.ts):new Date();
+  var ds=dt.getFullYear()+'/'+String(dt.getMonth()+1).padStart(2,'0')+'/'+String(dt.getDate()).padStart(2,'0');
+  var row=[DAY_META.day,DAY_META.block,DAY_META.unit,DAY_META.range,t,ds,cv,t>0?Math.round(cv/t*100):0].join('\t');
+  navigator.clipboard.writeText(row).then(showCopied).catch(function(){
+    var ta=document.createElement('textarea');ta.value=row;ta.style.cssText='position:fixed;opacity:0;';
+    document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showCopied();
+  });
+}
+function showCopied(){
+  ['copy-btn','copy-btn2'].forEach(function(id){
+    var b=document.getElementById(id);if(!b)return;
+    b.textContent='✅ コピーしました！';b.classList.add('copied');
+    setTimeout(function(){b.textContent='📋 記録をコピー';b.classList.remove('copied');},2500);
+  });
+}
+
+var correct_ans={q1:0,q2:0,q3:0,q4:0,q5:0};
+var done={},score=0,total=0;
+
+function answer(qid,idx){
+  if(done[qid])return;done[qid]=true;
+  var opts=document.querySelectorAll('#'+qid+'-opts .opt');
+  var ans=document.getElementById(qid+'-ans');
+  var ok=idx===correct_ans[qid];
+  opts.forEach(function(o,i){if(i===correct_ans[qid])o.classList.add('correct');else if(i===idx&&!ok)o.classList.add('wrong');});
+  ans.className='ans-box show '+(ok?'ok':'ng');
+  var hd=document.getElementById(qid+'-result');
+  hd.textContent=ok?'⭕ 正解！':'❌ 不正解';hd.style.color=ok?'var(--green)':'var(--red)';
+  if(ok)score++;total++;
+  document.getElementById('score').textContent=score;
+  updateProg();
+  setTimeout(function(){ans.scrollIntoView({behavior:'smooth',block:'nearest'});},100);
+}
+
+var defs={
+  f1:{f1a:'50',f1b:'50',f1c:'2',f1d:'なし',f1e:'改定'},
+  f2:{f2a:'10',f2b:'1',f2c:'1',f2d:'60'},
+  f3:{f3a:'28',f3b:'50',f3c:'65',f3d:'同一基準に統一'},
+  f4:{f4a:'標準報酬',f4b:'12',f4c:'12',f4d:'月額'},
+  f5:{f5a:'65',f5b:'10',f5c:'9',f5d:'退職'}
+};
+var state={f1:{},f2:{},f3:{},f4:{},f5:{}};
+var sel={f1:null,f2:null,f3:null,f4:null,f5:null};
+var fdone={};
+
+function selB(fid,bid){
+  if(fdone[fid])return;
+  if(state[fid][bid]!==undefined){
+    var pv=state[fid][bid];delete state[fid][bid];
+    document.getElementById(bid).textContent='　　';
+    document.querySelectorAll('#'+fid+'-chips .chp').forEach(function(c){if(c.textContent===pv&&c.classList.contains('used'))c.classList.remove('used');});
+  }
+  document.querySelectorAll('[id^="'+fid+'"][class*="blank"]').forEach(function(b){b.classList.remove('sel');});
+  sel[fid]=bid;document.getElementById(bid).classList.add('sel');
+}
+function fillB(fid,bid,chip,val){
+  if(fdone[fid])return;
+  var s=bid?bid:sel[fid];
+  if(!s){var keys=Object.keys(defs[fid]);var empty=null;for(var i=0;i<keys.length;i++){if(state[fid][keys[i]]===undefined){empty=keys[i];break;}}if(!empty)return;s=empty;}
+  if(state[fid][s]!==undefined){var pv=state[fid][s];document.querySelectorAll('#'+fid+'-chips .chp').forEach(function(c){if(c.textContent===pv&&c.classList.contains('used'))c.classList.remove('used');});}
+  document.getElementById(s).textContent=val;document.getElementById(s).classList.remove('sel');
+  state[fid][s]=val;chip.classList.add('used');sel[fid]=null;
+}
+function chkF(fid){
+  if(fdone[fid])return;
+  var d=defs[fid];var keys=Object.keys(d);
+  if(!keys.every(function(k){return state[fid][k]!==undefined;})){alert('すべての空欄を埋めてください');return;}
+  fdone[fid]=true;var allOk=true;
+  keys.forEach(function(k){var el=document.getElementById(k);var ok=state[fid][k]===d[k];el.classList.add(ok?'ok-fill':'ng-fill');if(!ok)allOk=false;});
+  document.querySelectorAll('#'+fid+'-chips .chp').forEach(function(c){if(c.classList.contains('used')){var v=c.textContent;c.classList.add(Object.values(d).indexOf(v)>=0?'ok-c':'ng-c');}});
+  document.getElementById('chk-'+fid).disabled=true;
+  var ans=document.getElementById(fid+'-ans');ans.className='f-ans show '+(allOk?'ok':'ng');
+  var res=document.getElementById(fid+'-result');res.textContent=allOk?'⭕ 全問正解！':'❌ 不正解あり';res.style.color=allOk?'var(--green)':'var(--red)';
+  if(allOk)score++;total++;
+  document.getElementById('score').textContent=score;
+  updateProg();setTimeout(function(){ans.scrollIntoView({behavior:'smooth',block:'nearest'});},100);
+}
+function updateProg(){
+  var t=10,pct=Math.round(total/t*100);
+  document.getElementById('prog').style.width=pct+'%';
+  document.getElementById('prog-lbl').textContent=total+' ／ '+t+' 問 回答済み';
+  var sub=document.getElementById('score-sub');if(sub)sub.textContent=total+'問回答 / 正解率 '+(total>0?Math.round(score/total*100):0)+'%';
+  if(total===t)showComplete();
+}
+function showComplete(){
+  var bar=document.getElementById('complete-bar');bar.style.display='block';
+  document.getElementById('complete-score').textContent=score+' / 10';
+  var pct=Math.round(score/10*100);
+  document.getElementById('complete-msg').textContent=pct>=90?'🏆 完璧！':pct>=70?'✨ 合格圏内！':'📖 もう一周してみよう';
+  try{localStorage.setItem('kounen_day4',JSON.stringify({correct:score,total:10,ts:Date.now()}));}catch(e){}
+  setTimeout(function(){bar.scrollIntoView({behavior:'smooth',block:'start'});},200);
+}
+
+var FC_CARDS=[
+  {tag:'Q01',cat:'在職老齢年金',correct:true,q:'65歳以上の在職老齢年金は、基本月額と総報酬月額相当額の合計が<mark>50万円</mark>を超えると超過額の<mark>2分の1</mark>が停止される。',answer:'○ 正しい',reason:'<strong>法第46条</strong>：50万円超で超過の1/2が停止。全額停止はない。「働き損ゼロ」の設計で高齢者就労を促進。田中さん（67歳）月収40万円＋年金15万円＝55万円→超過5万円の半分2.5万円が停止。',law:'法第46条'},
+  {tag:'Q02',cat:'在職老齢年金',correct:false,q:'在職老齢年金では、合計額が<mark>50万円</mark>を超えると超過額の全額が支給停止となる。',answer:'× 誤り',reason:'<strong>法第46条</strong>：全額停止ではなく、超過額の<mark>2分の1</mark>だけ停止。全額停止は設計上存在しない。「半分は確実に受け取れる」という就労促進の思想。',law:'法第46条'},
+  {tag:'Q03',cat:'在職老齢年金',correct:false,q:'在職老齢年金の基準額50万円は法律で定められた固定額であり改定されない。',answer:'× 誤り',reason:'<strong>法第46条</strong>：基準額は<mark>毎年度改定</mark>される（賃金・物価変動に対応）。現在は50万円だが固定ではない。「50万円は固定」という引っかけが毎年出題される。',law:'法第46条'},
+  {tag:'Q04',cat:'在職老齢年金',correct:true,q:'総報酬月額相当額は、標準報酬月額に直近<mark>12ヵ月</mark>の標準賞与額を12で割った額を加算して計算する。',answer:'○ 正しい',reason:'<strong>法第46条</strong>：総報酬月額相当額＝標準報酬月額＋（直近12ヵ月の標準賞与額÷12）。賞与を月換算して月収ベースで比較する——賞与の多寡による不公平をなくす設計。',law:'法第46条'},
+  {tag:'Q05',cat:'60歳台前半の在職老齢',correct:false,q:'令和4年4月改正後も、60歳台前半（60〜64歳）の在職老齢年金の基準額は<mark>28万円</mark>のままである。',answer:'× 誤り',reason:'<strong>附則第11条</strong>：令和4年4月改正で<mark>50万円</mark>に引き上げ（改正前は28万円）。65歳以上と同一基準に統一。60代前半の就労促進が目的。',law:'附則第11条'},
+  {tag:'Q06',cat:'60歳台前半の在職老齢',correct:true,q:'令和4年4月改正により、60歳台前半の在職老齢年金の基準額は65歳以上と<mark>同じ50万円</mark>に統一された。',answer:'○ 正しい',reason:'<strong>附則第11条</strong>：令和4年4月改正で28万円→50万円に引き上げ。「少し働くだけで年金が減る」という問題を解消し60代前半の就労を促進。',law:'附則第11条'},
+  {tag:'Q07',cat:'特別支給',correct:true,q:'特別支給の老齢厚生年金の厚年被保険者期間要件は<mark>1年以上</mark>であり、原則老齢厚生年金の1ヵ月以上より長い。',answer:'○ 正しい',reason:'<strong>附則第8条</strong>：特別支給の厚年期間要件は<mark>1年以上</mark>。原則老齢厚生年金の1ヵ月以上より長い。経過措置として短期加入者を除外するための設定。',law:'附則第8条'},
+  {tag:'Q08',cat:'特別支給',correct:false,q:'特別支給の老齢厚生年金の厚年被保険者期間要件は<mark>1ヵ月以上</mark>である。',answer:'× 誤り',reason:'<strong>附則第8条</strong>：特別支給の要件は<mark>1年以上</mark>。1ヵ月以上は原則老齢厚生年金の要件。「1ヵ月か1年か」の混同が最頻出。',law:'附則第8条'},
+  {tag:'Q09',cat:'在職定時改定',correct:true,q:'令和4年4月施行の在職定時改定により、65歳以上の在職被保険者は毎年<mark>10月</mark>に年金額が改定される。',answer:'○ 正しい',reason:'<strong>附則第11条の2</strong>：65歳以上の在職被保険者は毎年10月（基準日：9月1日）に自動改定。改正前は退職時のみ——在職中も毎年年金が増えるようになった。',law:'附則第11条の2'},
+  {tag:'Q10',cat:'在職定時改定',correct:false,q:'在職定時改定の対象は<mark>60歳以上</mark>の在職被保険者である。',answer:'× 誤り',reason:'<strong>附則第11条の2</strong>：在職定時改定の対象は<mark>65歳以上</mark>の在職被保険者。60歳以上ではない。65歳が原則支給開始年齢なので、65歳以降の在職分を反映させる制度。',law:'附則第11条の2'},
+  {tag:'Q11',cat:'在職老齢年金',correct:true,q:'在職老齢年金の停止額は「（基本月額＋総報酬月額相当額－50万円）÷2」で計算され、残りの年金は受け取れる。',answer:'○ 正しい',reason:'<strong>法第46条</strong>：停止額の計算式はこの通り。超過分の半分だけ停止し、全額停止はない。受給者は必ず一定額を受け取れる設計。',law:'法第46条'},
+  {tag:'Q12',cat:'特別支給',correct:true,q:'特別支給の老齢厚生年金は報酬比例部分と定額部分から構成され、段階的に定額部分の支給開始年齢が引き上げられている。',answer:'○ 正しい',reason:'<strong>附則第9条の2</strong>：特別支給は報酬比例部分＋定額部分。生年月日が新しいほど定額部分の支給開始年齢が引き上げられ最終的に65歳で原則老齢厚生年金に統一。',law:'附則第9条の2'},
+  {tag:'Q13',cat:'特別支給',correct:false,q:'特別支給の老齢厚生年金は全ての被保険者が60歳から受給できる。',answer:'× 誤り',reason:'<strong>附則第8条</strong>：特別支給は昭和36年4月1日以前生まれの男性（女性は昭和41年4月1日以前生まれ）を対象とした経過措置。若い世代は対象外——時限的な制度。',law:'附則第8条'},
+  {tag:'Q14',cat:'在職定時改定',correct:false,q:'在職定時改定は令和2年4月から施行された制度である。',answer:'× 誤り',reason:'<strong>附則第11条の2</strong>：在職定時改定の施行は<mark>令和4年4月</mark>。令和2年ではない。繰下げ上限引き上げ・60台前半の基準統一も同じ令和4年4月改正。',law:'附則第11条の2'},
+  {tag:'Q15',cat:'在職老齢年金',correct:true,q:'在職老齢年金（65歳以上）と60歳台前半の在職老齢年金は、令和4年4月以降は同じ基準額（50万円）で計算される。',answer:'○ 正しい',reason:'<strong>附則第11条・法第46条</strong>：令和4年4月改正で60台前半の基準額が28万円から50万円に引き上げられ、65歳以上（法第46条）と統一された。年齢による不公平が解消。',law:'附則第11条・法第46条'},
+  {tag:'Q16',cat:'特別支給',correct:true,q:'特別支給の老齢厚生年金の受給要件として、厚年の被保険者期間が1年以上必要であるが、これは原則老齢厚生年金の1ヵ月以上より長い要件である。',answer:'○ 正しい',reason:'<strong>附則第8条</strong>：特別支給の厚年期間要件は1年以上。原則老厚の1ヵ月以上の12倍。経過措置として短期加入者を除外するため、一定の加入実績を求めた設計。',law:'附則第8条'},
+  {tag:'Q17',cat:'在職定時改定',correct:true,q:'在職定時改定の基準日は毎年<mark>9月1日</mark>であり、10月分の年金から新しい額が適用される。',answer:'○ 正しい',reason:'<strong>附則第11条の2</strong>：基準日は毎年9月1日。9月1日時点の被保険者期間を反映して計算し、10月分から新額を適用。「9月基準→10月適用」のタイムラインを整理して覚える。',law:'附則第11条の2'},
+  {tag:'Q18',cat:'在職老齢年金',correct:false,q:'在職老齢年金では、月収が高い人ほど年金が多く停止されるが、一定額を超えると全額停止となる。',answer:'× 誤り',reason:'<strong>法第46条</strong>：全額停止は一切ない。超過額の1/2だけ停止。月収がどれだけ高くても年金の一部は受け取れる設計——これが「働き損ゼロ」の核心。',law:'法第46条'},
+  {tag:'Q19',cat:'60歳台前半の在職老齢',correct:true,q:'令和4年4月改正前、60歳台前半の在職老齢年金の基準額は<mark>28万円</mark>であり、65歳以上の基準額より低かった。',answer:'○ 正しい',reason:'<strong>附則第11条</strong>：改正前の60台前半の基準は28万円（65歳以上は47万円）。年齢による不公平があった。令和4年改正でともに50万円に統一され解消された。',law:'附則第11条'},
+  {tag:'Q20',cat:'特別支給',correct:false,q:'特別支給の老齢厚生年金は、原則老齢厚生年金と同じく定額部分はなく報酬比例部分のみである。',answer:'× 誤り',reason:'<strong>附則第9条の2</strong>：特別支給は報酬比例部分＋<mark>定額部分</mark>の2部構成（ただし生年月日によって段階的に定額部分が削減）。報酬比例部分のみは最終的な65歳以降の原則老齢厚生年金。',law:'附則第9条の2'}
+];
+
+var fcDeck=[],fcIdx=0,fcGot=0,fcFlipped=false,fcOk=0,fcNg=0;
+
+function fcUpdateGauge(){
+  var total=fcDeck.length,remaining=total-fcIdx,half=50;
+  document.getElementById('fc-gauge-ok').style.width=Math.min(fcOk/total*100,half)+'%';
+  document.getElementById('fc-gauge-ng').style.width=Math.min(fcNg/total*100,half)+'%';
+  document.getElementById('fc-ok-count').textContent=fcOk;
+  document.getElementById('fc-ng-count').textContent=fcNg;
+  document.getElementById('fc-remaining').textContent='残り '+remaining+' 枚';
+  document.getElementById('fc-counter').innerHTML=(fcIdx+1)+'<span> / '+total+'</span>';
+}
+function fcSetSlot(slotId,tagId,catId,qId,cardData){
+  var slot=document.getElementById(slotId);
+  if(!cardData){slot.classList.add('hidden');return;}
+  slot.classList.remove('hidden');
+  document.getElementById(tagId).textContent=cardData.tag;
+  document.getElementById(catId).textContent=cardData.cat;
+  document.getElementById(qId).innerHTML=cardData.q;
+}
+function fcRender(){
+  var total=fcDeck.length,curr=fcDeck[fcIdx];
+  var prev=fcIdx>0?fcDeck[fcIdx-1]:null;
+  var next=fcIdx<total-1?fcDeck[fcIdx+1]:null;
+  fcSetSlot('fc-slot-prev','fc-prev-tag','fc-prev-cat','fc-prev-q',prev);
+  fcSetSlot('fc-slot-next','fc-next-tag','fc-next-cat','fc-next-q',next);
+  document.getElementById('fc-tag').textContent=curr.tag;
+  document.getElementById('fc-cat').textContent=curr.cat;
+  document.getElementById('fc-q').innerHTML=curr.q;
+  var verdict=document.getElementById('fc-verdict');
+  verdict.textContent=curr.correct?'○　正しい':'×　誤り';
+  verdict.className='fc-verdict '+(curr.correct?'ok':'ng');
+  document.getElementById('fc-answer').textContent=curr.answer;
+  document.getElementById('fc-reason').innerHTML=curr.reason;
+  document.getElementById('fc-lawref').textContent=curr.law;
+  var inner=document.getElementById('fc-inner');inner.classList.remove('flipped');
+  fcFlipped=false;document.getElementById('fc-nav').style.display='none';
+  var ua=document.getElementById('fc-user-ans');if(ua)ua.textContent='';
+  fcUpdateGauge();
+}
+function fcInit(){
+  fcDeck=FC_CARDS.slice();
+  for(var i=fcDeck.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=fcDeck[i];fcDeck[i]=fcDeck[j];fcDeck[j]=tmp;}
+  fcIdx=0;fcGot=0;fcOk=0;fcNg=0;fcFlipped=false;
+  document.getElementById('fc-result').style.display='none';
+  document.getElementById('fc-carousel').style.display='flex';
+  document.getElementById('fc-nav').style.display='none';
+  fcRender();
+}
+function fcShuffle(){fcInit();}
+function fcChoose(userSaidTrue){
+  if(fcFlipped)return;
+  var curr=fcDeck[fcIdx];var isCorrect=(userSaidTrue===curr.correct);
+  if(isCorrect){fcGot++;fcOk++;}else{fcNg++;}
+  var ua=document.getElementById('fc-user-ans');
+  if(ua){ua.textContent=isCorrect?'✅ 正解！':'❌ 不正解';ua.style.color=isCorrect?'var(--green)':'var(--red)';ua.style.fontWeight='700';}
+  var again=document.querySelector('.fc-nav-btn.again');var got=document.querySelector('.fc-nav-btn.got');
+  if(again&&got){
+    if(isCorrect){again.style.display='none';got.style.display='block';got.textContent='次へ →';}
+    else{again.style.display='block';again.textContent='次へ →';got.style.display='none';}
+  }
+  fcFlipped=true;document.getElementById('fc-inner').classList.add('flipped');
+  setTimeout(function(){document.getElementById('fc-nav').style.display='flex';},280);
+}
+function fcFlip(){
+  var inner=document.getElementById('fc-inner');
+  if(!fcFlipped){
+    fcFlipped=true;inner.classList.add('flipped');
+    var ua=document.getElementById('fc-user-ans');if(ua){ua.textContent='（○×で回答してください）';ua.style.color='var(--gray)';}
+    var again=document.querySelector('.fc-nav-btn.again');var got=document.querySelector('.fc-nav-btn.got');
+    if(again&&got){again.style.display='block';again.textContent='😅 もう一度';got.style.display='block';got.textContent='✅ わかった！';}
+    setTimeout(function(){document.getElementById('fc-nav').style.display='flex';},280);
+  }else{
+    fcFlipped=false;inner.classList.remove('flipped');document.getElementById('fc-nav').style.display='none';
+  }
+}
+function fcNext(got){
+  document.getElementById('fc-nav').style.display='none';
+  if(fcIdx+1>=fcDeck.length){
+    fcUpdateGauge();document.getElementById('fc-remaining').textContent='残り 0 枚';
+    document.getElementById('fc-carousel').style.display='none';document.getElementById('fc-result').style.display='block';
+    var pct=Math.round(fcOk/fcDeck.length*100);
+    document.getElementById('fc-result-score').textContent=fcOk+' / '+fcDeck.length;
+    document.getElementById('fc-result-sub').textContent='正答率 '+pct+'% ― '+(pct>=80?'バッチリ！':'もう一周してみよう');
+    document.getElementById('fc-emoji').textContent=pct>=80?'🏆':'📖';
+    document.getElementById('fc-counter').innerHTML=fcDeck.length+'<span> / '+fcDeck.length+'</span>';
+    return;
+  }
+  fcIdx++;fcRender();
+}
+function fcRestart(){fcInit();}
+
+function switchTab(name,btn){
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  document.getElementById('panel-'+name).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(name==='flash'&&fcDeck.length===0)fcInit();
+  if(name==='spider')buildSpider();
+}
+
+var SPIDER_DATA=[
+  {id:"zaishoku65",label:"在職老齢（65歳〜）",sub:"法第46条",
+   color:"#2a7f7f",light:"#e8f4f4",border:"#5ab5b5",angle:218,
+   children:[
+     {label:"基準額・停止額",sub:"50万円・1/2",leaves:["50万円超で発動","超過の1/2が停止","全額停止はない","基準額は毎年改定"]},
+     {label:"総報酬月額相当額",sub:"標準報酬＋賞与÷12",leaves:["標準報酬月額","直近12ヵ月の賞与","÷12で月換算","賞与の不公平をなくす"]}
+   ],
+   detail:{
+     hdColor:"#2a7f7f",
+     items:[
+       {label:"基準額",val:"50万円（毎年度改定・固定ではない）",note:"令和4年改正で60台前半と統一"},
+       {label:"停止額",val:"（基本月額＋総報酬月額相当額−50万円）÷2",note:"全額停止なし。超過の半分だけ"},
+       {label:"総報酬月額相当額",val:"標準報酬月額＋（直近12ヵ月の賞与÷12）",note:"賞与を月換算して不公平をなくす"}
+     ],
+     hikakke:"× 「全額停止になる」→ ○ 超過の1/2だけ停止\n× 「50万円は固定額」→ ○ 毎年度改定される"
+   }
+  },
+  {id:"zaishoku60",label:"在職老齢（60〜64歳）",sub:"附則第11条",
+   color:"#c84b31",light:"#fee2e2",border:"#e8896b",angle:322,
+   children:[
+     {label:"改正前・改正後",sub:"28万円→50万円",leaves:["改正前：28万円","改正後：50万円","令和4年4月改正","65歳以上と統一"]},
+     {label:"改正の趣旨",sub:"就労促進",leaves:["28万円では就労意欲減退","少し働いただけで減額","50万円に引上げで解消","高齢者雇用推進"]}
+   ],
+   detail:{
+     hdColor:"#c84b31",
+     items:[
+       {label:"改正前",val:"基準額28万円（65歳以上より低く厳しかった）",note:"「少し働くだけで年金が減る」問題があった"},
+       {label:"改正後（令和4年4月〜）",val:"基準額50万円（65歳以上と統一）",note:"60代前半の就労促進を目的とした改正"}
+     ],
+     hikakke:"× 「令和4年改正後も28万円」→ ○ 50万円に改正済み\n× 「60台前半と65歳以上で基準が違う」→ ○ 令和4年改正で統一"
+   }
+  },
+  {id:"tokubetsu",label:"特別支給の老厚",sub:"附則第8条・9条の2",
+   color:"#7c3aed",light:"#ede9fe",border:"#a78bfa",angle:142,
+   children:[
+     {label:"受給要件",sub:"10年・1年・60歳",leaves:["受給資格期間10年以上","厚年1年以上（原則より長い）","60歳以上","特定生年月日の対象者"]},
+     {label:"構成と引上げ",sub:"定額＋報酬比例",leaves:["報酬比例部分","定額部分（段階的消滅）","65歳で原則老厚に統一","ソフトランディング政策"]}
+   ],
+   detail:{
+     hdColor:"#7c3aed",
+     items:[
+       {label:"受給要件",val:"受給資格10年以上・厚年1年以上・60歳以上",note:"厚年の1年以上は原則老厚の1ヵ月以上より長い"},
+       {label:"構成",val:"報酬比例部分＋定額部分（生年月日で段階的引き上げ）",note:"最終的に65歳から報酬比例部分のみの原則老厚に統一"},
+       {label:"対象者",val:"昭和36年4月1日以前生まれの男性（女性は昭和41年4月1日以前）",note:"時限的な経過措置——若い世代は対象外"}
+     ],
+     hikakke:"× 「特別支給の厚年期間は1ヵ月以上」→ ○ 1年以上\n× 「誰でも60歳から受給できる」→ ○ 特定の生年月日のみ"
+   }
+  },
+  {id:"teiji",label:"在職定時改定",sub:"附則第11条の2",
+   color:"#c9930a",light:"#fef9e7",border:"#d4a733",angle:38,
+   children:[
+     {label:"制度の概要",sub:"65歳以上・毎年10月",leaves:["65歳以上の在職被保険者","毎年10月に自動改定","基準日：9月1日","令和4年4月施行"]},
+     {label:"改正前後の違い",sub:"退職時のみ→毎年",leaves:["改正前：退職・70歳到達時のみ","在職中は年金額不変","改正後：毎年自動増加","就労継続の意欲向上"]}
+   ],
+   detail:{
+     hdColor:"#c9930a",
+     items:[
+       {label:"対象",val:"65歳以上の在職被保険者（60歳以上ではない）",note:"65歳が原則支給開始年齢なので65歳以降の在職分を反映"},
+       {label:"改定時期",val:"毎年10月（基準日：9月1日）",note:"9月1日時点の被保険者期間を反映して10月分から新額を適用"},
+       {label:"施行",val:"令和4年4月",note:"繰下げ上限引き上げ・60台前半基準統一と同じ令和4年改正"}
+     ],
+     hikakke:"× 「対象は60歳以上」→ ○ 65歳以上のみ\n× 「毎年4月に改定」→ ○ 毎年10月（基準日9月1日）\n× 「令和2年施行」→ ○ 令和4年4月施行"
+   }
+  }
+];
+
+var spBranchOpen={zaishoku65:false,zaishoku60:false,tokubetsu:false,teiji:false};
+var spLeafOpen={};
+
+function buildSpider(){
+  var root=document.getElementById("sp-root");if(!root)return;root.innerHTML="";
+  var W=760,H=720,CX=380,CY=360,R1=108,R2=222,R3=330,CS=20,LS=7;
+  var svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.setAttribute("viewBox","0 0 "+W+" "+H);svg.setAttribute("xmlns","http://www.w3.org/2000/svg");
+  svg.setAttribute("font-family","'Noto Sans JP',sans-serif");svg.style.display="block";svg.style.width="100%";svg.style.height="auto";
+  function mk(tag,attrs){var el=document.createElementNS("http://www.w3.org/2000/svg",tag);for(var k in attrs)el.setAttribute(k,attrs[k]);return el;}
+  function r(d){return d*Math.PI/180;}
+  function pt(dist,deg){return[CX+Math.cos(r(deg))*dist,CY+Math.sin(r(deg))*dist];}
+  [R1+16,R2+14,R3+16].forEach(function(dist){svg.appendChild(mk("circle",{cx:CX,cy:CY,r:dist,fill:"none",stroke:"#e4dfd6","stroke-width":"1","stroke-dasharray":"4,5"}));});
+  SPIDER_DATA.forEach(function(branch){
+    var ba=branch.angle;var bpt=pt(R1,ba);var bx=bpt[0],by=bpt[1];
+    svg.appendChild(mk("line",{x1:CX,y1:CY,x2:bx,y2:by,stroke:branch.color,"stroke-width":"4.5","stroke-linecap":"round"}));
+    var og=document.createElementNS("http://www.w3.org/2000/svg","g");og.id="sp-og-"+branch.id;og.style.display=spBranchOpen[branch.id]?"":"none";
+    branch.children.forEach(function(child,ci){
+      var ca=ba+(ci-1)*CS;var cpt=pt(R2,ca);var cx2=cpt[0],cy2=cpt[1];
+      var key=branch.id+"_"+ci;if(spLeafOpen[key]===undefined)spLeafOpen[key]=true;
+      og.appendChild(mk("line",{x1:bx,y1:by,x2:cx2,y2:cy2,stroke:branch.color,"stroke-width":"2","stroke-linecap":"round"}));
+      var lg=document.createElementNS("http://www.w3.org/2000/svg","g");lg.id="sp-lg-"+key;lg.style.display=spLeafOpen[key]?"":"none";
+      var lc=child.leaves.length;
+      child.leaves.forEach(function(leaf,li){
+        var la=ca+(li-(lc-1)/2)*LS;var lpt=pt(R3,la);var lx=lpt[0],ly=lpt[1];
+        lg.appendChild(mk("line",{x1:cx2,y1:cy2,x2:lx,y2:ly,stroke:branch.border,"stroke-width":"1.2","stroke-dasharray":"3,3","stroke-linecap":"round"}));
+        var lw=120;var gr=document.createElementNS("http://www.w3.org/2000/svg","g");
+        gr.appendChild(mk("rect",{x:lx-lw/2,y:ly-13,width:lw,height:26,rx:13,fill:"#faf8f3",stroke:branch.border,"stroke-width":"1.2"}));
+        var fs=leaf.length>10?"9.5":leaf.length>7?"10":"11";
+        var lt=mk("text",{x:lx,y:ly+5,"text-anchor":"middle","font-size":fs,"font-weight":"600",fill:branch.color});lt.textContent=leaf;gr.appendChild(lt);lg.appendChild(gr);
+      });
+      og.appendChild(lg);
+      var gk=document.createElementNS("http://www.w3.org/2000/svg","g");gk.style.cursor="pointer";
+      (function(k){gk.addEventListener("click",function(e){e.stopPropagation();spLeafOpen[k]=!spLeafOpen[k];var el=document.getElementById("sp-lg-"+k);if(el)el.style.display=spLeafOpen[k]?"":"none";});})(key);
+      gk.appendChild(mk("ellipse",{cx:cx2,cy:cy2,rx:"46",ry:"24",fill:branch.color}));
+      var kt=mk("text",{x:cx2,y:cy2-3,"text-anchor":"middle","font-size":"11","font-weight":"700",fill:"white"});kt.textContent=child.label;gk.appendChild(kt);
+      var ks=mk("text",{x:cx2,y:cy2+11,"text-anchor":"middle","font-size":"8.5",fill:"rgba(255,255,255,.7)"});ks.textContent=child.sub;gk.appendChild(ks);
+      og.appendChild(gk);
+    });
+    svg.appendChild(og);
+    var gn=document.createElementNS("http://www.w3.org/2000/svg","g");gn.style.cursor="pointer";
+    (function(b){gn.addEventListener("click",function(){spBranchOpen[b.id]=!spBranchOpen[b.id];var el=document.getElementById("sp-og-"+b.id);if(el)el.style.display=spBranchOpen[b.id]?"":"none";if(spBranchOpen[b.id]){openSpiderDetail(b,null);}else{closeSpiderDetail();}});})(branch);
+    gn.appendChild(mk("ellipse",{cx:bx,cy:by,rx:"56",ry:"32",fill:branch.color}));
+    var tl=mk("text",{x:bx,y:by-5,"text-anchor":"middle","font-size":"13","font-weight":"700",fill:"white"});tl.textContent=branch.label;gn.appendChild(tl);
+    var ts=mk("text",{x:bx,y:by+11,"text-anchor":"middle","font-size":"9",fill:"rgba(255,255,255,.65)"});ts.textContent=branch.sub;gn.appendChild(ts);
+    svg.appendChild(gn);
+  });
+  var gc=document.createElementNS("http://www.w3.org/2000/svg","g");
+  gc.appendChild(mk("ellipse",{cx:CX,cy:CY,rx:"80",ry:"46",fill:"#22253a"}));
+  var ctexts=[["厚生年金法",-6,"13","#f0eee8"],["在職老齢・特別支給",11,"8.5","rgba(240,238,232,.55)"]];
+  ctexts.forEach(function(t){var ct=mk("text",{x:CX,y:CY+t[1],"text-anchor":"middle","font-size":t[2],"font-weight":"700",fill:t[3]});ct.textContent=t[0];gc.appendChild(ct);});
+  svg.appendChild(gc);root.appendChild(svg);
+}
+
+function openSpiderDetail(branch,child){
+  var panel=document.getElementById("spider-detail");
+  var hd=document.getElementById("spider-detail-hd");
+  var title=document.getElementById("spider-detail-title");
+  var body=document.getElementById("spider-detail-body");
+  hd.style.background=branch.detail.hdColor;title.textContent=branch.label+"  "+branch.sub;
+  var html="";
+  branch.detail.items.forEach(function(item){
+    html+="<div style='margin-bottom:14px;'><div style='font-size:11px;font-weight:700;color:#6b7280;margin-bottom:3px;'>"+item.label+"</div>";
+    html+="<div style='font-size:14px;font-weight:700;color:#1a1a2e;background:"+branch.light+";border:1.5px solid "+branch.border+";border-radius:8px;padding:8px 12px;'>"+item.val+"</div>";
+    if(item.note)html+="<div style='font-size:11px;color:#6b7280;margin-top:4px;padding-left:4px;'>💡 "+item.note+"</div>";
+    html+="</div>";
+  });
+  if(branch.detail.hikakke){
+    html+="<div style='background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 12px;font-size:11px;color:#A32D2D;line-height:2.1;'>";
+    html+="<div style='font-weight:700;margin-bottom:4px;'>🚨 よくある引っかけ</div>";
+    html+=branch.detail.hikakke.split("\n").join("<br>");html+="</div>";
+  }
+  body.innerHTML=html;panel.style.display="block";
+}
+
+function closeSpiderDetail(){document.getElementById("spider-detail").style.display="none";}
+
+document.addEventListener("DOMContentLoaded",function(){fcInit();buildSpider();});
+</script>
+</body>
+</html>

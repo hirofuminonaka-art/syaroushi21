@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day12｜厚生年金法 過去問演習 ○×60問＋5択60問 ― 社労士ドリル</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1a2e;--paper:#faf8f3;--warm:#f5f0e8;
+  --red:#c84b31;--red-soft:#e8896b;--red-light:#fee2e2;
+  --teal:#2a7f7f;--teal-light:#e8f4f4;
+  --gold:#c9930a;--gold-light:#fef9e7;
+  --green:#2d6a4f;--green-light:#e8f5ee;
+  --gray:#6b7280;--border:#ddd8cc;
+  --purple:#7c3aed;--purple-light:#ede9fe;
+  --blue:#1d4ed8;--blue-light:#dbeafe;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--ink);padding:10px 24px;display:flex;align-items:center;gap:12px;}
+.back-btn{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;display:flex;align-items:center;gap:6px;transition:color .2s;cursor:pointer;}
+.back-btn:hover{color:white;}
+.topbar-title{color:rgba(255,255,255,.45);font-size:12px;margin-left:auto;}
+
+/* ── TAB NAV ── */
+.tab-nav{background:var(--ink);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:100;}
+.tab-nav-in{max-width:820px;margin:0 auto;display:flex;}
+.tab-btn{flex:1;padding:13px 8px;font-size:13px;font-weight:700;color:rgba(255,255,255,.4);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;}
+.tab-btn:hover{color:rgba(255,255,255,.75);}
+.tab-btn.active{color:white;border-color:var(--red-soft);}
+.tab-btn.active.t2{border-color:#60a5fa;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+@media(max-width:600px){.tab-btn{font-size:11px;padding:11px 4px;}}
+
+/* ── HEADER ── */
+.hd{background:var(--ink);color:var(--paper);padding:40px 40px 32px;position:relative;overflow:hidden;}
+.hd::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px);}
+.hd-in{max-width:820px;margin:0 auto;position:relative;}
+.hd-eye{font-size:11px;letter-spacing:4px;color:var(--red-soft);margin-bottom:10px;font-weight:700;}
+.hd h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3.5vw,2rem);font-weight:900;line-height:1.3;margin-bottom:6px;}
+.hd h1 em{color:var(--red-soft);font-style:normal;}
+.hd-sub{font-size:13px;color:rgba(255,255,255,.5);font-weight:300;}
+
+/* ── DASHBOARD ── */
+.dash{max-width:820px;margin:20px auto 0;padding:0 20px;}
+.dash-inner{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;}
+.dash-top{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:1px solid var(--border);}
+.dash-cell{padding:14px 10px;text-align:center;border-right:1px solid var(--border);}
+.dash-cell:last-child{border-right:none;}
+.dash-num{font-family:'DM Serif Display',serif;font-size:28px;line-height:1;}
+.dash-num.red{color:var(--red);}
+.dash-num.green{color:var(--green);}
+.dash-num.gold{color:var(--gold);}
+.dash-num.blue{color:var(--blue);}
+.dash-lbl{font-size:10px;color:var(--gray);font-weight:700;letter-spacing:1px;margin-top:2px;}
+.dash-streak{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;background:var(--warm);font-size:13px;font-weight:700;}
+.streak-badge{background:var(--red);color:white;border-radius:20px;padding:3px 12px;font-size:12px;}
+
+/* ── PROGRESS BAR ── */
+.prog-wrap{max-width:820px;margin:10px auto 0;padding:0 20px 4px;}
+.prog-track{background:var(--border);border-radius:20px;height:8px;overflow:hidden;margin-bottom:4px;}
+.prog-bar{background:linear-gradient(90deg,var(--teal),var(--green));height:8px;border-radius:20px;width:0%;transition:width .6s cubic-bezier(.4,0,.2,1);}
+.prog-lbl{font-size:11px;color:var(--gray);text-align:right;}
+
+/* ── FILTER ── */
+.filter-wrap{max-width:820px;margin:16px auto 0;padding:0 20px;}
+.filter-label{font-size:11px;font-weight:700;color:var(--gray);letter-spacing:1px;margin-bottom:8px;}
+.filter-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.fc-chip{border:2px solid var(--border);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;cursor:pointer;transition:all .15s;background:white;color:var(--ink);}
+.fc-chip:hover{border-color:var(--ink);}
+.fc-chip.active{background:var(--ink);color:white;border-color:var(--ink);}
+.fc-chip.s1.active{background:#7c3aed;border-color:#7c3aed;}
+.fc-chip.s2.active{background:#c84b31;border-color:#c84b31;}
+.fc-chip.s3.active{background:#2a7f7f;border-color:#2a7f7f;}
+.fc-chip.s4.active{background:#c9930a;border-color:#c9930a;}
+.fc-chip.s5.active{background:#2d6a4f;border-color:#2d6a4f;}
+.fc-chip.s6.active{background:#6d28d9;border-color:#6d28d9;}
+.fc-chip.s7.active{background:#dc2626;border-color:#dc2626;}
+.fc-chip.s8.active{background:#0891b2;border-color:#0891b2;}
+.fc-chip.s9.active{background:#1d4ed8;border-color:#1d4ed8;}
+.fc-chip.s10.active{background:#d97706;border-color:#d97706;}
+.fc-chip.s11.active{background:#374151;border-color:#374151;}
+.fc-chip.weak.active{background:#be185d;border-color:#be185d;}
+
+/* ── OX CARD AREA ── */
+.ox-wrap{max-width:780px;margin:20px auto 0;padding:0 20px 80px;}
+.ox-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;font-size:12px;color:var(--gray);}
+.ox-counter{font-family:'DM Serif Display',serif;font-size:24px;color:var(--red);line-height:1;}
+.ox-counter span{font-size:12px;color:var(--gray);font-family:'Noto Sans JP',sans-serif;font-weight:400;}
+.ox-section-tag{font-size:10px;font-weight:700;background:var(--purple-light);color:var(--purple);border-radius:4px;padding:2px 8px;}
+
+/* カード */
+.ox-card{background:white;border:2px solid var(--ink);border-radius:16px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.08);margin-bottom:4px;}
+.ox-card-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:9px 14px;display:flex;align-items:center;gap:8px;}
+.ox-card-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;}
+.ox-card-cat{font-size:10px;color:var(--gray);}
+.ox-card-body{padding:22px 22px 16px;}
+.ox-q{font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;line-height:2.0;color:var(--ink);margin-bottom:18px;}
+.ox-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+.ox-hint{font-size:11px;color:var(--gray);margin-bottom:12px;}
+.ox-btns{display:flex;gap:10px;margin-bottom:6px;}
+.ox-btn{flex:1;padding:12px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-size:22px;font-weight:900;cursor:pointer;transition:all .15s;font-family:inherit;}
+.ox-btn.o:hover{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.ox-btn.x:hover{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.ox-btn:disabled{opacity:.38;cursor:default;}
+.ox-btn.chosen-o{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.ox-btn.chosen-x{border-color:var(--red);background:var(--red-light);color:var(--red);}
+
+/* 解説パネル */
+.ox-ans{display:none;border-radius:10px;padding:14px 16px;font-size:13px;margin-top:10px;line-height:1.9;}
+.ox-ans.show{display:block;}
+.ox-ans.ok{background:var(--green-light);border:1px solid #86efac;}
+.ox-ans.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.ox-verdict{font-size:14px;font-weight:900;margin-bottom:8px;}
+.ox-verdict.ok{color:var(--green);}
+.ox-verdict.ng{color:var(--red);}
+.ox-reason-box{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:10px;font-size:13px;line-height:1.8;}
+.ox-reason-box mark{background:#fde68a;padding:1px 3px;border-radius:2px;font-weight:700;color:var(--ink);}
+.ox-law{display:inline-block;font-size:10px;color:var(--teal);font-family:'DM Serif Display',serif;background:var(--teal-light);border:1px solid var(--teal);padding:2px 8px;border-radius:4px;margin-top:4px;}
+.ox-next-btn{display:block;width:100%;margin-top:12px;padding:11px;background:var(--ink);color:white;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.ox-next-btn:hover{opacity:.82;}
+
+/* 結果 */
+.ox-result{display:none;text-align:center;padding:28px 20px;background:white;border:2px solid var(--ink);border-radius:16px;margin:0 0 20px;}
+.ox-result h3{font-family:'Noto Serif JP',serif;font-size:1.3rem;font-weight:900;margin-bottom:8px;}
+.ox-result-score{font-family:'DM Serif Display',serif;font-size:48px;color:var(--red);line-height:1;margin:8px 0 4px;}
+.ox-result-sub{font-size:13px;color:var(--gray);margin-bottom:20px;}
+.btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.ox-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:11px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.ox-restart-btn:hover{opacity:.82;}
+.ox-weak-btn{background:var(--red);color:white;border:none;border-radius:10px;padding:11px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.ox-weak-btn:hover{opacity:.82;}
+
+/* 苦手なし */
+.no-weak{text-align:center;padding:40px 20px;background:white;border:2px solid var(--border);border-radius:16px;}
+
+/* 習熟度 */
+.mastery-wrap{max-width:820px;margin:16px auto 0;padding:0 20px 40px;}
+.mastery-title{font-size:12px;font-weight:700;color:var(--gray);letter-spacing:1px;margin-bottom:10px;}
+.mastery-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:12px;}
+.mastery-label{width:160px;flex-shrink:0;font-size:11px;color:var(--ink);}
+.mastery-track{flex:1;background:var(--border);border-radius:10px;height:8px;overflow:hidden;}
+.mastery-bar{height:8px;border-radius:10px;background:var(--teal);transition:width .6s ease;}
+.mastery-pct{width:32px;text-align:right;font-size:11px;font-weight:700;color:var(--teal);}
+
+/* ── 5択パネル ── */
+.mc-wrap{max-width:780px;margin:0 auto;padding:20px 20px 80px;}
+.mc-dash{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;margin-bottom:16px;}
+.mc-dash-top{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--border);}
+.mc-dash-cell{padding:12px 14px;text-align:center;border-right:1px solid var(--border);}
+.mc-dash-cell:last-child{border-right:none;}
+.mc-dash-num{font-family:'DM Serif Display',serif;font-size:28px;line-height:1;}
+.mc-dash-lbl{font-size:10px;color:var(--gray);font-weight:700;letter-spacing:1px;margin-top:2px;}
+.mc-prog-row{display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--warm);}
+.mc-prog-track{flex:1;background:var(--border);border-radius:10px;height:6px;overflow:hidden;}
+.mc-prog-bar{height:6px;background:linear-gradient(90deg,var(--blue),#60a5fa);border-radius:10px;width:0%;transition:width .5s;}
+.mc-prog-lbl{font-size:11px;color:var(--gray);white-space:nowrap;}
+
+.mc-card{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;margin-bottom:24px;}
+.mc-card-hd{display:flex;align-items:center;gap:12px;padding:11px 18px;background:var(--warm);border-bottom:1px solid var(--border);}
+.mc-card-num{font-family:'DM Serif Display',serif;font-size:28px;color:var(--blue);line-height:1;}
+.mc-card-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;background:var(--blue);color:white;border-radius:4px;padding:2px 8px;margin-bottom:3px;}
+.mc-card-cat{font-size:11px;color:var(--gray);}
+.mc-card-body{padding:18px 20px;}
+.mc-q{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;line-height:2.0;margin-bottom:16px;color:var(--ink);}
+.mc-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+.mc-options{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.mc-opt{border:2px solid var(--border);border-radius:10px;padding:11px 16px;cursor:pointer;font-size:13px;font-weight:500;transition:all .2s;background:white;text-align:left;font-family:inherit;line-height:1.7;}
+.mc-opt:hover:not(:disabled){border-color:var(--blue);background:var(--blue-light);}
+.mc-opt:disabled{cursor:default;}
+.mc-opt.correct{border-color:var(--green);background:var(--green-light);color:var(--green);font-weight:700;}
+.mc-opt.wrong{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.mc-opt.unchosen{opacity:.5;}
+.mc-check-btn{background:var(--blue);color:white;border:none;border-radius:8px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit;}
+.mc-check-btn:hover{opacity:.82;}
+.mc-check-btn:disabled{opacity:.38;cursor:default;}
+.mc-ans{display:none;border-radius:10px;padding:16px 18px;font-size:13px;margin-top:8px;}
+.mc-ans.show{display:block;}
+.mc-ans.ok{background:var(--green-light);border:1px solid #86efac;}
+.mc-ans.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.mc-ans-hd{font-weight:700;font-size:14px;margin-bottom:10px;}
+.mc-why{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.8;}
+.mc-why mark{background:#fde68a;padding:1px 3px;border-radius:2px;font-weight:700;color:var(--ink);}
+/* 選択肢別解説テーブル */
+.mc-opts-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px;}
+.mc-opts-table tr{border-bottom:1px solid var(--border);}
+.mc-opts-table tr:last-child{border-bottom:none;}
+.mc-opts-table td{padding:7px 8px;vertical-align:top;line-height:1.8;}
+.mc-opts-table td:first-child{white-space:nowrap;font-weight:700;font-family:'DM Serif Display',serif;font-size:13px;width:32px;text-align:center;}
+.mc-opts-table mark{background:#fde68a;padding:1px 3px;border-radius:2px;font-weight:700;color:var(--ink);}
+.mc-opt-ok{background:var(--green-light);}
+.mc-opt-ok td:first-child{color:var(--green);}
+.mc-opt-ng{background:#fff8f8;}
+.mc-opt-ng td:first-child{color:var(--red);}
+.mc-point-box{background:var(--purple-light);border:1.5px solid #c4b5fd;border-radius:8px;padding:10px 14px;font-size:12px;line-height:1.9;margin-top:10px;}
+.mc-point-box mark{background:#ddd6fe;padding:1px 3px;border-radius:2px;font-weight:700;color:#4c1d95;}
+/* 試験のツボ */
+.mc-tubo-box{background:#0f172a;color:#fbbf24;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:6px 14px 4px;margin-top:12px;border-radius:8px 8px 0 0;}
+.mc-tubo-body{background:#1e293b;color:#e2e8f0;font-size:12px;line-height:1.9;padding:10px 14px 12px;border-radius:0 0 8px 8px;margin-bottom:2px;}
+.mc-tubo-body strong{color:#fbbf24;font-weight:700;}
+.mc-tubo-body mark{background:#854d0e;color:#fef9c3;padding:1px 3px;border-radius:2px;font-weight:700;}
+.mc-law{display:inline-block;margin-top:4px;font-size:10px;color:var(--teal);font-family:'DM Serif Display',serif;background:var(--teal-light);border:1px solid var(--teal);padding:2px 8px;border-radius:4px;}
+.mc-result{display:none;text-align:center;padding:28px 20px;background:white;border:2px solid var(--ink);border-radius:16px;margin-bottom:40px;}
+.mc-result h3{font-family:'Noto Serif JP',serif;font-size:1.3rem;font-weight:900;margin-bottom:8px;}
+.mc-result-score{font-family:'DM Serif Display',serif;font-size:48px;color:var(--blue);line-height:1;margin:8px 0 4px;}
+.mc-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:11px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:16px;transition:opacity .2s;}
+.mc-restart-btn:hover{opacity:.82;}
+
+.mode-btn{padding:8px 16px;border-radius:8px;border:2px solid var(--border);background:white;font-size:12px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit;color:var(--ink);}
+.mode-btn:hover{border-color:var(--ink);}
+.mode-btn.active{background:var(--teal);color:white;border-color:var(--teal);}
+
+@media(max-width:600px){
+  .hd{padding:28px 16px 24px;}
+  .dash{padding:0 12px;}
+  .filter-wrap,.mastery-wrap{padding:0 12px;}
+  .ox-wrap,.mc-wrap{padding:0 12px 80px;}
+  .dash-top{grid-template-columns:1fr 1fr;}
+  .dash-num{font-size:24px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="back-btn" onclick="location.href='index.html'">← 目次に戻る</span>
+  <span class="topbar-title">Day12 ／ 過去問演習 ○×60問＋5択20問</span>
+</div>
+
+<nav class="tab-nav">
+  <div class="tab-nav-in">
+    <button class="tab-btn active" onclick="switchTab('ox',this)">⭕ ○×問題（60問）</button>
+    <button class="tab-btn t2" onclick="switchTab('mc',this)">📋 5択問題（60問）</button>
+  </div>
+</nav>
+
+<div id="panel-ox" class="tab-panel active">
+
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-eye">LABOR STANDARDS LAW — PAST EXAM PRACTICE</div>
+    <h1>国年法 <em>過去問○×演習</em>　60問</h1>
+    <div class="hd-sub">頻出論点を網羅 ― 全セクション横断・苦手モード搭載　<span style="background:#c84b31;color:white;font-size:10px;padding:2px 8px;border-radius:4px;margin-left:8px;">Day12</span></div>
+  </div>
+</div>
+
+<div class="dash">
+  <div class="dash-inner">
+    <div class="dash-top">
+      <div class="dash-cell"><div class="dash-num red" id="ox-remaining">60</div><div class="dash-lbl">残り</div></div>
+      <div class="dash-cell"><div class="dash-num green" id="ox-ok">0</div><div class="dash-lbl">正解</div></div>
+      <div class="dash-cell"><div class="dash-num red" id="ox-ng">0</div><div class="dash-lbl">不正解</div></div>
+      <div class="dash-cell"><div class="dash-num gold" id="ox-weak">0</div><div class="dash-lbl">苦手</div></div>
+    </div>
+    <div class="dash-streak">
+      <span>進捗</span>
+      <span class="streak-badge" id="ox-pct">0%</span>
+      <span id="ox-mode-lbl" style="font-size:11px;color:var(--gray);margin-left:auto;"></span>
+    </div>
+  </div>
+</div>
+
+<div class="prog-wrap">
+  <div class="prog-track"><div class="prog-bar" id="ox-prog-bar"></div></div>
+  <div class="prog-lbl" id="ox-prog-lbl">0 ／ 60 問 回答済み</div>
+</div>
+
+<div class="filter-wrap">
+  <div class="filter-label">セクションで絞り込む</div>
+  <div class="filter-chips">
+    <div class="fc-chip active" data-sec="all" onclick="oxSetFilter('all',this)">全て (60)</div>
+    <div class="fc-chip s1" data-sec="①目的・被保険者" onclick="oxSetFilter('①目的・被保険者',this)">①目的・被保険者</div>
+    <div class="fc-chip s2" data-sec="②標準報酬・保険料" onclick="oxSetFilter('②標準報酬・保険料',this)">②標準報酬・保険料</div>
+    <div class="fc-chip s3" data-sec="③老齢厚生年金" onclick="oxSetFilter('③老齢厚生年金',this)">③老齢厚生年金</div>
+    <div class="fc-chip s4" data-sec="④在職老齢・特別支給" onclick="oxSetFilter('④在職老齢・特別支給',this)">④在職老齢</div>
+    <div class="fc-chip s5" data-sec="⑤障害厚生年金" onclick="oxSetFilter('⑤障害厚生年金',this)">⑤障害厚生年金</div>
+    <div class="fc-chip s6" data-sec="⑥遺族厚生年金" onclick="oxSetFilter('⑥遺族厚生年金',this)">⑥遺族厚生年金</div>
+    <div class="fc-chip s7" data-sec="⑦脱退一時金等" onclick="oxSetFilter('⑦脱退一時金等',this)">⑦脱退・時効</div>
+    <div class="fc-chip s8" data-sec="⑧離婚分割・管掌" onclick="oxSetFilter('⑧離婚分割・管掌',this)">⑧離婚分割</div>
+    <div class="fc-chip s9" data-sec="⑨3科目横断" onclick="oxSetFilter('⑨3科目横断',this)">⑨3科目横断</div>
+    <div class="fc-chip s10" data-sec="⑩総仕上げ" onclick="oxSetFilter('⑩総仕上げ',this)">⑩総仕上げ</div>
+    <div class="fc-chip weak" data-sec="weak" onclick="oxSetFilter('weak',this)">🔥 苦手のみ</div>
+  </div>
+  </div>
+  <div style="max-width:820px;margin:10px auto 0;padding:0 20px;display:flex;gap:8px;flex-wrap:wrap;">
+  <button class="mode-btn" id="ox-shuffle-btn" onclick="oxToggleShuffle(this)">🔀 シャッフル：OFF</button>
+</div>
+
+<div class="ox-wrap">
+  <div class="ox-meta">
+    <div><span class="ox-counter" id="ox-counter-num">1</span><span> / <span id="ox-counter-total">60</span></span></div>
+    <div class="ox-section-tag" id="ox-sec-tag"></div>
+  </div>
+
+  <div id="ox-card-area"></div>
+
+  <div class="no-weak" id="ox-no-weak" style="display:none;">
+    <span style="font-size:48px;display:block;margin-bottom:12px;">🎉</span>
+    <div style="font-family:'Noto Serif JP',serif;font-size:1.2rem;font-weight:900;margin-bottom:8px;">苦手問題がありません！</div>
+    <div style="font-size:13px;color:var(--gray);">全問に挑戦してみましょう。</div>
+    <button class="ox-restart-btn" style="margin-top:16px;" onclick="oxSetFilter('all',document.querySelector('[data-sec=all]'))">全問に戻る</button>
+  </div>
+
+  <div class="ox-result" id="ox-result">
+    <span style="font-size:36px;display:block;margin-bottom:8px;" id="ox-emoji">🏆</span>
+    <h3>演習完了！</h3>
+    <div class="ox-result-score" id="ox-result-score">0 / 60</div>
+    <div class="ox-result-sub" id="ox-result-sub"></div>
+    <div class="btn-row">
+      <button class="ox-restart-btn" onclick="oxRestart()">🔁 もう一周</button>
+      <button class="ox-weak-btn" id="ox-btn-retry-weak" onclick="oxRetryWeak()" style="display:none;">🔥 苦手だけ再挑戦</button>
+    </div>
+  </div>
+</div>
+
+<div class="mastery-wrap" id="ox-mastery-wrap" style="display:none;">
+  <div class="mastery-title">📊 セクション別 正解率</div>
+  <div id="ox-mastery-bars"></div>
+</div>
+
+</div><!-- /panel-ox -->
+
+<div id="panel-mc" class="tab-panel">
+<div class="mc-wrap">
+  <div class="hd" style="margin:-20px -20px 20px;border-radius:0;">
+    <div class="hd-in">
+      <div class="hd-eye">NATIONAL PENSION LAW — 5-CHOICE EXAM</div>
+      <h1>国年法 <em>5択過去問</em>　60問</h1>
+      <div class="hd-sub">本試験形式 ― 5肢から1つを選択・全論点網羅版</div>
+    </div>
+  </div>
+
+  <div class="mc-dash">
+    <div class="mc-dash-top">
+      <div class="mc-dash-cell"><div class="mc-dash-num" id="mc-answered" style="color:var(--blue);">0</div><div class="mc-dash-lbl">回答済み</div></div>
+      <div class="mc-dash-cell"><div class="mc-dash-num" id="mc-ok" style="color:var(--green);">0</div><div class="mc-dash-lbl">正解</div></div>
+      <div class="mc-dash-cell"><div class="mc-dash-num" id="mc-ng" style="color:var(--red);">0</div><div class="mc-dash-lbl">不正解</div></div>
+    </div>
+    <div class="mc-prog-row">
+      <div class="mc-prog-track"><div class="mc-prog-bar" id="mc-prog-bar"></div></div>
+      <div class="mc-prog-lbl" id="mc-prog-lbl">0 ／ 60 問</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:8px;margin-bottom:16px;">
+    <button class="mode-btn" id="mc-shuffle-btn" onclick="mcToggleShuffle(this)">🔀 シャッフル：OFF</button>
+  </div>
+
+  <div id="mc-cards"></div>
+
+  <div class="mc-result" id="mc-result">
+    <span style="font-size:36px;display:block;margin-bottom:8px;" id="mc-emoji">🏆</span>
+    <h3>5択演習 完了！</h3>
+    <div class="mc-result-score" id="mc-result-score">0 / 20</div>
+    <div style="font-size:13px;color:var(--gray);margin-bottom:4px;" id="mc-result-sub"></div>
+    <button class="mc-restart-btn" onclick="mcRestart()">🔁 もう一周する</button>
+  </div>
+</div>
+</div><!-- /panel-mc -->
+
+<script>
+// =====================================================
+// タブ切替
+// =====================================================
+function switchTab(name, btn) {
+  var panels = document.querySelectorAll('.tab-panel');
+  var btns = document.querySelectorAll('.tab-btn');
+  for (var i = 0; i < panels.length; i++) { panels[i].classList.remove('active'); }
+  for (var i = 0; i < btns.length; i++) { btns[i].classList.remove('active'); }
+  document.getElementById('panel-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+var OX_DATA = [
+  {id:'ox01',sec:'①総則・均等待遇・労働契約',correct:false,q:'法第3条（均等待遇）の禁止事由には性別・年齢・学歴が含まれる。',law:'× 誤り',reason:'法第3条の禁止事由は<mark>国籍・信条・社会的身分</mark>の3つのみ。性別は均等法・年齢は高齢法の担当。'},
+  {id:'ox02',sec:'①総則・均等待遇・労働契約',correct:true,q:'法第5条（強制労働の禁止）の罰則は1年以上10年以下の懲役で労基法最重である。',law:'○ 正しい',reason:'法第5条：<mark>1年以上10年以下の懲役</mark>（「以上」という下限がある最重の罰則）。'},
+  {id:'ox03',sec:'①総則・均等待遇・労働契約',correct:true,q:'解雇予告は少なくとも30日前に行い、予告しない場合は30日分以上の平均賃金を支払う。',law:'○ 正しい',reason:'法第20条：<mark>30日前の予告</mark>または<mark>30日分以上の平均賃金</mark>（解雇予告手当）。'},
+  {id:'ox04',sec:'①総則・均等待遇・労働契約',correct:false,q:'業務上負傷した労働者の療養休業期間およびその後60日間は解雇できない。',law:'× 誤り',reason:'解雇制限は療養休業期間＋その後<mark>30日間</mark>（60日は産後休業との混同）。'},
+  {id:'ox05',sec:'①総則・均等待遇・労働契約',correct:true,q:'労働条件の必須明示事項（書面交付）には賃金・労働時間・休日・就業場所・従事すべき業務が含まれる。',law:'○ 正しい',reason:'法第15条：必須明示事項は<mark>書面交付が義務</mark>（賃金・労働時間・休日・就業場所・業務）。'},
+  {id:'ox06',sec:'①総則・均等待遇・労働契約',correct:false,q:'有期労働契約の期間の上限は原則として1年である。',law:'× 誤り',reason:'有期契約の上限は原則<mark>3年</mark>（平成15年改正で1年→3年に延長）。'},
+  {id:'ox07',sec:'①総則・均等待遇・労働契約',correct:false,q:'退職した労働者の証明書は請求から14日以内に交付しなければならない。',law:'× 誤り',reason:'退職証明書の交付期限：請求から<mark>7日以内</mark>（14日ではない）。'},
+  {id:'ox08',sec:'①総則・均等待遇・労働契約',correct:true,q:'試用期間中の労働者でも採用後14日を超えた場合は解雇予告が必要である。',law:'○ 正しい',reason:'試用期間の例外：採用後<mark>14日以内</mark>のみ予告不要。14日を超えると予告必要。'},
+  {id:'ox09',sec:'②賃金・割増賃金・平均賃金',correct:true,q:'賃金は通貨で直接本人に全額を毎月1回以上一定期日に支払わなければならない（賃金支払5原則）。',law:'○ 正しい',reason:'法第24条の賃金支払5原則：<mark>通貨・直接・全額・毎月1回以上・一定期日</mark>。'},
+  {id:'ox10',sec:'②賃金・割増賃金・平均賃金',correct:false,q:'時間外労働に対する割増賃金率は2割（20%）以上である。',law:'× 誤り',reason:'時間外割増率は<mark>2割5分（25%）以上</mark>（2割では不足）。'},
+  {id:'ox11',sec:'②賃金・割増賃金・平均賃金',correct:true,q:'月60時間を超える時間外労働の割増賃金率は5割（50%）以上である。',law:'○ 正しい',reason:'月60時間超：<mark>50%以上</mark>（令和5年4月〜中小企業も適用）。'},
+  {id:'ox12',sec:'②賃金・割増賃金・平均賃金',correct:true,q:'法定休日に労働させた場合の割増賃金率は3割5分（35%）以上である。',law:'○ 正しい',reason:'法定休日割増率：<mark>35%以上</mark>（時間外の25%より高い）。'},
+  {id:'ox13',sec:'②賃金・割増賃金・平均賃金',correct:false,q:'平均賃金の計算式の分母は直前3ヶ月の労働日数である。',law:'× 誤り',reason:'平均賃金の分母は<mark>総日数（暦日数）</mark>（労働日数ではない）。'},
+  {id:'ox14',sec:'②賃金・割増賃金・平均賃金',correct:true,q:'使用者の責に帰すべき事由による休業の場合、平均賃金の60%以上の休業手当を支払わなければならない。',law:'○ 正しい',reason:'法第26条：使用者責任による休業→<mark>平均賃金の60%以上</mark>の休業手当。'},
+  {id:'ox15',sec:'②賃金・割増賃金・平均賃金',correct:false,q:'天災により事業場が損壊して休業した場合、使用者は休業手当を支払わなければならない。',law:'× 誤り',reason:'天災・不可抗力は<mark>使用者の責に帰せられない</mark>ため休業手当の支払義務なし。'},
+  {id:'ox16',sec:'②賃金・割増賃金・平均賃金',correct:true,q:'非常時払いの対象事由には出産・疾病・災害・婚姻・死亡・やむを得ない事由による帰郷が含まれる。',law:'○ 正しい',reason:'法第25条（非常時払い）：<mark>6事由</mark>（出産・疾病・災害・婚姻・死亡・帰郷）。'},
+  {id:'ox17',sec:'③労働時間・休憩・休日・36協定',correct:true,q:'法定労働時間は1週40時間・1日8時間（休憩時間を除く）である。',law:'○ 正しい',reason:'法第32条：法定労働時間は<mark>週40時間・1日8時間</mark>（休憩を除く）。'},
+  {id:'ox18',sec:'③労働時間・休憩・休日・36協定',correct:false,q:'労働時間が6時間ちょうどの場合、45分の休憩を与えなければならない。',law:'× 誤り',reason:'休憩の義務は<mark>6時間を超える</mark>場合（ちょうどでは不要）。'},
+  {id:'ox19',sec:'③労働時間・休憩・休日・36協定',correct:true,q:'法定休日は毎週少なくとも1回、または4週4日以上与えなければならない。',law:'○ 正しい',reason:'法第35条：<mark>毎週1回以上</mark>または<mark>4週4日以上</mark>の法定休日。'},
+  {id:'ox20',sec:'③労働時間・休憩・休日・36協定',correct:true,q:'36協定の原則上限は月45時間・年360時間であり特別条項でも月100時間未満・年720時間が絶対上限である。',law:'○ 正しい',reason:'36協定の上限：原則<mark>月45時間・年360時間</mark>・絶対上限<mark>月100時間未満・年720時間</mark>。'},
+  {id:'ox21',sec:'③労働時間・休憩・休日・36協定',correct:false,q:'特別条項付き36協定を締結すれば月110時間の時間外労働をさせることができる。',law:'× 誤り',reason:'特別条項でも<mark>月100時間未満</mark>が絶対上限（110時間は超過で違法）。'},
+  {id:'ox22',sec:'③労働時間・休憩・休日・36協定',correct:true,q:'労働時間が8時間を超える場合、少なくとも1時間の休憩を与えなければならない。',law:'○ 正しい',reason:'法第34条：<mark>8時間超→1時間以上</mark>の休憩（8時間ちょうどは45分で足りる）。'},
+  {id:'ox23',sec:'③労働時間・休憩・休日・36協定',correct:true,q:'1ヶ月単位の変形労働時間制は就業規則または労使協定で採用でき期間平均週40時間以内であれば採用できる。',law:'○ 正しい',reason:'法第32条の2：<mark>就業規則または労使協定</mark>・<mark>期間平均週40時間以内</mark>が条件。'},
+  {id:'ox24',sec:'③労働時間・休憩・休日・36協定',correct:false,q:'満18歳未満の年少者にも1ヶ月単位の変形労働時間制を適用することができる。',law:'× 誤り',reason:'<mark>満18歳未満</mark>の年少者には変形制・フレックスを<mark>適用できない</mark>（法第60条）。'},
+  {id:'ox25',sec:'④年次有給休暇',correct:true,q:'年次有給休暇は継続勤務6ヶ月以上かつ全労働日の8割以上出勤した労働者に付与される。',law:'○ 正しい',reason:'法第39条：<mark>6ヶ月継続勤務＋8割以上出勤</mark>→初回<mark>10日</mark>付与。'},
+  {id:'ox26',sec:'④年次有給休暇',correct:false,q:'年次有給休暇の出勤要件は全労働日の7割以上である。',law:'× 誤り',reason:'出勤要件は<mark>8割以上</mark>（7割では不足）。定番の引っかけ。'},
+  {id:'ox27',sec:'④年次有給休暇',correct:true,q:'継続勤務6年6ヶ月以上で年次有給休暇の付与日数は最大20日となる。',law:'○ 正しい',reason:'継続勤務<mark>6年6ヶ月以上</mark>→<mark>20日</mark>（最大付与日数）。'},
+  {id:'ox28',sec:'④年次有給休暇',correct:true,q:'年次有給休暇の時季指定権は労働者にあり使用者は事業の正常な運営を妨げる場合のみ時季変更できる。',law:'○ 正しい',reason:'<mark>時季指定権→労働者</mark>・<mark>時季変更権→使用者</mark>（事業正常運営妨害時のみ）。'},
+  {id:'ox29',sec:'④年次有給休暇',correct:true,q:'年休が10日以上付与された労働者に対し使用者は年5日について時季を指定して取得させる義務がある（2019年4月〜）。',law:'○ 正しい',reason:'法第39条第7項：年休<mark>10日以上</mark>付与→使用者が<mark>5日</mark>の時季指定義務。'},
+  {id:'ox30',sec:'④年次有給休暇',correct:false,q:'年5日の時季指定義務は正社員のみに適用される。',law:'× 誤り',reason:'年5日指定義務は年休が<mark>10日以上</mark>付与される全労働者（パートも含む）に適用。'},
+  {id:'ox31',sec:'④年次有給休暇',correct:true,q:'労使協定を締結すれば1時間を単位として年次有給休暇を与えることができる（年5日分が上限）。',law:'○ 正しい',reason:'法第39条第4項：<mark>労使協定</mark>で<mark>1時間単位</mark>・年間<mark>5日分</mark>が上限。'},
+  {id:'ox32',sec:'④年次有給休暇',correct:true,q:'年次有給休暇の請求権の消滅時効は2年であり付与された翌年度末まで繰越可能である。',law:'○ 正しい',reason:'年休の時効（法第115条）：<mark>2年</mark>（翌年度末まで繰越可）。'},
+  {id:'ox33',sec:'⑤就業規則・労使協定・制裁',correct:true,q:'常時10人以上の労働者を使用する事業場は就業規則を作成し所轄労働基準監督署に届け出なければならない。',law:'○ 正しい',reason:'法第89条：<mark>常時10人以上</mark>の事業場は就業規則の作成・届出義務。'},
+  {id:'ox34',sec:'⑤就業規則・労使協定・制裁',correct:false,q:'就業規則の作成・変更には過半数代表者の同意が必要である。',law:'× 誤り',reason:'<mark>意見聴取</mark>で足りる（同意・承認は不要）。36協定の協定締結と混同しない。'},
+  {id:'ox35',sec:'⑤就業規則・労使協定・制裁',correct:true,q:'就業規則の絶対的必要記載事項は労働時間・賃金・退職（解雇事由を含む）の3カテゴリである。',law:'○ 正しい',reason:'絶対的必要記載：<mark>①労働時間 ②賃金 ③退職（解雇事由含む）</mark>の3カテゴリ。'},
+  {id:'ox36',sec:'⑤就業規則・労使協定・制裁',correct:true,q:'就業規則は法令・労働協約に反してはならず法令＞労働協約＞就業規則＞労働契約の優先順位がある。',law:'○ 正しい',reason:'優先順位：<mark>法令＞労働協約＞就業規則＞労働契約</mark>。'},
+  {id:'ox37',sec:'⑤就業規則・労使協定・制裁',correct:true,q:'減給制裁の1回の額は平均賃金の1日分の半額以下、総額は賃金総額の10分の1以下でなければならない。',law:'○ 正しい',reason:'法第91条：1回<mark>半額以下</mark>・総額<mark>1/10以下</mark>の2つの上限が同時適用。'},
+  {id:'ox38',sec:'⑤就業規則・労使協定・制裁',correct:false,q:'減給制裁の総額の上限は一賃金支払期における賃金総額の5分の1以下である。',law:'× 誤り',reason:'制裁総額の上限は<mark>10分の1以下</mark>（5分の1は誤り）。'},
+  {id:'ox39',sec:'⑤就業規則・労使協定・制裁',correct:true,q:'就業規則が労働協約に反する部分はたとえ労働者の同意があっても無効となる。',law:'○ 正しい',reason:'優先順位：労働協約が就業規則より上位→協約に反する就業規則の条項は<mark>当然無効</mark>。'},
+  {id:'ox40',sec:'⑥女性・年少者・妊産婦の保護',correct:true,q:'使用者は満15歳に達した日以後の最初の3月31日が終了するまで児童を労働者として使用してはならない。',law:'○ 正しい',reason:'法第56条：<mark>15歳以後の最初の3月31日まで</mark>使用禁止（義務教育終了基準）。'},
+  {id:'ox41',sec:'⑥女性・年少者・妊産婦の保護',correct:false,q:'成人女性も満18歳未満の年少者と同様に深夜業（22〜5時）が原則禁止されている。',law:'× 誤り',reason:'成人女性の深夜業禁止は<mark>平成11年均等法改正で廃止</mark>。年少者（18歳未満）は引き続き禁止。'},
+  {id:'ox42',sec:'⑥女性・年少者・妊産婦の保護',correct:true,q:'産前6週間（多胎妊娠は14週間）は本人が請求した場合に就業させてはならない（産前休業）。',law:'○ 正しい',reason:'産前休業：<mark>6週間</mark>（多胎<mark>14週間</mark>）・<mark>本人請求制</mark>（強制ではない）。'},
+  {id:'ox43',sec:'⑥女性・年少者・妊産婦の保護',correct:true,q:'産後8週間は本人の請求の有無にかかわらず就業させてはならない（強制休業）。',law:'○ 正しい',reason:'産後<mark>8週間</mark>は<mark>強制休業</mark>（産後6週間後に本人請求＋医師許可で就業可）。'},
+  {id:'ox44',sec:'⑥女性・年少者・妊産婦の保護',correct:false,q:'妊産婦は本人の意思にかかわらず時間外・深夜労働を命じることができない。',law:'× 誤り',reason:'妊産婦が<mark>請求した場合</mark>に禁止。請求しなければ（本人が希望すれば）就労可能。'},
+  {id:'ox45',sec:'⑥女性・年少者・妊産婦の保護',correct:false,q:'満18歳未満の年少者にも変形労働時間制を適用することができる。',law:'× 誤り',reason:'満<mark>18歳未満</mark>には変形制・フレックス制の<mark>適用不可</mark>（法第60条）。'},
+  {id:'ox46',sec:'⑥女性・年少者・妊産婦の保護',correct:true,q:'妊娠中の女性が請求した場合、使用者は他の軽易な業務に転換させなければならない。',law:'○ 正しい',reason:'法第65条第3項：<mark>妊娠中の女性が請求</mark>した場合、<mark>軽易業務への転換義務</mark>あり。'},
+  {id:'ox47',sec:'⑦監督機関・罰則・申告・時効',correct:true,q:'労働基準監督機関は厚生労働省・都道府県労働局・労働基準監督署の3層構造である。',law:'○ 正しい',reason:'法第97条：<mark>厚生労働省→都道府県労働局→労働基準監督署</mark>の3層構造。'},
+  {id:'ox48',sec:'⑦監督機関・罰則・申告・時効',correct:true,q:'労働基準監督官は司法警察員として刑事手続きを行う権限を有する。',law:'○ 正しい',reason:'法第102条：労働基準監督官は<mark>司法警察員</mark>の権限を持ち送検が可能。'},
+  {id:'ox49',sec:'⑦監督機関・罰則・申告・時効',correct:true,q:'使用者は労働者が申告したことを理由として解雇その他不利益な取扱いをしてはならない。',law:'○ 正しい',reason:'法第104条：申告を理由とした<mark>不利益取扱いは禁止</mark>（報復禁止）。'},
+  {id:'ox50',sec:'⑦監督機関・罰則・申告・時効',correct:false,q:'退職手当の請求権の消滅時効は賃金と同様に2年（当面3年）である。',law:'× 誤り',reason:'退職手当の時効は<mark>5年</mark>（賃金等の2年・3年より長い）。'},
+  {id:'ox51',sec:'⑦監督機関・罰則・申告・時効',correct:true,q:'使用者が割増賃金・解雇予告手当・休業手当・年休賃金を支払わない場合、裁判所は未払い額と同額の付加金支払いを命じることができる。',law:'○ 正しい',reason:'付加金（法第114条）：<mark>4種類</mark>の不払いに対して未払い額と<mark>同額</mark>の付加金。'},
+  {id:'ox52',sec:'⑦監督機関・罰則・申告・時効',correct:false,q:'付加金制度はすべての賃金不払いに適用される。',law:'× 誤り',reason:'付加金は<mark>解雇予告手当・休業手当・割増賃金・年休賃金</mark>の4種類のみ。'},
+  {id:'ox53',sec:'⑦監督機関・罰則・申告・時効',correct:true,q:'法第5条（強制労働禁止）違反の罰則は1年以上10年以下の懲役で労基法最重の罰則である。',law:'○ 正しい',reason:'法第5条違反：<mark>1年以上10年以下の懲役</mark>（「以上」の下限がある最重罰則）。'},
+  {id:'ox54',sec:'⑧変形制・フレックス・みなし・横断',correct:true,q:'フレックスタイム制の清算期間は令和元年4月改正後最長3ヶ月となり労使協定で総労働時間を定める。',law:'○ 正しい',reason:'フレックス：清算期間<mark>最長3ヶ月</mark>（令和元年4月〜）・<mark>労使協定</mark>で総労働時間を定める。'},
+  {id:'ox55',sec:'⑧変形制・フレックス・みなし・横断',correct:false,q:'1年単位の変形労働時間制において特定の日の上限は12時間である。',law:'× 誤り',reason:'1年単位変形の1日上限は<mark>10時間</mark>（12時間は誤り）。'},
+  {id:'ox56',sec:'⑧変形制・フレックス・みなし・横断',correct:true,q:'企画業務型裁量労働制は労使委員会の決議（5分の4以上）によって採用する制度であり労使協定の締結では採用できない。',law:'○ 正しい',reason:'企画業務型：<mark>労使委員会の決議</mark>（5分の4以上）で採用（専門業務型の労使協定とは異なる）。'},
+  {id:'ox57',sec:'⑧変形制・フレックス・みなし・横断',correct:false,q:'裁量労働制を採用した場合深夜労働・休日労働の割増賃金規定も適用されない。',law:'× 誤り',reason:'裁量労働制でも<mark>深夜・休日の割増賃金は適用</mark>される。'},
+  {id:'ox58',sec:'⑧変形制・フレックス・みなし・横断',correct:true,q:'均等法は性別による直接差別だけでなく間接差別も禁止している。',law:'○ 正しい',reason:'均等法：<mark>直接差別・間接差別の両方</mark>を禁止（間接差別：一見中立だが特定性別に不利）。'},
+  {id:'ox59',sec:'⑧変形制・フレックス・みなし・横断',correct:true,q:'ストレスチェック制度は常時50人以上の事業場に実施義務があり実施者は医師・保健師等である。',law:'○ 正しい',reason:'安衛法第66条の10：常時<mark>50人以上</mark>・実施者は<mark>医師・保健師等</mark>（事業者は不可）。'},
+  {id:'ox60',sec:'⑧変形制・フレックス・みなし・横断',correct:false,q:'管理監督者は深夜労働しても割増賃金を支払う必要がない。',law:'× 誤り',reason:'管理監督者にも<mark>深夜割増賃金は適用</mark>される（時間外・休日割増のみ適用除外）。'}
+];
+
+
+var MC_DATA = [
+  {id:'mc01',sec:'①総則・均等待遇・労働契約',correct:0,q:'法第3条（均等待遇）の禁止事由として正しいものはどれか。',opts:['国籍・信条・社会的身分','性別・年齢・国籍','信条・学歴・年齢','国籍・性別・社会的身分','年齢・信条・宗教'],why:'法第3条の禁止事由：<mark>国籍・信条・社会的身分</mark>の3つ（コクシンシャ）。'},
+  {id:'mc02',sec:'①総則・均等待遇・労働契約',correct:1,q:'解雇予告手当の金額として正しいものはどれか。',opts:['平均賃金の14日分以上','平均賃金の30日分以上','平均賃金の60%以上','平均賃金の2ヶ月分以上','標準報酬月額の3分の2以上'],why:'解雇予告手当：<mark>30日分以上の平均賃金</mark>（予告日数と合算可）。'},
+  {id:'mc03',sec:'①総則・均等待遇・労働契約',correct:2,q:'法第19条（解雇制限）において、業務上の療養休業終了後の解雇禁止期間として正しいものはどれか。',opts:['14日間','20日間','30日間','60日間','90日間'],why:'解雇制限：療養休業終了後<mark>30日間</mark>（60日は産後休業との混同）。'},
+  {id:'mc04',sec:'①総則・均等待遇・労働契約',correct:3,q:'有期労働契約の期間の上限（原則）として正しいものはどれか。',opts:['1年','2年','3年','5年','10年'],why:'有期契約の上限：原則<mark>3年</mark>（平成15年改正で1年→3年）。'},
+  {id:'mc05',sec:'①総則・均等待遇・労働契約',correct:2,q:'退職時の証明書を労働者が請求した場合、使用者が交付しなければならない期限はどれか。',opts:['3日以内','5日以内','7日以内','14日以内','30日以内'],why:'退職証明書の交付期限：<mark>7日以内</mark>（14日は誤り）。'},
+  {id:'mc06',sec:'①総則・均等待遇・労働契約',correct:1,q:'試用期間中に解雇予告が不要となる期間として正しいものはどれか。',opts:['採用後7日以内','採用後14日以内','採用後30日以内','採用後60日以内','試用期間中は常に不要'],why:'試用期間の例外：<mark>採用後14日以内</mark>のみ解雇予告不要。'},
+  {id:'mc07',sec:'①総則・均等待遇・労働契約',correct:0,q:'法第5条（強制労働禁止）の罰則として正しいものはどれか。',opts:['1年以上10年以下の懲役','6ヶ月以下の懲役','1年以下の懲役','30万円以下の罰金','50万円以下の罰金'],why:'法第5条違反：<mark>1年以上10年以下の懲役</mark>（労基法最重罰則）。'},
+  {id:'mc08',sec:'①総則・均等待遇・労働契約',correct:2,q:'労働条件の必須明示事項（書面交付義務）に含まれないものはどれか。',opts:['賃金','労働時間','退職手当','休日','就業場所'],why:'退職手当は<mark>相対的必要記載事項</mark>（定める場合のみ記載）。必須明示事項（書面）は賃金・時間・休日・就業場所・業務等。'},
+  {id:'mc09',sec:'②賃金・割増賃金・平均賃金',correct:2,q:'法定休日に労働させた場合の割増賃金率として正しいものはどれか。',opts:['25%以上','30%以上','35%以上','40%以上','50%以上'],why:'法定休日労働の割増率：<mark>35%以上</mark>（時間外の25%より高い）。'},
+  {id:'mc10',sec:'②賃金・割増賃金・平均賃金',correct:1,q:'月60時間を超える時間外労働に対する割増賃金率として正しいものはどれか。',opts:['25%以上','50%以上','35%以上','60%以上','40%以上'],why:'月60h超の割増率：<mark>50%以上</mark>（令和5年4月〜中小企業も適用）。'},
+  {id:'mc11',sec:'②賃金・割増賃金・平均賃金',correct:2,q:'平均賃金の計算式として正しいものはどれか。',opts:['直前1ヶ月の賃金総額÷労働日数','直前3ヶ月の賃金総額÷労働日数','直前3ヶ月の賃金総額÷総日数（暦日数）','直前6ヶ月の賃金総額÷総日数','直前3ヶ月の賃金総額÷所定労働時間'],why:'平均賃金：直前<mark>3ヶ月の賃金総額÷総日数（暦日数）</mark>（労働日数ではない）。'},
+  {id:'mc12',sec:'②賃金・割増賃金・平均賃金',correct:3,q:'休業手当の支給率として正しいものはどれか。',opts:['40%以上','50%以上','67%以上','60%以上','80%以上'],why:'法第26条の休業手当：使用者責任による休業→<mark>平均賃金の60%以上</mark>。'},
+  {id:'mc13',sec:'②賃金・割増賃金・平均賃金',correct:1,q:'非常時払いの対象事由として誤っているものはどれか。',opts:['出産','引越し','婚姻','死亡','疾病'],why:'非常時払いの6事由：出産・疾病・災害・婚姻・死亡・帰郷。<mark>引越し</mark>は含まれない。'},
+  {id:'mc14',sec:'②賃金・割増賃金・平均賃金',correct:3,q:'付加金が適用される対象として正しいものはどれか。',opts:['基本給の未払い','賞与の未払い','退職手当の未払い','割増賃金の未払い','通勤手当の未払い'],why:'付加金（法第114条）の対象：<mark>解雇予告手当・休業手当・割増賃金・年休賃金</mark>の4種類のみ。'},
+  {id:'mc15',sec:'②賃金・割増賃金・平均賃金',correct:0,q:'賃金支払5原則（法第24条）として誤っているものはどれか。',opts:['隔月1回以上払い','通貨払い','直接払い','全額払い','一定期日払い'],why:'賃金支払5原則：<mark>毎月1回以上</mark>が正しい（<mark>隔月</mark>では義務を満たさない）。'},
+  {id:'mc16',sec:'②賃金・割増賃金・平均賃金',correct:2,q:'深夜労働（22〜5時）と時間外労働が重複した場合の割増率として正しいものはどれか。',opts:['25%以上','30%以上','50%以上','35%以上','60%以上'],why:'時間外（25%）＋深夜（25%）：<mark>50%以上</mark>（重複する場合は加算）。'},
+  {id:'mc17',sec:'③労働時間・休憩・休日・36協定',correct:1,q:'労働時間が6時間を超え8時間以内の場合に与えなければならない休憩時間として正しいものはどれか。',opts:['30分以上','45分以上','1時間以上','1時間30分以上','休憩不要'],why:'法第34条：6時間超〜8時間以内は<mark>45分以上</mark>（8時間超なら1時間以上）。'},
+  {id:'mc18',sec:'③労働時間・休憩・休日・36協定',correct:0,q:'36協定の原則上限として正しいものはどれか。',opts:['月45時間・年360時間','月50時間・年400時間','月60時間・年480時間','月100時間・年720時間','月80時間・年960時間'],why:'36協定の原則上限：<mark>月45時間・年360時間</mark>（罰則付き）。'},
+  {id:'mc19',sec:'③労働時間・休憩・休日・36協定',correct:3,q:'1年単位の変形労働時間制における特定の日の上限として正しいものはどれか。',opts:['8時間','9時間','12時間','10時間','14時間'],why:'1年単位変形の1日上限：<mark>10時間</mark>（12時間は誤り）。'},
+  {id:'mc20',sec:'③労働時間・休憩・休日・36協定',correct:0,q:'1ヶ月単位の変形労働時間制の手続きとして正しいものはどれか。',opts:['就業規則または労使協定で採用可','労使協定のみ必要','労使委員会の決議が必要','行政官庁の許可が必要','労働組合の同意が必要'],why:'1ヶ月変形：<mark>就業規則または労使協定</mark>で採用可（1年変形・フレックスは労使協定必須）。'},
+  {id:'mc21',sec:'③労働時間・休憩・休日・36協定',correct:2,q:'フレックスタイム制の清算期間の上限として正しいものはどれか（令和元年4月改正後）。',opts:['1ヶ月','2ヶ月','3ヶ月','6ヶ月','1年'],why:'フレックスの清算期間：令和元年4月〜<mark>最長3ヶ月</mark>（旧：1ヶ月）。'},
+  {id:'mc22',sec:'③労働時間・休憩・休日・36協定',correct:1,q:'36協定の特別条項における絶対上限として正しいものはどれか。',opts:['月60時間未満・年480時間以内','月100時間未満・年720時間以内','月80時間未満・年600時間以内','月120時間未満・年960時間以内','月100時間以内・年720時間以内'],why:'特別条項の絶対上限：<mark>月100時間未満・年720時間以内</mark>（「未満」に注意）。'},
+  {id:'mc23',sec:'③労働時間・休憩・休日・36協定',correct:3,q:'商業・接客等の常時10人未満の特例事業場の法定労働時間として正しいものはどれか。',opts:['週32時間','週36時間','週40時間','週44時間','週48時間'],why:'特例事業場（商業・接客等10人未満）：<mark>週44時間</mark>まで可（法第40条）。'},
+  {id:'mc24',sec:'③労働時間・休憩・休日・36協定',correct:1,q:'管理監督者（法第41条）に関する記述として正しいものはどれか。',opts:['時間外・休日・深夜の割増賃金がすべて不要','時間外・休日の割増賃金は不要だが深夜割増は適用される','割増賃金はすべて不要','深夜割増のみ不要','残業はできない'],why:'管理監督者：時間外・休日割増は<mark>適用除外</mark>だが<mark>深夜割増は適用</mark>される。'},
+  {id:'mc25',sec:'④年次有給休暇',correct:0,q:'継続勤務6年6ヶ月以上の年次有給休暇付与日数として正しいものはどれか。',opts:['20日','18日','15日','12日','10日'],why:'継続勤務6年6ヶ月以上：<mark>20日</mark>（年休の最大付与日数）。'},
+  {id:'mc26',sec:'④年次有給休暇',correct:1,q:'年次有給休暇の発生要件の出勤率として正しいものはどれか。',opts:['7割以上','8割以上','9割以上','全労働日','6割以上'],why:'年休の出勤要件：<mark>8割以上</mark>（7割以上は誤り）。'},
+  {id:'mc27',sec:'④年次有給休暇',correct:2,q:'継続勤務2年6ヶ月の労働者の年次有給休暇付与日数として正しいものはどれか。',opts:['10日','11日','12日','14日','16日'],why:'継続勤務2年6ヶ月：<mark>12日</mark>（6ヶ月→10・1年半→11・2年半→12日）。'},
+  {id:'mc28',sec:'④年次有給休暇',correct:3,q:'年5日の時季指定義務の対象として正しいものはどれか。',opts:['年休が5日以上付与された全労働者','年休が14日以上付与された正社員','年休が5日以上付与された正社員のみ','年休が10日以上付与された全労働者','正社員のみ（パートは対象外）'],why:'年5日指定義務：年休が<mark>10日以上</mark>付与されたすべての労働者（パートも含む）。'},
+  {id:'mc29',sec:'④年次有給休暇',correct:1,q:'時間単位年休の取得単位として正しいものはどれか。',opts:['30分単位','1時間単位','2時間単位','半日単位','選択可能'],why:'時間単位年休：<mark>1時間単位</mark>（30分・半日は不可）・年間5日分が上限。'},
+  {id:'mc30',sec:'④年次有給休暇',correct:0,q:'年次有給休暇の請求権の消滅時効として正しいものはどれか。',opts:['2年','3年','5年','1年','時効なし'],why:'年休の時効：<mark>2年</mark>（退職手当の5年・賃金等の2年（当面3年）と混同しない）。'},
+  {id:'mc31',sec:'④年次有給休暇',correct:2,q:'継続勤務3年6ヶ月の労働者の年次有給休暇付与日数として正しいものはどれか。',opts:['12日','13日','14日','16日','18日'],why:'継続勤務3年6ヶ月：<mark>14日</mark>（2年半→12・3年半→14・4年半→16日）。'},
+  {id:'mc32',sec:'⑤就業規則・労使協定・制裁',correct:0,q:'就業規則の作成義務が生じる労働者数として正しいものはどれか。',opts:['常時10人以上','常時5人以上','常時30人以上','常時50人以上','常時100人以上'],why:'就業規則作成義務：<mark>常時10人以上</mark>の事業場（5人・30人等は誤り）。'},
+  {id:'mc33',sec:'⑤就業規則・労使協定・制裁',correct:1,q:'就業規則の作成・変更に必要な手続きとして正しいものはどれか。',opts:['過半数代表者の同意','過半数代表者の意見聴取','全労働者の同意','行政官庁の承認','過半数代表者の承認'],why:'法第90条：<mark>過半数代表者の意見聴取</mark>で足りる（同意・承認は不要）。'},
+  {id:'mc34',sec:'⑤就業規則・労使協定・制裁',correct:2,q:'効力の優先順位として正しいものはどれか。',opts:['労働契約＞就業規則＞法令＞労働協約','就業規則＞法令＞労働協約＞労働契約','法令＞労働協約＞就業規則＞労働契約','労働協約＞法令＞就業規則＞労働契約','就業規則＞労働協約＞法令＞労働契約'],why:'優先順位：<mark>法令＞労働協約＞就業規則＞労働契約</mark>。'},
+  {id:'mc35',sec:'⑤就業規則・労使協定・制裁',correct:0,q:'減給制裁の1回の額の上限として正しいものはどれか。',opts:['平均賃金の1日分の半額以下','平均賃金の1日分以下','平均賃金の2日分以下','標準報酬日額の半額以下','賃金総額の10分の1以下'],why:'制裁の1回の額：<mark>平均賃金の1日分の半額以下</mark>（全額ではない）。'},
+  {id:'mc36',sec:'⑤就業規則・労使協定・制裁',correct:3,q:'減給制裁の総額の上限として正しいものはどれか。',opts:['賃金総額の20分の1以下','賃金総額の5分の1以下','賃金総額の3分の1以下','賃金総額の10分の1以下','賃金総額の2分の1以下'],why:'制裁の総額：<mark>賃金総額の10分の1以下</mark>（5分の1・3分の1は誤り）。'},
+  {id:'mc37',sec:'⑤就業規則・労使協定・制裁',correct:1,q:'就業規則の絶対的必要記載事項として誤っているものはどれか。',opts:['賃金の決定・計算方法','退職手当の定め','退職に関する事項（解雇事由含む）','始業・終業の時刻','休日に関する事項'],why:'退職手当は<mark>相対的必要記載事項</mark>（定める場合のみ記載）。絶対的必要記載ではない。'},
+  {id:'mc38',sec:'⑤就業規則・労使協定・制裁',correct:2,q:'36協定の届出先として正しいものはどれか。',opts:['都道府県知事','都道府県労働局長','所轄労働基準監督署長','厚生労働大臣','市区町村長'],why:'36協定の届出先：<mark>所轄労働基準監督署長</mark>。'},
+  {id:'mc39',sec:'⑥女性・年少者・妊産婦の保護',correct:1,q:'年少者（満18歳未満）の深夜業禁止の時間帯として正しいものはどれか。',opts:['午後9時〜午前6時','午後10時〜午前5時','午後11時〜午前4時','午後10時〜午前6時','午後9時〜午前5時'],why:'年少者の深夜業禁止：<mark>午後10時（22時）〜午前5時</mark>。'},
+  {id:'mc40',sec:'⑥女性・年少者・妊産婦の保護',correct:0,q:'産前休業を取得できる期間として正しいものはどれか（単胎妊娠の場合）。',opts:['出産予定日の6週間前から','出産予定日の8週間前から','出産予定日の4週間前から','出産予定日の14週間前から','いつでも'],why:'産前休業：単胎は<mark>出産予定日の6週間前</mark>から（多胎は14週間前から）。'},
+  {id:'mc41',sec:'⑥女性・年少者・妊産婦の保護',correct:3,q:'多胎妊娠の産前休業期間として正しいものはどれか。',opts:['6週間前から','8週間前から','10週間前から','14週間前から','20週間前から'],why:'多胎妊娠の産前休業：<mark>14週間前</mark>から（単胎の6週間より長い）。'},
+  {id:'mc42',sec:'⑥女性・年少者・妊産婦の保護',correct:1,q:'産後休業後に就業を再開できる条件として正しいものはどれか。',opts:['産後6週間後から本人が希望すれば','産後6週間後に本人が請求し医師が支障ないと認めた場合','産後8週間後から自由に就業可','産後4週間後に医師の許可があれば','産後休業中は一切就業不可'],why:'産後6週間後：本人請求＋<mark>医師の許可</mark>があれば就業可（6週間以内は不可）。'},
+  {id:'mc43',sec:'⑥女性・年少者・妊産婦の保護',correct:2,q:'妊産婦の定義として正しいものはどれか。',opts:['妊娠中の女性のみ','産後6ヶ月を経過しない女性のみ','妊娠中の女性および産後1年を経過しない女性','妊娠中の女性および産後3ヶ月を経過しない女性','妊娠中および授乳中の女性'],why:'妊産婦：<mark>妊娠中の女性＋産後1年未満</mark>の女性（両方が対象）。'},
+  {id:'mc44',sec:'⑥女性・年少者・妊産婦の保護',correct:0,q:'義務教育終了前の児童の使用禁止に関する記述として正しいものはどれか。',opts:['満15歳に達した日以後の最初の3月31日まで使用禁止','満15歳に達した日まで使用禁止','満14歳に達するまで使用禁止','満16歳に達するまで使用禁止','義務教育在学中は使用禁止'],why:'法第56条：<mark>満15歳に達した日以後の最初の3月31日まで</mark>使用禁止（義務教育終了基準）。'},
+  {id:'mc45',sec:'⑥女性・年少者・妊産婦の保護',correct:2,q:'軽易業務転換の請求権を有する者として正しいものはどれか。',opts:['妊産婦全員（妊娠中＋産後1年未満）','産後1年未満の女性','妊娠中の女性のみ','産後6ヶ月未満の女性','妊婦・産婦・授乳中の女性全員'],why:'軽易業務転換の請求権：<mark>妊娠中の女性のみ</mark>（産後女性は対象外）。'},
+  {id:'mc46',sec:'⑦監督機関・罰則・申告・時効',correct:2,q:'賃金（退職手当を除く）の消滅時効として正しいものはどれか（令和2年改正後）。',opts:['1年','2年','2年（当面3年）','3年','5年'],why:'賃金等の時効：<mark>2年</mark>（令和2年改正で当面<mark>3年</mark>に延長・「2年（当面3年）」が正解）。'},
+  {id:'mc47',sec:'⑦監督機関・罰則・申告・時効',correct:3,q:'退職手当の消滅時効として正しいものはどれか。',opts:['1年','2年','3年','5年','10年'],why:'退職手当の時効：<mark>5年</mark>（賃金等の2年・3年より長い）。'},
+  {id:'mc48',sec:'⑦監督機関・罰則・申告・時効',correct:1,q:'付加金が適用される対象として正しいものはどれか。',opts:['すべての賃金の未払い','割増賃金・解雇予告手当・休業手当・年休賃金の未払い','賃金・退職手当・慰謝料の未払い','割増賃金・通勤手当の未払い','時間外手当・住宅手当の未払い'],why:'付加金の対象：<mark>割増賃金・解雇予告手当・休業手当・年休賃金</mark>の4種類のみ。'},
+  {id:'mc49',sec:'⑦監督機関・罰則・申告・時効',correct:0,q:'労働基準監督機関の3層構造として正しいものはどれか。',opts:['厚生労働省・都道府県労働局・労働基準監督署','厚生労働省・都道府県知事・労働基準監督署','厚生労働省・都道府県労働局・ハローワーク','総務省・都道府県労働局・労働基準監督署','厚生労働省・厚生局・労働基準監督署'],why:'監督機関：<mark>厚生労働省→都道府県労働局→労働基準監督署</mark>。'},
+  {id:'mc50',sec:'⑦監督機関・罰則・申告・時効',correct:2,q:'年次有給休暇の消滅時効として正しいものはどれか。',opts:['1年','1年6ヶ月','2年','3年','5年'],why:'年休の時効：<mark>2年</mark>（退職手当の5年・賃金等の2年（当面3年）と区別）。'},
+  {id:'mc51',sec:'⑦監督機関・罰則・申告・時効',correct:1,q:'法第5条（強制労働禁止）の罰則として正しいものはどれか。',opts:['6ヶ月以下の懲役又は30万円以下の罰金','1年以上10年以下の懲役又は20万円以上300万円以下の罰金','1年以下の懲役又は50万円以下の罰金','5年以下の懲役又は100万円以下の罰金','3年以下の懲役又は100万円以下の罰金'],why:'法第5条違反：<mark>1年以上10年以下の懲役</mark>または<mark>20万円以上300万円以下の罰金</mark>（労基法最重）。'},
+  {id:'mc52',sec:'⑦監督機関・罰則・申告・時効',correct:3,q:'付加金の額として正しいものはどれか。',opts:['未払い額の50%相当','未払い額の2倍','未払い額の3倍','未払い額と同額（合計2倍の支払い）','裁判所が自由に決定'],why:'付加金の額：未払い額と<mark>同額</mark>（合計で2倍の支払いとなる民事的制裁）。'},
+  {id:'mc53',sec:'⑧変形制・フレックス・みなし・横断',correct:0,q:'1年単位の変形労働時間制において特定の週の上限として正しいものはどれか。',opts:['52時間','48時間','44時間','60時間','40時間'],why:'1年単位変形の週上限：<mark>52時間</mark>（1ヶ月変形には週の上限制限なし）。'},
+  {id:'mc54',sec:'⑧変形制・フレックス・みなし・横断',correct:2,q:'フレックスタイム制の清算期間の上限として正しいものはどれか（令和元年4月改正後）。',opts:['1ヶ月','2ヶ月','3ヶ月','6ヶ月','1年'],why:'フレックスの清算期間：令和元年4月〜<mark>最長3ヶ月</mark>（旧：1ヶ月）。'},
+  {id:'mc55',sec:'⑧変形制・フレックス・みなし・横断',correct:1,q:'企画業務型裁量労働制の採用手続きとして正しいものはどれか。',opts:['労使協定の締結','労使委員会の決議（5分の4以上）','過半数代表者の同意','行政官庁の許可','就業規則への規定'],why:'企画業務型：<mark>労使委員会の決議（5分の4以上）</mark>で採用（専門業務型の労使協定とは異なる）。'},
+  {id:'mc56',sec:'⑧変形制・フレックス・みなし・横断',correct:2,q:'裁量労働制を採用した場合の割増賃金に関する記述として正しいものはどれか。',opts:['時間外・深夜・休日の割増賃金はすべて不要','時間外割増のみ不要で深夜・休日も必要','深夜・休日の割増賃金は適用されるが時間外割増は不要','すべての割増賃金が不要','法定時間超の分のみ割増が必要'],why:'裁量労働：時間外割増は適用除外だが<mark>深夜・休日の割増賃金は適用</mark>。'},
+  {id:'mc57',sec:'⑧変形制・フレックス・みなし・横断',correct:1,q:'均等法の禁止対象として正しいものはどれか。',opts:['直接差別のみ（間接差別は規制なし）','直接差別・間接差別の両方','間接差別のみ','合理的理由がある差別のみ','明示的差別のみ'],why:'均等法：<mark>直接差別・間接差別の両方</mark>を禁止。'},
+  {id:'mc58',sec:'⑧変形制・フレックス・みなし・横断',correct:2,q:'ストレスチェック実施義務が課される事業場として正しいものはどれか。',opts:['常時30人以上','常時40人以上','常時50人以上','常時100人以上','常時10人以上'],why:'ストレスチェック義務：<mark>常時50人以上</mark>の事業場（50人未満は努力義務）。'},
+  {id:'mc59',sec:'⑧変形制・フレックス・みなし・横断',correct:0,q:'1ヶ月単位変形と1年単位変形の手続きの違いとして正しいものはどれか。',opts:['1ヶ月変形は就業規則でも採用可・1年変形は労使協定必須','1ヶ月変形は労使協定必須・1年変形は就業規則でも可','両方とも就業規則のみで採用可','両方とも労使協定が必須','両方とも行政官庁の許可が必要'],why:'手続き比較：1ヶ月変形→<mark>就業規則または労使協定</mark>・1年変形→<mark>労使協定必須</mark>。'},
+  {id:'mc60',sec:'⑧変形制・フレックス・みなし・横断',correct:1,q:'事業場外みなし労働時間制が適用される条件として正しいものはどれか。',opts:['事業場外で業務に従事した場合は常に適用','事業場外で業務に従事し労働時間を算定し難い場合','労使協定を締結した場合','使用者が認めた場合','業務命令により外出した場合'],why:'事業場外みなし：<mark>労働時間を算定し難い</mark>場合のみ適用（携帯等で連絡可能なら不適用の場合も）。'}
+];
+
+
+
+
+
+
+// =====================================================
+// ○×問題 エンジン
+// =====================================================
+var oxDeck = [];
+var oxIdx = 0;
+var oxOkCount = 0;
+var oxNgCount = 0;
+var oxWeakSet = {};
+var oxCurrentFilter = 'all';
+var oxSectionStats = {};
+var oxShuffleOn = false;
+var OX_SECTIONS = ['①総則・均等待遇・労働契約','②賃金・割増賃金・平均賃金','③労働時間・休憩・休日・36協定','④年次有給休暇','⑤就業規則・労使協定・制裁','⑥女性・年少者・妊産婦の保護','⑦監督機関・罰則・申告・時効','⑧変形制・フレックス・みなし・横断'];
+
+function shuffle(arr) {
+  for (var i = arr.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+  }
+  return arr;
+}
+
+function oxToggleShuffle(btn) {
+  oxShuffleOn = !oxShuffleOn;
+  btn.textContent = '🔀 シャッフル：' + (oxShuffleOn ? 'ON' : 'OFF');
+  btn.classList.toggle('active', oxShuffleOn);
+  oxInit();
+}
+
+function oxLoadWeak() {
+  try { var s = localStorage.getItem('roki_ox12weak'); if (s) { var a = JSON.parse(s); for (var i=0;i<a.length;i++) oxWeakSet[a[i]]=true; } } catch(e) {}
+}
+function oxSaveWeak() {
+  try { localStorage.setItem('roki_ox12weak', JSON.stringify(Object.keys(oxWeakSet))); } catch(e) {}
+}
+
+function oxSetFilter(sec, el) {
+  oxCurrentFilter = sec;
+  var chips = document.querySelectorAll('.filter-chips .fc-chip');
+  for (var i=0;i<chips.length;i++) chips[i].classList.remove('active');
+  if (el) el.classList.add('active');
+  oxInit();
+}
+
+function oxBuildDeck() {
+  var list = [];
+  if (oxCurrentFilter === 'all') {
+    for (var i=0;i<OX_DATA.length;i++) list.push(i);
+  } else if (oxCurrentFilter === 'weak') {
+    for (var i=0;i<OX_DATA.length;i++) { if (oxWeakSet[OX_DATA[i].id]) list.push(i); }
+  } else {
+    for (var i=0;i<OX_DATA.length;i++) { if (OX_DATA[i].sec === oxCurrentFilter) list.push(i); }
+  }
+  if (oxShuffleOn) shuffle(list);
+  return list;
+}
+
+function oxInit() {
+  oxOkCount = 0; oxNgCount = 0;
+  oxSectionStats = {};
+  for (var i=0;i<OX_SECTIONS.length;i++) oxSectionStats[OX_SECTIONS[i]] = {ok:0,total:0};
+  oxDeck = oxBuildDeck();
+  for (var i=0;i<OX_DATA.length;i++) {
+    var sec = OX_DATA[i].sec;
+    if (oxSectionStats[sec]) oxSectionStats[sec].total++;
+  }
+
+  document.getElementById('ox-result').style.display = 'none';
+  document.getElementById('ox-mastery-wrap').style.display = 'none';
+  document.getElementById('ox-no-weak').style.display = 'none';
+
+  if (oxDeck.length === 0 && oxCurrentFilter === 'weak') {
+    document.getElementById('ox-card-area').innerHTML = '';
+    document.getElementById('ox-no-weak').style.display = 'block';
+    return;
+  }
+  if (oxDeck.length === 0) {
+    document.getElementById('ox-card-area').innerHTML = '<div style="text-align:center;padding:40px;color:var(--gray);">このセクションには問題がありません</div>';
+    return;
+  }
+  oxIdx = 0;
+  document.getElementById('ox-counter-total').textContent = oxDeck.length;
+  oxRenderCard();
+  oxUpdateDash();
+}
+
+function oxRenderCard() {
+  var cardIdx = oxDeck[oxIdx];
+  var d = OX_DATA[cardIdx];
+  document.getElementById('ox-counter-num').textContent = oxIdx + 1;
+  document.getElementById('ox-sec-tag').textContent = d.sec;
+
+  var html = '<div class="ox-card">';
+  html += '<div class="ox-card-hd"><span class="ox-card-tag">' + d.id + '</span><span class="ox-card-cat">' + d.cat + '</span>';
+  if (oxWeakSet[d.id]) html += '<span style="margin-left:auto;font-size:11px;color:var(--red);font-weight:700;">🔥 苦手</span>';
+  html += '</div>';
+  html += '<div class="ox-card-body">';
+  html += '<div class="ox-q">' + d.q + '</div>';
+  html += '<div class="ox-hint">○または×を選んでください</div>';
+  html += '<div class="ox-btns">';
+  html += '<button class="ox-btn o" id="ox-btn-o" onclick="oxChoose(true)">○</button>';
+  html += '<button class="ox-btn x" id="ox-btn-x" onclick="oxChoose(false)">×</button>';
+  html += '</div>';
+  html += '<div class="ox-ans" id="ox-ans-panel"></div>';
+  html += '</div></div>';
+  document.getElementById('ox-card-area').innerHTML = html;
+  document.getElementById('ox-prog-lbl').textContent = oxIdx + ' ／ ' + oxDeck.length + ' 問 回答済み';
+  document.getElementById('ox-prog-bar').style.width = (oxIdx / oxDeck.length * 100) + '%';
+}
+
+function oxChoose(userAns) {
+  var cardIdx = oxDeck[oxIdx];
+  var d = OX_DATA[cardIdx];
+  var isCorrect = (userAns === d.correct);
+
+  document.getElementById('ox-btn-o').disabled = true;
+  document.getElementById('ox-btn-x').disabled = true;
+  if (userAns) {
+    document.getElementById('ox-btn-o').classList.add('chosen-o');
+  } else {
+    document.getElementById('ox-btn-x').classList.add('chosen-x');
+  }
+
+  if (isCorrect) {
+    oxOkCount++;
+    oxSectionStats[d.sec].ok++;
+    delete oxWeakSet[d.id];
+  } else {
+    oxNgCount++;
+    oxWeakSet[d.id] = true;
+  }
+  oxSaveWeak();
+  oxUpdateDash();
+
+  var panel = document.getElementById('ox-ans-panel');
+  var cls = isCorrect ? 'ok' : 'ng';
+  var vtext = isCorrect ? '✅ 正解！' : '❌ 不正解';
+  var ansText = d.correct ? '○　正しい' : '×　誤り';
+  panel.className = 'ox-ans show ' + cls;
+  panel.innerHTML = '<div class="ox-verdict ' + cls + '">' + vtext + '　正解：<strong>' + ansText + '</strong></div>'
+    + '<div class="ox-reason-box">' + d.reason + '</div>'
+    + '<span class="ox-law">' + d.law + '</span>'
+    + '<button class="ox-next-btn" onclick="oxNext()">' + (oxIdx + 1 >= oxDeck.length ? '結果を見る →' : '次の問題へ →') + '</button>';
+
+  document.getElementById('ox-prog-lbl').textContent = (oxIdx+1) + ' ／ ' + oxDeck.length + ' 問 回答済み';
+  document.getElementById('ox-prog-bar').style.width = ((oxIdx+1) / oxDeck.length * 100) + '%';
+}
+
+function oxNext() {
+  if (oxIdx + 1 >= oxDeck.length) {
+    oxShowResult();
+    return;
+  }
+  oxIdx++;
+  oxRenderCard();
+}
+
+function oxUpdateDash() {
+  var rem = oxDeck.length - oxIdx;
+  document.getElementById('ox-remaining').textContent = rem;
+  document.getElementById('ox-ok').textContent = oxOkCount;
+  document.getElementById('ox-ng').textContent = oxNgCount;
+  document.getElementById('ox-weak').textContent = Object.keys(oxWeakSet).length;
+  var answered = oxOkCount + oxNgCount;
+  var pct = oxDeck.length > 0 ? Math.round(answered / oxDeck.length * 100) : 0;
+  document.getElementById('ox-pct').textContent = pct + '%';
+}
+
+function oxShowResult() {
+  document.getElementById('ox-card-area').innerHTML = '';
+  var total = oxDeck.length;
+  var pct = total > 0 ? Math.round(oxOkCount / total * 100) : 0;
+  document.getElementById('ox-result-score').textContent = oxOkCount + ' / ' + total;
+  document.getElementById('ox-result-sub').textContent = '正答率 ' + pct + '% ― ' +
+    (pct >= 90 ? '完璧！合格力十分です 🚀' : pct >= 70 ? '合格ライン！苦手問題を復習しよう' : pct >= 50 ? 'もう一周して定着させよう' : '解説をよく読んで再挑戦！');
+  document.getElementById('ox-emoji').textContent = pct >= 90 ? '🏆' : pct >= 70 ? '✨' : pct >= 50 ? '📖' : '💪';
+  document.getElementById('ox-result').style.display = 'block';
+  var weakKeys = Object.keys(oxWeakSet);
+  document.getElementById('ox-btn-retry-weak').style.display = weakKeys.length > 0 ? 'inline-block' : 'none';
+  oxRenderMastery();
+  document.getElementById('ox-mastery-wrap').style.display = 'block';
+  setTimeout(function(){ document.getElementById('ox-result').scrollIntoView({behavior:'smooth',block:'start'}); }, 200);
+}
+
+function oxRenderMastery() {
+  var wrap = document.getElementById('ox-mastery-bars');
+  wrap.innerHTML = '';
+  OX_SECTIONS.forEach(function(sec) {
+    var stat = oxSectionStats[sec];
+    if (!stat || stat.total === 0) return;
+    var pct = Math.round(stat.ok / stat.total * 100);
+    var col = pct >= 80 ? 'var(--green)' : pct >= 60 ? 'var(--teal)' : pct >= 40 ? 'var(--gold)' : 'var(--red)';
+    wrap.innerHTML += '<div class="mastery-row"><div class="mastery-label">' + sec + '</div>'
+      + '<div class="mastery-track"><div class="mastery-bar" style="width:' + pct + '%;background:' + col + ';"></div></div>'
+      + '<div class="mastery-pct" style="color:' + col + ';">' + pct + '%</div></div>';
+  });
+}
+
+function oxRestart() {
+  document.getElementById('ox-result').style.display = 'none';
+  document.getElementById('ox-mastery-wrap').style.display = 'none';
+  oxInit();
+}
+
+function oxRetryWeak() {
+  oxSetFilter('weak', document.querySelector('[data-sec="weak"]'));
+}
+
+// =====================================================
+// 5択問題 エンジン
+// =====================================================
+var mcAnswered = 0;
+var mcOk = 0;
+var mcNg = 0;
+var mcShuffleOn = false;
+var mcOrder = [];
+
+function mcToggleShuffle(btn) {
+  mcShuffleOn = !mcShuffleOn;
+  btn.textContent = '🔀 シャッフル：' + (mcShuffleOn ? 'ON' : 'OFF');
+  btn.classList.toggle('active', mcShuffleOn);
+  mcAnswered = 0; mcOk = 0; mcNg = 0;
+  document.getElementById('mc-result').style.display = 'none';
+  mcRenderAll();
+  mcUpdateDash();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function mcRenderAll() {
+  mcOrder = [];
+  for (var i = 0; i < MC_DATA.length; i++) mcOrder.push(i);
+  if (mcShuffleOn) shuffle(mcOrder);
+
+  var html = '';
+  for (var n = 0; n < mcOrder.length; n++) {
+    var i = mcOrder[n];
+    var d = MC_DATA[i];
+    html += '<div class="mc-card" id="mc-card-' + d.id + '">';
+    html += '<div class="mc-card-hd">';
+    html += '<div class="mc-card-num">' + (n+1) + '</div>';
+    html += '<div><div class="mc-card-tag">5択</div><div class="mc-card-cat">' + d.sec + '｜' + d.cat + '</div></div>';
+    html += '</div>';
+    html += '<div class="mc-card-body">';
+    html += '<div class="mc-q">' + d.q + '</div>';
+    html += '<div class="mc-options" id="mc-opts-' + d.id + '">';
+    for (var j = 0; j < d.opts.length; j++) {
+      html += '<button class="mc-opt" data-idx="' + j + '" onclick="mcChoose(\'' + d.id + '\',' + j + ')">';
+      html += '<strong>' + (j+1) + '.</strong>　' + d.opts[j];
+      html += '</button>';
+    }
+    html += '</div>';
+    html += '<button class="mc-check-btn" id="mc-check-' + d.id + '" onclick="mcCheck(\'' + d.id + '\')" disabled>答え合わせ</button>';
+    html += '<div class="mc-ans" id="mc-ans-' + d.id + '"></div>';
+    html += '</div></div>';
+  }
+  document.getElementById('mc-cards').innerHTML = html;
+}
+
+function mcChoose(qid, optIdx) {
+  var opts = document.querySelectorAll('#mc-opts-' + qid + ' .mc-opt');
+  for (var i = 0; i < opts.length; i++) opts[i].classList.remove('sel-opt');
+  opts[optIdx].style.borderColor = 'var(--blue)';
+  opts[optIdx].style.background = 'var(--blue-light)';
+  opts[optIdx].setAttribute('data-selected', '1');
+  for (var i = 0; i < opts.length; i++) {
+    if (i !== optIdx) { opts[i].style.borderColor = ''; opts[i].style.background = ''; opts[i].removeAttribute('data-selected'); }
+  }
+  document.getElementById('mc-check-' + qid).disabled = false;
+}
+
+function mcCheck(qid) {
+  var d = null;
+  for (var i=0;i<MC_DATA.length;i++) { if (MC_DATA[i].id === qid) { d = MC_DATA[i]; break; } }
+  if (!d) return;
+
+  var opts = document.querySelectorAll('#mc-opts-' + qid + ' .mc-opt');
+  var selected = -1;
+  for (var i=0;i<opts.length;i++) { if (opts[i].getAttribute('data-selected')) { selected = i; break; } }
+  if (selected < 0) return;
+
+  var isCorrect = (selected === d.correct);
+  if (isCorrect) mcOk++; else mcNg++;
+  mcAnswered++;
+  mcUpdateDash();
+
+  for (var i=0;i<opts.length;i++) {
+    opts[i].disabled = true;
+    opts[i].style.borderColor = ''; opts[i].style.background = '';
+    if (i === d.correct) opts[i].classList.add('correct');
+    else if (i === selected && !isCorrect) opts[i].classList.add('wrong');
+    else opts[i].classList.add('unchosen');
+  }
+
+  document.getElementById('mc-check-' + qid).disabled = true;
+  document.getElementById('mc-check-' + qid).style.display = 'none';
+
+  var panel = document.getElementById('mc-ans-' + qid);
+  var cls = isCorrect ? 'ok' : 'ng';
+  panel.className = 'mc-ans show ' + cls;
+  panel.innerHTML = '<div class="mc-ans-hd">' + (isCorrect ? '✅ 正解！' : '❌ 不正解　正解：' + (d.correct+1) + '番') + '</div>'
+    + '<div class="mc-why">' + d.why + '</div>'
+    ;
+
+  if (mcAnswered === MC_DATA.length) {
+    setTimeout(function(){ mcShowResult(); }, 400);
+  }
+}
+function mcRenderAll() {
+  mcOrder = [];
+  for (var i = 0; i < MC_DATA.length; i++) mcOrder.push(i);
+  if (mcShuffleOn) shuffle(mcOrder);
+
+  var html = '';
+  for (var n = 0; n < mcOrder.length; n++) {
+    var i = mcOrder[n];
+    var d = MC_DATA[i];
+    html += '<div class="mc-card" id="mc-card-' + d.id + '">';
+    html += '<div class="mc-card-hd">';
+    html += '<div class="mc-card-num">' + (n+1) + '</div>';
+    html += '<div><div class="mc-card-tag">5択</div><div class="mc-card-cat">' + d.sec + '</div></div>';
+    html += '</div>';
+    html += '<div class="mc-card-body">';
+    html += '<div class="mc-q">' + d.q + '</div>';
+    html += '<div class="mc-options" id="mc-opts-' + d.id + '">';
+    for (var j = 0; j < d.opts.length; j++) {
+      html += '<button class="mc-opt" data-idx="' + j + '" onclick="mcChoose(\'' + d.id + '\',' + j + ')">';
+      html += '<strong>' + (j+1) + '.</strong>　' + d.opts[j];
+      html += '</button>';
+    }
+    html += '</div>';
+    html += '<button class="mc-check-btn" id="mc-check-' + d.id + '" onclick="mcCheck(\'' + d.id + '\')" disabled>答え合わせ</button>';
+    html += '<div class="mc-ans" id="mc-ans-' + d.id + '"></div>';
+    html += '</div></div>';
+  }
+  document.getElementById('mc-cards').innerHTML = html;
+}
+
+function mcChoose(qid, optIdx) {
+  var opts = document.querySelectorAll('#mc-opts-' + qid + ' .mc-opt');
+  for (var i = 0; i < opts.length; i++) opts[i].classList.remove('sel-opt');
+  opts[optIdx].style.borderColor = 'var(--blue)';
+  opts[optIdx].style.background = 'var(--blue-light)';
+  opts[optIdx].setAttribute('data-selected', '1');
+  for (var i = 0; i < opts.length; i++) {
+    if (i !== optIdx) { opts[i].style.borderColor = ''; opts[i].style.background = ''; opts[i].removeAttribute('data-selected'); }
+  }
+  document.getElementById('mc-check-' + qid).disabled = false;
+}
+
+function mcCheck(qid) {
+  var d = null;
+  for (var i=0;i<MC_DATA.length;i++) { if (MC_DATA[i].id === qid) { d = MC_DATA[i]; break; } }
+  if (!d) return;
+
+  var opts = document.querySelectorAll('#mc-opts-' + qid + ' .mc-opt');
+  var selected = -1;
+  for (var i=0;i<opts.length;i++) { if (opts[i].getAttribute('data-selected')) { selected = i; break; } }
+  if (selected < 0) return;
+
+  var isCorrect = (selected === d.answer);
+  if (isCorrect) mcOk++; else mcNg++;
+  mcAnswered++;
+  mcUpdateDash();
+
+  for (var i=0;i<opts.length;i++) {
+    opts[i].disabled = true;
+    opts[i].style.borderColor = ''; opts[i].style.background = '';
+    if (i === d.answer) opts[i].classList.add('correct');
+    else if (i === selected && !isCorrect) opts[i].classList.add('wrong');
+    else opts[i].classList.add('unchosen');
+  }
+
+  document.getElementById('mc-check-' + qid).disabled = true;
+  document.getElementById('mc-check-' + qid).style.display = 'none';
+
+  var panel = document.getElementById('mc-ans-' + qid);
+  var cls = isCorrect ? 'ok' : 'ng';
+  panel.className = 'mc-ans show ' + cls;
+  panel.innerHTML = '<div class="mc-ans-hd">' + (isCorrect ? '✅ 正解！' : '❌ 不正解　正解：' + (d.answer+1) + '番') + '</div>'
+    + '<div class="mc-why">' + d.why + '</div>'
+    + '<span class="mc-law">' + d.law + '</span>';
+
+  if (mcAnswered === MC_DATA.length) {
+    setTimeout(function(){ mcShowResult(); }, 400);
+  }
+}
+
+function mcUpdateDash() {
+  document.getElementById('mc-answered').textContent = mcAnswered;
+  document.getElementById('mc-ok').textContent = mcOk;
+  document.getElementById('mc-ng').textContent = mcNg;
+  var pct = Math.round(mcAnswered / MC_DATA.length * 100);
+  document.getElementById('mc-prog-bar').style.width = pct + '%';
+  document.getElementById('mc-prog-lbl').textContent = mcAnswered + ' ／ ' + MC_DATA.length + ' 問';
+}
+
+function mcShowResult() {
+  var pct = Math.round(mcOk / MC_DATA.length * 100);
+  document.getElementById('mc-result-score').textContent = mcOk + ' / ' + MC_DATA.length;
+  document.getElementById('mc-result-sub').textContent = '正答率 ' + pct + '% ― ' +
+    (pct >= 90 ? '完璧！本試験でも通用します 🚀' : pct >= 70 ? '合格ライン！復習して固めよう' : pct >= 50 ? 'もう一周で定着を' : '解説を読み直して再挑戦！');
+  document.getElementById('mc-emoji').textContent = pct >= 90 ? '🏆' : pct >= 70 ? '✨' : pct >= 50 ? '📖' : '💪';
+  document.getElementById('mc-result').style.display = 'block';
+  setTimeout(function(){ document.getElementById('mc-result').scrollIntoView({behavior:'smooth',block:'start'}); }, 200);
+}
+
+function mcRestart() {
+  mcAnswered = 0; mcOk = 0; mcNg = 0;
+  document.getElementById('mc-result').style.display = 'none';
+  mcRenderAll();
+  mcUpdateDash();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// =====================================================
+// 起動
+// =====================================================
+oxLoadWeak();
+oxInit();
+mcRenderAll();
+mcUpdateDash();
+
+
+window.switchTab = switchTab;
+window.oxSetFilter = oxSetFilter;
+window.oxToggleShuffle = oxToggleShuffle;
+window.oxChoose = oxChoose;
+window.oxNext = oxNext;
+window.oxRestart = oxRestart;
+window.oxRetryWeak = oxRetryWeak;
+window.mcToggleShuffle = mcToggleShuffle;
+window.mcChoose = mcChoose;
+window.mcCheck = mcCheck;
+</script>
+</body>
+</html>

@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day1｜目的・適用事業所・被保険者の種別・資格取得喪失 ― 厚生年金法過去問ドリル</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1a2e; --paper:#faf8f3; --warm:#f5f0e8;
+  --red:#c84b31; --red-soft:#e8896b; --red-light:#fee2e2;
+  --teal:#2a7f7f; --teal-light:#e8f4f4;
+  --gold:#c9930a; --gold-light:#fef9e7;
+  --green:#2d6a4f; --green-light:#e8f5ee;
+  --gray:#6b7280; --border:#ddd8cc;
+  --purple:#7c3aed; --purple-light:#ede9fe;
+  --blue:#1d4ed8; --blue-light:#dbeafe;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
+.topbar{background:var(--ink);padding:10px 20px;display:flex;align-items:center;gap:12px;}
+.back-btn{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;cursor:pointer;}
+.back-btn:hover{color:white;}
+.topbar-title{color:rgba(255,255,255,.45);font-size:12px;margin-left:auto;}
+.tab-nav{background:var(--ink);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:100;}
+.tab-nav-in{max-width:820px;margin:0 auto;display:flex;}
+.tab-btn{flex:1;padding:12px 6px;font-size:12px;font-weight:700;color:rgba(255,255,255,.4);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;font-family:inherit;}
+.tab-btn:hover{color:rgba(255,255,255,.75);}
+.tab-btn.active{color:white;border-color:var(--red-soft);}
+.tab-btn.t2.active{border-color:#a78bfa;}
+.tab-btn.t3.active{border-color:var(--teal);}
+.tab-btn.t4.active{border-color:var(--gold);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+.hd{background:var(--ink);color:var(--paper);padding:36px 40px 28px;position:relative;overflow:hidden;}
+.hd::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px);}
+.hd-in{max-width:820px;margin:0 auto;position:relative;}
+.hd-eye{font-size:11px;letter-spacing:3px;color:var(--red-soft);margin-bottom:8px;font-weight:700;}
+.hd h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;line-height:1.3;margin-bottom:6px;}
+.hd h1 em{color:var(--red-soft);font-style:normal;}
+.hd-sub{font-size:13px;color:rgba(255,255,255,.5);font-weight:300;}
+.prog-wrap{margin-top:14px;background:rgba(255,255,255,.15);border-radius:20px;height:6px;overflow:hidden;}
+.prog-bar{height:6px;background:linear-gradient(90deg,var(--teal),var(--green));border-radius:20px;width:0%;transition:width .5s;}
+.prog-lbl{font-size:11px;color:rgba(255,255,255,.4);margin-top:4px;}
+.score-bar{max-width:820px;margin:0 auto;padding:0 20px;}
+.score-in{background:white;border:2px solid var(--ink);border-radius:12px;padding:12px 20px;display:flex;align-items:center;gap:16px;margin-top:20px;}
+.score-num{font-family:'DM Serif Display',serif;font-size:40px;color:var(--teal);line-height:1;}
+.score-lbl{font-size:11px;color:var(--gray);font-weight:700;letter-spacing:1px;}
+.copy-btn{margin-left:auto;background:var(--ink);color:white;border:none;border-radius:8px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.copy-btn:hover{opacity:.82;}
+.copy-btn.copied{background:var(--green);}
+.qwrap{max-width:820px;margin:24px auto 0;padding:0 20px 40px;display:flex;flex-direction:column;gap:20px;}
+.card{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;opacity:1;}
+.card-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.q-num{font-family:'DM Serif Display',serif;font-size:28px;color:var(--ink);line-height:1;min-width:36px;}
+.src-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;margin-bottom:3px;display:inline-block;}
+.q-type{font-size:11px;color:var(--gray);}
+.card-body{padding:16px 18px;}
+.quiz-q{font-size:14px;line-height:2;margin-bottom:14px;}
+.quiz-q mark{background:#fef3c7;padding:1px 3px;border-radius:3px;font-weight:700;}
+.opts-tf{display:flex;gap:10px;}
+.opt{flex:1;padding:10px;border:2px solid var(--border);border-radius:10px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s;background:white;}
+.opt:hover{border-color:var(--ink);}
+.opt.correct{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.opt.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.ans-box{display:none;margin-top:14px;border-radius:10px;padding:14px 16px;font-size:13px;}
+.ans-box.show{display:block;}
+.ans-box.ok{background:var(--green-light);border:1px solid #86efac;}
+.ans-box.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.ans-hd{font-weight:700;font-size:14px;margin-bottom:10px;}
+.why{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 13px;margin-bottom:10px;font-size:13px;line-height:1.85;}
+.why mark{background:#fed7aa;padding:1px 3px;border-radius:2px;font-weight:700;}
+.def-card{background:var(--teal-light);border:1.5px solid var(--teal);border-radius:8px;padding:10px 14px;margin-bottom:10px;font-size:12px;line-height:1.9;}
+.tip{background:var(--purple-light);border:1.5px solid #c4b5fd;border-radius:8px;padding:10px 13px;font-size:12px;line-height:1.9;margin-top:8px;}
+.law-tag{display:inline-block;background:var(--ink);color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:8px;}
+.blank-card-body{padding:16px 18px;}
+.blank-q{font-size:14px;line-height:2.8;margin-bottom:12px;}
+.blank{display:inline-block;min-width:60px;border-bottom:2.5px solid var(--ink);text-align:center;padding:0 4px;margin:0 2px;cursor:pointer;font-weight:700;transition:background .2s;border-radius:4px 4px 0 0;}
+.blank:hover{background:rgba(124,58,237,.08);}
+.blank.sel{background:var(--purple-light);border-color:var(--purple);}
+.blank.ok-fill{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.blank.ng-fill{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+.chp{border:2px solid var(--border);border-radius:20px;padding:5px 13px;cursor:pointer;font-size:13px;font-weight:600;background:white;transition:all .2s;}
+.chp:hover{border-color:var(--purple);}
+.chp.used{opacity:.3;pointer-events:none;}
+.chp.ok-c{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.chp.ng-c{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.chk-btn{background:var(--purple);color:white;border:none;border-radius:8px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit;}
+.chk-btn:hover{opacity:.82;}
+.chk-btn:disabled{opacity:.38;cursor:default;}
+.f-ans{display:none;margin-top:12px;border-radius:10px;padding:14px 16px;font-size:13px;}
+.f-ans.show{display:block;}
+.f-ans.ok{background:var(--green-light);border:1px solid #86efac;}
+.f-ans.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.complete-bar{display:none;max-width:820px;margin:0 auto;padding:0 20px 60px;}
+.complete-card{background:var(--ink);color:white;border-radius:16px;padding:28px;text-align:center;}
+.complete-card h2{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;margin-bottom:8px;}
+.complete-score{font-family:'DM Serif Display',serif;font-size:52px;color:#fde68a;line-height:1;margin-bottom:8px;}
+.copy-btn2{background:white;color:var(--ink);border:none;border-radius:8px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:12px;}
+.copy-btn2:hover{opacity:.82;}
+.mm-wrap{max-width:820px;margin:0 auto;padding:20px 20px 60px;}
+.mm-step{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;margin-bottom:20px;}
+.mm-step-hd{background:var(--ink);padding:12px 18px;display:flex;align-items:center;gap:10px;}
+.mm-step-num{font-family:'DM Serif Display',serif;font-size:28px;color:#fde68a;line-height:1;}
+.mm-step-title{font-size:14px;font-weight:700;color:white;}
+.mm-step-body{padding:16px 18px;}
+.mm-item{border-left:4px solid var(--teal);padding:8px 12px;margin-bottom:10px;background:var(--teal-light);border-radius:0 8px 8px 0;font-size:13px;line-height:1.8;}
+.mm-item mark{background:#fed7aa;padding:1px 3px;border-radius:2px;font-weight:700;}
+.mm-alert{border-left:4px solid var(--red);padding:8px 12px;background:var(--red-light);border-radius:0 8px 8px 0;font-size:13px;line-height:1.8;margin-bottom:10px;}
+.mm-gorof{background:var(--gold-light);border:1.5px solid var(--gold);border-radius:8px;padding:9px 13px;font-size:12px;line-height:1.8;margin-top:8px;}
+.hikakke-box{background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin-top:16px;}
+.hikakke-hd{background:var(--ink);padding:9px 16px;}
+.hikakke-hd span{font-size:12px;font-weight:700;color:#fde68a;}
+.hikakke-body{padding:12px 16px;display:flex;flex-direction:column;gap:8px;}
+.hikakke-row{border-left:4px solid var(--red);padding:7px 12px;background:#fff8f7;border-radius:0 6px 6px 0;font-size:12px;line-height:1.8;}
+.fc-wrap{max-width:740px;margin:20px auto 0;padding:0 20px 80px;}
+.fc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;font-size:12px;color:var(--gray);}
+.fc-counter{font-family:'DM Serif Display',serif;font-size:24px;color:var(--red);line-height:1;}
+.fc-counter span{font-size:12px;color:var(--gray);font-family:'Noto Sans JP',sans-serif;font-weight:400;}
+.fc-gauge-wrap{margin-bottom:20px;}
+.fc-gauge-labels{display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:5px;}
+.fc-gauge-label-ng{color:var(--red);}
+.fc-gauge-label-ok{color:var(--green);}
+.fc-gauge-label-mid{color:var(--gray);font-size:10px;font-weight:400;}
+.fc-gauge-track{position:relative;height:14px;background:var(--border);border-radius:20px;overflow:hidden;display:flex;}
+.fc-gauge-ng{height:100%;background:linear-gradient(90deg,#c84b31,#e8896b);border-radius:20px 0 0 20px;transition:width .5s;width:0%;}
+.fc-gauge-ok{height:100%;background:linear-gradient(90deg,#86efac,#2d6a4f);border-radius:0 20px 20px 0;transition:width .5s;width:0%;margin-left:auto;}
+.fc-gauge-mid-line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:white;transform:translateX(-50%);z-index:2;}
+.fc-carousel{position:relative;display:flex;align-items:center;justify-content:center;min-height:420px;overflow:hidden;margin-bottom:18px;}
+.fc-slot{position:absolute;width:72%;min-height:300px;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s,filter .35s ease;cursor:pointer;border-radius:16px;}
+.fc-slot.prev{transform:translateX(-82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.curr{transform:translateX(0) scale(1);opacity:1;filter:none;z-index:10;}
+.fc-slot.next{transform:translateX(82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.hidden{opacity:0;pointer-events:none;z-index:0;}
+.fc-inner{position:relative;width:100%;min-height:300px;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.4,0,.2,1);}
+.fc-inner.flipped{transform:rotateY(180deg);}
+.fc-face{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.11);}
+.fc-front-face{background:white;border:2px solid var(--ink);}
+.fc-back-face{background:white;border:2px solid var(--ink);transform:rotateY(180deg);}
+.fc-front-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:9px 14px;display:flex;align-items:center;gap:8px;}
+.fc-front-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;}
+.fc-front-body{flex:1;padding:16px 18px;display:flex;align-items:center;justify-content:center;}
+.fc-q{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;line-height:1.9;color:var(--ink);text-align:center;}
+.fc-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;}
+.fc-ox{display:flex;gap:8px;padding:0 14px 12px;}
+.fc-ox-btn{flex:1;padding:10px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-size:20px;font-weight:900;cursor:pointer;transition:all .15s;font-family:inherit;}
+.fc-ox-btn.o:hover{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.fc-ox-btn.x:hover{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.fc-back-hd{padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+.fc-verdict{font-size:12px;font-weight:700;padding:2px 10px;border-radius:20px;}
+.fc-verdict.ok{background:var(--green);color:white;}
+.fc-verdict.ng{background:var(--red);color:white;}
+.fc-back-body{flex:1;padding:12px 16px;overflow-y:auto;}
+.fc-answer{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ink);margin-bottom:8px;line-height:1.4;font-weight:700;}
+.fc-reason{font-size:12px;color:var(--ink);line-height:1.9;}
+.fc-reason mark{background:#fef3c7;padding:1px 4px;border-radius:3px;}
+.fc-nav{display:none;gap:10px;justify-content:center;padding:0 16px;}
+.fc-nav-btn{flex:1;max-width:160px;padding:11px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;text-align:center;}
+.fc-nav-btn:hover{border-color:var(--ink);}
+.fc-nav-btn.again{border-color:var(--red);color:var(--red);}
+.fc-nav-btn.again:hover{background:var(--red-light);}
+.fc-nav-btn.got{border-color:var(--green);color:var(--green);}
+.fc-nav-btn.got:hover{background:var(--green-light);}
+.fc-result{display:none;text-align:center;padding:24px;background:white;border:2px solid var(--ink);border-radius:14px;margin:0 20px;}
+.fc-result h3{font-family:'Noto Serif JP',serif;font-size:1.2rem;font-weight:900;margin-bottom:8px;}
+.fc-result-score{font-family:'DM Serif Display',serif;font-size:44px;color:var(--teal);line-height:1;margin:8px 0 4px;}
+.fc-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:12px;}
+.spider-wrap{max-width:820px;margin:0 auto;padding:20px 16px 60px;}
+svg text{font-family:'Noto Sans JP',sans-serif;}
+@media(max-width:600px){
+  .hd{padding:24px 16px 20px;}
+  .qwrap{padding:0 12px 40px;}
+  .fc-wrap{padding:0 12px 80px;}
+  .mm-wrap{padding:16px 12px 60px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="back-btn" onclick="location.href='index.html'">← 目次に戻る</span>
+  <span class="topbar-title">Day1 ／ 厚生年金法 目的・適用事業所・被保険者の種別・資格取得喪失</span>
+</div>
+
+<nav class="tab-nav">
+  <div class="tab-nav-in">
+    <button class="tab-btn active" onclick="switchTab('quiz',this)">📝 問題を解く</button>
+    <button class="tab-btn t3"     onclick="switchTab('mindmap',this)">🗺 連想図</button>
+    <button class="tab-btn t2"     onclick="switchTab('flash',this)">🃏 フラッシュカード</button>
+    <button class="tab-btn t4"     onclick="switchTab('spider',this)">🕸️ 記憶マップ</button>
+  </div>
+</nav>
+
+<!-- ════ PANEL-QUIZ ════ -->
+<div id="panel-quiz" class="tab-panel active">
+
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-eye">厚生年金法 ／ Day 1</div>
+    <h1>目的・適用事業所・<em>被保険者の種別・資格</em></h1>
+    <div class="hd-sub">○×式 5問 ＋ 穴埋め式 5問 ― 全10問　法第1条〜第19条</div>
+    <div class="prog-wrap"><div class="prog-bar" id="prog"></div></div>
+    <div class="prog-lbl" id="prog-lbl">0 ／ 10 問 回答済み</div>
+  </div>
+</div>
+
+<div class="score-bar">
+  <div class="score-in">
+    <div>
+      <div class="score-num" id="score">0</div>
+      <div class="score-lbl">正解数</div>
+    </div>
+    <div style="font-size:13px;color:var(--gray);line-height:1.6;">
+      <div id="score-sub">問題に答えると集計されます</div>
+    </div>
+    <button class="copy-btn" id="copy-btn" onclick="copyRecord()">📋 記録をコピー</button>
+  </div>
+</div>
+
+<!-- ○×式 5問 -->
+<div class="qwrap">
+
+<!-- Q1 -->
+<div class="card" id="cq1">
+  <div class="card-hd">
+    <div class="q-num">01</div>
+    <div>
+      <div class="src-tag">法第1条 ／ ○×式</div>
+      <div class="q-type">難易度：★☆☆ ／ 単元：目的条文</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">厚生年金保険法は、労働者の<mark>老齢・障害・死亡</mark>について保険給付を行い、労働者およびその遺族の<mark>生活の安定と福祉の向上</mark>に寄与することを目的とする。</div>
+    <div class="opts-tf" id="q1-opts">
+      <div class="opt" onclick="answer('q1',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q1',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q1-ans">
+      <div class="ans-hd" id="q1-result"></div>
+      <div class="why">✅ <strong>正しい。</strong>法第1条の目的条文。厚年法は昭和29年制定の社会保険。<mark>老齢・障害・死亡</mark>という労働者が直面しうる3つのリスクに対し、保険給付で所得を補完し、労働者・遺族の<mark>生活の安定と福祉の向上</mark>に寄与することを目的とする。「国民の共同連帯」は国年法第1条の文言であり、両法の立法趣旨の違いを問う出題が多い。</div>
+      <div class="def-card">
+        <strong>📖 厚生年金保険法第1条（目的）</strong><br>
+        厚生年金保険は、労働者の<mark>老齢・障害・死亡</mark>について保険給付を行い、労働者及びその遺族の<mark>生活の安定と福祉の向上</mark>に寄与することを目的とする。<br><br>
+        <strong>【立法趣旨】</strong>昭和29年制定の被用者年金。国年（昭和34年）との役割分担：国年＝全国民対象の基礎年金、厚年＝報酬比例の上乗せ。「疾病・負傷・出産」は健保法、「共同連帯」は国年法の文言。<br><br>
+        <strong>【立法趣旨】</strong>昭和29年制定の被用者年金。「疾病・負傷・出産」は健保法の領域、「共同連帯」は国年法の文言で厚年には登場しない。国年（昭和34年）との役割分担：国年＝基礎年金、厚年＝報酬比例の上乗せ。<br><br>
+        <strong>【立法趣旨】</strong>厚年法は被用者（雇われて働く者）を対象とした報酬比例の社会保険。国民年金（昭和34年制定）と異なり「労働者」に限定し、老齢給付は報酬に比例する設計。「疾病・負傷・出産」は健康保険法の領域であり厚年の給付事由には含まれない（法第1条参照）。
+      </div>
+      <svg viewBox="0 0 520 120" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="520" height="120" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="24" font-size="12" font-weight="700" fill="#1a1a2e">厚生年金法 第1条 目的の構造（国民年金と比較）</text>
+        <rect x="10" y="36" width="240" height="72" rx="8" fill="#2a7f7f"/>
+        <text x="130" y="64" font-size="12" font-weight="700" fill="white" text-anchor="middle">厚生年金（法第1条）</text>
+        <text x="130" y="82" font-size="10" fill="#a7f3d0" text-anchor="middle">老齢・障害・死亡</text>
+        <text x="130" y="97" font-size="9" fill="#a7f3d0" text-anchor="middle">生活の安定と福祉の向上</text>
+        <rect x="270" y="36" width="240" height="72" rx="8" fill="#7c3aed"/>
+        <text x="390" y="64" font-size="12" font-weight="700" fill="white" text-anchor="middle">国民年金（法第1条）</text>
+        <text x="390" y="82" font-size="10" fill="#ede9fe" text-anchor="middle">老齢・障害・死亡</text>
+        <text x="390" y="97" font-size="9" fill="#ede9fe" text-anchor="middle">国民の共同連帯で防止</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「疾病・負傷」が厚年の給付事由に含まれる → <strong style="color:#2d6a4f;">○</strong> 老齢・障害・死亡の3事由のみ</div></div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「国民の共同連帯」が厚年の目的に含まれる → <strong style="color:#2d6a4f;">○</strong> それは国民年金法第1条の文言</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 <strong>国年との違い</strong>：国年は「<mark>国民の共同連帯</mark>」で防止、厚年は「<mark>生活の安定と福祉の向上</mark>」に寄与。文言の差が試験で問われる。</div>
+      <div class="law-tag">法第1条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 昭和29年、日本は戦後復興の最中だった。工場で働く労働者が病気・怪我・老齢で働けなくなったとき、家族が路頭に迷わないように作られたのが厚年法。「老齢・障害・死亡」の3事由はその頃の労働者が直面した現実のリスク。疾病は健保が担当するので厚年には含まれない——役割分担を理解すると自然に覚えられる。</div>
+    </div>
+  </div>
+</div><!-- /card cq1 -->
+
+<!-- Q2 -->
+<div class="card" id="cq2">
+  <div class="card-hd">
+    <div class="q-num">02</div>
+    <div>
+      <div class="src-tag">法第6条 ／ ○×式</div>
+      <div class="q-type">難易度：★★☆ ／ 単元：強制適用事業所</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">株式会社（法人）で従業員が<mark>1人</mark>のみであっても、厚生年金保険の<mark>強制適用事業所</mark>となる。</div>
+    <div class="opts-tf" id="q2-opts">
+      <div class="opt" onclick="answer('q2',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q2',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q2-ans">
+      <div class="ans-hd" id="q2-result"></div>
+      <div class="why">✅ <strong>正しい。</strong><strong>法第6条第1項第1号</strong>：法人の事業所は使用する従業員数に<mark>関わらず</mark>強制適用事業所。法人格を持つ事業所は継続性・安定性があるため1人でも強制。一方、個人事業所は<strong>第2号</strong>で「常時<mark>5人以上</mark>＋特定16業種」の2要件が必要。任意適用は<strong>法第7条</strong>（3分の2以上の同意＋申請）。</div>
+      <div class="def-card">
+        <strong>📖 強制適用事業所（法第6条第1項）</strong><br>
+        第1号：<mark>法人の事業所</mark>→従業員数不問（1人でも強制）<br>
+        第2号：<mark>個人事業所</mark>→常時<mark>5人以上</mark>使用かつ特定16業種<br>
+        第3号：<mark>国・地方公共団体</mark>→常時使用する事業所<br><br>
+        <strong>【特定16業種】</strong>製造業・鉱業・土木建築業・運送業・電気ガス業・清掃業・物品販売業・金融保険業・保管賃貸業・媒介周旋業・集金案内広告業・教育研究調査業・医療保健業・通信報道業・旅館業・飲食店（農林水産・宗教・法律会計税務サービス等は除く）。
+      </div>
+      <svg viewBox="0 0 520 110" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="520" height="110" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="22" font-size="12" font-weight="700" fill="#1a1a2e">強制適用事業所の要件比較</text>
+        <rect x="10" y="32" width="155" height="68" rx="7" fill="#1a1a2e"/>
+        <text x="87" y="58" font-size="11" font-weight="700" fill="#fde68a" text-anchor="middle">法人の事業所</text>
+        <text x="87" y="74" font-size="10" fill="white" text-anchor="middle">人数不問で強制</text>
+        <text x="87" y="88" font-size="9" fill="#ddd8cc" text-anchor="middle">1人でも適用</text>
+        <rect x="180" y="32" width="155" height="68" rx="7" fill="#2a7f7f"/>
+        <text x="257" y="55" font-size="11" font-weight="700" fill="white" text-anchor="middle">個人事業所</text>
+        <text x="257" y="71" font-size="10" fill="#a7f3d0" text-anchor="middle">常時5人以上</text>
+        <text x="257" y="87" font-size="9" fill="#a7f3d0" text-anchor="middle">＋特定16業種</text>
+        <rect x="350" y="32" width="155" height="68" rx="7" fill="#c9930a"/>
+        <text x="427" y="55" font-size="11" font-weight="700" fill="#1a1a2e" text-anchor="middle">国・地方公共団体</text>
+        <text x="427" y="71" font-size="10" fill="#1a1a2e" text-anchor="middle">常時使用する</text>
+        <text x="427" y="87" font-size="9" fill="#7c3400" text-anchor="middle">事業所</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「法人でも5人以上でなければ強制適用事業所にならない」→ <strong style="color:#2d6a4f;">○</strong> 法人は人数不問</div></div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 個人事業所は常時5人以上＋特定業種の両方が必要。</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 <strong>「法人は1人でも強制」</strong>が最頻出。「5人以上」は個人事業所の要件。混同に注意。</div>
+      <div class="law-tag">法第6条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 株式会社を1人で起業した山田さん。社員は自分1人でも法人なので即日強制適用。一方、5人の農業従事者を雇う田中農園は農業が特定16業種に含まれないため任意適用のまま。「なぜ法人は1人でも？」——法人格があると倒産しても事業継続の可能性があり、長期的な保険関係が成立するから。</div>
+    </div>
+  </div>
+</div><!-- /card cq2 -->
+
+<!-- Q3 -->
+<div class="card" id="cq3">
+  <div class="card-hd">
+    <div class="q-num">03</div>
+    <div>
+      <div class="src-tag">法第9条 ／ ○×式</div>
+      <div class="q-type">難易度：★★☆ ／ 単元：第4種被保険者</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">厚生年金保険の被保険者は第1号〜第4号の4種類に分かれており、<mark>第1号被保険者</mark>は民間企業に勤める一般の労働者である。</div>
+    <div class="opts-tf" id="q3-opts">
+      <div class="opt" onclick="answer('q3',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q3',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q3-ans">
+      <div class="ans-hd" id="q3-result"></div>
+      <div class="why">✅ <strong>正しい。</strong>法第9条。厚年の被保険者は4種別に分類される。この4種別制度は平成27年10月の<mark>被用者年金一元化</mark>により確立した。それ以前は公務員は共済年金（独立制度）に加入していたが、一元化後は厚生年金保険に統合され「第4号」として位置づけられた。給付水準の統一と財政の安定が目的。</div>
+      <div class="def-card">
+        <strong>📖 被保険者の4種別（法第9条）</strong><br>
+        <mark>第1号</mark>：民間企業の一般労働者（法第9条・適用事業所使用者）<br>
+        <mark>第2号</mark>：船員保険の被保険者（船員保険法第2条第1項）<br>
+        <mark>第3号</mark>：私立学校教職員共済法の加入者（私学共済法第14条）<br>
+        <mark>第4号</mark>：公務員（国家公務員共済・地方公務員共済の加入者）<br><br>
+        <strong>【平成27年一元化】</strong>従来の共済年金と厚生年金を統合。第2〜4号は各実施機関（全国健康保険協会・私学事業団・共済組合）が運営するが、厚年制度として一元管理される。
+      </div>
+      <svg viewBox="0 0 520 80" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="520" height="80" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="20" font-size="11" font-weight="700" fill="#1a1a2e">厚生年金 被保険者4種別</text>
+        <rect x="10" y="28" width="115" height="42" rx="6" fill="#1a1a2e"/>
+        <text x="67" y="47" font-size="10" font-weight="700" fill="#fde68a" text-anchor="middle">第1号</text>
+        <text x="67" y="62" font-size="9" fill="white" text-anchor="middle">民間一般労働者</text>
+        <rect x="135" y="28" width="115" height="42" rx="6" fill="#2a7f7f"/>
+        <text x="192" y="47" font-size="10" font-weight="700" fill="white" text-anchor="middle">第2号</text>
+        <text x="192" y="62" font-size="9" fill="#a7f3d0" text-anchor="middle">船員</text>
+        <rect x="260" y="28" width="115" height="42" rx="6" fill="#7c3aed"/>
+        <text x="317" y="47" font-size="10" font-weight="700" fill="white" text-anchor="middle">第3号</text>
+        <text x="317" y="62" font-size="9" fill="#ede9fe" text-anchor="middle">私学教職員</text>
+        <rect x="385" y="28" width="125" height="42" rx="6" fill="#c9930a"/>
+        <text x="447" y="47" font-size="10" font-weight="700" fill="#1a1a2e" text-anchor="middle">第4号</text>
+        <text x="447" y="62" font-size="9" fill="#7c3400" text-anchor="middle">公務員（共済加入者）</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「公務員は厚生年金の第2号被保険者」→ <strong style="color:#2d6a4f;">○</strong> 公務員は<strong>第4号</strong>被保険者</div></div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「厚生年金は第1号・第2号の2種」→ <strong style="color:#2d6a4f;">○</strong> 第1〜<strong>第4号</strong>の4種</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 <strong>語呂</strong>：「<mark>民・船・私学・公務員</mark>」= 第1〜4号の順。4種類であることが頻出。</div>
+      <div class="law-tag">法第9条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 平成27年10月、公務員は共済年金という別制度から厚年の第4号に合流した。「官民格差」が長年問題視されてきた末の一元化。第2号（船員）・第3号（私学）も同じく職域の違いを残しながら統合。「なぜ4種別のまま？」——それぞれの雇用形態・実施機関を尊重しながら給付水準だけ統一するための苦肉の策。</div>
+    </div>
+  </div>
+</div><!-- /card cq3 -->
+
+<!-- Q4 -->
+<div class="card" id="cq4">
+  <div class="card-hd">
+    <div class="q-num">04</div>
+    <div>
+      <div class="src-tag">法第13条・14条 ／ ○×式</div>
+      <div class="q-type">難易度：★★☆ ／ 単元：資格取得・喪失の時期</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">被保険者の資格は適用事業所に使用されるに至った<mark>翌日</mark>から取得し、使用関係が消滅した日の<mark>翌日</mark>に喪失する。</div>
+    <div class="opts-tf" id="q4-opts">
+      <div class="opt" onclick="answer('q4',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q4',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q4-ans">
+      <div class="ans-hd" id="q4-result"></div>
+      <div class="why">⚠️ <strong>誤り。</strong>法第13条・第14条。資格取得は使用されるに至った<mark>当日</mark>（翌日ではない）。資格喪失は使用関係消滅日の<mark>翌日</mark>。取得を当日とするのは「使用関係が始まった瞬間から保護が必要」という社会保険の即時保護原則によるもの。喪失が翌日なのは「退職当日も被保険者として保護する」という考え方から。健保法・国年法も同じ設計（健保法第35条・第36条・国年法第9条・第10条）。</div>
+      <div class="def-card">
+        <strong>📖 資格取得・喪失の時期</strong><br>
+        <strong>取得（法第13条）</strong>：適用事業所に使用されるに至った日（<mark>当日</mark>）<br>
+        <strong>喪失（法第14条）</strong>：<br>
+        　第1号：使用関係が消滅した日の<mark>翌日</mark>（退職・解雇）<br>
+        　第2号：死亡した日の<mark>翌日</mark><br>
+        　第3号：<mark>70歳</mark>に達した日の翌日（強制加入上限）<br>
+        　第4号：適用除外事由に該当した日の翌日<br><br>
+        <strong>【注意】</strong>健保の「75歳到達→当日喪失（後期高齢者医療へ移行）」とは異なり、厚年に<mark>当日喪失</mark>の例外はない。すべて翌日喪失。
+      </div>
+      <svg viewBox="0 0 520 90" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="520" height="90" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="22" font-size="12" font-weight="700" fill="#1a1a2e">資格取得（当日）vs 資格喪失（翌日）</text>
+        <rect x="10" y="32" width="240" height="48" rx="7" fill="#2a7f7f"/>
+        <text x="130" y="54" font-size="12" font-weight="700" fill="white" text-anchor="middle">資格取得 ＝ 当日</text>
+        <text x="130" y="70" font-size="10" fill="#a7f3d0" text-anchor="middle">使用されるに至った日（入社日）</text>
+        <rect x="270" y="32" width="240" height="48" rx="7" fill="#c84b31"/>
+        <text x="390" y="54" font-size="12" font-weight="700" fill="white" text-anchor="middle">資格喪失 ＝ 翌日</text>
+        <text x="390" y="70" font-size="10" fill="#fca5a5" text-anchor="middle">使用関係消滅日の翌日（退職翌日）</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「4月1日入社→4月2日から資格取得」→ <strong style="color:#2d6a4f;">○</strong> 入社日（<strong>4月1日</strong>）から取得</div></div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 3月31日退職→4月1日に資格喪失（翌日喪失）</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 <strong>取得は当日・喪失は翌日</strong>がセット。健保・国年も同じルール。この対比が最頻出引っかけ。</div>
+      <div class="law-tag">法第13条・14条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 鈴木さんは4月1日入社。同日から被保険者（取得＝当日）——入社した瞬間から業務上の事故リスクがあるから即日保護が必要。3月31日退職なら喪失は4月1日（翌日）——退職当日の医療費も保険でカバーするため。「取得は当日・喪失は翌日」という非対称性は、どちらも「被保険者をギリギリまで守る」という同じ思想から生まれている。</div>
+    </div>
+  </div>
+</div><!-- /card cq4 -->
+
+<!-- Q5 -->
+<div class="card" id="cq5">
+  <div class="card-hd">
+    <div class="q-num">05</div>
+    <div>
+      <div class="src-tag">法第14条・附則第4条の3 ／ ○×式</div>
+      <div class="q-type">難易度：★★★ ／ 単元：70歳到達と高齢任意加入</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">厚生年金保険の被保険者は<mark>70歳</mark>に達した日の翌日に資格を喪失するが、老齢年金の受給権がない者は<mark>70歳以降も任意加入</mark>できる。</div>
+    <div class="opts-tf" id="q5-opts">
+      <div class="opt" onclick="answer('q5',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q5',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q5-ans">
+      <div class="ans-hd" id="q5-result"></div>
+      <div class="why">✅ <strong>正しい。</strong>法第14条第3号・附則第4条の3。厚年の強制加入上限は<mark>70歳</mark>（70歳到達翌日に自動喪失）。国民年金の強制加入上限60歳より10年長い。理由は厚年が報酬比例であり、働き続ける限り年金額を積み上げられるよう設計されているため。老齢年金の受給権がない者は<mark>高齢任意加入被保険者</mark>（附則第4条の3）として事業主の同意を得て加入継続でき、受給資格期間を満たすことができる。</div>
+      <div class="def-card">
+        <strong>📖 強制加入上限と高齢任意加入</strong><br>
+        <strong>法第14条第3号</strong>：70歳到達日の翌日に資格喪失（強制加入の上限）<br>
+        <strong>附則第4条の3</strong>：高齢任意加入被保険者制度<br>
+        　要件①：老齢給付の受給権がない（受給資格10年未満等）<br>
+        　要件②：引き続き適用事業所に使用される<br>
+        　要件③：<mark>事業主の同意</mark>を得ること<br><br>
+        <strong>【年齢比較】</strong>国年強制加入上限→60歳・厚年強制加入上限→<mark>70歳</mark>・健保強制加入上限→<mark>75歳</mark>。この3つの年齢の違いが頻出。
+      </div>
+      <svg viewBox="0 0 520 90" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="520" height="90" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="22" font-size="11" font-weight="700" fill="#1a1a2e">厚生年金の年齢による加入区分</text>
+        <rect x="10" y="30" width="240" height="50" rx="7" fill="#2a7f7f"/>
+        <text x="130" y="52" font-size="11" font-weight="700" fill="white" text-anchor="middle">70歳未満：強制加入</text>
+        <text x="130" y="68" font-size="9" fill="#a7f3d0" text-anchor="middle">適用事業所使用で自動加入</text>
+        <rect x="270" y="30" width="240" height="50" rx="7" fill="#c9930a"/>
+        <text x="390" y="52" font-size="11" font-weight="700" fill="#1a1a2e" text-anchor="middle">70歳以上：原則喪失</text>
+        <text x="390" y="68" font-size="9" fill="#7c3400" text-anchor="middle">受給権なし→任意加入可（事業主同意）</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「厚生年金は65歳で強制喪失」→ <strong style="color:#2d6a4f;">○</strong> 厚生年金の強制加入上限は<strong>70歳</strong></div></div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 高齢任意加入は事業主の同意が必要。</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 国年の強制加入上限は<mark>60歳</mark>、厚年は<mark>70歳</mark>。この差が試験頻出。</div>
+      <div class="law-tag">法第14条・附則第4条の3</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 佐藤さん（68歳）はまだ現役で働いている。国年の強制加入は60歳まで、健保は75歳まで、厚年は70歳まで。「なぜ厚年は70歳？」——報酬比例なので働くほど年金額が積み上がる。長く働いてもらうほど本人の年金が増える仕組みにしたから、国年の60歳より上限を高く設定した。高齢者雇用促進の思想が上限年齢に表れている。</div>
+    </div>
+  </div>
+</div><!-- /card cq5 -->
+
+</div><!-- /qwrap -->
+
+<!-- 穴埋め式 5問 -->
+<div class="qwrap">
+
+<!-- F1 -->
+<div class="card" id="cf1">
+  <div class="card-hd">
+    <div class="q-num">06</div>
+    <div>
+      <div class="src-tag">法第6条 ／ 穴埋め式</div>
+      <div class="q-type">難易度：★☆☆ ／ 単元：強制適用事業所の要件</div>
+    </div>
+  </div>
+  <div class="blank-card-body">
+    <div class="blank-q">強制適用事業所：①法人の事業所は従業員数<span class="blank" id="f1a" onclick="selB('f1','f1a')">　　</span>で強制適用。②個人事業所は常時<span class="blank" id="f1b" onclick="selB('f1','f1b')">　</span>人以上かつ<span class="blank" id="f1c" onclick="selB('f1','f1c')">　　　　</span>業種。③任意適用は従業員の<span class="blank" id="f1d" onclick="selB('f1','f1d')">　</span>分の<span class="blank" id="f1e" onclick="selB('f1','f1e')">　</span>以上の同意が必要。</div>
+    <div class="chips" id="f1-chips">
+      <div class="chp" onclick="fillB('f1','f1a',this,'不問')">不問</div>
+      <div class="chp" onclick="fillB('f1','f1b',this,'5')">5</div>
+      <div class="chp" onclick="fillB('f1','f1c',this,'特定16')">特定16</div>
+      <div class="chp" onclick="fillB('f1','f1d',this,'2')">2</div>
+      <div class="chp" onclick="fillB('f1','f1e',this,'3')">3</div>
+    </div>
+    <button class="chk-btn" id="chk-f1" onclick="chkF('f1')">答え合わせ</button>
+    <div class="f-ans" id="f1-ans">
+      <div class="ans-hd" id="f1-result"></div>
+      <svg viewBox="0 0 400 70" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="70" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">強制 vs 任意適用の数字</text>
+        <rect x="10" y="24" width="180" height="38" rx="6" fill="#1a1a2e"/>
+        <text x="100" y="40" font-size="10" font-weight="700" fill="#fde68a" text-anchor="middle">法人：人数不問（1人でも）</text>
+        <text x="100" y="55" font-size="9" fill="white" text-anchor="middle">個人：5人以上＋特定16業種</text>
+        <rect x="210" y="24" width="180" height="38" rx="6" fill="#7c3aed"/>
+        <text x="300" y="40" font-size="10" font-weight="700" fill="white" text-anchor="middle">任意適用：2/3以上の同意</text>
+        <text x="300" y="55" font-size="9" fill="#ede9fe" text-anchor="middle">＋事業主の申請</text>
+      </svg>
+      <div class="why">法人は<mark>人数不問</mark>。個人は<mark>5人以上＋特定16業種</mark>。任意適用の同意要件は<mark>3分の2以上</mark>（健保の任意適用と同じ）。</div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「任意適用には過半数（1/2）の同意」→ <strong style="color:#2d6a4f;">○</strong> 3分の2以上</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「5人・特定16・3分の2」の3数字をセットで。</div>
+      <div class="law-tag">法第6条・第8条</div>
+            <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 個人事業の「5人以上」「特定16業種」「3分の2以上」は、すべて強制適用か任意適用かの境界線。法人には境界線がない（問答無用で強制）。「なぜ個人に5人の足切り？」——1〜4人の極小規模事業所に強制加入させると経営が立ち行かなくなるケースがある。零細事業者を守るために設けられた配慮の数字。</div>
+    </div>
+  </div>
+</div><!-- /card cf1 -->
+
+<!-- F2 -->
+<div class="card" id="cf2">
+  <div class="card-hd">
+    <div class="q-num">07</div>
+    <div>
+      <div class="src-tag">法第12条 ／ 穴埋め式</div>
+      <div class="q-type">難易度：★★☆ ／ 単元：適用除外</div>
+    </div>
+  </div>
+  <div class="blank-card-body">
+    <div class="blank-q">厚生年金の適用除外：①<span class="blank" id="f2a" onclick="selB('f2','f2a')">　　　　</span>被保険者。②<span class="blank" id="f2b" onclick="selB('f2','f2b')">　　　　</span>以内の期間を定めて雇用される者。③臨時的事業の事業所に使用され<span class="blank" id="f2c" onclick="selB('f2','f2c')">　　　</span>以内の者。④<span class="blank" id="f2d" onclick="selB('f2','f2d')">　　</span>歳未満の者（一定要件）。</div>
+    <div class="chips" id="f2-chips">
+      <div class="chp" onclick="fillB('f2','f2a',this,'日雇労働')">日雇労働</div>
+      <div class="chp" onclick="fillB('f2','f2b',this,'2ヵ月')">2ヵ月</div>
+      <div class="chp" onclick="fillB('f2','f2c',this,'6ヵ月')">6ヵ月</div>
+      <div class="chp" onclick="fillB('f2','f2d',this,'70')">70</div>
+    </div>
+    <button class="chk-btn" id="chk-f2" onclick="chkF('f2')">答え合わせ</button>
+    <div class="f-ans" id="f2-ans">
+      <div class="ans-hd" id="f2-result"></div>
+      <svg viewBox="0 0 400 70" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="70" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">適用除外の主要4パターン</text>
+        <rect x="10" y="24" width="88" height="38" rx="5" fill="#c84b31"/>
+        <text x="54" y="40" font-size="9" font-weight="700" fill="white" text-anchor="middle">日雇労働</text>
+        <text x="54" y="54" font-size="8" fill="#fca5a5" text-anchor="middle">被保険者</text>
+        <rect x="108" y="24" width="88" height="38" rx="5" fill="#c84b31"/>
+        <text x="152" y="40" font-size="9" font-weight="700" fill="white" text-anchor="middle">2ヵ月以内</text>
+        <text x="152" y="54" font-size="8" fill="#fca5a5" text-anchor="middle">期間雇用</text>
+        <rect x="206" y="24" width="88" height="38" rx="5" fill="#c84b31"/>
+        <text x="250" y="40" font-size="9" font-weight="700" fill="white" text-anchor="middle">臨時6ヵ月以内</text>
+        <text x="250" y="54" font-size="8" fill="#fca5a5" text-anchor="middle">臨時的事業所</text>
+        <rect x="304" y="24" width="88" height="38" rx="5" fill="#c84b31"/>
+        <text x="348" y="40" font-size="9" font-weight="700" fill="white" text-anchor="middle">70歳以上</text>
+        <text x="348" y="54" font-size="8" fill="#fca5a5" text-anchor="middle">年齢上限</text>
+      </svg>
+      <div class="why"><mark>日雇労働被保険者</mark>・<mark>2ヵ月以内</mark>期間雇用（超えると取得）・臨時的事業所<mark>6ヵ月以内</mark>・<mark>70歳以上</mark>（上限）が主要な適用除外。</div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「2ヵ月以内の期間雇用者は、期間超過後も適用除外のまま」→ <strong style="color:#2d6a4f;">○</strong> 超過した日から被保険者資格を取得</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「2ヵ月を超えたら取得」は最頻出。超過時点（翌日ではなく超過当日）に資格取得。</div>
+      <div class="law-tag">法第12条</div>
+            <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 期間限定2ヵ月で採用された鈴木さん、日雇いの田中さん、70歳の佐々木さんは全員適用除外。でも鈴木さんが2ヵ月を1日でも超えて働いたら、その日（超えた当日）から資格取得。「なぜ翌日ではなく当日？」——2ヵ月超えた瞬間に適用除外の理由が消えるから、その日から即保護。「超えた翌日から」ではないので注意。</div>
+    </div>
+  </div>
+</div><!-- /card cf2 -->
+
+<!-- F3 -->
+<div class="card" id="cf3">
+  <div class="card-hd">
+    <div class="q-num">08</div>
+    <div>
+      <div class="src-tag">法第14条 ／ 穴埋め式</div>
+      <div class="q-type">難易度：★★☆ ／ 単元：資格喪失の時期（複数事由）</div>
+    </div>
+  </div>
+  <div class="blank-card-body">
+    <div class="blank-q">資格喪失の時期：①退職（使用関係消滅）→消滅した日の<span class="blank" id="f3a" onclick="selB('f3','f3a')">　　　</span>。②死亡→死亡した日の<span class="blank" id="f3b" onclick="selB('f3','f3b')">　　　</span>。③<span class="blank" id="f3c" onclick="selB('f3','f3c')">　　</span>歳到達→到達した日の<span class="blank" id="f3d" onclick="selB('f3','f3d')">　　　</span>。</div>
+    <div class="chips" id="f3-chips">
+      <div class="chp" onclick="fillB('f3','f3a',this,'翌日')">翌日</div>
+      <div class="chp" onclick="fillB('f3','f3b',this,'翌日')">翌日</div>
+      <div class="chp" onclick="fillB('f3','f3c',this,'70')">70</div>
+      <div class="chp" onclick="fillB('f3','f3d',this,'翌日')">翌日</div>
+    </div>
+    <button class="chk-btn" id="chk-f3" onclick="chkF('f3')">答え合わせ</button>
+    <div class="f-ans" id="f3-ans">
+      <div class="ans-hd" id="f3-result"></div>
+      <svg viewBox="0 0 400 70" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="70" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">資格喪失の時期（厚生年金）</text>
+        <rect x="10" y="26" width="115" height="36" rx="5" fill="#c84b31"/>
+        <text x="67" y="42" font-size="9" font-weight="700" fill="white" text-anchor="middle">退職・解雇</text>
+        <text x="67" y="56" font-size="9" fill="#fca5a5" text-anchor="middle">消滅日の翌日</text>
+        <rect x="143" y="26" width="115" height="36" rx="5" fill="#c84b31"/>
+        <text x="200" y="42" font-size="9" font-weight="700" fill="white" text-anchor="middle">死亡</text>
+        <text x="200" y="56" font-size="9" fill="#fca5a5" text-anchor="middle">死亡日の翌日</text>
+        <rect x="276" y="26" width="115" height="36" rx="5" fill="#c84b31"/>
+        <text x="333" y="42" font-size="9" font-weight="700" fill="white" text-anchor="middle">70歳到達</text>
+        <text x="333" y="56" font-size="9" fill="#fca5a5" text-anchor="middle">到達日の翌日</text>
+      </svg>
+      <div class="why">厚年の資格喪失はすべて<mark>翌日</mark>喪失（退職・死亡・70歳到達）。健保の75歳当日喪失と異なり、厚年に「当日喪失」はない。</div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「70歳の誕生日当日に資格喪失」→ <strong style="color:#2d6a4f;">○</strong> 到達日の<strong>翌日</strong>喪失（健保75歳の当日喪失と混同注意）</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 厚年は<mark>全て翌日喪失</mark>。健保の「75歳当日喪失」との混同が最頻出引っかけ。</div>
+      <div class="law-tag">法第14条</div>
+            <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 3月31日退職の山田さん、喪失は4月1日（翌日）。4月1日が誕生日の佐藤さん（70歳）も喪失は4月2日（翌日）。死亡した日の翌日も同じ。「全部翌日」というシンプルな原則。例外は健保の75歳到達だけ——誕生日当日に後期高齢者医療に移るので当日喪失。この例外1つだけ覚えれば他は全部翌日と確信できる。</div>
+    </div>
+  </div>
+</div><!-- /card cf3 -->
+
+<!-- F4 -->
+<div class="card" id="cf4">
+  <div class="card-hd">
+    <div class="q-num">09</div>
+    <div>
+      <div class="src-tag">法第16条 ／ 穴埋め式</div>
+      <div class="q-type">難易度：★★☆ ／ 単元：標準報酬月額・標準賞与額</div>
+    </div>
+  </div>
+  <div class="blank-card-body">
+    <div class="blank-q">厚生年金の標準報酬月額は<span class="blank" id="f4a" onclick="selB('f4','f4a')">　　</span>等級。下限<span class="blank" id="f4b" onclick="selB('f4','f4b')">　　</span>万円・上限<span class="blank" id="f4c" onclick="selB('f4','f4c')">　　　</span>万円。標準賞与額の上限は<span class="blank" id="f4d" onclick="selB('f4','f4d')">　　　</span>万円（1回につき）。</div>
+    <div class="chips" id="f4-chips">
+      <div class="chp" onclick="fillB('f4','f4a',this,'32')">32</div>
+      <div class="chp" onclick="fillB('f4','f4b',this,'8.8')">8.8</div>
+      <div class="chp" onclick="fillB('f4','f4c',this,'65')">65</div>
+      <div class="chp" onclick="fillB('f4','f4d',this,'150')">150</div>
+    </div>
+    <button class="chk-btn" id="chk-f4" onclick="chkF('f4')">答え合わせ</button>
+    <div class="f-ans" id="f4-ans">
+      <div class="ans-hd" id="f4-result"></div>
+      <svg viewBox="0 0 400 70" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="70" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">標準報酬月額 vs 標準賞与額（厚生年金）</text>
+        <rect x="10" y="26" width="180" height="36" rx="5" fill="#2a7f7f"/>
+        <text x="100" y="42" font-size="10" font-weight="700" fill="white" text-anchor="middle">標準報酬月額</text>
+        <text x="100" y="56" font-size="9" fill="#a7f3d0" text-anchor="middle">32等級・8.8〜65万円</text>
+        <rect x="210" y="26" width="180" height="36" rx="5" fill="#c9930a"/>
+        <text x="300" y="42" font-size="10" font-weight="700" fill="#1a1a2e" text-anchor="middle">標準賞与額</text>
+        <text x="300" y="56" font-size="9" fill="#7c3400" text-anchor="middle">150万円/回（年上限なし）</text>
+      </svg>
+      <div class="why">標準報酬月額は<mark>32等級</mark>（健保は50等級より少ない）・下限<mark>8.8万円</mark>・上限<mark>65万円</mark>。標準賞与額の上限は<mark>1回150万円</mark>（健保の573万円/年と異なる）。</div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「厚年の標準賞与額は年573万円が上限」→ <strong style="color:#2d6a4f;">○</strong> 健保が年573万円。厚年は<strong>1回150万円</strong></div></div>
+        </div>
+      </div>
+      <div class="tip">💡 厚年32等級・65万円・150万円/回。健保50等級・139万円・573万円/年との差が頻出。</div>
+      <div class="law-tag">法第16条・24条の4</div>
+            <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 厚年の標準報酬月額は32等級、上限65万円。健保は50等級で上限約139万円。「なぜ厚年の方が等級が少なく上限も低い？」——老齢年金は報酬比例なので、上限が高すぎると高所得者の年金が際限なく膨らむ。社会保険は「所得の一定部分を保障する」制度であって「高収入をそのまま保証する」制度ではないという設計思想。</div>
+    </div>
+  </div>
+</div><!-- /card cf4 -->
+
+<!-- F5 -->
+<div class="card" id="cf5">
+  <div class="card-hd">
+    <div class="q-num">10</div>
+    <div>
+      <div class="src-tag">法第19条 ／ 穴埋め式</div>
+      <div class="q-type">難易度：★★★ ／ 単元：被保険者期間・届出</div>
+    </div>
+  </div>
+  <div class="blank-card-body">
+    <div class="blank-q">被保険者期間は<span class="blank" id="f5a" onclick="selB('f5','f5a')">　　　</span>単位で計算する。資格取得届の届出期限は資格取得日から<span class="blank" id="f5b" onclick="selB('f5','f5b')">　</span>日以内。資格喪失届は喪失日から<span class="blank" id="f5c" onclick="selB('f5','f5c')">　</span>日以内。保険料の時効は<span class="blank" id="f5d" onclick="selB('f5','f5d')">　</span>年。</div>
+    <div class="chips" id="f5-chips">
+      <div class="chp" onclick="fillB('f5','f5a',this,'月')">月</div>
+      <div class="chp" onclick="fillB('f5','f5b',this,'5')">5</div>
+      <div class="chp" onclick="fillB('f5','f5c',this,'5')">5</div>
+      <div class="chp" onclick="fillB('f5','f5d',this,'2')">2</div>
+    </div>
+    <button class="chk-btn" id="chk-f5" onclick="chkF('f5')">答え合わせ</button>
+    <div class="f-ans" id="f5-ans">
+      <div class="ans-hd" id="f5-result"></div>
+      <svg viewBox="0 0 400 70" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="70" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">厚生年金 届出・時効まとめ</text>
+        <rect x="10" y="26" width="115" height="36" rx="5" fill="#1a1a2e"/>
+        <text x="67" y="42" font-size="9" font-weight="700" fill="#fde68a" text-anchor="middle">被保険者期間</text>
+        <text x="67" y="56" font-size="9" fill="white" text-anchor="middle">月単位で計算</text>
+        <rect x="135" y="26" width="115" height="36" rx="5" fill="#2a7f7f"/>
+        <text x="192" y="42" font-size="9" font-weight="700" fill="white" text-anchor="middle">取得・喪失届</text>
+        <text x="192" y="56" font-size="9" fill="#a7f3d0" text-anchor="middle">各5日以内</text>
+        <rect x="260" y="26" width="130" height="36" rx="5" fill="#7c3aed"/>
+        <text x="325" y="42" font-size="9" font-weight="700" fill="white" text-anchor="middle">保険料の時効</text>
+        <text x="325" y="56" font-size="9" fill="#ede9fe" text-anchor="middle">2年（健保と同じ）</text>
+      </svg>
+      <div class="why">被保険者期間は<mark>月単位</mark>（日単位ではない）。取得届・喪失届ともに<mark>5日以内</mark>。保険料時効は<mark>2年</mark>。</div>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「被保険者期間は日単位で計算」→ <strong style="color:#2d6a4f;">○</strong> <strong>月単位</strong></div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「月・5日・5日・2年」の4数字をセット暗記。月単位は国年と同じ。</div>
+      <div class="law-tag">法第19条・27条</div>
+            <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 入社した当日から被保険者（当日取得）。届出は5日以内でよい——「取得」と「届出」は別物。月単位で期間を計算するのは、保険料も月単位で徴収されるから。2年で時効というのは「2年以上前の未払い給付は諦めてください」という意味。気づいたら早めに請求する——これが社労士として依頼者にアドバイスする実務の核心でもある。</div>
+    </div>
+  </div>
+</div><!-- /card cf5 -->
+
+</div><!-- /qwrap -->
+
+<div class="complete-bar" id="complete-bar">
+  <div class="complete-card">
+    <h2>🎉 全問回答完了！</h2>
+    <div class="complete-score" id="complete-score">0 / 10</div>
+    <div style="color:rgba(255,255,255,.7);font-size:13px;" id="complete-msg"></div>
+    <button class="copy-btn2" id="copy-btn2" onclick="copyRecord()">📋 記録をコピー</button>
+  </div>
+</div>
+
+</div><!-- /panel-quiz -->
+
+<!-- ════ PANEL-MINDMAP ════ -->
+<div id="panel-mindmap" class="tab-panel">
+<div class="mm-wrap">
+  <div style="background:var(--teal-light);border:1px solid var(--teal);border-radius:10px;padding:12px 16px;font-size:13px;color:#1a4040;margin-bottom:24px;line-height:1.7;">
+    🗺 <strong>連想図</strong>：厚生年金法 Day1「目的・適用・被保険者・資格」の重要論点を3STEPで整理。
+  </div>
+
+  <div class="mm-step">
+    <div class="mm-step-hd"><div class="mm-step-num">1</div><div class="mm-step-title">目的条文・国民年金との違い</div></div>
+    <div class="mm-step-body">
+      <div class="mm-item">📌 <strong>法第1条（目的）</strong>：<mark>老齢・障害・死亡</mark>について保険給付を行い、<mark>生活の安定と福祉の向上</mark>に寄与。被用者（労働者）を対象とした報酬比例の社会保険。疾病・負傷・出産は健保法の領域。</div>
+      <div class="mm-item">📌 <strong>国年との比較（法第1条 vs 国年法第1条）</strong>：国年は「<mark>国民の共同連帯</mark>によって防止」→全国民を対象とした基礎年金。厚年は「<mark>生活の安定と福祉の向上に寄与</mark>」→被用者対象の上乗せ年金。</div>
+      <div class="mm-alert">🚨 「疾病・負傷」は厚年の給付事由に含まれない。「共同連帯」は国年の文言。</div>
+      <div class="mm-gorof">🧠 <strong>語呂</strong>：「<mark>老障死（ろうしょうし）で生活・福祉</mark>」← 3事由＋目的をセット。</div>
+    </div>
+  </div>
+
+  <div class="mm-step">
+    <div class="mm-step-hd"><div class="mm-step-num">2</div><div class="mm-step-title">適用事業所・被保険者4種別</div></div>
+    <div class="mm-step-body">
+      <div class="mm-item">📌 <strong>法人（法第6条第1項第1号）</strong>：<mark>人数不問</mark>で強制適用（1人でも）←法人格の継続性・安定性が根拠</div>
+      <div class="mm-item">📌 <strong>個人（法第6条第1項第2号）</strong>：常時<mark>5人以上</mark>＋<mark>特定16業種</mark>で強制適用。農林水産・宗教等は除外（任意適用）</div>
+      <div class="mm-item">📌 <strong>4種別（法第9条）</strong>：第1号（民間）・第2号（船員）・第3号（私学）・第4号（公務員）。平成27年一元化で共済年金を統合。</div>
+      <div class="mm-alert">🚨 公務員は<mark>第4号</mark>被保険者（第2号ではない）</div>
+      <div class="mm-alert">🚨 任意適用の同意要件は<mark>3分の2以上</mark>（過半数ではない）</div>
+      <div class="hikakke-box">
+        <div class="hikakke-hd"><span>🔥 最重要引っかけ TOP5</span></div>
+        <div class="hikakke-body">
+          <div class="hikakke-row">× 法人は5人以上で強制 → ○ <strong>人数不問</strong>（1人でも強制）</div>
+          <div class="hikakke-row">× 公務員は厚年第2号 → ○ <strong>第4号</strong>被保険者</div>
+          <div class="hikakke-row">× 厚年の目的に「共同連帯」 → ○ 国民年金の文言</div>
+          <div class="hikakke-row">× 70歳誕生日に当日喪失 → ○ 到達日の<strong>翌日</strong>喪失</div>
+          <div class="hikakke-row">× 標準賞与額上限は年573万円 → ○ 健保が年573万円。厚年は<strong>1回150万円</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mm-step">
+    <div class="mm-step-hd"><div class="mm-step-num">3</div><div class="mm-step-title">資格取得・喪失・標準報酬・届出</div></div>
+    <div class="mm-step-body">
+      <div class="mm-item">📌 <strong>資格取得（法第13条）</strong>：使用されるに至った日（<mark>当日</mark>）から取得。即時保護の原則。</div>
+      <div class="mm-item">📌 <strong>資格喪失（法第14条）</strong>：退職・死亡・70歳到達いずれも<mark>翌日</mark>喪失。「退職当日も被保険者として保護する」設計。健保の75歳当日喪失と区別。</div>
+      <div class="mm-item">📌 <strong>適用除外（法第12条）</strong>：日雇・<mark>2ヵ月以内</mark>期間（超えると資格取得）・臨時事業所6ヵ月以内・<mark>70歳以上</mark>。2ヵ月超えたとき＝超えた当日から取得。</div>
+      <div class="mm-item">📌 <strong>標準報酬（法第16条・24条の4）</strong>：月額<mark>32等級</mark>（8.8〜65万円）・賞与上限<mark>1回150万円</mark>（健保の年573万円とは異なる）</div>
+      <div class="mm-item">📌 <strong>届出（法第27条）</strong>：取得届・喪失届各<mark>5日以内</mark>（事業主が届出）・被保険者期間は<mark>月単位</mark>（法第19条）・保険料時効<mark>2年</mark>（法第92条）</div>
+      <div class="mm-gorof">🧠 <strong>数字まとめ</strong>：「<mark>32等級・65万・150万・5日・2年</mark>」― 厚年の数字5本柱をセットで。</div>
+    </div>
+  </div>
+
+  <!-- 横断比較 -->
+  <div class="mm-step" style="border-color:var(--blue,#1d4ed8);">
+    <div class="mm-step-hd" style="background:#1d4ed8;">
+      <div class="mm-step-num" style="color:#bfdbfe;">⚖</div>
+      <div class="mm-step-title">健保法 vs 厚生年金法 横断比較</div>
+    </div>
+    <div class="mm-step-body">
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:12px;min-width:480px;">
+          <thead>
+            <tr style="background:#1d4ed8;">
+              <th style="padding:8px 10px;color:white;font-weight:700;text-align:left;border-bottom:2px solid #93c5fd;">論点</th>
+              <th style="padding:8px 10px;color:#bfdbfe;font-weight:700;text-align:center;border-bottom:2px solid #93c5fd;">健康保険法</th>
+              <th style="padding:8px 10px;color:#fde68a;font-weight:700;text-align:center;border-bottom:2px solid #93c5fd;">厚生年金保険法</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #e0e7ff;background:#f8faff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">目的の文言</td>
+              <td style="padding:8px 10px;text-align:center;">業務外の<mark>疾病・負傷・死亡・出産</mark><br>国民の<mark>生活の安定</mark>・福祉の向上</td>
+              <td style="padding:8px 10px;text-align:center;"><mark>老齢・障害・死亡</mark><br>労働者の<mark>生活の安定と福祉の向上</mark></td>
+            </tr>
+            <tr style="border-bottom:1px solid #e0e7ff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">強制加入の上限年齢</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#fee2e2;">75歳</mark>（後期高齢者医療へ移行）</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#dcfce7;">70歳</mark>（高齢任意加入あり）</td>
+            </tr>
+            <tr style="border-bottom:1px solid #e0e7ff;background:#f8faff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">75歳到達の喪失</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#fee2e2;">誕生日当日</mark>に喪失</td>
+              <td style="padding:8px 10px;text-align:center;">70歳到達は<mark style="background:#dcfce7;">翌日</mark>喪失<br>（当日喪失なし）</td>
+            </tr>
+            <tr style="border-bottom:1px solid #e0e7ff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">標準報酬月額の等級</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#fee2e2;">50等級</mark><br>（5.8万〜139万円）</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#dcfce7;">32等級</mark><br>（8.8万〜65万円）</td>
+            </tr>
+            <tr style="border-bottom:1px solid #e0e7ff;background:#f8faff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">標準賞与額の上限</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#fee2e2;">年573万円</mark></td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#dcfce7;">1回150万円</mark>（年上限なし）</td>
+            </tr>
+            <tr style="border-bottom:1px solid #e0e7ff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">期間雇用の適用除外</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#fee2e2;">2ヵ月以内</mark>（超えると取得）</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#dcfce7;">2ヵ月以内</mark>（超えると取得）</td>
+            </tr>
+            <tr style="border-bottom:1px solid #e0e7ff;background:#f8faff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">任意適用の同意要件</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#fee2e2;">2/3以上</mark>の同意</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#dcfce7;">2/3以上</mark>の同意</td>
+            </tr>
+            <tr style="border-bottom:1px solid #e0e7ff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">届出期限</td>
+              <td style="padding:8px 10px;text-align:center;">取得・喪失届 <mark style="background:#fee2e2;">5日以内</mark></td>
+              <td style="padding:8px 10px;text-align:center;">取得・喪失届 <mark style="background:#dcfce7;">5日以内</mark></td>
+            </tr>
+            <tr style="border-bottom:1px solid #e0e7ff;background:#f8faff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">保険料の時効</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#fee2e2;">2年</mark></td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#dcfce7;">2年</mark></td>
+            </tr>
+            <tr style="background:#f8faff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">被保険者期間の計算</td>
+              <td style="padding:8px 10px;text-align:center;">月単位</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#dcfce7;">月単位</mark></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mm-gorof" style="margin-top:12px;">🧠 <strong>赤＝差異あり・緑＝厚年の値</strong>。上限年齢（75 vs 70）・賞与上限（年573万 vs 1回150万）・等級（50 vs 32）の3点が最頻出の差異。</div>
+    </div>
+  </div>
+
+</div>
+</div><!-- /panel-mindmap -->
+
+<!-- ════ PANEL-FLASH ════ -->
+<div id="panel-flash" class="tab-panel">
+<div class="fc-wrap">
+  <div class="fc-meta">
+    <div>
+      <div class="fc-counter" id="fc-counter">1<span> / 20</span></div>
+    </div>
+    <button class="fc-nav-btn shuffle" onclick="fcShuffle()" style="max-width:100px;padding:8px 12px;font-size:12px;">🔀 シャッフル</button>
+  </div>
+  <div class="fc-gauge-wrap">
+    <div class="fc-gauge-labels">
+      <span class="fc-gauge-label-ng">❌ <span id="fc-ng-count">0</span></span>
+      <span class="fc-gauge-label-mid" id="fc-remaining">残り 20 枚</span>
+      <span class="fc-gauge-label-ok"><span id="fc-ok-count">0</span> ✅</span>
+    </div>
+    <div class="fc-gauge-track">
+      <div class="fc-gauge-ng" id="fc-gauge-ng"></div>
+      <div class="fc-gauge-mid-line"></div>
+      <div class="fc-gauge-ok" id="fc-gauge-ok"></div>
+    </div>
+  </div>
+  <div class="fc-carousel" id="fc-carousel">
+    <div class="fc-slot prev" id="fc-slot-prev">
+      <div class="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-prev-tag">—</span>
+            <span style="font-size:11px;color:var(--gray);" id="fc-prev-cat"></span>
+          </div>
+          <div class="fc-front-body">
+            <div class="fc-q" id="fc-prev-q" style="font-size:13px;opacity:.7;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-slot curr" id="fc-slot-curr" onclick="fcFlip()">
+      <div class="fc-inner" id="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-tag">Q01</span>
+            <span style="font-size:11px;color:var(--gray);" id="fc-cat">目的条文</span>
+          </div>
+          <div class="fc-front-body">
+            <div class="fc-q" id="fc-q">—</div>
+          </div>
+          <div class="fc-ox">
+            <button class="fc-ox-btn o" onclick="fcChoose(true);event.stopPropagation();">○</button>
+            <button class="fc-ox-btn x" onclick="fcChoose(false);event.stopPropagation();">×</button>
+          </div>
+        </div>
+        <div class="fc-face fc-back-face">
+          <div class="fc-back-hd">
+            <span class="fc-verdict" id="fc-verdict">×　誤り</span>
+            <span id="fc-user-ans" style="font-size:12px;margin-left:auto;"></span>
+          </div>
+          <div class="fc-back-body">
+            <div class="fc-answer" id="fc-answer">—</div>
+            <div class="fc-reason" id="fc-reason">—</div>
+            <div class="fc-lawref" id="fc-lawref">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-slot next" id="fc-slot-next">
+      <div class="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd">
+            <span class="fc-front-tag" id="fc-next-tag">—</span>
+            <span style="font-size:11px;color:var(--gray);" id="fc-next-cat"></span>
+          </div>
+          <div class="fc-front-body">
+            <div class="fc-q" id="fc-next-q" style="font-size:13px;opacity:.7;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fc-nav" id="fc-nav" style="display:none;">
+    <button class="fc-nav-btn again" onclick="fcNext(false)">😅 もう一度</button>
+    <button class="fc-nav-btn got"   onclick="fcNext(true)">✅ わかった！</button>
+  </div>
+  <div class="fc-result" id="fc-result">
+    <div style="font-size:36px;margin-bottom:8px;" id="fc-emoji">🎉</div>
+    <h3>フラッシュカード完了！</h3>
+    <div class="fc-result-score" id="fc-result-score">—</div>
+    <div class="fc-result-sub" id="fc-result-sub">—</div>
+    <button class="fc-restart-btn" onclick="fcRestart()">🔁 もう一周する</button>
+  </div>
+</div>
+</div><!-- /panel-flash -->
+
+<!-- ════ PANEL-SPIDER ════ -->
+<div id="panel-spider" class="tab-panel">
+<div class="spider-wrap">
+  <div style="background:var(--teal-light);border:1px solid var(--teal);border-radius:10px;padding:12px 16px;font-size:13px;color:#1a4040;margin-bottom:20px;line-height:1.7;">
+    🕸️ <strong>記憶マップ</strong>：第2階層をタップで枝の展開・解説を切り替え。
+  </div>
+  <div id="sp-root" style="width:100%;"></div>
+  <div id="spider-detail" style="display:none;margin-top:16px;background:white;border:2px solid #1a1a2e;border-radius:14px;overflow:hidden;">
+    <div id="spider-detail-hd" style="padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+      <span id="spider-detail-title" style="font-weight:700;font-size:15px;color:white;"></span>
+      <button onclick="closeSpiderDetail()" style="border:none;background:none;font-size:22px;cursor:pointer;color:rgba(255,255,255,.8);line-height:1;padding:0 4px;">×</button>
+    </div>
+    <div id="spider-detail-body" style="padding:16px 18px 20px;"></div>
+  </div>
+</div>
+</div><!-- /panel-spider -->
+
+<script>
+var DAY_META = {
+  day:'Day1', block:'厚生年金法',
+  unit:'目的・適用事業所・被保険者の種別・資格取得喪失',
+  range:'法第1条〜第19条', total:10
+};
+
+function copyRecord() {
+  var saved = JSON.parse(localStorage.getItem('kounen_day1') || '{}');
+  var c = saved.correct !== undefined ? saved.correct : (score || 0);
+  var t = saved.total || 10;
+  var dt = saved.ts ? new Date(saved.ts) : new Date();
+  var ds = dt.getFullYear()+'/'+String(dt.getMonth()+1).padStart(2,'0')+'/'+String(dt.getDate()).padStart(2,'0');
+  var row = [DAY_META.day,DAY_META.block,DAY_META.unit,DAY_META.range,t,ds,c,t>0?Math.round(c/t*100):0].join('\t');
+  navigator.clipboard.writeText(row).then(showCopied).catch(function(){
+    var ta=document.createElement('textarea'); ta.value=row;
+    ta.style.cssText='position:fixed;opacity:0;';
+    document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta); showCopied();
+  });
+}
+function showCopied() {
+  ['copy-btn','copy-btn2'].forEach(function(id){
+    var b=document.getElementById(id); if(!b) return;
+    b.textContent='✅ コピーしました！'; b.classList.add('copied');
+    setTimeout(function(){ b.textContent='📋 記録をコピー'; b.classList.remove('copied'); },2500);
+  });
+}
+
+var correct_ans = {q1:0, q2:0, q3:0, q4:1, q5:0};
+var done={}, score=0, total=0;
+
+function answer(qid,idx) {
+  if(done[qid]) return; done[qid]=true;
+  var opts=document.querySelectorAll('#'+qid+'-opts .opt');
+  var ans=document.getElementById(qid+'-ans');
+  var ok=idx===correct_ans[qid];
+  opts.forEach(function(o,i){
+    if(i===correct_ans[qid]) o.classList.add('correct');
+    else if(i===idx&&!ok) o.classList.add('wrong');
+  });
+  ans.className='ans-box show '+(ok?'ok':'ng');
+  var hd=document.getElementById(qid+'-result');
+  hd.textContent=ok?'⭕ 正解！':'❌ 不正解';
+  hd.style.color=ok?'var(--green)':'var(--red)';
+  if(ok) score++;
+  total++;
+  document.getElementById('score').textContent=score;
+  updateProg();
+  setTimeout(function(){ ans.scrollIntoView({behavior:'smooth',block:'nearest'}); },100);
+}
+
+var defs = {
+  f1:{f1a:'不問',f1b:'5',f1c:'特定16',f1d:'3',f1e:'2'},
+  f2:{f2a:'日雇労働',f2b:'2ヵ月',f2c:'6ヵ月',f2d:'70'},
+  f3:{f3a:'翌日',f3b:'翌日',f3c:'70',f3d:'翌日'},
+  f4:{f4a:'32',f4b:'8.8',f4c:'65',f4d:'150'},
+  f5:{f5a:'月',f5b:'5',f5c:'5',f5d:'2'}
+};
+var state={f1:{},f2:{},f3:{},f4:{},f5:{}};
+var sel={f1:null,f2:null,f3:null,f4:null,f5:null};
+var fdone={};
+
+function selB(fid,bid) {
+  if(fdone[fid]) return;
+  if(state[fid][bid]!==undefined) {
+    var pv=state[fid][bid]; delete state[fid][bid];
+    document.getElementById(bid).textContent='　　';
+    document.querySelectorAll('#'+fid+'-chips .chp').forEach(function(c){
+      if(c.textContent===pv&&c.classList.contains('used')) c.classList.remove('used');
+    });
+  }
+  document.querySelectorAll('[id^="'+fid+'"][class*="blank"]').forEach(function(b){ b.classList.remove('sel'); });
+  sel[fid]=bid; document.getElementById(bid).classList.add('sel');
+}
+
+function fillB(fid,bid,chip,val) {
+  if(fdone[fid]) return;
+  var s=sel[fid];
+  if(!s) {
+    var keys=Object.keys(defs[fid]);
+    var empty=null;
+    for(var i=0;i<keys.length;i++){ if(state[fid][keys[i]]===undefined){empty=keys[i];break;} }
+    if(!empty) return; s=empty;
+  }
+  if(state[fid][s]!==undefined) {
+    var pv=state[fid][s];
+    document.querySelectorAll('#'+fid+'-chips .chp').forEach(function(c){
+      if(c.textContent===pv&&c.classList.contains('used')) c.classList.remove('used');
+    });
+  }
+  document.getElementById(s).textContent=val;
+  document.getElementById(s).classList.remove('sel');
+  state[fid][s]=val; chip.classList.add('used'); sel[fid]=null;
+}
+
+function chkF(fid) {
+  if(fdone[fid]) return;
+  var d=defs[fid]; var keys=Object.keys(d);
+  if(!keys.every(function(k){ return state[fid][k]!==undefined; })) { alert('すべての空欄を埋めてください'); return; }
+  fdone[fid]=true; var allOk=true;
+  keys.forEach(function(k){
+    var el=document.getElementById(k); var ok=state[fid][k]===d[k];
+    el.classList.add(ok?'ok-fill':'ng-fill'); if(!ok) allOk=false;
+  });
+  document.querySelectorAll('#'+fid+'-chips .chp').forEach(function(c){
+    if(c.classList.contains('used')) {
+      var v=c.textContent;
+      c.classList.add(Object.values(d).indexOf(v)>=0?'ok-c':'ng-c');
+    }
+  });
+  document.getElementById('chk-'+fid).disabled=true;
+  var ans=document.getElementById(fid+'-ans');
+  ans.className='f-ans show '+(allOk?'ok':'ng');
+  var res=document.getElementById(fid+'-result');
+  res.textContent=allOk?'⭕ 全問正解！':'❌ 不正解あり';
+  res.style.color=allOk?'var(--green)':'var(--red)';
+  if(allOk) score++;
+  total++;
+  document.getElementById('score').textContent=score;
+  updateProg();
+  setTimeout(function(){ ans.scrollIntoView({behavior:'smooth',block:'nearest'}); },100);
+}
+
+function updateProg() {
+  var t=10; var pct=Math.round(total/t*100);
+  document.getElementById('prog').style.width=pct+'%';
+  document.getElementById('prog-lbl').textContent=total+' ／ '+t+' 問 回答済み';
+  var sub=document.getElementById('score-sub');
+  if(sub) sub.textContent=total+'問回答 / 正解率 '+(total>0?Math.round(score/total*100):0)+'%';
+  if(total===t) showComplete();
+}
+
+function showComplete() {
+  var bar=document.getElementById('complete-bar'); bar.style.display='block';
+  document.getElementById('complete-score').textContent=score+' / 10';
+  var pct=Math.round(score/10*100);
+  document.getElementById('complete-msg').textContent=
+    pct>=90?'🏆 完璧！':pct>=70?'✨ 合格圏内！':'📖 もう一周してみよう';
+  try { localStorage.setItem('kounen_day1',JSON.stringify({correct:score,total:10,ts:Date.now()})); } catch(e){}
+  setTimeout(function(){ bar.scrollIntoView({behavior:'smooth',block:'start'}); },200);
+}
+
+var FC_CARDS = [
+  {tag:'Q01',cat:'目的条文',correct:true,
+   q:'厚生年金保険法の目的は老齢・障害・死亡について保険給付を行い、<mark>生活の安定と福祉の向上</mark>に寄与することである。',
+   answer:'○ 正しい',reason:'<strong>法第1条（目的）</strong>：老齢・障害・死亡の3事由に保険給付→「<mark>生活の安定と福祉の向上に寄与</mark>」。昭和29年制定の被用者年金。「<mark>国民の共同連帯</mark>」は国年法第1条の文言で厚年には登場しない。疾病・負傷は健保法の領域。',law:'法第1条'},
+  {tag:'Q02',cat:'目的条文',correct:false,
+   q:'厚生年金保険法の目的に「<mark>国民の共同連帯</mark>によって防止する」という文言がある。',
+   answer:'× 誤り',reason:'<strong>法第1条（目的）</strong>：「<mark>国民の共同連帯</mark>」は国年法第1条の文言。厚年法の目的は「<mark>生活の安定と福祉の向上に寄与</mark>」。両法の立法趣旨の相違は頻出。',law:'法第1条'},
+  {tag:'Q03',cat:'適用事業所',correct:true,
+   q:'法人（株式会社等）の事業所は、使用する従業員が<mark>1人</mark>であっても強制適用事業所となる。',
+   answer:'○ 正しい',reason:'<strong>法第6条第1項第1号</strong>：法人事業所は人数不問で強制適用。法人格の継続性・安定性が根拠。「5人以上」は<mark>第2号（個人事業所）</mark>の要件。農林水産・宗教等の個人は特定16業種外なので任意適用。',law:'法第6条'},
+  {tag:'Q04',cat:'適用事業所',correct:false,
+   q:'個人の事業所は、従業員数にかかわらず任意適用事業所となる。',
+   answer:'× 誤り',reason:'<strong>法第6条第1項第2号</strong>：個人事業所は「常時<mark>5人以上</mark>」＋「<mark>特定16業種</mark>」の両要件を満たすと強制適用。任意適用は第7条（3分の2以上の同意＋事業主申請が必要）。',law:'法第6条'},
+  {tag:'Q05',cat:'4種別',correct:true,
+   q:'厚生年金保険の被保険者は第1〜第4号の4種類に分かれており、<mark>公務員</mark>は第4号被保険者である。',
+   answer:'○ 正しい',reason:'<strong>法第9条（被保険者の種別）</strong>：平成27年10月の被用者年金一元化で確立した4種別。公務員は共済年金から<mark>第4号</mark>に統合。第2号（船員）・第3号（私学）は各実施機関が運営するが厚年制度内。',law:'法第9条'},
+  {tag:'Q06',cat:'4種別',correct:false,
+   q:'厚生年金の第2号被保険者は<mark>公務員</mark>（国家公務員共済・地方公務員共済の加入者）である。',
+   answer:'× 誤り',reason:'<strong>法第9条</strong>：第2号は<mark>船員保険法の被保険者</mark>。第4号は<mark>国家・地方公務員共済の加入者</mark>。平成27年一元化以前は公務員は共済年金（別制度）で、一元化後に第4号として厚年に統合された。',law:'法第9条'},
+  {tag:'Q07',cat:'資格取得',correct:false,
+   q:'被保険者の資格は、適用事業所に使用されるに至った日の<mark>翌日</mark>から取得する。',
+   answer:'× 誤り',reason:'<strong>法第13条</strong>：取得は<mark>当日</mark>（使用された日）。法第14条第1号：退職日の<mark>翌日</mark>喪失。取得＝当日・喪失＝翌日の非対称性が最頻出。「入社日から保護・退職当日も保護」という社会保険の即時保護原則から導かれる。',law:'法第13条'},
+  {tag:'Q08',cat:'資格喪失',correct:true,
+   q:'使用関係が消滅した日（退職日）の<mark>翌日</mark>に被保険者の資格を喪失する。',
+   answer:'○ 正しい',reason:'<strong>法第14条</strong>：第1号（退職等の翌日）・第2号（死亡翌日）・第3号（70歳到達翌日）・第4号（適用除外翌日）。健保は75歳誕生日<mark>当日</mark>に喪失（後期高齢者医療法第50条）→例外的当日喪失。厚年には当日喪失は存在しない。',law:'法第14条'},
+  {tag:'Q09',cat:'70歳上限',correct:false,
+   q:'厚生年金の強制加入の上限年齢は<mark>65歳</mark>である。',
+   answer:'× 誤り',reason:'<strong>法第14条第3号</strong>：70歳到達の翌日に強制喪失。<strong>附則第4条の3</strong>の高齢任意加入：受給権がない場合に事業主の同意を得て継続可。国年<mark>60歳</mark>・厚年<mark>70歳</mark>・健保<mark>75歳</mark>という3段階を整理。',law:'法第14条'},
+  {tag:'Q10',cat:'高齢任意加入',correct:true,
+   q:'老齢厚生年金の受給権がない70歳以上の者は、<mark>高齢任意加入被保険者</mark>として事業主の同意を得て加入できる。',
+   answer:'○ 正しい',reason:'高齢任意加入の要件：<mark>老齢給付受給権なし</mark>＋<mark>事業主の同意</mark>。受給権があれば任意加入できない。',law:'附則第4条の3'},
+  {tag:'Q11',cat:'適用除外',correct:true,
+   q:'2ヵ月以内の期間を定めて雇用される者が、その期間を超えて継続して使用された場合は、<mark>超えた時点</mark>から被保険者資格を取得する。',
+   answer:'○ 正しい',reason:'2ヵ月以内→適用除外。<mark>2ヵ月を超えた時点</mark>で適用除外の要件を満たさなくなり資格取得。翌日ではなく当日から。',law:'法第12条'},
+  {tag:'Q12',cat:'適用除外',correct:false,
+   q:'日雇労働者は厚生年金保険の<mark>被保険者</mark>として通常加入する。',
+   answer:'× 誤り',reason:'日雇労働者は厚年の<mark>適用除外</mark>。健保の日雇特例被保険者制度（第7章）とは異なり、厚年には特例制度がない。',law:'法第12条'},
+  {tag:'Q13',cat:'標準報酬月額',correct:false,
+   q:'厚生年金保険の標準報酬月額は<mark>50等級</mark>に区分されている。',
+   answer:'× 誤り',reason:'厚年の標準報酬月額は<mark>32等級</mark>（8.8〜65万円）。50等級は健保の等級数。',law:'法第16条'},
+  {tag:'Q14',cat:'標準賞与額',correct:false,
+   q:'厚生年金保険の標準賞与額の上限は年間<mark>573万円</mark>である。',
+   answer:'× 誤り',reason:'年間573万円は<mark>健康保険</mark>の標準賞与額上限。厚生年金は<mark>1回あたり150万円</mark>が上限（年間上限なし）。',law:'法第24条の4'},
+  {tag:'Q15',cat:'被保険者期間',correct:false,
+   q:'厚生年金保険の被保険者期間は<mark>日単位</mark>で計算する。',
+   answer:'× 誤り',reason:'被保険者期間は<mark>月単位</mark>で計算。資格取得月から喪失月の前月までを1ヵ月として計算する。',law:'法第19条'},
+  {tag:'Q16',cat:'届出',correct:true,
+   q:'被保険者資格の取得届および喪失届の届出期限は、それぞれ<mark>5日以内</mark>である。',
+   answer:'○ 正しい',reason:'取得届・喪失届ともに<mark>5日以内</mark>に事業主が届出。健保と同じ期限。',law:'法第27条'},
+  {tag:'Q17',cat:'任意適用',correct:false,
+   q:'任意適用事業所となるには、使用される者の過半数（<mark>2分の1以上</mark>）の同意が必要である。',
+   answer:'× 誤り',reason:'任意適用に必要な同意は<mark>3分の2以上</mark>。過半数（2分の1以上）では不足。健保の任意適用と同じ要件。',law:'法第8条'},
+  {tag:'Q18',cat:'保険料時効',correct:true,
+   q:'厚生年金保険料を徴収する権利は<mark>2年</mark>で時効となる。',
+   answer:'○ 正しい',reason:'厚年の保険料時効は<mark>2年</mark>。健保の保険料時効（2年）と同じ。「5年」は誤り。',law:'法第92条'},
+  {tag:'Q19',cat:'資格喪失',correct:false,
+   q:'70歳到達による資格喪失日は、70歳の<mark>誕生日当日</mark>である。',
+   answer:'× 誤り',reason:'70歳到達による喪失は<mark>到達日の翌日</mark>。健保の75歳（誕生日当日に喪失）と異なる。厚年に当日喪失はない。',law:'法第14条'},
+  {tag:'Q20',cat:'強制適用',correct:true,
+   q:'厚生年金保険の強制適用事業所に使用される者は、本人の意思に関わらず<mark>当然に</mark>被保険者となる。',
+   answer:'○ 正しい',reason:'適用事業所に使用される者は<mark>強制的に被保険者</mark>となる。加入意思は不要。適用除外に該当しない限り自動加入。',law:'法第9条'}
+];
+
+var fcDeck=[], fcIdx=0, fcGot=0, fcFlipped=false, fcOk=0, fcNg=0;
+
+function fcUpdateGauge() {
+  var total=fcDeck.length, remaining=total-fcIdx, half=50;
+  document.getElementById('fc-gauge-ok').style.width=Math.min(fcOk/total*100,half)+'%';
+  document.getElementById('fc-gauge-ng').style.width=Math.min(fcNg/total*100,half)+'%';
+  document.getElementById('fc-ok-count').textContent=fcOk;
+  document.getElementById('fc-ng-count').textContent=fcNg;
+  document.getElementById('fc-remaining').textContent='残り '+remaining+' 枚';
+  document.getElementById('fc-counter').innerHTML=(fcIdx+1)+'<span> / '+total+'</span>';
+}
+
+function fcSetSlot(slotId,tagId,catId,qId,cardData) {
+  var slot=document.getElementById(slotId);
+  if(!cardData){ slot.classList.add('hidden'); return; }
+  slot.classList.remove('hidden');
+  document.getElementById(tagId).textContent=cardData.tag;
+  document.getElementById(catId).textContent=cardData.cat;
+  document.getElementById(qId).innerHTML=cardData.q;
+}
+
+function fcRender() {
+  var total=fcDeck.length, curr=fcDeck[fcIdx];
+  var prev=fcIdx>0?fcDeck[fcIdx-1]:null;
+  var next=fcIdx<total-1?fcDeck[fcIdx+1]:null;
+  fcSetSlot('fc-slot-prev','fc-prev-tag','fc-prev-cat','fc-prev-q',prev);
+  fcSetSlot('fc-slot-next','fc-next-tag','fc-next-cat','fc-next-q',next);
+  document.getElementById('fc-tag').textContent=curr.tag;
+  document.getElementById('fc-cat').textContent=curr.cat;
+  document.getElementById('fc-q').innerHTML=curr.q;
+  var verdict=document.getElementById('fc-verdict');
+  verdict.textContent=curr.correct?'○　正しい':'×　誤り';
+  verdict.className='fc-verdict '+(curr.correct?'ok':'ng');
+  document.getElementById('fc-answer').textContent=curr.answer;
+  document.getElementById('fc-reason').innerHTML=curr.reason;
+  document.getElementById('fc-lawref').textContent=curr.law;
+  var inner=document.getElementById('fc-inner');
+  inner.classList.remove('flipped');
+  fcFlipped=false;
+  document.getElementById('fc-nav').style.display='none';
+  var ua=document.getElementById('fc-user-ans'); if(ua) ua.textContent='';
+  fcUpdateGauge();
+}
+
+function fcInit() {
+  fcDeck=FC_CARDS.slice();
+  for(var i=fcDeck.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=fcDeck[i];fcDeck[i]=fcDeck[j];fcDeck[j]=tmp;}
+  fcIdx=0;fcGot=0;fcOk=0;fcNg=0;fcFlipped=false;
+  document.getElementById('fc-result').style.display='none';
+  document.getElementById('fc-carousel').style.display='flex';
+  document.getElementById('fc-nav').style.display='none';
+  fcRender();
+}
+
+function fcShuffle() {
+  fcDeck=FC_CARDS.slice();
+  for(var i=fcDeck.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=fcDeck[i];fcDeck[i]=fcDeck[j];fcDeck[j]=tmp;}
+  fcIdx=0;fcGot=0;fcOk=0;fcNg=0;fcFlipped=false;
+  document.getElementById('fc-result').style.display='none';
+  document.getElementById('fc-carousel').style.display='flex';
+  document.getElementById('fc-nav').style.display='none';
+  fcRender();
+}
+
+function fcChoose(userSaidTrue) {
+  if(fcFlipped) return;
+  var curr=fcDeck[fcIdx];
+  var isCorrect=(userSaidTrue===curr.correct);
+  if(isCorrect){fcGot++;fcOk++;}else{fcNg++;}
+  var ua=document.getElementById('fc-user-ans');
+  if(ua){ua.textContent=isCorrect?'✅ 正解！':'❌ 不正解';ua.style.color=isCorrect?'var(--green)':'var(--red)';ua.style.fontWeight='700';}
+  var again=document.querySelector('.fc-nav-btn.again');
+  var got=document.querySelector('.fc-nav-btn.got');
+  if(again&&got){
+    if(isCorrect){again.style.display='none';got.style.display='block';got.textContent='次へ →';}
+    else{again.style.display='block';again.textContent='次へ →';got.style.display='none';}
+  }
+  fcFlipped=true;
+  document.getElementById('fc-inner').classList.add('flipped');
+  setTimeout(function(){ document.getElementById('fc-nav').style.display='flex'; },280);
+}
+
+function fcFlip() {
+  var inner=document.getElementById('fc-inner');
+  if(!fcFlipped){
+    fcFlipped=true; inner.classList.add('flipped');
+    var ua=document.getElementById('fc-user-ans');
+    if(ua){ua.textContent='（○×で回答してください）';ua.style.color='var(--gray)';}
+    var again=document.querySelector('.fc-nav-btn.again');
+    var got=document.querySelector('.fc-nav-btn.got');
+    if(again&&got){again.style.display='block';again.textContent='😅 もう一度';got.style.display='block';got.textContent='✅ わかった！';}
+    setTimeout(function(){ document.getElementById('fc-nav').style.display='flex'; },280);
+  } else {
+    fcFlipped=false; inner.classList.remove('flipped');
+    document.getElementById('fc-nav').style.display='none';
+  }
+}
+
+function fcNext(got) {
+  if(got){fcGot++;fcOk++;}else{fcNg++;}
+  document.getElementById('fc-nav').style.display='none';
+  if(fcIdx+1>=fcDeck.length){
+    fcUpdateGauge();
+    document.getElementById('fc-remaining').textContent='残り 0 枚';
+    document.getElementById('fc-carousel').style.display='none';
+    document.getElementById('fc-result').style.display='block';
+    var pct=Math.round(fcOk/fcDeck.length*100);
+    document.getElementById('fc-result-score').textContent=fcOk+' / '+fcDeck.length;
+    document.getElementById('fc-result-sub').textContent='正答率 '+pct+'% ― '+(pct>=80?'バッチリ！次のDayへ進もう':pct>=60?'もう一周してみよう':'連想図を見直してから再挑戦！');
+    document.getElementById('fc-emoji').textContent=pct>=80?'🏆':pct>=60?'✨':'📖';
+    document.getElementById('fc-counter').innerHTML=fcDeck.length+'<span> / '+fcDeck.length+'</span>';
+    return;
+  }
+  fcIdx++; fcRender();
+}
+
+function fcRestart(){ fcInit(); }
+
+function switchTab(name,btn) {
+  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById('panel-'+name).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(name==='flash'&&fcDeck.length===0) fcInit();
+  if(name==='spider') buildSpider();
+}
+
+var SPIDER_DATA = [
+  { id:"mokuteki", label:"目的条文", sub:"法第1条",
+    color:"#2a7f7f", light:"#e8f4f4", border:"#5ab5b5", angle:218,
+    children:[
+      { label:"3支給事由", sub:"老齢・障害・死亡", leaves:["老齢","障害","死亡"] },
+      { label:"目的文言",  sub:"生活安定・福祉", leaves:["生活の安定","福祉の向上","国年は共同連帯"] }
+    ],
+    detail:{
+      hdColor:"#2a7f7f",
+      items:[
+        {label:"3事由",val:"老齢・障害・死亡",note:"疾病・負傷は含まない"},
+        {label:"目的文言",val:"生活の安定と福祉の向上に寄与",note:"国年は「国民の共同連帯によって防止」"}
+      ],
+      hikakke:"× 疾病・負傷も含む → ○ 老齢・障害・死亡のみ\n× 「共同連帯」が厚年の文言 → ○ 国民年金法第1条の文言"
+    }
+  },
+  { id:"tekiyo", label:"適用事業所", sub:"法第6条",
+    color:"#c84b31", light:"#fee2e2", border:"#e8896b", angle:322,
+    children:[
+      { label:"強制適用", sub:"法人・個人・公共", leaves:["法人:人数不問","個人:5人以上","特定16業種"] },
+      { label:"任意適用", sub:"同意要件",          leaves:["2/3以上の同意","事業主の申請"] }
+    ],
+    detail:{
+      hdColor:"#c84b31",
+      items:[
+        {label:"法人",val:"人数不問で強制（1人でも）",note:"株式会社等すべての法人"},
+        {label:"個人",val:"常時5人以上＋特定16業種",note:"農林水産・宗教等は非適用"},
+        {label:"任意適用",val:"3分の2以上の同意＋事業主申請",note:"過半数では不足"}
+      ],
+      hikakke:"× 「法人も5人以上必要」→ ○ 法人は人数不問\n× 「任意適用は過半数同意」→ ○ 3分の2以上"
+    }
+  },
+  { id:"shurui", label:"4種別", sub:"法第9条",
+    color:"#7c3aed", light:"#ede9fe", border:"#a78bfa", angle:142,
+    children:[
+      { label:"民間・船員", sub:"第1・2号", leaves:["第1号:民間一般","第2号:船員"] },
+      { label:"私学・公務員", sub:"第3・4号", leaves:["第3号:私学教職員","第4号:公務員"] }
+    ],
+    detail:{
+      hdColor:"#7c3aed",
+      items:[
+        {label:"第1号",val:"民間企業の一般労働者",note:"最多数"},
+        {label:"第2号",val:"船員保険の被保険者",note:""},
+        {label:"第3号",val:"私立学校教職員共済の加入者",note:""},
+        {label:"第4号",val:"国家・地方公務員共済の加入者",note:"公務員は第4号（第2号ではない）"}
+      ],
+      hikakke:"× 「公務員は第2号」→ ○ 公務員は第4号\n× 「厚年は2種類」→ ○ 第1〜第4号の4種"
+    }
+  },
+  { id:"shikaku", label:"資格取得喪失", sub:"法第13・14条",
+    color:"#c9930a", light:"#fef9e7", border:"#d4a733", angle:38,
+    children:[
+      { label:"取得の時期", sub:"当日取得",    leaves:["使用された日（当日）","入社日当日から"] },
+      { label:"喪失の時期", sub:"全て翌日",    leaves:["退職:翌日","死亡:翌日","70歳到達:翌日"] },
+      { label:"適用除外",   sub:"主要4パターン", leaves:["日雇","2ヵ月以内","臨時6ヵ月","70歳以上"] }
+    ],
+    detail:{
+      hdColor:"#c9930a",
+      items:[
+        {label:"資格取得",val:"使用された日（当日）",note:"「翌日から」は誤り"},
+        {label:"資格喪失",val:"退職・死亡・70歳到達 いずれも翌日",note:"厚年に当日喪失はない"},
+        {label:"上限年齢",val:"70歳（国年60歳・健保75歳）",note:"高齢任意加入（受給権なし）あり"}
+      ],
+      hikakke:"× 「取得は翌日から」→ ○ 使用された日（当日）\n× 「70歳誕生日当日に喪失」→ ○ 到達日の翌日\n× 「65歳が上限」→ ○ 厚年の強制加入上限は70歳"
+    }
+  }
+];
+
+var spBranchOpen = {mokuteki:false, tekiyo:false, shurui:false, shikaku:false};
+var spLeafOpen   = {};
+
+function buildSpider() {
+  var root=document.getElementById("sp-root");
+  if(!root) return;
+  root.innerHTML="";
+  var W=760,H=720,CX=380,CY=360,R1=108,R2=222,R3=330,CS=20,LS=7;
+  var svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.setAttribute("viewBox","0 0 "+W+" "+H);
+  svg.setAttribute("xmlns","http://www.w3.org/2000/svg");
+  svg.setAttribute("font-family","'Noto Sans JP',sans-serif");
+  svg.style.display="block"; svg.style.width="100%"; svg.style.height="auto";
+  function mk(tag,attrs){ var el=document.createElementNS("http://www.w3.org/2000/svg",tag); for(var k in attrs) el.setAttribute(k,attrs[k]); return el; }
+  function r(d){ return d*Math.PI/180; }
+  function pt(dist,deg){ return [CX+Math.cos(r(deg))*dist, CY+Math.sin(r(deg))*dist]; }
+  [R1+16,R2+14,R3+16].forEach(function(dist){
+    svg.appendChild(mk("circle",{cx:CX,cy:CY,r:dist,fill:"none",stroke:"#e4dfd6","stroke-width":"1","stroke-dasharray":"4,5"}));
+  });
+  SPIDER_DATA.forEach(function(branch){
+    var ba=branch.angle;
+    var bpt=pt(R1,ba); var bx=bpt[0],by=bpt[1];
+    svg.appendChild(mk("line",{x1:CX,y1:CY,x2:bx,y2:by,stroke:branch.color,"stroke-width":"4.5","stroke-linecap":"round"}));
+    var og=document.createElementNS("http://www.w3.org/2000/svg","g");
+    og.id="sp-og-"+branch.id;
+    og.style.display=spBranchOpen[branch.id]?"":"none";
+    branch.children.forEach(function(child,ci){
+      var ca=ba+(ci-1)*CS;
+      var cpt=pt(R2,ca); var cx2=cpt[0],cy2=cpt[1];
+      var key=branch.id+"_"+ci;
+      if(spLeafOpen[key]===undefined) spLeafOpen[key]=true;
+      og.appendChild(mk("line",{x1:bx,y1:by,x2:cx2,y2:cy2,stroke:branch.color,"stroke-width":"2","stroke-linecap":"round"}));
+      var lg=document.createElementNS("http://www.w3.org/2000/svg","g");
+      lg.id="sp-lg-"+key; lg.style.display=spLeafOpen[key]?"":"none";
+      var lc=child.leaves.length;
+      child.leaves.forEach(function(leaf,li){
+        var la=ca+(li-(lc-1)/2)*LS;
+        var lpt=pt(R3,la); var lx=lpt[0],ly=lpt[1];
+        lg.appendChild(mk("line",{x1:cx2,y1:cy2,x2:lx,y2:ly,stroke:branch.border,"stroke-width":"1.2","stroke-dasharray":"3,3","stroke-linecap":"round"}));
+        var lw=120;
+        var gr=document.createElementNS("http://www.w3.org/2000/svg","g");
+        gr.appendChild(mk("rect",{x:lx-lw/2,y:ly-13,width:lw,height:26,rx:13,fill:"#faf8f3",stroke:branch.border,"stroke-width":"1.2"}));
+        var fs=leaf.length>10?"9.5":leaf.length>7?"10":"11";
+        var lt=mk("text",{x:lx,y:ly+5,"text-anchor":"middle","font-size":fs,"font-weight":"600",fill:branch.color});
+        lt.textContent=leaf; gr.appendChild(lt); lg.appendChild(gr);
+      });
+      og.appendChild(lg);
+      var gk=document.createElementNS("http://www.w3.org/2000/svg","g");
+      gk.style.cursor="pointer";
+      (function(k){ gk.addEventListener("click",function(e){ e.stopPropagation(); spLeafOpen[k]=!spLeafOpen[k]; var el=document.getElementById("sp-lg-"+k); if(el) el.style.display=spLeafOpen[k]?"":"none"; }); })(key);
+      gk.appendChild(mk("ellipse",{cx:cx2,cy:cy2,rx:"46",ry:"24",fill:branch.color}));
+      var kt=mk("text",{x:cx2,y:cy2-3,"text-anchor":"middle","font-size":"11","font-weight":"700",fill:"white"}); kt.textContent=child.label; gk.appendChild(kt);
+      var ks=mk("text",{x:cx2,y:cy2+11,"text-anchor":"middle","font-size":"8.5",fill:"rgba(255,255,255,.7)"}); ks.textContent=child.sub; gk.appendChild(ks);
+      og.appendChild(gk);
+    });
+    svg.appendChild(og);
+    var gn=document.createElementNS("http://www.w3.org/2000/svg","g");
+    gn.style.cursor="pointer";
+    (function(b){ gn.addEventListener("click",function(){ spBranchOpen[b.id]=!spBranchOpen[b.id]; var el=document.getElementById("sp-og-"+b.id); if(el) el.style.display=spBranchOpen[b.id]?"":"none"; if(spBranchOpen[b.id]){ openSpiderDetail(b,null); } else { closeSpiderDetail(); } }); })(branch);
+    gn.appendChild(mk("ellipse",{cx:bx,cy:by,rx:"56",ry:"32",fill:branch.color}));
+    var tl=mk("text",{x:bx,y:by-5,"text-anchor":"middle","font-size":"14","font-weight":"700",fill:"white"}); tl.textContent=branch.label; gn.appendChild(tl);
+    var ts=mk("text",{x:bx,y:by+11,"text-anchor":"middle","font-size":"9.5",fill:"rgba(255,255,255,.65)"}); ts.textContent=branch.sub; gn.appendChild(ts);
+    svg.appendChild(gn);
+  });
+  var gc=document.createElementNS("http://www.w3.org/2000/svg","g");
+  gc.appendChild(mk("ellipse",{cx:CX,cy:CY,rx:"80",ry:"46",fill:"#22253a"}));
+  var ctexts=[["厚生年金法",-6,"13","#f0eee8"],["目的・適用・資格",11,"9.5","rgba(240,238,232,.55)"]];
+  ctexts.forEach(function(t){ var ct=mk("text",{x:CX,y:CY+t[1],"text-anchor":"middle","font-size":t[2],"font-weight":"700",fill:t[3]}); ct.textContent=t[0]; gc.appendChild(ct); });
+  svg.appendChild(gc);
+  root.appendChild(svg);
+}
+
+function openSpiderDetail(branch,child) {
+  var panel=document.getElementById("spider-detail");
+  var hd=document.getElementById("spider-detail-hd");
+  var title=document.getElementById("spider-detail-title");
+  var body=document.getElementById("spider-detail-body");
+  hd.style.background=branch.detail.hdColor;
+  title.textContent=branch.label+"  "+branch.sub;
+  var html="";
+  branch.detail.items.forEach(function(item){
+    html+="<div style='margin-bottom:14px;'>";
+    html+="<div style='font-size:11px;font-weight:700;color:#6b7280;margin-bottom:3px;'>"+item.label+"</div>";
+    html+="<div style='font-size:14px;font-weight:700;color:#1a1a2e;background:"+branch.light+";border:1.5px solid "+branch.border+";border-radius:8px;padding:8px 12px;'>"+item.val+"</div>";
+    if(item.note) html+="<div style='font-size:11px;color:#6b7280;margin-top:4px;padding-left:4px;'>💡 "+item.note+"</div>";
+    html+="</div>";
+  });
+  if(branch.detail.hikakke){
+    html+="<div style='background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 12px;font-size:11px;color:#A32D2D;line-height:2.1;'>";
+    html+="<div style='font-weight:700;margin-bottom:4px;'>🚨 よくある引っかけ</div>";
+    html+=branch.detail.hikakke.split("\n").join("<br>");
+    html+="</div>";
+  }
+  body.innerHTML=html;
+  panel.style.display="block";
+}
+
+function closeSpiderDetail() {
+  document.getElementById("spider-detail").style.display="none";
+}
+
+document.addEventListener("DOMContentLoaded", function(){ fcInit(); buildSpider(); });
+</script>
+</body>
+</html>

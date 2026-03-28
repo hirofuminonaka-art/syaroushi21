@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day6｜遺族厚生年金①支給事由・受給権者・年金額 ― 厚生年金法過去問ドリル</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1a2e;--paper:#faf8f3;--warm:#f5f0e8;--red:#c84b31;--red-soft:#e8896b;--red-light:#fee2e2;--teal:#2a7f7f;--teal-light:#e8f4f4;--gold:#c9930a;--gold-light:#fef9e7;--green:#2d6a4f;--green-light:#e8f5ee;--gray:#6b7280;--border:#ddd8cc;--purple:#7c3aed;--purple-light:#ede9fe;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
+.topbar{background:var(--ink);padding:10px 20px;display:flex;align-items:center;gap:12px;}
+.back-btn{color:rgba(255,255,255,.7);font-size:13px;cursor:pointer;}.back-btn:hover{color:white;}
+.topbar-title{color:rgba(255,255,255,.45);font-size:12px;margin-left:auto;}
+.tab-nav{background:var(--ink);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:100;}
+.tab-nav-in{max-width:820px;margin:0 auto;display:flex;}
+.tab-btn{flex:1;padding:12px 6px;font-size:12px;font-weight:700;color:rgba(255,255,255,.4);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;font-family:inherit;}
+.tab-btn:hover{color:rgba(255,255,255,.75);}.tab-btn.active{color:white;border-color:var(--red-soft);}
+.tab-btn.t2.active{border-color:#a78bfa;}.tab-btn.t3.active{border-color:var(--teal);}.tab-btn.t4.active{border-color:var(--gold);}
+.tab-panel{display:none;}.tab-panel.active{display:block;}
+.hd{background:var(--ink);color:var(--paper);padding:36px 40px 28px;position:relative;overflow:hidden;}
+.hd::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px);}
+.hd-in{max-width:820px;margin:0 auto;position:relative;}
+.hd-eye{font-size:11px;letter-spacing:3px;color:var(--red-soft);margin-bottom:8px;font-weight:700;}
+.hd h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;line-height:1.3;margin-bottom:6px;}
+.hd h1 em{color:var(--red-soft);font-style:normal;}
+.hd-sub{font-size:13px;color:rgba(255,255,255,.5);font-weight:300;}
+.prog-wrap{margin-top:14px;background:rgba(255,255,255,.15);border-radius:20px;height:6px;overflow:hidden;}
+.prog-bar{height:6px;background:linear-gradient(90deg,var(--teal),var(--green));border-radius:20px;width:0%;transition:width .5s;}
+.prog-lbl{font-size:11px;color:rgba(255,255,255,.4);margin-top:4px;}
+.score-bar{max-width:820px;margin:0 auto;padding:0 20px;}
+.score-in{background:white;border:2px solid var(--ink);border-radius:12px;padding:12px 20px;display:flex;align-items:center;gap:16px;margin-top:20px;}
+.score-num{font-family:'DM Serif Display',serif;font-size:40px;color:var(--teal);line-height:1;}
+.score-lbl{font-size:11px;color:var(--gray);font-weight:700;letter-spacing:1px;}
+.copy-btn{margin-left:auto;background:var(--ink);color:white;border:none;border-radius:8px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.copy-btn:hover{opacity:.82;}.copy-btn.copied{background:var(--green);}
+.qwrap{max-width:820px;margin:24px auto 0;padding:0 20px 40px;display:flex;flex-direction:column;gap:20px;}
+.card{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;}
+.card-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.q-num{font-family:'DM Serif Display',serif;font-size:28px;color:var(--ink);line-height:1;min-width:36px;}
+.src-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;margin-bottom:3px;display:inline-block;}
+.q-type{font-size:11px;color:var(--gray);}
+.card-body{padding:16px 18px;}
+.quiz-q{font-size:14px;line-height:2;margin-bottom:14px;}
+.quiz-q mark{background:#fef3c7;padding:1px 3px;border-radius:3px;font-weight:700;}
+.opts-tf{display:flex;gap:10px;}
+.opt{flex:1;padding:10px;border:2px solid var(--border);border-radius:10px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s;background:white;}
+.opt:hover{border-color:var(--ink);}.opt.correct{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.opt.wrong{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.ans-box{display:none;margin-top:14px;border-radius:10px;padding:14px 16px;font-size:13px;}
+.ans-box.show{display:block;}.ans-box.ok{background:var(--green-light);border:1px solid #86efac;}.ans-box.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.ans-hd{font-weight:700;font-size:14px;margin-bottom:10px;}
+.why{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 13px;margin-bottom:10px;font-size:13px;line-height:1.85;}
+.why mark{background:#fed7aa;padding:1px 3px;border-radius:2px;font-weight:700;}
+.def-card{background:var(--teal-light);border:1.5px solid var(--teal);border-radius:8px;padding:10px 14px;margin-bottom:10px;font-size:12px;line-height:1.9;}
+.tip{background:var(--purple-light);border:1.5px solid #c4b5fd;border-radius:8px;padding:10px 13px;font-size:12px;line-height:1.9;margin-top:8px;}
+.law-tag{display:inline-block;background:var(--ink);color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:8px;}
+.blank-card-body{padding:16px 18px;}
+.blank-q{font-size:14px;line-height:2.8;margin-bottom:12px;}
+.blank{display:inline-block;min-width:60px;border-bottom:2.5px solid var(--ink);text-align:center;padding:0 4px;margin:0 2px;cursor:pointer;font-weight:700;transition:background .2s;border-radius:4px 4px 0 0;}
+.blank:hover{background:rgba(124,58,237,.08);}.blank.sel{background:var(--purple-light);border-color:var(--purple);}
+.blank.ok-fill{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.blank.ng-fill{background:var(--red-light);border-color:var(--red);color:var(--red);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+.chp{border:2px solid var(--border);border-radius:20px;padding:5px 13px;cursor:pointer;font-size:13px;font-weight:600;background:white;transition:all .2s;}
+.chp:hover{border-color:var(--purple);}.chp.used{opacity:.3;pointer-events:none;}
+.chp.ok-c{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.chp.ng-c{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.chk-btn{background:var(--purple);color:white;border:none;border-radius:8px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit;}
+.chk-btn:hover{opacity:.82;}.chk-btn:disabled{opacity:.38;cursor:default;}
+.f-ans{display:none;margin-top:12px;border-radius:10px;padding:14px 16px;font-size:13px;}
+.f-ans.show{display:block;}.f-ans.ok{background:var(--green-light);border:1px solid #86efac;}.f-ans.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.complete-bar{display:none;max-width:820px;margin:0 auto;padding:0 20px 60px;}
+.complete-card{background:var(--ink);color:white;border-radius:16px;padding:28px;text-align:center;}
+.complete-card h2{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;margin-bottom:8px;}
+.complete-score{font-family:'DM Serif Display',serif;font-size:52px;color:#fde68a;line-height:1;margin-bottom:8px;}
+.copy-btn2{background:white;color:var(--ink);border:none;border-radius:8px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:12px;}
+.mm-wrap{max-width:820px;margin:0 auto;padding:20px 20px 60px;}
+.mm-step{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;margin-bottom:20px;}
+.mm-step-hd{background:var(--ink);padding:12px 18px;display:flex;align-items:center;gap:10px;}
+.mm-step-num{font-family:'DM Serif Display',serif;font-size:28px;color:#fde68a;line-height:1;}
+.mm-step-title{font-size:14px;font-weight:700;color:white;}
+.mm-step-body{padding:16px 18px;}
+.mm-item{border-left:4px solid var(--teal);padding:8px 12px;margin-bottom:10px;background:var(--teal-light);border-radius:0 8px 8px 0;font-size:13px;line-height:1.8;}
+.mm-item mark{background:#fed7aa;padding:1px 3px;border-radius:2px;font-weight:700;}
+.mm-alert{border-left:4px solid var(--red);padding:8px 12px;background:var(--red-light);border-radius:0 8px 8px 0;font-size:13px;line-height:1.8;margin-bottom:10px;}
+.mm-gorof{background:var(--gold-light);border:1.5px solid var(--gold);border-radius:8px;padding:9px 13px;font-size:12px;line-height:1.8;margin-top:8px;}
+.hikakke-box{background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin-top:16px;}
+.hikakke-hd{background:var(--ink);padding:9px 16px;}
+.hikakke-hd span{font-size:12px;font-weight:700;color:#fde68a;}
+.hikakke-body{padding:12px 16px;display:flex;flex-direction:column;gap:8px;}
+.hikakke-row{border-left:4px solid var(--red);padding:7px 12px;background:#fff8f7;border-radius:0 6px 6px 0;font-size:12px;line-height:1.8;}
+.fc-wrap{max-width:740px;margin:20px auto 0;padding:0 20px 80px;}
+.fc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.fc-counter{font-family:'DM Serif Display',serif;font-size:24px;color:var(--red);line-height:1;}
+.fc-counter span{font-size:12px;color:var(--gray);font-family:'Noto Sans JP',sans-serif;font-weight:400;}
+.fc-gauge-wrap{margin-bottom:20px;}
+.fc-gauge-labels{display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:5px;}
+.fc-gauge-label-ng{color:var(--red);}.fc-gauge-label-ok{color:var(--green);}
+.fc-gauge-label-mid{color:var(--gray);font-size:10px;font-weight:400;}
+.fc-gauge-track{position:relative;height:14px;background:var(--border);border-radius:20px;overflow:hidden;display:flex;}
+.fc-gauge-ng{height:100%;background:linear-gradient(90deg,#c84b31,#e8896b);border-radius:20px 0 0 20px;transition:width .5s;width:0%;}
+.fc-gauge-ok{height:100%;background:linear-gradient(90deg,#86efac,#2d6a4f);border-radius:0 20px 20px 0;transition:width .5s;width:0%;margin-left:auto;}
+.fc-gauge-mid-line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:white;transform:translateX(-50%);z-index:2;}
+.fc-carousel{position:relative;display:flex;align-items:center;justify-content:center;min-height:420px;overflow:hidden;margin-bottom:18px;}
+.fc-slot{position:absolute;width:72%;min-height:300px;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s,filter .35s ease;cursor:pointer;border-radius:16px;}
+.fc-slot.prev{transform:translateX(-82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.curr{transform:translateX(0) scale(1);opacity:1;filter:none;z-index:10;}
+.fc-slot.next{transform:translateX(82%) scale(.88);opacity:.35;filter:blur(1.5px);pointer-events:none;z-index:1;}
+.fc-slot.hidden{opacity:0;pointer-events:none;z-index:0;}
+.fc-inner{position:relative;width:100%;min-height:300px;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.4,0,.2,1);}
+.fc-inner.flipped{transform:rotateY(180deg);}
+.fc-face{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.11);}
+.fc-front-face{background:white;border:2px solid var(--ink);}
+.fc-back-face{background:white;border:2px solid var(--ink);transform:rotateY(180deg);}
+.fc-front-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:9px 14px;display:flex;align-items:center;gap:8px;}
+.fc-front-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;}
+.fc-front-body{flex:1;padding:16px 18px;display:flex;align-items:center;justify-content:center;}
+.fc-q{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;line-height:1.9;color:var(--ink);text-align:center;}
+.fc-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;}
+.fc-ox{display:flex;gap:8px;padding:0 14px 12px;}
+.fc-ox-btn{flex:1;padding:10px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-size:20px;font-weight:900;cursor:pointer;transition:all .15s;font-family:inherit;}
+.fc-ox-btn.o:hover{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.fc-ox-btn.x:hover{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.fc-back-hd{padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+.fc-verdict{font-size:12px;font-weight:700;padding:2px 10px;border-radius:20px;}
+.fc-verdict.ok{background:var(--green);color:white;}.fc-verdict.ng{background:var(--red);color:white;}
+.fc-back-body{flex:1;padding:12px 16px;overflow-y:auto;}
+.fc-answer{font-family:'DM Serif Display',serif;font-size:18px;color:var(--ink);margin-bottom:8px;line-height:1.4;font-weight:700;}
+.fc-reason{font-size:12px;color:var(--ink);line-height:1.9;}
+.fc-reason mark{background:#fef3c7;padding:1px 4px;border-radius:3px;}
+.fc-nav{display:none;gap:10px;justify-content:center;padding:0 16px;}
+.fc-nav-btn{flex:1;max-width:160px;padding:11px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;text-align:center;}
+.fc-nav-btn.again{border-color:var(--red);color:var(--red);}.fc-nav-btn.again:hover{background:var(--red-light);}
+.fc-nav-btn.got{border-color:var(--green);color:var(--green);}.fc-nav-btn.got:hover{background:var(--green-light);}
+.fc-result{display:none;text-align:center;padding:24px;background:white;border:2px solid var(--ink);border-radius:14px;margin:0 20px;}
+.fc-result h3{font-family:'Noto Serif JP',serif;font-size:1.2rem;font-weight:900;margin-bottom:8px;}
+.fc-result-score{font-family:'DM Serif Display',serif;font-size:44px;color:var(--teal);line-height:1;margin:8px 0 4px;}
+.fc-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:12px;}
+.spider-wrap{max-width:820px;margin:0 auto;padding:20px 16px 60px;}
+svg text{font-family:'Noto Sans JP',sans-serif;}
+@media(max-width:600px){.hd{padding:24px 16px 20px;}.qwrap{padding:0 12px 40px;}.fc-wrap{padding:0 12px 80px;}.mm-wrap{padding:16px 12px 60px;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span class="back-btn" onclick="location.href='index.html'">← 目次に戻る</span>
+  <span class="topbar-title">Day6 ／ 厚生年金法 遺族厚生年金①支給事由・受給権者・年金額</span>
+</div>
+<nav class="tab-nav">
+  <div class="tab-nav-in">
+    <button class="tab-btn active" onclick="switchTab('quiz',this)">📝 問題を解く</button>
+    <button class="tab-btn t3"     onclick="switchTab('mindmap',this)">🗺 連想図</button>
+    <button class="tab-btn t2"     onclick="switchTab('flash',this)">🃏 フラッシュカード</button>
+    <button class="tab-btn t4"     onclick="switchTab('spider',this)">🕸️ 記憶マップ</button>
+  </div>
+</nav>
+
+<div id="panel-quiz" class="tab-panel active">
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-eye">厚生年金法 ／ Day 6</div>
+    <h1>遺族厚生年金①<em>支給事由・受給権者・年金額</em></h1>
+    <div class="hd-sub">○×式 5問 ＋ 穴埋め式 5問 ― 全10問　法第58条〜第63条</div>
+    <div class="prog-wrap"><div class="prog-bar" id="prog"></div></div>
+    <div class="prog-lbl" id="prog-lbl">0 ／ 10 問 回答済み</div>
+  </div>
+</div>
+<div class="score-bar">
+  <div class="score-in">
+    <div><div class="score-num" id="score">0</div><div class="score-lbl">正解数</div></div>
+    <div style="font-size:13px;color:var(--gray);"><div id="score-sub">問題に答えると集計されます</div></div>
+    <button class="copy-btn" id="copy-btn" onclick="copyRecord()">📋 記録をコピー</button>
+  </div>
+</div>
+
+<div class="qwrap">
+
+<!-- Q1 -->
+<div class="card" id="cq1">
+  <div class="card-hd"><div class="q-num">01</div>
+    <div><div class="src-tag">法第58条 ／ ○×式</div><div class="q-type">難易度：★★☆ ／ 単元：遺族厚生年金の支給事由</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">遺族厚生年金は、①被保険者が死亡、②被保険者だった者が資格喪失後<mark>3ヵ月以内</mark>に死亡、③老齢厚生年金の受給権者（受給資格期間<mark>25年以上</mark>）が死亡、④障害等級<mark>1・2級</mark>の障害厚生年金受給権者が死亡——の4事由のいずれかの場合に支給される。</div>
+    <div class="opts-tf" id="q1-opts">
+      <div class="opt" onclick="answer('q1',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q1',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q1-ans">
+      <div class="ans-hd" id="q1-result"></div>
+      <div class="why">✅ <strong>正しい。</strong><strong>法第58条（遺族厚生年金の支給事由）</strong>：4つの支給事由のうち②は資格喪失後<mark>3ヵ月以内</mark>、③の老齢厚生年金受給権者は受給資格期間<mark>25年以上</mark>（保険料納付期間等が25年以上）が条件。「なぜ3ヵ月？」——在職中に発症した病気が退職後3ヵ月以内に死につながった場合、実質的に被保険者としての死亡と同等だから。「なぜ25年？」——一定の長期加入実績がある人の遺族を保護する趣旨。</div>
+      <div class="def-card">
+        <strong>📖 法第58条（遺族厚生年金の支給事由 4類型）</strong><br>
+        ①被保険者が死亡<br>
+        ②被保険者だった者が<mark>資格喪失後3ヵ月以内</mark>に死亡<br>
+        ③老齢厚生年金の受給権者（<mark>受給資格期間25年以上</mark>）が死亡<br>
+        ④<mark>障害等級1・2級</mark>の障害厚生年金受給権者が死亡<br><br>
+        ①②には保険料納付要件あり（障害厚生年金と同じ前々月末・3分の2以上）
+      </div>
+      <svg viewBox="0 0 520 110" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="520" height="110" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="20" font-size="11" font-weight="700" fill="#1a1a2e">遺族厚生年金の支給事由 4類型</text>
+        <rect x="10" y="28" width="118" height="72" rx="6" fill="#c84b31"/>
+        <text x="69" y="56" font-size="10" font-weight="700" fill="white" text-anchor="middle">①被保険者</text>
+        <text x="69" y="70" font-size="9" fill="#fca5a5" text-anchor="middle">死亡</text>
+        <text x="69" y="83" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">納付要件あり</text>
+        <rect x="138" y="28" width="118" height="72" rx="6" fill="#c84b31" opacity=".8"/>
+        <text x="197" y="50" font-size="10" font-weight="700" fill="white" text-anchor="middle">②被保険者</text>
+        <text x="197" y="63" font-size="9" fill="#fca5a5" text-anchor="middle">だった者</text>
+        <text x="197" y="76" font-size="8" fill="rgba(255,255,255,.8)" text-anchor="middle">喪失後3ヵ月以内</text>
+        <text x="197" y="89" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">納付要件あり</text>
+        <rect x="266" y="28" width="118" height="72" rx="6" fill="#2a7f7f"/>
+        <text x="325" y="50" font-size="10" font-weight="700" fill="white" text-anchor="middle">③老齢厚生</text>
+        <text x="325" y="63" font-size="9" fill="#a7f3d0" text-anchor="middle">年金受給権者</text>
+        <text x="325" y="76" font-size="8" fill="rgba(255,255,255,.8)" text-anchor="middle">受給資格25年以上</text>
+        <text x="325" y="89" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">納付要件なし</text>
+        <rect x="394" y="28" width="118" height="72" rx="6" fill="#7c3aed"/>
+        <text x="453" y="50" font-size="10" font-weight="700" fill="white" text-anchor="middle">④障害1・2級</text>
+        <text x="453" y="63" font-size="9" fill="#ede9fe" text-anchor="middle">障害厚生年金</text>
+        <text x="453" y="76" font-size="9" fill="#ede9fe" text-anchor="middle">受給権者</text>
+        <text x="453" y="89" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">納付要件なし</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「資格喪失後<strong>6ヵ月以内</strong>に死亡した場合に支給事由となる」→ <strong style="color:#2d6a4f;">○</strong> <strong>3ヵ月以内</strong></div></div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「老齢厚生年金受給権者は受給資格期間<strong>10年以上</strong>で支給事由になる」→ <strong style="color:#2d6a4f;">○</strong> <strong>25年以上</strong></div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「3ヵ月・25年・1・2級」の3数字で支給事由を覚える。①②は納付要件あり・③④はなし。</div>
+      <div class="law-tag">法第58条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 田中さんが3月に退職し4月（2ヵ月後）に死亡した——資格喪失後3ヵ月以内なので遺族厚生年金の支給事由になる。「なぜ3ヵ月？」——在職中に発症した病気で退職を余儀なくされ、その後すぐ亡くなった場合は実質的に業務に関連した死亡に近い。3ヵ月という期間は「退職と死亡の因果関係が認められる目安」として設定された。6ヵ月・1年ではなく3ヵ月という短い期間が最頻出の引っかけ。</div>
+    </div>
+  </div>
+</div><!-- /card cq1 -->
+
+<!-- Q2 -->
+<div class="card" id="cq2">
+  <div class="card-hd"><div class="q-num">02</div>
+    <div><div class="src-tag">法第59条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：受給権者の順位と夫の年齢要件</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">遺族厚生年金の受給権者の優先順位は①妻・子②父母③孫④祖父母の順であり、夫・父母・祖父母は死亡当時<mark>55歳以上</mark>であることが要件で、<mark>60歳</mark>になるまで支給停止となる。</div>
+    <div class="opts-tf" id="q2-opts">
+      <div class="opt" onclick="answer('q2',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q2',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q2-ans">
+      <div class="ans-hd" id="q2-result"></div>
+      <div class="why">✅ <strong>正しい。</strong><strong>法第59条（受給権者の優先順位）</strong>：①配偶者・子（同順位）②父母③孫④祖父母の順。夫・父母・祖父母は死亡当時<mark>55歳以上</mark>が要件で、<mark>60歳</mark>になるまで支給停止（ただし夫が遺族基礎年金も受給している場合は停止しない）。「なぜ55歳以上？」——被保険者が死亡したとき、若い夫は再就職等で収入を得られる可能性が高いため、一定年齢以上に限定した。</div>
+      <div class="def-card">
+        <strong>📖 法第59条（受給権者の優先順位）</strong><br>
+        第1順位：<mark>配偶者・子</mark>（同順位）<br>
+        第2順位：<mark>父母</mark><br>
+        第3順位：<mark>孫</mark><br>
+        第4順位：<mark>祖父母</mark><br><br>
+        夫・父母・祖父母：死亡当時<mark>55歳以上</mark>が受給要件<br>
+        支給停止：<mark>60歳</mark>になるまで停止（ただし夫が遺族基礎年金受給中は停止なし）<br>
+        妻に年齢要件なし（死亡当時の年齢を問わない）
+      </div>
+      <svg viewBox="0 0 520 100" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="520" height="100" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="20" font-size="11" font-weight="700" fill="#1a1a2e">遺族厚生年金の受給権者：優先順位</text>
+        <rect x="10" y="28" width="118" height="62" rx="6" fill="#c84b31"/>
+        <text x="69" y="52" font-size="11" font-weight="700" fill="white" text-anchor="middle">①配偶者</text>
+        <text x="69" y="66" font-size="9" fill="#fca5a5" text-anchor="middle">妻：年齢要件なし</text>
+        <text x="69" y="79" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">夫：55歳以上（60歳まで停止）</text>
+        <rect x="10" y="28" width="118" height="62" rx="6" fill="none" stroke="#fca5a5" stroke-width="1"/>
+        <text x="69" y="40" font-size="8.5" font-weight="700" fill="#fde68a" text-anchor="middle">第1順位</text>
+        <!-- 子も第1順位 -->
+        <rect x="138" y="28" width="80" height="62" rx="6" fill="#c84b31" opacity=".7"/>
+        <text x="178" y="44" font-size="9" font-weight="700" fill="white" text-anchor="middle">①子</text>
+        <text x="178" y="58" font-size="8" fill="#fca5a5" text-anchor="middle">18歳年度末</text>
+        <text x="178" y="70" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">未満</text>
+        <rect x="228" y="28" width="80" height="62" rx="6" fill="#2a7f7f"/>
+        <text x="268" y="44" font-size="9" font-weight="700" fill="white" text-anchor="middle">②父母</text>
+        <text x="268" y="58" font-size="8" fill="#a7f3d0" text-anchor="middle">55歳以上</text>
+        <text x="268" y="70" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">60歳まで停止</text>
+        <rect x="318" y="28" width="80" height="62" rx="6" fill="#7c3aed"/>
+        <text x="358" y="52" font-size="9" font-weight="700" fill="white" text-anchor="middle">③孫</text>
+        <text x="358" y="66" font-size="8" fill="#ede9fe" text-anchor="middle">18歳年度末未満</text>
+        <rect x="408" y="28" width="104" height="62" rx="6" fill="#c9930a"/>
+        <text x="460" y="52" font-size="9" font-weight="700" fill="white" text-anchor="middle">④祖父母</text>
+        <text x="460" y="66" font-size="8" fill="#fde68a" text-anchor="middle">55歳以上</text>
+        <text x="460" y="78" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">60歳まで停止</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「夫は死亡当時<strong>60歳以上</strong>が要件」→ <strong style="color:#2d6a4f;">○</strong> <strong>55歳以上</strong>が要件・60歳まで<strong>支給停止</strong></div></div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「配偶者より子の方が優先される」→ <strong style="color:#2d6a4f;">○</strong> 配偶者と子は<strong>同順位（第1位）</strong></div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「夫は55歳以上・60歳まで停止」——55と60の2数字。妻には年齢要件なし。</div>
+      <div class="law-tag">法第59条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 鈴木さん（56歳の夫）の妻が亡くなった。56歳なので「55歳以上」の要件は満たすが、60歳になるまで遺族厚生年金は支給停止。「なぜ停止？」——56歳の夫はまだ働ける年齢で、60歳まで自分の収入で生活できると想定されるから。60歳になって支給停止が解除される。妻には年齢要件がない——「なぜ？」——妻は夫の死亡時に子育てや家事で収入を得にくい立場が多いという現実的な判断から。</div>
+    </div>
+  </div>
+</div><!-- /card cq2 -->
+
+<!-- Q3 -->
+<div class="card" id="cq3">
+  <div class="card-hd"><div class="q-num">03</div>
+    <div><div class="src-tag">法第60条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：遺族厚生年金の額</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">遺族厚生年金の額は、死亡した者の老齢厚生年金の報酬比例部分の額の<mark>4分の3</mark>に相当する額であり、被保険者期間が<mark>300ヵ月未満</mark>の場合は<mark>300ヵ月</mark>として計算する。</div>
+    <div class="opts-tf" id="q3-opts">
+      <div class="opt" onclick="answer('q3',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q3',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q3-ans">
+      <div class="ans-hd" id="q3-result"></div>
+      <div class="why">✅ <strong>正しい。</strong><strong>法第60条（遺族厚生年金の額）</strong>：死亡した者の報酬比例の年金額の<mark>3/4</mark>。被保険者期間が300ヵ月（25年）未満の場合は<mark>300ヵ月みなし</mark>。「なぜ3/4？」——遺族（特に妻）は一人で生活するため、夫婦2人分の生活費（2/4+2/4）のうち1人分（2/4）＋共通費用（1/4）として3/4が設定された。障害厚生年金の3級の最低保障（障害基礎2級の3/4）と同じ比率だが意味は異なる。</div>
+      <div class="def-card">
+        <strong>📖 法第60条（遺族厚生年金の額）</strong><br>
+        基本：死亡者の報酬比例の年金額 × <mark>3/4</mark><br>
+        短期要件：被保険者期間<mark>300ヵ月未満</mark>→<mark>300ヵ月</mark>として計算<br>
+        長期要件：被保険者期間300ヵ月以上→実際の期間で計算<br><br>
+        <strong>【障害厚生年金との比較】</strong><br>
+        障害1級：報酬比例×5/4、障害2級：×1、障害3級：最低保障<br>
+        遺族厚生年金：報酬比例×<mark>3/4</mark>（障害年金より低い）
+      </div>
+      <svg viewBox="0 0 520 80" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="520" height="80" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="20" font-size="11" font-weight="700" fill="#1a1a2e">遺族厚生年金の額の計算</text>
+        <rect x="10" y="28" width="245" height="42" rx="7" fill="#2a7f7f"/>
+        <text x="132" y="46" font-size="10" font-weight="700" fill="white" text-anchor="middle">原則：報酬比例 × 3/4</text>
+        <text x="132" y="62" font-size="9" fill="#a7f3d0" text-anchor="middle">死亡した者の老齢厚生年金（報酬比例部分）× 3/4</text>
+        <rect x="265" y="28" width="245" height="42" rx="7" fill="#c84b31"/>
+        <text x="387" y="46" font-size="10" font-weight="700" fill="white" text-anchor="middle">短期要件：300ヵ月みなし</text>
+        <text x="387" y="62" font-size="9" fill="#fca5a5" text-anchor="middle">被保険者期間300ヵ月未満→300ヵ月として計算</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「遺族厚生年金は報酬比例の<strong>2分の1</strong>」→ <strong style="color:#2d6a4f;">○</strong> <strong>4分の3（3/4）</strong></div></div>
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 300ヵ月みなしは障害厚生年金（1・2級）と同じ。若くして亡くなった人の遺族の年金を底上げする措置。</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「遺族は3/4・障害1級は5/4・障害2級は1」——遺族は3/4が基本。「2分の1」は誤り。</div>
+      <div class="law-tag">法第60条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 山田さんが40歳で亡くなった。被保険者期間は15年（180ヵ月）だが、300ヵ月みなしで計算するので300ヵ月分の遺族厚生年金が妻に支給される。「なぜ3/4？」——夫婦2人の生活費を1とすると、妻1人になっても共有コスト（家賃・光熱費等）はほぼ変わらない。1人では4分の2では足りず4分の3が必要という現実的な水準として設定された。「2分の1」という引っかけに注意。</div>
+    </div>
+  </div>
+</div><!-- /card cq3 -->
+
+<!-- Q4 -->
+<div class="card" id="cq4">
+  <div class="card-hd"><div class="q-num">04</div>
+    <div><div class="src-tag">法第62条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：中高齢寡婦加算</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">中高齢寡婦加算は、夫の死亡当時<mark>40歳以上65歳未満</mark>の子のない妻（または子が18歳年度末到達等で遺族基礎年金を受給しなくなった妻）に加算される額であり、加算額は老齢基礎年金の満額の<mark>4分の3</mark>に相当する。</div>
+    <div class="opts-tf" id="q4-opts">
+      <div class="opt" onclick="answer('q4',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q4',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q4-ans">
+      <div class="ans-hd" id="q4-result"></div>
+      <div class="why">✅ <strong>正しい。</strong><strong>法第62条（中高齢寡婦加算）</strong>：40〜65歳未満の子のない妻に加算（子が18歳年度末に達して遺族基礎年金が切れた後の妻にも加算）。額は老齢基礎年金満額の<mark>3/4</mark>。「なぜ40歳以上？」——40歳未満は再就職・再婚の可能性が高いと判断。40歳以上は再就職が難しく手厚い保護が必要。65歳以降は振替加算に移行するためここで終了。</div>
+      <div class="def-card">
+        <strong>📖 法第62条（中高齢寡婦加算）</strong><br>
+        対象：死亡当時<mark>40〜65歳未満</mark>の妻（子のない妻、または子が18歳年度末到達で遺族基礎年金が終了した妻）<br>
+        加算額：老齢基礎年金の満額 × <mark>3/4</mark><br>
+        終了：妻が<mark>65歳</mark>に達すると終了（→振替加算に移行する場合あり）<br>
+        夫の加入要件：厚年被保険者期間が<mark>20年以上</mark>（または中高齢の特例）<br><br>
+        <strong>【立法趣旨】</strong>40〜65歳の女性は再就職・老齢基礎年金受給のどちらも難しい「中間の空白期間」を補う制度。
+      </div>
+      <svg viewBox="0 0 520 80" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="520" height="80" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="20" font-size="11" font-weight="700" fill="#1a1a2e">中高齢寡婦加算の対象年齢ライン</text>
+        <line x1="40" y1="50" x2="480" y2="50" stroke="#1a1a2e" stroke-width="2"/>
+        <line x1="80" y1="42" x2="80" y2="58" stroke="#6b7280" stroke-width="2"/>
+        <text x="80" y="36" font-size="9" fill="#6b7280" text-anchor="middle">40歳未満</text>
+        <text x="80" y="70" font-size="8" fill="#6b7280" text-anchor="middle">対象外</text>
+        <rect x="160" y="36" width="200" height="28" rx="5" fill="#c84b31"/>
+        <text x="260" y="54" font-size="10" font-weight="700" fill="white" text-anchor="middle">40〜65歳未満：中高齢寡婦加算</text>
+        <line x1="160" y1="36" x2="160" y2="65" stroke="#c84b31" stroke-width="2"/>
+        <text x="160" y="30" font-size="9" font-weight="700" fill="#c84b31" text-anchor="middle">40歳</text>
+        <line x1="360" y1="36" x2="360" y2="65" stroke="#2a7f7f" stroke-width="2"/>
+        <text x="360" y="30" font-size="9" font-weight="700" fill="#2a7f7f" text-anchor="middle">65歳</text>
+        <text x="420" y="54" font-size="9" fill="#2a7f7f" text-anchor="middle">→振替加算へ</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「中高齢寡婦加算の対象は<strong>35歳以上</strong>」→ <strong style="color:#2d6a4f;">○</strong> <strong>40歳以上</strong>65歳未満</div></div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「加算額は老齢基礎年金の満額と同額」→ <strong style="color:#2d6a4f;">○</strong> 満額の<strong>4分の3（3/4）</strong></div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「40〜65歳・老齢基礎年金の3/4・20年以上」の3数字。40歳という下限が最頻出の引っかけ。</div>
+      <div class="law-tag">法第62条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 42歳の佐藤さんが夫を亡くした。子どもはいないので遺族基礎年金はもらえないが、遺族厚生年金に中高齢寡婦加算が上乗せされる。「なぜ40歳以上？」——40歳未満の妻は再就職・再婚の可能性がまだ高い。40歳を超えると「子育てが一段落しているが、老齢基礎年金はまだ先」という収入が途絶えがちな谷間の時期——この谷間を埋める制度。65歳になると老齢基礎年金が始まるので加算は終了し、振替加算に引き継がれる場合もある。</div>
+    </div>
+  </div>
+</div><!-- /card cq4 -->
+
+<!-- Q5 -->
+<div class="card" id="cq5">
+  <div class="card-hd"><div class="q-num">05</div>
+    <div><div class="src-tag">法第63条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：転給なし・失権事由</div></div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">遺族厚生年金の受給権者のうち最先順位者が失権した場合、<mark>次の順位</mark>の者が新たに受給権を取得する（転給が認められる）。</div>
+    <div class="opts-tf" id="q5-opts">
+      <div class="opt" onclick="answer('q5',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q5',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q5-ans">
+      <div class="ans-hd" id="q5-result"></div>
+      <div class="why">❌ <strong>誤り。</strong><strong>法第63条（転給なし）</strong>：遺族厚生年金は<mark>転給が認められない</mark>。最先順位者が失権（再婚・死亡等）しても、次の順位の者が新たに受給権を取得することはできない。「なぜ転給なし？」——遺族厚生年金は「特定の遺族の生活を守る」ために支給されるもの。最先順位者が失権した理由（再婚等）は生活が安定したからと判断され、次順位者への継承は認められない。遺族基礎年金も同様に転給なし。</div>
+      <div class="def-card">
+        <strong>📖 法第63条（転給なし・失権事由）</strong><br>
+        <mark>転給なし</mark>：最先順位者が失権しても次順位者は受給権を取得しない<br>
+        主な失権事由：<br>
+        ①<mark>再婚</mark>（事実婚含む）<br>
+        ②死亡<br>
+        ③<mark>直系血族・直系姻族以外</mark>との養子縁組<br>
+        ④子・孫は<mark>18歳年度末到達</mark>（障害1・2級の子は20歳到達）<br>
+        ⑤離縁（養子の場合）<br><br>
+        遺族基礎年金も転給なし——国年・厚年ともに同じルール
+      </div>
+      <svg viewBox="0 0 520 80" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="520" height="80" rx="10" fill="#f5f0e8"/>
+        <text x="24" y="20" font-size="11" font-weight="700" fill="#1a1a2e">転給なし：失権しても次の順位には移らない</text>
+        <rect x="10" y="28" width="150" height="42" rx="6" fill="#c84b31"/>
+        <text x="85" y="46" font-size="10" font-weight="700" fill="white" text-anchor="middle">①妻（受給中）</text>
+        <text x="85" y="62" font-size="9" fill="#fca5a5" text-anchor="middle">↓ 再婚で失権</text>
+        <text x="172" y="52" font-size="20" fill="#c84b31">✗</text>
+        <rect x="200" y="28" width="150" height="42" rx="6" fill="#6b7280"/>
+        <text x="275" y="46" font-size="10" fill="white" text-anchor="middle">②父母（次順位）</text>
+        <text x="275" y="62" font-size="9" fill="#d1d5db" text-anchor="middle">受給権は移らない</text>
+        <rect x="360" y="28" width="152" height="42" rx="6" fill="#2d6a4f"/>
+        <text x="436" y="46" font-size="10" font-weight="700" fill="white" text-anchor="middle">転給なし！</text>
+        <text x="436" y="62" font-size="9" fill="#a7f3d0" text-anchor="middle">消滅するだけ</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #2d6a4f;padding:8px 12px;background:#f0faf5;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#2d6a4f;">○</strong> 遺族厚生年金は転給が認められない——妻が再婚で失権しても父母は受給権を取得しない。</div></div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「直系血族との養子縁組でも失権する」→ <strong style="color:#2d6a4f;">○</strong> <strong>直系血族・直系姻族以外</strong>との養子縁組で失権（直系への養子縁組は失権しない）</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 転給なし——遺族基礎年金も同じ。失権事由の「直系血族以外との養子縁組」も重要。</div>
+      <div class="law-tag">法第63条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 田中さんの妻が遺族厚生年金を受給中に再婚した——妻は失権。次順位の父母に受給権は移らない（転給なし）。「なぜ転給なし？」——再婚で生活が安定した妻から次の遺族に「遺産のように引き継ぐ」のは制度趣旨に反する。遺族厚生年金はあくまで「生活保障」であり「相続財産」ではない。失権事由のうち「直系血族以外との養子縁組」——たとえば子供が他家に養子に行けば失権するが、祖父母の養子になる（直系）なら失権しない。</div>
+    </div>
+  </div>
+</div><!-- /card cq5 -->
+
+</div><!-- /qwrap -->
+
+<div class="qwrap">
+
+<!-- F1 -->
+<div class="card" id="cf1">
+  <div class="blank-card-body">
+    <div class="card-hd" style="margin:-16px -18px 16px;"><div class="q-num">06</div>
+      <div><div class="src-tag">法第58条 ／ 穴埋め式</div><div class="q-type">難易度：★★☆ ／ 単元：支給事由の4類型</div></div>
+    </div>
+    <div class="blank-q">遺族厚生年金の支給事由：①被保険者の死亡、②被保険者だった者の資格喪失後<span class="blank" id="f1a" onclick="selB('f1','f1a')">　</span>ヵ月以内の死亡、③老齢厚生年金受給権者（受給資格期間<span class="blank" id="f1b" onclick="selB('f1','f1b')">　　</span>年以上）の死亡、④障害等級<span class="blank" id="f1c" onclick="selB('f1','f1c')">　　　</span>の障害厚生年金受給権者の死亡。</div>
+    <div class="chips" id="f1-chips">
+      <div class="chp" onclick="fillB('f1','f1a',this,'3')">3</div>
+      <div class="chp" onclick="fillB('f1','f1b',this,'25')">25</div>
+      <div class="chp" onclick="fillB('f1','f1c',this,'1・2級')">1・2級</div>
+    </div>
+    <button class="chk-btn" id="chk-f1" onclick="chkF('f1')">答え合わせ</button>
+    <div class="f-ans" id="f1-ans">
+      <div class="ans-hd" id="f1-result"></div>
+      <div class="why">②は<mark>3</mark>ヵ月以内、③は受給資格期間<mark>25</mark>年以上、④は障害等級<mark>1・2級</mark>。「3・25・1・2級」の3点セット。①②は保険料納付要件あり・③④はなし、という非対称性も重要。</div>
+      <svg viewBox="0 0 400 60" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="60" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">支給事由の数字まとめ</text>
+        <rect x="10" y="26" width="88" height="28" rx="5" fill="#c84b31"/>
+        <text x="54" y="44" font-size="9" font-weight="700" fill="white" text-anchor="middle">②3ヵ月以内</text>
+        <rect x="108" y="26" width="88" height="28" rx="5" fill="#2a7f7f"/>
+        <text x="152" y="44" font-size="9" font-weight="700" fill="white" text-anchor="middle">③25年以上</text>
+        <rect x="206" y="26" width="88" height="28" rx="5" fill="#7c3aed"/>
+        <text x="250" y="44" font-size="9" font-weight="700" fill="white" text-anchor="middle">④1・2級</text>
+        <rect x="304" y="26" width="88" height="28" rx="5" fill="#1a1a2e"/>
+        <text x="348" y="38" font-size="8" fill="#fde68a" text-anchor="middle">①②：納付要件</text>
+        <text x="348" y="50" font-size="8" fill="#a7f3d0" text-anchor="middle">③④：要件なし</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「③の老齢厚生年金受給権者は受給資格期間10年以上」→ <strong style="color:#2d6a4f;">○</strong> <strong>25年以上</strong></div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「3ヵ月・25年・1・2級」の3数字。①②は納付要件あり・③④はなしという非対称性も頻出。</div>
+      <div class="law-tag">法第58条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 「3・25・1・2級」——支給事由の3つの数字を覚えたら次は「①②は納付要件あり・③④はなし」という非対称性。なぜ③④は納付要件なし？——③の老齢厚生年金受給権者はすでに25年以上の加入実績がある。④の障害1・2級受給権者はすでに障害認定時に納付要件を確認済み。二重チェックが不要なため。</div>
+    </div>
+  </div>
+</div><!-- /card cf1 -->
+
+<!-- F2 -->
+<div class="card" id="cf2">
+  <div class="blank-card-body">
+    <div class="card-hd" style="margin:-16px -18px 16px;"><div class="q-num">07</div>
+      <div><div class="src-tag">法第59条 ／ 穴埋め式</div><div class="q-type">難易度：★★★ ／ 単元：受給権者の順位と夫の要件</div></div>
+    </div>
+    <div class="blank-q">遺族厚生年金の受給権者：第1順位は<span class="blank" id="f2a" onclick="selB('f2','f2a')">　　　　　</span>（同順位）、第2順位は父母、第3順位は孫、第4順位は祖父母。夫・父母・祖父母は死亡当時<span class="blank" id="f2b" onclick="selB('f2','f2b')">　　</span>歳以上が要件で、<span class="blank" id="f2c" onclick="selB('f2','f2c')">　　</span>歳になるまで支給停止。妻には<span class="blank" id="f2d" onclick="selB('f2','f2d')">　　　</span>。</div>
+    <div class="chips" id="f2-chips">
+      <div class="chp" onclick="fillB('f2','f2a',this,'配偶者・子')">配偶者・子</div>
+      <div class="chp" onclick="fillB('f2','f2b',this,'55')">55</div>
+      <div class="chp" onclick="fillB('f2','f2c',this,'60')">60</div>
+      <div class="chp" onclick="fillB('f2','f2d',this,'年齢要件なし')">年齢要件なし</div>
+    </div>
+    <button class="chk-btn" id="chk-f2" onclick="chkF('f2')">答え合わせ</button>
+    <div class="f-ans" id="f2-ans">
+      <div class="ans-hd" id="f2-result"></div>
+      <div class="why">第1順位は<mark>配偶者・子</mark>（同順位）。夫・父母・祖父母は<mark>55</mark>歳以上が要件で<mark>60</mark>歳まで支給停止。妻には<mark>年齢要件なし</mark>——「55歳以上でないと受給権がない」のに「60歳まで停止」という2段構えを整理して覚える。</div>
+      <svg viewBox="0 0 400 60" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="60" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">夫の受給：55歳以上が要件・60歳まで停止</text>
+        <rect x="10" y="26" width="120" height="28" rx="5" fill="#6b7280"/>
+        <text x="70" y="44" font-size="9" fill="white" text-anchor="middle">55歳未満→受給権なし</text>
+        <rect x="140" y="26" width="120" height="28" rx="5" fill="#c9930a"/>
+        <text x="200" y="44" font-size="9" font-weight="700" fill="white" text-anchor="middle">55〜59歳：支給停止中</text>
+        <rect x="270" y="26" width="120" height="28" rx="5" fill="#2a7f7f"/>
+        <text x="330" y="44" font-size="9" font-weight="700" fill="white" text-anchor="middle">60歳〜：支給開始</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「夫は死亡当時60歳以上が要件」→ <strong style="color:#2d6a4f;">○</strong> 要件は<strong>55歳以上</strong>・支給停止が60歳まで（要件と停止は別）</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「55歳以上が要件・60歳まで停止」——2つの数字の意味が違う。妻は年齢要件なし。</div>
+      <div class="law-tag">法第59条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 「55歳以上が要件・60歳まで停止」という2段構えが混乱のもと。55歳の夫は「受給権はある」が「60歳まで使えない」状態。「なぜ2段構え？」——55歳以上でないと保護が必要な立場と認められない（若ければ働ける）が、55〜59歳もすぐに満額受け取るのは過剰——60歳から退職年金も出てくるタイミングで一緒にもらう設計。妻には年齢要件がないのは「妻は年齢にかかわらず夫の死亡で生活が脅かされる」という現実的な判断。</div>
+    </div>
+  </div>
+</div><!-- /card cf2 -->
+
+<!-- F3 -->
+<div class="card" id="cf3">
+  <div class="blank-card-body">
+    <div class="card-hd" style="margin:-16px -18px 16px;"><div class="q-num">08</div>
+      <div><div class="src-tag">法第60条 ／ 穴埋め式</div><div class="q-type">難易度：★★☆ ／ 単元：遺族厚生年金の額と300ヵ月みなし</div></div>
+    </div>
+    <div class="blank-q">遺族厚生年金の額＝死亡者の報酬比例の年金額×<span class="blank" id="f3a" onclick="selB('f3','f3a')">　　　</span>。被保険者期間が<span class="blank" id="f3b" onclick="selB('f3','f3b')">　　　</span>ヵ月未満の場合は<span class="blank" id="f3c" onclick="selB('f3','f3c')">　　　</span>ヵ月として計算（短期要件）。障害厚生年金1・2級の<span class="blank" id="f3d" onclick="selB('f3','f3d')">　　　　　</span>と同じ仕組み。</div>
+    <div class="chips" id="f3-chips">
+      <div class="chp" onclick="fillB('f3','f3a',this,'3/4')">3/4</div>
+      <div class="chp" onclick="fillB('f3','f3b',this,'300')">300</div>
+      <div class="chp" onclick="fillB('f3','f3c',this,'300')">300</div>
+      <div class="chp" onclick="fillB('f3','f3d',this,'300ヵ月みなし')">300ヵ月みなし</div>
+    </div>
+    <button class="chk-btn" id="chk-f3" onclick="chkF('f3')">答え合わせ</button>
+    <div class="f-ans" id="f3-ans">
+      <div class="ans-hd" id="f3-result"></div>
+      <div class="why">報酬比例×<mark>3/4</mark>。被保険者期間<mark>300</mark>ヵ月未満→<mark>300</mark>ヵ月とみなす（障害厚生年金の<mark>300ヵ月みなし</mark>と同じ仕組み）。「2分の1」「4分の1」ではなく「4分の3」が正解。</div>
+      <svg viewBox="0 0 400 60" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="60" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">遺族厚生年金額の計算</text>
+        <rect x="10" y="26" width="180" height="28" rx="5" fill="#2a7f7f"/>
+        <text x="100" y="44" font-size="10" font-weight="700" fill="white" text-anchor="middle">報酬比例 × 3/4</text>
+        <rect x="210" y="26" width="180" height="28" rx="5" fill="#c84b31"/>
+        <text x="300" y="44" font-size="10" font-weight="700" fill="white" text-anchor="middle">300ヵ月未満→300ヵ月みなし</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「遺族厚生年金は報酬比例の<strong>2分の1</strong>」→ <strong style="color:#2d6a4f;">○</strong> <strong>4分の3（3/4）</strong></div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「遺族3/4・障害1級5/4・障害2級1」の3つをセットで覚える。遺族は3/4が基本。</div>
+      <div class="law-tag">法第60条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 「遺族3/4」——障害年金との対比で覚える。障害1級5/4・2級1（4/4）・遺族3/4と分子が5→4→3と1ずつ減る。「遺族は障害より少ない」という感覚で体に入れる。300ヵ月みなしは「若くして亡くなった人の遺族の年金を底上げする」措置——障害厚生年金の300ヵ月みなしと全く同じ仕組み。両方まとめて「若い人を守る底上げ＝300ヵ月みなし」として覚える。</div>
+    </div>
+  </div>
+</div><!-- /card cf3 -->
+
+<!-- F4 -->
+<div class="card" id="cf4">
+  <div class="blank-card-body">
+    <div class="card-hd" style="margin:-16px -18px 16px;"><div class="q-num">09</div>
+      <div><div class="src-tag">法第62条 ／ 穴埋め式</div><div class="q-type">難易度：★★★ ／ 単元：中高齢寡婦加算の詳細</div></div>
+    </div>
+    <div class="blank-q">中高齢寡婦加算：対象は死亡当時<span class="blank" id="f4a" onclick="selB('f4','f4a')">　　</span>歳以上<span class="blank" id="f4b" onclick="selB('f4','f4b')">　　</span>歳未満の妻。加算額は老齢基礎年金満額の<span class="blank" id="f4c" onclick="selB('f4','f4c')">　　　</span>。夫の厚年被保険者期間が<span class="blank" id="f4d" onclick="selB('f4','f4d')">　　</span>年以上であること（または中高齢の特例）が必要。</div>
+    <div class="chips" id="f4-chips">
+      <div class="chp" onclick="fillB('f4','f4a',this,'40')">40</div>
+      <div class="chp" onclick="fillB('f4','f4b',this,'65')">65</div>
+      <div class="chp" onclick="fillB('f4','f4c',this,'3/4')">3/4</div>
+      <div class="chp" onclick="fillB('f4','f4d',this,'20')">20</div>
+    </div>
+    <button class="chk-btn" id="chk-f4" onclick="chkF('f4')">答え合わせ</button>
+    <div class="f-ans" id="f4-ans">
+      <div class="ans-hd" id="f4-result"></div>
+      <div class="why">対象は<mark>40</mark>〜<mark>65</mark>歳未満の妻。加算額は老齢基礎年金満額の<mark>3/4</mark>。夫の被保険者期間<mark>20</mark>年以上が必要（加給年金額と同じ20年要件）。40歳・65歳・3/4・20年の4数字をセットで。</div>
+      <svg viewBox="0 0 400 60" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="60" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">中高齢寡婦加算の4数字</text>
+        <rect x="10" y="26" width="88" height="28" rx="5" fill="#c84b31"/>
+        <text x="54" y="44" font-size="10" font-weight="700" fill="white" text-anchor="middle">40歳以上</text>
+        <rect x="108" y="26" width="88" height="28" rx="5" fill="#2a7f7f"/>
+        <text x="152" y="44" font-size="10" font-weight="700" fill="white" text-anchor="middle">65歳未満</text>
+        <rect x="206" y="26" width="88" height="28" rx="5" fill="#7c3aed"/>
+        <text x="250" y="44" font-size="10" font-weight="700" fill="white" text-anchor="middle">老基の3/4</text>
+        <rect x="304" y="26" width="88" height="28" rx="5" fill="#c9930a"/>
+        <text x="348" y="44" font-size="10" font-weight="700" fill="white" text-anchor="middle">夫20年以上</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「中高齢寡婦加算の対象は<strong>35歳以上</strong>」→ <strong style="color:#2d6a4f;">○</strong> <strong>40歳以上</strong>65歳未満</div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「40・65・3/4・20年」の4数字。加給年金額の20年要件と同じ点を活用して覚える。</div>
+      <div class="law-tag">法第62条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 「40〜65歳・老齢基礎年金の3/4・夫20年以上」——加給年金額の「夫20年以上・配偶者65歳未満」と数字が重なる。意識して対比すると覚えやすい。中高齢寡婦加算は「老齢基礎年金をもらえない年齢（40〜65歳）の妻の空白期間を埋める制度」——65歳になれば老齢基礎年金が始まるので加算は終了する。このストーリーと一緒に「40〜65歳」という範囲が自然に頭に入る。</div>
+    </div>
+  </div>
+</div><!-- /card cf4 -->
+
+<!-- F5 -->
+<div class="card" id="cf5">
+  <div class="blank-card-body">
+    <div class="card-hd" style="margin:-16px -18px 16px;"><div class="q-num">10</div>
+      <div><div class="src-tag">法第63条 ／ 穴埋め式</div><div class="q-type">難易度：★★★ ／ 単元：失権事由と転給の扱い</div></div>
+    </div>
+    <div class="blank-q">遺族厚生年金の受給権者が失権しても次の順位者への<span class="blank" id="f5a" onclick="selB('f5','f5a')">　　</span>は認められない。主な失権事由：①再婚、②<span class="blank" id="f5b" onclick="selB('f5','f5b')">　　　　　　　</span>以外との養子縁組、③子・孫は<span class="blank" id="f5c" onclick="selB('f5','f5c')">　　</span>歳年度末到達（障害1・2級の子は<span class="blank" id="f5d" onclick="selB('f5','f5d')">　　</span>歳）。</div>
+    <div class="chips" id="f5-chips">
+      <div class="chp" onclick="fillB('f5','f5a',this,'転給')">転給</div>
+      <div class="chp" onclick="fillB('f5','f5b',this,'直系血族・直系姻族')">直系血族・直系姻族</div>
+      <div class="chp" onclick="fillB('f5','f5c',this,'18')">18</div>
+      <div class="chp" onclick="fillB('f5','f5d',this,'20')">20</div>
+    </div>
+    <button class="chk-btn" id="chk-f5" onclick="chkF('f5')">答え合わせ</button>
+    <div class="f-ans" id="f5-ans">
+      <div class="ans-hd" id="f5-result"></div>
+      <div class="why"><mark>転給</mark>は認められない。失権事由：再婚・<mark>直系血族・直系姻族</mark>以外との養子縁組・子は<mark>18</mark>歳年度末（障害1・2級は<mark>20</mark>歳）。「直系への養子縁組は失権しない」という例外が重要。遺族基礎年金も同様に転給なし。</div>
+      <svg viewBox="0 0 400 60" width="100%" style="margin:8px 0;border-radius:8px;">
+        <rect width="400" height="60" rx="8" fill="#f5f0e8"/>
+        <text x="16" y="18" font-size="10" font-weight="700" fill="#1a1a2e">主な失権事由</text>
+        <rect x="10" y="26" width="88" height="28" rx="5" fill="#c84b31"/>
+        <text x="54" y="44" font-size="9" font-weight="700" fill="white" text-anchor="middle">再婚</text>
+        <rect x="108" y="26" width="118" height="28" rx="5" fill="#c84b31"/>
+        <text x="167" y="44" font-size="8" font-weight="700" fill="white" text-anchor="middle">直系以外との養子縁組</text>
+        <rect x="236" y="26" width="74" height="28" rx="5" fill="#2a7f7f"/>
+        <text x="273" y="44" font-size="9" font-weight="700" fill="white" text-anchor="middle">子は18歳</text>
+        <rect x="320" y="26" width="72" height="28" rx="5" fill="#7c3aed"/>
+        <text x="356" y="44" font-size="9" font-weight="700" fill="white" text-anchor="middle">障害は20歳</text>
+      </svg>
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「最先順位者が失権すると次の順位の者が受給権を取得する（転給）」→ <strong style="color:#2d6a4f;">○</strong> 転給は<strong>認められない</strong></div></div>
+        </div>
+      </div>
+      <div class="tip">💡 「転給なし・再婚・直系以外の養子・18歳年度末・障害20歳」の5点。転給なしが最頻出。</div>
+      <div class="law-tag">法第63条</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 転給なしは「遺族年金は相続財産ではない」という制度思想から来ている。妻が再婚で失権したのは「生活が安定したから」——その後、父母が「では次は私に」とはならない。失権事由の「直系血族以外との養子縁組」——子が他家に養子に行けば失権するが、祖父母の養子（直系）になれば失権しない。「直系」はあくまで血のつながった縦のライン。横の家に移れば失権というイメージで整理する。</div>
+    </div>
+  </div>
+</div><!-- /card cf5 -->
+
+</div><!-- /qwrap -->
+
+<div class="complete-bar" id="complete-bar">
+  <div class="complete-card">
+    <h2>🎉 全問回答完了！</h2>
+    <div class="complete-score" id="complete-score">0 / 10</div>
+    <div style="color:rgba(255,255,255,.7);font-size:13px;" id="complete-msg"></div>
+    <button class="copy-btn2" id="copy-btn2" onclick="copyRecord()">📋 記録をコピー</button>
+  </div>
+</div>
+</div><!-- /panel-quiz -->
+
+<!-- PANEL-MINDMAP -->
+<div id="panel-mindmap" class="tab-panel">
+<div class="mm-wrap">
+  <div style="background:var(--teal-light);border:1px solid var(--teal);border-radius:10px;padding:12px 16px;font-size:13px;color:#1a4040;margin-bottom:24px;line-height:1.7;">
+    🗺 <strong>連想図</strong>：厚生年金法 Day6「遺族厚生年金①」の重要論点を3STEPで整理。
+  </div>
+  <div class="mm-step">
+    <div class="mm-step-hd"><div class="mm-step-num">1</div><div class="mm-step-title">支給事由の4類型と保険料納付要件</div></div>
+    <div class="mm-step-body">
+      <div class="mm-item">📌 ①被保険者の死亡、②資格喪失後<mark>3ヵ月以内</mark>の死亡（①②は保険料納付要件あり）</div>
+      <div class="mm-item">📌 ③老齢厚生年金受給権者（受給資格期間<mark>25年以上</mark>）の死亡、④障害等級<mark>1・2級</mark>の障害厚生年金受給権者の死亡（③④は納付要件なし）</div>
+      <div class="mm-alert">🚨 ②は「6ヵ月」「1年」ではなく<mark>3ヵ月</mark>——最頻出の引っかけ。</div>
+      <div class="mm-alert">🚨 ③の受給資格期間は「10年」ではなく<mark>25年</mark>以上。</div>
+      <div class="mm-gorof">🧠 「3ヵ月・25年・1・2級」——3つの数字で4事由を押さえる。①②は納付要件あり・③④はなしの非対称性も頻出。</div>
+    </div>
+  </div>
+  <div class="mm-step">
+    <div class="mm-step-hd"><div class="mm-step-num">2</div><div class="mm-step-title">受給権者・年金額・中高齢寡婦加算</div></div>
+    <div class="mm-step-body">
+      <div class="mm-item">📌 <strong>優先順位</strong>：第1位＝<mark>配偶者・子（同順位）</mark>、第2位＝父母、第3位＝孫、第4位＝祖父母</div>
+      <div class="mm-item">📌 <strong>夫の要件</strong>：死亡当時<mark>55歳以上</mark>が受給要件・<mark>60歳</mark>まで支給停止。妻は年齢要件なし。</div>
+      <div class="mm-item">📌 <strong>年金額</strong>：報酬比例×<mark>3/4</mark>。被保険者期間300ヵ月未満は300ヵ月みなし。</div>
+      <div class="mm-item">📌 <strong>中高齢寡婦加算</strong>：死亡当時<mark>40〜65歳未満</mark>の妻に、老齢基礎年金満額の<mark>3/4</mark>を加算（夫の厚年期間<mark>20年以上</mark>が必要）。</div>
+      <div class="mm-alert">🚨 夫の要件：「55歳以上が要件」と「60歳まで停止」は別物——混同が最頻出。</div>
+      <div class="mm-alert">🚨 年金額は「2分の1」ではなく<mark>3/4</mark>——「遺族3/4・障害1級5/4・障害2級1」の対比で覚える。</div>
+    </div>
+  </div>
+  <div class="mm-step">
+    <div class="mm-step-hd"><div class="mm-step-num">3</div><div class="mm-step-title">転給なし・失権事由</div></div>
+    <div class="mm-step-body">
+      <div class="mm-item">📌 <strong>転給なし</strong>：最先順位者が失権しても次順位者への受給権の移転はない（遺族基礎年金も同様）。</div>
+      <div class="mm-item">📌 <strong>主な失権事由</strong>：①再婚（事実婚含む）、②<mark>直系血族・直系姻族以外</mark>との養子縁組、③子・孫は<mark>18歳年度末</mark>到達（障害1・2級は<mark>20歳</mark>）、④離縁、⑤死亡。</div>
+      <div class="hikakke-box">
+        <div class="hikakke-hd"><span>🔥 Day6 最重要引っかけ TOP5</span></div>
+        <div class="hikakke-body">
+          <div class="hikakke-row">× 資格喪失後6ヵ月以内に死亡した場合に支給事由 → ○ <strong>3ヵ月以内</strong></div>
+          <div class="hikakke-row">× ③の老齢受給権者は受給資格期間10年以上 → ○ <strong>25年以上</strong></div>
+          <div class="hikakke-row">× 夫は死亡当時60歳以上が要件 → ○ <strong>55歳以上</strong>が要件・60歳まで停止（別物）</div>
+          <div class="hikakke-row">× 遺族厚生年金は報酬比例の2分の1 → ○ <strong>4分の3（3/4）</strong></div>
+          <div class="hikakke-row">× 最先順位者が失権すると次順位者が受給（転給） → ○ 転給は<strong>認められない</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mm-step" style="border-color:#1d4ed8;">
+    <div class="mm-step-hd" style="background:#1d4ed8;"><div class="mm-step-num" style="color:#bfdbfe;">⚖</div><div class="mm-step-title">遺族厚生年金 vs 遺族基礎年金 比較表</div></div>
+    <div class="mm-step-body">
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:12px;min-width:480px;">
+          <thead>
+            <tr style="background:#1d4ed8;">
+              <th style="padding:8px 10px;color:white;text-align:left;border-bottom:2px solid #93c5fd;">論点</th>
+              <th style="padding:8px 10px;color:#bfdbfe;text-align:center;border-bottom:2px solid #93c5fd;">遺族基礎年金（国年）</th>
+              <th style="padding:8px 10px;color:#fde68a;text-align:center;border-bottom:2px solid #93c5fd;">遺族厚生年金</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #e0e7ff;background:#f8faff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">受給権者</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#fee2e2;">子のある配偶者・子</mark></td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#dcfce7;">配偶者・子・父母・孫・祖父母</mark></td>
+            </tr>
+            <tr style="border-bottom:1px solid #e0e7ff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">年金額</td>
+              <td style="padding:8px 10px;text-align:center;">定額＋子の加算</td>
+              <td style="padding:8px 10px;text-align:center;">報酬比例×3/4</td>
+            </tr>
+            <tr style="border-bottom:1px solid #e0e7ff;background:#f8faff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">転給</td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#fee2e2;">なし</mark></td>
+              <td style="padding:8px 10px;text-align:center;"><mark style="background:#fee2e2;">なし</mark></td>
+            </tr>
+            <tr style="background:#f8faff;">
+              <td style="padding:8px 10px;font-weight:700;color:#1e40af;">子の年齢要件</td>
+              <td style="padding:8px 10px;text-align:center;">18歳年度末未満</td>
+              <td style="padding:8px 10px;text-align:center;">18歳年度末未満（障害は20歳）</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div><!-- /panel-mindmap -->
+
+<!-- PANEL-FLASH -->
+<div id="panel-flash" class="tab-panel">
+<div class="fc-wrap">
+  <div class="fc-meta">
+    <div><div class="fc-counter" id="fc-counter">1<span> / 20</span></div></div>
+    <button class="fc-nav-btn shuffle" onclick="fcShuffle()" style="max-width:100px;padding:8px 12px;font-size:12px;">🔀 シャッフル</button>
+  </div>
+  <div class="fc-gauge-wrap">
+    <div class="fc-gauge-labels">
+      <span class="fc-gauge-label-ng">❌ <span id="fc-ng-count">0</span></span>
+      <span class="fc-gauge-label-mid" id="fc-remaining">残り 20 枚</span>
+      <span class="fc-gauge-label-ok"><span id="fc-ok-count">0</span> ✅</span>
+    </div>
+    <div class="fc-gauge-track">
+      <div class="fc-gauge-ng" id="fc-gauge-ng"></div>
+      <div class="fc-gauge-mid-line"></div>
+      <div class="fc-gauge-ok" id="fc-gauge-ok"></div>
+    </div>
+  </div>
+  <div class="fc-carousel" id="fc-carousel">
+    <div class="fc-slot prev" id="fc-slot-prev"><div class="fc-inner"><div class="fc-face fc-front-face">
+      <div class="fc-front-hd"><span class="fc-front-tag" id="fc-prev-tag">—</span><span style="font-size:11px;color:var(--gray);" id="fc-prev-cat"></span></div>
+      <div class="fc-front-body"><div class="fc-q" id="fc-prev-q" style="font-size:13px;opacity:.7;"></div></div>
+    </div></div></div>
+    <div class="fc-slot curr" id="fc-slot-curr" onclick="fcFlip()">
+      <div class="fc-inner" id="fc-inner">
+        <div class="fc-face fc-front-face">
+          <div class="fc-front-hd"><span class="fc-front-tag" id="fc-tag">Q01</span><span style="font-size:11px;color:var(--gray);" id="fc-cat">支給事由</span></div>
+          <div class="fc-front-body"><div class="fc-q" id="fc-q">—</div></div>
+          <div class="fc-ox">
+            <button class="fc-ox-btn o" onclick="fcChoose(true);event.stopPropagation();">○</button>
+            <button class="fc-ox-btn x" onclick="fcChoose(false);event.stopPropagation();">×</button>
+          </div>
+        </div>
+        <div class="fc-face fc-back-face">
+          <div class="fc-back-hd"><span class="fc-verdict" id="fc-verdict">○　正しい</span><span id="fc-user-ans" style="font-size:12px;margin-left:auto;"></span></div>
+          <div class="fc-back-body">
+            <div class="fc-answer" id="fc-answer">—</div>
+            <div class="fc-reason" id="fc-reason">—</div>
+            <div class="fc-lawref" id="fc-lawref">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-slot next" id="fc-slot-next"><div class="fc-inner"><div class="fc-face fc-front-face">
+      <div class="fc-front-hd"><span class="fc-front-tag" id="fc-next-tag">—</span><span style="font-size:11px;color:var(--gray);" id="fc-next-cat"></span></div>
+      <div class="fc-front-body"><div class="fc-q" id="fc-next-q" style="font-size:13px;opacity:.7;"></div></div>
+    </div></div></div>
+  </div>
+  <div class="fc-nav" id="fc-nav" style="display:none;">
+    <button class="fc-nav-btn again" onclick="fcNext(false)">😅 もう一度</button>
+    <button class="fc-nav-btn got"   onclick="fcNext(true)">✅ わかった！</button>
+  </div>
+  <div class="fc-result" id="fc-result">
+    <div style="font-size:36px;margin-bottom:8px;" id="fc-emoji">🎉</div>
+    <h3>フラッシュカード完了！</h3>
+    <div class="fc-result-score" id="fc-result-score">—</div>
+    <div class="fc-result-sub" id="fc-result-sub">—</div>
+    <button class="fc-restart-btn" onclick="fcRestart()">🔁 もう一周する</button>
+  </div>
+</div>
+</div><!-- /panel-flash -->
+
+<!-- PANEL-SPIDER -->
+<div id="panel-spider" class="tab-panel">
+<div class="spider-wrap">
+  <div style="background:var(--teal-light);border:1px solid var(--teal);border-radius:10px;padding:12px 16px;font-size:13px;color:#1a4040;margin-bottom:20px;line-height:1.7;">
+    🕸️ <strong>記憶マップ</strong>：第2階層をタップで枝の展開・解説を切り替え。
+  </div>
+  <div id="sp-root" style="width:100%;"></div>
+  <div id="spider-detail" style="display:none;margin-top:16px;background:white;border:2px solid #1a1a2e;border-radius:14px;overflow:hidden;">
+    <div id="spider-detail-hd" style="padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+      <span id="spider-detail-title" style="font-weight:700;font-size:15px;color:white;"></span>
+      <button onclick="closeSpiderDetail()" style="border:none;background:none;font-size:22px;cursor:pointer;color:rgba(255,255,255,.8);line-height:1;padding:0 4px;">×</button>
+    </div>
+    <div id="spider-detail-body" style="padding:16px 18px 20px;"></div>
+  </div>
+</div>
+</div><!-- /panel-spider -->
+
+<script>
+var DAY_META={day:'Day6',block:'厚生年金法',unit:'遺族厚生年金①支給事由・受給権者・年金額',range:'法第58条〜第63条',total:10};
+
+function copyRecord(){
+  var saved=JSON.parse(localStorage.getItem('kounen_day6')||'{}');
+  var cv=saved.correct!==undefined?saved.correct:(score||0);
+  var t=saved.total||10;
+  var dt=saved.ts?new Date(saved.ts):new Date();
+  var ds=dt.getFullYear()+'/'+String(dt.getMonth()+1).padStart(2,'0')+'/'+String(dt.getDate()).padStart(2,'0');
+  var row=[DAY_META.day,DAY_META.block,DAY_META.unit,DAY_META.range,t,ds,cv,t>0?Math.round(cv/t*100):0].join('\t');
+  navigator.clipboard.writeText(row).then(showCopied).catch(function(){var ta=document.createElement('textarea');ta.value=row;ta.style.cssText='position:fixed;opacity:0;';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showCopied();});
+}
+function showCopied(){['copy-btn','copy-btn2'].forEach(function(id){var b=document.getElementById(id);if(!b)return;b.textContent='✅ コピーしました！';b.classList.add('copied');setTimeout(function(){b.textContent='📋 記録をコピー';b.classList.remove('copied');},2500);});}
+
+var correct_ans={q1:0,q2:0,q3:0,q4:0,q5:1};
+var done={},score=0,total=0;
+function answer(qid,idx){
+  if(done[qid])return;done[qid]=true;
+  var opts=document.querySelectorAll('#'+qid+'-opts .opt');
+  var ans=document.getElementById(qid+'-ans');
+  var ok=idx===correct_ans[qid];
+  opts.forEach(function(o,i){if(i===correct_ans[qid])o.classList.add('correct');else if(i===idx&&!ok)o.classList.add('wrong');});
+  ans.className='ans-box show '+(ok?'ok':'ng');
+  var hd=document.getElementById(qid+'-result');
+  hd.textContent=ok?'⭕ 正解！':'❌ 不正解';hd.style.color=ok?'var(--green)':'var(--red)';
+  if(ok)score++;total++;
+  document.getElementById('score').textContent=score;
+  updateProg();
+  setTimeout(function(){ans.scrollIntoView({behavior:'smooth',block:'nearest'});},100);
+}
+
+var defs={
+  f1:{f1a:'3',f1b:'25',f1c:'1・2級'},
+  f2:{f2a:'配偶者・子',f2b:'55',f2c:'60',f2d:'年齢要件なし'},
+  f3:{f3a:'3/4',f3b:'300',f3c:'300',f3d:'300ヵ月みなし'},
+  f4:{f4a:'40',f4b:'65',f4c:'3/4',f4d:'20'},
+  f5:{f5a:'転給',f5b:'直系血族・直系姻族',f5c:'18',f5d:'20'}
+};
+var state={f1:{},f2:{},f3:{},f4:{},f5:{}};
+var sel={f1:null,f2:null,f3:null,f4:null,f5:null};
+var fdone={};
+function selB(fid,bid){
+  if(fdone[fid])return;
+  if(state[fid][bid]!==undefined){var pv=state[fid][bid];delete state[fid][bid];document.getElementById(bid).textContent='　　';document.querySelectorAll('#'+fid+'-chips .chp').forEach(function(c){if(c.textContent===pv&&c.classList.contains('used'))c.classList.remove('used');});}
+  document.querySelectorAll('[id^="'+fid+'"][class*="blank"]').forEach(function(b){b.classList.remove('sel');});
+  sel[fid]=bid;document.getElementById(bid).classList.add('sel');
+}
+function fillB(fid,bid,chip,val){
+  if(fdone[fid])return;
+  var s=bid?bid:sel[fid];
+  if(!s){var keys=Object.keys(defs[fid]);var empty=null;for(var i=0;i<keys.length;i++){if(state[fid][keys[i]]===undefined){empty=keys[i];break;}}if(!empty)return;s=empty;}
+  if(state[fid][s]!==undefined){var pv=state[fid][s];document.querySelectorAll('#'+fid+'-chips .chp').forEach(function(c){if(c.textContent===pv&&c.classList.contains('used'))c.classList.remove('used');});}
+  document.getElementById(s).textContent=val;document.getElementById(s).classList.remove('sel');
+  state[fid][s]=val;chip.classList.add('used');sel[fid]=null;
+}
+function chkF(fid){
+  if(fdone[fid])return;
+  var d=defs[fid];var keys=Object.keys(d);
+  if(!keys.every(function(k){return state[fid][k]!==undefined;})){alert('すべての空欄を埋めてください');return;}
+  fdone[fid]=true;var allOk=true;
+  keys.forEach(function(k){var el=document.getElementById(k);var ok=state[fid][k]===d[k];el.classList.add(ok?'ok-fill':'ng-fill');if(!ok)allOk=false;});
+  document.querySelectorAll('#'+fid+'-chips .chp').forEach(function(c){if(c.classList.contains('used')){var v=c.textContent;c.classList.add(Object.values(d).indexOf(v)>=0?'ok-c':'ng-c');}});
+  document.getElementById('chk-'+fid).disabled=true;
+  var ans=document.getElementById(fid+'-ans');ans.className='f-ans show '+(allOk?'ok':'ng');
+  var res=document.getElementById(fid+'-result');res.textContent=allOk?'⭕ 全問正解！':'❌ 不正解あり';res.style.color=allOk?'var(--green)':'var(--red)';
+  if(allOk)score++;total++;
+  document.getElementById('score').textContent=score;
+  updateProg();setTimeout(function(){ans.scrollIntoView({behavior:'smooth',block:'nearest'});},100);
+}
+function updateProg(){
+  var t=10,pct=Math.round(total/t*100);
+  document.getElementById('prog').style.width=pct+'%';
+  document.getElementById('prog-lbl').textContent=total+' ／ '+t+' 問 回答済み';
+  var sub=document.getElementById('score-sub');if(sub)sub.textContent=total+'問回答 / 正解率 '+(total>0?Math.round(score/total*100):0)+'%';
+  if(total===t)showComplete();
+}
+function showComplete(){
+  var bar=document.getElementById('complete-bar');bar.style.display='block';
+  document.getElementById('complete-score').textContent=score+' / 10';
+  var pct=Math.round(score/10*100);
+  document.getElementById('complete-msg').textContent=pct>=90?'🏆 完璧！':pct>=70?'✨ 合格圏内！':'📖 もう一周してみよう';
+  try{localStorage.setItem('kounen_day6',JSON.stringify({correct:score,total:10,ts:Date.now()}));}catch(e){}
+  setTimeout(function(){bar.scrollIntoView({behavior:'smooth',block:'start'});},200);
+}
+
+var FC_CARDS=[
+  {tag:'Q01',cat:'支給事由',correct:false,q:'遺族厚生年金の支給事由は、被保険者だった者が資格喪失後<mark>6ヵ月以内</mark>に死亡した場合を含む。',answer:'× 誤り',reason:'<strong>法第58条</strong>：資格喪失後<mark>3ヵ月以内</mark>の死亡が支給事由。6ヵ月は誤り。在職中に発症した病気で退職後すぐ亡くなった場合の保護として3ヵ月という短い期間が設定された。',law:'法第58条'},
+  {tag:'Q02',cat:'支給事由',correct:false,q:'遺族厚生年金の支給事由③では、老齢厚生年金の受給権者（受給資格期間<mark>10年以上</mark>）が死亡した場合に支給される。',answer:'× 誤り',reason:'<strong>法第58条</strong>：③の受給資格期間は<mark>25年以上</mark>。10年は現行の老齢基礎年金の受給資格期間。遺族厚生年金③は長期加入者の遺族を保護する制度なので25年という長い要件が設定された。',law:'法第58条'},
+  {tag:'Q03',cat:'支給事由',correct:true,q:'遺族厚生年金の支給事由①②には保険料納付要件があるが、③④には保険料納付要件がない。',answer:'○ 正しい',reason:'<strong>法第58条</strong>：①被保険者・②資格喪失後3ヵ月以内は納付要件あり（障害厚生年金と同じ前々月末・3分の2以上）。③老齢受給権者・④障害1・2級受給権者は既に確認済みで納付要件は不要。',law:'法第58条'},
+  {tag:'Q04',cat:'受給権者',correct:false,q:'遺族厚生年金の夫は、死亡当時<mark>60歳以上</mark>であることが受給の要件である。',answer:'× 誤り',reason:'<strong>法第59条</strong>：受給の要件は<mark>55歳以上</mark>。60歳は支給停止が解除されるタイミング。「55歳以上が要件・60歳まで停止」という2段構えを混同しないこと。',law:'法第59条'},
+  {tag:'Q05',cat:'受給権者',correct:true,q:'遺族厚生年金では、配偶者と子は同順位（第1順位）の受給権者である。',answer:'○ 正しい',reason:'<strong>法第59条</strong>：配偶者（妻・夫）と子は同順位で第1順位。妻には年齢要件なし。夫は55歳以上が要件で60歳まで支給停止（遺族基礎年金受給中は停止しない）。',law:'法第59条'},
+  {tag:'Q06',cat:'年金額',correct:false,q:'遺族厚生年金の額は、死亡した者の報酬比例の年金額の<mark>2分の1</mark>に相当する額である。',answer:'× 誤り',reason:'<strong>法第60条</strong>：遺族厚生年金は報酬比例×<mark>3/4（4分の3）</mark>。「2分の1」は最頻出の引っかけ。「遺族3/4・障害1級5/4・障害2級1」の対比で覚える。',law:'法第60条'},
+  {tag:'Q07',cat:'年金額',correct:true,q:'遺族厚生年金の短期要件では、被保険者期間が300ヵ月未満の場合は<mark>300ヵ月</mark>として年金額を計算する。',answer:'○ 正しい',reason:'<strong>法第60条</strong>：300ヵ月（25年）みなし——若くして亡くなった人の遺族の年金を底上げ。障害厚生年金（1・2級）と同じ仕組み。',law:'法第60条'},
+  {tag:'Q08',cat:'中高齢寡婦加算',correct:false,q:'中高齢寡婦加算の対象となる妻の年齢要件は、夫の死亡当時<mark>35歳以上65歳未満</mark>である。',answer:'× 誤り',reason:'<strong>法第62条</strong>：対象は死亡当時<mark>40歳以上65歳未満</mark>。35歳は誤り。40歳未満は再就職・再婚の可能性が高いとして対象外。40歳という下限が最頻出の引っかけ。',law:'法第62条'},
+  {tag:'Q09',cat:'中高齢寡婦加算',correct:true,q:'中高齢寡婦加算の額は、老齢基礎年金の満額の<mark>4分の3</mark>に相当する額である。',answer:'○ 正しい',reason:'<strong>法第62条</strong>：中高齢寡婦加算の額は老齢基礎年金満額の<mark>3/4</mark>。遺族厚生年金の年金額（報酬比例×3/4）と同じ比率。夫の厚年被保険者期間20年以上が加算の要件。',law:'法第62条'},
+  {tag:'Q10',cat:'転給なし',correct:false,q:'遺族厚生年金では、最先順位者が失権した場合、次の順位の者が新たに受給権を取得する（転給が認められる）。',answer:'× 誤り',reason:'<strong>法第63条</strong>：遺族厚生年金は<mark>転給が認められない</mark>。最先順位者が失権しても次順位者は受給権を取得しない。遺族基礎年金も同様。「転給なし」は最重要ポイント。',law:'法第63条'},
+  {tag:'Q11',cat:'支給事由',correct:true,q:'障害等級1・2級の障害厚生年金受給権者が死亡した場合、保険料納付要件なしで遺族厚生年金の支給事由となる。',answer:'○ 正しい',reason:'<strong>法第58条</strong>：④障害1・2級受給権者の死亡は支給事由に該当し、保険料納付要件は不要（障害認定時に既に確認済みのため）。①②の場合だけ納付要件がある。',law:'法第58条'},
+  {tag:'Q12',cat:'受給権者',correct:false,q:'遺族厚生年金の優先順位は、子が配偶者より優先される。',answer:'× 誤り',reason:'<strong>法第59条</strong>：配偶者と子は<mark>同順位（第1位）</mark>。子が配偶者より優先されるわけではない。第2位が父母・第3位が孫・第4位が祖父母。',law:'法第59条'},
+  {tag:'Q13',cat:'失権事由',correct:true,q:'遺族厚生年金の受給権者が再婚した場合、失権する。',answer:'○ 正しい',reason:'<strong>法第63条</strong>：再婚（事実婚・内縁関係を含む）は失権事由。再婚で生活が安定したと判断されるため。失権後に転給はなく、次順位者に受給権は移らない。',law:'法第63条'},
+  {tag:'Q14',cat:'失権事由',correct:false,q:'直系血族との養子縁組は、遺族厚生年金の失権事由となる。',answer:'× 誤り',reason:'<strong>法第63条</strong>：失権となるのは<mark>直系血族・直系姻族以外</mark>との養子縁組。祖父母（直系）の養子になる場合は失権しない。横の家（他人等）に養子に行く場合が失権。',law:'法第63条'},
+  {tag:'Q15',cat:'中高齢寡婦加算',correct:false,q:'中高齢寡婦加算は、妻が65歳に達しても継続して支給される。',answer:'× 誤り',reason:'<strong>法第62条</strong>：中高齢寡婦加算は妻が<mark>65歳</mark>に達すると終了。65歳からは老齢基礎年金が始まるため。振替加算に移行する場合もある。「40〜65歳未満」という期間限定の制度。',law:'法第62条'},
+  {tag:'Q16',cat:'年金額',correct:true,q:'遺族厚生年金の年金額を計算する際、障害厚生年金の場合と同様に被保険者期間が300ヵ月未満の場合は300ヵ月とみなして計算する。',answer:'○ 正しい',reason:'<strong>法第60条</strong>：遺族厚生年金の300ヵ月みなしは障害厚生年金（1・2級）と全く同じ仕組み。若い人が亡くなった場合の遺族の年金額を底上げする短期要件。',law:'法第60条'},
+  {tag:'Q17',cat:'受給権者',correct:true,q:'遺族厚生年金の受給権者のうち、妻には年齢要件がない。',answer:'○ 正しい',reason:'<strong>法第59条</strong>：妻は年齢を問わず受給権者になれる（夫・父母・祖父母は55歳以上が要件）。死亡当時の年齢にかかわらず保護される。子が18歳年度末に達すれば遺族基礎年金は終了するが遺族厚生年金は継続。',law:'法第59条'},
+  {tag:'Q18',cat:'転給なし',correct:true,q:'遺族基礎年金も遺族厚生年金と同様に、最先順位者が失権しても次の順位者への転給は認められない。',answer:'○ 正しい',reason:'<strong>法第63条・国年法第40条の2</strong>：転給なしは遺族基礎年金（国年）も遺族厚生年金（厚年）も同じルール。どちらも「生活保障」であり「相続財産」でないという同じ制度思想に基づく。',law:'法第63条'},
+  {tag:'Q19',cat:'支給事由',correct:false,q:'被保険者が死亡した場合の遺族厚生年金には、保険料納付要件がない。',answer:'× 誤り',reason:'<strong>法第58条</strong>：①被保険者の死亡と②資格喪失後3ヵ月以内の死亡には<mark>保険料納付要件がある</mark>（前々月末・3分の2以上または直近1年特例）。保険料未納が多い場合は支給されない。',law:'法第58条'},
+  {tag:'Q20',cat:'中高齢寡婦加算',correct:true,q:'中高齢寡婦加算を受けるためには、夫の厚年被保険者期間が<mark>20年以上</mark>であること（または中高齢の特例）が必要である。',answer:'○ 正しい',reason:'<strong>法第62条</strong>：夫の厚年被保険者期間20年以上が中高齢寡婦加算の要件。加給年金額（老齢厚生年金の加算）でも20年という同じ数字が使われる——20年が「長期加入者への手当」の基準数字。',law:'法第62条'}
+];
+
+var fcDeck=[],fcIdx=0,fcGot=0,fcFlipped=false,fcOk=0,fcNg=0;
+function fcUpdateGauge(){var total=fcDeck.length;document.getElementById('fc-gauge-ok').style.width=Math.min(fcOk/total*100,50)+'%';document.getElementById('fc-gauge-ng').style.width=Math.min(fcNg/total*100,50)+'%';document.getElementById('fc-ok-count').textContent=fcOk;document.getElementById('fc-ng-count').textContent=fcNg;document.getElementById('fc-remaining').textContent='残り '+(total-fcIdx)+' 枚';document.getElementById('fc-counter').innerHTML=(fcIdx+1)+'<span> / '+total+'</span>';}
+function fcSetSlot(sId,tId,cId,qId,d){var s=document.getElementById(sId);if(!d){s.classList.add('hidden');return;}s.classList.remove('hidden');document.getElementById(tId).textContent=d.tag;document.getElementById(cId).textContent=d.cat;document.getElementById(qId).innerHTML=d.q;}
+function fcRender(){var total=fcDeck.length,curr=fcDeck[fcIdx];fcSetSlot('fc-slot-prev','fc-prev-tag','fc-prev-cat','fc-prev-q',fcIdx>0?fcDeck[fcIdx-1]:null);fcSetSlot('fc-slot-next','fc-next-tag','fc-next-cat','fc-next-q',fcIdx<total-1?fcDeck[fcIdx+1]:null);document.getElementById('fc-tag').textContent=curr.tag;document.getElementById('fc-cat').textContent=curr.cat;document.getElementById('fc-q').innerHTML=curr.q;var v=document.getElementById('fc-verdict');v.textContent=curr.correct?'○　正しい':'×　誤り';v.className='fc-verdict '+(curr.correct?'ok':'ng');document.getElementById('fc-answer').textContent=curr.answer;document.getElementById('fc-reason').innerHTML=curr.reason;document.getElementById('fc-lawref').textContent=curr.law;document.getElementById('fc-inner').classList.remove('flipped');fcFlipped=false;document.getElementById('fc-nav').style.display='none';var ua=document.getElementById('fc-user-ans');if(ua)ua.textContent='';fcUpdateGauge();}
+function fcInit(){fcDeck=FC_CARDS.slice();for(var i=fcDeck.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=fcDeck[i];fcDeck[i]=fcDeck[j];fcDeck[j]=tmp;}fcIdx=0;fcGot=0;fcOk=0;fcNg=0;fcFlipped=false;document.getElementById('fc-result').style.display='none';document.getElementById('fc-carousel').style.display='flex';document.getElementById('fc-nav').style.display='none';fcRender();}
+function fcShuffle(){fcInit();}
+function fcChoose(userSaidTrue){if(fcFlipped)return;var curr=fcDeck[fcIdx];var isCorrect=(userSaidTrue===curr.correct);if(isCorrect){fcGot++;fcOk++;}else{fcNg++;}var ua=document.getElementById('fc-user-ans');if(ua){ua.textContent=isCorrect?'✅ 正解！':'❌ 不正解';ua.style.color=isCorrect?'var(--green)':'var(--red)';ua.style.fontWeight='700';}var again=document.querySelector('.fc-nav-btn.again');var got=document.querySelector('.fc-nav-btn.got');if(again&&got){if(isCorrect){again.style.display='none';got.style.display='block';got.textContent='次へ →';}else{again.style.display='block';again.textContent='次へ →';got.style.display='none';}}fcFlipped=true;document.getElementById('fc-inner').classList.add('flipped');setTimeout(function(){document.getElementById('fc-nav').style.display='flex';},280);}
+function fcFlip(){var inner=document.getElementById('fc-inner');if(!fcFlipped){fcFlipped=true;inner.classList.add('flipped');var ua=document.getElementById('fc-user-ans');if(ua){ua.textContent='（○×で回答してください）';ua.style.color='var(--gray)';}var again=document.querySelector('.fc-nav-btn.again');var got=document.querySelector('.fc-nav-btn.got');if(again&&got){again.style.display='block';again.textContent='😅 もう一度';got.style.display='block';got.textContent='✅ わかった！';}setTimeout(function(){document.getElementById('fc-nav').style.display='flex';},280);}else{fcFlipped=false;inner.classList.remove('flipped');document.getElementById('fc-nav').style.display='none';}}
+function fcNext(got){document.getElementById('fc-nav').style.display='none';if(fcIdx+1>=fcDeck.length){fcUpdateGauge();document.getElementById('fc-remaining').textContent='残り 0 枚';document.getElementById('fc-carousel').style.display='none';document.getElementById('fc-result').style.display='block';var pct=Math.round(fcOk/fcDeck.length*100);document.getElementById('fc-result-score').textContent=fcOk+' / '+fcDeck.length;document.getElementById('fc-result-sub').textContent='正答率 '+pct+'% ― '+(pct>=80?'バッチリ！':'もう一周してみよう');document.getElementById('fc-emoji').textContent=pct>=80?'🏆':'📖';document.getElementById('fc-counter').innerHTML=fcDeck.length+'<span> / '+fcDeck.length+'</span>';return;}fcIdx++;fcRender();}
+function fcRestart(){fcInit();}
+
+function switchTab(name,btn){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('panel-'+name).classList.add('active');btn.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});if(name==='flash'&&fcDeck.length===0)fcInit();if(name==='spider')buildSpider();}
+
+var SPIDER_DATA=[
+  {id:"jikyu",label:"支給事由",sub:"法第58条",color:"#c84b31",light:"#fee2e2",border:"#e8896b",angle:218,
+   children:[
+     {label:"4類型",sub:"①〜④",leaves:["①被保険者の死亡","②3ヵ月以内の死亡","③老齢受給権者25年","④障害1・2級受給権者"]},
+     {label:"納付要件",sub:"①②あり③④なし",leaves:["①②：前々月末2/3","③：25年で不要","④：認定時確認済","非対称性が頻出"]}
+   ],
+   detail:{hdColor:"#c84b31",items:[{label:"②の数字",val:"資格喪失後3ヵ月以内に死亡",note:"6ヵ月・1年は誤り——最頻出の引っかけ"},{label:"③の要件",val:"老齢厚生年金受給権者（受給資格期間25年以上）",note:"10年は誤り——遺族厚生年金独自の長期要件"},{label:"保険料納付要件",val:"①②はあり（前々月末・3分の2以上）　③④はなし",note:"非対称性が試験頻出"}],hikakke:"× 「②は6ヵ月以内」→ ○ 3ヵ月以内\n× 「③は受給資格10年以上」→ ○ 25年以上"}
+  },
+  {id:"jukyu",label:"受給権者・順位",sub:"法第59条",color:"#2a7f7f",light:"#e8f4f4",border:"#5ab5b5",angle:322,
+   children:[
+     {label:"優先順位",sub:"①配偶者・子",leaves:["第1：配偶者・子（同順位）","第2：父母","第3：孫","第4：祖父母"]},
+     {label:"夫の要件",sub:"55歳以上・60歳停止",leaves:["55歳以上が受給要件","60歳まで支給停止","妻は年齢要件なし","基礎年金受給中は停止なし"]}
+   ],
+   detail:{hdColor:"#2a7f7f",items:[{label:"第1順位",val:"配偶者（妻・夫）と子は同順位",note:"配偶者と子は第1位で同順位——子の方が優先ではない"},{label:"夫の要件（重要）",val:"死亡当時55歳以上が受給要件・60歳まで支給停止",note:"55歳は要件・60歳は停止解除——2つの数字の意味が違う"},{label:"妻の要件",val:"年齢要件なし（死亡当時の年齢を問わない）",note:""}],hikakke:"× 「夫は60歳以上が要件」→ ○ 55歳以上が要件・60歳まで停止（別物）\n× 「子の方が配偶者より優先」→ ○ 同順位（第1位）"}
+  },
+  {id:"gaku",label:"年金額・加算",sub:"法第60条・62条",color:"#7c3aed",light:"#ede9fe",border:"#a78bfa",angle:142,
+   children:[
+     {label:"年金額",sub:"報酬比例×3/4",leaves:["報酬比例×3/4","300ヵ月みなし","2分の1は誤り","障害厚生と同じ仕組み"]},
+     {label:"中高齢寡婦加算",sub:"40〜65歳・3/4",leaves:["死亡当時40〜65歳未満","老齢基礎年金の3/4","夫の厚年20年以上","65歳で終了→振替加算へ"]}
+   ],
+   detail:{hdColor:"#7c3aed",items:[{label:"年金額",val:"死亡者の報酬比例の年金額×3/4",note:"「2分の1」は最頻出の誤り——遺族は3/4"},{label:"300ヵ月みなし",val:"被保険者期間300ヵ月未満→300ヵ月として計算",note:"障害厚生年金（1・2級）と同じ仕組み"},{label:"中高齢寡婦加算",val:"40〜65歳未満の妻に老齢基礎年金満額の3/4を加算",note:"夫の厚年被保険者期間20年以上が要件（加給年金と同じ20年）"}],hikakke:"× 「遺族厚生年金は報酬比例の2分の1」→ ○ 4分の3（3/4）\n× 「中高齢寡婦加算は35歳以上」→ ○ 40歳以上65歳未満"}
+  },
+  {id:"shikken",label:"失権・転給なし",sub:"法第63条",color:"#c9930a",light:"#fef9e7",border:"#d4a733",angle:38,
+   children:[
+     {label:"転給なし",sub:"次順位に移らない",leaves:["最先順位者が失権しても","次順位者は受給権なし","遺族基礎年金も同じ","生活保障≠相続財産"]},
+     {label:"失権事由",sub:"再婚・養子・年齢",leaves:["再婚（事実婚含む）","直系以外との養子縁組","子は18歳年度末","障害1・2級は20歳"]}
+   ],
+   detail:{hdColor:"#c9930a",items:[{label:"転給なし",val:"最先順位者が失権しても次順位者への受給権の移転はない",note:"遺族基礎年金（国年）も同様——「転給なし」は国年・厚年共通"},{label:"失権事由",val:"①再婚（事実婚含む）②直系血族・直系姻族以外との養子縁組③子・孫は18歳年度末（障害は20歳）④死亡⑤離縁",note:"直系血族への養子縁組は失権しない——例：祖父母の養子はOK"}],hikakke:"× 「最先順位者が失権すると次順位者が受給（転給）」→ ○ 転給は認められない\n× 「直系血族との養子縁組で失権」→ ○ 直系への養子縁組は失権しない"}
+  }
+];
+var spBranchOpen={jikyu:false,jukyu:false,gaku:false,shikken:false};
+var spLeafOpen={};
+
+function buildSpider(){
+  var root=document.getElementById("sp-root");if(!root)return;root.innerHTML="";
+  var W=760,H=720,CX=380,CY=360,R1=108,R2=222,R3=330,CS=20,LS=7;
+  var svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.setAttribute("viewBox","0 0 "+W+" "+H);svg.setAttribute("xmlns","http://www.w3.org/2000/svg");
+  svg.setAttribute("font-family","'Noto Sans JP',sans-serif");svg.style.display="block";svg.style.width="100%";svg.style.height="auto";
+  function mk(tag,attrs){var el=document.createElementNS("http://www.w3.org/2000/svg",tag);for(var k in attrs)el.setAttribute(k,attrs[k]);return el;}
+  function r(d){return d*Math.PI/180;}
+  function pt(dist,deg){return[CX+Math.cos(r(deg))*dist,CY+Math.sin(r(deg))*dist];}
+  [R1+16,R2+14,R3+16].forEach(function(dist){svg.appendChild(mk("circle",{cx:CX,cy:CY,r:dist,fill:"none",stroke:"#e4dfd6","stroke-width":"1","stroke-dasharray":"4,5"}));});
+  SPIDER_DATA.forEach(function(branch){
+    var ba=branch.angle;var bpt=pt(R1,ba);var bx=bpt[0],by=bpt[1];
+    svg.appendChild(mk("line",{x1:CX,y1:CY,x2:bx,y2:by,stroke:branch.color,"stroke-width":"4.5","stroke-linecap":"round"}));
+    var og=document.createElementNS("http://www.w3.org/2000/svg","g");og.id="sp-og-"+branch.id;og.style.display=spBranchOpen[branch.id]?"":"none";
+    branch.children.forEach(function(child,ci){
+      var ca=ba+(ci-1)*CS;var cpt=pt(R2,ca);var cx2=cpt[0],cy2=cpt[1];
+      var key=branch.id+"_"+ci;if(spLeafOpen[key]===undefined)spLeafOpen[key]=true;
+      og.appendChild(mk("line",{x1:bx,y1:by,x2:cx2,y2:cy2,stroke:branch.color,"stroke-width":"2","stroke-linecap":"round"}));
+      var lg=document.createElementNS("http://www.w3.org/2000/svg","g");lg.id="sp-lg-"+key;lg.style.display=spLeafOpen[key]?"":"none";
+      var lc=child.leaves.length;
+      child.leaves.forEach(function(leaf,li){
+        var la=ca+(li-(lc-1)/2)*LS;var lpt=pt(R3,la);var lx=lpt[0],ly=lpt[1];
+        lg.appendChild(mk("line",{x1:cx2,y1:cy2,x2:lx,y2:ly,stroke:branch.border,"stroke-width":"1.2","stroke-dasharray":"3,3","stroke-linecap":"round"}));
+        var lw=120;var gr=document.createElementNS("http://www.w3.org/2000/svg","g");
+        gr.appendChild(mk("rect",{x:lx-lw/2,y:ly-13,width:lw,height:26,rx:13,fill:"#faf8f3",stroke:branch.border,"stroke-width":"1.2"}));
+        var fs=leaf.length>10?"9.5":leaf.length>7?"10":"11";
+        var lt=mk("text",{x:lx,y:ly+5,"text-anchor":"middle","font-size":fs,"font-weight":"600",fill:branch.color});lt.textContent=leaf;gr.appendChild(lt);lg.appendChild(gr);
+      });
+      og.appendChild(lg);
+      var gk=document.createElementNS("http://www.w3.org/2000/svg","g");gk.style.cursor="pointer";
+      (function(k){gk.addEventListener("click",function(e){e.stopPropagation();spLeafOpen[k]=!spLeafOpen[k];var el=document.getElementById("sp-lg-"+k);if(el)el.style.display=spLeafOpen[k]?"":"none";});})(key);
+      gk.appendChild(mk("ellipse",{cx:cx2,cy:cy2,rx:"46",ry:"24",fill:branch.color}));
+      var kt=mk("text",{x:cx2,y:cy2-3,"text-anchor":"middle","font-size":"11","font-weight":"700",fill:"white"});kt.textContent=child.label;gk.appendChild(kt);
+      var ks=mk("text",{x:cx2,y:cy2+11,"text-anchor":"middle","font-size":"8.5",fill:"rgba(255,255,255,.7)"});ks.textContent=child.sub;gk.appendChild(ks);
+      og.appendChild(gk);
+    });
+    svg.appendChild(og);
+    var gn=document.createElementNS("http://www.w3.org/2000/svg","g");gn.style.cursor="pointer";
+    (function(b){gn.addEventListener("click",function(){spBranchOpen[b.id]=!spBranchOpen[b.id];var el=document.getElementById("sp-og-"+b.id);if(el)el.style.display=spBranchOpen[b.id]?"":"none";if(spBranchOpen[b.id]){openSpiderDetail(b,null);}else{closeSpiderDetail();}});})(branch);
+    gn.appendChild(mk("ellipse",{cx:bx,cy:by,rx:"56",ry:"32",fill:branch.color}));
+    var tl=mk("text",{x:bx,y:by-5,"text-anchor":"middle","font-size":"13","font-weight":"700",fill:"white"});tl.textContent=branch.label;gn.appendChild(tl);
+    var ts=mk("text",{x:bx,y:by+11,"text-anchor":"middle","font-size":"9",fill:"rgba(255,255,255,.65)"});ts.textContent=branch.sub;gn.appendChild(ts);
+    svg.appendChild(gn);
+  });
+  var gc=document.createElementNS("http://www.w3.org/2000/svg","g");
+  gc.appendChild(mk("ellipse",{cx:CX,cy:CY,rx:"80",ry:"46",fill:"#22253a"}));
+  var ctexts=[["厚生年金法",-6,"13","#f0eee8"],["遺族厚生年金①",11,"8.5","rgba(240,238,232,.55)"]];
+  ctexts.forEach(function(t){var ct=mk("text",{x:CX,y:CY+t[1],"text-anchor":"middle","font-size":t[2],"font-weight":"700",fill:t[3]});ct.textContent=t[0];gc.appendChild(ct);});
+  svg.appendChild(gc);root.appendChild(svg);
+}
+function openSpiderDetail(branch,child){
+  var panel=document.getElementById("spider-detail");
+  var hd=document.getElementById("spider-detail-hd");
+  var title=document.getElementById("spider-detail-title");
+  var body=document.getElementById("spider-detail-body");
+  hd.style.background=branch.detail.hdColor;title.textContent=branch.label+"  "+branch.sub;
+  var html="";
+  branch.detail.items.forEach(function(item){
+    html+="<div style='margin-bottom:14px;'><div style='font-size:11px;font-weight:700;color:#6b7280;margin-bottom:3px;'>"+item.label+"</div>";
+    html+="<div style='font-size:14px;font-weight:700;color:#1a1a2e;background:"+branch.light+";border:1.5px solid "+branch.border+";border-radius:8px;padding:8px 12px;'>"+item.val+"</div>";
+    if(item.note)html+="<div style='font-size:11px;color:#6b7280;margin-top:4px;padding-left:4px;'>💡 "+item.note+"</div>";
+    html+="</div>";
+  });
+  if(branch.detail.hikakke){
+    html+="<div style='background:#FCEBEB;border:1px solid #E24B4A;border-radius:8px;padding:10px 12px;font-size:11px;color:#A32D2D;line-height:2.1;'>";
+    html+="<div style='font-weight:700;margin-bottom:4px;'>🚨 よくある引っかけ</div>";
+    html+=branch.detail.hikakke.split("\n").join("<br>");html+="</div>";
+  }
+  body.innerHTML=html;panel.style.display="block";
+}
+function closeSpiderDetail(){document.getElementById("spider-detail").style.display="none";}
+
+document.addEventListener("DOMContentLoaded",function(){fcInit();buildSpider();});
+</script>
+</body>
+</html>
