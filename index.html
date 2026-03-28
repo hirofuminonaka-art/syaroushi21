@@ -2,209 +2,224 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>社労士試験対策ドリル ― 目次</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>社労士試験対策ドリル | syaroushi.netlify.app</title>
 <style>
-:root{
-  --ink:#1a1a2e; --paper:#faf8f3; --warm:#f5f0e8;
-  --red:#c84b31; --red-soft:#e8896b; --red-light:#fee2e2;
-  --teal:#2a7f7f; --teal-light:#e8f4f4;
-  --gold:#c9930a; --gold-light:#fef9e7;
-  --green:#2d6a4f; --green-light:#e8f5ee;
-  --gray:#6b7280; --border:#ddd8cc;
-  --purple:#7c3aed; --purple-light:#ede9fe;
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
-
-/* ヘッダー */
-.topbar{background:var(--ink);padding:14px 24px;display:flex;align-items:center;gap:12px;}
-.site-title{color:white;font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;letter-spacing:.5px;}
-.site-sub{color:rgba(255,255,255,.4);font-size:11px;margin-left:auto;letter-spacing:1px;}
-
-.hd{background:var(--ink);color:var(--paper);padding:44px 40px 36px;position:relative;overflow:hidden;}
-.hd::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px);}
-.hd-in{max-width:900px;margin:0 auto;position:relative;}
-.hd-eye{font-size:11px;letter-spacing:3px;color:var(--red-soft);margin-bottom:10px;font-weight:700;}
-.hd h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;line-height:1.3;margin-bottom:8px;}
-.hd h1 em{color:var(--red-soft);font-style:normal;}
-.hd-sub{font-size:13px;color:rgba(255,255,255,.45);font-weight:300;}
-
-/* 本文 */
-.main{max-width:900px;margin:0 auto;padding:40px 20px 80px;}
-
-/* 科目ブロック */
-.subject{margin-bottom:48px;}
-.subject-hd{display:flex;align-items:center;gap:14px;margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid var(--ink);}
-.subject-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
-.subject-name{font-family:'Noto Serif JP',serif;font-size:1.15rem;font-weight:900;}
-.subject-count{font-size:11px;color:var(--gray);margin-left:auto;font-weight:700;letter-spacing:1px;}
-
-/* ドリルカードグリッド */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
-.card{background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;display:block;transition:transform .15s,box-shadow .15s;}
-.card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.12);}
-.card-top{padding:12px 14px 8px;border-bottom:1px solid var(--border);}
-.card-day{font-family:'DM Serif Display',serif;font-size:26px;color:var(--ink);line-height:1;}
-.card-label{font-size:10px;font-weight:700;letter-spacing:1px;margin-top:3px;color:var(--gray);}
-.card-body{padding:10px 14px 12px;}
-.card-unit{font-size:12px;line-height:1.6;font-weight:500;}
-.card-meta{font-size:10px;color:var(--gray);margin-top:5px;}
-
-/* 特殊カード（FC・過去問） */
-.card.fc .card-top{background:var(--purple-light);}
-.card.fc .card-day{color:var(--purple);}
-.card.exam .card-top{background:var(--gold-light);}
-.card.exam .card-day{color:var(--gold);}
-
-/* 凡例 */
-.legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px;padding:12px 16px;background:white;border:1px solid var(--border);border-radius:10px;}
-.legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--gray);font-weight:700;}
-.legend-dot{width:12px;height:12px;border-radius:3px;}
-
-@media(max-width:600px){
-  .hd{padding:28px 20px 22px;}
-  .grid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:8px;}
-  .main{padding:24px 14px 60px;}
-}
+:root{--bg:#f5f0e8;--ink:#1a1a2e;--teal:#00a8a9;--teal-l:#e0f5f5;--card:#fff;--radius:14px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans JP',sans-serif;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.site-header{background:var(--ink);color:#fff;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.site-logo{font-size:17px;font-weight:800}.site-logo span{color:var(--teal)}
+.header-links{display:flex;gap:10px}
+.header-links a{font-size:12px;padding:6px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.3);color:#fff;transition:.2s}
+.header-links a:hover,.header-links a.active{background:var(--teal);border-color:var(--teal)}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#2a2a5e 100%);color:#fff;padding:44px 24px 36px;text-align:center}
+.hero-badge{display:inline-block;background:rgba(0,168,169,.2);border:1px solid var(--teal);color:var(--teal);font-size:11px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:14px;letter-spacing:.1em}
+.hero h1{font-size:26px;font-weight:900;line-height:1.3;margin-bottom:10px}
+.hero h1 em{color:var(--teal);font-style:normal}
+.hero p{font-size:13px;color:rgba(255,255,255,.65);margin-bottom:22px;line-height:1.7}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero-btn{padding:11px 22px;border-radius:28px;font-size:13px;font-weight:700;border:none;transition:.2s;cursor:pointer}
+.hero-btn.primary{background:var(--teal);color:#fff}.hero-btn.primary:hover{background:#009698}
+.hero-btn.secondary{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.3)}.hero-btn.secondary:hover{background:rgba(255,255,255,.2)}
+.today-wrap{max-width:920px;margin:28px auto 0;padding:0 16px}
+.today-card{background:var(--card);border-radius:var(--radius);padding:18px 22px;display:flex;align-items:center;gap:18px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid var(--teal)}
+.today-icon{font-size:34px;flex-shrink:0}
+.today-body{flex:1}
+.today-label{font-size:11px;font-weight:800;color:var(--teal);letter-spacing:.1em;margin-bottom:3px}
+.today-title{font-size:15px;font-weight:800;margin-bottom:4px}
+.today-meta{font-size:12px;color:#666}
+.today-btn{background:var(--teal);color:#fff;padding:9px 18px;border-radius:22px;font-size:12px;font-weight:700;white-space:nowrap;transition:.2s;flex-shrink:0}
+.today-btn:hover{background:#009698}
+.subjects{max-width:920px;margin:36px auto;padding:0 16px}
+.cat-section{margin-bottom:36px}
+.cat-title{font-size:11px;font-weight:800;letter-spacing:.14em;color:#999;text-transform:uppercase;margin-bottom:14px;padding-bottom:6px;border-bottom:1px solid #e8e4dc}
+.subject-block{margin-bottom:22px}
+.subject-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.subject-badge{font-size:11px;font-weight:800;padding:3px 10px;border-radius:16px;color:#fff;flex-shrink:0}
+.subject-name{font-size:14px;font-weight:800}
+.subject-status{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:700}
+.status-done{background:#e0f5f5;color:var(--teal)}
+.status-wip{background:#fef9e7;color:#c9930a}
+.subject-prog{margin-left:auto;font-size:11px;color:#aaa}
+.days-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:7px}
+@media(max-width:580px){.days-grid{grid-template-columns:repeat(4,1fr)}}
+.day-card{background:var(--card);border-radius:9px;padding:9px 6px;text-align:center;border:2px solid #eee;transition:.2s;cursor:pointer}
+.day-card:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.1)}
+.day-card.wip{opacity:.55;background:#f8f8f6}
+.day-num{font-size:10px;font-weight:700;color:#bbb;margin-bottom:2px}
+.day-score{font-size:17px;font-weight:900;margin-bottom:1px}
+.day-lbl{font-size:9px;color:#999;line-height:1.3}
+.score-high{color:#2d6a4f}.score-mid{color:#c9930a}.score-low{color:#c84b31}.score-none{color:#ccc}
+.stats-row{max-width:920px;margin:0 auto 40px;padding:0 16px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:580px){.stats-row{grid-template-columns:repeat(2,1fr)}}
+.stat-card{background:var(--card);border-radius:var(--radius);padding:16px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+.stat-num{font-size:26px;font-weight:900;color:var(--teal)}
+.stat-label{font-size:11px;color:#888;margin-top:3px}
+.site-footer{background:var(--ink);color:rgba(255,255,255,.4);text-align:center;padding:18px;font-size:11px}
 </style>
 </head>
 <body>
-
-<div class="topbar">
-  <div class="site-title">社労士試験対策ドリル</div>
-  <div class="site-sub">2027年合格目標</div>
-</div>
-
-<div class="hd">
-  <div class="hd-in">
-    <div class="hd-eye">SYAROUSHI DRILL — INDEX</div>
-    <h1>社労士試験対策<em>ドリル</em> 目次</h1>
-    <div class="hd-sub">5科目 ／ 全57ドリル ― 問題・連想図・FC・記憶マップ の4タブ構成</div>
+<header class="site-header">
+  <div class="site-logo">社労士<span>ドリル</span></div>
+  <div class="header-links">
+    <a href="index.html" class="active">ホーム</a>
+    <a href="dashboard.html">進捗</a>
+    <a href="schedule.html">スケジュール</a>
+  </div>
+</header>
+<div class="hero">
+  <div class="hero-badge">2027年8月 合格目標</div>
+  <h1>社労士試験対策<em>ドリル</em></h1>
+  <p>11科目＋特別ドリル｜全129Day｜健保・厚年・国年・労基は完成済み</p>
+  <div class="hero-btns">
+    <a href="dashboard.html" class="hero-btn primary">📊 進捗ダッシュボード</a>
+    <a href="schedule.html" class="hero-btn secondary">📅 17ヶ月プラン</a>
   </div>
 </div>
-
-<div class="main">
-
-  <div class="legend">
-    <div class="legend-item"><div class="legend-dot" style="background:#e8f4f4;border:1.5px solid #2a7f7f;"></div>通常ドリル（○×＋穴埋め）</div>
-    <div class="legend-item"><div class="legend-dot" style="background:var(--purple-light);border:1.5px solid var(--purple);"></div>フラッシュカード</div>
-    <div class="legend-item"><div class="legend-dot" style="background:var(--gold-light);border:1.5px solid var(--gold);"></div>過去問演習</div>
+<div class="today-wrap">
+  <div class="today-card">
+    <div class="today-icon">🎯</div>
+    <div class="today-body">
+      <div class="today-label">TODAY&apos;S DRILL</div>
+      <div class="today-title" id="today-title">読み込み中...</div>
+      <div class="today-meta" id="today-meta"></div>
+    </div>
+    <a href="#" class="today-btn" id="today-link">始める →</a>
   </div>
-
-  <!-- 健康保険法 -->
-  <div class="subject">
-    <div class="subject-hd">
-      <div class="subject-icon" style="background:#e8f4f4;">🏥</div>
-      <div class="subject-name">健康保険法</div>
-      <div class="subject-count">12 DAYS</div>
-    </div>
-    <div class="grid">
-      <a class="card" href="kenpo_day1.html"><div class="card-top"><div class="card-day">1</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">総則・目的・保険者</div><div class="card-meta">○×5問＋穴埋め5問</div></div></a>
-      <a class="card" href="kenpo_day2.html"><div class="card-top"><div class="card-day">2</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">被保険者・被扶養者・資格得喪</div><div class="card-meta">○×5問＋穴埋め5問</div></div></a>
-      <a class="card" href="kenpo_day3.html"><div class="card-top"><div class="card-day">3</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">標準報酬月額・等級・算定基礎届</div><div class="card-meta">○×5問＋穴埋め5問</div></div></a>
-      <a class="card" href="kenpo_day4.html"><div class="card-top"><div class="card-day">4</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">療養の給付・一部負担金・高額療養費</div><div class="card-meta">○×5問＋穴埋め5問</div></div></a>
-      <a class="card" href="kenpo_day5.html"><div class="card-top"><div class="card-day">5</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">埋葬料・継続給付・家族給付</div><div class="card-meta">○×5問＋穴埋め5問</div></div></a>
-      <a class="card" href="kenpo_day6.html"><div class="card-top"><div class="card-day">6</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">第三者行為・審査請求・保険料徴収</div><div class="card-meta">○×5問＋穴埋め5問</div></div></a>
-      <a class="card" href="kenpo_day7.html"><div class="card-top"><div class="card-day">7</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">日雇特例被保険者</div><div class="card-meta">○×5問＋穴埋め5問</div></div></a>
-      <a class="card" href="kenpo_day8.html"><div class="card-top"><div class="card-day">8</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">健保組合・財政・保健事業</div><div class="card-meta">○×5問＋穴埋め5問</div></div></a>
-      <a class="card" href="kenpo_day9.html"><div class="card-top"><div class="card-day">9</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">適用事業所・罰則・雑則</div><div class="card-meta">○×5問＋穴埋め5問</div></div></a>
-      <a class="card" href="kenpo_day10.html"><div class="card-top"><div class="card-day">10</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">全論点横断まとめ</div><div class="card-meta">○×10問＋穴埋め5問</div></div></a>
-      <a class="card fc" href="kenpo_day11.html"><div class="card-top"><div class="card-day">11</div><div class="card-label">FLASH CARDS</div></div><div class="card-body"><div class="card-unit">全300問 フラッシュカード＋穴埋め100問</div><div class="card-meta">苦手モード搭載</div></div></a>
-      <a class="card exam" href="kenpo_day12.html"><div class="card-top"><div class="card-day">12</div><div class="card-label">PAST EXAM</div></div><div class="card-body"><div class="card-unit">過去問○×演習 60問＋5択60問</div><div class="card-meta">苦手モード搭載</div></div></a>
-    </div>
-  </div>
-
-  <!-- 厚生年金法 -->
-  <div class="subject">
-    <div class="subject-hd">
-      <div class="subject-icon" style="background:#ede9fe;">🏦</div>
-      <div class="subject-name">厚生年金法</div>
-      <div class="subject-count">12 DAYS</div>
-    </div>
-    <div class="grid">
-      <a class="card" href="kounen_day1.html"><div class="card-top"><div class="card-day">1</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">目的・適用事業所・被保険者・資格</div><div class="card-meta">全10問</div></div></a>
-      <a class="card" href="kounen_day2.html"><div class="card-top"><div class="card-day">2</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">標準報酬の決定・改定・保険料の納付</div><div class="card-meta">全10問</div></div></a>
-      <a class="card" href="kounen_day3.html"><div class="card-top"><div class="card-day">3</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">老齢厚生年金①受給要件・加給年金・繰上繰下</div><div class="card-meta">全10問</div></div></a>
-      <a class="card" href="kounen_day4.html"><div class="card-top"><div class="card-day">4</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">在職老齢年金・特別支給の老齢厚生年金</div><div class="card-meta">全10問</div></div></a>
-      <a class="card" href="kounen_day5.html"><div class="card-top"><div class="card-day">5</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">障害厚生年金・障害手当金</div><div class="card-meta">全10問</div></div></a>
-      <a class="card" href="kounen_day6.html"><div class="card-top"><div class="card-day">6</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">遺族厚生年金①支給事由・受給権者・年金額</div><div class="card-meta">全10問</div></div></a>
-      <a class="card" href="kounen_day7.html"><div class="card-top"><div class="card-day">7</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">遺族厚生年金②振替加算・併給調整・失権</div><div class="card-meta">全10問</div></div></a>
-      <a class="card" href="kounen_day8.html"><div class="card-top"><div class="card-day">8</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">脱退一時金・不服申立・時効・支払期月</div><div class="card-meta">全10問</div></div></a>
-      <a class="card" href="kounen_day9.html"><div class="card-top"><div class="card-day">9</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">3科目横断 健保・国年・厚年</div><div class="card-meta">全10問</div></div></a>
-      <a class="card fc" href="kounen_day10.html"><div class="card-top"><div class="card-day">10</div><div class="card-label">FLASH CARDS</div></div><div class="card-body"><div class="card-unit">全300問 フラッシュカード</div><div class="card-meta">苦手モード搭載</div></div></a>
-      <a class="card fc" href="kounen_day11.html"><div class="card-top"><div class="card-day">11</div><div class="card-label">FLASH CARDS</div></div><div class="card-body"><div class="card-unit">全300問 フラッシュカード（続）</div><div class="card-meta">苦手モード搭載</div></div></a>
-      <a class="card exam" href="kounen_day12.html"><div class="card-top"><div class="card-day">12</div><div class="card-label">PAST EXAM</div></div><div class="card-body"><div class="card-unit">過去問○×演習 60問＋5択60問</div><div class="card-meta">苦手モード搭載</div></div></a>
-    </div>
-  </div>
-
-  <!-- 国民年金法 -->
-  <div class="subject">
-    <div class="subject-hd">
-      <div class="subject-icon" style="background:#fef9e7;">📋</div>
-      <div class="subject-name">国民年金法</div>
-      <div class="subject-count">12 DAYS</div>
-    </div>
-    <div class="grid">
-      <a class="card" href="kokunen_day1.html"><div class="card-top"><div class="card-day">1</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">目的・被保険者の種別・任意加入</div><div class="card-meta">国年法第1条・第7条・附則第5条</div></div></a>
-      <a class="card" href="kokunen_day2.html"><div class="card-top"><div class="card-day">2</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">被保険者の資格・届出</div><div class="card-meta">国年法第8条〜第14条</div></div></a>
-      <a class="card" href="kokunen_day3.html"><div class="card-top"><div class="card-day">3</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">保険料・免除制度</div><div class="card-meta">国年法第87条〜第90条の3</div></div></a>
-      <a class="card" href="kokunen_day4.html"><div class="card-top"><div class="card-day">4</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">老齢基礎年金・繰上繰下</div><div class="card-meta">国年法第26条〜第28条</div></div></a>
-      <a class="card" href="kokunen_day5.html"><div class="card-top"><div class="card-day">5</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">障害基礎年金</div><div class="card-meta">国年法第30条〜第36条</div></div></a>
-      <a class="card" href="kokunen_day6.html"><div class="card-top"><div class="card-day">6</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">遺族基礎年金・寡婦年金・死亡一時金</div><div class="card-meta">国年法第37条〜第52条の6</div></div></a>
-      <a class="card" href="kokunen_day7.html"><div class="card-top"><div class="card-day">7</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">時効・支払期月・不服申立</div><div class="card-meta">国年法第18条・第19条・第85条</div></div></a>
-      <a class="card" href="kokunen_day8.html"><div class="card-top"><div class="card-day">8</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">付加年金・合算対象期間</div><div class="card-meta">国年法第16条の3・第27条</div></div></a>
-      <a class="card" href="kokunen_day9.html"><div class="card-top"><div class="card-day">9</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">3科目横断比較 健保・厚年・国年</div><div class="card-meta">全10問</div></div></a>
-      <a class="card" href="kokunen_day10.html"><div class="card-top"><div class="card-day">10</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">総復習 Day1〜9 横断まとめ</div><div class="card-meta">全10問</div></div></a>
-      <a class="card fc" href="kokunen_day11.html"><div class="card-top"><div class="card-day">11</div><div class="card-label">FLASH CARDS</div></div><div class="card-body"><div class="card-unit">全100問 フラッシュカード</div><div class="card-meta">苦手モード搭載</div></div></a>
-      <a class="card exam" href="kokunen_day12.html"><div class="card-top"><div class="card-day">12</div><div class="card-label">PAST EXAM</div></div><div class="card-body"><div class="card-unit">過去問○×演習 60問＋5択60問</div><div class="card-meta">苦手モード搭載</div></div></a>
-    </div>
-  </div>
-
-  <!-- 労働基準法 -->
-  <div class="subject">
-    <div class="subject-hd">
-      <div class="subject-icon" style="background:#fee2e2;">⚖️</div>
-      <div class="subject-name">労働基準法</div>
-      <div class="subject-count">12 DAYS</div>
-    </div>
-    <div class="grid">
-      <a class="card" href="roki_day1.html"><div class="card-top"><div class="card-day">1</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">目的・均等待遇・労働条件の明示</div><div class="card-meta">労基法第1条〜第23条</div></div></a>
-      <a class="card" href="roki_day2.html"><div class="card-top"><div class="card-day">2</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">平均賃金・賃金支払原則・休業手当</div><div class="card-meta">労基法第12条・第24条〜第26条・第37条</div></div></a>
-      <a class="card" href="roki_day3.html"><div class="card-top"><div class="card-day">3</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">法定労働時間・時間外・三六協定</div><div class="card-meta">労基法第32条〜第36条・第40条</div></div></a>
-      <a class="card" href="roki_day4.html"><div class="card-top"><div class="card-day">4</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">年次有給休暇</div><div class="card-meta">労基法第39条</div></div></a>
-      <a class="card" href="roki_day5.html"><div class="card-top"><div class="card-day">5</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">就業規則・制裁・減給</div><div class="card-meta">労基法第89条〜第93条・第91条</div></div></a>
-      <a class="card" href="roki_day6.html"><div class="card-top"><div class="card-day">6</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">年少者・女性保護</div><div class="card-meta">労基法第56条〜第68条</div></div></a>
-      <a class="card" href="roki_day7.html"><div class="card-top"><div class="card-day">7</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">監督・罰則・時効</div><div class="card-meta">労基法第97条〜第116条</div></div></a>
-      <a class="card" href="roki_day8.html"><div class="card-top"><div class="card-day">8</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">変形労働時間・フレックス・裁量労働</div><div class="card-meta">労基法第32条の2〜第38条の4</div></div></a>
-      <a class="card" href="roki_day9.html"><div class="card-top"><div class="card-day">9</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">横断 労基・安衛・均等・育介</div><div class="card-meta">全10問</div></div></a>
-      <a class="card" href="roki_day10.html"><div class="card-top"><div class="card-day">10</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">Day1〜9 頻出引っかけ総まとめ</div><div class="card-meta">全10問</div></div></a>
-      <a class="card fc" href="roki_day11.html"><div class="card-top"><div class="card-day">11</div><div class="card-label">FLASH CARDS</div></div><div class="card-body"><div class="card-unit">フラッシュカード</div><div class="card-meta">苦手モード搭載</div></div></a>
-      <a class="card exam" href="roki_day12.html"><div class="card-top"><div class="card-day">12</div><div class="card-label">PAST EXAM</div></div><div class="card-body"><div class="card-unit">過去問○×演習 60問＋5択60問</div><div class="card-meta">苦手モード搭載</div></div></a>
-    </div>
-  </div>
-
-  <!-- 労働安全衛生法 -->
-  <div class="subject">
-    <div class="subject-hd">
-      <div class="subject-icon" style="background:#e8f5ee;">🦺</div>
-      <div class="subject-name">労働安全衛生法</div>
-      <div class="subject-count">9 DAYS</div>
-    </div>
-    <div class="grid">
-      <a class="card" href="anei_day1.html"><div class="card-top"><div class="card-day">1</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">安全衛生管理体制</div><div class="card-meta">安衛法第10条〜第19条</div></div></a>
-      <a class="card" href="anei_day2.html"><div class="card-top"><div class="card-day">2</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">安全衛生教育・健康診断</div><div class="card-meta">安衛法第59条〜第66条</div></div></a>
-      <a class="card" href="anei_day3.html"><div class="card-top"><div class="card-day">3</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">長時間労働者への医師面接・ストレスチェック</div><div class="card-meta">安衛法第66条の8〜第66条の10</div></div></a>
-      <a class="card" href="anei_day4.html"><div class="card-top"><div class="card-day">4</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">危険有害業務・化学物質管理・計画届</div><div class="card-meta">安衛法第28条の2・第57条・第88条</div></div></a>
-      <a class="card" href="anei_day5.html"><div class="card-top"><div class="card-day">5</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">安全基準・定期自主検査・特定機械</div><div class="card-meta">安衛法第20条・第41条・第42条・第45条</div></div></a>
-      <a class="card" href="anei_day6.html"><div class="card-top"><div class="card-day">6</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">健康障害防止・製造禁止・表示義務</div><div class="card-meta">安衛法第22条・第55条・第57条</div></div></a>
-      <a class="card" href="anei_day7.html"><div class="card-top"><div class="card-day">7</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">統括安全衛生責任者・元方事業者の義務</div><div class="card-meta">安衛法第15条・第16条・第29条・第30条</div></div></a>
-      <a class="card" href="anei_day8.html"><div class="card-top"><div class="card-day">8</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">労働者の申告・監督・罰則</div><div class="card-meta">安衛法第97条・第98条・第119条・第122条</div></div></a>
-      <a class="card" href="anei_day9.html"><div class="card-top"><div class="card-day">9</div><div class="card-label">DAY</div></div><div class="card-body"><div class="card-unit">目的条文・全横断まとめ</div><div class="card-meta">安衛法第1条・全横断</div></div></a>
-    </div>
-  </div>
-
 </div>
+<div class="subjects" id="subjects-root"></div>
+<div class="stats-row">
+  <div class="stat-card"><div class="stat-num" id="st-files">129</div><div class="stat-label">総ドリル数</div></div>
+  <div class="stat-card"><div class="stat-num" id="st-done">0</div><div class="stat-label">学習済みDay</div></div>
+  <div class="stat-card"><div class="stat-num" id="st-avg">-</div><div class="stat-label">平均正答率</div></div>
+  <div class="stat-card"><div class="stat-num" id="st-complete">48</div><div class="stat-label">完成済みファイル</div></div>
+</div>
+<footer class="site-footer">© 2026 社労士試験対策ドリル | 2027年8月合格目標</footer>
+<script>
+var SUBJECTS = [
+  {id:'kenpo',name:'健保法',fullname:'健康保険法',cat:'社会保険',color:'#1d4ed8',days:12,done:true,
+   getKey:function(d){ return 'kenpo_day'+d+'.html'; },
+   labels:['目的・被保険者','資格取得・届出','保険料','療養給付','傷病手当金','出産・死亡給付','高額療養費','日雇・任意継続','審査請求','苦手復習','FC300枚','過去問演習']},
+  {id:'kounen',name:'厚年法',fullname:'厚生年金保険法',cat:'社会保険',color:'#c84b31',days:12,done:true,
+   getKey:function(d){ return 'kounen_day'+d; },
+   labels:['目的・被保険者','資格取得・届出','保険料','老齢厚生①','老齢厚生②','障害厚生','遺族厚生','離婚分割等','審査・雑則','苦手復習','FC300枚','過去問演習']},
+  {id:'kokunen',name:'国年法',fullname:'国民年金法',cat:'社会保険',color:'#2d6a4f',days:12,done:true,
+   getKey:function(d){ return 'kokunen_day'+d; },
+   labels:['目的・被保険者','資格取得・届出','保険料・免除','老齢基礎','障害基礎','遺族・寡婦','通則・時効','横断仕上げ','苦手復習','FC300枚','過去問演習','準備中']},
+  {id:'roki',name:'労基法',fullname:'労働基準法',cat:'労働保険',color:'#7c3aed',days:12,done:true,
+   getKey:function(d){ return 'roki_day'+d; },
+   labels:['総則・均等待遇','賃金・割増賃金','労働時間・休憩','年次有給休暇','就業規則','女性・年少者','監督機関・罰則','変形制・フレックス','横断まとめ','苦手復習','FC300枚','過去問演習']},
+  {id:'anei',name:'安衛法',fullname:'労働安全衛生法',cat:'労働保険',color:'#0891b2',days:12,done:false,
+   getKey:function(d){ return 'anei_day'+d; },
+   labels:['目的・管理体制','安全管理体制','危険有害業務','安全衛生教育','健康診断','ストレスチェック','特別規制','免許・技能講習','監督・罰則','苦手復習','FC300枚','過去問演習']},
+  {id:'rosai',name:'労災法',fullname:'労働者災害補償保険法',cat:'労働保険',color:'#be123c',days:12,done:false,
+   getKey:function(d){ return 'rosai_day'+d; },
+   labels:['目的・適用','業務災害認定','通勤災害認定','療養補償','休業補償','障害補償','遺族補償','傷病・介護','費用徴収','苦手復習','FC300枚','過去問演習']},
+  {id:'koyoho',name:'雇保法',fullname:'雇用保険法',cat:'労働保険',color:'#b45309',days:12,done:false,
+   getKey:function(d){ return 'koyoho_day'+d; },
+   labels:['目的・被保険者','資格取得・喪失','基本手当①','基本手当②','基本手当③','就職促進給付','教育訓練給付','雇用継続給付','日雇・高年齢','苦手復習','FC300枚','過去問演習']},
+  {id:'choshu',name:'徴収法',fullname:'労働保険徴収法',cat:'労働保険',color:'#6b7280',days:12,done:false,
+   getKey:function(d){ return 'choshu_day'+d; },
+   labels:['保険関係成立','保険関係消滅','保険料の種類','概算保険料','確定保険料','メリット制','印紙・特別加入','事務組合','督促・不服申立','苦手復習','FC300枚','過去問演習']},
+  {id:'roichi',name:'労一',fullname:'労働一般常識',cat:'一般常識',color:'#0f766e',days:12,done:false,
+   getKey:function(d){ return 'roichi_day'+d; },
+   labels:['労働契約法','最低賃金法','安衛法（一般）','均等法','育介法','パート・有期','労働者派遣法','個別紛争解決','労働経済','苦手復習','FC300枚','過去問演習']},
+  {id:'shaichi',name:'社一',fullname:'社会保険一般常識',cat:'一般常識',color:'#9333ea',days:12,done:false,
+   getKey:function(d){ return 'shaichi_day'+d; },
+   labels:['社保制度概要','国民健康保険','後期高齢者医療','介護保険法①','介護保険法②','確定拠出年金','確定給付企業年金','審査官・審査会','社会保障の歴史','苦手復習','FC300枚','過去問演習']},
+  {id:'hanrei',name:'判例',fullname:'判例＋目的条文',cat:'特別',color:'#c9930a',days:9,done:false,
+   getKey:function(d){ return 'hanrei_day'+d; },
+   labels:['目的条文（社保）','目的条文（労保）','判例①（労働契約）','判例②（賃金・時間）','判例③（労災・安衛）','判例④（社会保険）','横断数字まとめ','審査・時効まとめ','総仕上げ模擬']},
+];
+var CATS = ['社会保険','労働保険','一般常識','特別'];
+function getScore(key){
+  try{
+    var r=localStorage.getItem(key);
+    if(!r) return null;
+    var d=JSON.parse(r);
+    if(d.correct!==undefined&&d.total>0) return Math.round(d.correct/d.total*100);
+  }catch(e){} return null;
+}
+function scoreClass(s){
+  if(s===null) return 'score-none';
+  if(s>=80) return 'score-high';
+  if(s>=60) return 'score-mid';
+  return 'score-low';
+}
+function renderAll(){
+  var root=document.getElementById('subjects-root');
+  var totalDone=0,totalScore=0,totalScored=0;
+  CATS.forEach(function(cat){
+    var subs=SUBJECTS.filter(function(s){return s.cat===cat;});
+    var catDiv=document.createElement('div');
+    catDiv.className='cat-section';
+    var catNames={'社会保険':'Social Insurance','労働保険':'Labor Insurance','一般常識':'General Knowledge','特別':'Special Drill'};
+    catDiv.innerHTML='<div class="cat-title">'+cat+'　<span style="color:#ccc;font-weight:400">'+catNames[cat]+'</span></div>';
+    subs.forEach(function(s){
+      var done=0,scoreSum=0,scored=0;
+      var cells='';
+      for(var d=1;d<=s.days;d++){
+        var key=s.getKey(d);
+        var score=s.done?getScore(key):null;
+        var cls=scoreClass(score);
+        var label=s.labels[d-1]||'Day'+d;
+        var shortLabel=label.length>7?label.slice(0,7)+'…':label;
+        var fname=s.id+'_day'+d+'.html';
+        var isWip=!s.done;
+        if(score!==null){done++;scoreSum+=score;scored++;totalDone++;totalScore+=score;totalScored++;}
+        cells+='<a href="'+fname+'" class="day-card'+(isWip?' wip':'')+'">'+
+          '<div class="day-num">Day'+d+'</div>'+
+          '<div class="day-score '+cls+'">'+(score!==null?score+'%':(isWip?'🚧':'--'))+'</div>'+
+          '<div class="day-lbl">'+shortLabel+'</div>'+
+          '</a>';
+      }
+      var avgStr=scored>0?Math.round(scoreSum/scored)+'%':'-';
+      var progStr=s.done?(done+'/'+s.days+'完了 | 平均'+avgStr):'制作中';
+      var statusHtml=s.done?'<span class="subject-status status-done">✅ 完成</span>':'<span class="subject-status status-wip">🚧 制作中</span>';
+      var block=document.createElement('div');
+      block.className='subject-block';
+      block.innerHTML='<div class="subject-header">'+
+        '<span class="subject-badge" style="background:'+s.color+'">'+s.name+'</span>'+
+        '<span class="subject-name">'+s.fullname+'</span>'+
+        statusHtml+
+        '<span class="subject-prog">'+progStr+'</span>'+
+      '</div>'+
+      '<div class="days-grid">'+cells+'</div>';
+      catDiv.appendChild(block);
+    });
+    root.appendChild(catDiv);
+  });
+  document.getElementById('st-done').textContent=totalDone;
+  document.getElementById('st-avg').textContent=totalScored>0?Math.round(totalScore/totalScored)+'%':'-';
+}
+function renderToday(){
+  var start=new Date(2026,3,1);
+  var today=new Date();
+  var days=Math.floor((today-start)/86400000);
+  if(days<0) days=0;
+  var doneSubs=SUBJECTS.filter(function(s){return s.done;});
+  if(doneSubs.length===0) return;
+  var totalCycle=doneSubs.reduce(function(a,s){return a+s.days;},0);
+  var cycleDay=days%totalCycle;
+  var acc=0,rec=null;
+  for(var i=0;i<doneSubs.length;i++){
+    if(cycleDay<acc+doneSubs[i].days){
+      rec={subj:doneSubs[i],day:cycleDay-acc+1};
+      break;
+    }
+    acc+=doneSubs[i].days;
+  }
+  if(!rec) rec={subj:doneSubs[0],day:1};
+  document.getElementById('today-title').textContent=
+    rec.subj.name+' Day'+rec.day+'：'+(rec.subj.labels[rec.day-1]||'');
+  var score=getScore(rec.subj.getKey(rec.day));
+  document.getElementById('today-meta').textContent=score!==null?
+    '前回のスコア：'+score+'％　もう一度チャレンジ！':'まだ未学習 → 今日挑戦しよう！';
+  document.getElementById('today-link').href=rec.subj.id+'_day'+rec.day+'.html';
+}
+window.onload=function(){renderAll();renderToday();};
+</script>
 </body>
 </html>
