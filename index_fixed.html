@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>社労士試験対策ドリル | syaroushi.netlify.app</title>
+<style>
+:root{--bg:#f5f0e8;--ink:#1a1a2e;--teal:#00a8a9;--teal-l:#e0f5f5;--card:#fff;--radius:14px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans JP',sans-serif;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.site-header{background:var(--ink);color:#fff;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.site-logo{font-size:17px;font-weight:800}.site-logo span{color:var(--teal)}
+.header-links{display:flex;gap:10px}
+.header-links a{font-size:12px;padding:6px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.3);color:#fff;transition:.2s}
+.header-links a:hover,.header-links a.active{background:var(--teal);border-color:var(--teal)}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#2a2a5e 100%);color:#fff;padding:44px 24px 36px;text-align:center}
+.hero-badge{display:inline-block;background:rgba(0,168,169,.2);border:1px solid var(--teal);color:var(--teal);font-size:11px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:14px;letter-spacing:.1em}
+.hero h1{font-size:26px;font-weight:900;line-height:1.3;margin-bottom:10px}
+.hero h1 em{color:var(--teal);font-style:normal}
+.hero p{font-size:13px;color:rgba(255,255,255,.65);margin-bottom:22px;line-height:1.7}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero-btn{padding:11px 22px;border-radius:28px;font-size:13px;font-weight:700;border:none;transition:.2s;cursor:pointer}
+.hero-btn.primary{background:var(--teal);color:#fff}.hero-btn.primary:hover{background:#009698}
+.hero-btn.secondary{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.3)}.hero-btn.secondary:hover{background:rgba(255,255,255,.2)}
+.today-wrap{max-width:920px;margin:28px auto 0;padding:0 16px}
+.today-card{background:var(--card);border-radius:var(--radius);padding:18px 22px;display:flex;align-items:center;gap:18px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid var(--teal)}
+.today-icon{font-size:34px;flex-shrink:0}
+.today-body{flex:1}
+.today-label{font-size:11px;font-weight:800;color:var(--teal);letter-spacing:.1em;margin-bottom:3px}
+.today-title{font-size:15px;font-weight:800;margin-bottom:4px}
+.today-meta{font-size:12px;color:#666}
+.today-btn{background:var(--teal);color:#fff;padding:9px 18px;border-radius:22px;font-size:12px;font-weight:700;white-space:nowrap;transition:.2s;flex-shrink:0}
+.today-btn:hover{background:#009698}
+.subjects{max-width:920px;margin:36px auto;padding:0 16px}
+.cat-section{margin-bottom:36px}
+.cat-title{font-size:11px;font-weight:800;letter-spacing:.14em;color:#999;text-transform:uppercase;margin-bottom:14px;padding-bottom:6px;border-bottom:1px solid #e8e4dc}
+.subject-block{margin-bottom:22px}
+.subject-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.subject-badge{font-size:11px;font-weight:800;padding:3px 10px;border-radius:16px;color:#fff;flex-shrink:0}
+.subject-name{font-size:14px;font-weight:800}
+.subject-status{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:700}
+.status-done{background:#e0f5f5;color:var(--teal)}
+.status-wip{background:#fef9e7;color:#c9930a}
+.subject-prog{margin-left:auto;font-size:11px;color:#aaa}
+.days-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:7px}
+@media(max-width:580px){.days-grid{grid-template-columns:repeat(4,1fr)}}
+.day-card{background:var(--card);border-radius:9px;padding:9px 6px;text-align:center;border:2px solid #eee;transition:.2s;cursor:pointer}
+.day-card:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.1)}
+.day-card.wip{opacity:.55;background:#f8f8f6}
+.day-num{font-size:10px;font-weight:700;color:#bbb;margin-bottom:2px}
+.day-score{font-size:17px;font-weight:900;margin-bottom:1px}
+.day-lbl{font-size:9px;color:#999;line-height:1.3}
+.score-high{color:#2d6a4f}.score-mid{color:#c9930a}.score-low{color:#c84b31}.score-none{color:#ccc}
+.stats-row{max-width:920px;margin:0 auto 40px;padding:0 16px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:580px){.stats-row{grid-template-columns:repeat(2,1fr)}}
+.stat-card{background:var(--card);border-radius:var(--radius);padding:16px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+.stat-num{font-size:26px;font-weight:900;color:var(--teal)}
+.stat-label{font-size:11px;color:#888;margin-top:3px}
+.site-footer{background:var(--ink);color:rgba(255,255,255,.4);text-align:center;padding:18px;font-size:11px}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-logo">社労士<span>ドリル</span></div>
+  <div class="header-links">
+    <a href="index.html" class="active">ホーム</a>
+    <a href="dashboard.html">進捗</a>
+    <a href="schedule.html">スケジュール</a>
+  </div>
+</header>
+<div class="hero">
+  <div class="hero-badge">2027年8月 合格目標</div>
+  <h1>社労士試験対策<em>ドリル</em></h1>
+  <p>11科目＋特別ドリル｜全129Day｜健保・厚年・国年・労基は完成済み</p>
+  <div class="hero-btns">
+    <a href="dashboard.html" class="hero-btn primary">📊 進捗ダッシュボード</a>
+    <a href="schedule.html" class="hero-btn secondary">📅 17ヶ月プラン</a>
+  </div>
+</div>
+<div class="today-wrap">
+  <div class="today-card">
+    <div class="today-icon">🎯</div>
+    <div class="today-body">
+      <div class="today-label">TODAY&apos;S DRILL</div>
+      <div class="today-title" id="today-title">読み込み中...</div>
+      <div class="today-meta" id="today-meta"></div>
+    </div>
+    <a href="#" class="today-btn" id="today-link">始める →</a>
+  </div>
+</div>
+<div class="subjects" id="subjects-root"></div>
+<div class="stats-row">
+  <div class="stat-card"><div class="stat-num" id="st-files">129</div><div class="stat-label">総ドリル数</div></div>
+  <div class="stat-card"><div class="stat-num" id="st-done">0</div><div class="stat-label">学習済みDay</div></div>
+  <div class="stat-card"><div class="stat-num" id="st-avg">-</div><div class="stat-label">平均正答率</div></div>
+  <div class="stat-card"><div class="stat-num" id="st-complete">48</div><div class="stat-label">完成済みファイル</div></div>
+</div>
+<footer class="site-footer">© 2026 社労士試験対策ドリル | 2027年8月合格目標</footer>
+<script>
+var SUBJECTS = [
+  {id:'kenpo',name:'健保法',fullname:'健康保険法',cat:'社会保険',color:'#1d4ed8',days:12,done:true,
+   getKey:function(d){ return 'kenpo_day'+d+'.html'; },
+   labels:['総則・目的・保険者','被保険者・被扶養者・資格得喪','標準報酬・算定基礎届','療養の給付・一部負担金・高額療養費','埋葬料・継続給付・家族給付','第三者行為・審査請求・保険料','日雇特例被保険者','健保組合・財政・保健事業','適用事業所・罰則・雑則','全論点横断まとめ','FC300枚＋穴埋め','過去問演習']},
+  {id:'kounen',name:'厚年法',fullname:'厚生年金保険法',cat:'社会保険',color:'#c84b31',days:12,done:true,
+   getKey:function(d){ return 'kounen_day'+d; },
+   labels:['目的・適用事業所・被保険者','標準報酬・保険料の納付','老齢厚生年金①','在職老齢・特別支給','障害厚生年金・障害手当金','遺族厚生年金①','遺族厚生年金②','脱退一時金・時効','3科目横断まとめ','FC300枚（前半）','FC300枚（後半）','過去問演習']},
+  {id:'kokunen',name:'国年法',fullname:'国民年金法',cat:'社会保険',color:'#2d6a4f',days:12,done:true,
+   getKey:function(d){ return 'kokunen_day'+d; },
+   labels:['目的・被保険者の種別','被保険者の資格・届出','保険料・免除制度','老齢基礎年金・繰上繰下','障害基礎年金','遺族基礎・寡婦・死亡一時金','時効・支払期月・不服申立','付加年金・合算対象期間','3科目横断比較','総復習・横断まとめ','FC100枚','過去問演習']},
+  {id:'roki',name:'労基法',fullname:'労働基準法',cat:'労働保険',color:'#7c3aed',days:12,done:true,
+   getKey:function(d){ return 'roki_day'+d; },
+   labels:['目的・均等待遇・労働条件明示','平均賃金・賃金支払原則・休業手当','法定労働時間・時間外・三六協定','年次有給休暇','就業規則・制裁・減給','年少者・女性保護','監督・罰則・時効','変形労働・フレックス・裁量労働','横断 労基・安衛・均等・育介','Day1〜9 引っかけ総まとめ','フラッシュカード','過去問演習']},
+  {id:'anei',name:'安衛法',fullname:'労働安全衛生法',cat:'労働保険',color:'#0891b2',days:9,done:true,
+   getKey:function(d){ return 'anei_day'+d; },
+   labels:['安全衛生管理体制','安全衛生教育・健康診断','長時間労働・ストレスチェック','危険有害業務・化学物質・計画届','安全基準・定期自主検査','健康障害防止・製造禁止・表示','統括安全衛生・元方事業者','労働者の申告・監督・罰則','目的条文・全横断まとめ']},
+  {id:'rosai',name:'労災法',fullname:'労働者災害補償保険法',cat:'労働保険',color:'#be123c',days:12,done:false,
+   getKey:function(d){ return 'rosai_day'+d; },
+   labels:['目的・適用','業務災害認定','通勤災害認定','療養補償','休業補償','障害補償','遺族補償','傷病・介護','費用徴収','苦手復習','FC300枚','過去問演習']},
+  {id:'koyoho',name:'雇保法',fullname:'雇用保険法',cat:'労働保険',color:'#b45309',days:12,done:false,
+   getKey:function(d){ return 'koyoho_day'+d; },
+   labels:['目的・被保険者','資格取得・喪失','基本手当①','基本手当②','基本手当③','就職促進給付','教育訓練給付','雇用継続給付','日雇・高年齢','苦手復習','FC300枚','過去問演習']},
+  {id:'choshu',name:'徴収法',fullname:'労働保険徴収法',cat:'労働保険',color:'#6b7280',days:12,done:false,
+   getKey:function(d){ return 'choshu_day'+d; },
+   labels:['保険関係成立','保険関係消滅','保険料の種類','概算保険料','確定保険料','メリット制','印紙・特別加入','事務組合','督促・不服申立','苦手復習','FC300枚','過去問演習']},
+  {id:'roichi',name:'労一',fullname:'労働一般常識',cat:'一般常識',color:'#0f766e',days:12,done:false,
+   getKey:function(d){ return 'roichi_day'+d; },
+   labels:['労働契約法','最低賃金法','安衛法（一般）','均等法','育介法','パート・有期','労働者派遣法','個別紛争解決','労働経済','苦手復習','FC300枚','過去問演習']},
+  {id:'shaichi',name:'社一',fullname:'社会保険一般常識',cat:'一般常識',color:'#9333ea',days:12,done:false,
+   getKey:function(d){ return 'shaichi_day'+d; },
+   labels:['社保制度概要','国民健康保険','後期高齢者医療','介護保険法①','介護保険法②','確定拠出年金','確定給付企業年金','審査官・審査会','社会保障の歴史','苦手復習','FC300枚','過去問演習']},
+  {id:'hanrei',name:'判例',fullname:'判例＋目的条文',cat:'特別',color:'#c9930a',days:9,done:false,
+   getKey:function(d){ return 'hanrei_day'+d; },
+   labels:['目的条文（社保）','目的条文（労保）','判例①（労働契約）','判例②（賃金・時間）','判例③（労災・安衛）','判例④（社会保険）','横断数字まとめ','審査・時効まとめ','総仕上げ模擬']},
+];
+var CATS = ['社会保険','労働保険','一般常識','特別'];
+function getScore(key){
+  try{
+    var r=localStorage.getItem(key);
+    if(!r) return null;
+    var d=JSON.parse(r);
+    if(d.correct!==undefined&&d.total>0) return Math.round(d.correct/d.total*100);
+  }catch(e){} return null;
+}
+function scoreClass(s){
+  if(s===null) return 'score-none';
+  if(s>=80) return 'score-high';
+  if(s>=60) return 'score-mid';
+  return 'score-low';
+}
+function renderAll(){
+  var root=document.getElementById('subjects-root');
+  var totalDone=0,totalScore=0,totalScored=0;
+  CATS.forEach(function(cat){
+    var subs=SUBJECTS.filter(function(s){return s.cat===cat;});
+    var catDiv=document.createElement('div');
+    catDiv.className='cat-section';
+    var catNames={'社会保険':'Social Insurance','労働保険':'Labor Insurance','一般常識':'General Knowledge','特別':'Special Drill'};
+    catDiv.innerHTML='<div class="cat-title">'+cat+'　<span style="color:#ccc;font-weight:400">'+catNames[cat]+'</span></div>';
+    subs.forEach(function(s){
+      var done=0,scoreSum=0,scored=0;
+      var cells='';
+      for(var d=1;d<=s.days;d++){
+        var key=s.getKey(d);
+        var score=s.done?getScore(key):null;
+        var cls=scoreClass(score);
+        var label=s.labels[d-1]||'Day'+d;
+        var shortLabel=label.length>7?label.slice(0,7)+'…':label;
+        var fname=s.id+'_day'+d+'.html';
+        var isWip=!s.done;
+        if(score!==null){done++;scoreSum+=score;scored++;totalDone++;totalScore+=score;totalScored++;}
+        cells+='<a href="'+fname+'" class="day-card'+(isWip?' wip':'')+'">'+
+          '<div class="day-num">Day'+d+'</div>'+
+          '<div class="day-score '+cls+'">'+(score!==null?score+'%':(isWip?'🚧':'--'))+'</div>'+
+          '<div class="day-lbl">'+shortLabel+'</div>'+
+          '</a>';
+      }
+      var avgStr=scored>0?Math.round(scoreSum/scored)+'%':'-';
+      var progStr=s.done?(done+'/'+s.days+'完了 | 平均'+avgStr):'制作中';
+      var statusHtml=s.done?'<span class="subject-status status-done">✅ 完成</span>':'<span class="subject-status status-wip">🚧 制作中</span>';
+      var block=document.createElement('div');
+      block.className='subject-block';
+      block.innerHTML='<div class="subject-header">'+
+        '<span class="subject-badge" style="background:'+s.color+'">'+s.name+'</span>'+
+        '<span class="subject-name">'+s.fullname+'</span>'+
+        statusHtml+
+        '<span class="subject-prog">'+progStr+'</span>'+
+      '</div>'+
+      '<div class="days-grid">'+cells+'</div>';
+      catDiv.appendChild(block);
+    });
+    root.appendChild(catDiv);
+  });
+  document.getElementById('st-done').textContent=totalDone;
+  document.getElementById('st-avg').textContent=totalScored>0?Math.round(totalScore/totalScored)+'%':'-';
+}
+function renderToday(){
+  var start=new Date(2026,3,1);
+  var today=new Date();
+  var days=Math.floor((today-start)/86400000);
+  if(days<0) days=0;
+  var doneSubs=SUBJECTS.filter(function(s){return s.done;});
+  if(doneSubs.length===0) return;
+  var totalCycle=doneSubs.reduce(function(a,s){return a+s.days;},0);
+  var cycleDay=days%totalCycle;
+  var acc=0,rec=null;
+  for(var i=0;i<doneSubs.length;i++){
+    if(cycleDay<acc+doneSubs[i].days){
+      rec={subj:doneSubs[i],day:cycleDay-acc+1};
+      break;
+    }
+    acc+=doneSubs[i].days;
+  }
+  if(!rec) rec={subj:doneSubs[0],day:1};
+  document.getElementById('today-title').textContent=
+    rec.subj.name+' Day'+rec.day+'：'+(rec.subj.labels[rec.day-1]||'');
+  var score=getScore(rec.subj.getKey(rec.day));
+  document.getElementById('today-meta').textContent=score!==null?
+    '前回のスコア：'+score+'％　もう一度チャレンジ！':'まだ未学習 → 今日挑戦しよう！';
+  document.getElementById('today-link').href=rec.subj.id+'_day'+rec.day+'.html';
+}
+window.onload=function(){renderAll();renderToday();};
+</script>
+</body>
+</html>
