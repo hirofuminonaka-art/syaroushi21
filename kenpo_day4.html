@@ -2170,15 +2170,73 @@ document.addEventListener('DOMContentLoaded',function(){
       <div style="padding:7px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#2a7f7f;">18,000円<br><span style="font-size:9px;font-weight:400;">年間上限14.4万円</span></div>
       <div style="padding:7px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#2a7f7f;">57,600円</div>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 100px 100px;">
+    <div style="display:grid;grid-template-columns:1fr 100px 100px;border-bottom:1px solid #f0ece4;">
       <div style="padding:7px 10px;color:#6b7280;">低所得Ⅱ（住民税非課税）</div>
       <div style="padding:7px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#085041;">8,000円</div>
       <div style="padding:7px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#085041;">24,600円</div>
     </div>
+    <div style="display:grid;grid-template-columns:1fr 100px 100px;">
+      <div style="padding:7px 10px;color:#6b7280;">低所得Ⅰ（住民税非課税・所得0）</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#085041;">8,000円</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#085041;">15,000円</div>
+    </div>
     <div style="padding:8px 12px;background:#E1F5EE;font-size:10px;color:#085041;line-height:1.8;">
       📌 70〜74歳は<strong>外来（個人）と入院＋外来（世帯）の2段階</strong>で計算。外来のほうが低い限度額が適用される。<br>
-      📌 一般区分の外来18,000円は年間14.4万円の上限あり。<br>
+      📌 一般区分の外来<strong>18,000円</strong>は<strong>年間上限144,000円（8月〜7月）</strong>あり。<br>
+      📌 低所得Ⅱの外来8,000円・低所得Ⅰの外来8,000円（入院は24,600円と15,000円で異なる）。<br>
       📌 現役並み所得者（Ⅰ〜Ⅲ）は70歳未満と同じ限度額。世帯合算の21,000円ハードルはなし。
+    </div>
+  </div>
+
+  <!-- 70歳未満vs70歳以上 横並び比較表 -->
+  <div style="font-size:12px;font-weight:700;color:#26215C;margin:14px 0 8px;">📊 70歳未満 ↔ 70歳以上 限度額 横断比較</div>
+  <div style="background:white;border:2px solid #26215C;border-radius:10px;overflow:hidden;margin-bottom:8px;font-size:10px;">
+    <div style="display:grid;grid-template-columns:90px 1fr 90px 90px;background:#26215C;gap:0;">
+      <div style="padding:6px 8px;font-weight:700;color:white;">区分</div>
+      <div style="padding:6px 8px;font-weight:700;color:#fde68a;border-left:1px solid rgba(255,255,255,.2);">70歳未満（月）</div>
+      <div style="padding:6px 8px;font-weight:700;color:#86efac;border-left:1px solid rgba(255,255,255,.2);text-align:center;">70歳以上<br>外来（個人）</div>
+      <div style="padding:6px 8px;font-weight:700;color:#93c5fd;border-left:1px solid rgba(255,255,255,.2);text-align:center;">70歳以上<br>入院＋外来</div>
+    </div>
+    <div style="display:grid;grid-template-columns:90px 1fr 90px 90px;border-bottom:1px solid #f0ece4;background:#fff8f0;">
+      <div style="padding:6px 8px;font-weight:900;color:#c84b31;">ア（Ⅲ）<br><span style="font-size:9px;font-weight:400;color:#6b7280;">83万円以上</span></div>
+      <div style="padding:6px 8px;border-left:1px solid #f0ece4;font-weight:700;color:#c84b31;">252,600円＋1%<br><span style="color:#888;font-weight:400;">多：140,100円</span></div>
+      <div style="padding:6px 8px;border-left:1px solid #f0ece4;text-align:center;color:#6b7280;font-size:9px;">（適用なし）<br>↓入院と同額</div>
+      <div style="padding:6px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#c84b31;">252,600円＋1%<br><span style="color:#888;font-weight:400;">多：140,100円</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:90px 1fr 90px 90px;border-bottom:1px solid #f0ece4;">
+      <div style="padding:6px 8px;font-weight:900;color:#c9930a;">イ（Ⅱ）<br><span style="font-size:9px;font-weight:400;color:#6b7280;">53〜79万円</span></div>
+      <div style="padding:6px 8px;border-left:1px solid #f0ece4;font-weight:700;color:#c9930a;">167,400円＋1%<br><span style="color:#888;font-weight:400;">多：93,000円</span></div>
+      <div style="padding:6px 8px;border-left:1px solid #f0ece4;text-align:center;color:#6b7280;font-size:9px;">（適用なし）<br>↓入院と同額</div>
+      <div style="padding:6px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#c9930a;">167,400円＋1%<br><span style="color:#888;font-weight:400;">多：93,000円</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:90px 1fr 90px 90px;border-bottom:1px solid #f0ece4;background:#f5f0e8;">
+      <div style="padding:6px 8px;font-weight:900;color:#26215C;">ウ（Ⅰ）<br><span style="font-size:9px;font-weight:400;color:#6b7280;">28〜50万円</span></div>
+      <div style="padding:6px 8px;border-left:1px solid #f0ece4;font-weight:700;color:#26215C;">80,100円＋1%<br><span style="color:#888;font-weight:400;">多：44,400円</span></div>
+      <div style="padding:6px 8px;border-left:1px solid #f0ece4;text-align:center;color:#6b7280;font-size:9px;">（適用なし）<br>↓入院と同額</div>
+      <div style="padding:6px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#26215C;">80,100円＋1%<br><span style="color:#888;font-weight:400;">多：44,400円</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:90px 1fr 90px 90px;border-bottom:1px solid #f0ece4;">
+      <div style="padding:6px 8px;font-weight:900;color:#2a7f7f;">エ（一般）<br><span style="font-size:9px;font-weight:400;color:#6b7280;">26万円以下</span></div>
+      <div style="padding:6px 8px;border-left:1px solid #f0ece4;font-weight:700;color:#2a7f7f;">57,600円（定額）<br><span style="color:#888;font-weight:400;">多：44,400円</span></div>
+      <div style="padding:6px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#2a7f7f;">18,000円<br><span style="font-size:9px;color:#c84b31;font-weight:700;">年間上限<br>144,000円</span></div>
+      <div style="padding:6px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#2a7f7f;">57,600円<br><span style="color:#888;font-weight:400;">多：44,400円</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:90px 1fr 90px 90px;grid-template-rows:auto auto;">
+      <!-- オ（低Ⅱ）区分 -->
+      <div style="padding:6px 8px;font-weight:900;color:#085041;border-top:1px solid #f0ece4;">オ（低Ⅱ）<br><span style="font-size:9px;font-weight:400;color:#6b7280;">非課税</span></div>
+      <div style="padding:6px 8px;border-left:1px solid #f0ece4;border-top:1px solid #f0ece4;font-weight:700;color:#085041;">35,400円（定額）<br><span style="color:#888;font-weight:400;">多：24,600円</span></div>
+      <!-- 8,000円セルを2行分結合 -->
+      <div style="padding:6px 8px;border-left:1px solid #f0ece4;border-top:1px solid #f0ece4;text-align:center;font-weight:700;color:#085041;grid-row:span 2;display:flex;align-items:center;justify-content:center;">8,000円</div>
+      <div style="padding:6px 8px;border-left:1px solid #f0ece4;border-top:1px solid #f0ece4;text-align:center;font-weight:700;color:#085041;">24,600円</div>
+      <!-- 低Ⅰ行 -->
+      <div style="padding:6px 8px;font-weight:900;color:#085041;border-top:1px solid #f0ece4;">（低Ⅰ）<br><span style="font-size:9px;font-weight:400;color:#6b7280;">非課税・所得0</span></div>
+      <div style="padding:6px 8px;border-left:1px solid #f0ece4;border-top:1px solid #f0ece4;color:#6b7280;font-size:10px;">（70歳未満は区分なし）</div>
+      <div style="padding:6px 8px;border-left:1px solid #f0ece4;border-top:1px solid #f0ece4;text-align:center;font-weight:700;color:#085041;">15,000円</div>
+    </div>
+    <div style="padding:8px 12px;background:#f0f9ff;font-size:10px;color:#26215C;line-height:1.8;">
+      🔑 <strong>現役並みⅠ〜Ⅲ（ア〜ウ相当）</strong>は外来も入院も70歳未満と同額（「適用なし」の意味）。<br>
+      🔑 <strong>一般（エ相当）の外来だけ</strong>18,000円という独自の低い限度額が設定される。<br>
+      🔑 年間上限144,000円（8月〜7月）：一般区分の外来のみ適用。12ヵ月×12,000円≒144,000円と覚える。
     </div>
   </div>
 
