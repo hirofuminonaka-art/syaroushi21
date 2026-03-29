@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day12｜厚生年金法 過去問演習 ○×60問＋5択60問 ― 社労士ドリル</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1a2e;--paper:#faf8f3;--warm:#f5f0e8;
+  --red:#c84b31;--red-soft:#e8896b;--red-light:#fee2e2;
+  --teal:#2a7f7f;--teal-light:#e8f4f4;
+  --gold:#c9930a;--gold-light:#fef9e7;
+  --green:#2d6a4f;--green-light:#e8f5ee;
+  --gray:#6b7280;--border:#ddd8cc;
+  --purple:#7c3aed;--purple-light:#ede9fe;
+  --blue:#1d4ed8;--blue-light:#dbeafe;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--ink);padding:10px 24px;display:flex;align-items:center;gap:12px;}
+.back-btn{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;display:flex;align-items:center;gap:6px;transition:color .2s;cursor:pointer;}
+.back-btn:hover{color:white;}
+.topbar-title{color:rgba(255,255,255,.45);font-size:12px;margin-left:auto;}
+
+/* ── TAB NAV ── */
+.tab-nav{background:var(--ink);border-top:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:100;}
+.tab-nav-in{max-width:820px;margin:0 auto;display:flex;}
+.tab-btn{flex:1;padding:13px 8px;font-size:13px;font-weight:700;color:rgba(255,255,255,.4);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit;}
+.tab-btn:hover{color:rgba(255,255,255,.75);}
+.tab-btn.active{color:white;border-color:var(--red-soft);}
+.tab-btn.active.t2{border-color:#60a5fa;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+@media(max-width:600px){.tab-btn{font-size:11px;padding:11px 4px;}}
+
+/* ── HEADER ── */
+.hd{background:var(--ink);color:var(--paper);padding:40px 40px 32px;position:relative;overflow:hidden;}
+.hd::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(255,255,255,.02) 60px,rgba(255,255,255,.02) 61px);}
+.hd-in{max-width:820px;margin:0 auto;position:relative;}
+.hd-eye{font-size:11px;letter-spacing:4px;color:var(--red-soft);margin-bottom:10px;font-weight:700;}
+.hd h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3.5vw,2rem);font-weight:900;line-height:1.3;margin-bottom:6px;}
+.hd h1 em{color:var(--red-soft);font-style:normal;}
+.hd-sub{font-size:13px;color:rgba(255,255,255,.5);font-weight:300;}
+
+/* ── DASHBOARD ── */
+.dash{max-width:820px;margin:20px auto 0;padding:0 20px;}
+.dash-inner{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;}
+.dash-top{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:1px solid var(--border);}
+.dash-cell{padding:14px 10px;text-align:center;border-right:1px solid var(--border);}
+.dash-cell:last-child{border-right:none;}
+.dash-num{font-family:'DM Serif Display',serif;font-size:28px;line-height:1;}
+.dash-num.red{color:var(--red);}
+.dash-num.green{color:var(--green);}
+.dash-num.gold{color:var(--gold);}
+.dash-num.blue{color:var(--blue);}
+.dash-lbl{font-size:10px;color:var(--gray);font-weight:700;letter-spacing:1px;margin-top:2px;}
+.dash-streak{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;background:var(--warm);font-size:13px;font-weight:700;}
+.streak-badge{background:var(--red);color:white;border-radius:20px;padding:3px 12px;font-size:12px;}
+
+/* ── PROGRESS BAR ── */
+.prog-wrap{max-width:820px;margin:10px auto 0;padding:0 20px 4px;}
+.prog-track{background:var(--border);border-radius:20px;height:8px;overflow:hidden;margin-bottom:4px;}
+.prog-bar{background:linear-gradient(90deg,var(--teal),var(--green));height:8px;border-radius:20px;width:0%;transition:width .6s cubic-bezier(.4,0,.2,1);}
+.prog-lbl{font-size:11px;color:var(--gray);text-align:right;}
+
+/* ── FILTER ── */
+.filter-wrap{max-width:820px;margin:16px auto 0;padding:0 20px;}
+.filter-label{font-size:11px;font-weight:700;color:var(--gray);letter-spacing:1px;margin-bottom:8px;}
+.filter-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.fc-chip{border:2px solid var(--border);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;cursor:pointer;transition:all .15s;background:white;color:var(--ink);}
+.fc-chip:hover{border-color:var(--ink);}
+.fc-chip.active{background:var(--ink);color:white;border-color:var(--ink);}
+.fc-chip.s1.active{background:#7c3aed;border-color:#7c3aed;}
+.fc-chip.s2.active{background:#c84b31;border-color:#c84b31;}
+.fc-chip.s3.active{background:#2a7f7f;border-color:#2a7f7f;}
+.fc-chip.s4.active{background:#c9930a;border-color:#c9930a;}
+.fc-chip.s5.active{background:#2d6a4f;border-color:#2d6a4f;}
+.fc-chip.s6.active{background:#6d28d9;border-color:#6d28d9;}
+.fc-chip.s7.active{background:#dc2626;border-color:#dc2626;}
+.fc-chip.s8.active{background:#0891b2;border-color:#0891b2;}
+.fc-chip.s9.active{background:#1d4ed8;border-color:#1d4ed8;}
+.fc-chip.s10.active{background:#d97706;border-color:#d97706;}
+.fc-chip.s11.active{background:#374151;border-color:#374151;}
+.fc-chip.weak.active{background:#be185d;border-color:#be185d;}
+
+/* ── OX CARD AREA ── */
+.ox-wrap{max-width:780px;margin:20px auto 0;padding:0 20px 80px;}
+.ox-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;font-size:12px;color:var(--gray);}
+.ox-counter{font-family:'DM Serif Display',serif;font-size:24px;color:var(--red);line-height:1;}
+.ox-counter span{font-size:12px;color:var(--gray);font-family:'Noto Sans JP',sans-serif;font-weight:400;}
+.ox-section-tag{font-size:10px;font-weight:700;background:var(--purple-light);color:var(--purple);border-radius:4px;padding:2px 8px;}
+
+/* カード */
+.ox-card{background:white;border:2px solid var(--ink);border-radius:16px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.08);margin-bottom:4px;}
+.ox-card-hd{background:var(--warm);border-bottom:1px solid var(--border);padding:9px 14px;display:flex;align-items:center;gap:8px;}
+.ox-card-tag{font-size:10px;font-weight:700;letter-spacing:1px;background:var(--ink);color:white;border-radius:4px;padding:2px 8px;}
+.ox-card-cat{font-size:10px;color:var(--gray);}
+.ox-card-body{padding:22px 22px 16px;}
+.ox-q{font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;line-height:2.0;color:var(--ink);margin-bottom:18px;}
+.ox-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+.ox-hint{font-size:11px;color:var(--gray);margin-bottom:12px;}
+.ox-btns{display:flex;gap:10px;margin-bottom:6px;}
+.ox-btn{flex:1;padding:12px 8px;border-radius:10px;border:2px solid var(--border);background:white;font-size:22px;font-weight:900;cursor:pointer;transition:all .15s;font-family:inherit;}
+.ox-btn.o:hover{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.ox-btn.x:hover{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.ox-btn:disabled{opacity:.38;cursor:default;}
+.ox-btn.chosen-o{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.ox-btn.chosen-x{border-color:var(--red);background:var(--red-light);color:var(--red);}
+
+/* 解説パネル */
+.ox-ans{display:none;border-radius:10px;padding:14px 16px;font-size:13px;margin-top:10px;line-height:1.9;}
+.ox-ans.show{display:block;}
+.ox-ans.ok{background:var(--green-light);border:1px solid #86efac;}
+.ox-ans.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.ox-verdict{font-size:14px;font-weight:900;margin-bottom:8px;}
+.ox-verdict.ok{color:var(--green);}
+.ox-verdict.ng{color:var(--red);}
+.ox-reason-box{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:10px;font-size:13px;line-height:1.8;}
+.ox-reason-box mark{background:#fde68a;padding:1px 3px;border-radius:2px;font-weight:700;color:var(--ink);}
+.ox-law{display:inline-block;font-size:10px;color:var(--teal);font-family:'DM Serif Display',serif;background:var(--teal-light);border:1px solid var(--teal);padding:2px 8px;border-radius:4px;margin-top:4px;}
+.ox-next-btn{display:block;width:100%;margin-top:12px;padding:11px;background:var(--ink);color:white;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.ox-next-btn:hover{opacity:.82;}
+
+/* 結果 */
+.ox-result{display:none;text-align:center;padding:28px 20px;background:white;border:2px solid var(--ink);border-radius:16px;margin:0 0 20px;}
+.ox-result h3{font-family:'Noto Serif JP',serif;font-size:1.3rem;font-weight:900;margin-bottom:8px;}
+.ox-result-score{font-family:'DM Serif Display',serif;font-size:48px;color:var(--red);line-height:1;margin:8px 0 4px;}
+.ox-result-sub{font-size:13px;color:var(--gray);margin-bottom:20px;}
+.btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.ox-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:11px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.ox-restart-btn:hover{opacity:.82;}
+.ox-weak-btn{background:var(--red);color:white;border:none;border-radius:10px;padding:11px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+.ox-weak-btn:hover{opacity:.82;}
+
+/* 苦手なし */
+.no-weak{text-align:center;padding:40px 20px;background:white;border:2px solid var(--border);border-radius:16px;}
+
+/* 習熟度 */
+.mastery-wrap{max-width:820px;margin:16px auto 0;padding:0 20px 40px;}
+.mastery-title{font-size:12px;font-weight:700;color:var(--gray);letter-spacing:1px;margin-bottom:10px;}
+.mastery-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:12px;}
+.mastery-label{width:160px;flex-shrink:0;font-size:11px;color:var(--ink);}
+.mastery-track{flex:1;background:var(--border);border-radius:10px;height:8px;overflow:hidden;}
+.mastery-bar{height:8px;border-radius:10px;background:var(--teal);transition:width .6s ease;}
+.mastery-pct{width:32px;text-align:right;font-size:11px;font-weight:700;color:var(--teal);}
+
+/* ── 5択パネル ── */
+.mc-wrap{max-width:780px;margin:0 auto;padding:20px 20px 80px;}
+.mc-dash{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;margin-bottom:16px;}
+.mc-dash-top{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--border);}
+.mc-dash-cell{padding:12px 14px;text-align:center;border-right:1px solid var(--border);}
+.mc-dash-cell:last-child{border-right:none;}
+.mc-dash-num{font-family:'DM Serif Display',serif;font-size:28px;line-height:1;}
+.mc-dash-lbl{font-size:10px;color:var(--gray);font-weight:700;letter-spacing:1px;margin-top:2px;}
+.mc-prog-row{display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--warm);}
+.mc-prog-track{flex:1;background:var(--border);border-radius:10px;height:6px;overflow:hidden;}
+.mc-prog-bar{height:6px;background:linear-gradient(90deg,var(--blue),#60a5fa);border-radius:10px;width:0%;transition:width .5s;}
+.mc-prog-lbl{font-size:11px;color:var(--gray);white-space:nowrap;}
+
+.mc-card{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;margin-bottom:24px;}
+.mc-card-hd{display:flex;align-items:center;gap:12px;padding:11px 18px;background:var(--warm);border-bottom:1px solid var(--border);}
+.mc-card-num{font-family:'DM Serif Display',serif;font-size:28px;color:var(--blue);line-height:1;}
+.mc-card-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;background:var(--blue);color:white;border-radius:4px;padding:2px 8px;margin-bottom:3px;}
+.mc-card-cat{font-size:11px;color:var(--gray);}
+.mc-card-body{padding:18px 20px;}
+.mc-q{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;line-height:2.0;margin-bottom:16px;color:var(--ink);}
+.mc-q mark{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700;color:var(--ink);}
+.mc-options{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.mc-opt{border:2px solid var(--border);border-radius:10px;padding:11px 16px;cursor:pointer;font-size:13px;font-weight:500;transition:all .2s;background:white;text-align:left;font-family:inherit;line-height:1.7;}
+.mc-opt:hover:not(:disabled){border-color:var(--blue);background:var(--blue-light);}
+.mc-opt:disabled{cursor:default;}
+.mc-opt.correct{border-color:var(--green);background:var(--green-light);color:var(--green);font-weight:700;}
+.mc-opt.wrong{border-color:var(--red);background:var(--red-light);color:var(--red);}
+.mc-opt.unchosen{opacity:.5;}
+.mc-check-btn{background:var(--blue);color:white;border:none;border-radius:8px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s;font-family:inherit;}
+.mc-check-btn:hover{opacity:.82;}
+.mc-check-btn:disabled{opacity:.38;cursor:default;}
+.mc-ans{display:none;border-radius:10px;padding:16px 18px;font-size:13px;margin-top:8px;}
+.mc-ans.show{display:block;}
+.mc-ans.ok{background:var(--green-light);border:1px solid #86efac;}
+.mc-ans.ng{background:var(--red-light);border:1px solid #fca5a5;}
+.mc-ans-hd{font-weight:700;font-size:14px;margin-bottom:10px;}
+.mc-why{background:#fff3cd;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px;font-size:13px;line-height:1.8;}
+.mc-why mark{background:#fde68a;padding:1px 3px;border-radius:2px;font-weight:700;color:var(--ink);}
+/* 選択肢別解説テーブル */
+.mc-opts-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px;}
+.mc-opts-table tr{border-bottom:1px solid var(--border);}
+.mc-opts-table tr:last-child{border-bottom:none;}
+.mc-opts-table td{padding:7px 8px;vertical-align:top;line-height:1.8;}
+.mc-opts-table td:first-child{white-space:nowrap;font-weight:700;font-family:'DM Serif Display',serif;font-size:13px;width:32px;text-align:center;}
+.mc-opts-table mark{background:#fde68a;padding:1px 3px;border-radius:2px;font-weight:700;color:var(--ink);}
+.mc-opt-ok{background:var(--green-light);}
+.mc-opt-ok td:first-child{color:var(--green);}
+.mc-opt-ng{background:#fff8f8;}
+.mc-opt-ng td:first-child{color:var(--red);}
+.mc-point-box{background:var(--purple-light);border:1.5px solid #c4b5fd;border-radius:8px;padding:10px 14px;font-size:12px;line-height:1.9;margin-top:10px;}
+.mc-point-box mark{background:#ddd6fe;padding:1px 3px;border-radius:2px;font-weight:700;color:#4c1d95;}
+/* 試験のツボ */
+.mc-tubo-box{background:#0f172a;color:#fbbf24;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:6px 14px 4px;margin-top:12px;border-radius:8px 8px 0 0;}
+.mc-tubo-body{background:#1e293b;color:#e2e8f0;font-size:12px;line-height:1.9;padding:10px 14px 12px;border-radius:0 0 8px 8px;margin-bottom:2px;}
+.mc-tubo-body strong{color:#fbbf24;font-weight:700;}
+.mc-tubo-body mark{background:#854d0e;color:#fef9c3;padding:1px 3px;border-radius:2px;font-weight:700;}
+.mc-law{display:inline-block;margin-top:4px;font-size:10px;color:var(--teal);font-family:'DM Serif Display',serif;background:var(--teal-light);border:1px solid var(--teal);padding:2px 8px;border-radius:4px;}
+.mc-result{display:none;text-align:center;padding:28px 20px;background:white;border:2px solid var(--ink);border-radius:16px;margin-bottom:40px;}
+.mc-result h3{font-family:'Noto Serif JP',serif;font-size:1.3rem;font-weight:900;margin-bottom:8px;}
+.mc-result-score{font-family:'DM Serif Display',serif;font-size:48px;color:var(--blue);line-height:1;margin:8px 0 4px;}
+.mc-restart-btn{background:var(--ink);color:white;border:none;border-radius:10px;padding:11px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:16px;transition:opacity .2s;}
+.mc-restart-btn:hover{opacity:.82;}
+
+.mode-btn{padding:8px 16px;border-radius:8px;border:2px solid var(--border);background:white;font-size:12px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit;color:var(--ink);}
+.mode-btn:hover{border-color:var(--ink);}
+.mode-btn.active{background:var(--teal);color:white;border-color:var(--teal);}
+
+@media(max-width:600px){
+  .hd{padding:28px 16px 24px;}
+  .dash{padding:0 12px;}
+  .filter-wrap,.mastery-wrap{padding:0 12px;}
+  .ox-wrap,.mc-wrap{padding:0 12px 80px;}
+  .dash-top{grid-template-columns:1fr 1fr;}
+  .dash-num{font-size:24px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="back-btn" onclick="location.href='index.html'">← 目次に戻る</span>
+  <span class="topbar-title">Day12 ／ 過去問演習 ○×60問＋5択20問</span>
+</div>
+
+<nav class="tab-nav">
+  <div class="tab-nav-in">
+    <button class="tab-btn active" onclick="switchTab('ox',this)">⭕ ○×問題（60問）</button>
+    <button class="tab-btn t2" onclick="switchTab('mc',this)">📋 5択問題（60問）</button>
+  </div>
+</nav>
+
+<div id="panel-ox" class="tab-panel active">
+
+<div class="hd">
+  <div class="hd-in">
+    <div class="hd-eye">LABOR SAFETY AND HEALTH LAW — PAST EXAM PRACTICE</div>
+    <h1>国年法 <em>過去問○×演習</em>　60問</h1>
+    <div class="hd-sub">頻出論点を網羅 ― 全セクション横断・苦手モード搭載　<span style="background:#c84b31;color:white;font-size:10px;padding:2px 8px;border-radius:4px;margin-left:8px;">Day12</span></div>
+  </div>
+</div>
+
+<div class="dash">
+  <div class="dash-inner">
+    <div class="dash-top">
+      <div class="dash-cell"><div class="dash-num red" id="ox-remaining">60</div><div class="dash-lbl">残り</div></div>
+      <div class="dash-cell"><div class="dash-num green" id="ox-ok">0</div><div class="dash-lbl">正解</div></div>
+      <div class="dash-cell"><div class="dash-num red" id="ox-ng">0</div><div class="dash-lbl">不正解</div></div>
+      <div class="dash-cell"><div class="dash-num gold" id="ox-weak">0</div><div class="dash-lbl">苦手</div></div>
+    </div>
+    <div class="dash-streak">
+      <span>進捗</span>
+      <span class="streak-badge" id="ox-pct">0%</span>
+      <span id="ox-mode-lbl" style="font-size:11px;color:var(--gray);margin-left:auto;"></span>
+    </div>
+  </div>
+</div>
+
+<div class="prog-wrap">
+  <div class="prog-track"><div class="prog-bar" id="ox-prog-bar"></div></div>
+  <div class="prog-lbl" id="ox-prog-lbl">0 ／ 60 問 回答済み</div>
+</div>
+
+<div class="filter-wrap">
+  <div class="filter-label">セクションで絞り込む</div>
+  <div class="filter-chips">
+    <div class="fc-chip active" data-sec="all" onclick="oxSetFilter('all',this)">全て (60)</div>
+    <div class="fc-chip s1" data-sec="①目的・被保険者" onclick="oxSetFilter('①目的・被保険者',this)">①目的・被保険者</div>
+    <div class="fc-chip s2" data-sec="②標準報酬・保険料" onclick="oxSetFilter('②標準報酬・保険料',this)">②標準報酬・保険料</div>
+    <div class="fc-chip s3" data-sec="③老齢厚生年金" onclick="oxSetFilter('③老齢厚生年金',this)">③老齢厚生年金</div>
+    <div class="fc-chip s4" data-sec="④在職老齢・特別支給" onclick="oxSetFilter('④在職老齢・特別支給',this)">④在職老齢</div>
+    <div class="fc-chip s5" data-sec="⑤障害厚生年金" onclick="oxSetFilter('⑤障害厚生年金',this)">⑤障害厚生年金</div>
+    <div class="fc-chip s6" data-sec="⑥遺族厚生年金" onclick="oxSetFilter('⑥遺族厚生年金',this)">⑥遺族厚生年金</div>
+    <div class="fc-chip s7" data-sec="⑦脱退一時金等" onclick="oxSetFilter('⑦脱退一時金等',this)">⑦脱退・時効</div>
+    <div class="fc-chip s8" data-sec="⑧離婚分割・管掌" onclick="oxSetFilter('⑧離婚分割・管掌',this)">⑧離婚分割</div>
+    <div class="fc-chip s9" data-sec="⑨3科目横断" onclick="oxSetFilter('⑨3科目横断',this)">⑨3科目横断</div>
+    <div class="fc-chip s10" data-sec="⑩総仕上げ" onclick="oxSetFilter('⑩総仕上げ',this)">⑩総仕上げ</div>
+    <div class="fc-chip weak" data-sec="weak" onclick="oxSetFilter('weak',this)">🔥 苦手のみ</div>
+  </div>
+  </div>
+  <div style="max-width:820px;margin:10px auto 0;padding:0 20px;display:flex;gap:8px;flex-wrap:wrap;">
+  <button class="mode-btn" id="ox-shuffle-btn" onclick="oxToggleShuffle(this)">🔀 シャッフル：OFF</button>
+</div>
+
+<div class="ox-wrap">
+  <div class="ox-meta">
+    <div><span class="ox-counter" id="ox-counter-num">1</span><span> / <span id="ox-counter-total">60</span></span></div>
+    <div class="ox-section-tag" id="ox-sec-tag"></div>
+  </div>
+
+  <div id="ox-card-area"></div>
+
+  <div class="no-weak" id="ox-no-weak" style="display:none;">
+    <span style="font-size:48px;display:block;margin-bottom:12px;">🎉</span>
+    <div style="font-family:'Noto Serif JP',serif;font-size:1.2rem;font-weight:900;margin-bottom:8px;">苦手問題がありません！</div>
+    <div style="font-size:13px;color:var(--gray);">全問に挑戦してみましょう。</div>
+    <button class="ox-restart-btn" style="margin-top:16px;" onclick="oxSetFilter('all',document.querySelector('[data-sec=all]'))">全問に戻る</button>
+  </div>
+
+  <div class="ox-result" id="ox-result">
+    <span style="font-size:36px;display:block;margin-bottom:8px;" id="ox-emoji">🏆</span>
+    <h3>演習完了！</h3>
+    <div class="ox-result-score" id="ox-result-score">0 / 60</div>
+    <div class="ox-result-sub" id="ox-result-sub"></div>
+    <div class="btn-row">
+      <button class="ox-restart-btn" onclick="oxRestart()">🔁 もう一周</button>
+      <button class="ox-weak-btn" id="ox-btn-retry-weak" onclick="oxRetryWeak()" style="display:none;">🔥 苦手だけ再挑戦</button>
+    </div>
+  </div>
+</div>
+
+<div class="mastery-wrap" id="ox-mastery-wrap" style="display:none;">
+  <div class="mastery-title">📊 セクション別 正解率</div>
+  <div id="ox-mastery-bars"></div>
+</div>
+
+</div><!-- /panel-ox -->
+
+<div id="panel-mc" class="tab-panel">
+<div class="mc-wrap">
+  <div class="hd" style="margin:-20px -20px 20px;border-radius:0;">
+    <div class="hd-in">
+      <div class="hd-eye">NATIONAL PENSION LAW — 5-CHOICE EXAM</div>
+      <h1>国年法 <em>5択過去問</em>　60問</h1>
+      <div class="hd-sub">本試験形式 ― 5肢から1つを選択・全論点網羅版</div>
+    </div>
+  </div>
+
+  <div class="mc-dash">
+    <div class="mc-dash-top">
+      <div class="mc-dash-cell"><div class="mc-dash-num" id="mc-answered" style="color:var(--blue);">0</div><div class="mc-dash-lbl">回答済み</div></div>
+      <div class="mc-dash-cell"><div class="mc-dash-num" id="mc-ok" style="color:var(--green);">0</div><div class="mc-dash-lbl">正解</div></div>
+      <div class="mc-dash-cell"><div class="mc-dash-num" id="mc-ng" style="color:var(--red);">0</div><div class="mc-dash-lbl">不正解</div></div>
+    </div>
+    <div class="mc-prog-row">
+      <div class="mc-prog-track"><div class="mc-prog-bar" id="mc-prog-bar"></div></div>
+      <div class="mc-prog-lbl" id="mc-prog-lbl">0 ／ 60 問</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:8px;margin-bottom:16px;">
+    <button class="mode-btn" id="mc-shuffle-btn" onclick="mcToggleShuffle(this)">🔀 シャッフル：OFF</button>
+  </div>
+
+  <div id="mc-cards"></div>
+
+  <div class="mc-result" id="mc-result">
+    <span style="font-size:36px;display:block;margin-bottom:8px;" id="mc-emoji">🏆</span>
+    <h3>5択演習 完了！</h3>
+    <div class="mc-result-score" id="mc-result-score">0 / 20</div>
+    <div style="font-size:13px;color:var(--gray);margin-bottom:4px;" id="mc-result-sub"></div>
+    <button class="mc-restart-btn" onclick="mcRestart()">🔁 もう一周する</button>
+  </div>
+</div>
+</div><!-- /panel-mc -->
+
+<script>
+// =====================================================
+// タブ切替
+// =====================================================
+function switchTab(name, btn) {
+  var panels = document.querySelectorAll('.tab-panel');
+  var btns = document.querySelectorAll('.tab-btn');
+  for (var i = 0; i < panels.length; i++) { panels[i].classList.remove('active'); }
+  for (var i = 0; i < btns.length; i++) { btns[i].classList.remove('active'); }
+  document.getElementById('panel-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+var OX_DATA = [
+{id:'OX01',sec:'①安全衛生管理体制',cat:'安全管理者',correct:false,
+ q:'安全管理者はすべての業種において常時50人以上の事業場で選任義務がある。',
+ reason:'安全管理者は<mark>特定業種のみ</mark>（製造業・建設業等）義務。衛生管理者・産業医は全業種。',law:'安衛法第11条'},
+{id:'OX02',sec:'①安全衛生管理体制',cat:'衛生管理者',correct:true,
+ q:'衛生管理者はすべての業種において常時50人以上の事業場で選任義務がある。',
+ reason:'衛生管理者（法第12条）：<mark>全業種・常時50人以上</mark>で選任義務（業種制限なし）。',law:'安衛法第12条'},
+{id:'OX03',sec:'①安全衛生管理体制',cat:'総括安全衛生管理者',correct:false,
+ q:'製造業では常時100人以上の事業場で総括安全衛生管理者の選任義務がある。',
+ reason:'製造業等は<mark>300人以上</mark>（100人は建設業・林業・鉱業・運送業・清掃業）。',law:'安衛法第10条'},
+{id:'OX04',sec:'①安全衛生管理体制',cat:'産業医',correct:true,
+ q:'産業医は常時1000人以上（有害業務は500人以上）の事業場では専属でなければならない。',
+ reason:'専属産業医：常時<mark>1000人以上</mark>（有害業務は<mark>500人以上</mark>）の事業場で必要。',law:'安衛法第13条'},
+{id:'OX05',sec:'①安全衛生管理体制',cat:'安全委員会',correct:false,
+ q:'安全委員会はすべての業種において常時50人以上の事業場で設置義務がある。',
+ reason:'安全委員会は<mark>安全管理者選任義務のある事業場</mark>（特定業種50人以上）のみ。',law:'安衛法第17条'},
+{id:'OX06',sec:'①安全衛生管理体制',cat:'衛生委員会',correct:true,
+ q:'衛生委員会はすべての業種において常時50人以上の事業場で設置義務がある。',
+ reason:'衛生委員会（法第18条）：<mark>全業種・常時50人以上</mark>で設置義務。',law:'安衛法第18条'},
+{id:'OX07',sec:'①安全衛生管理体制',cat:'委員会の開催',correct:true,
+ q:'安全委員会および衛生委員会は毎月1回以上開催しなければならない。',
+ reason:'安全委員会・衛生委員会：<mark>毎月1回以上</mark>開催義務（特定元方の協議組織の毎作業日とは異なる）。',law:'安衛法第17条・18条'},
+{id:'OX08',sec:'①安全衛生管理体制',cat:'安衛推進者',correct:true,
+ q:'常時10人以上50人未満の事業場では安全衛生推進者または衛生推進者を選任しなければならない。',
+ reason:'安全衛生推進者（または衛生推進者）：<mark>常時10〜49人</mark>の事業場で選任義務。',law:'安衛法第12条の2'},
+{id:'OX09',sec:'②危険有害業務・就業制限',cat:'就業制限',correct:true,
+ q:'クレーン運転等の就業制限業務には免許取得者または技能講習修了者でなければ従事させてはならない。',
+ reason:'就業制限（法第61条）：<mark>免許取得者または技能講習修了者</mark>のみ就業制限業務に従事可。',law:'安衛法第61条'},
+{id:'OX10',sec:'②危険有害業務・就業制限',cat:'就業制限',correct:false,
+ q:'特別教育を修了した者はすべての危険業務に就くことができる。',
+ reason:'就業制限業務には<mark>免許または技能講習修了</mark>が必要（特別教育だけでは不可）。',law:'安衛法第61条'},
+{id:'OX11',sec:'②危険有害業務・就業制限',cat:'雇入れ時教育',correct:true,
+ q:'雇入れ時の安全衛生教育は業種・規模を問わずすべての事業場で義務がある。',
+ reason:'雇入れ時教育（法第59条）：<mark>全業種・全規模</mark>（50人未満も含む）に義務。',law:'安衛法第59条'},
+{id:'OX12',sec:'②危険有害業務・就業制限',cat:'職長教育',correct:false,
+ q:'職長教育はすべての業種の事業場において新たに職長となった者に実施しなければならない。',
+ reason:'職長教育は<mark>特定業種</mark>（製造業・建設業等）の新任職長のみ義務（全業種ではない）。',law:'安衛法第60条'},
+{id:'OX13',sec:'②危険有害業務・就業制限',cat:'定期健診',correct:true,
+ q:'定期健康診断は常時使用する労働者に対して1年以内ごとに1回実施しなければならない。',
+ reason:'定期健診：常時使用する労働者に<mark>年1回以上</mark>実施義務。',law:'安衛法第66条'},
+{id:'OX14',sec:'②危険有害業務・就業制限',cat:'健診の保存',correct:false,
+ q:'健康診断の結果の記録は3年間保存すれば足りる。',
+ reason:'健康診断結果の保存期間は<mark>5年間</mark>（3年は定期自主検査との混同）。',law:'安衛法第66条の3'},
+{id:'OX15',sec:'②危険有害業務・就業制限',cat:'特殊健診',correct:true,
+ q:'有害業務に従事する労働者への特殊健康診断は6ヶ月以内ごとに1回実施しなければならない。',
+ reason:'特殊健診：有害業務従事者に<mark>6ヶ月以内ごとに1回</mark>（定期の年1回より頻繁）。',law:'安衛法第66条'},
+{id:'OX16',sec:'②危険有害業務・就業制限',cat:'フォークリフト',correct:false,
+ q:'特別教育を修了した者はフォークリフトを運転することができる。',
+ reason:'フォークリフトは<mark>就業制限業務</mark>なので<mark>技能講習修了</mark>が必要（特別教育だけでは不可）。',law:'安衛法第61条'},
+{id:'OX17',sec:'③ストレスチェック・健康管理',cat:'SC義務',correct:true,
+ q:'ストレスチェックは常時50人以上の事業場に年1回以上の実施義務がある。',
+ reason:'安衛法第66条の10：常時<mark>50人以上</mark>の事業場に年1回以上の実施義務。',law:'安衛法第66条の10'},
+{id:'OX18',sec:'③ストレスチェック・健康管理',cat:'SC実施者',correct:false,
+ q:'事業者はストレスチェックの実施者となることができる。',
+ reason:'実施者は<mark>医師・保健師等</mark>に限定。<mark>事業者は実施者になれない</mark>（利益相反防止のため）。',law:'安衛法第66条の10'},
+{id:'OX19',sec:'③ストレスチェック・健康管理',cat:'SC結果通知',correct:false,
+ q:'ストレスチェックの結果は事業者に直接通知される。',
+ reason:'結果は<mark>労働者本人に直接通知</mark>。事業者への提供は<mark>労働者本人の同意</mark>が必要。',law:'安衛法第66条の10'},
+{id:'OX20',sec:'③ストレスチェック・健康管理',cat:'SC集団分析',correct:false,
+ q:'ストレスチェックの集団分析は事業者に義務付けられている。',
+ reason:'集団分析は事業者に<mark>努力義務</mark>（義務ではなく罰則もない）。',law:'安衛法第66条の10'},
+{id:'OX21',sec:'③ストレスチェック・健康管理',cat:'面接指導',correct:false,
+ q:'面接指導は月100時間超の時間外・休日労働を行った労働者が申し出た場合に実施義務がある。',
+ reason:'面接指導の要件は月<mark>80時間超</mark>（100時間は36協定の絶対上限との混同）。',law:'安衛法第66条の8'},
+{id:'OX22',sec:'③ストレスチェック・健康管理',cat:'死傷病報告',correct:true,
+ q:'休業4日以上の労働災害が発生した場合、遅滞なく所轄労働基準監督署長に報告しなければならない。',
+ reason:'休業<mark>4日以上</mark>の労災：<mark>遅滞なく</mark>所轄労基署長に報告（死傷病報告）。',law:'安衛法第100条'},
+{id:'OX23',sec:'③ストレスチェック・健康管理',cat:'1〜3日報告',correct:true,
+ q:'休業1〜3日の労働災害は四半期ごとに集計して報告しなければならない。',
+ reason:'休業<mark>1〜3日</mark>の労災：<mark>四半期ごと</mark>に集計して報告（年4回）。',law:'安衛法・労安則第97条'},
+{id:'OX24',sec:'③ストレスチェック・健康管理',cat:'SC不利益禁止',correct:true,
+ q:'ストレスチェックを受けたことを理由として事業者が不利益な取扱いをすることは禁止されている。',
+ reason:'ストレスチェック受検・結果を理由とした<mark>不利益取扱いは禁止</mark>（解雇・降格等）。',law:'安衛法第66条の10'},
+{id:'OX25',sec:'④リスクアセスメント・化学物質',cat:'RA義務',correct:true,
+ q:'令和4年4月から対象化学物質のリスクアセスメントが義務化された。',
+ reason:'令和4年4月〜：対象化学物質（約<mark>2900</mark>物質）のRAが<mark>義務</mark>（努力義務→義務）。',law:'安衛法第57条の3'},
+{id:'OX26',sec:'④リスクアセスメント・化学物質',cat:'RA手順',correct:true,
+ q:'リスクアセスメントの手順は①危険性・有害性の特定→②リスクの見積り→③優先順位決定→④措置の実施の順である。',
+ reason:'RAの手順：<mark>特定→見積り→優先順位→実施</mark>の4段階が正しい順序。',law:'安衛法第28条の2'},
+{id:'OX27',sec:'④リスクアセスメント・化学物質',cat:'製造禁止',correct:false,
+ q:'製造禁止物質はいかなる目的でも製造することができない。',
+ reason:'製造禁止物質でも<mark>試験研究目的</mark>に限り厚生労働大臣の許可で製造可能。',law:'安衛法第55条'},
+{id:'OX28',sec:'④リスクアセスメント・化学物質',cat:'石綿禁止',correct:true,
+ q:'石綿は製造・輸入・使用等がすべて禁止されている。',
+ reason:'石綿：<mark>製造・輸入・使用等すべて禁止</mark>（石綿障害予防規則）。',law:'安衛法・石綿障害予防規則'},
+{id:'OX29',sec:'④リスクアセスメント・化学物質',cat:'石綿記録',correct:true,
+ q:'石綿健康診断の記録は40年間保存しなければならない。',
+ reason:'石綿健診記録：<mark>40年間</mark>保存（中皮腫の潜伏期間30〜40年に対応）。',law:'石綿障害予防規則'},
+{id:'OX30',sec:'④リスクアセスメント・化学物質',cat:'ラベル表示',correct:true,
+ q:'化学物質を譲渡・提供する際にはラベル表示とSDSの交付が義務付けられている。',
+ reason:'ラベル表示・SDS交付：<mark>譲渡・提供</mark>時に義務（令和4年改正で対象物質が大幅拡大）。',law:'安衛法第57条・57条の2'},
+{id:'OX31',sec:'④リスクアセスメント・化学物質',cat:'自律的管理',correct:true,
+ q:'令和4年の化学物質規制改革のキーワードは「自律的な管理」である。',
+ reason:'令和4年改正のキーワード：<mark>自律的な管理</mark>（事業者が自らリスクを評価・管理する体制）。',law:'安衛法改正（令和4年）'},
+{id:'OX32',sec:'⑤機械・設備の安全基準',cat:'特定機械',correct:true,
+ q:'ボイラー等の特定機械等は都道府県労働局長の製造許可と性能検査が必要である。',
+ reason:'特定機械等：<mark>都道府県労働局長</mark>の<mark>製造許可＋性能検査</mark>が必要。',law:'安衛法第41条・42条'},
+{id:'OX33',sec:'⑤機械・設備の安全基準',cat:'特定機械',correct:false,
+ q:'特定機械等の製造許可は労働基準監督署長に申請する。',
+ reason:'特定機械等の製造許可：<mark>都道府県労働局長</mark>に申請（労基署長ではない）。',law:'安衛法第41条'},
+{id:'OX34',sec:'⑤機械・設備の安全基準',cat:'定期自主検査',correct:true,
+ q:'定期自主検査の結果は3年間記録・保存しなければならない。',
+ reason:'定期自主検査の記録：<mark>3年間</mark>保存（健診5年・石綿40年との混同に注意）。',law:'安衛法第45条'},
+{id:'OX35',sec:'⑤機械・設備の安全基準',cat:'定期自主検査',correct:false,
+ q:'定期自主検査の結果の記録は1年間保存すれば足りる。',
+ reason:'定期自主検査の記録保存は<mark>3年間</mark>（1年は誤り）。',law:'安衛法第45条'},
+{id:'OX36',sec:'⑤機械・設備の安全基準',cat:'型式検定',correct:true,
+ q:'防じんマスクは型式検定に合格したものでなければ使用させてはならない。',
+ reason:'防じんマスク等の保護具：<mark>型式検定合格品</mark>のみ使用可。',law:'安衛法第42条'},
+{id:'OX37',sec:'⑤機械・設備の安全基準',cat:'型式検定',correct:false,
+ q:'安全帽（ヘルメット）は型式検定の対象外である。',
+ reason:'安全帽（ヘルメット）も<mark>型式検定対象</mark>（保護帽として国の検定が必要）。',law:'安衛法第42条'},
+{id:'OX38',sec:'⑤機械・設備の安全基準',cat:'安全装置',correct:true,
+ q:'機械の危険な部分には覆い・囲い等の安全装置を設けなければならない。',
+ reason:'危険部分には<mark>安全装置（覆い・囲い等）</mark>の設置義務。',law:'安衛法第20条'},
+{id:'OX39',sec:'⑥建設業・製造業の特別規制',cat:'統括',correct:true,
+ q:'建設業等で元請・下請合計常時50人以上が混在する場合、元方事業者は統括安全衛生責任者を選任しなければならない。',
+ reason:'統括安全衛生責任者：元請・下請合計<mark>常時50人以上</mark>混在で選任義務（建設業等）。',law:'安衛法第15条'},
+{id:'OX40',sec:'⑥建設業・製造業の特別規制',cat:'統括',correct:false,
+ q:'建設業で下請業者を使用しさえすれば統括安全衛生責任者の選任義務が生じる。',
+ reason:'統括安全衛生責任者の選任義務は元請・下請合計<mark>常時50人以上</mark>が条件。',law:'安衛法第15条'},
+{id:'OX41',sec:'⑥建設業・製造業の特別規制',cat:'毎作業日会議',correct:true,
+ q:'特定元方事業者は安全衛生に関する協議組織を設けて毎作業日に会議を開催しなければならない。',
+ reason:'特定元方事業者の協議組織：<mark>毎作業日</mark>に会議を開催義務（週1回等は不足）。',law:'安衛法第30条'},
+{id:'OX42',sec:'⑥建設業・製造業の特別規制',cat:'毎作業日会議',correct:false,
+ q:'特定元方事業者の協議組織の会議は週1回以上開催すれば足りる。',
+ reason:'協議組織の会議は<mark>毎作業日</mark>に開催義務（週1回では不足）。',law:'安衛法第30条'},
+{id:'OX43',sec:'⑥建設業・製造業の特別規制',cat:'元方の指導義務',correct:true,
+ q:'元方事業者は関係請負人及びその労働者が安衛法の規定に違反しないよう必要な指導を行わなければならない。',
+ reason:'元方事業者：<mark>関係請負人（下請）が安衛法に違反しないよう指導義務</mark>。',law:'安衛法第29条'},
+{id:'OX44',sec:'⑥建設業・製造業の特別規制',cat:'計画届出',correct:false,
+ q:'建設工事の計画は工事開始の14日前までに届け出なければならない。',
+ reason:'建設工事の計画届出：工事開始<mark>30日前</mark>まで（14日は誤り）。',law:'安衛法第88条'},
+{id:'OX45',sec:'⑥建設業・製造業の特別規制',cat:'計画届出先',correct:true,
+ q:'一定の建設工事の計画は工事開始の30日前までに所轄労働基準監督署長に届け出なければならない。',
+ reason:'計画届出：工事開始<mark>30日前</mark>までに<mark>所轄労基署長</mark>（大規模は厚生労働大臣）へ。',law:'安衛法第88条'},
+{id:'OX46',sec:'⑥建設業・製造業の特別規制',cat:'下請の義務',correct:false,
+ q:'建設現場では元方事業者が安全管理を行えば下請業者は安全管理を行わなくてよい。',
+ reason:'下請業者（関係請負人）にも<mark>安全管理の義務</mark>（安全衛生責任者の選任等）がある。',law:'安衛法第16条'},
+{id:'OX47',sec:'⑦監督・罰則・申告',cat:'申告',correct:true,
+ q:'労働者は安衛法違反の事実を労働基準監督署長に申告することができる。',
+ reason:'安衛法第97条：労働者は<mark>労働基準監督署長</mark>に申告可能。申告理由の不利益取扱い禁止。',law:'安衛法第97条'},
+{id:'OX48',sec:'⑦監督・罰則・申告',cat:'不利益禁止',correct:true,
+ q:'申告を理由として事業者が労働者を解雇その他の不利益な取扱いをすることは禁止されている。',
+ reason:'申告を理由とした<mark>解雇その他の不利益取扱いは禁止</mark>（内部告発者保護）。',law:'安衛法第97条'},
+{id:'OX49',sec:'⑦監督・罰則・申告',cat:'罰則',correct:true,
+ q:'安衛法の主な違反には6ヶ月以下の懲役または50万円以下の罰金が規定されている。',
+ reason:'安衛法の主な罰則：<mark>6ヶ月以下の懲役または50万円以下の罰金</mark>（労基法1年以下と異なる）。',law:'安衛法第119条'},
+{id:'OX50',sec:'⑦監督・罰則・申告',cat:'罰則比較',correct:false,
+ q:'安衛法の主な罰則は労基法と同じく1年以下の懲役である。',
+ reason:'安衛法：<mark>6ヶ月以下</mark>の懲役・労基法：<mark>1年以下</mark>の懲役（異なる）。',law:'安衛法第119条・労基法第119条'},
+{id:'OX51',sec:'⑦監督・罰則・申告',cat:'両罰規定',correct:true,
+ q:'安衛法では違反した行為者だけでなく事業者（法人等）も罰金刑の対象となる両罰規定がある。',
+ reason:'安衛法第122条：<mark>両罰規定</mark>（行為者＋事業者（法人等）も罰金刑対象）。',law:'安衛法第122条'},
+{id:'OX52',sec:'⑦監督・罰則・申告',cat:'停止命令',correct:true,
+ q:'労働基準監督官は重大な違反に対して作業の停止・建設物の使用停止等を命じることができる。',
+ reason:'労働基準監督官の命令権限：<mark>作業停止・建設物使用停止等</mark>（行政命令・法的拘束力あり）。',law:'安衛法第98条'},
+{id:'OX53',sec:'⑦監督・罰則・申告',cat:'是正勧告',correct:false,
+ q:'是正勧告は行政命令であり事業者は法的義務として必ず従わなければならない。',
+ reason:'是正勧告は<mark>行政指導</mark>（法的拘束力なし）。停止命令（行政命令）とは異なる。',law:'安衛法（行政指導と行政命令の違い）'},
+{id:'OX54',sec:'⑦監督・罰則・申告',cat:'申告先',correct:false,
+ q:'安衛法違反の申告先は都道府県知事である。',
+ reason:'申告先は<mark>労働基準監督署長</mark>（都道府県知事ではない）。',law:'安衛法第97条'},
+{id:'OX55',sec:'⑧3科目横断・目的条文・改正',cat:'目的条文',correct:true,
+ q:'安衛法の目的条文には「快適な職場環境の形成を促進する」という安衛法固有の文言が含まれている。',
+ reason:'安衛法第1条：「<mark>快適な職場環境の形成を促進</mark>」は<mark>安衛法固有</mark>の文言（他法律にはない）。',law:'安衛法第1条'},
+{id:'OX56',sec:'⑧3科目横断・目的条文・改正',cat:'50人共通義務',correct:true,
+ q:'産業医・衛生管理者・ストレスチェックの3つはいずれも常時50人以上の事業場に義務がある。',
+ reason:'<mark>産業医・衛生管理者・ストレスチェック</mark>：すべて<mark>常時50人以上</mark>で義務（3セット暗記）。',law:'安衛法第12条・13条・66条の10'},
+{id:'OX57',sec:'⑧3科目横断・目的条文・改正',cat:'罰則横断',correct:true,
+ q:'安衛法の主な罰則（6ヶ月以下の懲役）は労基法の主な罰則（1年以下の懲役）より軽い。',
+ reason:'安衛法：<mark>6ヶ月以下</mark>の懲役・労基法：<mark>1年以下</mark>の懲役（懲役刑が異なる）。',law:'安衛法第119条・労基法第119条'},
+{id:'OX58',sec:'⑧3科目横断・目的条文・改正',cat:'保存期間横断',correct:true,
+ q:'健康診断結果（5年）・定期自主検査（3年）・石綿記録（40年）は異なる保存期間が設定されている。',
+ reason:'保存期間の比較：健診<mark>5年</mark>・定期自主検査<mark>3年</mark>・石綿記録<mark>40年</mark>（それぞれ異なる）。',law:'安衛法各条'},
+{id:'OX59',sec:'⑧3科目横断・目的条文・改正',cat:'安全vs衛生',correct:false,
+ q:'安全管理者もすべての業種において常時50人以上の事業場で選任義務がある。',
+ reason:'安全管理者は<mark>特定業種のみ</mark>（全業種ではない）。衛生管理者は全業種50人以上。',law:'安衛法第11条・12条'},
+{id:'OX60',sec:'⑧3科目横断・目的条文・改正',cat:'快適環境',correct:true,
+ q:'「快適な職場環境の形成を促進する」という安衛法の目的は健康経営の理念とも整合する。',
+ reason:'安衛法の「快適な職場環境」：<mark>健康経営</mark>（Well-being）の理念と整合し、積極的な職場環境改善を目指す。',law:'安衛法第1条・健康経営'}
+];
+
+
+var MC_DATA = [
+{id:'MC01',sec:'①安全衛生管理体制',cat:'安全管理者',
+ q:'安全管理者に関する次の記述のうち、正しいものはどれか。',
+ opts:['すべての業種において常時50人以上の事業場で選任義務がある','特定業種（製造業・建設業等）において常時50人以上の事業場で選任義務がある','建設業においてのみ選任義務がある','すべての業種において常時30人以上の事業場で選任義務がある'],answer:1,why:'安全管理者（法第11条）：<mark>特定業種のみ</mark>（製造業・建設業等）で常時50人以上の事業場に選任義務（全業種ではない）。'},
+{id:'MC02',sec:'①安全衛生管理体制',cat:'総括安全衛生管理者',
+ q:'総括安全衛生管理者の選任要件に関する次の記述のうち、誤っているものはどれか。',
+ opts:['建設業では常時100人以上の事業場で選任義務がある','製造業では常時300人以上の事業場で選任義務がある','その他の業種では常時1000人以上の事業場で選任義務がある','製造業では常時100人以上の事業場で選任義務がある'],answer:3,why:'製造業等は<mark>300人以上</mark>（100人は建設業・林業・鉱業・運送業・清掃業のみ）。「製造業で100人以上」は誤り。'},
+{id:'MC03',sec:'①安全衛生管理体制',cat:'産業医',
+ q:'産業医に関する次の記述のうち、正しいものはどれか。',
+ opts:['産業医は製造業においてのみ選任義務がある','常時500人以上（有害業務は300人以上）の事業場では専属産業医が必要である','全業種において常時50人以上の事業場で選任義務がある','産業医の巡視は3ヶ月に1回以上行わなければならない'],answer:2,why:'産業医（法第13条）：<mark>全業種・常時50人以上</mark>で選任義務。専属は<mark>1000人以上（有害500人以上）</mark>。巡視は毎月1回以上。'},
+{id:'MC04',sec:'①安全衛生管理体制',cat:'衛生委員会',
+ q:'衛生委員会に関する次の記述のうち、正しいものはどれか。',
+ opts:['安全管理者選任義務のある事業場のみに設置義務がある','全業種において常時50人以上の事業場で設置義務がある','全業種において常時30人以上の事業場で設置義務がある','委員会の開催は3ヶ月に1回以上でよい'],answer:1,why:'衛生委員会（法第18条）：<mark>全業種・常時50人以上</mark>で設置義務。開催は<mark>毎月1回以上</mark>。'},
+{id:'MC05',sec:'①安全衛生管理体制',cat:'安衛推進者',
+ q:'安全衛生推進者等の選任が必要な事業場の規模として正しいものはどれか。',
+ opts:['常時5人以上10人未満','常時10人以上50人未満','常時30人以上50人未満','常時50人以上100人未満'],answer:1,why:'安全衛生推進者（または衛生推進者）：<mark>常時10人以上50人未満</mark>の事業場で選任義務。'},
+{id:'MC06',sec:'①安全衛生管理体制',cat:'産業医の巡視',
+ q:'産業医の職場巡視に関する次の記述のうち、正しいものはどれか。',
+ opts:['少なくとも3ヶ月に1回作業場等を巡視しなければならない','少なくとも毎週1回作業場等を巡視しなければならない','少なくとも毎月1回作業場等を巡視しなければならない','巡視の頻度は事業場が自由に定めることができる'],answer:2,why:'産業医の巡視：少なくとも<mark>毎月1回</mark>（一定の条件下では2ヶ月に1回）作業場等を巡視義務。'},
+{id:'MC07',sec:'①安全衛生管理体制',cat:'委員会の委員長',
+ q:'衛生委員会の委員長として正しいものはどれか。',
+ opts:['産業医','衛生管理者','事業場においてその事業の実施を統括管理する者等','労働者の過半数を代表する者'],answer:2,why:'衛生委員会の委員長：<mark>事業の実施を統括管理する者等</mark>（総括安全衛生管理者等）が務める。'},
+{id:'MC08',sec:'①安全衛生管理体制',cat:'委員会の開催',
+ q:'安全委員会の開催頻度として正しいものはどれか。',
+ opts:['3ヶ月に1回以上','6ヶ月に1回以上','毎月1回以上','毎週1回以上'],answer:2,why:'安全委員会（法第17条）・衛生委員会（法第18条）：ともに<mark>毎月1回以上</mark>開催義務。'},
+{id:'MC09',sec:'②危険有害業務・就業制限',cat:'就業制限',
+ q:'就業制限業務に関する次の記述のうち、正しいものはどれか。',
+ opts:['特別教育修了者であればすべての就業制限業務に従事できる','就業制限業務には免許取得者または技能講習修了者でなければ従事させてはならない','就業制限業務は製造業にのみ存在する','就業制限業務は事業者が自由に指定することができる'],answer:1,why:'就業制限業務：<mark>免許取得者または技能講習修了者</mark>のみ従事可（特別教育だけでは不可）。'},
+{id:'MC10',sec:'②危険有害業務・就業制限',cat:'雇入れ時教育vs職長教育',
+ q:'雇入れ時の安全衛生教育に関する次の記述のうち、正しいものはどれか。',
+ opts:['常時50人以上の事業場でのみ義務がある','製造業・建設業等の特定業種にのみ義務がある','業種・規模を問わずすべての事業場で義務がある','常時10人以上の事業場でのみ義務がある'],answer:2,why:'雇入れ時教育（法第59条）：<mark>全業種・全規模</mark>（50人未満も含む）に義務（職長教育は特定業種のみ）。'},
+{id:'MC11',sec:'②危険有害業務・就業制限',cat:'健康診断の保存',
+ q:'健康診断の結果の記録の保存期間として正しいものはどれか。',
+ opts:['3年間','5年間','7年間','10年間'],answer:1,why:'健康診断結果の記録保存期間：<mark>5年間</mark>（定期自主検査の3年・石綿記録の40年と区別）。'},
+{id:'MC12',sec:'②危険有害業務・就業制限',cat:'石綿記録の保存',
+ q:'石綿健康診断の記録の保存期間として正しいものはどれか。',
+ opts:['5年間','10年間','30年間','40年間'],answer:3,why:'石綿健診記録：<mark>40年間</mark>保存（中皮腫の潜伏期間30〜40年に対応した特別な保存期間）。'},
+{id:'MC13',sec:'②危険有害業務・就業制限',cat:'特殊健診の頻度',
+ q:'有害業務に従事する労働者への特殊健康診断の実施頻度として正しいものはどれか。',
+ opts:['1年以内ごとに1回','6ヶ月以内ごとに1回','3ヶ月以内ごとに1回','毎月1回'],answer:1,why:'特殊健診：有害業務従事者に<mark>6ヶ月以内ごとに1回</mark>（定期健診の年1回より頻繁）。'},
+{id:'MC14',sec:'②危険有害業務・就業制限',cat:'就業制限の免許',
+ q:'就業制限業務に必要な免許の交付権者として正しいものはどれか。',
+ opts:['厚生労働大臣','都道府県労働局長','労働基準監督署長','市区町村長'],answer:1,why:'免許の交付：<mark>都道府県労働局長</mark>が交付（就業制限業務に必要な免許）。'},
+{id:'MC15',sec:'②危険有害業務・就業制限',cat:'フォークリフト',
+ q:'フォークリフトの運転に必要な資格として正しいものはどれか。',
+ opts:['特別教育修了','安全管理者の許可','技能講習修了','産業医の証明'],answer:2,why:'フォークリフト運転（就業制限業務）：<mark>技能講習修了</mark>が必要（特別教育だけでは不可）。'},
+{id:'MC16',sec:'③ストレスチェック・健康管理',cat:'SC義務の規模',
+ q:'ストレスチェックの実施義務がある事業場の規模として正しいものはどれか。',
+ opts:['常時30人以上','常時50人以上','常時100人以上','常時200人以上'],answer:1,why:'ストレスチェック（法第66条の10）：常時<mark>50人以上</mark>の事業場に年1回以上の実施義務。'},
+{id:'MC17',sec:'③ストレスチェック・健康管理',cat:'SC実施者',
+ q:'ストレスチェックの実施者として認められているものはどれか。',
+ opts:['事業者','人事部門の管理職','医師・保健師等','労働基準監督署長'],answer:2,why:'SC実施者：<mark>医師・保健師等</mark>（産業医等）に限定。事業者は実施者になれない（利益相反防止）。'},
+{id:'MC18',sec:'③ストレスチェック・健康管理',cat:'面接指導の要件',
+ q:'医師による面接指導の実施要件として正しいものはどれか。',
+ opts:['月60時間超の時間外・休日労働＋申出','月80時間超の時間外・休日労働＋申出','月100時間超の時間外・休日労働＋申出','月120時間超の時間外・休日労働＋申出'],answer:1,why:'面接指導の要件：月<mark>80時間超</mark>の時間外・休日労働＋<mark>労働者の申出</mark>（100時間は36協定の絶対上限）。'},
+{id:'MC19',sec:'③ストレスチェック・健康管理',cat:'SC集団分析',
+ q:'ストレスチェックの集団分析に関する次の記述のうち、正しいものはどれか。',
+ opts:['事業者に義務付けられており違反すると罰則がある','事業者に努力義務とされており違反しても罰則はない','実施者（医師等）に義務付けられている','厚生労働大臣への報告義務がある'],answer:1,why:'SC集団分析：事業者に<mark>努力義務</mark>（義務ではなく罰則もない）。実施義務（50人以上）とは別。'},
+{id:'MC20',sec:'③ストレスチェック・健康管理',cat:'死傷病報告の区分',
+ q:'労働者死傷病報告の方法として正しいものはどれか。',
+ opts:['休業1日以上はすべて遅滞なく報告する','休業4日以上は遅滞なく・休業1〜3日は四半期ごとに集計報告する','休業7日以上は遅滞なく・休業1〜6日は月ごとに集計報告する','すべての休業災害は月ごとに集計報告する'],answer:1,why:'死傷病報告：休業<mark>4日以上</mark>→<mark>遅滞なく</mark>・休業<mark>1〜3日</mark>→<mark>四半期ごとに集計</mark>して報告。'},
+{id:'MC21',sec:'③ストレスチェック・健康管理',cat:'SC結果の提供',
+ q:'ストレスチェックの結果を事業者に提供できる場合として正しいものはどれか。',
+ opts:['事業者が希望すれば常に提供できる','労働者本人の同意がある場合のみ提供できる','産業医の判断があれば同意なしに提供できる','衛生委員会の決議があれば提供できる'],answer:1,why:'SC結果の事業者提供：<mark>労働者本人の同意</mark>がある場合のみ（同意なしに提供することは守秘義務違反）。'},
+{id:'MC22',sec:'③ストレスチェック・健康管理',cat:'SC記録の保存',
+ q:'ストレスチェックの結果の記録の保存期間として正しいものはどれか。',
+ opts:['3年間','5年間','7年間','10年間'],answer:1,why:'ストレスチェックの結果記録：<mark>5年間</mark>保存義務（安衛法施行規則第52条の13）。'},
+{id:'MC23',sec:'④リスクアセスメント・化学物質',cat:'RAの手順',
+ q:'リスクアセスメントの手順として正しいものはどれか。',
+ opts:['リスクの見積り→危険性・有害性の特定→優先順位決定→措置の実施','危険性・有害性の特定→リスクの見積り→優先順位決定→措置の実施','措置の実施→危険性・有害性の特定→リスクの見積り→優先順位決定','優先順位決定→危険性・有害性の特定→リスクの見積り→措置の実施'],answer:1,why:'RAの手順：<mark>①危険性・有害性の特定→②リスクの見積り→③優先順位決定→④措置の実施</mark>の順。'},
+{id:'MC24',sec:'④リスクアセスメント・化学物質',cat:'RA義務化',
+ q:'令和4年4月から対象化学物質のリスクアセスメントに関する記述として正しいものはどれか。',
+ opts:['努力義務のまま変更なし','約680物質から約2900物質に対象が拡大し義務化された','約2900物質から約680物質に対象が縮小された','全事業場で義務化されたが対象物質数の変更はない'],answer:1,why:'令和4年4月〜：対象化学物質のRAが<mark>義務化</mark>（約<mark>2900物質</mark>・旧680物質から大幅拡大）。'},
+{id:'MC25',sec:'④リスクアセスメント・化学物質',cat:'製造禁止物質',
+ q:'製造禁止物質に関する次の記述のうち、正しいものはどれか。',
+ opts:['いかなる目的でも製造することができない','事業者の申請があれば製造することができる','試験研究目的に限り厚生労働大臣の許可で製造することができる','都道府県労働局長の許可があれば製造することができる'],answer:2,why:'製造禁止物質：<mark>試験研究目的</mark>に限り<mark>厚生労働大臣の許可</mark>で製造可能（完全禁止ではない）。'},
+{id:'MC26',sec:'④リスクアセスメント・化学物質',cat:'石綿の保存',
+ q:'石綿健康診断の記録の保存期間が特別に長い理由として最も適切なものはどれか。',
+ opts:['石綿の産業利用が広範だったため','中皮腫の潜伏期間が30〜40年と長いため','石綿の処理費用が高額なため','行政の監督強化のため'],answer:1,why:'石綿記録40年の理由：中皮腫（悪性胸膜中皮腫）の<mark>潜伏期間が30〜40年</mark>と長いため、記録が後に必要になる。'},
+{id:'MC27',sec:'④リスクアセスメント・化学物質',cat:'リスク低減の優先順位',
+ q:'リスク低減措置の優先順位として正しいものはどれか。',
+ opts:['PPE（個人保護具）→管理的対策→工学的対策→設計・計画での除去','設計・計画での除去→工学的対策→管理的対策→PPE（個人保護具）','管理的対策→設計・計画での除去→工学的対策→PPE（個人保護具）','工学的対策→設計・計画での除去→管理的対策→PPE（個人保護具）'],answer:1,why:'リスク低減優先順位：<mark>設計除去→工学的→管理的→PPE</mark>（源流対策が最優先・PPEは最後の手段）。'},
+{id:'MC28',sec:'④リスクアセスメント・化学物質',cat:'令和4年改正のキーワード',
+ q:'令和4年の化学物質規制改革のキーワードとして最も適切なものはどれか。',
+ opts:['集中的管理','自律的な管理','義務的管理','包括的管理'],answer:1,why:'令和4年改正のキーワード：<mark>自律的な管理</mark>（事業者が自らリスクを評価・管理する体制への転換）。'},
+{id:'MC29',sec:'④リスクアセスメント・化学物質',cat:'SDS',
+ q:'SDS（安全データシート）に関する次の記述のうち、正しいものはどれか。',
+ opts:['化学物質を購入した際に受領者が作成する','化学物質を譲渡・提供する際に提供側が交付する義務がある','化学物質の使用を開始した後に作成する','化学物質を保管する際に作成が必要となる'],answer:1,why:'SDS交付義務：化学物質を<mark>譲渡・提供</mark>する側に義務（受領側ではなく提供側に義務がある）。'},
+{id:'MC30',sec:'⑤機械・設備の安全基準',cat:'特定機械の許可権者',
+ q:'特定機械等の製造許可の申請先として正しいものはどれか。',
+ opts:['厚生労働大臣','都道府県労働局長','労働基準監督署長','市区町村長'],answer:1,why:'特定機械等の製造許可：<mark>都道府県労働局長</mark>に申請（労基署長ではなく都道府県レベルの機関）。'},
+{id:'MC31',sec:'⑤機械・設備の安全基準',cat:'定期自主検査の保存',
+ q:'定期自主検査の結果の記録の保存期間として正しいものはどれか。',
+ opts:['1年間','3年間','5年間','10年間'],answer:1,why:'定期自主検査の記録保存期間：<mark>3年間</mark>（健診の5年・石綿の40年と区別）。'},
+{id:'MC32',sec:'⑤機械・設備の安全基準',cat:'型式検定',
+ q:'型式検定に関する次の記述のうち、正しいものはどれか。',
+ opts:['防じんマスクは型式検定の対象外である','安全帽（ヘルメット）は型式検定の対象外である','防じんマスクおよび安全帽はともに型式検定の対象である','型式検定は都道府県知事が実施する'],answer:2,why:'型式検定対象：<mark>防じんマスク・防毒マスク・安全帽（ヘルメット）</mark>等（合格品のみ使用可）。'},
+{id:'MC33',sec:'⑤機械・設備の安全基準',cat:'安全装置',
+ q:'機械の安全装置に関する次の記述のうち、誤っているものはどれか。',
+ opts:['機械の危険な部分には覆い・囲い等の安全装置を設けなければならない','安全装置は常に有効な状態で保持しなければならない','作業効率のため一時的に安全装置を外すことは許可される場合がある','安全装置の機能を失わせるような行為は禁止されている'],answer:2,why:'安全装置を<mark>一時的に外すことも禁止</mark>（作業効率を理由とした除去は絶対不可）。'},
+{id:'MC34',sec:'⑤機械・設備の安全基準',cat:'保存期間比較',
+ q:'各種記録の保存期間に関する次の組み合わせのうち、正しいものはどれか。',
+ opts:['定期自主検査:1年間、健診結果:3年間、石綿記録:10年間','定期自主検査:3年間、健診結果:5年間、石綿記録:40年間','定期自主検査:5年間、健診結果:3年間、石綿記録:40年間','定期自主検査:3年間、健診結果:10年間、石綿記録:40年間'],answer:1,why:'保存期間：定期自主検査<mark>3年</mark>・健診結果<mark>5年</mark>・石綿記録<mark>40年</mark>が正しい組み合わせ。'},
+{id:'MC35',sec:'⑤機械・設備の安全基準',cat:'安衛法の条文',
+ q:'安衛法第20条と第21条の対象として正しいものはどれか。',
+ opts:['第20条:有害物による健康障害防止、第21条:機械による危険防止','第20条:機械による危険防止、第21条:有害物による健康障害防止','第20条と第21条はいずれも機械による危険防止を規定している','第20条と第21条はいずれも有害物による健康障害防止を規定している'],answer:1,why:'第20条：<mark>機械・設備等の危険防止</mark>措置義務。第21条：<mark>有害物・放射線等による健康障害防止</mark>措置義務。'},
+{id:'MC36',sec:'⑤機械・設備の安全基準',cat:'特定機械等',
+ q:'特定機械等に該当するものとして正しいものはどれか。',
+ opts:['フォークリフト','プレス機','ボイラー','グラインダー'],answer:2,why:'特定機械等：<mark>ボイラー・第一種圧力容器・クレーン・リフト</mark>等（高リスクの機械が対象）。'},
+{id:'MC37',sec:'⑥建設業・製造業の特別規制',cat:'統括の選任要件',
+ q:'統括安全衛生責任者の選任要件として正しいものはどれか。',
+ opts:['元請の労働者が50人以上の場合','下請業者を使用している場合','元請・下請合計で常時50人以上の労働者が混在する場合','元請・下請合計で常時30人以上の労働者が混在する場合'],answer:2,why:'統括安全衛生責任者：元請・下請合計<mark>常時50人以上</mark>混在が選任条件（30人では不足）。'},
+{id:'MC38',sec:'⑥建設業・製造業の特別規制',cat:'特定元方事業者の義務',
+ q:'特定元方事業者の協議組織に関する次の記述のうち、正しいものはどれか。',
+ opts:['月1回以上会議を開催すればよい','週1回以上会議を開催すればよい','毎作業日に会議を開催しなければならない','会議の頻度は任意に設定できる'],answer:2,why:'特定元方事業者の協議組織：<mark>毎作業日</mark>に会議を開催義務（週1回等は不足）。'},
+{id:'MC39',sec:'⑥建設業・製造業の特別規制',cat:'計画届出の期限',
+ q:'建設工事の計画届出の期限として正しいものはどれか。',
+ opts:['工事完了後30日以内','工事開始の7日前まで','工事開始の14日前まで','工事開始の30日前まで'],answer:3,why:'建設工事の計画届出：工事開始<mark>30日前</mark>まで（14日では不足・完了後は誤り）。'},
+{id:'MC40',sec:'⑥建設業・製造業の特別規制',cat:'計画届出先',
+ q:'一定の建設工事の計画届出先として正しいものはどれか。',
+ opts:['都道府県知事','厚生労働大臣または所轄労働基準監督署長','市区町村長','都道府県労働局長'],answer:1,why:'計画届出先：通常は<mark>所轄労基署長</mark>・大規模工事は<mark>厚生労働大臣</mark>へ（2種類の届出先あり）。'},
+{id:'MC41',sec:'⑥建設業・製造業の特別規制',cat:'安全衛生責任者',
+ q:'関係請負人（下請）の安全衛生責任者に関する次の記述のうち、正しいものはどれか。',
+ opts:['統括安全衛生責任者と連絡調整を行う','元請の労働基準監督署と連絡調整を行う','都道府県労働局長と連絡調整を行う','厚生労働大臣と連絡調整を行う'],answer:0,why:'安全衛生責任者（下請）：元請の<mark>統括安全衛生責任者と連絡調整</mark>を行う役割（安衛法第16条）。'},
+{id:'MC42',sec:'⑥建設業・製造業の特別規制',cat:'特定元方の巡視',
+ q:'特定元方事業者の作業場所の巡視の頻度として正しいものはどれか。',
+ opts:['月1回以上','週1回以上','毎作業日','2週間に1回以上'],answer:2,why:'特定元方事業者：<mark>毎作業日</mark>に作業場所を巡視義務（日々の安全確認が必要）。'},
+{id:'MC43',sec:'⑥建設業・製造業の特別規制',cat:'元方事業者の義務',
+ q:'元方事業者が関係請負人に対して負う義務として正しいものはどれか。',
+ opts:['関係請負人の賃金を直接支払う義務','関係請負人が安衛法に違反しないよう必要な指導を行う義務','関係請負人の労働者を直接雇用する義務','関係請負人の工事費用を負担する義務'],answer:1,why:'元方事業者（法第29条）：<mark>関係請負人が安衛法に違反しないよう必要な指導義務</mark>（安全管理の統括責任）。'},
+{id:'MC44',sec:'⑦監督・罰則・申告',cat:'安衛法の罰則',
+ q:'安衛法の主な罰則として正しいものはどれか。',
+ opts:['3ヶ月以下の懲役または30万円以下の罰金','6ヶ月以下の懲役または50万円以下の罰金','1年以下の懲役または50万円以下の罰金','2年以下の懲役または100万円以下の罰金'],answer:1,why:'安衛法の主な罰則（法第119条）：<mark>6ヶ月以下の懲役または50万円以下の罰金</mark>（労基法1年以下と異なる）。'},
+{id:'MC45',sec:'⑦監督・罰則・申告',cat:'申告先',
+ q:'安衛法違反の申告先として正しいものはどれか。',
+ opts:['都道府県知事','厚生労働大臣','労働基準監督署長','市区町村長'],answer:2,why:'安衛法第97条の申告先：<mark>労働基準監督署長</mark>（都道府県知事・厚生労働大臣ではない）。'},
+{id:'MC46',sec:'⑦監督・罰則・申告',cat:'是正勧告の性質',
+ q:'是正勧告の性質として正しいものはどれか。',
+ opts:['法的拘束力のある行政命令である','法的拘束力のない行政指導である','刑事訴追と同等の効力がある','都道府県知事が発する行政処分である'],answer:1,why:'是正勧告：<mark>行政指導</mark>（法的拘束力なし）。使用停止命令等（行政命令）は法的拘束力あり。'},
+{id:'MC47',sec:'⑦監督・罰則・申告',cat:'両罰規定',
+ q:'安衛法の両罰規定に関する次の記述のうち、正しいものはどれか。',
+ opts:['行為者のみが処罰され事業者（法人）は処罰されない','事業者（法人）のみが処罰され行為者は処罰されない','行為者と事業者（法人）の両方が処罰の対象となる','両罰規定は労基法にのみ存在し安衛法には存在しない'],answer:2,why:'安衛法第122条（両罰規定）：<mark>行為者＋事業者（法人等）の両方</mark>が処罰対象（行為者→懲役or罰金・法人→罰金）。'},
+{id:'MC48',sec:'⑦監督・罰則・申告',cat:'死傷病報告',
+ q:'労働者が休業1〜3日の労働災害に遭った場合の報告方法として正しいものはどれか。',
+ opts:['遅滞なく所轄労働基準監督署長に報告する','3ヶ月ごとに集計して報告する','四半期ごとに集計して報告する','年1回集計して報告する'],answer:2,why:'休業<mark>1〜3日</mark>の労災：<mark>四半期ごとに集計</mark>して報告（4日以上は遅滞なく報告と区別）。'},
+{id:'MC49',sec:'⑦監督・罰則・申告',cat:'監督官の権限',
+ q:'労働基準監督官の権限として正しいものはどれか。',
+ opts:['事業場への立入調査・帳簿書類の検査・労働者への質問等を行う権限を有する','事業者を直ちに逮捕する権限を有する','労働条件について仲裁を行う権限を有する','労働契約の内容を強制的に変更する権限を有する'],answer:0,why:'労働基準監督官の権限：<mark>臨検（立入調査）・帳簿書類の検査・労働者への質問</mark>等（司法警察員の権限も持つ）。'},
+{id:'MC50',sec:'⑦監督・罰則・申告',cat:'申告と不利益禁止',
+ q:'安衛法の申告制度に関する次の記述のうち、誤っているものはどれか。',
+ opts:['労働者は安衛法違反の事実を労働基準監督署長に申告することができる','申告は匿名で行うことができる','申告を理由として事業者が労働者を解雇することは禁止されている','申告は事業者の同意を得た上で行わなければならない'],answer:3,why:'申告は<mark>事業者の同意なく</mark>行うことができる。申告理由の不利益取扱い（解雇等）は禁止（法第97条）。'},
+{id:'MC51',sec:'⑦監督・罰則・申告',cat:'罰則の比較',
+ q:'安衛法と労基法の主な罰則の比較として正しいものはどれか。',
+ opts:['安衛法は労基法より重い罰則が規定されている','安衛法と労基法の罰則は同一である','安衛法の罰則（6ヶ月以下の懲役）は労基法（1年以下の懲役）より軽い','安衛法には懲役刑の規定がない'],answer:2,why:'安衛法：<mark>6ヶ月以下</mark>の懲役（労基法の<mark>1年以下</mark>より軽い）。罰金は50万円以下で同じ。'},
+{id:'MC52',sec:'⑧3科目横断・目的条文・改正',cat:'目的条文',
+ q:'安衛法の目的条文に含まれる安衛法固有の文言として正しいものはどれか。',
+ opts:['「良好な職場環境の保持」','「快適な職場環境の形成を促進」','「労働者の福祉の増進」','「安全な職場環境の確保」'],answer:1,why:'安衛法第1条：「<mark>快適な職場環境の形成を促進</mark>」が安衛法固有の文言（他の法律にはない）。'},
+{id:'MC53',sec:'⑧3科目横断・目的条文・改正',cat:'50人の共通義務',
+ q:'常時50人以上の事業場に共通して義務付けられているものとして正しいものはどれか。',
+ opts:['安全管理者の選任・産業医の選任・ストレスチェックの実施','衛生管理者の選任・産業医の選任・ストレスチェックの実施','安全管理者の選任・衛生管理者の選任・安全委員会の設置','総括安全衛生管理者の選任・産業医の選任・ストレスチェックの実施'],answer:1,why:'全業種50人以上の共通義務：<mark>衛生管理者・産業医・ストレスチェック</mark>（安全管理者は特定業種のみ）。'},
+{id:'MC54',sec:'⑧3科目横断・目的条文・改正',cat:'保存期間横断',
+ q:'各種記録の保存期間として正しいものはどれか。',
+ opts:['健診結果3年・定期自主検査5年・石綿記録10年','健診結果5年・定期自主検査3年・石綿記録40年','健診結果5年・定期自主検査5年・石綿記録40年','健診結果3年・定期自主検査3年・石綿記録40年'],answer:1,why:'保存期間：健診結果<mark>5年</mark>・定期自主検査<mark>3年</mark>・石綿記録<mark>40年</mark>が正しい組み合わせ。'},
+{id:'MC55',sec:'⑧3科目横断・目的条文・改正',cat:'罰則横断比較',
+ q:'安衛法と労基法の罰則の比較として正しいものはどれか。',
+ opts:['安衛法の懲役刑（6ヶ月以下）は労基法（1年以下）より軽い','安衛法の懲役刑（1年以下）は労基法（6ヶ月以下）より重い','安衛法と労基法の懲役刑は同じ（6ヶ月以下）である','安衛法には懲役刑の規定がなく罰金刑のみである'],answer:0,why:'安衛法：<mark>6ヶ月以下</mark>の懲役・労基法：<mark>1年以下</mark>の懲役（安衛法の方が軽い）。'},
+{id:'MC56',sec:'⑧3科目横断・目的条文・改正',cat:'委員会の開催頻度比較',
+ q:'開催頻度に関する次の比較のうち、正しいものはどれか。',
+ opts:['安全委員会・衛生委員会はともに毎作業日に開催義務がある','安全委員会・衛生委員会はともに毎月1回以上の開催義務があり、特定元方の協議組織は毎作業日に開催義務がある','安全委員会・衛生委員会はともに3ヶ月に1回以上の開催義務がある','特定元方の協議組織は毎月1回以上の開催義務があり、安全委員会・衛生委員会は毎作業日に開催義務がある'],answer:1,why:'安全委員会・衛生委員会：<mark>毎月1回以上</mark>。特定元方の協議組織：<mark>毎作業日</mark>（頻度が異なる）。'},
+{id:'MC57',sec:'⑧3科目横断・目的条文・改正',cat:'SC実施と集団分析',
+ q:'ストレスチェックの実施義務と集団分析の関係として正しいものはどれか。',
+ opts:['実施も集団分析もともに義務である','実施は努力義務であるが集団分析は義務である','実施は義務（50人以上）であるが集団分析は努力義務である','実施も集団分析もともに努力義務である'],answer:2,why:'SC実施：<mark>50人以上で義務</mark>（年1回以上）。集団分析：<mark>努力義務</mark>（義務ではなく罰則なし）。'},
+{id:'MC58',sec:'⑧3科目横断・目的条文・改正',cat:'令和4年改正の内容',
+ q:'令和4年4月の安衛法改正（化学物質規制改革）の内容として正しいものはどれか。',
+ opts:['リスクアセスメントの対象物質が約680から約2900に拡大し義務化された','リスクアセスメントの対象物質が約2900から約680に縮小された','全事業場でリスクアセスメントが義務化されたが対象物質数の変更はない','ラベル表示のみが義務化されリスクアセスメントは依然として努力義務のままである'],answer:0,why:'令和4年4月〜：対象化学物質のRAが<mark>義務化</mark>（対象物質：約<mark>2900物質</mark>・旧約680物質から大幅拡大）。'},
+{id:'MC59',sec:'⑧3科目横断・目的条文・改正',cat:'面接指導と36協定',
+ q:'面接指導の要件（月80時間超）と36協定の絶対上限（月100時間未満）の関係として正しいものはどれか。',
+ opts:['同じ規定であり、月80時間超と月100時間未満は矛盾している','全く異なる文脈の数字であり、80時間は過労死ラインの下限、100時間は36協定の絶対上限である','80時間超えた分については36協定が適用されなくなる','100時間を超えた場合に面接指導の義務が発生する'],answer:1,why:'面接指導の<mark>80時間</mark>（過労死ライン下限）と36協定の<mark>100時間未満</mark>（絶対上限）は全く異なる文脈の別の数字。'},
+{id:'MC60',sec:'⑧3科目横断・目的条文・改正',cat:'健康経営と安衛法',
+ q:'健康経営と安衛法の関係として最も適切な記述はどれか。',
+ opts:['健康経営は安衛法の義務を超えた積極的な健康増進を目指す概念であり相互補完的な関係にある','健康経営は安衛法の規定に反する概念であり両立することができない','健康経営は安衛法の最低基準を満たせば自動的に認定される','健康経営は安衛法とは全く無関係の概念である'],answer:0,why:'健康経営：安衛法の義務（<mark>最低基準</mark>）を満たしつつ、さらに積極的な<mark>健康増進・生産性向上</mark>を目指す。相互補完的関係。'}
+];
+
+
+
+
+
+
+// =====================================================
+// ○×問題 エンジン
+// =====================================================
+var oxDeck = [];
+var oxIdx = 0;
+var oxOkCount = 0;
+var oxNgCount = 0;
+var oxWeakSet = {};
+var oxCurrentFilter = 'all';
+var oxSectionStats = {};
+var oxShuffleOn = false;
+var OX_SECTIONS = ['①目的・被保険者','②資格取得・喪失・届出','③保険料・免除・猶予','④老齢基礎年金','⑤障害基礎年金','⑥遺族・寡婦・一時金','⑦給付の通則・時効','⑧横断・総仕上げ'];
+
+function shuffle(arr) {
+  for (var i = arr.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+  }
+  return arr;
+}
+
+function oxToggleShuffle(btn) {
+  oxShuffleOn = !oxShuffleOn;
+  btn.textContent = '🔀 シャッフル：' + (oxShuffleOn ? 'ON' : 'OFF');
+  btn.classList.toggle('active', oxShuffleOn);
+  oxInit();
+}
+
+function oxLoadWeak() {
+  try { var s = localStorage.getItem('anei_ox12weak'); if (s) { var a = JSON.parse(s); for (var i=0;i<a.length;i++) oxWeakSet[a[i]]=true; } } catch(e) {}
+}
+function oxSaveWeak() {
+  try { localStorage.setItem('anei_ox12weak', JSON.stringify(Object.keys(oxWeakSet))); } catch(e) {}
+}
+
+function oxSetFilter(sec, el) {
+  oxCurrentFilter = sec;
+  var chips = document.querySelectorAll('.filter-chips .fc-chip');
+  for (var i=0;i<chips.length;i++) chips[i].classList.remove('active');
+  if (el) el.classList.add('active');
+  oxInit();
+}
+
+function oxBuildDeck() {
+  var list = [];
+  if (oxCurrentFilter === 'all') {
+    for (var i=0;i<OX_DATA.length;i++) list.push(i);
+  } else if (oxCurrentFilter === 'weak') {
+    for (var i=0;i<OX_DATA.length;i++) { if (oxWeakSet[OX_DATA[i].id]) list.push(i); }
+  } else {
+    for (var i=0;i<OX_DATA.length;i++) { if (OX_DATA[i].sec === oxCurrentFilter) list.push(i); }
+  }
+  if (oxShuffleOn) shuffle(list);
+  return list;
+}
+
+function oxInit() {
+  oxOkCount = 0; oxNgCount = 0;
+  oxSectionStats = {};
+  for (var i=0;i<OX_SECTIONS.length;i++) oxSectionStats[OX_SECTIONS[i]] = {ok:0,total:0};
+  oxDeck = oxBuildDeck();
+  for (var i=0;i<OX_DATA.length;i++) {
+    var sec = OX_DATA[i].sec;
+    if (oxSectionStats[sec]) oxSectionStats[sec].total++;
+  }
+
+  document.getElementById('ox-result').style.display = 'none';
+  document.getElementById('ox-mastery-wrap').style.display = 'none';
+  document.getElementById('ox-no-weak').style.display = 'none';
+
+  if (oxDeck.length === 0 && oxCurrentFilter === 'weak') {
+    document.getElementById('ox-card-area').innerHTML = '';
+    document.getElementById('ox-no-weak').style.display = 'block';
+    return;
+  }
+  if (oxDeck.length === 0) {
+    document.getElementById('ox-card-area').innerHTML = '<div style="text-align:center;padding:40px;color:var(--gray);">このセクションには問題がありません</div>';
+    return;
+  }
+  oxIdx = 0;
+  document.getElementById('ox-counter-total').textContent = oxDeck.length;
+  oxRenderCard();
+  oxUpdateDash();
+}
+
+function oxRenderCard() {
+  var cardIdx = oxDeck[oxIdx];
+  var d = OX_DATA[cardIdx];
+  document.getElementById('ox-counter-num').textContent = oxIdx + 1;
+  document.getElementById('ox-sec-tag').textContent = d.sec;
+
+  var html = '<div class="ox-card">';
+  html += '<div class="ox-card-hd"><span class="ox-card-tag">' + d.id + '</span><span class="ox-card-cat">' + d.cat + '</span>';
+  if (oxWeakSet[d.id]) html += '<span style="margin-left:auto;font-size:11px;color:var(--red);font-weight:700;">🔥 苦手</span>';
+  html += '</div>';
+  html += '<div class="ox-card-body">';
+  html += '<div class="ox-q">' + d.q + '</div>';
+  html += '<div class="ox-hint">○または×を選んでください</div>';
+  html += '<div class="ox-btns">';
+  html += '<button class="ox-btn o" id="ox-btn-o" onclick="oxChoose(true)">○</button>';
+  html += '<button class="ox-btn x" id="ox-btn-x" onclick="oxChoose(false)">×</button>';
+  html += '</div>';
+  html += '<div class="ox-ans" id="ox-ans-panel"></div>';
+  html += '</div></div>';
+  document.getElementById('ox-card-area').innerHTML = html;
+  document.getElementById('ox-prog-lbl').textContent = oxIdx + ' ／ ' + oxDeck.length + ' 問 回答済み';
+  document.getElementById('ox-prog-bar').style.width = (oxIdx / oxDeck.length * 100) + '%';
+}
+
+function oxChoose(userAns) {
+  var cardIdx = oxDeck[oxIdx];
+  var d = OX_DATA[cardIdx];
+  var isCorrect = (userAns === d.correct);
+
+  document.getElementById('ox-btn-o').disabled = true;
+  document.getElementById('ox-btn-x').disabled = true;
+  if (userAns) {
+    document.getElementById('ox-btn-o').classList.add('chosen-o');
+  } else {
+    document.getElementById('ox-btn-x').classList.add('chosen-x');
+  }
+
+  if (isCorrect) {
+    oxOkCount++;
+    oxSectionStats[d.sec].ok++;
+    delete oxWeakSet[d.id];
+  } else {
+    oxNgCount++;
+    oxWeakSet[d.id] = true;
+  }
+  oxSaveWeak();
+  oxUpdateDash();
+
+  var panel = document.getElementById('ox-ans-panel');
+  var cls = isCorrect ? 'ok' : 'ng';
+  var vtext = isCorrect ? '✅ 正解！' : '❌ 不正解';
+  var ansText = d.correct ? '○　正しい' : '×　誤り';
+  panel.className = 'ox-ans show ' + cls;
+  panel.innerHTML = '<div class="ox-verdict ' + cls + '">' + vtext + '　正解：<strong>' + ansText + '</strong></div>'
+    + '<div class="ox-reason-box">' + d.reason + '</div>'
+    + '<span class="ox-law">' + d.law + '</span>'
+    + '<button class="ox-next-btn" onclick="oxNext()">' + (oxIdx + 1 >= oxDeck.length ? '結果を見る →' : '次の問題へ →') + '</button>';
+
+  document.getElementById('ox-prog-lbl').textContent = (oxIdx+1) + ' ／ ' + oxDeck.length + ' 問 回答済み';
+  document.getElementById('ox-prog-bar').style.width = ((oxIdx+1) / oxDeck.length * 100) + '%';
+}
+
+function oxNext() {
+  if (oxIdx + 1 >= oxDeck.length) {
+    oxShowResult();
+    return;
+  }
+  oxIdx++;
+  oxRenderCard();
+}
+
+function oxUpdateDash() {
+  var rem = oxDeck.length - oxIdx;
+  document.getElementById('ox-remaining').textContent = rem;
+  document.getElementById('ox-ok').textContent = oxOkCount;
+  document.getElementById('ox-ng').textContent = oxNgCount;
+  document.getElementById('ox-weak').textContent = Object.keys(oxWeakSet).length;
+  var answered = oxOkCount + oxNgCount;
+  var pct = oxDeck.length > 0 ? Math.round(answered / oxDeck.length * 100) : 0;
+  document.getElementById('ox-pct').textContent = pct + '%';
+}
+
+function oxShowResult() {
+  document.getElementById('ox-card-area').innerHTML = '';
+  var total = oxDeck.length;
+  var pct = total > 0 ? Math.round(oxOkCount / total * 100) : 0;
+  document.getElementById('ox-result-score').textContent = oxOkCount + ' / ' + total;
+  document.getElementById('ox-result-sub').textContent = '正答率 ' + pct + '% ― ' +
+    (pct >= 90 ? '完璧！合格力十分です 🚀' : pct >= 70 ? '合格ライン！苦手問題を復習しよう' : pct >= 50 ? 'もう一周して定着させよう' : '解説をよく読んで再挑戦！');
+  document.getElementById('ox-emoji').textContent = pct >= 90 ? '🏆' : pct >= 70 ? '✨' : pct >= 50 ? '📖' : '💪';
+  document.getElementById('ox-result').style.display = 'block';
+  var weakKeys = Object.keys(oxWeakSet);
+  document.getElementById('ox-btn-retry-weak').style.display = weakKeys.length > 0 ? 'inline-block' : 'none';
+  oxRenderMastery();
+  document.getElementById('ox-mastery-wrap').style.display = 'block';
+  setTimeout(function(){ document.getElementById('ox-result').scrollIntoView({behavior:'smooth',block:'start'}); }, 200);
+}
+
+function oxRenderMastery() {
+  var wrap = document.getElementById('ox-mastery-bars');
+  wrap.innerHTML = '';
+  OX_SECTIONS.forEach(function(sec) {
+    var stat = oxSectionStats[sec];
+    if (!stat || stat.total === 0) return;
+    var pct = Math.round(stat.ok / stat.total * 100);
+    var col = pct >= 80 ? 'var(--green)' : pct >= 60 ? 'var(--teal)' : pct >= 40 ? 'var(--gold)' : 'var(--red)';
+    wrap.innerHTML += '<div class="mastery-row"><div class="mastery-label">' + sec + '</div>'
+      + '<div class="mastery-track"><div class="mastery-bar" style="width:' + pct + '%;background:' + col + ';"></div></div>'
+      + '<div class="mastery-pct" style="color:' + col + ';">' + pct + '%</div></div>';
+  });
+}
+
+function oxRestart() {
+  document.getElementById('ox-result').style.display = 'none';
+  document.getElementById('ox-mastery-wrap').style.display = 'none';
+  oxInit();
+}
+
+function oxRetryWeak() {
+  oxSetFilter('weak', document.querySelector('[data-sec="weak"]'));
+}
+
+// =====================================================
+// 5択問題 エンジン
+// =====================================================
+var mcAnswered = 0;
+var mcOk = 0;
+var mcNg = 0;
+var mcShuffleOn = false;
+var mcOrder = [];
+
+function mcToggleShuffle(btn) {
+  mcShuffleOn = !mcShuffleOn;
+  btn.textContent = '🔀 シャッフル：' + (mcShuffleOn ? 'ON' : 'OFF');
+  btn.classList.toggle('active', mcShuffleOn);
+  mcAnswered = 0; mcOk = 0; mcNg = 0;
+  document.getElementById('mc-result').style.display = 'none';
+  mcRenderAll();
+  mcUpdateDash();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function mcRenderAll() {
+  mcOrder = [];
+  for (var i = 0; i < MC_DATA.length; i++) mcOrder.push(i);
+  if (mcShuffleOn) shuffle(mcOrder);
+
+  var html = '';
+  for (var n = 0; n < mcOrder.length; n++) {
+    var i = mcOrder[n];
+    var d = MC_DATA[i];
+    html += '<div class="mc-card" id="mc-card-' + d.id + '">';
+    html += '<div class="mc-card-hd">';
+    html += '<div class="mc-card-num">' + (n+1) + '</div>';
+    html += '<div><div class="mc-card-tag">5択</div><div class="mc-card-cat">' + d.sec + '｜' + d.cat + '</div></div>';
+    html += '</div>';
+    html += '<div class="mc-card-body">';
+    html += '<div class="mc-q">' + d.q + '</div>';
+    html += '<div class="mc-options" id="mc-opts-' + d.id + '">';
+    for (var j = 0; j < d.opts.length; j++) {
+      html += '<button class="mc-opt" data-idx="' + j + '" onclick="mcChoose(\'' + d.id + '\',' + j + ')">';
+      html += '<strong>' + (j+1) + '.</strong>　' + d.opts[j];
+      html += '</button>';
+    }
+    html += '</div>';
+    html += '<button class="mc-check-btn" id="mc-check-' + d.id + '" onclick="mcCheck(\'' + d.id + '\')" disabled>答え合わせ</button>';
+    html += '<div class="mc-ans" id="mc-ans-' + d.id + '"></div>';
+    html += '</div></div>';
+  }
+  document.getElementById('mc-cards').innerHTML = html;
+}
+
+function mcChoose(qid, optIdx) {
+  var opts = document.querySelectorAll('#mc-opts-' + qid + ' .mc-opt');
+  for (var i = 0; i < opts.length; i++) opts[i].classList.remove('sel-opt');
+  opts[optIdx].style.borderColor = 'var(--blue)';
+  opts[optIdx].style.background = 'var(--blue-light)';
+  opts[optIdx].setAttribute('data-selected', '1');
+  for (var i = 0; i < opts.length; i++) {
+    if (i !== optIdx) { opts[i].style.borderColor = ''; opts[i].style.background = ''; opts[i].removeAttribute('data-selected'); }
+  }
+  document.getElementById('mc-check-' + qid).disabled = false;
+}
+
+function mcCheck(qid) {
+  var d = null;
+  for (var i=0;i<MC_DATA.length;i++) { if (MC_DATA[i].id === qid) { d = MC_DATA[i]; break; } }
+  if (!d) return;
+
+  var opts = document.querySelectorAll('#mc-opts-' + qid + ' .mc-opt');
+  var selected = -1;
+  for (var i=0;i<opts.length;i++) { if (opts[i].getAttribute('data-selected')) { selected = i; break; } }
+  if (selected < 0) return;
+
+  var isCorrect = (selected === d.answer);
+  if (isCorrect) mcOk++; else mcNg++;
+  mcAnswered++;
+  mcUpdateDash();
+
+  for (var i=0;i<opts.length;i++) {
+    opts[i].disabled = true;
+    opts[i].style.borderColor = ''; opts[i].style.background = '';
+    if (i === d.answer) opts[i].classList.add('correct');
+    else if (i === selected && !isCorrect) opts[i].classList.add('wrong');
+    else opts[i].classList.add('unchosen');
+  }
+
+  document.getElementById('mc-check-' + qid).disabled = true;
+  document.getElementById('mc-check-' + qid).style.display = 'none';
+
+  var panel = document.getElementById('mc-ans-' + qid);
+  var cls = isCorrect ? 'ok' : 'ng';
+  panel.className = 'mc-ans show ' + cls;
+  panel.innerHTML = '<div class="mc-ans-hd">' + (isCorrect ? '✅ 正解！' : '❌ 不正解　正解：' + (d.answer+1) + '番') + '</div>'
+    + '<div class="mc-why">' + d.why + '</div>';
+
+  if (mcAnswered === MC_DATA.length) {
+    setTimeout(function(){ mcShowResult(); }, 400);
+  }
+}
+
+function mcUpdateDash() {
+  document.getElementById('mc-answered').textContent = mcAnswered;
+  document.getElementById('mc-ok').textContent = mcOk;
+  document.getElementById('mc-ng').textContent = mcNg;
+  var pct = Math.round(mcAnswered / MC_DATA.length * 100);
+  document.getElementById('mc-prog-bar').style.width = pct + '%';
+  document.getElementById('mc-prog-lbl').textContent = mcAnswered + ' ／ ' + MC_DATA.length + ' 問';
+}
+
+function mcShowResult() {
+  var pct = Math.round(mcOk / MC_DATA.length * 100);
+  document.getElementById('mc-result-score').textContent = mcOk + ' / ' + MC_DATA.length;
+  document.getElementById('mc-result-sub').textContent = '正答率 ' + pct + '% ― ' +
+    (pct >= 90 ? '完璧！本試験でも通用します 🚀' : pct >= 70 ? '合格ライン！復習して固めよう' : pct >= 50 ? 'もう一周で定着を' : '解説を読み直して再挑戦！');
+  document.getElementById('mc-emoji').textContent = pct >= 90 ? '🏆' : pct >= 70 ? '✨' : pct >= 50 ? '📖' : '💪';
+  document.getElementById('mc-result').style.display = 'block';
+  setTimeout(function(){ document.getElementById('mc-result').scrollIntoView({behavior:'smooth',block:'start'}); }, 200);
+}
+
+function mcRestart() {
+  mcAnswered = 0; mcOk = 0; mcNg = 0;
+  document.getElementById('mc-result').style.display = 'none';
+  mcRenderAll();
+  mcUpdateDash();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// =====================================================
+// 起動
+// =====================================================
+oxLoadWeak();
+oxInit();
+mcRenderAll();
+mcUpdateDash();
+
+
+window.switchTab = switchTab;
+window.oxSetFilter = oxSetFilter;
+window.oxToggleShuffle = oxToggleShuffle;
+window.oxChoose = oxChoose;
+window.oxNext = oxNext;
+window.oxRestart = oxRestart;
+window.oxRetryWeak = oxRetryWeak;
+window.mcToggleShuffle = mcToggleShuffle;
+window.mcChoose = mcChoose;
+window.mcCheck = mcCheck;
+</script>
+</body>
+</html>
