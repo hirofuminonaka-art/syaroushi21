@@ -40,7 +40,7 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--i
 .score-num{font-family:'DM Serif Display',serif;font-size:36px;color:var(--teal);line-height:1;}
 
 .qwrap{max-width:820px;margin:0 auto;padding:0 24px 60px;display:flex;flex-direction:column;gap:20px;}
-.card{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden;opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s;}
+.card{background:white;border:2px solid var(--ink);border-radius:14px;overflow:hidden}
 .card.vis{opacity:1;transform:none;}
 .card-hd{display:flex;align-items:center;gap:12px;padding:12px 20px;background:var(--warm);border-bottom:1px solid var(--border);}
 .q-num{font-family:'DM Serif Display',serif;font-size:30px;color:var(--red);line-height:1;}
@@ -231,9 +231,9 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--paper);color:var(--i
   <div class="hd-in">
     <div class="hd-eye">健康保険法 ／ Block 4 ／ Day 4</div>
     <h1>療養の給付・一部負担金・<em>高額療養費</em></h1>
-    <div class="hd-sub">○×式 5問 ＋ 穴埋め式 5問 ― 全10問　図解で理解を深める</div>
+    <div class="hd-sub">○×式 8問 ＋ 穴埋め式 7問 ― 全15問　図解で理解を深める</div>
     <div class="prog-wrap"><div class="prog-bar" id="prog"></div></div>
-    <div class="prog-lbl" id="prog-lbl">0 ／ 10 問 回答済み</div>
+    <div class="prog-lbl" id="prog-lbl">0 ／ 15 問 回答済み</div>
   </div>
 </div>
 
@@ -833,7 +833,7 @@ function copyRecord(){
 }
 
 // ── ○× ──
-const correct={q1:1,q2:1,q3:1,q4:1,q5:1};
+const correct={q1:1,q2:1,q3:1,q4:1,q5:1,q6:0,q7:0,q8:0};
 const done={};let score=0;let total=0;
 
 function answer(qid,idx){
@@ -860,9 +860,11 @@ const defs={
   f3:{f3a:'2',f3b:'3',f3c:'2',f3d:'3'},
   f4:{f4a:'21,000',f4b:'12',f4c:'3',f4d:'4'},
   f5:{f5a:'50',f5b:'42',f5c:'56',f5d:'3分の2'},
+  f6:{f6a:'252,600',f6b:'842,000',f6c:'80,100',f6d:'35,400'},
+  f7:{f7a:'一部',f7b:'食事',f7c:'医療',f7d:'限度額適用認定'},
 };
-const state={f1:{},f2:{},f3:{},f4:{},f5:{}};
-const sel={f1:null,f2:null,f3:null,f4:null,f5:null};
+const state={f1:{},f2:{},f3:{},f4:{},f5:{},f6:{},f7:{}};
+const sel={f1:null,f2:null,f3:null,f4:null,f5:null,f6:null,f7:null};
 const fdone={};
 
 function selB(fid,bid){
@@ -903,7 +905,7 @@ function chkF(fid){
     }
   });
   const ans=document.getElementById(fid+'-ans');
-  ans.className='ans-box show ok';
+  ans.className='ans-box show '+(allOk?'ok':'ng');
   document.getElementById(fid+'-btn').disabled=true;
   if(allOk)score++;
   document.getElementById('score').textContent=score;
@@ -913,9 +915,9 @@ function chkF(fid){
 
 function updateProg(){
   total=Object.keys(done).length+Object.keys(fdone).length;
-  document.getElementById('prog').style.width=(total/10*100)+'%';
-  document.getElementById('prog-lbl').textContent=total+' ／ 10 問 回答済み';
-  if(total>=10) showComplete();
+  document.getElementById('prog').style.width=(total/15*100)+'%';
+  document.getElementById('prog-lbl').textContent=total+' ／ 15 問 回答済み';
+  if(total>=15) showComplete();
 }
 
 function showComplete(){
@@ -978,6 +980,16 @@ const FC_DATA = [
 
   {tag:'Q15', cat:'給付制限', q:'故意の犯罪行為による傷病に対しては保険給付が行われない場合がある。', ans:'○ 正しい', correct:true,
    reason:'法第116条の給付制限規定。故意の犯罪行為・故意の給付事由発生は給付制限事由。重大な過失は一部制限。\n🎵「わざとやったら給付なし。うっかりは一部制限。」',law:'法第116条'},
+  {tag:'Q16', cat:'高額療養費', q:'70歳未満の自己負担限度額は所得区分ア〜オの5段階で、区分ウ（標準的所得）の基本額は80,100円＋（総医療費−267,000円）×1%である。', ans:'○ 正しい', correct:true,
+   reason:'区分ウが試験の基本。ア252,600＋1%・イ167,400＋1%・ウ80,100＋1%・エ57,600定額・オ35,400定額。\n🎵「ア〜オで5段階。ウが基準のハチイチ」',law:'法第115条'},
+  {tag:'Q17', cat:'高額療養費', q:'高額療養費の計算には入院時の食事代（入院時食事療養費の標準負担額）も含まれる。', ans:'× 誤り', correct:false,
+   reason:'食事代は含まれない。一部負担金のみが対象。差額ベッド代・保険外費用も対象外。\n🎵「食事は別腹。高額療養費は窓口負担だけ」',law:'法第115条'},
+  {tag:'Q18', cat:'高額療養費', q:'限度額適用認定証を医療機関窓口に提示すれば、その月の窓口負担が自己負担限度額までに抑えられる（現物給付化）。', ans:'○ 正しい', correct:true,
+   reason:'認定証提示→現物給付化。事前に保険者に申請が必要。70歳以上は高齢受給者証で自動適用。\n🎵「認定証で最初から限度額止まり」',law:'法第115条'},
+  {tag:'Q19', cat:'高額療養費', q:'70歳未満の世帯合算では、同一月に同一世帯内で一部負担金が21,000円未満の場合でも合算対象となる。', ans:'× 誤り', correct:false,
+   reason:'70歳未満は1人21,000円以上のものだけが合算対象。70歳以上は金額制限なし。\n🎵「70歳未満は2.1万円のハードル」',law:'法第115条'},
+  {tag:'Q20', cat:'高額療養費', q:'多数回該当（直近12ヶ月に3回以上）の4回目から区分ウの自己負担限度額は44,400円になる。', ans:'○ 正しい', correct:true,
+   reason:'多数回該当の区分ウ：44,400円（通常80,100＋1%より大幅に安い）。\n🎵「3回超えたら4回目から安くなる。ウは44,400」',law:'法第115条'},
 ];
 
 
@@ -1051,7 +1063,10 @@ const SPIDER_DATA = [
       hikakke:"× 「待期7日」→ ○ 3日（7日は労災）\n× 「直近6ヵ月」→ ○ 12ヵ月\n× 「産前56日・産後42日」→ ○ 産前42日・産後56日\n× 「育児一時金42万円」→ ○ 50万円（2023年4月〜）"
     }
   }
+
 ];
+
+
 var spBranchOpen={ryoyo:false,futan:false,kouee:false,kyufu:false};
 var spLeafOpen={};
 
@@ -1405,9 +1420,570 @@ function switchTab(name,btn){
 // ── 初期化 ──
 document.addEventListener('DOMContentLoaded',function(){
   fcInit();
+
+  // 追加カードをIntersectionObserverに登録
+  ['cq6','cq7','cq8','cf6','cf7'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.classList.add('vis');
+  });
 });
 </script>
 
+
+<div style="max-width:820px;margin:24px auto 8px;padding:0 20px;">
+  <div style="margin-bottom:6px;"><span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:1px;padding:3px 14px;border-radius:20px;background:#c9930a;color:white;">③ 高額療養費 深堀り　3問</span></div>
+  <div style="font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:4px;">所得区分5段階・合算対象外・現物給付化を完全マスター</div>
+  <div style="font-size:12px;color:#6b7280;line-height:1.7;">試験最頻出の高額療養費。ア〜オの限度額数字、食事代が含まれない理由、限度額適用認定証の仕組みを図解で完全理解する。</div>
+</div>
+<div style="max-width:820px;margin:0 auto 0;padding:0 20px 40px;display:flex;flex-direction:column;gap:20px;">
+<div class="card" id="cq6">
+  <div class="card-hd"><div class="q-num">06</div><div><div class="src-tag">法第115条 ／ ○×式</div><div class="q-type">難易度：★★★★ ／ 単元：高額療養費・所得区分5段階</div></div></div>
+    <div class="card-body">
+    <div class="quiz-q">70歳未満の高額療養費の自己負担限度額は所得に応じて<mark>ア〜オの5区分</mark>に分かれており、最も低い区分（オ：住民税非課税）の限度額は<mark>35,400円（定額）</mark>である。</div>
+    <div class="opts-tf" id="q6-opts"><div class="opt" onclick="answer('q6',0)">○ 正しい</div><div class="opt" onclick="answer('q6',1)">× 誤り</div></div>
+    <div class="ans-box" id="q6-ans">
+      <div class="ans-hd">✅ 正しい（○）｜法第115条</div>
+      <div class="why">70歳未満の自己負担限度額は<strong>ア〜オの5区分</strong>。<br>
+      <strong style="color:var(--purple);">◎ 覚え方の鉄則：ウ（80,100円）を軸に類推する</strong><br>
+      閾値は「基本額 × 約3.33倍」で統一されている（ウ:267,000 ÷ 80,100 ≒ 3.33）。<br>
+      ➡ <strong>丸暗記が必要なのは4点のみ</strong>：ウ=80,100 ／ ア=252,600と842,000 ／ オ=35,400（定額）<br>
+      ➡ イはウの約2倍・エは定額・多数回のウ・エは44,400——あとは類推でOK。</div>
+
+      <!-- 5区分一覧表 -->
+      <div style="background:#fef9e7;border:1.5px solid #BA7517;border-radius:10px;padding:14px 16px;margin-top:12px;">
+        <div style="font-size:12px;font-weight:700;color:#c9930a;margin-bottom:8px;">📖 70歳未満の自己負担限度額 5区分</div>
+        <div style="background:white;border:2px solid #1a1a2e;border-radius:8px;overflow:hidden;font-size:11px;">
+          <div style="display:grid;grid-template-columns:36px 1fr 170px;background:#1a1a2e;padding:6px 10px;font-weight:700;color:#fde68a;gap:4px;">
+            <div>区分</div><div>標準報酬月額</div><div>自己負担限度額</div>
+          </div>
+          <div style="display:grid;grid-template-columns:36px 1fr 170px;padding:6px 10px;border-bottom:1px solid #f0ece4;background:#fff8f0;gap:4px;">
+            <div style="font-weight:900;color:#c84b31;">ア</div><div>83万円以上</div><div style="font-weight:700;color:#c84b31;font-size:10px;">252,600円＋(総医療費−842,000)×1%</div>
+          </div>
+          <div style="display:grid;grid-template-columns:36px 1fr 170px;padding:6px 10px;border-bottom:1px solid #f0ece4;gap:4px;">
+            <div style="font-weight:900;color:#c9930a;">イ</div><div>53〜79万円</div><div style="font-weight:700;color:#c9930a;font-size:10px;">167,400円＋(総医療費−558,000)×1%</div>
+          </div>
+          <div style="display:grid;grid-template-columns:36px 1fr 170px;padding:6px 10px;border-bottom:1px solid #f0ece4;background:#f5f0e8;gap:4px;">
+            <div style="font-weight:900;color:#26215C;">ウ</div><div>28〜50万円（標準）</div><div style="font-weight:700;color:#26215C;font-size:10px;">80,100円＋(総医療費−267,000)×1%</div>
+          </div>
+          <div style="display:grid;grid-template-columns:36px 1fr 170px;padding:6px 10px;border-bottom:1px solid #f0ece4;gap:4px;">
+            <div style="font-weight:900;color:#2a7f7f;">エ</div><div>26万円以下</div><div style="font-weight:700;color:#2a7f7f;">57,600円（定額）</div>
+          </div>
+          <div style="display:grid;grid-template-columns:36px 1fr 170px;padding:6px 10px;background:#e8f4f4;gap:4px;">
+            <div style="font-weight:900;color:#085041;">オ</div><div>住民税非課税</div><div style="font-weight:700;color:#085041;">35,400円（定額）</div>
+          </div>
+        </div>
+        <div style="margin-top:8px;font-size:11px;background:#EEEDFE;border-radius:6px;padding:7px 10px;color:#26215C;">
+          📌 <strong>多数回該当</strong>（直近12ヶ月に3回以上→4回目から）：ア140,100 ／ イ93,000 ／ ウ・エ44,400 ／ オ24,600
+        </div>
+      </div>
+
+      <!-- 計算式の解説（ここが核心） -->
+      <div style="background:#2d2d2d;border-radius:10px;padding:14px 16px;margin-top:12px;">
+        <div style="font-size:12px;font-weight:700;color:#fde68a;margin-bottom:10px;">🧮 計算式の読み方（区分ウを例に）</div>
+        <!-- ステップ図 -->
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:12px;">
+          <!-- 前提 -->
+          <div style="background:rgba(255,255,255,.1);border-radius:8px;padding:8px 12px;color:white;">
+            <span style="color:#fde68a;font-weight:700;">前提：</span> 区分ウの田中さんが総医療費<strong style="color:#fde68a;">30万円</strong>（窓口で3割＝9万円払った）の治療を受けた
+          </div>
+          <!-- STEP1 -->
+          <div style="background:rgba(44,127,127,.3);border:1px solid #2a7f7f;border-radius:8px;padding:8px 12px;color:white;">
+            <span style="color:#86efac;font-weight:700;">STEP1</span> 限度額の基本額を確認<br>
+            <span style="color:#fde68a;">80,100円</span>（区分ウの固定部分）
+          </div>
+          <!-- STEP2 -->
+          <div style="background:rgba(124,58,237,.25);border:1px solid #7c3aed;border-radius:8px;padding:8px 12px;color:white;">
+            <span style="color:#c4b5fd;font-weight:700;">STEP2</span> 超過分（1%部分）を計算<br>
+            総医療費300,000円 − 267,000円（区分ウの閾値） ＝ <span style="color:#fde68a;">33,000円</span><br>
+            33,000円 × 1% ＝ <span style="color:#fde68a;">330円</span>
+          </div>
+          <!-- STEP3 -->
+          <div style="background:rgba(45,106,79,.35);border:1px solid #2d6a4f;border-radius:8px;padding:8px 12px;color:white;">
+            <span style="color:#86efac;font-weight:700;">STEP3</span> 合算して自己負担限度額を出す<br>
+            80,100円 ＋ 330円 ＝ <span style="color:#fde68a;font-size:15px;font-weight:900;">80,430円</span>
+          </div>
+          <!-- STEP4 -->
+          <div style="background:rgba(200,75,49,.25);border:1px solid #c84b31;border-radius:8px;padding:8px 12px;color:white;">
+            <span style="color:#fca5a5;font-weight:700;">STEP4</span> 高額療養費として戻ってくる額<br>
+            窓口で払った90,000円 − 80,430円 ＝ <span style="color:#fde68a;font-size:15px;font-weight:900;">9,570円が支給</span>
+          </div>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:rgba(255,255,255,.65);">
+          💡 「なぜ+1%？」——総医療費が高くなるほど少しだけ追加負担させることで、高額医療への意識を持たせる設計。ただし上限は青天井ではなく、所得区分ごとの計算式で頭打ちになる。
+        </div>
+      </div>
+
+      <!-- 定額 vs 計算式の整理 -->
+      <div style="background:#e8f4f4;border:1.5px solid #2a7f7f;border-radius:8px;padding:10px 14px;margin-top:10px;font-size:12px;">
+        <strong>🔑 ポイント整理</strong><br>
+        ア・イ・ウ → <strong>計算式（基本額 ＋ 超過分×1%）</strong>：所得が高いほど限度額も高い<br>
+        エ・オ → <strong>定額</strong>：低所得者に計算の複雑さを負わせないための配慮
+      </div>
+
+      <div class="tip">
+        <div class="tip-title">🎵 語呂で覚える5区分の基本額</div>
+        <div class="tip-item">ア＝<strong>ニコニコ</strong>（252,600）・イ＝<strong>イナムラ</strong>（167,400）・ウ＝<strong>ハチイチ</strong>（80,100）・エ＝<strong>ゴナロク</strong>（57,600）・オ＝<strong>サンゴ</strong>（35,400）<br>
+        試験では「区分ウの数字」と「エ・オが定額」が最頻出。計算式丸暗記より「ウ=80,100+1%」を軸に前後を整理するのが効率的。</div>
+
+      <!-- 試験ではこう問われる -->
+      <div style="background:#1a1a2e;border-radius:10px;padding:14px 16px;margin-top:12px;">
+        <div style="font-size:12px;font-weight:700;color:#fde68a;margin-bottom:10px;">🎯 試験ではこう問われる</div>
+        <div style="display:flex;flex-direction:column;gap:7px;font-size:12px;">
+          <div style="background:#fff8f7;border-radius:6px;padding:8px 12px;border-left:3px solid #c84b31;">
+            <div style="color:#c84b31;font-weight:700;margin-bottom:3px;">引っかけ① 区分の数字を入れ替える</div>
+            <div style="color:#1a1a2e;">「区分ウの限度額は<span style="color:#c84b31;text-decoration:line-through;">57,600円</span>」→ <span style="color:#c84b31;font-weight:700;">× ウは80,100円＋1%。57,600はエ。</span></div>
+          </div>
+          <div style="background:#fff8f7;border-radius:6px;padding:8px 12px;border-left:3px solid #c84b31;">
+            <div style="color:#c84b31;font-weight:700;margin-bottom:3px;">引っかけ② 計算式と定額を逆にする</div>
+            <div style="color:#1a1a2e;">「ア〜ウは定額、エ・オは計算式」→ <span style="color:#c84b31;font-weight:700;">× 逆。ア〜ウが計算式（＋1%）、エ・オが定額。</span></div>
+          </div>
+          <div style="background:#f0fdf4;border-radius:6px;padding:8px 12px;border-left:3px solid #2a7f7f;">
+            <div style="color:#085041;font-weight:700;margin-bottom:3px;">穴埋め頻出① 区分アの数字</div>
+            <div style="color:#1a1a2e;">「（　　）円＋（総医療費−（　　）円）×1%」→ <span style="color:#085041;font-weight:700;">252,600 ／ 842,000</span></div>
+          </div>
+          <div style="background:#f0fdf4;border-radius:6px;padding:8px 12px;border-left:3px solid #2a7f7f;">
+            <div style="color:#085041;font-weight:700;margin-bottom:3px;">穴埋め頻出② 多数回該当・区分ウ</div>
+            <div style="color:#1a1a2e;">「直近12ヶ月に3回以上→4回目から区分ウは（　　）円」→ <span style="color:#085041;font-weight:700;">44,400円</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 語呂で覚える5区分 -->
+      <div style="background:#fef9e7;border:2px solid #BA7517;border-radius:10px;padding:16px 18px;margin-top:12px;">
+        <div style="font-size:13px;font-weight:700;color:#c9930a;margin-bottom:12px;">🎵 語呂で覚える5区分（声に出して3回！）</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:12px;padding:8px 10px;background:white;border-radius:8px;border:1.5px solid #fca5a5;">
+            <div style="min-width:36px;height:36px;background:#c84b31;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:16px;flex-shrink:0;">ア</div>
+            <div style="flex:1;">
+              <div style="font-size:22px;font-weight:900;color:#c84b31;letter-spacing:3px;">ニコニコ</div>
+              <div style="font-size:11px;color:#6b7280;margin-top:2px;">252,600円＋（総医療費−842,000円）×1%　／　83万円以上</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:8px 10px;background:white;border-radius:8px;border:1.5px solid #f0c070;">
+            <div style="min-width:36px;height:36px;background:#c9930a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:16px;flex-shrink:0;">イ</div>
+            <div style="flex:1;">
+              <div style="font-size:22px;font-weight:900;color:#c9930a;letter-spacing:3px;">イナムラ</div>
+              <div style="font-size:11px;color:#6b7280;margin-top:2px;">167,400円＋（総医療費−558,000円）×1%　／　53〜79万円</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 10px;background:#ede9fe;border-radius:8px;border:2px solid #7c3aed;">
+            <div style="min-width:36px;height:36px;background:#26215C;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:16px;flex-shrink:0;">ウ</div>
+            <div style="flex:1;">
+              <div style="font-size:22px;font-weight:900;color:#26215C;letter-spacing:3px;">ハチイチ <span style="font-size:12px;background:#c84b31;color:white;border-radius:4px;padding:2px 8px;vertical-align:middle;">★試験の基準</span></div>
+              <div style="font-size:11px;color:#6b7280;margin-top:2px;">80,100円＋（総医療費−267,000円）×1%　／　28〜50万円（標準）</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:8px 10px;background:white;border-radius:8px;border:1.5px solid #99d4d4;">
+            <div style="min-width:36px;height:36px;background:#2a7f7f;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:16px;flex-shrink:0;">エ</div>
+            <div style="flex:1;">
+              <div style="font-size:22px;font-weight:900;color:#2a7f7f;letter-spacing:3px;">ゴナロク <span style="font-size:10px;color:#6b7280;font-weight:400;">（定額）</span></div>
+              <div style="font-size:11px;color:#6b7280;margin-top:2px;">57,600円（定額）　／　26万円以下</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:8px 10px;background:white;border-radius:8px;border:1.5px solid #86efac;">
+            <div style="min-width:36px;height:36px;background:#085041;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:16px;flex-shrink:0;">オ</div>
+            <div style="flex:1;">
+              <div style="font-size:22px;font-weight:900;color:#085041;letter-spacing:3px;">サンゴ <span style="font-size:10px;color:#6b7280;font-weight:400;">（定額）</span></div>
+              <div style="font-size:11px;color:#6b7280;margin-top:2px;">35,400円（定額）　／　住民税非課税</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:12px;background:#fff3cd;border-radius:6px;padding:8px 12px;font-size:11px;color:#633806;line-height:1.9;">
+          💡 <strong>ウ（ハチイチ）を基準</strong>に上下を覚える。ア〜ウは計算式（＋1%）、エ・オは定額。<br>
+          💡 <strong>多数回該当の限度額</strong>：ア=140,100 ／ イ=93,000 ／ <strong style="color:#26215C;">ウ・エ=44,400</strong> ／ オ=24,600
+        </div>
+        <div style="margin-top:8px;background:#ede9fe;border:1.5px solid #7c3aed;border-radius:8px;padding:10px 14px;font-size:12px;color:#26215C;line-height:2.0;">
+          <div style="font-weight:700;margin-bottom:8px;">🔑 類推の法則：閾値 ≒ 基本額 × 3.33倍（ウを軸に全部導ける）</div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px;">
+            <div style="display:flex;align-items:center;gap:10px;background:white;border-radius:6px;padding:7px 10px;">
+              <div style="min-width:28px;height:28px;background:#c84b31;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:13px;flex-shrink:0;">ア</div>
+              <div style="font-size:12px;">基本額 <strong style="color:#c84b31;">252,600</strong> × 3.33 ≒ 閾値 <strong style="color:#c84b31;">842,000</strong></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;background:#ede9fe;border:1.5px solid #7c3aed;border-radius:6px;padding:7px 10px;">
+              <div style="min-width:28px;height:28px;background:#26215C;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:13px;flex-shrink:0;">ウ★</div>
+              <div style="font-size:12px;">基本額 <strong style="color:#26215C;">80,100</strong> × 3.33 ≒ 閾値 <strong style="color:#26215C;">267,000</strong>　←暗記の軸</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;background:white;border-radius:6px;padding:7px 10px;">
+              <div style="min-width:28px;height:28px;background:#c9930a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:13px;flex-shrink:0;">イ</div>
+              <div style="font-size:12px;">基本額 <strong style="color:#c9930a;">167,400</strong>（ウの約2倍）× 3.33 ≒ 閾値 <strong style="color:#c9930a;">558,000</strong></div>
+            </div>
+          </div>
+          <div style="background:white;border-radius:6px;padding:8px 10px;font-size:11px;border-left:3px solid #7c3aed;">
+            ✅ <strong>丸暗記はこの4点だけ</strong>：ウ=80,100 ／ ア=252,600・842,000 ／ オ=35,400<br>
+            ➡ イはウの約2倍・エは定額57,600（類推OK）・多数回のウ・エ=44,400
+          </div>
+        </div>
+      </div>
+
+      <div class="tip">
+        <div class="tip-title">🧠 ストーリーで覚える</div>
+        <div class="tip-item">山田さん（高収入・区分ア=ニコニコ）が100万円の手術。252,600＋（100万−842,000）×1%≒254,180円が自己負担。住民税非課税の鈴木さん（区分オ=サンゴ）は同じ手術でも35,400円だけ。「ニコニコ vs サンゴ」——応能負担の原則が数字に表れている。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="card" id="cq7">
+  <div class="card-hd"><div class="q-num">07</div><div><div class="src-tag">法第115条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：高額療養費・合算対象外</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">高額療養費の対象となる費用には、入院時の<mark>食事代（入院時食事療養費の標準負担額）</mark>や<mark>差額ベッド代</mark>も含まれる。</div>
+    <div class="opts-tf" id="q7-opts"><div class="opt" onclick="answer('q7',0)">○ 正しい</div><div class="opt" onclick="answer('q7',1)">× 誤り</div></div>
+    <div class="ans-box" id="q7-ans">
+      <div class="ans-hd">❌ 誤り（×）｜法第115条</div>
+      <div class="why">⚠️ 食事代・差額ベッド代は高額療養費の<strong>対象外</strong>。対象は<strong>一部負担金のみ</strong>。「たくさん払ったのに還付が少ない」のはここが原因。</div>
+      <div style="background:#fff8f7;border:1.5px solid #c84b31;border-radius:10px;padding:14px 16px;margin-top:12px;">
+        <div style="font-size:12px;font-weight:700;color:#c84b31;margin-bottom:8px;">📖 高額療養費の対象 vs 対象外</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;">
+          <div style="background:#E1F5EE;border:1.5px solid #1D9E75;border-radius:8px;padding:10px 12px;">
+            <div style="font-weight:700;color:#085041;margin-bottom:6px;">✅ 対象（含まれる）</div>
+            <div style="line-height:2.2;">・<strong>一部負担金</strong>（窓口3割等）<br>・同一月・同一医療機関<br>・70歳未満は21,000円以上</div>
+          </div>
+          <div style="background:#fee2e2;border:1.5px solid #c84b31;border-radius:8px;padding:10px 12px;">
+            <div style="font-weight:700;color:#c84b31;margin-bottom:6px;">❌ 対象外（含まれない）</div>
+            <div style="line-height:2.2;">・<strong>食事代</strong>（入院時食事療養費）<br>・<strong>差額ベッド代</strong>（選定療養）<br>・<strong>保険外</strong>の費用<br>・<strong>訪問看護</strong>の自己負担</div>
+          </div>
+        </div>
+        <div style="margin-top:8px;font-size:11px;color:#633806;background:#fff3cd;border-radius:6px;padding:6px 10px;">
+          🎵「高額療養費に含まれるのは保険診療の窓口負担だけ。食事代・差額ベッドは別枠。」
+        </div>
+      </div>
+      <div class="tip">
+        <div class="tip-title">🧠 なぜ食事代は含まれない？</div>
+        <div class="tip-item">佐藤さんが1ヶ月入院。窓口負担の一部負担金は高額療養費で戻るが、食事代は戻らない。「なぜ？」——食事代は入院していなくても発生する生活費。医療そのものではないから保険で補填しない設計。差額ベッドは本人が希望して選んだ追加サービスなので同様に対象外。「保険診療の窓口負担だけが高額療養費の対象」を徹底する。</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card" id="cq8">
+  <div class="card-hd"><div class="q-num">08</div><div><div class="src-tag">法第115条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：高額療養費・現物給付化</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">限度額適用認定証を医療機関の窓口に提示すると、窓口での支払いが<mark>自己負担限度額まで</mark>に抑えられ、高額療養費の<mark>事後申請が不要</mark>になる。</div>
+    <div class="opts-tf" id="q8-opts"><div class="opt" onclick="answer('q8',0)">○ 正しい</div><div class="opt" onclick="answer('q8',1)">× 誤り</div></div>
+    <div class="ans-box" id="q8-ans">
+      <div class="ans-hd">✅ 正しい（○）｜法第115条</div>
+      <div class="why">限度額適用認定証の提示により<strong>窓口での支払いが自己負担限度額まで</strong>に抑えられる（現物給付化）。後から申請する必要がなくなる。ただし認定証の事前申請が必要。70歳以上は高齢受給者証で自動適用。</div>
+      <div style="background:#EEEDFE;border:1.5px solid #7F77DD;border-radius:10px;padding:14px 16px;margin-top:12px;">
+        <div style="font-size:12px;font-weight:700;color:#26215C;margin-bottom:10px;">📖 通常申請 vs 限度額適用認定証（現物給付化）</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;">
+          <div style="background:white;border:1.5px solid #ddd;border-radius:8px;padding:10px 12px;">
+            <div style="font-weight:700;color:#c84b31;margin-bottom:8px;">① 通常（後払い申請）</div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="background:#fee2e2;border-radius:4px;padding:4px 8px;">窓口で3割<strong>全額</strong>支払う</div>
+              <div style="text-align:center;color:#6b7280;">↓ 後から申請</div>
+              <div style="background:#E1F5EE;border-radius:4px;padding:4px 8px;">限度額超過分が戻る</div>
+            </div>
+          </div>
+          <div style="background:white;border:2px solid #7F77DD;border-radius:8px;padding:10px 12px;">
+            <div style="font-weight:700;color:#26215C;margin-bottom:8px;">② 認定証提示（現物給付化）</div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="background:#EEEDFE;border-radius:4px;padding:4px 8px;">事前に保険者へ<strong>認定証</strong>申請</div>
+              <div style="text-align:center;color:#6b7280;">↓ 窓口に提示</div>
+              <div style="background:#E1F5EE;border:1.5px solid #1D9E75;border-radius:4px;padding:4px 8px;"><strong>限度額まで</strong>しか払わなくてよい</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:10px;background:#fff3cd;border-radius:6px;padding:8px 10px;font-size:11px;color:#633806;">
+          📌 認定証は<strong>事前に</strong>保険者（健保組合・協会けんぽ等）に申請が必要。<br>
+          📌 70歳以上は「高齢受給者証」で<strong>自動的に</strong>現物給付化される（認定証不要）。<br>
+          🎵「認定証を持っていれば窓口負担が限度額止まり。持っていなければ後から申請。」
+        </div>
+      </div>
+      <div class="tip">
+        <div class="tip-title">🧠 なぜ現物給付化が重要か？</div>
+        <div class="tip-item">田中さんが緊急手術で入院。区分ウなら上限80,100円のはずが認定証がないと30万円をいったん払う必要がある。貯金が少ない人には大きな負担。「認定証を事前に準備する」ことで最初から8万円しか払わなくていい。社労士として「入院が決まったらすぐ認定証を申請しましょう」とアドバイスできる実務知識。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div style="max-width:820px;margin:24px auto 8px;padding:0 20px;">
+  <div style="margin-bottom:6px;"><span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:1px;padding:3px 14px;border-radius:20px;background:#c9930a;color:white;">④ 高額療養費 穴埋め深堀り　2問</span></div>
+  <div style="font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:4px;">所得区分の数字・合算ルール・限度額適用認定証を完全定着</div>
+</div>
+<div style="max-width:820px;margin:0 auto 0;padding:0 20px 40px;display:flex;flex-direction:column;gap:20px;">
+<div class="card" id="cf6">
+  <div class="card-hd"><div class="q-num tn">F6</div><div><div class="src-tag t">穴埋め ／ 高額療養費・所得区分の数字（法第115条）</div><div class="q-type">難易度：★★★★</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">70歳未満の自己負担限度額（所得区分別）の空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      区分ア（83万円以上）：<span class="blank" id="f6a" onclick="selB('f6','f6a')">　　　　　</span>円＋（総医療費−<span class="blank" id="f6b" onclick="selB('f6','f6b')">　　　　</span>円）×1%<br>
+      区分ウ（28〜50万円）：<span class="blank" id="f6c" onclick="selB('f6','f6c')">　　　　</span>円＋（総医療費−267,000円）×1%<br>
+      区分オ（住民税非課税）：<span class="blank" id="f6d" onclick="selB('f6','f6d')">　　　　</span>円（定額）
+    </div>
+    <div class="chips" id="f6-ch">
+      <div class="chp" onclick="fillB('f6',null,this,'252,600')">252,600</div>
+      <div class="chp" onclick="fillB('f6',null,this,'842,000')">842,000</div>
+      <div class="chp" onclick="fillB('f6',null,this,'80,100')">80,100</div>
+      <div class="chp" onclick="fillB('f6',null,this,'35,400')">35,400</div>
+      <div class="chp" onclick="fillB('f6',null,this,'167,400')">167,400</div>
+      <div class="chp" onclick="fillB('f6',null,this,'57,600')">57,600</div>
+      <div class="chp" onclick="fillB('f6',null,this,'267,000')">267,000</div>
+    </div>
+    <button class="chk-btn" id="f6-btn" onclick="chkF('f6')">答え合わせ</button>
+    <div class="ans-box" id="f6-ans">
+      <div class="ans-hd">✅ 正解：252,600円 ／ 842,000円 ／ 80,100円 ／ 35,400円</div>
+      <div class="tip">
+        <div class="tip-title">🔑 ウを覚えたら類推できる</div>
+        <div class="tip-item"><strong>閾値 ≒ 基本額 × 3.33倍</strong>の法則：ウ(80,100)×3.33≒267,000・ア(252,600)×3.33≒842,000・イ(167,400)×3.33≒558,000。<br>
+        <strong>丸暗記4点だけ</strong>：ウ=80,100 ／ ア=252,600・842,000 ／ オ=35,400。イは「ウの約2倍」、エは「定額57,600」として類推OK。穴埋えはウ・ア・オの3つが狙われる。</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card" id="cf7">
+  <div class="card-hd"><div class="q-num tn">F7</div><div><div class="src-tag t">穴埋め ／ 高額療養費の合算・認定証（法第115条）</div><div class="q-type">難易度：★★★</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">高額療養費の合算ルールと限度額適用認定証の空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      高額療養費に含まれるのは<span class="blank" id="f7a" onclick="selB('f7','f7a')">　　　　</span>負担金のみ。<span class="blank" id="f7b" onclick="selB('f7','f7b')">　　</span>事代・差額ベッド代は対象外。<br>
+      70歳未満の世帯合算は<span class="blank" id="f7c" onclick="selB('f7','f7c')">　　　　</span>円以上が条件。<span class="blank" id="f7d" onclick="selB('f7','f7d')">　　　　　　</span>証を提示すれば窓口負担が限度額まで。
+    </div>
+    <div class="chips" id="f7-ch">
+      <div class="chp" onclick="fillB('f7','f7a',this,'一部')">一部</div>
+      <div class="chp" onclick="fillB('f7','f7b',this,'食')">食</div>
+      <div class="chp" onclick="fillB('f7','f7c',this,'21,000')">21,000</div>
+      <div class="chp" onclick="fillB('f7','f7d',this,'限度額適用認定')">限度額適用認定</div>
+      <div class="chp" onclick="fillB('f7','f7a',this,'保険')">保険</div>
+      <div class="chp" onclick="fillB('f7','f7c',this,'10,000')">10,000</div>
+      <div class="chp" onclick="fillB('f7','f7b',this,'薬')">薬</div>
+    </div>
+    <button class="chk-btn" id="f7-btn" onclick="chkF('f7')">答え合わせ</button>
+    <div class="ans-box" id="f7-ans">
+      <div class="ans-hd">✅ 正解：一部（負担金）／ 食（事代）／ 21,000円 ／ 限度額適用認定（証）</div>
+      <div class="tip">
+        <div class="tip-title">🧠 4つのキーワードセット</div>
+        <div class="tip-item">🧠「一部負担金・食事除外・2.1万円ハードル・認定証」——高額療養費の実務でよく聞かれる4点。「なぜ21,000円？」——少額の医療費まで全部合算すると事務負担が膨大になるから足切りラインを設定。70歳以上はこの縛りがない——高齢者の受診を妨げないための配慮。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="sec-div" style="margin-top:20px;">
+  <div><span class="sec-pill pill-gold">③ 高額療養費 深堀り　3問</span></div>
+  <div class="sec-title">所得区分5段階・合算対象外・現物給付化を完全マスター</div>
+  <div class="sec-desc">試験最頻出の高額療養費。ア〜オの所得区分、食事代が含まれない理由、限度額適用認定証の仕組みを図解で完全理解する。</div>
+</div>
+<div class="qwrap">
+
+<!-- Q6 -->
+<div class="card" id="cq6">
+  <div class="card-hd"><div class="q-num">06</div><div><div class="src-tag">法第115条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：高額療養費・所得区分</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">70歳未満の高額療養費の自己負担限度額は所得に応じて<mark>ア〜オの5区分</mark>に分かれており、最も高い区分（ア）の限度額は<mark>252,600円＋（総医療費−842,000円）×1%</mark>である。</div>
+    <div class="opts-tf" id="q6-opts"><div class="opt" onclick="answer('q6',0)">○ 正しい</div><div class="opt" onclick="answer('q6',1)">× 誤り</div></div>
+    <div class="ans-box" id="q6-ans">
+      <div class="ans-hd">✅ 正しい（○）｜法第115条</div>
+      <div class="why">70歳未満の自己負担限度額は所得に応じて<strong>ア〜オの5区分</strong>。<br>
+        区分ア（標準報酬月額83万円以上）：252,600円＋（総医療費−842,000円）×1%<br>
+        区分ウ（標準報酬月額28〜50万円）：80,100円＋（総医療費−267,000円）×1%<br>
+        区分オ（住民税非課税者）：35,400円（定額）</div>
+      <div style="background:#fef9e7;border:1.5px solid #BA7517;border-radius:10px;padding:14px 16px;margin-top:12px;">
+        <div style="font-size:12px;font-weight:700;color:#c9930a;margin-bottom:8px;">📖 70歳未満の自己負担限度額 5区分一覧</div>
+        <div style="background:white;border:2px solid #1a1a2e;border-radius:8px;overflow:hidden;font-size:11px;">
+          <div style="display:grid;grid-template-columns:60px 1fr 120px;background:#1a1a2e;padding:6px 10px;font-weight:700;color:#fde68a;">
+            <div>区分</div><div>標準報酬月額</div><div style="text-align:right;">自己負担限度額</div>
+          </div>
+          <div style="display:grid;grid-template-columns:60px 1fr 120px;padding:6px 10px;border-bottom:1px solid #f0ece4;background:#fff8f0;">
+            <div style="font-weight:900;color:#c84b31;">ア</div><div>83万円以上</div><div style="text-align:right;font-weight:700;color:#c84b31;">252,600円＋1%</div>
+          </div>
+          <div style="display:grid;grid-template-columns:60px 1fr 120px;padding:6px 10px;border-bottom:1px solid #f0ece4;">
+            <div style="font-weight:900;color:#c9930a;">イ</div><div>53〜79万円</div><div style="text-align:right;font-weight:700;color:#c9930a;">167,400円＋1%</div>
+          </div>
+          <div style="display:grid;grid-template-columns:60px 1fr 120px;padding:6px 10px;border-bottom:1px solid #f0ece4;background:#f5f0e8;">
+            <div style="font-weight:900;color:#26215C;">ウ</div><div>28〜50万円（標準）</div><div style="text-align:right;font-weight:700;color:#26215C;">80,100円＋1%</div>
+          </div>
+          <div style="display:grid;grid-template-columns:60px 1fr 120px;padding:6px 10px;border-bottom:1px solid #f0ece4;">
+            <div style="font-weight:900;color:#2a7f7f;">エ</div><div>26万円以下</div><div style="text-align:right;font-weight:700;color:#2a7f7f;">57,600円（定額）</div>
+          </div>
+          <div style="display:grid;grid-template-columns:60px 1fr 120px;padding:6px 10px;background:#e8f4f4;">
+            <div style="font-weight:900;color:#085041;">オ</div><div>住民税非課税</div><div style="text-align:right;font-weight:700;color:#085041;">35,400円（定額）</div>
+          </div>
+        </div>
+        <div style="margin-top:8px;font-size:11px;color:#633806;background:#fff3cd;border-radius:6px;padding:6px 10px;">
+          🎵「ア〜オで5段階。252600・167400・80100・57600・35400。<br>アとイとウは計算式（＋1%）、エとオは定額。<br>多数回該当でア〜ウは安くなる。」
+        </div>
+        <div style="margin-top:8px;font-size:11px;color:#085041;background:#E1F5EE;border-radius:6px;padding:8px 10px;">
+          📌 <strong>多数回該当</strong>（直近12ヶ月に3回以上）→ 4回目から：<br>
+          ア:140,100円　イ:93,000円　ウ:44,400円　エ:44,400円　オ:24,600円
+        </div>
+      </div>
+      <div class="tip">
+        <div class="tip-title">🧠 なぜ計算式がある？ストーリーで覚える</div>
+        <div class="tip-item">山田さんは高収入のため区分ア。100万円の手術を受けた場合：252,600＋（1,000,000−842,000）×1%＝252,600＋1,580＝254,180円が自己負担。「なぜ＋1%？」——高額の治療ほど少しだけ追加負担させることで、医療費全体への意識を持たせる仕組み。住民税非課税の区分オは定額35,400円——低所得者には計算式ではなく定額で保護する設計。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q7 -->
+<div class="card" id="cq7">
+  <div class="card-hd"><div class="q-num">07</div><div><div class="src-tag">法第115条・第67条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：高額療養費・合算対象外</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">高額療養費の合算対象となるのは<mark>一部負担金のみ</mark>であり、入院時食事療養費の自己負担（食事代）・差額ベッド代・保険外の費用は<mark>合算対象外</mark>である。</div>
+    <div class="opts-tf" id="q7-opts"><div class="opt" onclick="answer('q7',0)">○ 正しい</div><div class="opt" onclick="answer('q7',1)">× 誤り</div></div>
+    <div class="ans-box" id="q7-ans">
+      <div class="ans-hd">✅ 正しい（○）｜法第115条・第67条</div>
+      <div class="why">高額療養費の計算に含まれるのは<strong>一部負担金のみ</strong>。食事代・差額ベッド代・保険外費用は一切含まれない。「医療費が高かったのに高額療養費が思ったより少ない」のはここが原因。</div>
+      <div style="background:#fff8f7;border:1.5px solid #c84b31;border-radius:10px;padding:14px 16px;margin-top:12px;">
+        <div style="font-size:12px;font-weight:700;color:#c84b31;margin-bottom:8px;">📖 高額療養費の合算対象 vs 対象外</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;">
+          <div style="background:#E1F5EE;border:1.5px solid #1D9E75;border-radius:8px;padding:10px 12px;">
+            <div style="font-weight:700;color:#085041;margin-bottom:6px;">✅ 合算対象（含まれる）</div>
+            <div style="line-height:2.0;">・<strong>一部負担金</strong>（窓口負担3割等）<br>・同一月・同一医療機関のもの<br>・世帯合算（70歳未満は2.1万以上）</div>
+          </div>
+          <div style="background:#fee2e2;border:1.5px solid #c84b31;border-radius:8px;padding:10px 12px;">
+            <div style="font-weight:700;color:#c84b31;margin-bottom:6px;">❌ 合算対象外（含まれない）</div>
+            <div style="line-height:2.0;">・<strong>食事代</strong>（入院時食事療養費）<br>・<strong>差額ベッド代</strong>（選定療養）<br>・<strong>保険外</strong>の費用<br>・<strong>訪問看護</strong>の自己負担</div>
+          </div>
+        </div>
+        <div style="margin-top:8px;font-size:11px;color:#633806;background:#fff3cd;border-radius:6px;padding:6px 10px;">
+          🎵「高額療養費に含まれるのは保険診療の窓口負担だけ。食事代・差額ベッドは含まれない。」
+        </div>
+      </div>
+      <div class="tip">
+        <div class="tip-title">🧠 なぜ食事代は含まれない？ストーリーで覚える</div>
+        <div class="tip-item">佐藤さんが1ヶ月入院。医療費の窓口負担は高額療養費で戻るが、食事代は戻らない。「なぜ？」——食事代は入院していなくても必要な出費（自宅でも食べる）。あくまで「医療」に必要な費用だけを保護する設計。差額ベッドは本人が希望して選んだ追加サービスなので保険で補填しない。「保険診療の窓口負担だけが対象」と覚えると引っかけ問題に対応できる。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q8 -->
+<div class="card" id="cq8">
+  <div class="card-hd"><div class="q-num">08</div><div><div class="src-tag">法第115条 ／ ○×式</div><div class="q-type">難易度：★★★ ／ 単元：高額療養費・現物給付化</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">限度額適用認定証を医療機関に提示すれば、窓口での支払いが<mark>自己負担限度額まで</mark>に抑えられ、高額療養費の申請が<mark>不要</mark>になる。</div>
+    <div class="opts-tf" id="q8-opts"><div class="opt" onclick="answer('q8',0)">○ 正しい</div><div class="opt" onclick="answer('q8',1)">× 誤り</div></div>
+    <div class="ans-box" id="q8-ans">
+      <div class="ans-hd">✅ 正しい（○）｜法第115条</div>
+      <div class="why">限度額適用認定証の提示により<strong>窓口での支払いが自己負担限度額まで</strong>に抑えられる（現物給付化）。後から申請する必要がなくなる。ただし認定証の事前申請が必要。</div>
+      <div style="background:#EEEDFE;border:1.5px solid #7F77DD;border-radius:10px;padding:14px 16px;margin-top:12px;">
+        <div style="font-size:12px;font-weight:700;color:#26215C;margin-bottom:10px;">📖 通常の申請方式 vs 限度額適用認定証（現物給付化）</div>
+        <div style="display:flex;gap:8px;align-items:stretch;font-size:11px;">
+          <div style="flex:1;background:white;border:1.5px solid #ddd;border-radius:8px;padding:10px 12px;">
+            <div style="font-weight:700;color:#c84b31;margin-bottom:8px;">① 通常の申請方式（後払い）</div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="background:#fee2e2;border-radius:4px;padding:4px 8px;">窓口で医療費を<strong>全額</strong>（3割）支払う</div>
+              <div style="text-align:center;color:#6b7280;">↓</div>
+              <div style="background:#f5f0e8;border-radius:4px;padding:4px 8px;">後から保険者に申請</div>
+              <div style="text-align:center;color:#6b7280;">↓</div>
+              <div style="background:#E1F5EE;border-radius:4px;padding:4px 8px;">限度額超過分が支給される</div>
+            </div>
+          </div>
+          <div style="flex:1;background:white;border:2px solid #7F77DD;border-radius:8px;padding:10px 12px;">
+            <div style="font-weight:700;color:#26215C;margin-bottom:8px;">② 認定証提示（現物給付化）</div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="background:#EEEDFE;border-radius:4px;padding:4px 8px;">事前に保険者へ<strong>認定証</strong>を申請</div>
+              <div style="text-align:center;color:#6b7280;">↓</div>
+              <div style="background:#EEEDFE;border-radius:4px;padding:4px 8px;">窓口に認定証を提示</div>
+              <div style="text-align:center;color:#6b7280;">↓</div>
+              <div style="background:#E1F5EE;border:1.5px solid #1D9E75;border-radius:4px;padding:4px 8px;"><strong>窓口負担が限度額まで</strong>→申請不要</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:10px;background:#fff3cd;border-radius:6px;padding:8px 10px;font-size:11px;color:#633806;">
+          📌 <strong>注意</strong>：認定証は事前に保険者（健保組合・協会けんぽ等）に申請が必要。<br>
+          📌 70歳以上は「高齢受給者証」で自動的に現物給付化される（認定証不要）。<br>
+          🎵「認定証を持っていれば窓口負担が限度額止まり。持っていなければ後から申請。」
+        </div>
+      </div>
+      <div class="tip">
+        <div class="tip-title">🧠 なぜ現物給付化が重要か？ストーリーで覚える</div>
+        <div class="tip-item">田中さんが手術で入院。区分ウなら上限80,100円のはずが、認定証がなければいったん30万円払い後で19万円が戻る。貯金がない人には厳しい。だから「限度額適用認定証」を使えば最初から8万円しか払わなくていい——これが現物給付化の意義。社労士として患者・家族に「事前に認定証を申請しておくとよい」とアドバイスできる知識。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /qwrap -->
+
+<div class="sec-div" style="margin-top:20px;">
+  <div><span class="sec-pill pill-gold">④ 高額療養費 穴埋め深堀り　2問</span></div>
+  <div class="sec-title">所得区分5段階の数字・合算ルール・限度額適用認定証を完全定着</div>
+</div>
+<div class="qwrap">
+
+<!-- F6 -->
+<div class="card" id="cf6">
+  <div class="card-hd"><div class="q-num tn">F6</div><div><div class="src-tag t">穴埋め ／ 高額療養費・所得区分の数字（法第115条）</div><div class="q-type">難易度：★★★★</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">70歳未満の自己負担限度額（所得区分）の空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      区分ア（標準報酬月額83万円以上）：
+      <span class="blank" id="f6a" onclick="selB('f6','f6a')">　　　　　</span>
+      円＋（総医療費−<span class="blank" id="f6b" onclick="selB('f6','f6b')">　　　　</span>円）×1%<br>
+      区分ウ（標準報酬月額28〜50万円）：
+      <span class="blank" id="f6c" onclick="selB('f6','f6c')">　　　　</span>
+      円＋（総医療費−267,000円）×1%<br>
+      区分オ（住民税非課税）：
+      <span class="blank" id="f6d" onclick="selB('f6','f6d')">　　　　</span>
+      円（定額）
+    </div>
+    <div class="chips" id="f6-ch">
+      <div class="chp" onclick="fillB('f6','f6a',this,'252,600')">252,600</div>
+      <div class="chp" onclick="fillB('f6','f6b',this,'842,000')">842,000</div>
+      <div class="chp" onclick="fillB('f6','f6c',this,'80,100')">80,100</div>
+      <div class="chp" onclick="fillB('f6','f6d',this,'35,400')">35,400</div>
+      <div class="chp" onclick="fillB('f6','f6a',this,'167,400')">167,400</div>
+      <div class="chp" onclick="fillB('f6','f6c',this,'57,600')">57,600</div>
+      <div class="chp" onclick="fillB('f6','f6d',this,'24,600')">24,600</div>
+    </div>
+    <button class="chk-btn" id="f6-btn" onclick="chkF('f6')">答え合わせ</button>
+    <div class="ans-box" id="f6-ans">
+      <div class="ans-hd">✅ 正解：252,600円 ／ 842,000円 ／ 80,100円 ／ 35,400円</div>
+      <div class="tip">
+        <div class="tip-title">🧠 なぜこの数字？語呂で覚える</div>
+        <div class="tip-item">🎵「ニコニコ（252,600）・イナムラ（167,400）・ハチイチ（80,100）・ゴナロク（57,600）・サンゴ（35,400）」——5区分の限度額は試験の最難関。まず「ウ区分＝標準的な所得→80,100円＋1%」を軸に覚えると前後が整理しやすい。アとイは計算式（＋1%）、エとオは定額——低所得ほど定額で保護される設計。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F7 -->
+<div class="card" id="cf7">
+  <div class="card-hd"><div class="q-num tn">F7</div><div><div class="src-tag t">穴埋め ／ 高額療養費の合算・認定証（法第115条）</div><div class="q-type">難易度：★★★</div></div></div>
+  <div class="card-body">
+    <div class="quiz-q">高額療養費の合算ルールと限度額適用認定証の空欄を埋めてください。</div>
+    <div class="blank-sentence">
+      高額療養費に含まれるのは<span class="blank" id="f7a" onclick="selB('f7','f7a')">　　　　</span>負担金のみ。
+      <span class="blank" id="f7b" onclick="selB('f7','f7b')">　　　　</span>
+      代・差額ベッド代は対象外。<br>
+      同一月・同一<span class="blank" id="f7c" onclick="selB('f7','f7c')">　　　　</span>機関ごとに計算し、<span class="blank" id="f7d" onclick="selB('f7','f7d')">　　　　　　</span>証を提示すれば窓口負担が限度額まで。
+    </div>
+    <div class="chips" id="f7-ch">
+      <div class="chp" onclick="fillB('f7','f7a',this,'一部')">一部</div>
+      <div class="chp" onclick="fillB('f7','f7b',this,'食事')">食事</div>
+      <div class="chp" onclick="fillB('f7','f7c',this,'医療')">医療</div>
+      <div class="chp" onclick="fillB('f7','f7d',this,'限度額適用認定')">限度額適用認定</div>
+      <div class="chp" onclick="fillB('f7','f7a',this,'保険')">保険</div>
+      <div class="chp" onclick="fillB('f7','f7b',this,'薬剤')">薬剤</div>
+      <div class="chp" onclick="fillB('f7','f7c',this,'保険')">保険</div>
+    </div>
+    <button class="chk-btn" id="f7-btn" onclick="chkF('f7')">答え合わせ</button>
+    <div class="ans-box" id="f7-ans">
+      <div class="ans-hd">✅ 正解：一部（負担金）／ 食事（代）／ 医療（機関）／ 限度額適用認定（証）</div>
+      <div class="tip">
+        <div class="tip-title">🧠 なぜこの組み合わせ？ストーリーで覚える</div>
+        <div class="tip-item">🧠 高額療養費の「含まれない3つ」を覚える——食事代・差額ベッド代・保険外費用。いずれも「医療そのものではなく、付随する出費」だから保険で補填しない。限度額適用認定証は「事前準備型」の高額療養費——後から申請する手間を省く便利な制度。社労士として従業員から相談を受けたときに「認定証を先に申請しましょう」とアドバイスできる実務知識。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /qwrap -->
+<div class="complete" id="complete-banner">
+  <div class="complete-in">
+    <h2>Day 1 <em>完了！</em></h2>
+    <div class="complete-score" id="final-score">0</div>
+    <div class="complete-sub">10問中の正解数</div>
+    <div class="btn-row">
+      <span class="btn-back" onclick="location.href='index.html'" style="cursor:pointer;display:inline-block;">← 目次に戻る</span>
+      <button class="btn-copy" id="copy-btn" onclick="copyRecord()">📋 記録をコピー</button>
+      <span class="btn-next" onclick="location.href='day2.html'" style="cursor:pointer;display:inline-block;">Day 2 へ →</span>
+    </div>
+  </div>
+</div>
 </div><!-- /panel-quiz -->
 
 
@@ -1483,7 +2059,140 @@ document.addEventListener('DOMContentLoaded',function(){
     🚨 × 「自動的に支給」→ ○ <strong>申請が必要</strong>　× 「一部だけ戻る」→ ○ <strong>超えた分は全額支給</strong>
   </div>
 
-  <!-- 傷病手当金 -->
+
+  <!-- ③ 高額療養費 追加深堀り -->
+
+  <!-- 70歳未満 vs 70歳以上 比較図解 -->
+  <div style="font-size:12px;font-weight:700;color:#c9930a;margin:16px 0 8px;">📊 70歳未満 vs 70歳以上・74歳以下 比較</div>
+  <div style="background:white;border:2px solid #1a1a2e;border-radius:10px;overflow:hidden;margin-bottom:12px;font-size:11px;">
+    <div style="display:grid;grid-template-columns:120px 1fr 1fr;background:#1a1a2e;">
+      <div style="padding:8px 10px;font-weight:700;color:#fde68a;">比較項目</div>
+      <div style="padding:8px 10px;font-weight:700;color:#e8896b;border-left:1px solid rgba(255,255,255,.15);">70歳未満</div>
+      <div style="padding:8px 10px;font-weight:700;color:#86efac;border-left:1px solid rgba(255,255,255,.15);">70〜74歳</div>
+    </div>
+    <div style="display:grid;grid-template-columns:120px 1fr 1fr;border-bottom:1px solid #f0ece4;background:#faf8f3;">
+      <div style="padding:8px 10px;font-weight:700;color:#6b7280;">所得区分</div>
+      <div style="padding:8px 10px;border-left:1px solid #f0ece4;"><strong>ア〜オの5段階</strong>（標準報酬月額で区分）</div>
+      <div style="padding:8px 10px;border-left:1px solid #f0ece4;"><strong>現役並み所得</strong>と<strong>一般・低所得</strong>の区分</div>
+    </div>
+    <div style="display:grid;grid-template-columns:120px 1fr 1fr;border-bottom:1px solid #f0ece4;">
+      <div style="padding:8px 10px;font-weight:700;color:#6b7280;">世帯合算</div>
+      <div style="padding:8px 10px;border-left:1px solid #f0ece4;"><span style="color:#c84b31;font-weight:700;">21,000円以上</span>のみ合算可</div>
+      <div style="padding:8px 10px;border-left:1px solid #f0ece4;"><span style="color:#085041;font-weight:700;">金額制限なし</span>（全額合算可）</div>
+    </div>
+    <div style="display:grid;grid-template-columns:120px 1fr 1fr;border-bottom:1px solid #f0ece4;background:#faf8f3;">
+      <div style="padding:8px 10px;font-weight:700;color:#6b7280;">現物給付化</div>
+      <div style="padding:8px 10px;border-left:1px solid #f0ece4;"><span style="color:#c84b31;">認定証を事前申請</span>→提示で限度額止まり</div>
+      <div style="padding:8px 10px;border-left:1px solid #f0ece4;"><span style="color:#085041;">高齢受給者証</span>で自動的に現物給付化</div>
+    </div>
+    <div style="display:grid;grid-template-columns:120px 1fr 1fr;border-bottom:1px solid #f0ece4;">
+      <div style="padding:8px 10px;font-weight:700;color:#6b7280;">多数回該当</div>
+      <div style="padding:8px 10px;border-left:1px solid #f0ece4;">直近12ヶ月に3回→4回目から限度額↓</div>
+      <div style="padding:8px 10px;border-left:1px solid #f0ece4;">同様（直近12ヶ月に3回→4回目から）</div>
+    </div>
+    <div style="display:grid;grid-template-columns:120px 1fr 1fr;">
+      <div style="padding:8px 10px;font-weight:700;color:#6b7280;">申請方法</div>
+      <div style="padding:8px 10px;border-left:1px solid #f0ece4;">申請必要（自動支給ではない）</div>
+      <div style="padding:8px 10px;border-left:1px solid #f0ece4;">申請必要（自動支給ではない）</div>
+    </div>
+  </div>
+
+  <!-- 70歳未満 所得区分5段階 -->
+  <div style="font-size:12px;font-weight:700;color:#c9930a;margin:14px 0 8px;">📋 70歳未満 自己負担限度額 5区分（←試験最頻出）</div>
+  <div style="background:white;border:2px solid #1a1a2e;border-radius:10px;overflow:hidden;margin-bottom:8px;font-size:11px;">
+    <div style="display:grid;grid-template-columns:36px 130px 1fr 120px;background:#1a1a2e;gap:0;">
+      <div style="padding:7px 6px;font-weight:700;color:#fde68a;text-align:center;">区分</div>
+      <div style="padding:7px 8px;font-weight:700;color:#fde68a;border-left:1px solid rgba(255,255,255,.15);">標準報酬月額</div>
+      <div style="padding:7px 8px;font-weight:700;color:#fde68a;border-left:1px solid rgba(255,255,255,.15);">自己負担限度額</div>
+      <div style="padding:7px 8px;font-weight:700;color:#fde68a;border-left:1px solid rgba(255,255,255,.15);">多数回該当</div>
+    </div>
+    <div style="display:grid;grid-template-columns:36px 130px 1fr 120px;border-bottom:1px solid #f0ece4;background:#fff8f0;">
+      <div style="padding:7px 6px;font-weight:900;color:#c84b31;text-align:center;font-size:14px;">ア</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;color:#6b7280;">83万円以上</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;font-weight:700;color:#c84b31;">252,600円＋（総医療費−842,000円）×1%</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;font-weight:700;color:#c84b31;">140,100円</div>
+    </div>
+    <div style="display:grid;grid-template-columns:36px 130px 1fr 120px;border-bottom:1px solid #f0ece4;">
+      <div style="padding:7px 6px;font-weight:900;color:#c9930a;text-align:center;font-size:14px;">イ</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;color:#6b7280;">53〜79万円</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;font-weight:700;color:#c9930a;">167,400円＋（総医療費−558,000円）×1%</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;font-weight:700;color:#c9930a;">93,000円</div>
+    </div>
+    <div style="display:grid;grid-template-columns:36px 130px 1fr 120px;border-bottom:1px solid #f0ece4;background:#f5f0e8;">
+      <div style="padding:7px 6px;font-weight:900;color:#26215C;text-align:center;font-size:14px;">ウ</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;color:#6b7280;">28〜50万円<br><span style="color:#c84b31;font-size:10px;">★標準（試験の基本）</span></div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;font-weight:700;color:#26215C;">80,100円＋（総医療費−267,000円）×1%</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;font-weight:700;color:#26215C;">44,400円</div>
+    </div>
+    <div style="display:grid;grid-template-columns:36px 130px 1fr 120px;border-bottom:1px solid #f0ece4;">
+      <div style="padding:7px 6px;font-weight:900;color:#2a7f7f;text-align:center;font-size:14px;">エ</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;color:#6b7280;">26万円以下</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;font-weight:700;color:#2a7f7f;">57,600円（定額）</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;font-weight:700;color:#2a7f7f;">44,400円</div>
+    </div>
+    <div style="display:grid;grid-template-columns:36px 130px 1fr 120px;">
+      <div style="padding:7px 6px;font-weight:900;color:#085041;text-align:center;font-size:14px;">オ</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;color:#6b7280;">住民税非課税</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;font-weight:700;color:#085041;">35,400円（定額）</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;font-weight:700;color:#085041;">24,600円</div>
+    </div>
+    <div style="padding:8px 12px;background:#fff3cd;font-size:10px;color:#633806;line-height:1.8;">
+      🎵「ア〜ウは計算式（＋1%）、エ・オは定額。ウ=ハチイチ（80,100）が基準。」<br>
+      🎵「イの引く数は558,000（ウの267,000の約2倍）、アの842,000は標準報酬月額83万円と近い数字。」
+    </div>
+  </div>
+
+  <!-- 70歳以上の限度額 -->
+  <div style="font-size:12px;font-weight:700;color:#085041;margin:14px 0 8px;">📋 70〜74歳の自己負担限度額</div>
+  <div style="background:white;border:2px solid #1D9E75;border-radius:10px;overflow:hidden;margin-bottom:8px;font-size:11px;">
+    <div style="display:grid;grid-template-columns:1fr 100px 100px;background:#085041;gap:0;">
+      <div style="padding:7px 10px;font-weight:700;color:white;">区分</div>
+      <div style="padding:7px 8px;font-weight:700;color:white;border-left:1px solid rgba(255,255,255,.2);">外来（個人）</div>
+      <div style="padding:7px 8px;font-weight:700;color:white;border-left:1px solid rgba(255,255,255,.2);">入院＋外来</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 100px 100px;border-bottom:1px solid #f0ece4;background:#fff8f0;">
+      <div style="padding:7px 10px;font-weight:700;color:#c84b31;">現役並みⅢ（標報83万円以上）</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#c84b31;">252,600円＋1%</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#c84b31;">252,600円＋1%</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 100px 100px;border-bottom:1px solid #f0ece4;">
+      <div style="padding:7px 10px;font-weight:700;color:#c9930a;">現役並みⅡ（標報53〜79万円）</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#c9930a;">167,400円＋1%</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#c9930a;">167,400円＋1%</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 100px 100px;border-bottom:1px solid #f0ece4;background:#f5f0e8;">
+      <div style="padding:7px 10px;font-weight:700;color:#26215C;">現役並みⅠ（標報28〜50万円）</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#26215C;">80,100円＋1%</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#26215C;">80,100円＋1%</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 100px 100px;border-bottom:1px solid #f0ece4;">
+      <div style="padding:7px 10px;color:#6b7280;">一般（標報26万円以下）</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#2a7f7f;">18,000円<br><span style="font-size:9px;font-weight:400;">年間上限14.4万円</span></div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#2a7f7f;">57,600円</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 100px 100px;">
+      <div style="padding:7px 10px;color:#6b7280;">低所得Ⅱ（住民税非課税）</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#085041;">8,000円</div>
+      <div style="padding:7px 8px;border-left:1px solid #f0ece4;text-align:center;font-weight:700;color:#085041;">24,600円</div>
+    </div>
+    <div style="padding:8px 12px;background:#E1F5EE;font-size:10px;color:#085041;line-height:1.8;">
+      📌 70〜74歳は<strong>外来（個人）と入院＋外来（世帯）の2段階</strong>で計算。外来のほうが低い限度額が適用される。<br>
+      📌 一般区分の外来18,000円は年間14.4万円の上限あり。<br>
+      📌 現役並み所得者（Ⅰ〜Ⅲ）は70歳未満と同じ限度額。世帯合算の21,000円ハードルはなし。
+    </div>
+  </div>
+
+  <!-- 合算対象外 + 認定証 まとめ -->
+  <div style="background:#FCEBEB;border:1px solid #fca5a5;border-radius:8px;padding:10px 14px;font-size:12px;color:#A32D2D;margin-bottom:8px;line-height:2.0;">
+    🚨 <strong>高額療養費 最重要引っかけ4点</strong><br>
+    ① × 「自動的に支給」→ ○ <strong>申請が必要</strong><br>
+    ② × 「食事代・差額ベッドも含む」→ ○ <strong>一部負担金のみ</strong><br>
+    ③ × 「70歳未満も金額制限なく合算」→ ○ <strong>21,000円以上が条件</strong><br>
+    ④ × 「認定証があれば申請不要で自動支給」→ ○ <strong>認定証は事前に保険者に申請</strong>が必要
+  </div>
+
+
+    <!-- 傷病手当金 -->
   <div style="font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;color:#1a1a2e;margin:20px 0 10px;padding-bottom:6px;border-bottom:2px solid #26215C;">④ 傷病手当金（法第99条）</div>
   <div style="background:#EEEDFE;border-radius:10px;padding:14px 16px;font-size:13px;color:#1a1a2e;line-height:2.0;margin-bottom:10px;">
     <strong>定義</strong>：病気やけがで<strong>仕事を休んで給与をもらえない期間</strong>に支給される現金給付。<br>
@@ -1684,18 +2393,6 @@ document.addEventListener('DOMContentLoaded',function(){
 </div><!-- /panel-spider -->
 
 <!-- COMPLETE BANNER -->
-<div class="complete" id="complete-banner">
-  <div class="complete-in">
-    <h2>Day 1 <em>完了！</em></h2>
-    <div class="complete-score" id="final-score">0</div>
-    <div class="complete-sub">10問中の正解数</div>
-    <div class="btn-row">
-      <span class="btn-back" onclick="location.href='index.html'" style="cursor:pointer;display:inline-block;">← 目次に戻る</span>
-      <button class="btn-copy" id="copy-btn" onclick="copyRecord()">📋 記録をコピー</button>
-      <span class="btn-next" onclick="location.href='day2.html'" style="cursor:pointer;display:inline-block;">Day 2 へ →</span>
-    </div>
-  </div>
-</div>
 
 </body>
 </html>
