@@ -199,7 +199,7 @@ svg text{font-family:'Noto Sans JP',sans-serif;}
   <div class="hd-in">
     <div class="hd-eye">厚生年金法 ／ Day 1</div>
     <h1>目的・適用事業所・<em>被保険者の種別・資格</em></h1>
-    <div class="hd-sub">○×式 5問 ＋ 穴埋め式 5問 ― 全10問　法第1条〜第19条</div>
+    <div class="hd-sub">○×式 7問 ＋ 穴埋め式 7問 ― 全16問　法第1条〜第100条の4</div>
     <div class="prog-wrap"><div class="prog-bar" id="prog"></div></div>
     <div class="prog-lbl" id="prog-lbl">0 ／ 10 問 回答済み</div>
   </div>
@@ -221,7 +221,10 @@ svg text{font-family:'Noto Sans JP',sans-serif;}
 <!-- ○×式 5問 -->
 <div class="qwrap">
 
-<!-- Q1 -->
+<div style="font-family:'Noto Serif JP',serif;font-size:13px;font-weight:700;color:#26215C;margin:20px 0 12px;padding:8px 14px;background:#EEF0FA;border-left:4px solid #26215C;border-radius:0 6px 6px 0;">
+  ○×式問題（01〜08）
+</div>
+
 <div class="card" id="cq1">
   <div class="card-hd">
     <div class="q-num">01</div>
@@ -492,9 +495,147 @@ svg text{font-family:'Noto Sans JP',sans-serif;}
 <div class="qwrap">
 
 <!-- F1 -->
-<div class="card" id="cf1">
+
+<div class="card" id="cq7">
   <div class="card-hd">
     <div class="q-num">06</div>
+    <div>
+      <div class="src-tag">法第2条 ／ ○×式</div>
+      <div class="q-type">難易度：★☆☆ ／ 単元：保険者</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">厚生年金保険は、<mark>日本年金機構</mark>が管掌する。</div>
+    <div class="opts-tf" id="q7-opts">
+      <div class="opt" onclick="answer('q7',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q7',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q7-ans">
+      <div class="ans-hd" id="q7-result"></div>
+      <div class="why">⚠️ <strong>誤り。</strong>厚生年金保険を管掌するのは<mark>政府（厚生労働大臣）</mark>である（法第2条）。日本年金機構は窓口業務を受託する実施機関であり、保険者ではない。</div>
+      <div style="background:white;border:1px solid #e5e7eb;border-radius:8px;padding:10px 14px;margin-top:10px;font-size:11px;">
+        <div style="font-weight:700;color:#1a1a2e;margin-bottom:6px;">📖 主な社会保険の保険者比較</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+          <div style="background:#f0fdf4;border-radius:6px;padding:6px 10px;"><div style="font-weight:700;color:#1D9E75;">厚生年金保険</div><div>政府（厚生労働大臣）</div></div>
+          <div style="background:#fff8f0;border-radius:6px;padding:6px 10px;"><div style="font-weight:700;color:#c9930a;">健康保険（協会管掌）</div><div>全国健康保険協会</div></div>
+          <div style="background:#f5f0ff;border-radius:6px;padding:6px 10px;"><div style="font-weight:700;color:#7c3aed;">国民年金</div><div>政府（厚生労働大臣）</div></div>
+          <div style="background:#fef2f2;border-radius:6px;padding:6px 10px;"><div style="font-weight:700;color:#c84b31;">国民健康保険</div><div>都道府県・市町村</div></div>
+        </div>
+      </div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 年金事務所で手続きするから「機構が管掌」と思いがちだが、保険者はあくまで政府。田中さんが年金事務所で申請できるのは、厚生労働大臣が機構に「受け付けてよい」と委任しているから——決定権は常に政府側にある。</div>
+      <div class="tip">💡 法第2条の一文：「厚生年金保険は、<strong>政府</strong>が、管掌する。」——シンプルだが頻出。</div>
+      <div class="law-tag">法第2条</div>
+    </div>
+  </div>
+</div><!-- /card cq7 -->
+
+<!-- cq8: 4種別・実施機関 -->
+
+<div class="card" id="cq8">
+  <div class="card-hd">
+    <div class="q-num">07</div>
+    <div>
+      <div class="src-tag">法第2条の5 ／ ○×式</div>
+      <div class="q-type">難易度：★★☆ ／ 単元：被保険者4種別・実施機関</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">厚生年金被保険者のうち、<mark>地方公務員</mark>は<mark>第3号厚生年金被保険者</mark>であり、その実施機関は<mark>地方公務員共済組合など</mark>である。</div>
+    <div class="opts-tf" id="q8-opts">
+      <div class="opt" onclick="answer('q8',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q8',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q8-ans">
+      <div class="ans-hd" id="q8-result"></div>
+      <div class="why">✅ <strong>正しい。</strong>地方公務員は<mark>第3号厚生年金被保険者</mark>、実施機関は<mark>地方公務員共済組合など</mark>（法第2条の5）。対応：第1号＝民間（厚生労働大臣）・第2号＝国家公務員（国共済）・第3号＝地方公務員（地共済）・第4号＝私立学校教職員（私学事業団）。</div>
+      <div style="background:white;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;margin-top:10px;font-size:11px;">
+        <div style="display:grid;grid-template-columns:50px 1fr 1fr;background:#1a1a2e;">
+          <div style="padding:5px 8px;color:#fde68a;font-weight:700;">種別</div>
+          <div style="padding:5px 8px;color:white;font-weight:700;border-left:1px solid rgba(255,255,255,.2);">対象者</div>
+          <div style="padding:5px 8px;color:#a7f3d0;font-weight:700;border-left:1px solid rgba(255,255,255,.2);">実施機関</div>
+        </div>
+        <div style="display:grid;grid-template-columns:50px 1fr 1fr;border-bottom:1px solid #e5e7eb;">
+          <div style="padding:5px 8px;font-weight:900;color:#1D9E75;text-align:center;">第1号</div>
+          <div style="padding:5px 8px;border-left:1px solid #e5e7eb;">民間企業の労働者</div>
+          <div style="padding:5px 8px;border-left:1px solid #e5e7eb;font-weight:700;">厚生労働大臣</div>
+        </div>
+        <div style="display:grid;grid-template-columns:50px 1fr 1fr;border-bottom:1px solid #e5e7eb;">
+          <div style="padding:5px 8px;font-weight:900;color:#2a7f7f;text-align:center;">第2号</div>
+          <div style="padding:5px 8px;border-left:1px solid #e5e7eb;">国家公務員</div>
+          <div style="padding:5px 8px;border-left:1px solid #e5e7eb;font-weight:700;">国家公務員共済組合など</div>
+        </div>
+        <div style="display:grid;grid-template-columns:50px 1fr 1fr;border-bottom:1px solid #e5e7eb;background:#f5f0ff;">
+          <div style="padding:5px 8px;font-weight:900;color:#7c3aed;text-align:center;">第3号</div>
+          <div style="padding:5px 8px;border-left:1px solid #e5e7eb;font-weight:700;color:#7c3aed;">地方公務員 ✅</div>
+          <div style="padding:5px 8px;border-left:1px solid #e5e7eb;font-weight:700;color:#7c3aed;">地方公務員共済組合など ✅</div>
+        </div>
+        <div style="display:grid;grid-template-columns:50px 1fr 1fr;">
+          <div style="padding:5px 8px;font-weight:900;color:#c84b31;text-align:center;">第4号</div>
+          <div style="padding:5px 8px;border-left:1px solid #e5e7eb;">私立学校教職員</div>
+          <div style="padding:5px 8px;border-left:1px solid #e5e7eb;font-weight:700;">日本私立学校振興・共済事業団</div>
+        </div>
+      </div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 <strong>語呂「１民・２国・３地・４私」</strong>——鈴木さんは国家公務員（第2号）、佐藤さんは地方公務員（第3号）、山田先生は私学教員（第4号）。「公務員＝第4号」は誤り——第4号は私学、公務員は第2号か第3号。</div>
+      <div class="tip">💡 「１民・２国・３地・４私」——4文字語呂で完全マスター。</div>
+      <div class="law-tag">法第2条の5</div>
+    </div>
+  </div>
+</div><!-- /card cq8 -->
+
+<!-- cf7: 保険者・4種別穴埋め -->
+
+<div class="card" id="cq6">
+  <div class="card-hd">
+    <div class="q-num">08</div>
+    <div>
+      <div class="src-tag">法第100条の4 ／ ○×式</div>
+      <div class="q-type">難易度：★★☆ ／ 単元：厚生労働大臣の権限委任</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quiz-q">厚生労働大臣の権限のうち、<mark>保険料等の徴収・督促</mark>および<mark>保険給付の裁定・改定</mark>は、日本年金機構に委任される。</div>
+    <div class="opts-tf" id="q6-opts">
+      <div class="opt" onclick="answer('q6',0)">○ 正しい</div>
+      <div class="opt" onclick="answer('q6',1)">× 誤り</div>
+    </div>
+    <div class="ans-box" id="q6-ans">
+      <div class="ans-hd" id="q6-result"></div>
+      <div class="why">⚠️ <strong>誤り。</strong>保険料等の徴収・督促および保険給付の裁定・改定は、日本年金機構に<mark>委任されない</mark>。これらは政府（厚生労働大臣）が直接行う事務。委任されるのは「適用事業所・被保険者に関する権限」「標準報酬の決定・改定」「滞納処分」「裁定・改定請求の受理」などである（抜粋）。</div>
+      <div style="background:white;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;margin-top:10px;font-size:11px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;background:#26215C;">
+          <div style="padding:6px 10px;font-weight:700;color:#fde68a;text-align:center;">✅ 委任される事務（抜粋）</div>
+          <div style="padding:6px 10px;font-weight:700;color:#fca5a5;text-align:center;border-left:1px solid rgba(255,255,255,.2);">❌ 委任されない事務</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;font-size:11px;">
+          <div style="padding:8px 10px;line-height:2;border-right:1px solid #e5e7eb;">
+            ・適用事業所や被保険者に関する権限<br>
+            ・標準報酬の決定・改定<br>
+            ・滞納処分<br>
+            ・裁定・改定請求の受理
+          </div>
+          <div style="padding:8px 10px;line-height:2;background:#fff8f8;">
+            ・<strong style="color:#c84b31;">保険料等の徴収・督促</strong><br>
+            ・<strong style="color:#c84b31;">保険給付の裁定・改定</strong><br>
+            ・原簿の記録・ねんきん定期便の通知<br>
+            ・現物給与の価額の決定
+          </div>
+        </div>
+      </div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 <strong>山田さんの会社が6ヵ月間保険料を滞納した。</strong>年金事務所（機構）の担当者が督促に来た——しかしこれは<strong>政府（厚生労働大臣）の権限</strong>として行う行為。年金機構は政府に代わって手足を動かしているだけで、強制徴収という「力」の源泉は国家にある。同様に、鈴木さんが老齢年金の受給権を得たとき、「あなたに月〇万円を支給します」と<strong>裁定</strong>を下すのも厚生労働大臣——これも委任されない。「年金事務所に行けばなんでもやってくれる」は誤解。<strong>窓口（受付）は機構、決定と強制は国家</strong>——この構造を押さえれば委任の全体像が一発でわかる。</div>
+      <div class="tip">💡 試験の引っかけ：「保険料の徴収・督促は日本年金機構が行う」→ × 政府（厚生労働大臣）が直接行う。</div>
+      <div class="law-tag">法第100条の4</div>
+    </div>
+  </div>
+</div><!-- /card cq6 -->
+
+
+<div style="font-family:'Noto Serif JP',serif;font-size:13px;font-weight:700;color:#085041;margin:28px 0 12px;padding:8px 14px;background:#E1F5EE;border-left:4px solid #085041;border-radius:0 6px 6px 0;">
+  穴埋め式問題（09〜15）
+</div>
+
+<div class="card" id="cf1">
+  <div class="card-hd">
+    <div class="q-num">09</div>
     <div>
       <div class="src-tag">法第6条 ／ 穴埋め式</div>
       <div class="q-type">難易度：★☆☆ ／ 単元：強制適用事業所の要件</div>
@@ -539,7 +680,7 @@ svg text{font-family:'Noto Sans JP',sans-serif;}
 <!-- F2 -->
 <div class="card" id="cf2">
   <div class="card-hd">
-    <div class="q-num">07</div>
+    <div class="q-num">10</div>
     <div>
       <div class="src-tag">法第12条 ／ 穴埋め式</div>
       <div class="q-type">難易度：★★☆ ／ 単元：適用除外</div>
@@ -589,7 +730,7 @@ svg text{font-family:'Noto Sans JP',sans-serif;}
 <!-- F3 -->
 <div class="card" id="cf3">
   <div class="card-hd">
-    <div class="q-num">08</div>
+    <div class="q-num">11</div>
     <div>
       <div class="src-tag">法第14条 ／ 穴埋め式</div>
       <div class="q-type">難易度：★★☆ ／ 単元：資格喪失の時期（複数事由）</div>
@@ -636,7 +777,7 @@ svg text{font-family:'Noto Sans JP',sans-serif;}
 <!-- F4 -->
 <div class="card" id="cf4">
   <div class="card-hd">
-    <div class="q-num">09</div>
+    <div class="q-num">12</div>
     <div>
       <div class="src-tag">法第16条 ／ 穴埋め式</div>
       <div class="q-type">難易度：★★☆ ／ 単元：標準報酬月額・標準賞与額</div>
@@ -680,7 +821,7 @@ svg text{font-family:'Noto Sans JP',sans-serif;}
 <!-- F5 -->
 <div class="card" id="cf5">
   <div class="card-hd">
-    <div class="q-num">10</div>
+    <div class="q-num">13</div>
     <div>
       <div class="src-tag">法第19条 ／ 穴埋め式</div>
       <div class="q-type">難易度：★★★ ／ 単元：被保険者期間・届出</div>
@@ -724,12 +865,68 @@ svg text{font-family:'Noto Sans JP',sans-serif;}
   </div>
 </div><!-- /card cf5 -->
 
+<div class="card" id="cf7">
+  <div class="card-hd">
+    <div class="q-num">14</div>
+    <div>
+      <div class="src-tag t">穴埋め ／ 保険者・被保険者4種別（法第2条・2条の5）</div>
+      <div class="q-type">難易度：★★☆</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="blank-q">①厚生年金保険は<span class="blank" id="f7a" onclick="selB('f7','f7a')">　　　　</span>が管掌する。②民間企業の労働者は第<span class="blank" id="f7b" onclick="selB('f7','f7b')">　</span>号被保険者。③国家公務員の実施機関は<span class="blank" id="f7c" onclick="selB('f7','f7c')">　　　　　　</span>。④私立学校教職員は第<span class="blank" id="f7d" onclick="selB('f7','f7d')">　</span>号被保険者で実施機関は私学事業団。</div>
+    <div class="chips" id="f7-chips">
+      <div class="chp" onclick="fillB('f7','f7a',this,'政府')">政府</div>
+      <div class="chp" onclick="fillB('f7','f7b',this,'1')">1</div>
+      <div class="chp" onclick="fillB('f7','f7c',this,'国家公務員共済組合')">国家公務員共済組合</div>
+      <div class="chp" onclick="fillB('f7','f7d',this,'4')">4</div>
+    </div>
+    <button class="chk-btn" id="chk-f7" onclick="chkF('f7')">答え合わせ</button>
+    <div class="f-ans" id="f7-ans">
+      <div class="ans-hd" id="f7-result"></div>
+      <div class="why">✅ ①<strong>政府</strong>（厚生労働大臣）が管掌——機構は窓口。②民間は<strong>第1号</strong>。③国家公務員の実施機関は<strong>国家公務員共済組合など</strong>（第2号）。④私立学校教職員は<strong>第4号</strong>・実施機関は日本私立学校振興・共済事業団。</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 政府が管掌（保険者）しつつ第2〜4号の実施機関が運営する二層構造。「１民・２国・３地・４私」に実施機関：１＝厚生労働大臣・２＝国共済・３＝地共済・４＝私学事業団。</div>
+      <div class="tip">💡 「政府管掌・機構は窓口」「１民・２国・３地・４私」の2本柱。</div>
+      <div class="law-tag">法第2条・法第2条の5</div>
+    </div>
+  </div>
+</div><!-- /card cf7 -->
+
+
+<div class="card" id="cf6">
+  <div class="card-hd">
+    <div class="q-num">15</div>
+    <div>
+      <div class="src-tag t">穴埋め ／ 厚生労働大臣の権限委任（法第100条の4）</div>
+      <div class="q-type">難易度：★★☆</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="blank-q">日本年金機構への委任：①<span class="blank" id="f6a" onclick="selB('f6','f6a')">　　　　</span>の決定・改定は委任<strong>される</strong>。②<span class="blank" id="f6b" onclick="selB('f6','f6b')">　　　　　</span>の徴収・督促は委任<strong>されない</strong>。③保険給付の<span class="blank" id="f6c" onclick="selB('f6','f6c')">　　　　</span>は委任されない。④申請等の行為は日本年金機構の定める<span class="blank" id="f6d" onclick="selB('f6','f6d')">　　　　</span>に対してする。</div>
+    <div class="chips" id="f6-chips">
+      <div class="chp" onclick="fillB('f6','f6a',this,'標準報酬')">標準報酬</div>
+      <div class="chp" onclick="fillB('f6','f6b',this,'保険料等')">保険料等</div>
+      <div class="chp" onclick="fillB('f6','f6c',this,'裁定・改定')">裁定・改定</div>
+      <div class="chp" onclick="fillB('f6','f6d',this,'年金事務所')">年金事務所</div>
+    </div>
+    <button class="chk-btn" id="chk-f6" onclick="chkF('f6')">答え合わせ</button>
+    <div class="f-ans" id="f6-ans">
+      <div class="ans-hd" id="f6-result"></div>
+      <div class="why">✅ ①標準報酬（決定・改定）は委任される。②保険料等の徴収・督促は委任されない（政府直轄）。③保険給付の裁定・改定も委任されない。④申請等は日本年金機構の定める<strong>年金事務所</strong>に対してする。</div>
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:12px;line-height:1.85;">🧠 <strong>「委任されないもの」の共通点を具体例で理解する。</strong>①保険料の徴収・督促——佐藤さんの工場が滞納した。督促状を送り、財産を差し押さえる強制力は<strong>国家</strong>のもの。②給付の裁定・改定——田中さんが65歳になり年金申請。「月額〇万円」と金額を確定する行為は<strong>厚生労働大臣</strong>が下す決定。③原簿の記録——加入者全員の年金記録は国民の財産。誤記録が年金未払いに直結するから政府が直接管理。「強制力」と「確定力」を持つ事務は国家が手放せない——この論理が試験での迷いを消す。</div>
+      <div class="tip">💡 「委任される＝窓口系」「委任されない＝強制・確定系」でセット暗記。</div>
+      <div class="law-tag">法第100条の4</div>
+    </div>
+  </div>
+</div><!-- /card cf6 -->
+
+
 </div><!-- /qwrap -->
 
 <div class="complete-bar" id="complete-bar">
   <div class="complete-card">
     <h2>🎉 全問回答完了！</h2>
-    <div class="complete-score" id="complete-score">0 / 10</div>
+    <div class="complete-score" id="complete-score">0 / 16</div>
     <div style="color:rgba(255,255,255,.7);font-size:13px;" id="complete-msg"></div>
     <button class="copy-btn2" id="copy-btn2" onclick="copyRecord()">📋 記録をコピー</button>
   </div>
@@ -755,18 +952,117 @@ svg text{font-family:'Noto Sans JP',sans-serif;}
   </div>
 
   <div class="mm-step">
-    <div class="mm-step-hd"><div class="mm-step-num">2</div><div class="mm-step-title">適用事業所・被保険者4種別</div></div>
+    <div class="mm-step-hd"><div class="mm-step-num">2</div><div class="mm-step-title">保険者・実施機関・被保険者4種別</div></div>
     <div class="mm-step-body">
-      <div class="mm-item">📌 <strong>法人（法第6条第1項第1号）</strong>：<mark>人数不問</mark>で強制適用（1人でも）←法人格の継続性・安定性が根拠</div>
-      <div class="mm-item">📌 <strong>個人（法第6条第1項第2号）</strong>：常時<mark>5人以上</mark>＋<mark>特定16業種</mark>で強制適用。農林水産・宗教等は除外（任意適用）</div>
-      <div class="mm-item">📌 <strong>4種別（法第9条）</strong>：第1号（民間）・第2号（船員）・第3号（私学）・第4号（公務員）。平成27年一元化で共済年金を統合。</div>
-      <div class="mm-alert">🚨 公務員は<mark>第4号</mark>被保険者（第2号ではない）</div>
-      <div class="mm-alert">🚨 任意適用の同意要件は<mark>3分の2以上</mark>（過半数ではない）</div>
+
+      <div class="mm-item">📌 <strong>保険者（法第2条）</strong>：厚生年金保険は<mark>政府</mark>が管掌する。保険者＝政府（厚生労働大臣）。国民健康保険（市町村）や健保組合とは異なる。</div>
+
+      <!-- SVG：政府管掌＋実施機関4区分 -->
+      <svg viewBox="0 0 680 230" width="100%" style="margin:10px 0;border-radius:10px;">
+        <rect width="680" height="230" rx="10" fill="#f5f0e8"/>
+        <text x="340" y="22" font-size="12" font-weight="700" fill="#1a1a2e" text-anchor="middle">厚生年金保険の実施体制（保険者＝政府）</text>
+
+        <!-- 政府（大枠） -->
+        <rect x="10" y="32" width="660" height="36" rx="8" fill="#26215C"/>
+        <text x="340" y="55" font-size="12" font-weight="700" fill="#fde68a" text-anchor="middle">保険者：政府（厚生労働大臣）が管掌</text>
+
+        <!-- 実施機関4つ -->
+        <rect x="15" y="78" width="148" height="90" rx="8" fill="#1D9E75"/>
+        <text x="89" y="100" font-size="10" font-weight="700" fill="white" text-anchor="middle">厚生労働大臣</text>
+        <text x="89" y="116" font-size="9" fill="#a7f3d0" text-anchor="middle">民間企業の</text>
+        <text x="89" y="130" font-size="9" fill="#a7f3d0" text-anchor="middle">一般労働者</text>
+        <text x="89" y="148" font-size="10" font-weight="700" fill="#fde68a" text-anchor="middle">第１号</text>
+
+        <rect x="173" y="78" width="148" height="90" rx="8" fill="#2a7f7f"/>
+        <text x="247" y="100" font-size="10" font-weight="700" fill="white" text-anchor="middle">国家公務員</text>
+        <text x="247" y="116" font-size="9" fill="#a7f3d0" text-anchor="middle">共済組合など</text>
+        <text x="247" y="130" font-size="9" fill="#a7f3d0" text-anchor="middle">国家公務員</text>
+        <text x="247" y="148" font-size="10" font-weight="700" fill="#fde68a" text-anchor="middle">第２号</text>
+
+        <rect x="331" y="78" width="148" height="90" rx="8" fill="#7c3aed"/>
+        <text x="405" y="100" font-size="10" font-weight="700" fill="white" text-anchor="middle">地方公務員</text>
+        <text x="405" y="116" font-size="9" fill="#ede9fe" text-anchor="middle">共済組合など</text>
+        <text x="405" y="130" font-size="9" fill="#ede9fe" text-anchor="middle">地方公務員</text>
+        <text x="405" y="148" font-size="10" font-weight="700" fill="#fde68a" text-anchor="middle">第３号</text>
+
+        <rect x="489" y="78" width="186" height="90" rx="8" fill="#c84b31"/>
+        <text x="582" y="100" font-size="10" font-weight="700" fill="white" text-anchor="middle">日本私立学校</text>
+        <text x="582" y="116" font-size="9" fill="#fca5a5" text-anchor="middle">振興・共済事業団</text>
+        <text x="582" y="130" font-size="9" fill="#fca5a5" text-anchor="middle">私立学校教職員</text>
+        <text x="582" y="148" font-size="10" font-weight="700" fill="#fde68a" text-anchor="middle">第４号</text>
+
+        <!-- 矢印↓ -->
+        <line x1="89" y1="168" x2="89" y2="188" stroke="#1D9E75" stroke-width="2"/>
+        <line x1="247" y1="168" x2="247" y2="188" stroke="#2a7f7f" stroke-width="2"/>
+        <line x1="405" y1="168" x2="405" y2="188" stroke="#7c3aed" stroke-width="2"/>
+        <line x1="582" y1="168" x2="582" y2="188" stroke="#c84b31" stroke-width="2"/>
+
+        <!-- 厚生年金被保険者（大枠） -->
+        <rect x="10" y="188" width="660" height="32" rx="8" fill="#1a1a2e"/>
+        <text x="340" y="209" font-size="11" font-weight="700" fill="white" text-anchor="middle">厚生年金被保険者（第１号〜第４号の総称）</text>
+      </svg>
+
+      <!-- 4種別詳細表 -->
+      <div style="background:white;border:2px solid var(--ink);border-radius:10px;overflow:hidden;margin:10px 0;font-size:11px;">
+        <div style="display:grid;grid-template-columns:60px 1fr 1fr 1fr;background:#1a1a2e;">
+          <div style="padding:6px 8px;font-weight:700;color:#fde68a;">種別</div>
+          <div style="padding:6px 8px;font-weight:700;color:white;border-left:1px solid rgba(255,255,255,.2);">対象者</div>
+          <div style="padding:6px 8px;font-weight:700;color:white;border-left:1px solid rgba(255,255,255,.2);">実施機関</div>
+          <div style="padding:6px 8px;font-weight:700;color:#a7f3d0;border-left:1px solid rgba(255,255,255,.2);">試験ポイント</div>
+        </div>
+        <div style="display:grid;grid-template-columns:60px 1fr 1fr 1fr;border-bottom:1px solid #e5e7eb;background:#f0fdf4;">
+          <div style="padding:7px 8px;font-weight:900;color:#1D9E75;text-align:center;font-size:13px;">第１号</div>
+          <div style="padding:7px 8px;border-left:1px solid #e5e7eb;">民間企業の<br>一般労働者</div>
+          <div style="padding:7px 8px;border-left:1px solid #e5e7eb;font-weight:700;">厚生労働大臣<br><span style="font-weight:400;color:#6b7280;">（年金機構に委任）</span></div>
+          <div style="padding:7px 8px;border-left:1px solid #e5e7eb;color:#c84b31;font-weight:700;">最も基本。適用事業所で使用される者</div>
+        </div>
+        <div style="display:grid;grid-template-columns:60px 1fr 1fr 1fr;border-bottom:1px solid #e5e7eb;">
+          <div style="padding:7px 8px;font-weight:900;color:#2a7f7f;text-align:center;font-size:13px;">第２号</div>
+          <div style="padding:7px 8px;border-left:1px solid #e5e7eb;">国家公務員</div>
+          <div style="padding:7px 8px;border-left:1px solid #e5e7eb;font-weight:700;">国家公務員<br>共済組合など</div>
+          <div style="padding:7px 8px;border-left:1px solid #e5e7eb;color:#c84b31;font-weight:700;">×「公務員は第3号」→ ○ 国家は第2号</div>
+        </div>
+        <div style="display:grid;grid-template-columns:60px 1fr 1fr 1fr;border-bottom:1px solid #e5e7eb;background:#faf5ff;">
+          <div style="padding:7px 8px;font-weight:900;color:#7c3aed;text-align:center;font-size:13px;">第３号</div>
+          <div style="padding:7px 8px;border-left:1px solid #e5e7eb;">地方公務員</div>
+          <div style="padding:7px 8px;border-left:1px solid #e5e7eb;font-weight:700;">地方公務員<br>共済組合など</div>
+          <div style="padding:7px 8px;border-left:1px solid #e5e7eb;color:#c84b31;font-weight:700;">×「公務員は第4号」→ ○ 地方は第3号</div>
+        </div>
+        <div style="display:grid;grid-template-columns:60px 1fr 1fr 1fr;">
+          <div style="padding:7px 8px;font-weight:900;color:#c84b31;text-align:center;font-size:13px;">第４号</div>
+          <div style="padding:7px 8px;border-left:1px solid #e5e7eb;">私立学校<br>教職員</div>
+          <div style="padding:7px 8px;border-left:1px solid #e5e7eb;font-weight:700;">日本私立学校<br>振興・共済事業団</div>
+          <div style="padding:7px 8px;border-left:1px solid #e5e7eb;color:#c84b31;font-weight:700;">×「私学は第3号」→ ○ 第4号。平成27年一元化で共済年金と統合</div>
+        </div>
+      </div>
+
+      <div class="mm-key" style="background:#26215C;color:white;border-radius:8px;padding:10px 14px;font-size:12px;margin:10px 0;">
+        🔑 <strong>平成27年一元化の意味</strong>：第2〜4号は各実施機関（共済組合・私学事業団）が運営するが、<strong>給付水準・保険料率を厚年に統一</strong>。「官民格差の解消」が目的。それぞれの職域加算は廃止（一部は退職等年金給付として残存）。
+      </div>
+
+      <div class="mm-alert">🚨 <strong>種別の語呂</strong>：「<mark>１民・２国・３地・４私</mark>」（いち民間・に国家・さん地方・し私学）</div>
+      <div class="mm-alert">🚨 公務員は「国家＝第2号・地方＝第3号」。「公務員＝第4号」は誤り（第4号は私学）</div>
+
+      <!-- 試験ではこう問われる -->
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「国家公務員は厚生年金第4号被保険者である」→ <strong style="color:#2d6a4f;">○</strong> 国家公務員は<strong>第2号</strong>、第4号は私立学校教職員</div></div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「厚生年金保険は全国健康保険協会が管掌する」→ <strong style="color:#2d6a4f;">○</strong> <strong>政府（厚生労働大臣）</strong>が管掌。協会けんぽは健保の保険者</div></div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「私立学校教職員の実施機関は地方公務員共済組合である」→ <strong style="color:#2d6a4f;">○</strong> <strong>日本私立学校振興・共済事業団</strong></div></div>
+        </div>
+      </div>
+
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:12px 14px;font-size:12px;line-height:2.0;">
+        🧠 <strong>ストーリーで覚える4種別</strong><br>
+        田中さんは民間企業のサラリーマン（<strong>第1号</strong>・厚生労働大臣が実施）。同期の鈴木さんは国家公務員（<strong>第2号</strong>・国共済）、佐藤さんは地方公務員（<strong>第3号</strong>・地共済）。高校時代の恩師・山田先生は私立高校の教員（<strong>第4号</strong>・私学事業団）。4人全員が「厚生年金被保険者」——でも所属する実施機関がバラバラ。平成27年にこの4人の年金給付水準と保険料率が統一された。「なぜ4種別のまま？」——雇用形態・共済組合の歴史的経緯を尊重しながら給付水準だけ揃えた苦肉の策。
+      </div>
+
       <div class="hikakke-box">
         <div class="hikakke-hd"><span>🔥 最重要引っかけ TOP5</span></div>
         <div class="hikakke-body">
           <div class="hikakke-row">× 法人は5人以上で強制 → ○ <strong>人数不問</strong>（1人でも強制）</div>
-          <div class="hikakke-row">× 公務員は厚年第2号 → ○ <strong>第4号</strong>被保険者</div>
+          <div class="hikakke-row">× 国家公務員は厚年第4号 → ○ <strong>第2号</strong>（地方が第3号・私学が第4号）</div>
           <div class="hikakke-row">× 厚年の目的に「共同連帯」 → ○ 国民年金の文言</div>
           <div class="hikakke-row">× 70歳誕生日に当日喪失 → ○ 到達日の<strong>翌日</strong>喪失</div>
           <div class="hikakke-row">× 標準賞与額上限は年573万円 → ○ 健保が年573万円。厚年は<strong>1回150万円</strong></div>
@@ -784,6 +1080,98 @@ svg text{font-family:'Noto Sans JP',sans-serif;}
       <div class="mm-item">📌 <strong>標準報酬（法第16条・24条の4）</strong>：月額<mark>32等級</mark>（8.8〜65万円）・賞与上限<mark>1回150万円</mark>（健保の年573万円とは異なる）</div>
       <div class="mm-item">📌 <strong>届出（法第27条）</strong>：取得届・喪失届各<mark>5日以内</mark>（事業主が届出）・被保険者期間は<mark>月単位</mark>（法第19条）・保険料時効<mark>2年</mark>（法第92条）</div>
       <div class="mm-gorof">🧠 <strong>数字まとめ</strong>：「<mark>32等級・65万・150万・5日・2年</mark>」― 厚年の数字5本柱をセットで。</div>
+    </div>
+  </div>
+
+  <!-- STEP4: 保険者・権限委任 -->
+  <div class="mm-step" style="border-color:#7c3aed;">
+    <div class="mm-step-hd" style="background:#7c3aed;">
+      <div class="mm-step-num">4</div>
+      <div class="mm-step-title">保険者・厚生労働大臣の権限委任</div>
+    </div>
+    <div class="mm-step-body">
+
+      <div class="mm-item">📌 <strong>保険者（法第2条）</strong>：厚生年金保険は<mark>政府</mark>が管掌する。窓口業務は日本年金機構に委任するが、保険者はあくまで政府（厚生労働大臣）。</div>
+
+      <!-- SVG図解：委任フロー -->
+      <svg viewBox="0 0 680 200" width="100%" style="margin:12px 0;border-radius:10px;">
+        <rect width="680" height="200" rx="10" fill="#f5f0e8"/>
+        <text x="340" y="22" font-size="12" font-weight="700" fill="#1a1a2e" text-anchor="middle">厚生労働大臣 → 日本年金機構 委任フロー</text>
+
+        <!-- 政府ボックス -->
+        <rect x="20" y="36" width="160" height="140" rx="10" fill="#26215C"/>
+        <text x="100" y="62" font-size="11" font-weight="700" fill="#fde68a" text-anchor="middle">政府（厚生労働大臣）</text>
+        <text x="100" y="80" font-size="9" fill="white" text-anchor="middle">▼ 委任しない（直轄）</text>
+        <rect x="30" y="88" width="140" height="18" rx="4" fill="#c84b31"/>
+        <text x="100" y="101" font-size="9" fill="white" text-anchor="middle" font-weight="700">保険料等の徴収・督促</text>
+        <rect x="30" y="110" width="140" height="18" rx="4" fill="#c84b31"/>
+        <text x="100" y="123" font-size="9" fill="white" text-anchor="middle" font-weight="700">保険給付の裁定・改定</text>
+        <rect x="30" y="132" width="140" height="18" rx="4" fill="#c84b31"/>
+        <text x="100" y="145" font-size="9" fill="white" text-anchor="middle" font-weight="700">原簿記録・定期便通知</text>
+        <rect x="30" y="154" width="140" height="18" rx="4" fill="#c84b31"/>
+        <text x="100" y="167" font-size="9" fill="white" text-anchor="middle" font-weight="700">現物給与の価額の決定</text>
+
+        <!-- 矢印 -->
+        <line x1="200" y1="90" x2="270" y2="90" stroke="#2a7f7f" stroke-width="2.5" marker-end="url(#arr)"/>
+        <text x="235" y="83" font-size="9" fill="#2a7f7f" text-anchor="middle" font-weight="700">委任</text>
+        <defs>
+          <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#2a7f7f"/>
+          </marker>
+        </defs>
+
+        <!-- 年金機構ボックス -->
+        <rect x="280" y="36" width="180" height="140" rx="10" fill="#085041"/>
+        <text x="370" y="62" font-size="11" font-weight="700" fill="#a7f3d0" text-anchor="middle">日本年金機構</text>
+        <text x="370" y="80" font-size="9" fill="white" text-anchor="middle">▼ 委任される事務</text>
+        <rect x="290" y="88" width="160" height="18" rx="4" fill="#1D9E75"/>
+        <text x="370" y="101" font-size="9" fill="white" text-anchor="middle">適用事業所・被保険者関連</text>
+        <rect x="290" y="110" width="160" height="18" rx="4" fill="#1D9E75"/>
+        <text x="370" y="123" font-size="9" fill="white" text-anchor="middle">標準報酬の決定・改定</text>
+        <rect x="290" y="132" width="160" height="18" rx="4" fill="#1D9E75"/>
+        <text x="370" y="145" font-size="9" fill="white" text-anchor="middle">滞納処分</text>
+        <rect x="290" y="154" width="160" height="18" rx="4" fill="#1D9E75"/>
+        <text x="370" y="167" font-size="9" fill="white" text-anchor="middle">裁定・改定請求の受理</text>
+
+        <!-- 年金事務所ボックス -->
+        <rect x="490" y="60" width="170" height="50" rx="10" fill="#7c3aed"/>
+        <text x="575" y="82" font-size="11" font-weight="700" fill="white" text-anchor="middle">年金事務所</text>
+        <text x="575" y="99" font-size="9" fill="#ede9fe" text-anchor="middle">申請等の窓口</text>
+        <line x1="460" y1="85" x2="488" y2="85" stroke="#a78bfa" stroke-width="2" marker-end="url(#arr2)"/>
+        <defs>
+          <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#a78bfa"/>
+          </marker>
+        </defs>
+        <text x="474" y="79" font-size="8" fill="#a78bfa" text-anchor="middle">設置</text>
+      </svg>
+
+      <div class="mm-key" style="background:#7c3aed;color:white;border-radius:8px;padding:10px 14px;font-size:12px;margin-bottom:10px;">
+        🔑 <strong>委任の原則と例外</strong>：年金機構が「窓口」として受け付けるが、<strong>お金の強制回収・給付の最終決定</strong>は政府が直接担う。「申請は年金事務所へ」だが「徴収・裁定は厚労省直轄」。
+      </div>
+
+      <!-- 試験ではこう問われる -->
+      <div style="background:white;border:2px solid var(--ink);border-radius:12px;overflow:hidden;margin:12px 0;">
+        <div style="background:#1a1a2e;padding:10px 16px;"><div style="font-size:12px;font-weight:700;color:#fde68a;">📝 試験ではこう問われる</div></div>
+        <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「保険料等の徴収・督促は日本年金機構に委任される」→ <strong style="color:#2d6a4f;">○</strong> 委任<strong>されない</strong>（政府直轄）</div></div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「保険給付の裁定・改定は年金機構が行う」→ <strong style="color:#2d6a4f;">○</strong> 委任<strong>されない</strong>（厚生労働大臣が行う）</div></div>
+          <div style="border-left:4px solid #c84b31;padding:8px 12px;background:#fff8f7;border-radius:0 6px 6px 0;"><div style="font-size:12px;color:#1a1a2e;line-height:1.8;"><strong style="color:#c84b31;">×</strong>「申請等は厚生労働大臣に対して行う」→ <strong style="color:#2d6a4f;">○</strong> 日本年金機構の定める<strong>年金事務所</strong>に対してする</div></div>
+        </div>
+      </div>
+
+      <!-- 🧠 ストーリーフック -->
+      <div style="background:#fef9e7;border-left:4px solid #c9930a;border-radius:0 8px 8px 0;padding:12px 14px;font-size:12px;line-height:2.0;">
+        🧠 <strong>ストーリーで覚える「委任の境界線」</strong><br>
+        田中さんが会社を辞めて年金事務所に行き、「厚生年金の受給申請をしたい」と窓口に申し出た。
+        担当者が受け付けてくれた——これは<strong>年金機構の仕事（委任あり）</strong>。<br>
+        しかし「あなたの年金額はいくらです」と裁定を下すのは<strong>厚生労働大臣（政府直轄）</strong>。
+        「受け付ける」と「決定する」は別の話。<br>
+        また、佐藤さんの会社が保険料を滞納した。年金事務所が督促に来た——これも実は<strong>政府直轄の仕事</strong>。
+        お金を強制的に取り立てる権力は国家そのものが持たなければならない。
+        「窓口は機構、決定と強制は国家」——この一文で委任の全体像が整理できる。
+      </div>
+
     </div>
   </div>
 
@@ -1001,7 +1389,7 @@ function showCopied() {
   });
 }
 
-var correct_ans = {q1:0, q2:0, q3:0, q4:1, q5:0};
+var correct_ans = {q1:0, q2:0, q3:0, q4:1, q5:0, q6:1, q7:1, q8:0};
 var done={}, score=0, total=0;
 
 function answer(qid,idx) {
@@ -1029,10 +1417,12 @@ var defs = {
   f2:{f2a:'日雇労働',f2b:'2ヵ月',f2c:'6ヵ月',f2d:'70'},
   f3:{f3a:'翌日',f3b:'翌日',f3c:'70',f3d:'翌日'},
   f4:{f4a:'32',f4b:'8.8',f4c:'65',f4d:'150'},
-  f5:{f5a:'月',f5b:'5',f5c:'5',f5d:'2'}
+  f5:{f5a:'月',f5b:'5',f5c:'5',f5d:'2'},
+  f6:{f6a:'標準報酬',f6b:'保険料等',f6c:'裁定・改定',f6d:'年金事務所'},
+  f7:{f7a:'政府',f7b:'1',f7c:'国家公務員共済組合',f7d:'4'}
 };
-var state={f1:{},f2:{},f3:{},f4:{},f5:{}};
-var sel={f1:null,f2:null,f3:null,f4:null,f5:null};
+var state={f1:{},f2:{},f3:{},f4:{},f5:{},f6:{},f7:{}};
+var sel={f1:null,f2:null,f3:null,f4:null,f5:null,f6:null,f7:null};
 var fdone={};
 
 function selB(fid,bid) {
@@ -1097,7 +1487,7 @@ function chkF(fid) {
 }
 
 function updateProg() {
-  var t=10; var pct=Math.round(total/t*100);
+  var t=16; var pct=Math.round(total/t*100);
   document.getElementById('prog').style.width=pct+'%';
   document.getElementById('prog-lbl').textContent=total+' ／ '+t+' 問 回答済み';
   var sub=document.getElementById('score-sub');
@@ -1107,7 +1497,7 @@ function updateProg() {
 
 function showComplete() {
   var bar=document.getElementById('complete-bar'); bar.style.display='block';
-  document.getElementById('complete-score').textContent=score+' / 10';
+  document.getElementById('complete-score').textContent=score+' / 16';
   var pct=Math.round(score/10*100);
   document.getElementById('complete-msg').textContent=
     pct>=90?'🏆 完璧！':pct>=70?'✨ 合格圏内！':'📖 もう一周してみよう';
