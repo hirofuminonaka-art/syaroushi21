@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>学習スケジュール | 社労士ドリル</title>
+<style>
+:root{
+  --bg:#f5f0e8;--ink:#1a1a2e;--teal:#00a8a9;--teal-l:#e0f5f5;
+  --red:#c84b31;--gold:#c9930a;--blue:#1d4ed8;--purple:#7c3aed;--green:#2d6a4f;
+  --card:#fff;--radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans JP',sans-serif;min-height:100vh}
+a{text-decoration:none;color:inherit}
+
+.site-header{background:var(--ink);color:#fff;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.site-logo{font-size:17px;font-weight:800}.site-logo span{color:var(--teal)}
+.header-links{display:flex;gap:10px}
+.header-links a{font-size:12px;padding:6px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.3);color:#fff;transition:.2s}
+.header-links a:hover,.header-links a.active{background:var(--teal);border-color:var(--teal)}
+
+.page-hero{background:linear-gradient(135deg,var(--ink),#2a2a5e);color:#fff;padding:32px 24px;text-align:center}
+.page-hero h1{font-size:22px;font-weight:900;margin-bottom:6px}
+.page-hero p{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:16px}
+.goal-badge{display:inline-block;background:var(--teal);color:#fff;font-size:13px;font-weight:800;padding:8px 24px;border-radius:24px}
+
+.wrap{max-width:920px;margin:0 auto;padding:24px 16px}
+
+/* 今日のハイライト */
+.today-highlight{background:var(--card);border-radius:var(--radius);padding:20px 24px;margin-bottom:28px;border-left:5px solid var(--teal);box-shadow:0 2px 12px rgba(0,0,0,.08);display:flex;align-items:center;gap:20px}
+.today-highlight .th-icon{font-size:40px;flex-shrink:0}
+.today-highlight .th-body{flex:1}
+.today-highlight .th-label{font-size:11px;font-weight:800;color:var(--teal);letter-spacing:.1em}
+.today-highlight .th-date{font-size:20px;font-weight:900;margin:4px 0}
+.today-highlight .th-phase{font-size:13px;color:#666}
+.today-highlight .th-tasks{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+.task-chip{font-size:11px;padding:4px 12px;border-radius:16px;font-weight:700;color:#fff}
+
+/* フェーズ概要 */
+.phase-overview{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
+@media(max-width:600px){.phase-overview{grid-template-columns:1fr}}
+.phase-card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.phase-card .pc-phase{font-size:11px;font-weight:800;margin-bottom:6px}
+.phase-card .pc-period{font-size:13px;font-weight:800;margin-bottom:8px}
+.phase-card .pc-desc{font-size:12px;color:#666;line-height:1.6}
+.phase-card .pc-goals{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px}
+.pc-goal{font-size:10px;padding:2px 8px;border-radius:10px;background:#f0f0f0;color:#555}
+
+/* 月別ガントチャート */
+.gantt-wrap{background:var(--card);border-radius:var(--radius);padding:20px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,.06);overflow-x:auto}
+.gantt-title{font-size:14px;font-weight:800;margin-bottom:16px}
+.gantt-table{width:100%;border-collapse:collapse;min-width:600px}
+.gantt-table th{font-size:10px;font-weight:700;padding:6px 4px;text-align:center;border-bottom:2px solid #eee;white-space:nowrap}
+.gantt-table td{padding:5px 4px;border-bottom:1px solid #f5f5f5;font-size:11px}
+.gantt-table td:first-child{font-weight:700;white-space:nowrap;padding-right:12px}
+.gantt-bar{height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;font-weight:700;white-space:nowrap}
+.today-col{background:rgba(0,168,169,.08)}
+.today-col th{color:var(--teal);font-weight:900}
+
+/* 月別詳細 */
+.month-detail{background:var(--card);border-radius:var(--radius);padding:20px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.month-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;cursor:pointer}
+.month-badge{font-size:12px;font-weight:800;padding:4px 14px;border-radius:20px;color:#fff}
+.month-name{font-size:15px;font-weight:800}
+.month-phase{font-size:11px;padding:3px 10px;border-radius:14px;font-weight:700}
+.month-today-mark{margin-left:auto;font-size:11px;color:var(--teal);font-weight:800}
+.month-tasks{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.mtask{padding:10px 14px;border-radius:10px;font-size:12px;border:1px solid #eee;background:#fafafa}
+.mtask .mt-subject{font-weight:800;margin-bottom:4px}
+.mtask .mt-content{color:#666;line-height:1.5}
+.mtask.done{background:#e8f5f0;border-color:#a7f3d0}
+.mtask.today-month{background:#e0f5f5;border-color:var(--teal);border-width:2px}
+.mtask.future{opacity:.7}
+
+/* 試験カウントダウン */
+.countdown{background:linear-gradient(135deg,var(--ink),#2a2a5e);color:#fff;border-radius:var(--radius);padding:24px;text-align:center;margin-bottom:24px}
+.countdown h3{font-size:14px;margin-bottom:12px;opacity:.7}
+.countdown .cd-nums{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.cd-block{text-align:center}
+.cd-num{font-size:36px;font-weight:900;color:var(--teal);display:block}
+.cd-unit{font-size:11px;opacity:.6}
+
+.section-title{font-size:12px;font-weight:800;letter-spacing:.12em;color:#888;text-transform:uppercase;margin-bottom:14px}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo">社労士<span>ドリル</span></div>
+  <div class="header-links">
+    <a href="index.html">ホーム</a>
+    <a href="dashboard.html">進捗</a>
+    <a href="schedule.html" class="active">スケジュール</a>
+  </div>
+</header>
+
+<div class="page-hero">
+  <h1>📅 2027年8月 合格プラン</h1>
+  <p>2026年4月スタート → 17ヶ月の学習ロードマップ</p>
+  <div class="goal-badge">🎯 目標：2027年8月 第59回 社会保険労務士試験</div>
+</div>
+
+<div class="wrap">
+
+  <!-- カウントダウン -->
+  <div class="countdown">
+    <h3>試験日まで</h3>
+    <div class="cd-nums">
+      <div class="cd-block"><span class="cd-num" id="cd-months">-</span><span class="cd-unit">ヶ月</span></div>
+      <div class="cd-block"><span class="cd-num" id="cd-weeks">-</span><span class="cd-unit">週</span></div>
+      <div class="cd-block"><span class="cd-num" id="cd-days">-</span><span class="cd-unit">日</span></div>
+    </div>
+    <div style="margin-top:12px;font-size:12px;opacity:.5">2027年8月24日（日）を目標日として設定</div>
+  </div>
+
+  <!-- 今日のハイライト -->
+  <div class="today-highlight" id="today-highlight">
+    <div class="th-icon">📍</div>
+    <div class="th-body">
+      <div class="th-label">TODAY</div>
+      <div class="th-date" id="th-date">-</div>
+      <div class="th-phase" id="th-phase">-</div>
+      <div class="th-tasks" id="th-tasks"></div>
+    </div>
+  </div>
+
+  <!-- フェーズ概要 -->
+  <div class="section-title">学習フェーズ</div>
+  <div class="phase-overview">
+    <div class="phase-card">
+      <div class="pc-phase" style="color:#1d4ed8">▌ Phase 1</div>
+      <div class="pc-period">2026年4月〜9月（6ヶ月）</div>
+      <div class="pc-desc">インプット強化期。4科目のドリルDay1〜9を各2周。基礎概念・数字・引っかけパターンを体に染み込ませる。</div>
+      <div class="pc-goals">
+        <span class="pc-goal">健保法 Day1〜9</span>
+        <span class="pc-goal">厚年法 Day1〜9</span>
+        <span class="pc-goal">国年法 Day1〜9</span>
+        <span class="pc-goal">労基法 Day1〜9</span>
+      </div>
+    </div>
+    <div class="phase-card">
+      <div class="pc-phase" style="color:#c9930a">▌ Phase 2</div>
+      <div class="pc-period">2026年10月〜2027年2月（5ヶ月）</div>
+      <div class="pc-desc">アウトプット強化期。FC300枚（Day11）・苦手論点（Day10）・過去問演習（Day12）で実践力を養う。横断問題に慣れる。</div>
+      <div class="pc-goals">
+        <span class="pc-goal">苦手Day10</span>
+        <span class="pc-goal">FC300枚 Day11</span>
+        <span class="pc-goal">過去問 Day12</span>
+        <span class="pc-goal">横断演習</span>
+      </div>
+    </div>
+    <div class="phase-card">
+      <div class="pc-phase" style="color:#c84b31">▌ Phase 3</div>
+      <div class="pc-period">2027年3月〜8月（6ヶ月）</div>
+      <div class="pc-desc">直前仕上げ期。苦手科目の集中補強・模擬試験・時間管理の訓練。法改正の確認と直前の総ざらい。</div>
+      <div class="pc-goals">
+        <span class="pc-goal">苦手科目集中</span>
+        <span class="pc-goal">模擬試験</span>
+        <span class="pc-goal">法改正確認</span>
+        <span class="pc-goal">総ざらい</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ガントチャート -->
+  <div class="gantt-wrap">
+    <div class="gantt-title">📊 17ヶ月ロードマップ</div>
+    <table class="gantt-table" id="gantt-table">
+      <thead><tr id="gantt-head"></tr></thead>
+      <tbody id="gantt-body"></tbody>
+    </table>
+  </div>
+
+  <!-- 月別詳細 -->
+  <div class="section-title">月別学習計画</div>
+  <div id="month-details"></div>
+
+</div>
+
+<script>
+// =====================================================
+// 17ヶ月プラン定義
+// =====================================================
+var EXAM_DATE = new Date(2027, 7, 24); // 2027/8/24
+
+var MONTHS = [
+  {ym:'2026-04', label:'2026年4月',  phase:1, phaseColor:'#1d4ed8',
+   tasks:[
+     {subj:'健保法', color:'#1d4ed8', content:'Day1〜3（目的・被保険者・保険料）インプット'},
+     {subj:'厚年法', color:'#c84b31', content:'Day1〜2（目的・被保険者）インプット'},
+   ]},
+  {ym:'2026-05', label:'2026年5月',  phase:1, phaseColor:'#1d4ed8',
+   tasks:[
+     {subj:'健保法', color:'#1d4ed8', content:'Day4〜6（療養給付・傷病手当金・出産給付）'},
+     {subj:'厚年法', color:'#c84b31', content:'Day3〜4（保険料・老齢厚生年金①）'},
+   ]},
+  {ym:'2026-06', label:'2026年6月',  phase:1, phaseColor:'#1d4ed8',
+   tasks:[
+     {subj:'健保法', color:'#1d4ed8', content:'Day7〜9（高額療養費・日雇・審査請求）'},
+     {subj:'厚年法', color:'#c84b31', content:'Day5〜6（老齢厚生②・障害厚生）'},
+     {subj:'国年法', color:'#2d6a4f', content:'Day1〜2（目的・被保険者・資格取得）'},
+   ]},
+  {ym:'2026-07', label:'2026年7月',  phase:1, phaseColor:'#1d4ed8',
+   tasks:[
+     {subj:'健保法', color:'#1d4ed8', content:'Day1〜9 2周目（苦手重点復習）'},
+     {subj:'厚年法', color:'#c84b31', content:'Day7〜9（遺族・離婚分割・審査）'},
+     {subj:'国年法', color:'#2d6a4f', content:'Day3〜5（保険料・老齢基礎・障害基礎）'},
+   ]},
+  {ym:'2026-08', label:'2026年8月',  phase:1, phaseColor:'#1d4ed8',
+   tasks:[
+     {subj:'労基法', color:'#7c3aed', content:'Day1〜4（総則・賃金・労働時間・年休）'},
+     {subj:'国年法', color:'#2d6a4f', content:'Day6〜9（遺族・通則・横断）'},
+     {subj:'厚年法', color:'#c84b31', content:'Day1〜9 2周目'},
+   ]},
+  {ym:'2026-09', label:'2026年9月',  phase:1, phaseColor:'#1d4ed8',
+   tasks:[
+     {subj:'労基法', color:'#7c3aed', content:'Day5〜9（就業規則・女性保護・横断）'},
+     {subj:'国年法', color:'#2d6a4f', content:'Day1〜9 2周目'},
+     {subj:'総復習', color:'#00a8a9', content:'4科目横断まとめ・苦手確認'},
+   ]},
+  {ym:'2026-10', label:'2026年10月', phase:2, phaseColor:'#c9930a',
+   tasks:[
+     {subj:'健保法', color:'#1d4ed8', content:'Day10 苦手論点総復習'},
+     {subj:'厚年法', color:'#c84b31', content:'Day10 苦手論点総復習'},
+     {subj:'国年法', color:'#2d6a4f', content:'Day10 苦手論点総復習'},
+     {subj:'労基法', color:'#7c3aed', content:'Day10 苦手論点総復習'},
+   ]},
+  {ym:'2026-11', label:'2026年11月', phase:2, phaseColor:'#c9930a',
+   tasks:[
+     {subj:'健保法', color:'#1d4ed8', content:'Day11 FC300枚 全セクション通し'},
+     {subj:'厚年法', color:'#c84b31', content:'Day11 FC300枚 全セクション通し'},
+   ]},
+  {ym:'2026-12', label:'2026年12月', phase:2, phaseColor:'#c9930a',
+   tasks:[
+     {subj:'国年法', color:'#2d6a4f', content:'Day11 FC300枚 全セクション通し'},
+     {subj:'労基法', color:'#7c3aed', content:'Day11 FC300枚 全セクション通し'},
+     {subj:'振り返り', color:'#00a8a9', content:'年末：4科目FC苦手集中'},
+   ]},
+  {ym:'2027-01', label:'2027年1月',  phase:2, phaseColor:'#c9930a',
+   tasks:[
+     {subj:'健保法', color:'#1d4ed8', content:'Day12 過去問演習（OX60問+5択60問）'},
+     {subj:'厚年法', color:'#c84b31', content:'Day12 過去問演習（OX60問+5択60問）'},
+   ]},
+  {ym:'2027-02', label:'2027年2月',  phase:2, phaseColor:'#c9930a',
+   tasks:[
+     {subj:'国年法', color:'#2d6a4f', content:'Day12 過去問演習（OX60問+5択60問）'},
+     {subj:'労基法', color:'#7c3aed', content:'Day12 過去問演習（OX60問+5択60問）'},
+     {subj:'横断演習', color:'#00a8a9', content:'4科目まとめ・弱点洗い出し'},
+   ]},
+  {ym:'2027-03', label:'2027年3月',  phase:3, phaseColor:'#c84b31',
+   tasks:[
+     {subj:'安衛法等', color:'#888', content:'残科目（安衛法・雇保法・労災法）のインプット開始'},
+     {subj:'苦手強化', color:'#c84b31', content:'正答率60%未満のDayを集中再演習'},
+   ]},
+  {ym:'2027-04', label:'2027年4月',  phase:3, phaseColor:'#c84b31',
+   tasks:[
+     {subj:'残科目', color:'#888', content:'徴収法・労一・社一のインプット'},
+     {subj:'模擬試験', color:'#c84b31', content:'市販模試①（時間配分の確認）'},
+   ]},
+  {ym:'2027-05', label:'2027年5月',  phase:3, phaseColor:'#c84b31',
+   tasks:[
+     {subj:'法改正', color:'#c84b31', content:'2027年4月施行の法改正確認'},
+     {subj:'模擬試験', color:'#c84b31', content:'市販模試②（選択式の練習）'},
+     {subj:'総ざらい', color:'#00a8a9', content:'社保・労保 全科目横断問題'},
+   ]},
+  {ym:'2027-06', label:'2027年6月',  phase:3, phaseColor:'#c84b31',
+   tasks:[
+     {subj:'直前強化', color:'#c84b31', content:'苦手科目集中演習（1日2科目）'},
+     {subj:'模擬試験', color:'#c84b31', content:'模試③（本番形式・1日試験）'},
+   ]},
+  {ym:'2027-07', label:'2027年7月',  phase:3, phaseColor:'#c84b31',
+   tasks:[
+     {subj:'最終確認', color:'#c84b31', content:'数字・選択肢の最終暗記'},
+     {subj:'メンタル', color:'#00a8a9', content:'体調管理・睡眠リズム整備'},
+     {subj:'直前', color:'#c84b31', content:'選択式頻出論点の総まとめ'},
+   ]},
+  {ym:'2027-08', label:'2027年8月',  phase:3, phaseColor:'#c84b31',
+   tasks:[
+     {subj:'直前1週間', color:'#c84b31', content:'過去問最終回し（重要判例・改正点）'},
+     {subj:'前日', color:'#c84b31', content:'軽めの確認のみ・早めに就寝'},
+     {subj:'🎯 試験本番', color:'#00a8a9', content:'2027年8月24日（日）本番！'},
+   ]},
+];
+
+// =====================================================
+// カウントダウン
+// =====================================================
+function updateCountdown() {
+  var now = new Date();
+  var diff = EXAM_DATE - now;
+  if (diff < 0) { document.querySelector('.countdown h3').textContent = '試験終了'; return; }
+  var totalDays = Math.floor(diff / 86400000);
+  var months = Math.floor(totalDays / 30);
+  var weeks = Math.floor(totalDays / 7);
+  var days = totalDays;
+  document.getElementById('cd-months').textContent = months;
+  document.getElementById('cd-weeks').textContent = weeks;
+  document.getElementById('cd-days').textContent = days;
+}
+
+// =====================================================
+// 今日のハイライト
+// =====================================================
+function renderToday() {
+  var now = new Date();
+  var ym = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0');
+  var dateStr = now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日（'
+    + ['日','月','火','水','木','金','土'][now.getDay()] + '）';
+  document.getElementById('th-date').textContent = dateStr;
+
+  var current = null;
+  for (var i = 0; i < MONTHS.length; i++) {
+    if (MONTHS[i].ym === ym) { current = MONTHS[i]; break; }
+  }
+
+  if (current) {
+    var phaseNames = {1:'Phase 1：インプット強化期', 2:'Phase 2：アウトプット強化期', 3:'Phase 3：直前仕上げ期'};
+    document.getElementById('th-phase').textContent = phaseNames[current.phase] || '';
+    var tasksHtml = '';
+    for (var t = 0; t < current.tasks.length; t++) {
+      tasksHtml += '<span class="task-chip" style="background:'+current.tasks[t].color+'">'+current.tasks[t].subj+'</span>';
+    }
+    document.getElementById('th-tasks').innerHTML = tasksHtml;
+  } else if (now < new Date(2026, 3, 1)) {
+    document.getElementById('th-phase').textContent = '学習開始まで準備期間';
+  } else {
+    document.getElementById('th-phase').textContent = '試験終了';
+  }
+}
+
+// =====================================================
+// ガントチャート
+// =====================================================
+function renderGantt() {
+  var now = new Date();
+  var currentYm = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0');
+
+  var subjects = ['健保法', '厚年法', '国年法', '労基法'];
+  var colors = {'健保法':'#1d4ed8','厚年法':'#c84b31','国年法':'#2d6a4f','労基法':'#7c3aed','総復習':'#00a8a9','横断演習':'#00a8a9'};
+
+  // ヘッダー行
+  var headRow = document.getElementById('gantt-head');
+  var th0 = document.createElement('th');
+  th0.textContent = '科目';
+  headRow.appendChild(th0);
+
+  for (var m = 0; m < MONTHS.length; m++) {
+    var th = document.createElement('th');
+    var mo = MONTHS[m];
+    th.textContent = mo.label.replace('20','').replace('年','年\n');
+    if (mo.ym === currentYm) th.classList.add('today-col');
+    headRow.appendChild(th);
+  }
+
+  // データ行
+  var tbody = document.getElementById('gantt-body');
+  for (var s = 0; s < subjects.length; s++) {
+    var subj = subjects[s];
+    var row = document.createElement('tr');
+    var tdName = document.createElement('td');
+    tdName.textContent = subj;
+    tdName.style.color = colors[subj];
+    tdName.style.fontWeight = '800';
+    row.appendChild(tdName);
+
+    for (var m2 = 0; m2 < MONTHS.length; m2++) {
+      var td = document.createElement('td');
+      if (MONTHS[m2].ym === currentYm) td.classList.add('today-col');
+
+      // この月のこの科目のタスクを探す
+      var task = null;
+      for (var t2 = 0; t2 < MONTHS[m2].tasks.length; t2++) {
+        if (MONTHS[m2].tasks[t2].subj === subj || MONTHS[m2].tasks[t2].subj.indexOf(subj.replace('法','')) >= 0) {
+          task = MONTHS[m2].tasks[t2];
+          break;
+        }
+      }
+
+      if (task) {
+        var bar = document.createElement('div');
+        bar.className = 'gantt-bar';
+        bar.style.background = colors[subj] || '#888';
+        var txt = task.content.slice(0, 10);
+        bar.textContent = txt;
+        td.appendChild(bar);
+      }
+      row.appendChild(td);
+    }
+    tbody.appendChild(row);
+  }
+}
+
+// =====================================================
+// 月別詳細
+// =====================================================
+function renderMonthDetails() {
+  var now = new Date();
+  var currentYm = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0');
+  var container = document.getElementById('month-details');
+  var phaseLabels = {1:'Phase 1 インプット', 2:'Phase 2 アウトプット', 3:'Phase 3 直前仕上げ'};
+  var phaseColors = {1:'#1d4ed8', 2:'#c9930a', 3:'#c84b31'};
+
+  for (var m = 0; m < MONTHS.length; m++) {
+    var mo = MONTHS[m];
+    var isCurrentMonth = mo.ym === currentYm;
+    var isPast = mo.ym < currentYm;
+
+    var div = document.createElement('div');
+    div.className = 'month-detail';
+    if (isCurrentMonth) div.style.border = '2px solid var(--teal)';
+
+    var header = '<div class="month-header">'+
+      '<span class="month-badge" style="background:'+phaseColors[mo.phase]+'">'+mo.label+'</span>'+
+      '<span class="month-phase" style="background:'+phaseColors[mo.phase]+'20;color:'+phaseColors[mo.phase]+'">'+phaseLabels[mo.phase]+'</span>'+
+      (isCurrentMonth ? '<span class="month-today-mark">📍 今月</span>' : '')+
+    '</div>';
+
+    var tasks = '';
+    for (var t = 0; t < mo.tasks.length; t++) {
+      var task = mo.tasks[t];
+      var cls = isPast ? 'done' : (isCurrentMonth ? 'today-month' : 'future');
+      tasks += '<div class="mtask '+cls+'">'+
+        '<div class="mt-subject" style="color:'+task.color+'">'+task.subj+'</div>'+
+        '<div class="mt-content">'+task.content+'</div>'+
+      '</div>';
+    }
+
+    div.innerHTML = header + '<div class="month-tasks">' + tasks + '</div>';
+    container.appendChild(div);
+  }
+}
+
+// =====================================================
+// 初期化
+// =====================================================
+window.onload = function() {
+  updateCountdown();
+  renderToday();
+  renderGantt();
+  renderMonthDetails();
+};
+</script>
+</body>
+</html>

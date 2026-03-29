@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>学習進捗ダッシュボード | 社労士ドリル</title>
+<style>
+:root{
+  --bg:#f5f0e8;--ink:#1a1a2e;--teal:#00a8a9;--teal-l:#e0f5f5;
+  --red:#c84b31;--gold:#c9930a;--blue:#1d4ed8;--purple:#7c3aed;--green:#2d6a4f;
+  --card:#fff;--radius:14px;
+  --kenpo:#1d4ed8;--kounen:#c84b31;--kokunen:#2d6a4f;--roki:#7c3aed;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans JP',sans-serif;min-height:100vh}
+a{text-decoration:none;color:inherit}
+
+.site-header{background:var(--ink);color:#fff;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.site-logo{font-size:17px;font-weight:800}.site-logo span{color:var(--teal)}
+.header-links{display:flex;gap:10px}
+.header-links a{font-size:12px;padding:6px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.3);color:#fff;transition:.2s}
+.header-links a:hover,.header-links a.active{background:var(--teal);border-color:var(--teal)}
+
+.page-hero{background:linear-gradient(135deg,var(--ink),#2a2a5e);color:#fff;padding:32px 24px;text-align:center}
+.page-hero h1{font-size:22px;font-weight:900;margin-bottom:6px}
+.page-hero p{font-size:13px;color:rgba(255,255,255,.6)}
+
+.wrap{max-width:920px;margin:0 auto;padding:24px 16px}
+
+/* サマリーカード */
+.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}
+@media(max-width:600px){.summary-grid{grid-template-columns:repeat(2,1fr)}}
+.summary-card{background:var(--card);border-radius:var(--radius);padding:18px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.summary-card .s-num{font-size:32px;font-weight:900;color:var(--teal)}
+.summary-card .s-label{font-size:11px;color:#888;margin-top:4px}
+
+/* 科目ヒートマップ */
+.subject-section{background:var(--card);border-radius:var(--radius);margin-bottom:20px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.subj-head{padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #f0f0f0}
+.subj-badge{font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;color:#fff}
+.subj-name{font-size:15px;font-weight:800}
+.subj-stats{margin-left:auto;font-size:12px;color:#888}
+.subj-body{padding:16px 20px}
+
+/* ヒートマップ行 */
+.heatmap{display:grid;grid-template-columns:repeat(12,1fr);gap:6px}
+@media(max-width:600px){.heatmap{grid-template-columns:repeat(6,1fr)}}
+.hm-cell{border-radius:8px;padding:8px 4px;text-align:center;cursor:pointer;transition:.2s;position:relative}
+.hm-cell:hover{transform:scale(1.05)}
+.hm-cell .hm-day{font-size:10px;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:2px}
+.hm-cell .hm-score{font-size:15px;font-weight:900;color:#fff}
+.hm-cell .hm-label{font-size:8px;color:rgba(255,255,255,.6);margin-top:2px;line-height:1.2}
+
+/* スコアによる背景色 */
+.hm-none{background:#e8e4dc;color:var(--ink)!important}
+.hm-none .hm-day,.hm-none .hm-score,.hm-none .hm-label{color:#aaa!important}
+.hm-low{background:#c84b31}
+.hm-mid{background:#c9930a}
+.hm-high{background:#2d6a4f}
+.hm-perfect{background:#00a8a9}
+
+/* 苦手リスト */
+.weak-section{background:var(--card);border-radius:var(--radius);padding:20px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.weak-title{font-size:14px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.weak-list{display:flex;flex-direction:column;gap:8px}
+.weak-item{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;background:#fff8f7;border:1px solid #fde8e4}
+.weak-badge{font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;color:#fff;flex-shrink:0}
+.weak-day{font-size:12px;font-weight:700;flex-shrink:0}
+.weak-score{font-size:16px;font-weight:900;color:var(--red);margin-left:auto;flex-shrink:0}
+.weak-btn{font-size:11px;padding:4px 12px;background:var(--red);color:#fff;border-radius:14px;flex-shrink:0}
+
+.no-data{text-align:center;padding:32px;color:#aaa;font-size:13px}
+.section-title{font-size:12px;font-weight:800;letter-spacing:.12em;color:#888;text-transform:uppercase;margin-bottom:14px}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-logo">社労士<span>ドリル</span></div>
+  <div class="header-links">
+    <a href="index.html">ホーム</a>
+    <a href="dashboard.html" class="active">進捗</a>
+    <a href="schedule.html">スケジュール</a>
+  </div>
+</header>
+
+<div class="page-hero">
+  <h1>📊 学習進捗ダッシュボード</h1>
+  <p>ドリルの正答データを自動集計しています（localStorageから取得）</p>
+</div>
+
+<div class="wrap">
+
+  <!-- サマリー -->
+  <div class="summary-grid">
+    <div class="summary-card">
+      <div class="s-num" id="s-total">0</div>
+      <div class="s-label">学習済みDay</div>
+    </div>
+    <div class="summary-card">
+      <div class="s-num" id="s-avg">-</div>
+      <div class="s-label">全体平均正答率</div>
+    </div>
+    <div class="summary-card">
+      <div class="s-num" id="s-high">0</div>
+      <div class="s-label">80%超のDay数</div>
+    </div>
+    <div class="summary-card">
+      <div class="s-num" id="s-weak">0</div>
+      <div class="s-label">60%未満の要注意Day</div>
+    </div>
+  </div>
+
+  <!-- 苦手リスト -->
+  <div class="weak-section" id="weak-section" style="display:none">
+    <div class="weak-title">🔥 要復習リスト（正答率60%未満）</div>
+    <div class="weak-list" id="weak-list"></div>
+  </div>
+
+  <!-- 科目別ヒートマップ -->
+  <div class="section-title">科目別ヒートマップ</div>
+  <div id="heatmaps"></div>
+
+</div>
+
+<script>
+var SUBJECTS = [
+  {
+    id:'kenpo', name:'健康保険法', short:'健保法', color:'#1d4ed8',
+    days:12,
+    getKey: function(d){ return 'kenpo_day'+d+'.html'; },
+    labels:['目的・被保険者','資格取得・届出','保険料','療養給付','傷病手当金','出産・死亡給付','高額療養費','日雇・任意継続','審査請求','苦手復習','FC300枚','過去問演習']
+  },
+  {
+    id:'kounen', name:'厚生年金保険法', short:'厚年法', color:'#c84b31',
+    days:12,
+    getKey: function(d){ return 'kounen_day'+d; },
+    labels:['目的・被保険者','資格取得・届出','保険料','老齢厚生①','老齢厚生②','障害厚生','遺族厚生','離婚分割等','審査・雑則','苦手復習','FC300枚','過去問演習']
+  },
+  {
+    id:'kokunen', name:'国民年金法', short:'国年法', color:'#2d6a4f',
+    days:12,
+    getKey: function(d){ return 'kokunen_day'+d; },
+    labels:['目的・被保険者','資格取得・届出','保険料・免除','老齢基礎','障害基礎','遺族・寡婦','通則・時効','横断仕上げ','苦手復習','FC300枚','過去問演習','準備中']
+  },
+  {
+    id:'roki', name:'労働基準法', short:'労基法', color:'#7c3aed',
+    days:12,
+    getKey: function(d){ return 'roki_day'+d; },
+    labels:['総則・均等待遇','賃金・割増賃金','労働時間・休憩','年次有給休暇','就業規則','女性・年少者','監督機関・罰則','変形制・フレックス','横断まとめ','苦手復習','FC300枚','過去問演習']
+  }
+];
+
+function getScore(key) {
+  try {
+    var raw = localStorage.getItem(key);
+    if (!raw) return null;
+    var data = JSON.parse(raw);
+    if (data.correct !== undefined && data.total !== undefined && data.total > 0) {
+      return Math.round(data.correct / data.total * 100);
+    }
+    return null;
+  } catch(e){ return null; }
+}
+
+function hmClass(s) {
+  if (s === null) return 'hm-none';
+  if (s >= 90) return 'hm-perfect';
+  if (s >= 80) return 'hm-high';
+  if (s >= 60) return 'hm-mid';
+  return 'hm-low';
+}
+
+var weakItems = [];
+var totalDone = 0;
+var totalScore = 0;
+var totalScored = 0;
+var highCount = 0;
+var weakCount = 0;
+
+window.onload = function() {
+  var container = document.getElementById('heatmaps');
+
+  for (var i = 0; i < SUBJECTS.length; i++) {
+    var subj = SUBJECTS[i];
+    var done = 0;
+    var scoreSum = 0;
+    var scored = 0;
+    var cells = '';
+
+    for (var d = 1; d <= subj.days; d++) {
+      var key = subj.getKey(d);
+      var score = getScore(key);
+      var cls = hmClass(score);
+      var label = subj.labels[d-1] || '';
+      var shortLabel = label.length > 6 ? label.slice(0,6)+'…' : label;
+      var fname = subj.id + '_day' + d + '.html';
+      var scoreDisp = score !== null ? score + '%' : '未';
+
+      if (score !== null) {
+        done++;
+        scoreSum += score;
+        scored++;
+        totalDone++;
+        totalScore += score;
+        totalScored++;
+        if (score >= 80) highCount++;
+        if (score < 60) {
+          weakCount++;
+          weakItems.push({subj:subj, day:d, score:score, fname:fname, label:label});
+        }
+      }
+
+      cells += '<a href="'+fname+'" class="hm-cell '+cls+'" title="'+subj.short+' Day'+d+' '+label+(score!==null?' | '+score+'%':'')+'">'+
+        '<div class="hm-day">D'+d+'</div>'+
+        '<div class="hm-score">'+scoreDisp+'</div>'+
+        '<div class="hm-label">'+shortLabel+'</div>'+
+        '</a>';
+    }
+
+    var avgStr = scored > 0 ? Math.round(scoreSum/scored)+'%' : '未学習';
+    var section = document.createElement('div');
+    section.className = 'subject-section';
+    section.innerHTML =
+      '<div class="subj-head">'+
+        '<span class="subj-badge" style="background:'+subj.color+'">'+subj.short+'</span>'+
+        '<span class="subj-name">'+subj.name+'</span>'+
+        '<span class="subj-stats">'+done+'/12完了 | 平均'+avgStr+'</span>'+
+      '</div>'+
+      '<div class="subj-body"><div class="heatmap">'+cells+'</div></div>';
+    container.appendChild(section);
+  }
+
+  // サマリー更新
+  document.getElementById('s-total').textContent = totalDone;
+  document.getElementById('s-avg').textContent = totalScored > 0
+    ? Math.round(totalScore/totalScored)+'%' : '-';
+  document.getElementById('s-high').textContent = highCount;
+  document.getElementById('s-weak').textContent = weakCount;
+
+  // 苦手リスト
+  if (weakItems.length > 0) {
+    document.getElementById('weak-section').style.display = 'block';
+    weakItems.sort(function(a,b){ return a.score - b.score; });
+    var wHtml = '';
+    for (var w = 0; w < weakItems.length; w++) {
+      var wi = weakItems[w];
+      wHtml += '<div class="weak-item">'+
+        '<span class="weak-badge" style="background:'+wi.subj.color+'">'+wi.subj.short+'</span>'+
+        '<span class="weak-day">Day'+wi.day+' '+wi.label+'</span>'+
+        '<span class="weak-score">'+wi.score+'%</span>'+
+        '<a href="'+wi.fname+'" class="weak-btn">復習 →</a>'+
+      '</div>';
+    }
+    document.getElementById('weak-list').innerHTML = wHtml;
+  }
+
+  if (totalDone === 0) {
+    container.insertAdjacentHTML('beforeend',
+      '<div class="no-data">まだドリルを学習していません。<br>各Dayに取り組むと自動的にここに反映されます。</div>');
+  }
+};
+</script>
+</body>
+</html>
